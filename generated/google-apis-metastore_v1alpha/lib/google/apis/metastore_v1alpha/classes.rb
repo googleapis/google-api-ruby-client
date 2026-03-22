@@ -618,8 +618,10 @@ module Google
         end
       end
       
-      # Configuration information for migrating from self-managed hive metastore on
-      # Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
+      # Deprecated: Migrations to Dataproc Metastore are no longer supported. Use
+      # BigLake Metastore migration instead. Configuration information for migrating
+      # from self-managed hive metastore on Google Cloud using Cloud SQL as the
+      # backend database to Dataproc Metastore.
       class CloudSqlMigrationConfig
         include Google::Apis::Core::Hashable
       
@@ -1820,8 +1822,10 @@ module Google
       class MigrationExecution
         include Google::Apis::Core::Hashable
       
-        # Configuration information for migrating from self-managed hive metastore on
-        # Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
+        # Deprecated: Migrations to Dataproc Metastore are no longer supported. Use
+        # BigLake Metastore migration instead. Configuration information for migrating
+        # from self-managed hive metastore on Google Cloud using Cloud SQL as the
+        # backend database to Dataproc Metastore.
         # Corresponds to the JSON property `cloudSqlMigrationConfig`
         # @return [Google::Apis::MetastoreV1alpha::CloudSqlMigrationConfig]
         attr_accessor :cloud_sql_migration_config
@@ -1843,7 +1847,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The current phase of the migration execution.
+        # Output only. Deprecated: Phase was designed for incoming migrations to
+        # Dataproc Metastore, not applicable when migrating away from it. The current
+        # phase of the migration execution.
         # Corresponds to the JSON property `phase`
         # @return [String]
         attr_accessor :phase
