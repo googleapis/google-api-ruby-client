@@ -10024,6 +10024,15 @@ module Google
         # @return [Float]
         attr_accessor :learning_rate_multiplier
       
+        # Optional. Resource name of a previously fine tuned version id to copy the
+        # overwritten configs from. The base_processor_version should be newer than the
+        # base processor version used to fine tune this provided processor version.
+        # Format: `projects/`project`/locations/`location`/processors/`processor`/
+        # processorVersions/`processorVersion``.
+        # Corresponds to the JSON property `previousFineTunedProcessorVersionName`
+        # @return [String]
+        attr_accessor :previous_fine_tuned_processor_version_name
+      
         # Optional. The number of steps to run for model tuning. Valid values are
         # between 1 and 400. If not provided, recommended steps will be used.
         # Corresponds to the JSON property `trainSteps`
@@ -10037,6 +10046,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @learning_rate_multiplier = args[:learning_rate_multiplier] if args.key?(:learning_rate_multiplier)
+          @previous_fine_tuned_processor_version_name = args[:previous_fine_tuned_processor_version_name] if args.key?(:previous_fine_tuned_processor_version_name)
           @train_steps = args[:train_steps] if args.key?(:train_steps)
         end
       end
