@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSmartNotesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTranscriptEntriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +149,12 @@ module Google
       end
       
       class SignedinUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SmartNote
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,6 +298,15 @@ module Google
         end
       end
       
+      class ListSmartNotesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :smart_notes, as: 'smartNotes', class: Google::Apis::MeetV2::SmartNote, decorator: Google::Apis::MeetV2::SmartNote::Representation
+      
+        end
+      end
+      
       class ListTranscriptEntriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -369,6 +390,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :user, as: 'user'
+        end
+      end
+      
+      class SmartNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :docs_destination, as: 'docsDestination', class: Google::Apis::MeetV2::DocsDestination, decorator: Google::Apis::MeetV2::DocsDestination::Representation
+      
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
         end
       end
       
