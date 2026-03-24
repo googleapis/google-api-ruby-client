@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.files = Dir.glob("lib/**/*.rb") + Dir.glob("*.md") + [".yardopts"]
   gem.require_paths = ["lib"]
 
-  gem.required_ruby_version = '>= 3.1'
+  gem.required_ruby_version = '>= 3.2'
   gem.add_runtime_dependency "representable", "~> 3.0"
   gem.add_runtime_dependency "retriable", "~> 3.1"
   gem.add_runtime_dependency "addressable", "~> 2.8", ">= 2.8.7"
