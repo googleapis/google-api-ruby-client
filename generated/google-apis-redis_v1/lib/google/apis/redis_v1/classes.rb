@@ -41,6 +41,155 @@ module Google
         end
       end
       
+      # The ACL policy resource.
+      class AclPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Etag for the ACL policy.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. Full resource path of the ACL policy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The ACL rules within the ACL policy.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::RedisV1::AclRule>]
+        attr_accessor :rules
+      
+        # Output only. The state of the ACL policy.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The version of the ACL policy. Used in drift resolution.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @state = args[:state] if args.key?(:state)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # A single ACL rule which defines the policy for a user.
+      class AclRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. The rule to be applied to the username. Ex: "on >password123 ~* +@
+        # all" The format of the rule is defined by Redis OSS: https://redis.io/docs/
+        # latest/operate/oss_and_stack/management/security/acl/
+        # Corresponds to the JSON property `rule`
+        # @return [String]
+        attr_accessor :rule
+      
+        # Required. Specifies the IAM user or service account to be added to the ACL
+        # policy. This username will be directly set on the Redis OSS.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rule = args[:rule] if args.key?(:rule)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Request message for AddAuthToken.
+      class AddAuthTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Auth token for the cluster.
+        # Corresponds to the JSON property `authToken`
+        # @return [Google::Apis::RedisV1::AuthToken]
+        attr_accessor :auth_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_token = args[:auth_token] if args.key?(:auth_token)
+        end
+      end
+      
+      # Request message for AddTokenAuthUser.
+      class AddTokenAuthUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The id of the token auth user to add.
+        # Corresponds to the JSON property `tokenAuthUser`
+        # @return [String]
+        attr_accessor :token_auth_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token_auth_user = args[:token_auth_user] if args.key?(:token_auth_user)
+        end
+      end
+      
+      # Auth token for the cluster.
+      class AuthToken
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time of the auth token.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. Name of the auth token. Format: projects/`project`/locations/`
+        # location`/clusters/`cluster`/tokenAuthUsers/`token_auth_user`/authTokens/`
+        # auth_token`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the auth token.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The service generated authentication token used to connect to the
+        # Redis cluster.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
       # The automated backup config for a cluster.
       class AutomatedBackupConfig
         include Google::Apis::Core::Hashable
@@ -234,7 +383,7 @@ module Google
         end
       end
       
-      # Request for [BackupCluster].
+      # Request for `BackupCluster`.
       class BackupClusterRequest
         include Google::Apis::Core::Hashable
       
@@ -560,6 +709,14 @@ module Google
         # @return [String]
         attr_accessor :acl_policy
       
+        # Optional. Output only. Indicates whether the ACL rules applied to the cluster
+        # are in sync with the latest ACL policy rules. This field is only applicable if
+        # the ACL policy is set for the cluster.
+        # Corresponds to the JSON property `aclPolicyInSync`
+        # @return [Boolean]
+        attr_accessor :acl_policy_in_sync
+        alias_method :acl_policy_in_sync?, :acl_policy_in_sync
+      
         # Optional. Immutable. Deprecated, do not use.
         # Corresponds to the JSON property `allowFewerZonesDeployment`
         # @return [Boolean]
@@ -813,6 +970,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acl_policy = args[:acl_policy] if args.key?(:acl_policy)
+          @acl_policy_in_sync = args[:acl_policy_in_sync] if args.key?(:acl_policy_in_sync)
           @allow_fewer_zones_deployment = args[:allow_fewer_zones_deployment] if args.key?(:allow_fewer_zones_deployment)
           @async_cluster_endpoints_deletion_enabled = args[:async_cluster_endpoints_deletion_enabled] if args.key?(:async_cluster_endpoints_deletion_enabled)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
@@ -1222,7 +1380,7 @@ module Google
         # @return [Google::Apis::RedisV1::DatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 31
+        # Common model for database resource instance metadata. Next ID: 32
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::RedisV1::DatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -1420,7 +1578,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 31
+      # Common model for database resource instance metadata. Next ID: 32
       class DatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -1519,6 +1677,11 @@ module Google
         # @return [Google::Apis::RedisV1::ResourceMaintenanceInfo]
         attr_accessor :maintenance_info
       
+        # Optional. The modes of the database resource.
+        # Corresponds to the JSON property `modes`
+        # @return [Array<String>]
+        attr_accessor :modes
+      
         # DatabaseResourceId will serve as primary key for any resource ingestion event.
         # Corresponds to the JSON property `primaryResourceId`
         # @return [Google::Apis::RedisV1::DatabaseResourceId]
@@ -1609,6 +1772,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
           @maintenance_info = args[:maintenance_info] if args.key?(:maintenance_info)
+          @modes = args[:modes] if args.key?(:modes)
           @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
           @primary_resource_location = args[:primary_resource_location] if args.key?(:primary_resource_location)
           @product = args[:product] if args.key?(:product)
@@ -1921,7 +2085,7 @@ module Google
         end
       end
       
-      # Request for [ExportBackup].
+      # Request for `ExportBackup`.
       class ExportBackupRequest
         include Google::Apis::Core::Hashable
       
@@ -2589,7 +2753,73 @@ module Google
         end
       end
       
-      # Response for [ListBackupCollections].
+      # Response for `ListAclPolicies`.
+      class ListAclPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of ACL policies in the project in the specified location, or across all
+        # locations. If the `location_id` in the parent field of the request is "-", all
+        # regions available to the project are queried, and the results aggregated.
+        # Corresponds to the JSON property `aclPolicies`
+        # @return [Array<Google::Apis::RedisV1::AclPolicy>]
+        attr_accessor :acl_policies
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acl_policies = args[:acl_policies] if args.key?(:acl_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListAuthTokens.
+      class ListAuthTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of auth tokens in the project.
+        # Corresponds to the JSON property `authTokens`
+        # @return [Array<Google::Apis::RedisV1::AuthToken>]
+        attr_accessor :auth_tokens
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Auth tokens that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_tokens = args[:auth_tokens] if args.key?(:auth_tokens)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for `ListBackupCollections`.
       class ListBackupCollectionsResponse
         include Google::Apis::Core::Hashable
       
@@ -2628,7 +2858,7 @@ module Google
         end
       end
       
-      # Response for [ListBackups].
+      # Response for `ListBackups`.
       class ListBackupsResponse
         include Google::Apis::Core::Hashable
       
@@ -2660,7 +2890,7 @@ module Google
         end
       end
       
-      # Response for ListClusters.
+      # Response for `ListClusters`.
       class ListClustersResponse
         include Google::Apis::Core::Hashable
       
@@ -2793,6 +3023,38 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListTokenAuthUsers.
+      class ListTokenAuthUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of token auth users in the project.
+        # Corresponds to the JSON property `tokenAuthUsers`
+        # @return [Array<Google::Apis::RedisV1::TokenAuthUser>]
+        attr_accessor :token_auth_users
+      
+        # Unordered list. Token auth users that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @token_auth_users = args[:token_auth_users] if args.key?(:token_auth_users)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -4196,6 +4458,33 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @sha1_fingerprint = args[:sha1_fingerprint] if args.key?(:sha1_fingerprint)
+        end
+      end
+      
+      # Represents a token based auth user for the cluster.
+      class TokenAuthUser
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the token based auth user. Format: projects/`
+        # project`/locations/`location`/clusters/`cluster`/tokenAuthUsers/`
+        # token_auth_user`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the token based auth user.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

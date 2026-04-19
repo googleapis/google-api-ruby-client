@@ -28,6 +28,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AclPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AclRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddAuthTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddTokenAuthUserRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutomatedBackupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +358,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAclPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAuthTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBackupCollectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +401,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTokenAuthUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -592,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TokenAuthUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TypedValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -638,6 +692,51 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :append_fsync, as: 'appendFsync'
+        end
+      end
+      
+      class AclPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::RedisV1::AclRule, decorator: Google::Apis::RedisV1::AclRule::Representation
+      
+          property :state, as: 'state'
+          property :version, :numeric_string => true, as: 'version'
+        end
+      end
+      
+      class AclRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rule, as: 'rule'
+          property :username, as: 'username'
+        end
+      end
+      
+      class AddAuthTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_token, as: 'authToken', class: Google::Apis::RedisV1::AuthToken, decorator: Google::Apis::RedisV1::AuthToken::Representation
+      
+        end
+      end
+      
+      class AddTokenAuthUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token_auth_user, as: 'tokenAuthUser'
+        end
+      end
+      
+      class AuthToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :token, as: 'token'
         end
       end
       
@@ -781,6 +880,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acl_policy, as: 'aclPolicy'
+          property :acl_policy_in_sync, as: 'aclPolicyInSync'
           property :allow_fewer_zones_deployment, as: 'allowFewerZonesDeployment'
           property :async_cluster_endpoints_deletion_enabled, as: 'asyncClusterEndpointsDeletionEnabled'
           property :authorization_mode, as: 'authorizationMode'
@@ -1027,6 +1127,7 @@ module Google
       
           property :maintenance_info, as: 'maintenanceInfo', class: Google::Apis::RedisV1::ResourceMaintenanceInfo, decorator: Google::Apis::RedisV1::ResourceMaintenanceInfo::Representation
       
+          collection :modes, as: 'modes'
           property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::RedisV1::DatabaseResourceId, decorator: Google::Apis::RedisV1::DatabaseResourceId::Representation
       
           property :primary_resource_location, as: 'primaryResourceLocation'
@@ -1294,6 +1395,26 @@ module Google
         end
       end
       
+      class ListAclPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :acl_policies, as: 'aclPolicies', class: Google::Apis::RedisV1::AclPolicy, decorator: Google::Apis::RedisV1::AclPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListAuthTokensResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auth_tokens, as: 'authTokens', class: Google::Apis::RedisV1::AuthToken, decorator: Google::Apis::RedisV1::AuthToken::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListBackupCollectionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1348,6 +1469,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::RedisV1::Operation, decorator: Google::Apis::RedisV1::Operation::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListTokenAuthUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :token_auth_users, as: 'tokenAuthUsers', class: Google::Apis::RedisV1::TokenAuthUser, decorator: Google::Apis::RedisV1::TokenAuthUser::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -1721,6 +1852,14 @@ module Google
           property :expire_time, as: 'expireTime'
           property :serial_number, as: 'serialNumber'
           property :sha1_fingerprint, as: 'sha1Fingerprint'
+        end
+      end
+      
+      class TokenAuthUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       

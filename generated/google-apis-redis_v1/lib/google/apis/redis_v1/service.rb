@@ -116,10 +116,15 @@ module Google
         end
         
         # Lists information about the supported locations for this service. This method
-        # can be called in two ways: * **List all public locations:** Use the path `GET /
-        # v1/locations`. * **List project-visible locations:** Use the path `GET /v1/
-        # projects/`project_id`/locations`. This may include public locations as well as
-        # private or other locations specifically visible to the project.
+        # lists locations based on the resource scope provided in the [
+        # ListLocationsRequest.name] field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -161,6 +166,220 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an ACL Policy. The creation is executed synchronously and the policy
+        # is available for use immediately after the RPC returns.
+        # @param [String] parent
+        #   Required. The resource name of the cluster location using the form: `projects/`
+        #   project_id`/locations/`location_id`` where `location_id` refers to a Google
+        #   Cloud region.
+        # @param [Google::Apis::RedisV1::AclPolicy] acl_policy_object
+        # @param [String] acl_policy_id
+        #   Required. The logical name of the ACL Policy in the customer project with the
+        #   following restrictions: * Must contain only lowercase letters, numbers, and
+        #   hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must
+        #   end with a number or a letter. * Must be unique within the customer project /
+        #   location
+        # @param [String] request_id
+        #   Optional. Idempotent request UUID. .
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::AclPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::AclPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_acl_policy(parent, acl_policy_object = nil, acl_policy_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/aclPolicies', options)
+          command.request_representation = Google::Apis::RedisV1::AclPolicy::Representation
+          command.request_object = acl_policy_object
+          command.response_representation = Google::Apis::RedisV1::AclPolicy::Representation
+          command.response_class = Google::Apis::RedisV1::AclPolicy
+          command.params['parent'] = parent unless parent.nil?
+          command.query['aclPolicyId'] = acl_policy_id unless acl_policy_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a specific Acl Policy. This action will delete the Acl Policy and all
+        # the rules associated with it. An ACL policy cannot be deleted if it is
+        # attached to a cluster.
+        # @param [String] name
+        #   Required. Redis ACL Policy resource name using the form: `projects/`project_id`
+        #   /locations/`location_id`/aclPolicies/`acl_policy_id`` where `location_id`
+        #   refers to a GCP region.
+        # @param [String] etag
+        #   Optional. Etag of the ACL policy. If this is different from the server's etag,
+        #   the request will fail with an ABORTED error.
+        # @param [String] request_id
+        #   Optional. Idempotent request UUID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_acl_policy(name, etag: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a specific Redis Cluster ACL Policy.
+        # @param [String] name
+        #   Required. Redis ACL Policy resource name using the form: `projects/`project_id`
+        #   /locations/`location_id`/aclPolicies/`acl_policy_id`` where `location_id`
+        #   refers to a GCP region.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::AclPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::AclPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_acl_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1::AclPolicy::Representation
+          command.response_class = Google::Apis::RedisV1::AclPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all ACL Policies owned by a project in either the specified location (
+        # region) or all locations. The location should have the following format: * `
+        # projects/`project_id`/locations/`location_id`` If `location_id` is specified
+        # as `-` (wildcard), then all regions available to the project are queried, and
+        # the results are aggregated.
+        # @param [String] parent
+        #   Required. The resource name of the cluster location using the form: `projects/`
+        #   project_id`/locations/`location_id`` where `location_id` refers to a Google
+        #   Cloud region.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 1000 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's `next_page_token` to determine if there are more ACL policies left
+        #   to be queried. The maximum value is 1000; values above 1000 will be coerced to
+        #   1000.
+        # @param [String] page_token
+        #   Optional. The `next_page_token` value returned from a previous `
+        #   ListAclPolicies` request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::ListAclPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::ListAclPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_acl_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/aclPolicies', options)
+          command.response_representation = Google::Apis::RedisV1::ListAclPoliciesResponse::Representation
+          command.response_class = Google::Apis::RedisV1::ListAclPoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the ACL policy. The operation applies the updated ACL policy to all of
+        # the linked clusters. If Memorystore can apply the policy to all clusters, then
+        # the operation returns a SUCCESS status. If Memorystore can't apply the policy
+        # to all clusters, then to ensure eventual consistency, Memorystore uses
+        # reconciliation to apply the policy to the failed clusters. Completed
+        # longrunning.Operation will contain the new ACL Policy object in the response
+        # field.
+        # @param [String] name
+        #   Identifier. Full resource path of the ACL policy.
+        # @param [Google::Apis::RedisV1::AclPolicy] acl_policy_object
+        # @param [String] request_id
+        #   Optional. Idempotent request UUID.
+        # @param [String] update_mask
+        #   Optional. Mask of fields to be updated. At least one path must be supplied in
+        #   this field. The elements of the repeated paths field may only include these
+        #   fields from `AclPolicy`: * `rules`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_acl_policy(name, acl_policy_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::RedisV1::AclPolicy::Representation
+          command.request_object = acl_policy_object
+          command.response_representation = Google::Apis::RedisV1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -388,6 +607,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adds a token auth user for a token based auth enabled cluster.
+        # @param [String] cluster
+        #   Required. The cluster resource that this token auth user will be added for.
+        #   Format: projects/`project`/locations/`location`/clusters/`cluster`
+        # @param [Google::Apis::RedisV1::AddTokenAuthUserRequest] add_token_auth_user_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_cluster_token_auth_user(cluster, add_token_auth_user_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+cluster}:addTokenAuthUser', options)
+          command.request_representation = Google::Apis::RedisV1::AddTokenAuthUserRequest::Representation
+          command.request_object = add_token_auth_user_request_object
+          command.response_representation = Google::Apis::RedisV1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1::Operation
+          command.params['cluster'] = cluster unless cluster.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Backup Redis Cluster. If this is the first time a backup is being created, a
         # backup collection will be created at the backend, and this backup belongs to
         # this collection. Both collection and backup will have a resource name. Backup
@@ -597,8 +850,8 @@ module Google
         #   response may include a partial list and a caller should only rely on response'
         #   s `next_page_token` to determine if there are more clusters left to be queried.
         # @param [String] page_token
-        #   The `next_page_token` value returned from a previous ListClusters request, if
-        #   any.
+        #   The `next_page_token` value returned from a previous `ListClusters` request,
+        #   if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -704,6 +957,282 @@ module Google
           command.response_representation = Google::Apis::RedisV1::Operation::Representation
           command.response_class = Google::Apis::RedisV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a auth token for a user of a token based auth enabled cluster.
+        # @param [String] token_auth_user
+        #   Required. The name of the token auth user resource that this auth token will
+        #   be added for. Format: projects/`project`/locations/`location`/clusters/`
+        #   cluster`/tokenAuthUsers/`token_auth_user`
+        # @param [Google::Apis::RedisV1::AddAuthTokenRequest] add_auth_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_token_auth_user_auth_token(token_auth_user, add_auth_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+tokenAuthUser}:addAuthToken', options)
+          command.request_representation = Google::Apis::RedisV1::AddAuthTokenRequest::Representation
+          command.request_object = add_auth_token_request_object
+          command.response_representation = Google::Apis::RedisV1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1::Operation
+          command.params['tokenAuthUser'] = token_auth_user unless token_auth_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a token auth user for a token based auth enabled cluster.
+        # @param [String] name
+        #   Required. The name of the token auth user to delete. Format: projects/`project`
+        #   /locations/`location`/clusters/`cluster`/tokenAuthUsers/`token_auth_user`
+        # @param [Boolean] force
+        #   Optional. If set to true, any child auth tokens of this user will also be
+        #   deleted. Otherwise, the request will only work if the user has no auth tokens.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_cluster_token_auth_user(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a specific token auth user for a basic auth enabled cluster.
+        # @param [String] name
+        #   Required. The name of token auth user for a token based auth enabled cluster.
+        #   Format: projects/`project`/locations/`location`/clusters/`cluster`/
+        #   tokenAuthUsers/`token_auth_user`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::TokenAuthUser] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::TokenAuthUser]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cluster_token_auth_user(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1::TokenAuthUser::Representation
+          command.response_class = Google::Apis::RedisV1::TokenAuthUser
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the token auth users for a token based auth enabled cluster.
+        # @param [String] parent
+        #   Required. The parent resource that this token based auth user will be listed
+        #   for. Format: projects/`project`/locations/`location`/clusters/`cluster`
+        # @param [String] filter
+        #   Optional. Expression for filtering results.
+        # @param [String] order_by
+        #   Optional. Sort results by a defined order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 1000 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's The maximum value is 1000; values above 1000 will be coerced to
+        #   1000. `next_page_token` to determine if there are more clusters left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The `next_page_token` value returned from a previous [
+        #   ListTokenAuthUsers] request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::ListTokenAuthUsersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::ListTokenAuthUsersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_cluster_token_auth_users(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/tokenAuthUsers', options)
+          command.response_representation = Google::Apis::RedisV1::ListTokenAuthUsersResponse::Representation
+          command.response_class = Google::Apis::RedisV1::ListTokenAuthUsersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a auth token for a user of a token based auth enabled instance.
+        # @param [String] name
+        #   Required. The name of the token auth user resource that this auth token will
+        #   be deleted from. Format: projects/`project`/locations/`location`/clusters/`
+        #   cluster`/tokenAuthUsers/`token_auth_user`/authTokens/`auth_token`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_cluster_token_auth_user_auth_token(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a specific auth token for a specific token auth user.
+        # @param [String] name
+        #   Required. The name of auth token for a token based auth enabled cluster.
+        #   Format: projects/`project`/locations/`location`/clusters/`cluster`/
+        #   tokenAuthUsers/`token_auth_user`/authTokens/`auth_token`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::AuthToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::AuthToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cluster_token_auth_user_auth_token(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1::AuthToken::Representation
+          command.response_class = Google::Apis::RedisV1::AuthToken
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the auth tokens for a specific token auth user.
+        # @param [String] parent
+        #   Required. The parent resource that this auth token will be listed for. Format:
+        #   projects/`project`/locations/`location`/clusters/`cluster`/tokenAuthUsers/`
+        #   token_auth_user`
+        # @param [String] filter
+        #   Optional. Expression for filtering results.
+        # @param [String] order_by
+        #   Optional. Sort results by a defined order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. The maximum value is 1000;
+        #   values above 1000 will be coerced to 1000. If not specified, a default value
+        #   of 1000 will be used by the service. Regardless of the page_size value, the
+        #   response may include a partial list and a caller should only rely on response'
+        #   s `next_page_token` to determine if there are more clusters left to be queried.
+        # @param [String] page_token
+        #   Optional. The `next_page_token` value returned from a previous [
+        #   ListTokenAuthUsers] request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::ListAuthTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::ListAuthTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_cluster_token_auth_user_auth_tokens(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/authTokens', options)
+          command.response_representation = Google::Apis::RedisV1::ListAuthTokensResponse::Representation
+          command.response_class = Google::Apis::RedisV1::ListAuthTokensResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
