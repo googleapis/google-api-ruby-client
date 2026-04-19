@@ -22,6 +22,385 @@ module Google
   module Apis
     module ContactcenterinsightsV1
       
+      # Represents an event indicating the transfer of a conversation to a different
+      # agent.
+      class GoogleCloudCesV1mainAgentTransfer
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Display name of the agent.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The agent to which the conversation is being transferred. The agent
+        # will handle the conversation from this point forward. Format: `projects/`
+        # project`/locations/`location`/apps/`app`/agents/`agent``
+        # Corresponds to the JSON property `targetAgent`
+        # @return [String]
+        attr_accessor :target_agent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @target_agent = args[:target_agent] if args.key?(:target_agent)
+        end
+      end
+      
+      # Represents a blob input or output in the conversation.
+      class GoogleCloudCesV1mainBlob
+        include Google::Apis::Core::Hashable
+      
+        # Required. Raw bytes of the blob.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Required. The IANA standard MIME type of the source data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # A chunk of content within a message.
+      class GoogleCloudCesV1mainChunk
+        include Google::Apis::Core::Hashable
+      
+        # Represents an event indicating the transfer of a conversation to a different
+        # agent.
+        # Corresponds to the JSON property `agentTransfer`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainAgentTransfer]
+        attr_accessor :agent_transfer
+      
+        # Represents a blob input or output in the conversation.
+        # Corresponds to the JSON property `blob`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainBlob]
+        attr_accessor :blob
+      
+        # A struct represents default variables at the start of the conversation, keyed
+        # by variable names.
+        # Corresponds to the JSON property `defaultVariables`
+        # @return [Hash<String,Object>]
+        attr_accessor :default_variables
+      
+        # Represents an image input or output in the conversation.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainImage]
+        attr_accessor :image
+      
+        # Optional. Custom payload data.
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # Optional. Text data.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Request for the client or the agent to execute the specified tool.
+        # Corresponds to the JSON property `toolCall`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolCall]
+        attr_accessor :tool_call
+      
+        # The execution result of a specific tool from the client or the agent.
+        # Corresponds to the JSON property `toolResponse`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolResponse]
+        attr_accessor :tool_response
+      
+        # Optional. Transcript associated with the audio.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        # A struct represents variables that were updated in the conversation, keyed by
+        # variable names.
+        # Corresponds to the JSON property `updatedVariables`
+        # @return [Hash<String,Object>]
+        attr_accessor :updated_variables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_transfer = args[:agent_transfer] if args.key?(:agent_transfer)
+          @blob = args[:blob] if args.key?(:blob)
+          @default_variables = args[:default_variables] if args.key?(:default_variables)
+          @image = args[:image] if args.key?(:image)
+          @payload = args[:payload] if args.key?(:payload)
+          @text = args[:text] if args.key?(:text)
+          @tool_call = args[:tool_call] if args.key?(:tool_call)
+          @tool_response = args[:tool_response] if args.key?(:tool_response)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @updated_variables = args[:updated_variables] if args.key?(:updated_variables)
+        end
+      end
+      
+      # Indicates the session has terminated, due to either successful completion (e.g.
+      # user says "Good bye!" ) or an agent escalation. The agent will not process
+      # any further inputs after session is terminated and the client should half-
+      # close and disconnect after receiving all remaining responses from the agent.
+      class GoogleCloudCesV1mainEndSession
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Provides additional information about the end session signal, such
+        # as the reason for ending the session.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # Represents an image input or output in the conversation.
+      class GoogleCloudCesV1mainImage
+        include Google::Apis::Core::Hashable
+      
+        # Required. Raw bytes of the image.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Required. The IANA standard MIME type of the source data. Supported image
+        # types includes: * image/png * image/jpeg * image/webp
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # A message within a conversation.
+      class GoogleCloudCesV1mainMessage
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Content of the message as a series of chunks.
+        # Corresponds to the JSON property `chunks`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainChunk>]
+        attr_accessor :chunks
+      
+        # Optional. Timestamp when the message was sent or received. Should not be used
+        # if the message is part of an example.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Optional. The role within the conversation, e.g., user, agent.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunks = args[:chunks] if args.key?(:chunks)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # A span is a unit of work or a single operation during the request processing.
+      class GoogleCloudCesV1mainSpan
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Key-value attributes associated with the span.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,Object>]
+        attr_accessor :attributes
+      
+        # Output only. The child spans that are nested under this span.
+        # Corresponds to the JSON property `childSpans`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainSpan>]
+        attr_accessor :child_spans
+      
+        # Output only. The duration of the span.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Output only. The end time of the span.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The name of the span.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The start time of the span.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @child_spans = args[:child_spans] if args.key?(:child_spans)
+          @duration = args[:duration] if args.key?(:duration)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Request for the client or the agent to execute the specified tool.
+      class GoogleCloudCesV1mainToolCall
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The input parameters and values for the tool in JSON object format.
+        # Corresponds to the JSON property `args`
+        # @return [Hash<String,Object>]
+        attr_accessor :args
+      
+        # Output only. Display name of the tool.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. The unique identifier of the tool call. If populated, the client
+        # should return the execution result with the matching ID in ToolResponse.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. The name of the tool to execute. Format: `projects/`project`/
+        # locations/`location`/apps/`app`/tools/`tool``
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        # A tool that is created from a toolset.
+        # Corresponds to the JSON property `toolsetTool`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolsetTool]
+        attr_accessor :toolset_tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @tool = args[:tool] if args.key?(:tool)
+          @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
+        end
+      end
+      
+      # The execution result of a specific tool from the client or the agent.
+      class GoogleCloudCesV1mainToolResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Display name of the tool.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. The matching ID of the tool call the response is for.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required. The tool execution result in JSON object format. Use "output" key to
+        # specify tool response and "error" key to specify error details (if any). If "
+        # output" and "error" keys are not specified, then whole "response" is treated
+        # as tool execution result.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        # Optional. The name of the tool to execute. Format: `projects/`project`/
+        # locations/`location`/apps/`app`/tools/`tool``
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        # A tool that is created from a toolset.
+        # Corresponds to the JSON property `toolsetTool`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolsetTool]
+        attr_accessor :toolset_tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @response = args[:response] if args.key?(:response)
+          @tool = args[:tool] if args.key?(:tool)
+          @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
+        end
+      end
+      
+      # A tool that is created from a toolset.
+      class GoogleCloudCesV1mainToolsetTool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The tool ID to filter the tools to retrieve the schema for.
+        # Corresponds to the JSON property `toolId`
+        # @return [String]
+        attr_accessor :tool_id
+      
+        # Required. The resource name of the Toolset from which this tool is derived.
+        # Format: `projects/`project`/locations/`location`/apps/`app`/toolsets/`toolset``
+        # Corresponds to the JSON property `toolset`
+        # @return [String]
+        attr_accessor :toolset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_id = args[:tool_id] if args.key?(:tool_id)
+          @toolset = args[:toolset] if args.key?(:toolset)
+        end
+      end
+      
       # The analysis resource.
       class GoogleCloudContactcenterinsightsV1Analysis
         include Google::Apis::Core::Hashable
@@ -1702,9 +2081,61 @@ module Google
         end
       end
       
+      # The CES end session annotation.
+      class GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the session has terminated, due to either successful completion (e.g.
+        # user says "Good bye!" ) or an agent escalation. The agent will not process
+        # any further inputs after session is terminated and the client should half-
+        # close and disconnect after receiving all remaining responses from the agent.
+        # Corresponds to the JSON property `endSession`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainEndSession]
+        attr_accessor :end_session
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_session = args[:end_session] if args.key?(:end_session)
+        end
+      end
+      
+      # The CES diagnostic information.
+      class GoogleCloudContactcenterinsightsV1CesTurnAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The messages in the turn.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainMessage>]
+        attr_accessor :messages
+      
+        # A span is a unit of work or a single operation during the request processing.
+        # Corresponds to the JSON property `rootSpan`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainSpan]
+        attr_accessor :root_span
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
+          @root_span = args[:root_span] if args.key?(:root_span)
+        end
+      end
+      
       # Configurable dashboard's widget that displays data as a chart.
       class GoogleCloudContactcenterinsightsV1Chart
         include Google::Apis::Core::Hashable
+      
+        # The action to be taken when the chart is clicked.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ChartAction]
+        attr_accessor :action
       
         # Output only. Chart type.
         # Corresponds to the JSON property `chartType`
@@ -1773,6 +2204,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @action = args[:action] if args.key?(:action)
           @chart_type = args[:chart_type] if args.key?(:chart_type)
           @chart_visualization_type = args[:chart_visualization_type] if args.key?(:chart_visualization_type)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -1785,6 +2217,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # The action to be taken when the chart is clicked.
+      class GoogleCloudContactcenterinsightsV1ChartAction
+        include Google::Apis::Core::Hashable
+      
+        # The redirect action to be taken when the chart is clicked.
+        # Corresponds to the JSON property `redirectAction`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedirectAction]
+        attr_accessor :redirect_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
         end
       end
       
@@ -2485,6 +2936,11 @@ module Google
         # @return [String]
         attr_accessor :disposition_code
       
+        # The entry subagent's display name.
+        # Corresponds to the JSON property `entrySubagentDisplayName`
+        # @return [String]
+        attr_accessor :entry_subagent_display_name
+      
         # The agent's location.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -2523,6 +2979,7 @@ module Google
           @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
+          @entry_subagent_display_name = args[:entry_subagent_display_name] if args.key?(:entry_subagent_display_name)
           @location = args[:location] if args.key?(:location)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
@@ -3354,6 +3811,332 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata for a DiagnoseConversations operation.
+      class GoogleCloudContactcenterinsightsV1DiagnoseConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A diagnostic report containing aggregate metrics and intent breakdowns.
+        # Corresponds to the JSON property `diagnosticReport`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReport]
+        attr_accessor :diagnostic_report
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. If true, the agent generated a full diagnostic report for all sub-
+        # agents.
+        # Corresponds to the JSON property `fullReport`
+        # @return [Boolean]
+        attr_accessor :full_report
+        alias_method :full_report?, :full_report
+      
+        # A step in the agent's reasoning process (Trajectory Step).
+        # Corresponds to the JSON property `latestStep`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SherlockStep]
+        attr_accessor :latest_step
+      
+        # Output only. The type of metric being diagnosed.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Output only. Deprecated: Use partial_trajectory_steps instead. The
+        # intermediate trajectory updates (partial trajectory).
+        # Corresponds to the JSON property `partialTrajectories`
+        # @return [Array<String>]
+        attr_accessor :partial_trajectories
+      
+        # Output only. The intermediate trajectory updates. This can be used for live
+        # progress tracking of the agent's thoughts and actions as it works through the
+        # analysis.
+        # Corresponds to the JSON property `partialTrajectorySteps`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SherlockStep>]
+        attr_accessor :partial_trajectory_steps
+      
+        # The request to analyze conversation data using agentic workflows. This RPC
+        # triggers a complex analysis process that may involve several steps of
+        # reasoning and tool execution.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnoseConversationsRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @diagnostic_report = args[:diagnostic_report] if args.key?(:diagnostic_report)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @full_report = args[:full_report] if args.key?(:full_report)
+          @latest_step = args[:latest_step] if args.key?(:latest_step)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @partial_trajectories = args[:partial_trajectories] if args.key?(:partial_trajectories)
+          @partial_trajectory_steps = args[:partial_trajectory_steps] if args.key?(:partial_trajectory_steps)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to analyze conversation data using agentic workflows. This RPC
+      # triggers a complex analysis process that may involve several steps of
+      # reasoning and tool execution.
+      class GoogleCloudContactcenterinsightsV1DiagnoseConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the request will be validated and a simulation of the
+        # analysis will be performed without actually executing the task.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
+        # Optional. AIP-160 compliant filter for selecting target conversations.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. If true, the agent will generate a full diagnostic report for all
+        # sub-agents.
+        # Corresponds to the JSON property `fullReport`
+        # @return [Boolean]
+        attr_accessor :full_report
+        alias_method :full_report?, :full_report
+      
+        # Optional. Specific instructions for the agent.
+        # Corresponds to the JSON property `instructions`
+        # @return [String]
+        attr_accessor :instructions
+      
+        # Optional. The maximum number of steps the agent can take during the execution
+        # of the task. Defaults to 10.
+        # Corresponds to the JSON property `maxSteps`
+        # @return [Fixnum]
+        attr_accessor :max_steps
+      
+        # Optional. The type of metric being diagnosed.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Configuration for where to export or return the analysis findings.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1OutputConfig]
+        attr_accessor :output_config
+      
+        # Required. The parent resource where the analysis will be performed.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Optional. Required. A unique ID that identifies the request. If the service
+        # receives two `DiagnoseConversationsRequest`s with the same `request_id`, then
+        # the second request will be ignored; instead, the response of the first request
+        # will be returned. The ID must contain only letters (a-z, A-Z), numbers (0-9),
+        # underscores (_), and hyphens (-). The maximum length is 40 characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. A natural language description of the analysis goal or question.
+        # Corresponds to the JSON property `taskQuery`
+        # @return [String]
+        attr_accessor :task_query
+      
+        # Optional. If true, the request will only be validated (permissions, filter
+        # syntax, etc.) without actually triggering the analysis.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @filter = args[:filter] if args.key?(:filter)
+          @full_report = args[:full_report] if args.key?(:full_report)
+          @instructions = args[:instructions] if args.key?(:instructions)
+          @max_steps = args[:max_steps] if args.key?(:max_steps)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @output_config = args[:output_config] if args.key?(:output_config)
+          @parent = args[:parent] if args.key?(:parent)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @task_query = args[:task_query] if args.key?(:task_query)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # The response from a DiagnoseConversations request.
+      class GoogleCloudContactcenterinsightsV1DiagnoseConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The final, high-level answer or diagnostic summary returned by
+        # the Sherlock worker.
+        # Corresponds to the JSON property `answer`
+        # @return [String]
+        attr_accessor :answer
+      
+        # Output only. If an external destination was requested, the URI of the exported
+        # data.
+        # Corresponds to the JSON property `exportUri`
+        # @return [String]
+        attr_accessor :export_uri
+      
+        # Output only. Deprecated: Use full_trajectory_steps instead. The complete
+        # sequence of thoughts and actions (full trajectory).
+        # Corresponds to the JSON property `fullTrajectories`
+        # @return [Array<String>]
+        attr_accessor :full_trajectories
+      
+        # Output only. The complete sequence of thoughts and actions taken by the agent.
+        # Corresponds to the JSON property `fullTrajectorySteps`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SherlockStep>]
+        attr_accessor :full_trajectory_steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer = args[:answer] if args.key?(:answer)
+          @export_uri = args[:export_uri] if args.key?(:export_uri)
+          @full_trajectories = args[:full_trajectories] if args.key?(:full_trajectories)
+          @full_trajectory_steps = args[:full_trajectory_steps] if args.key?(:full_trajectory_steps)
+        end
+      end
+      
+      # The diagnostic resource.
+      class GoogleCloudContactcenterinsightsV1Diagnostic
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The complete sequence of thoughts and actions taken by the agent.
+        # Corresponds to the JSON property `analysisSummary`
+        # @return [String]
+        attr_accessor :analysis_summary
+      
+        # Output only. The filter used to select the conversations that were included in
+        # the diagnostic.
+        # Corresponds to the JSON property `conversationFilter`
+        # @return [String]
+        attr_accessor :conversation_filter
+      
+        # Output only. The time at which the diagnostic was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Immutable. Identifier. The resource name of the diagnostic.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A diagnostic report containing aggregate metrics and intent breakdowns.
+        # Corresponds to the JSON property `report`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReport]
+        attr_accessor :report
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_summary = args[:analysis_summary] if args.key?(:analysis_summary)
+          @conversation_filter = args[:conversation_filter] if args.key?(:conversation_filter)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @report = args[:report] if args.key?(:report)
+        end
+      end
+      
+      # A diagnostic report containing aggregate metrics and intent breakdowns.
+      class GoogleCloudContactcenterinsightsV1DiagnosticReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A breakdown of metrics grouped by intent.
+        # Corresponds to the JSON property `intentStats`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReportIntentStats>]
+        attr_accessor :intent_stats
+      
+        # Output only. A list of loss patterns identified for the entire project/dataset.
+        # Corresponds to the JSON property `lossPatterns`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1LossPattern>]
+        attr_accessor :loss_patterns
+      
+        # Output only. Deprecated: The type of the metric. Metrics for Outcome Based
+        # Insights derived from QueryMetrics.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1MetricValue>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_stats = args[:intent_stats] if args.key?(:intent_stats)
+          @loss_patterns = args[:loss_patterns] if args.key?(:loss_patterns)
+          @metrics = args[:metrics] if args.key?(:metrics)
+        end
+      end
+      
+      # A breakdown of metrics grouped by intent.
+      class GoogleCloudContactcenterinsightsV1DiagnosticReportIntentStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of conversations associated with this intent.
+        # Corresponds to the JSON property `conversationCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_count
+      
+        # Output only. The display name of the intent.
+        # Corresponds to the JSON property `intentDisplayName`
+        # @return [String]
+        attr_accessor :intent_display_name
+      
+        # Output only. The unique identifier for the intent (from Discovery Engine).
+        # Corresponds to the JSON property `intentId`
+        # @return [String]
+        attr_accessor :intent_id
+      
+        # Output only. A list of loss patterns identified for this intent.
+        # Corresponds to the JSON property `lossPatterns`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1LossPattern>]
+        attr_accessor :loss_patterns
+      
+        # Output only. Deprecated: The type of the metric. Metrics for Outcome Based
+        # Insights derived from QueryMetrics.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1MetricValue>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_count = args[:conversation_count] if args.key?(:conversation_count)
+          @intent_display_name = args[:intent_display_name] if args.key?(:intent_display_name)
+          @intent_id = args[:intent_id] if args.key?(:intent_id)
+          @loss_patterns = args[:loss_patterns] if args.key?(:loss_patterns)
+          @metrics = args[:metrics] if args.key?(:metrics)
         end
       end
       
@@ -6142,6 +6925,32 @@ module Google
         end
       end
       
+      # The response from a ListDiagnostics request.
+      class GoogleCloudContactcenterinsightsV1ListDiagnosticsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The diagnostics that match the request.
+        # Corresponds to the JSON property `diagnostics`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Diagnostic>]
+        attr_accessor :diagnostics
+      
+        # Optional. A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @diagnostics = args[:diagnostics] if args.key?(:diagnostics)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response for listing feedback labels.
       class GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
         include Google::Apis::Core::Hashable
@@ -6387,6 +7196,147 @@ module Google
         end
       end
       
+      # A loss pattern of a virtual agent and suggested fixes.
+      class GoogleCloudContactcenterinsightsV1LossPattern
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A list of conversation IDs that match this loss pattern.
+        # Corresponds to the JSON property `conversationIds`
+        # @return [Array<String>]
+        attr_accessor :conversation_ids
+      
+        # Output only. A markdown description of the loss pattern.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The display name of the loss pattern.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. A markdown of loss pattern examples.
+        # Corresponds to the JSON property `examples`
+        # @return [String]
+        attr_accessor :examples
+      
+        # Output only. The unique identifier for the loss pattern.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The percentage of conversations that match this loss pattern.
+        # Corresponds to the JSON property `percentage`
+        # @return [Float]
+        attr_accessor :percentage
+      
+        # Output only. A markdown description of the suggested fixes.
+        # Corresponds to the JSON property `suggestedFixes`
+        # @return [String]
+        attr_accessor :suggested_fixes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_ids = args[:conversation_ids] if args.key?(:conversation_ids)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @examples = args[:examples] if args.key?(:examples)
+          @id = args[:id] if args.key?(:id)
+          @percentage = args[:percentage] if args.key?(:percentage)
+          @suggested_fixes = args[:suggested_fixes] if args.key?(:suggested_fixes)
+        end
+      end
+      
+      # A definition for a metric to be calculated during analysis.
+      class GoogleCloudContactcenterinsightsV1MetricDefinition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The user-visible name of the metric (e.g., "Containment Rate").
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The resource name of the underlying Insights primitive (e.g., Tag
+        # or QaQuestion) used to calculate this metric.
+        # Corresponds to the JSON property `sourceId`
+        # @return [String]
+        attr_accessor :source_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @source_id = args[:source_id] if args.key?(:source_id)
+        end
+      end
+      
+      # Deprecated: MetricValue is no longer used for diagnostics.
+      class GoogleCloudContactcenterinsightsV1MetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of conversation names that contributed to this metric (
+        # hits). Format: `projects/`project`/locations/`location`/conversations/`
+        # conversation``
+        # Corresponds to the JSON property `conversations`
+        # @return [Array<String>]
+        attr_accessor :conversations
+      
+        # Output only. The user-visible name of the metric (e.g., "Containment Rate").
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The number of positive matches (hits) for this metric.
+        # Corresponds to the JSON property `hitCount`
+        # @return [Fixnum]
+        attr_accessor :hit_count
+      
+        # Output only. Deprecated: The type of the metric. Metrics for Outcome Based
+        # Insights derived from QueryMetrics.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Output only. The resource name of the underlying Insights primitive (e.g., Tag
+        # or QaQuestion) used to calculate this metric.
+        # Corresponds to the JSON property `sourceId`
+        # @return [String]
+        attr_accessor :source_id
+      
+        # Output only. The total number of items evaluated for this metric.
+        # Corresponds to the JSON property `totalCount`
+        # @return [Fixnum]
+        attr_accessor :total_count
+      
+        # Output only. The calculated value of the metric (usually a ratio or rate 0.0 -
+        # 1.0).
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversations = args[:conversations] if args.key?(:conversations)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @hit_count = args[:hit_count] if args.key?(:hit_count)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @source_id = args[:source_id] if args.key?(:source_id)
+          @total_count = args[:total_count] if args.key?(:total_count)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # The conversation assessment note resource.
       class GoogleCloudContactcenterinsightsV1Note
         include Google::Apis::Core::Hashable
@@ -6498,6 +7448,112 @@ module Google
         # Update properties of this object
         def update!(**args)
           @qa_question = args[:qa_question] if args.key?(:qa_question)
+        end
+      end
+      
+      # Configuration for where to export or return the analysis findings.
+      class GoogleCloudContactcenterinsightsV1OutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # BigQuery destination configuration.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1OutputConfigBigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # Cloud Storage destination configuration.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1OutputConfigGcsDestination]
+        attr_accessor :gcs_destination
+      
+        # Google Sheets destination configuration.
+        # Corresponds to the JSON property `googleSheetsDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1OutputConfigGoogleSheetsDestination]
+        attr_accessor :google_sheets_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @google_sheets_destination = args[:google_sheets_destination] if args.key?(:google_sheets_destination)
+        end
+      end
+      
+      # BigQuery destination configuration.
+      class GoogleCloudContactcenterinsightsV1OutputConfigBigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the BigQuery dataset.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # Optional. A project ID or number.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The BigQuery table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Cloud Storage destination configuration.
+      class GoogleCloudContactcenterinsightsV1OutputConfigGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Storage URI to export the results to.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Google Sheets destination configuration.
+      class GoogleCloudContactcenterinsightsV1OutputConfigGoogleSheetsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The sheet name.
+        # Corresponds to the JSON property `sheet`
+        # @return [String]
+        attr_accessor :sheet
+      
+        # Optional. An existing Google Sheets ID.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sheet = args[:sheet] if args.key?(:sheet)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
         end
       end
       
@@ -8315,6 +9371,25 @@ module Google
         end
       end
       
+      # The redirect action to be taken when the chart is clicked.
+      class GoogleCloudContactcenterinsightsV1RedirectAction
+        include Google::Apis::Core::Hashable
+      
+        # The relative path to redirect to.
+        # Corresponds to the JSON property `relativePath`
+        # @return [String]
+        attr_accessor :relative_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @relative_path = args[:relative_path] if args.key?(:relative_path)
+        end
+      end
+      
       # Regex match configuration.
       class GoogleCloudContactcenterinsightsV1RegexMatchConfig
         include Google::Apis::Core::Hashable
@@ -8348,6 +9423,16 @@ module Google
         # Corresponds to the JSON property `articleSuggestion`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ArticleSuggestionData]
         attr_accessor :article_suggestion
+      
+        # The CES end session annotation.
+        # Corresponds to the JSON property `cesEndSessionAnnotation`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation]
+        attr_accessor :ces_end_session_annotation
+      
+        # The CES diagnostic information.
+        # Corresponds to the JSON property `cesTurnAnnotation`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CesTurnAnnotation]
+        attr_accessor :ces_turn_annotation
       
         # Conversation summarization suggestion data.
         # Corresponds to the JSON property `conversationSummarizationSuggestion`
@@ -8403,6 +9488,8 @@ module Google
           @annotation_id = args[:annotation_id] if args.key?(:annotation_id)
           @answer_feedback = args[:answer_feedback] if args.key?(:answer_feedback)
           @article_suggestion = args[:article_suggestion] if args.key?(:article_suggestion)
+          @ces_end_session_annotation = args[:ces_end_session_annotation] if args.key?(:ces_end_session_annotation)
+          @ces_turn_annotation = args[:ces_turn_annotation] if args.key?(:ces_turn_annotation)
           @conversation_summarization_suggestion = args[:conversation_summarization_suggestion] if args.key?(:conversation_summarization_suggestion)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dialogflow_interaction = args[:dialogflow_interaction] if args.key?(:dialogflow_interaction)
@@ -8728,6 +9815,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Configuration for diagnostic metrics.
+        # Corresponds to the JSON property `diagnosticMetricConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig]
+        attr_accessor :diagnostic_metric_config
+      
         # A language code to be applied to each transcript segment unless the segment
         # already specifies a language code. Language code defaults to "en-US" if it is
         # neither specified on the segment nor here.
@@ -8809,6 +9901,7 @@ module Google
           @analysis_config = args[:analysis_config] if args.key?(:analysis_config)
           @conversation_ttl = args[:conversation_ttl] if args.key?(:conversation_ttl)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @diagnostic_metric_config = args[:diagnostic_metric_config] if args.key?(:diagnostic_metric_config)
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @pubsub_notification_settings = args[:pubsub_notification_settings] if args.key?(:pubsub_notification_settings)
@@ -8850,6 +9943,63 @@ module Google
           @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @runtime_integration_analysis_percentage = args[:runtime_integration_analysis_percentage] if args.key?(:runtime_integration_analysis_percentage)
           @upload_conversation_analysis_percentage = args[:upload_conversation_analysis_percentage] if args.key?(:upload_conversation_analysis_percentage)
+        end
+      end
+      
+      # Configuration for diagnostic metrics.
+      class GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A map of diagnostic metrics. The key is a unique identifier for the
+        # metric (e.g., "containment").
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1MetricDefinition>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+        end
+      end
+      
+      # A step in the agent's reasoning process (Trajectory Step).
+      class GoogleCloudContactcenterinsightsV1SherlockStep
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Natural language input stimulus.
+        # Corresponds to the JSON property `textInput`
+        # @return [Array<String>]
+        attr_accessor :text_input
+      
+        # Output only. The reasoning or internal monologue of the agent.
+        # Corresponds to the JSON property `thought`
+        # @return [String]
+        attr_accessor :thought
+      
+        # Output only. The tool call issued by the agent.
+        # Corresponds to the JSON property `toolCalls`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ToolCall>]
+        attr_accessor :tool_calls
+      
+        # Output only. The output response from the tool execution.
+        # Corresponds to the JSON property `toolOutput`
+        # @return [Hash<String,Object>]
+        attr_accessor :tool_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text_input = args[:text_input] if args.key?(:text_input)
+          @thought = args[:thought] if args.key?(:thought)
+          @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
+          @tool_output = args[:tool_output] if args.key?(:tool_output)
         end
       end
       
@@ -9271,6 +10421,31 @@ module Google
         def update!(**args)
           @constraint_results = args[:constraint_results] if args.key?(:constraint_results)
           @join_key_results = args[:join_key_results] if args.key?(:join_key_results)
+        end
+      end
+      
+      # A tool call from the agent.
+      class GoogleCloudContactcenterinsightsV1ToolCall
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The input arguments to the tool.
+        # Corresponds to the JSON property `input`
+        # @return [Hash<String,Object>]
+        attr_accessor :input
+      
+        # Output only. The name of the tool being called.
+        # Corresponds to the JSON property `toolName`
+        # @return [String]
+        attr_accessor :tool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input = args[:input] if args.key?(:input)
+          @tool_name = args[:tool_name] if args.key?(:tool_name)
         end
       end
       
@@ -10461,6 +11636,53 @@ module Google
         end
       end
       
+      # The CES end session annotation.
+      class GoogleCloudContactcenterinsightsV1alpha1CesEndSessionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the session has terminated, due to either successful completion (e.g.
+        # user says "Good bye!" ) or an agent escalation. The agent will not process
+        # any further inputs after session is terminated and the client should half-
+        # close and disconnect after receiving all remaining responses from the agent.
+        # Corresponds to the JSON property `endSession`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainEndSession]
+        attr_accessor :end_session
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_session = args[:end_session] if args.key?(:end_session)
+        end
+      end
+      
+      # The CES diagnostic information.
+      class GoogleCloudContactcenterinsightsV1alpha1CesTurnAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The messages in the turn.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainMessage>]
+        attr_accessor :messages
+      
+        # A span is a unit of work or a single operation during the request processing.
+        # Corresponds to the JSON property `rootSpan`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainSpan]
+        attr_accessor :root_span
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
+          @root_span = args[:root_span] if args.key?(:root_span)
+        end
+      end
+      
       # The result of testing a constraint expression on a pair of conversations.
       class GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult
         include Google::Apis::Core::Hashable
@@ -11050,6 +12272,11 @@ module Google
         # @return [String]
         attr_accessor :disposition_code
       
+        # The entry subagent's display name.
+        # Corresponds to the JSON property `entrySubagentDisplayName`
+        # @return [String]
+        attr_accessor :entry_subagent_display_name
+      
         # The agent's location.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -11088,6 +12315,7 @@ module Google
           @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
+          @entry_subagent_display_name = args[:entry_subagent_display_name] if args.key?(:entry_subagent_display_name)
           @location = args[:location] if args.key?(:location)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
@@ -11681,6 +12909,288 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata for a DiagnoseConversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1DiagnoseConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A diagnostic report containing aggregate metrics and intent breakdowns.
+        # Corresponds to the JSON property `diagnosticReport`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DiagnosticReport]
+        attr_accessor :diagnostic_report
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. If true, the agent generated a full diagnostic report for all sub-
+        # agents.
+        # Corresponds to the JSON property `fullReport`
+        # @return [Boolean]
+        attr_accessor :full_report
+        alias_method :full_report?, :full_report
+      
+        # A step in the agent's reasoning process (Trajectory Step).
+        # Corresponds to the JSON property `latestStep`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SherlockStep]
+        attr_accessor :latest_step
+      
+        # Output only. The type of metric being diagnosed.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Output only. Deprecated: Use partial_trajectory_steps instead. The
+        # intermediate trajectory updates (partial trajectory).
+        # Corresponds to the JSON property `partialTrajectories`
+        # @return [Array<String>]
+        attr_accessor :partial_trajectories
+      
+        # Output only. The intermediate trajectory updates. This can be used for live
+        # progress tracking of the agent's thoughts and actions as it works through the
+        # analysis.
+        # Corresponds to the JSON property `partialTrajectorySteps`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SherlockStep>]
+        attr_accessor :partial_trajectory_steps
+      
+        # The request to analyze conversation data using agentic workflows. This RPC
+        # triggers a complex analysis process that may involve several steps of
+        # reasoning and tool execution.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DiagnoseConversationsRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @diagnostic_report = args[:diagnostic_report] if args.key?(:diagnostic_report)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @full_report = args[:full_report] if args.key?(:full_report)
+          @latest_step = args[:latest_step] if args.key?(:latest_step)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @partial_trajectories = args[:partial_trajectories] if args.key?(:partial_trajectories)
+          @partial_trajectory_steps = args[:partial_trajectory_steps] if args.key?(:partial_trajectory_steps)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to analyze conversation data using agentic workflows. This RPC
+      # triggers a complex analysis process that may involve several steps of
+      # reasoning and tool execution.
+      class GoogleCloudContactcenterinsightsV1alpha1DiagnoseConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the request will be validated and a simulation of the
+        # analysis will be performed without actually executing the task.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
+        # Optional. AIP-160 compliant filter for selecting target conversations.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. If true, the agent will generate a full diagnostic report for all
+        # sub-agents.
+        # Corresponds to the JSON property `fullReport`
+        # @return [Boolean]
+        attr_accessor :full_report
+        alias_method :full_report?, :full_report
+      
+        # Optional. Specific instructions for the agent.
+        # Corresponds to the JSON property `instructions`
+        # @return [String]
+        attr_accessor :instructions
+      
+        # Optional. The maximum number of steps the agent can take during the execution
+        # of the task. Defaults to 10.
+        # Corresponds to the JSON property `maxSteps`
+        # @return [Fixnum]
+        attr_accessor :max_steps
+      
+        # Optional. The type of metric being diagnosed.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Configuration for where to export or return the analysis findings.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1OutputConfig]
+        attr_accessor :output_config
+      
+        # Required. The parent resource where the analysis will be performed.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Optional. Required. A unique ID that identifies the request. If the service
+        # receives two `DiagnoseConversationsRequest`s with the same `request_id`, then
+        # the second request will be ignored; instead, the response of the first request
+        # will be returned. The ID must contain only letters (a-z, A-Z), numbers (0-9),
+        # underscores (_), and hyphens (-). The maximum length is 40 characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. A natural language description of the analysis goal or question.
+        # Corresponds to the JSON property `taskQuery`
+        # @return [String]
+        attr_accessor :task_query
+      
+        # Optional. If true, the request will only be validated (permissions, filter
+        # syntax, etc.) without actually triggering the analysis.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @filter = args[:filter] if args.key?(:filter)
+          @full_report = args[:full_report] if args.key?(:full_report)
+          @instructions = args[:instructions] if args.key?(:instructions)
+          @max_steps = args[:max_steps] if args.key?(:max_steps)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @output_config = args[:output_config] if args.key?(:output_config)
+          @parent = args[:parent] if args.key?(:parent)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @task_query = args[:task_query] if args.key?(:task_query)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # The response from a DiagnoseConversations request.
+      class GoogleCloudContactcenterinsightsV1alpha1DiagnoseConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The final, high-level answer or diagnostic summary returned by
+        # the Sherlock worker.
+        # Corresponds to the JSON property `answer`
+        # @return [String]
+        attr_accessor :answer
+      
+        # Output only. If an external destination was requested, the URI of the exported
+        # data.
+        # Corresponds to the JSON property `exportUri`
+        # @return [String]
+        attr_accessor :export_uri
+      
+        # Output only. Deprecated: Use full_trajectory_steps instead. The complete
+        # sequence of thoughts and actions (full trajectory).
+        # Corresponds to the JSON property `fullTrajectories`
+        # @return [Array<String>]
+        attr_accessor :full_trajectories
+      
+        # Output only. The complete sequence of thoughts and actions taken by the agent.
+        # Corresponds to the JSON property `fullTrajectorySteps`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SherlockStep>]
+        attr_accessor :full_trajectory_steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer = args[:answer] if args.key?(:answer)
+          @export_uri = args[:export_uri] if args.key?(:export_uri)
+          @full_trajectories = args[:full_trajectories] if args.key?(:full_trajectories)
+          @full_trajectory_steps = args[:full_trajectory_steps] if args.key?(:full_trajectory_steps)
+        end
+      end
+      
+      # A diagnostic report containing aggregate metrics and intent breakdowns.
+      class GoogleCloudContactcenterinsightsV1alpha1DiagnosticReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A breakdown of metrics grouped by intent.
+        # Corresponds to the JSON property `intentStats`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DiagnosticReportIntentStats>]
+        attr_accessor :intent_stats
+      
+        # Output only. A list of loss patterns identified for the entire project/dataset.
+        # Corresponds to the JSON property `lossPatterns`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1LossPattern>]
+        attr_accessor :loss_patterns
+      
+        # Output only. Deprecated: The type of the metric. Metrics for Outcome Based
+        # Insights derived from QueryMetrics.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1MetricValue>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_stats = args[:intent_stats] if args.key?(:intent_stats)
+          @loss_patterns = args[:loss_patterns] if args.key?(:loss_patterns)
+          @metrics = args[:metrics] if args.key?(:metrics)
+        end
+      end
+      
+      # A breakdown of metrics grouped by intent.
+      class GoogleCloudContactcenterinsightsV1alpha1DiagnosticReportIntentStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of conversations associated with this intent.
+        # Corresponds to the JSON property `conversationCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_count
+      
+        # Output only. The display name of the intent.
+        # Corresponds to the JSON property `intentDisplayName`
+        # @return [String]
+        attr_accessor :intent_display_name
+      
+        # Output only. The unique identifier for the intent (from Discovery Engine).
+        # Corresponds to the JSON property `intentId`
+        # @return [String]
+        attr_accessor :intent_id
+      
+        # Output only. A list of loss patterns identified for this intent.
+        # Corresponds to the JSON property `lossPatterns`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1LossPattern>]
+        attr_accessor :loss_patterns
+      
+        # Output only. Deprecated: The type of the metric. Metrics for Outcome Based
+        # Insights derived from QueryMetrics.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1MetricValue>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_count = args[:conversation_count] if args.key?(:conversation_count)
+          @intent_display_name = args[:intent_display_name] if args.key?(:intent_display_name)
+          @intent_id = args[:intent_id] if args.key?(:intent_id)
+          @loss_patterns = args[:loss_patterns] if args.key?(:loss_patterns)
+          @metrics = args[:metrics] if args.key?(:metrics)
         end
       end
       
@@ -13840,6 +15350,227 @@ module Google
         end
       end
       
+      # A loss pattern of a virtual agent and suggested fixes.
+      class GoogleCloudContactcenterinsightsV1alpha1LossPattern
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A list of conversation IDs that match this loss pattern.
+        # Corresponds to the JSON property `conversationIds`
+        # @return [Array<String>]
+        attr_accessor :conversation_ids
+      
+        # Output only. A markdown description of the loss pattern.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The display name of the loss pattern.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. A markdown of loss pattern examples.
+        # Corresponds to the JSON property `examples`
+        # @return [String]
+        attr_accessor :examples
+      
+        # Output only. The unique identifier for the loss pattern.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The percentage of conversations that match this loss pattern.
+        # Corresponds to the JSON property `percentage`
+        # @return [Float]
+        attr_accessor :percentage
+      
+        # Output only. A markdown description of the suggested fixes.
+        # Corresponds to the JSON property `suggestedFixes`
+        # @return [String]
+        attr_accessor :suggested_fixes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_ids = args[:conversation_ids] if args.key?(:conversation_ids)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @examples = args[:examples] if args.key?(:examples)
+          @id = args[:id] if args.key?(:id)
+          @percentage = args[:percentage] if args.key?(:percentage)
+          @suggested_fixes = args[:suggested_fixes] if args.key?(:suggested_fixes)
+        end
+      end
+      
+      # Deprecated: MetricValue is no longer used for diagnostics.
+      class GoogleCloudContactcenterinsightsV1alpha1MetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of conversation names that contributed to this metric (
+        # hits). Format: `projects/`project`/locations/`location`/conversations/`
+        # conversation``
+        # Corresponds to the JSON property `conversations`
+        # @return [Array<String>]
+        attr_accessor :conversations
+      
+        # Output only. The user-visible name of the metric (e.g., "Containment Rate").
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The number of positive matches (hits) for this metric.
+        # Corresponds to the JSON property `hitCount`
+        # @return [Fixnum]
+        attr_accessor :hit_count
+      
+        # Output only. Deprecated: The type of the metric. Metrics for Outcome Based
+        # Insights derived from QueryMetrics.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Output only. The resource name of the underlying Insights primitive (e.g., Tag
+        # or QaQuestion) used to calculate this metric.
+        # Corresponds to the JSON property `sourceId`
+        # @return [String]
+        attr_accessor :source_id
+      
+        # Output only. The total number of items evaluated for this metric.
+        # Corresponds to the JSON property `totalCount`
+        # @return [Fixnum]
+        attr_accessor :total_count
+      
+        # Output only. The calculated value of the metric (usually a ratio or rate 0.0 -
+        # 1.0).
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversations = args[:conversations] if args.key?(:conversations)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @hit_count = args[:hit_count] if args.key?(:hit_count)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @source_id = args[:source_id] if args.key?(:source_id)
+          @total_count = args[:total_count] if args.key?(:total_count)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Configuration for where to export or return the analysis findings.
+      class GoogleCloudContactcenterinsightsV1alpha1OutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # BigQuery destination configuration.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1OutputConfigBigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # Cloud Storage destination configuration.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1OutputConfigGcsDestination]
+        attr_accessor :gcs_destination
+      
+        # Google Sheets destination configuration.
+        # Corresponds to the JSON property `googleSheetsDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1OutputConfigGoogleSheetsDestination]
+        attr_accessor :google_sheets_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @google_sheets_destination = args[:google_sheets_destination] if args.key?(:google_sheets_destination)
+        end
+      end
+      
+      # BigQuery destination configuration.
+      class GoogleCloudContactcenterinsightsV1alpha1OutputConfigBigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the BigQuery dataset.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # Optional. A project ID or number.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The BigQuery table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Cloud Storage destination configuration.
+      class GoogleCloudContactcenterinsightsV1alpha1OutputConfigGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Storage URI to export the results to.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Google Sheets destination configuration.
+      class GoogleCloudContactcenterinsightsV1alpha1OutputConfigGoogleSheetsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The sheet name.
+        # Corresponds to the JSON property `sheet`
+        # @return [String]
+        attr_accessor :sheet
+      
+        # Optional. An existing Google Sheets ID.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sheet = args[:sheet] if args.key?(:sheet)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+        end
+      end
+      
       # The data for a matched phrase matcher. Represents information identifying a
       # phrase matcher for a given match.
       class GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData
@@ -14970,6 +16701,16 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData]
         attr_accessor :article_suggestion
       
+        # The CES end session annotation.
+        # Corresponds to the JSON property `cesEndSessionAnnotation`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1CesEndSessionAnnotation]
+        attr_accessor :ces_end_session_annotation
+      
+        # The CES diagnostic information.
+        # Corresponds to the JSON property `cesTurnAnnotation`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1CesTurnAnnotation]
+        attr_accessor :ces_turn_annotation
+      
         # Conversation summarization suggestion data.
         # Corresponds to the JSON property `conversationSummarizationSuggestion`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData]
@@ -15024,6 +16765,8 @@ module Google
           @annotation_id = args[:annotation_id] if args.key?(:annotation_id)
           @answer_feedback = args[:answer_feedback] if args.key?(:answer_feedback)
           @article_suggestion = args[:article_suggestion] if args.key?(:article_suggestion)
+          @ces_end_session_annotation = args[:ces_end_session_annotation] if args.key?(:ces_end_session_annotation)
+          @ces_turn_annotation = args[:ces_turn_annotation] if args.key?(:ces_turn_annotation)
           @conversation_summarization_suggestion = args[:conversation_summarization_suggestion] if args.key?(:conversation_summarization_suggestion)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dialogflow_interaction = args[:dialogflow_interaction] if args.key?(:dialogflow_interaction)
@@ -15250,6 +16993,43 @@ module Google
         def update!(**args)
           @magnitude = args[:magnitude] if args.key?(:magnitude)
           @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # A step in the agent's reasoning process (Trajectory Step).
+      class GoogleCloudContactcenterinsightsV1alpha1SherlockStep
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Natural language input stimulus.
+        # Corresponds to the JSON property `textInput`
+        # @return [Array<String>]
+        attr_accessor :text_input
+      
+        # Output only. The reasoning or internal monologue of the agent.
+        # Corresponds to the JSON property `thought`
+        # @return [String]
+        attr_accessor :thought
+      
+        # Output only. The tool call issued by the agent.
+        # Corresponds to the JSON property `toolCalls`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ToolCall>]
+        attr_accessor :tool_calls
+      
+        # Output only. The output response from the tool execution.
+        # Corresponds to the JSON property `toolOutput`
+        # @return [Hash<String,Object>]
+        attr_accessor :tool_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text_input = args[:text_input] if args.key?(:text_input)
+          @thought = args[:thought] if args.key?(:thought)
+          @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
+          @tool_output = args[:tool_output] if args.key?(:tool_output)
         end
       end
       
@@ -15533,6 +17313,31 @@ module Google
         def update!(**args)
           @constraint_results = args[:constraint_results] if args.key?(:constraint_results)
           @join_key_results = args[:join_key_results] if args.key?(:join_key_results)
+        end
+      end
+      
+      # A tool call from the agent.
+      class GoogleCloudContactcenterinsightsV1alpha1ToolCall
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The input arguments to the tool.
+        # Corresponds to the JSON property `input`
+        # @return [Hash<String,Object>]
+        attr_accessor :input
+      
+        # Output only. The name of the tool being called.
+        # Corresponds to the JSON property `toolName`
+        # @return [String]
+        attr_accessor :tool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input = args[:input] if args.key?(:input)
+          @tool_name = args[:tool_name] if args.key?(:tool_name)
         end
       end
       
@@ -16825,6 +18630,53 @@ module Google
         end
       end
       
+      # The CES end session annotation.
+      class GoogleCloudContactcenterinsightsV1mainCesEndSessionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the session has terminated, due to either successful completion (e.g.
+        # user says "Good bye!" ) or an agent escalation. The agent will not process
+        # any further inputs after session is terminated and the client should half-
+        # close and disconnect after receiving all remaining responses from the agent.
+        # Corresponds to the JSON property `endSession`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainEndSession]
+        attr_accessor :end_session
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_session = args[:end_session] if args.key?(:end_session)
+        end
+      end
+      
+      # The CES diagnostic information.
+      class GoogleCloudContactcenterinsightsV1mainCesTurnAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The messages in the turn.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainMessage>]
+        attr_accessor :messages
+      
+        # A span is a unit of work or a single operation during the request processing.
+        # Corresponds to the JSON property `rootSpan`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainSpan]
+        attr_accessor :root_span
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
+          @root_span = args[:root_span] if args.key?(:root_span)
+        end
+      end
+      
       # The result of testing a constraint expression on a pair of conversations.
       class GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult
         include Google::Apis::Core::Hashable
@@ -17414,6 +19266,11 @@ module Google
         # @return [String]
         attr_accessor :disposition_code
       
+        # The entry subagent's display name.
+        # Corresponds to the JSON property `entrySubagentDisplayName`
+        # @return [String]
+        attr_accessor :entry_subagent_display_name
+      
         # The agent's location.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -17452,6 +19309,7 @@ module Google
           @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
+          @entry_subagent_display_name = args[:entry_subagent_display_name] if args.key?(:entry_subagent_display_name)
           @location = args[:location] if args.key?(:location)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
@@ -18045,6 +19903,288 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata for a DiagnoseConversations operation.
+      class GoogleCloudContactcenterinsightsV1mainDiagnoseConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A diagnostic report containing aggregate metrics and intent breakdowns.
+        # Corresponds to the JSON property `diagnosticReport`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDiagnosticReport]
+        attr_accessor :diagnostic_report
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. If true, the agent generated a full diagnostic report for all sub-
+        # agents.
+        # Corresponds to the JSON property `fullReport`
+        # @return [Boolean]
+        attr_accessor :full_report
+        alias_method :full_report?, :full_report
+      
+        # A step in the agent's reasoning process (Trajectory Step).
+        # Corresponds to the JSON property `latestStep`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSherlockStep]
+        attr_accessor :latest_step
+      
+        # Output only. The type of metric being diagnosed.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Output only. Deprecated: Use partial_trajectory_steps instead. The
+        # intermediate trajectory updates (partial trajectory).
+        # Corresponds to the JSON property `partialTrajectories`
+        # @return [Array<String>]
+        attr_accessor :partial_trajectories
+      
+        # Output only. The intermediate trajectory updates. This can be used for live
+        # progress tracking of the agent's thoughts and actions as it works through the
+        # analysis.
+        # Corresponds to the JSON property `partialTrajectorySteps`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSherlockStep>]
+        attr_accessor :partial_trajectory_steps
+      
+        # The request to analyze conversation data using agentic workflows. This RPC
+        # triggers a complex analysis process that may involve several steps of
+        # reasoning and tool execution.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDiagnoseConversationsRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @diagnostic_report = args[:diagnostic_report] if args.key?(:diagnostic_report)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @full_report = args[:full_report] if args.key?(:full_report)
+          @latest_step = args[:latest_step] if args.key?(:latest_step)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @partial_trajectories = args[:partial_trajectories] if args.key?(:partial_trajectories)
+          @partial_trajectory_steps = args[:partial_trajectory_steps] if args.key?(:partial_trajectory_steps)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to analyze conversation data using agentic workflows. This RPC
+      # triggers a complex analysis process that may involve several steps of
+      # reasoning and tool execution.
+      class GoogleCloudContactcenterinsightsV1mainDiagnoseConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the request will be validated and a simulation of the
+        # analysis will be performed without actually executing the task.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
+        # Optional. AIP-160 compliant filter for selecting target conversations.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. If true, the agent will generate a full diagnostic report for all
+        # sub-agents.
+        # Corresponds to the JSON property `fullReport`
+        # @return [Boolean]
+        attr_accessor :full_report
+        alias_method :full_report?, :full_report
+      
+        # Optional. Specific instructions for the agent.
+        # Corresponds to the JSON property `instructions`
+        # @return [String]
+        attr_accessor :instructions
+      
+        # Optional. The maximum number of steps the agent can take during the execution
+        # of the task. Defaults to 10.
+        # Corresponds to the JSON property `maxSteps`
+        # @return [Fixnum]
+        attr_accessor :max_steps
+      
+        # Optional. The type of metric being diagnosed.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Configuration for where to export or return the analysis findings.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainOutputConfig]
+        attr_accessor :output_config
+      
+        # Required. The parent resource where the analysis will be performed.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Optional. Required. A unique ID that identifies the request. If the service
+        # receives two `DiagnoseConversationsRequest`s with the same `request_id`, then
+        # the second request will be ignored; instead, the response of the first request
+        # will be returned. The ID must contain only letters (a-z, A-Z), numbers (0-9),
+        # underscores (_), and hyphens (-). The maximum length is 40 characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. A natural language description of the analysis goal or question.
+        # Corresponds to the JSON property `taskQuery`
+        # @return [String]
+        attr_accessor :task_query
+      
+        # Optional. If true, the request will only be validated (permissions, filter
+        # syntax, etc.) without actually triggering the analysis.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @filter = args[:filter] if args.key?(:filter)
+          @full_report = args[:full_report] if args.key?(:full_report)
+          @instructions = args[:instructions] if args.key?(:instructions)
+          @max_steps = args[:max_steps] if args.key?(:max_steps)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @output_config = args[:output_config] if args.key?(:output_config)
+          @parent = args[:parent] if args.key?(:parent)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @task_query = args[:task_query] if args.key?(:task_query)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # The response from a DiagnoseConversations request.
+      class GoogleCloudContactcenterinsightsV1mainDiagnoseConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The final, high-level answer or diagnostic summary returned by
+        # the Sherlock worker.
+        # Corresponds to the JSON property `answer`
+        # @return [String]
+        attr_accessor :answer
+      
+        # Output only. If an external destination was requested, the URI of the exported
+        # data.
+        # Corresponds to the JSON property `exportUri`
+        # @return [String]
+        attr_accessor :export_uri
+      
+        # Output only. Deprecated: Use full_trajectory_steps instead. The complete
+        # sequence of thoughts and actions (full trajectory).
+        # Corresponds to the JSON property `fullTrajectories`
+        # @return [Array<String>]
+        attr_accessor :full_trajectories
+      
+        # Output only. The complete sequence of thoughts and actions taken by the agent.
+        # Corresponds to the JSON property `fullTrajectorySteps`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSherlockStep>]
+        attr_accessor :full_trajectory_steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer = args[:answer] if args.key?(:answer)
+          @export_uri = args[:export_uri] if args.key?(:export_uri)
+          @full_trajectories = args[:full_trajectories] if args.key?(:full_trajectories)
+          @full_trajectory_steps = args[:full_trajectory_steps] if args.key?(:full_trajectory_steps)
+        end
+      end
+      
+      # A diagnostic report containing aggregate metrics and intent breakdowns.
+      class GoogleCloudContactcenterinsightsV1mainDiagnosticReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A breakdown of metrics grouped by intent.
+        # Corresponds to the JSON property `intentStats`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDiagnosticReportIntentStats>]
+        attr_accessor :intent_stats
+      
+        # Output only. A list of loss patterns identified for the entire project/dataset.
+        # Corresponds to the JSON property `lossPatterns`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainLossPattern>]
+        attr_accessor :loss_patterns
+      
+        # Output only. Deprecated: The type of the metric. Metrics for Outcome Based
+        # Insights derived from QueryMetrics.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainMetricValue>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_stats = args[:intent_stats] if args.key?(:intent_stats)
+          @loss_patterns = args[:loss_patterns] if args.key?(:loss_patterns)
+          @metrics = args[:metrics] if args.key?(:metrics)
+        end
+      end
+      
+      # A breakdown of metrics grouped by intent.
+      class GoogleCloudContactcenterinsightsV1mainDiagnosticReportIntentStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of conversations associated with this intent.
+        # Corresponds to the JSON property `conversationCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_count
+      
+        # Output only. The display name of the intent.
+        # Corresponds to the JSON property `intentDisplayName`
+        # @return [String]
+        attr_accessor :intent_display_name
+      
+        # Output only. The unique identifier for the intent (from Discovery Engine).
+        # Corresponds to the JSON property `intentId`
+        # @return [String]
+        attr_accessor :intent_id
+      
+        # Output only. A list of loss patterns identified for this intent.
+        # Corresponds to the JSON property `lossPatterns`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainLossPattern>]
+        attr_accessor :loss_patterns
+      
+        # Output only. Deprecated: The type of the metric. Metrics for Outcome Based
+        # Insights derived from QueryMetrics.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainMetricValue>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_count = args[:conversation_count] if args.key?(:conversation_count)
+          @intent_display_name = args[:intent_display_name] if args.key?(:intent_display_name)
+          @intent_id = args[:intent_id] if args.key?(:intent_id)
+          @loss_patterns = args[:loss_patterns] if args.key?(:loss_patterns)
+          @metrics = args[:metrics] if args.key?(:metrics)
         end
       end
       
@@ -20204,6 +22344,227 @@ module Google
         end
       end
       
+      # A loss pattern of a virtual agent and suggested fixes.
+      class GoogleCloudContactcenterinsightsV1mainLossPattern
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A list of conversation IDs that match this loss pattern.
+        # Corresponds to the JSON property `conversationIds`
+        # @return [Array<String>]
+        attr_accessor :conversation_ids
+      
+        # Output only. A markdown description of the loss pattern.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The display name of the loss pattern.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. A markdown of loss pattern examples.
+        # Corresponds to the JSON property `examples`
+        # @return [String]
+        attr_accessor :examples
+      
+        # Output only. The unique identifier for the loss pattern.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The percentage of conversations that match this loss pattern.
+        # Corresponds to the JSON property `percentage`
+        # @return [Float]
+        attr_accessor :percentage
+      
+        # Output only. A markdown description of the suggested fixes.
+        # Corresponds to the JSON property `suggestedFixes`
+        # @return [String]
+        attr_accessor :suggested_fixes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_ids = args[:conversation_ids] if args.key?(:conversation_ids)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @examples = args[:examples] if args.key?(:examples)
+          @id = args[:id] if args.key?(:id)
+          @percentage = args[:percentage] if args.key?(:percentage)
+          @suggested_fixes = args[:suggested_fixes] if args.key?(:suggested_fixes)
+        end
+      end
+      
+      # Deprecated: MetricValue is no longer used for diagnostics.
+      class GoogleCloudContactcenterinsightsV1mainMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of conversation names that contributed to this metric (
+        # hits). Format: `projects/`project`/locations/`location`/conversations/`
+        # conversation``
+        # Corresponds to the JSON property `conversations`
+        # @return [Array<String>]
+        attr_accessor :conversations
+      
+        # Output only. The user-visible name of the metric (e.g., "Containment Rate").
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The number of positive matches (hits) for this metric.
+        # Corresponds to the JSON property `hitCount`
+        # @return [Fixnum]
+        attr_accessor :hit_count
+      
+        # Output only. Deprecated: The type of the metric. Metrics for Outcome Based
+        # Insights derived from QueryMetrics.
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # Output only. The resource name of the underlying Insights primitive (e.g., Tag
+        # or QaQuestion) used to calculate this metric.
+        # Corresponds to the JSON property `sourceId`
+        # @return [String]
+        attr_accessor :source_id
+      
+        # Output only. The total number of items evaluated for this metric.
+        # Corresponds to the JSON property `totalCount`
+        # @return [Fixnum]
+        attr_accessor :total_count
+      
+        # Output only. The calculated value of the metric (usually a ratio or rate 0.0 -
+        # 1.0).
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversations = args[:conversations] if args.key?(:conversations)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @hit_count = args[:hit_count] if args.key?(:hit_count)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @source_id = args[:source_id] if args.key?(:source_id)
+          @total_count = args[:total_count] if args.key?(:total_count)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Configuration for where to export or return the analysis findings.
+      class GoogleCloudContactcenterinsightsV1mainOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # BigQuery destination configuration.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainOutputConfigBigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # Cloud Storage destination configuration.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainOutputConfigGcsDestination]
+        attr_accessor :gcs_destination
+      
+        # Google Sheets destination configuration.
+        # Corresponds to the JSON property `googleSheetsDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainOutputConfigGoogleSheetsDestination]
+        attr_accessor :google_sheets_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @google_sheets_destination = args[:google_sheets_destination] if args.key?(:google_sheets_destination)
+        end
+      end
+      
+      # BigQuery destination configuration.
+      class GoogleCloudContactcenterinsightsV1mainOutputConfigBigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the BigQuery dataset.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # Optional. A project ID or number.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The BigQuery table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Cloud Storage destination configuration.
+      class GoogleCloudContactcenterinsightsV1mainOutputConfigGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Storage URI to export the results to.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Google Sheets destination configuration.
+      class GoogleCloudContactcenterinsightsV1mainOutputConfigGoogleSheetsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The sheet name.
+        # Corresponds to the JSON property `sheet`
+        # @return [String]
+        attr_accessor :sheet
+      
+        # Optional. An existing Google Sheets ID.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sheet = args[:sheet] if args.key?(:sheet)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+        end
+      end
+      
       # The data for a matched phrase matcher. Represents information identifying a
       # phrase matcher for a given match.
       class GoogleCloudContactcenterinsightsV1mainPhraseMatchData
@@ -21334,6 +23695,16 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainArticleSuggestionData]
         attr_accessor :article_suggestion
       
+        # The CES end session annotation.
+        # Corresponds to the JSON property `cesEndSessionAnnotation`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainCesEndSessionAnnotation]
+        attr_accessor :ces_end_session_annotation
+      
+        # The CES diagnostic information.
+        # Corresponds to the JSON property `cesTurnAnnotation`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainCesTurnAnnotation]
+        attr_accessor :ces_turn_annotation
+      
         # Conversation summarization suggestion data.
         # Corresponds to the JSON property `conversationSummarizationSuggestion`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData]
@@ -21388,6 +23759,8 @@ module Google
           @annotation_id = args[:annotation_id] if args.key?(:annotation_id)
           @answer_feedback = args[:answer_feedback] if args.key?(:answer_feedback)
           @article_suggestion = args[:article_suggestion] if args.key?(:article_suggestion)
+          @ces_end_session_annotation = args[:ces_end_session_annotation] if args.key?(:ces_end_session_annotation)
+          @ces_turn_annotation = args[:ces_turn_annotation] if args.key?(:ces_turn_annotation)
           @conversation_summarization_suggestion = args[:conversation_summarization_suggestion] if args.key?(:conversation_summarization_suggestion)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dialogflow_interaction = args[:dialogflow_interaction] if args.key?(:dialogflow_interaction)
@@ -21614,6 +23987,43 @@ module Google
         def update!(**args)
           @magnitude = args[:magnitude] if args.key?(:magnitude)
           @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # A step in the agent's reasoning process (Trajectory Step).
+      class GoogleCloudContactcenterinsightsV1mainSherlockStep
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Natural language input stimulus.
+        # Corresponds to the JSON property `textInput`
+        # @return [Array<String>]
+        attr_accessor :text_input
+      
+        # Output only. The reasoning or internal monologue of the agent.
+        # Corresponds to the JSON property `thought`
+        # @return [String]
+        attr_accessor :thought
+      
+        # Output only. The tool call issued by the agent.
+        # Corresponds to the JSON property `toolCalls`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainToolCall>]
+        attr_accessor :tool_calls
+      
+        # Output only. The output response from the tool execution.
+        # Corresponds to the JSON property `toolOutput`
+        # @return [Hash<String,Object>]
+        attr_accessor :tool_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text_input = args[:text_input] if args.key?(:text_input)
+          @thought = args[:thought] if args.key?(:thought)
+          @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
+          @tool_output = args[:tool_output] if args.key?(:tool_output)
         end
       end
       
@@ -21897,6 +24307,31 @@ module Google
         def update!(**args)
           @constraint_results = args[:constraint_results] if args.key?(:constraint_results)
           @join_key_results = args[:join_key_results] if args.key?(:join_key_results)
+        end
+      end
+      
+      # A tool call from the agent.
+      class GoogleCloudContactcenterinsightsV1mainToolCall
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The input arguments to the tool.
+        # Corresponds to the JSON property `input`
+        # @return [Hash<String,Object>]
+        attr_accessor :input
+      
+        # Output only. The name of the tool being called.
+        # Corresponds to the JSON property `toolName`
+        # @return [String]
+        attr_accessor :tool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input = args[:input] if args.key?(:input)
+          @tool_name = args[:tool_name] if args.key?(:tool_name)
         end
       end
       
