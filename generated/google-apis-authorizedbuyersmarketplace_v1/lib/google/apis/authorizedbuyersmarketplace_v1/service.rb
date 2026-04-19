@@ -122,7 +122,7 @@ module Google
         #   developers.google.com/authorized-buyers/apis/guides/list-filters) Supported
         #   columns for filtering are: * deal.displayName * deal.dealType * deal.
         #   createTime * deal.updateTime * deal.flightStartTime * deal.flightEndTime *
-        #   deal.eligibleSeatIds * dealServingStatus
+        #   deal.eligibleSeatIds * dealServingStatus * readyToServe
         # @param [String] order_by
         #   An optional query string to sort finalized deals using the [Cloud API sorting
         #   syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
@@ -964,7 +964,7 @@ module Google
         #   developers.google.com/authorized-buyers/apis/guides/list-filters) Supported
         #   columns for filtering are: * deal.displayName * deal.dealType * deal.
         #   createTime * deal.updateTime * deal.flightStartTime * deal.flightEndTime *
-        #   deal.eligibleSeatIds * dealServingStatus
+        #   deal.eligibleSeatIds * dealServingStatus * readyToServe
         # @param [String] order_by
         #   An optional query string to sort finalized deals using the [Cloud API sorting
         #   syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
