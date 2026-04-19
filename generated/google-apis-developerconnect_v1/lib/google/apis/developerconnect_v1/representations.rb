@@ -463,6 +463,7 @@ module Google
       
           property :proxy_config, as: 'proxyConfig', class: Google::Apis::DeveloperconnectV1::ProxyConfig, decorator: Google::Apis::DeveloperconnectV1::ProxyConfig::Representation
       
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1104,6 +1105,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :http_proxy_base_uri, as: 'httpProxyBaseUri'
         end
       end
       
