@@ -588,7 +588,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an ad group ad.
+        # Creates an ad group ad. This method is only supported for Demand Gen ads.
+        # Retrieval and management of Demand Gen resources is currently in beta. This
+        # method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad belongs to.
         # @param [Google::Apis::DisplayvideoV4::AdGroupAd] ad_group_ad_object
@@ -621,11 +623,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an ad group ad.
+        # Deletes an ad group ad. This method is only supported for Demand Gen ads.
+        # Retrieval and management of Demand Gen resources is currently in beta. This
+        # method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad belongs to.
         # @param [Fixnum] ad_group_ad_id
-        #   Required. The ID of the ad to delete.
+        #   Required. The ID of the ad to delete. Only Demand Gen ads are supported.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -748,7 +752,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an ad group ad.
+        # Updates an ad group ad. This method is only supported for Demand Gen ads.
+        # Retrieval and management of Demand Gen resources is currently in beta. This
+        # method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad belongs to.
         # @param [Fixnum] ad_group_ad_id
@@ -792,9 +798,10 @@ module Google
         # the operation will delete the assigned targeting options provided in
         # BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad
         # group, and then create the assigned targeting options provided in
-        # BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. Only ad groups
-        # under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported
-        # for this method.
+        # BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is
+        # only supported for Demand Gen ad groups. Retrieval and management of Demand
+        # Gen resources is currently in beta. This method is only available to
+        # allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad groups belong to.
         # @param [Google::Apis::DisplayvideoV4::BulkEditAdGroupAssignedTargetingOptionsRequest] bulk_edit_ad_group_assigned_targeting_options_request_object
@@ -891,7 +898,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new ad group. Returns the newly created ad group if successful.
+        # Creates a new ad group. Returns the newly created ad group if successful. This
+        # method is only supported for Demand Gen ad groups. Retrieval and management of
+        # Demand Gen resources is currently in beta. This method is only available to
+        # allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad group belongs to.
         # @param [Google::Apis::DisplayvideoV4::AdGroup] ad_group_object
@@ -925,7 +935,9 @@ module Google
         end
         
         # Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not
-        # exist.
+        # exist. This method is only supported for Demand Gen ad groups. Retrieval and
+        # management of Demand Gen resources is currently in beta. This method is only
+        # available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1053,7 +1065,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing ad group. Returns the updated ad group if successful.
+        # Updates an existing ad group. Returns the updated ad group if successful. This
+        # method is only supported for Demand Gen ad groups. Retrieval and management of
+        # Demand Gen resources is currently in beta. This method is only available to
+        # allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1093,8 +1108,9 @@ module Google
         end
         
         # Assigns a targeting option to an ad group. Returns the assigned targeting
-        # option if successful. Only ad groups under a line item of line_item_type `
-        # LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+        # option if successful. This method is only supported for Demand Gen ad groups.
+        # Retrieval and management of Demand Gen resources is currently in beta. This
+        # method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1141,9 +1157,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an assigned targeting option from an ad group. Only ad groups under a
-        # line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this
-        # method.
+        # Deletes an assigned targeting option from an ad group. This method is only
+        # supported for Demand Gen ad groups with the AdGroupFormat `
+        # AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of Demand Gen resources
+        # is currently in beta. This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -3209,8 +3226,7 @@ module Google
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
         #   `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `
         #   TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `
-        #   TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` * `
-        #   TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `
+        #   TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `
         #   LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `
         #   TARGETING_TYPE_YOUTUBE_VIDEO` (only for `
         #   LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
@@ -3278,8 +3294,7 @@ module Google
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
         #   `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `
         #   TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `
-        #   TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` * `
-        #   TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `
+        #   TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `
         #   LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `
         #   TARGETING_TYPE_YOUTUBE_VIDEO` (only for `
         #   LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
@@ -4246,8 +4261,7 @@ module Google
         #   Required. Identifies the type of this assigned targeting option. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
-        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `
-        #   TARGETING_TYPE_INVENTORY_MODE`
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
         # @param [Google::Apis::DisplayvideoV4::AssignedTargetingOption] assigned_targeting_option_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4286,8 +4300,7 @@ module Google
         #   Required. Identifies the type of this assigned targeting option. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
-        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `
-        #   TARGETING_TYPE_INVENTORY_MODE`
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
         # @param [String] assigned_targeting_option_id
         #   Required. The ID of the assigned targeting option to delete.
         # @param [String] fields

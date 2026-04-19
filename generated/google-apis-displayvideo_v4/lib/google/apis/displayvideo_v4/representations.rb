@@ -952,6 +952,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DcmTrackingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteAssignedTargetingOptionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2389,6 +2395,8 @@ module Google
           property :audio_ad, as: 'audioAd', class: Google::Apis::DisplayvideoV4::AudioAd, decorator: Google::Apis::DisplayvideoV4::AudioAd::Representation
       
           property :bumper_ad, as: 'bumperAd', class: Google::Apis::DisplayvideoV4::BumperAd, decorator: Google::Apis::DisplayvideoV4::BumperAd::Representation
+      
+          property :dcm_tracking_info, as: 'dcmTrackingInfo', class: Google::Apis::DisplayvideoV4::DcmTrackingInfo, decorator: Google::Apis::DisplayvideoV4::DcmTrackingInfo::Representation
       
           property :demand_gen_carousel_ad, as: 'demandGenCarouselAd', class: Google::Apis::DisplayvideoV4::DemandGenCarouselAd, decorator: Google::Apis::DisplayvideoV4::DemandGenCarouselAd::Representation
       
@@ -4055,6 +4063,15 @@ module Google
         end
       end
       
+      class DcmTrackingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creative_id, :numeric_string => true, as: 'creativeId'
+          property :placement_id, :numeric_string => true, as: 'placementId'
+          property :tracking_ad_id, :numeric_string => true, as: 'trackingAdId'
+        end
+      end
+      
       class DeleteAssignedTargetingOptionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4957,6 +4974,7 @@ module Google
           property :mobile_app, as: 'mobileApp', class: Google::Apis::DisplayvideoV4::MobileApp, decorator: Google::Apis::DisplayvideoV4::MobileApp::Representation
       
           property :name, as: 'name'
+          property :optimize_fixed_bidding, as: 'optimizeFixedBidding'
           property :pacing, as: 'pacing', class: Google::Apis::DisplayvideoV4::Pacing, decorator: Google::Apis::DisplayvideoV4::Pacing::Representation
       
           collection :partner_costs, as: 'partnerCosts', class: Google::Apis::DisplayvideoV4::PartnerCost, decorator: Google::Apis::DisplayvideoV4::PartnerCost::Representation

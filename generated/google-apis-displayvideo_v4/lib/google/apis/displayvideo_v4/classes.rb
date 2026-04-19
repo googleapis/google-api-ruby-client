@@ -240,6 +240,11 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::BumperAd]
         attr_accessor :bumper_ad
       
+        # Details on the DCM tracking.
+        # Corresponds to the JSON property `dcmTrackingInfo`
+        # @return [Google::Apis::DisplayvideoV4::DcmTrackingInfo]
+        attr_accessor :dcm_tracking_info
+      
         # Details for a Demand Gen carousel ad.
         # Corresponds to the JSON property `demandGenCarouselAd`
         # @return [Google::Apis::DisplayvideoV4::DemandGenCarouselAd]
@@ -319,6 +324,7 @@ module Google
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @audio_ad = args[:audio_ad] if args.key?(:audio_ad)
           @bumper_ad = args[:bumper_ad] if args.key?(:bumper_ad)
+          @dcm_tracking_info = args[:dcm_tracking_info] if args.key?(:dcm_tracking_info)
           @demand_gen_carousel_ad = args[:demand_gen_carousel_ad] if args.key?(:demand_gen_carousel_ad)
           @demand_gen_image_ad = args[:demand_gen_image_ad] if args.key?(:demand_gen_image_ad)
           @demand_gen_product_ad = args[:demand_gen_product_ad] if args.key?(:demand_gen_product_ad)
@@ -3243,7 +3249,7 @@ module Google
         # CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
+        # TARGETING_TYPE_KEYWORD`
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV4::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
@@ -3252,7 +3258,7 @@ module Google
         # DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
+        # TARGETING_TYPE_KEYWORD`
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV4::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -4211,8 +4217,8 @@ module Google
       class CarouselCard
         include Google::Apis::Core::Hashable
       
-        # Required. The call-to-action button shown on the card. Must use 10 characters
-        # or less.
+        # Required. The text on the call-to-action button shown on the card. Must use 10
+        # characters or less.
         # Corresponds to the JSON property `callToAction`
         # @return [String]
         attr_accessor :call_to_action
@@ -5161,7 +5167,8 @@ module Google
         # attribution model will determine how conversions are counted. The Primary
         # model can be set by you for a floodlight config or group. More details [here](
         # https://support.google.com/displayvideo/answer/7409983). Only applicable to
-        # Demand Gen line items.
+        # Demand Gen line items. Retrieval and management of Demand Gen resources is
+        # currently in beta. This field is only available to allowlisted users.
         # Corresponds to the JSON property `primaryAttributionModelId`
         # @return [Fixnum]
         attr_accessor :primary_attribution_model_id
@@ -6335,8 +6342,8 @@ module Google
         attr_accessor :start_hour
       
         # Required. The mechanism used to determine which timezone to use for this day
-        # and time targeting setting. For demand gen line items, this field is always
-        # TIME_ZONE_RESOLUTION_ADVERTISER.
+        # and time targeting setting. For Demand Gen line items, this field is always `
+        # TIME_ZONE_RESOLUTION_ADVERTISER`.
         # Corresponds to the JSON property `timeZoneResolution`
         # @return [String]
         attr_accessor :time_zone_resolution
@@ -6351,6 +6358,37 @@ module Google
           @end_hour = args[:end_hour] if args.key?(:end_hour)
           @start_hour = args[:start_hour] if args.key?(:start_hour)
           @time_zone_resolution = args[:time_zone_resolution] if args.key?(:time_zone_resolution)
+        end
+      end
+      
+      # Details on the DCM tracking.
+      class DcmTrackingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. The DCM creative id.
+        # Corresponds to the JSON property `creativeId`
+        # @return [Fixnum]
+        attr_accessor :creative_id
+      
+        # Required. The DCM placement id.
+        # Corresponds to the JSON property `placementId`
+        # @return [Fixnum]
+        attr_accessor :placement_id
+      
+        # Required. The DCM tracking ad id.
+        # Corresponds to the JSON property `trackingAdId`
+        # @return [Fixnum]
+        attr_accessor :tracking_ad_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creative_id = args[:creative_id] if args.key?(:creative_id)
+          @placement_id = args[:placement_id] if args.key?(:placement_id)
+          @tracking_ad_id = args[:tracking_ad_id] if args.key?(:tracking_ad_id)
         end
       end
       
@@ -6384,10 +6422,11 @@ module Google
       class DemandGenBiddingStrategy
         include Google::Apis::Core::Hashable
       
-        # Output only. If AG doesn't set value for tCPA or tROAS, line item bidding
-        # value will be the effective_bidding_value, if the bidding strategy type is not
-        # tCPA or tROAS, effective_bidding_value is always 0. For line item, it will be
-        # the same as the value field.
+        # Output only. The value effectively used by the bidding strategy. This field
+        # will be the same as value if set. If value is not set and the strategy is
+        # assigned to an ad group, this field will be inherited from the line item's
+        # bidding strategy. If type is not `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA`
+        # or `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS`, this field will be 0.
         # Corresponds to the JSON property `effectiveBiddingValue`
         # @return [Fixnum]
         attr_accessor :effective_bidding_value
@@ -6397,15 +6436,16 @@ module Google
         # @return [String]
         attr_accessor :effective_bidding_value_source
       
-        # Optional. The type of the bidding strategy. This can only be set at the line
-        # item level.
+        # Optional. The type of the bidding strategy. This can only be set when assigned
+        # to a line item. Ad groups will inherit this value from their line item.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Optional. The value used by the bidding strategy. This can be set at the line
-        # item and ad group level. This field is only applicable for the following
-        # strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `
+        # Optional. The value used by the bidding strategy. This can be set when
+        # assigned to line items or ad groups. This field is only applicable for the
+        # following strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `
+        # DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC` * `
         # DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros
         # of the advertiser's currency or ROAS value. For example, 1000000 represents 1.
         # 0 standard units of the currency or 100% ROAS value. If not using an
@@ -6441,7 +6481,8 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV4::CarouselCard>]
         attr_accessor :cards
       
-        # Optional. The custom parameters to pass custom values to tracking URL template.
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -6515,7 +6556,8 @@ module Google
         # @return [String]
         attr_accessor :call_to_action
       
-        # Optional. The custom parameters to pass custom values to tracking URL template.
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -6616,7 +6658,8 @@ module Google
         # @return [String]
         attr_accessor :call_to_action
       
-        # Optional. The custom parameters to pass custom values to tracking URL template.
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -6694,14 +6737,14 @@ module Google
       
         # Optional. Immutable. Whether location and language targeting can be set at the
         # line item level. Otherwise, relevant targeting types must be assigned directly
-        # to the ad groups.
+        # to ad groups.
         # Corresponds to the JSON property `geoLanguageTargetingEnabled`
         # @return [Boolean]
         attr_accessor :geo_language_targeting_enabled
         alias_method :geo_language_targeting_enabled?, :geo_language_targeting_enabled
       
-        # Optional. The ID of the merchant which is linked to the line item for product
-        # feed.
+        # Optional. The ID of the Merchant Center account used to provide a product feed.
+        # This Merchant Center account must already be linked to the advertiser.
         # Corresponds to the JSON property `linkedMerchantId`
         # @return [Fixnum]
         attr_accessor :linked_merchant_id
@@ -6747,7 +6790,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::ImageAsset]
         attr_accessor :companion_banner
       
-        # Optional. The custom parameters to pass custom values to tracking URL template.
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -6794,7 +6838,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::ImageAsset]
         attr_accessor :logo
       
-        # Required. The list of lone headlines shown on the ad.
+        # Required. The list of long headlines shown on the ad.
         # Corresponds to the JSON property `longHeadlines`
         # @return [Array<String>]
         attr_accessor :long_headlines
@@ -8666,7 +8710,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::CommonInStreamAttribute]
         attr_accessor :common_in_stream_attribute
       
-        # The custom parameters to pass custom values to tracking URL template.
+        # The custom parameters and accompanying values to add to the tracking URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -9022,7 +9066,7 @@ module Google
         end
       end
       
-      # An inventory source. Next ID: 22
+      # An inventory source.
       class InventorySource
         include Google::Apis::Core::Hashable
       
@@ -9596,8 +9640,13 @@ module Google
       class KeywordAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Optional. The policy names to exempt the keyword from. This field is only
-        # applicable for Demand Gen keywords, which are positively targeted.
+        # Optional. The policy names to exempt the keyword from. When attempting to
+        # target a keyword that violates a policy, the error returned will include the
+        # name of the relevant policy. Use that name in this field to exempt the
+        # targeted keyword from the policy. This field is only applicable for positively-
+        # targeted keywords assigned to Demand Gen resources. Retrieval and management
+        # of Demand Gen resources is currently in beta. This field is only available to
+        # allowlisted users.
         # Corresponds to the JSON property `exemptedPolicyNames`
         # @return [Array<String>]
         attr_accessor :exempted_policy_names
@@ -9855,6 +9904,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Whether to enable DV360's bid optimization for fixed bid line items.
+        # By default, DV360 optimizes your fixed bid by automatically lowering bids for
+        # impressions that are less likely to perform well. This optimization is enabled
+        # by default (value is true). When this field is set to `false`, this
+        # optimization is disabled, and the bid will not be lowered for any reason. This
+        # setting only applies to line items with a `bidding_strategy` of type `
+        # FIXED_BID`.
+        # Corresponds to the JSON property `optimizeFixedBidding`
+        # @return [Boolean]
+        attr_accessor :optimize_fixed_bidding
+        alias_method :optimize_fixed_bidding?, :optimize_fixed_bidding
+      
         # Settings that control the rate at which a budget is spent.
         # Corresponds to the JSON property `pacing`
         # @return [Google::Apis::DisplayvideoV4::Pacing]
@@ -9926,6 +9987,7 @@ module Google
           @line_item_type = args[:line_item_type] if args.key?(:line_item_type)
           @mobile_app = args[:mobile_app] if args.key?(:mobile_app)
           @name = args[:name] if args.key?(:name)
+          @optimize_fixed_bidding = args[:optimize_fixed_bidding] if args.key?(:optimize_fixed_bidding)
           @pacing = args[:pacing] if args.key?(:pacing)
           @partner_costs = args[:partner_costs] if args.key?(:partner_costs)
           @partner_revenue_model = args[:partner_revenue_model] if args.key?(:partner_revenue_model)
@@ -9970,10 +10032,8 @@ module Google
       
         # Required. The type of the budget allocation. `
         # LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when automatic
-        # budget allocation is enabled for the parent insertion order. For demand gen
-        # line items, budget allocation type must be `
-        # LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`. Demand Gen line items do not support
-        # other budget allocation types.
+        # budget allocation is enabled for the parent insertion order. This field must
+        # be set to `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED` for Demand Gen line items.
         # Corresponds to the JSON property `budgetAllocationType`
         # @return [String]
         attr_accessor :budget_allocation_type
@@ -11500,7 +11560,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::CommonInStreamAttribute]
         attr_accessor :common_in_stream_attribute
       
-        # The custom parameters to pass custom values to tracking URL template.
+        # The custom parameters and accompanying values to add to the tracking URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -12160,8 +12220,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :markup_amount
       
-        # Required. The markup type of the partner revenue model. Demand Gen line items
-        # only support `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`.
+        # Required. The markup type of the partner revenue model. This field must be set
+        # to `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP` for Demand Gen
+        # line items.
         # Corresponds to the JSON property `markupType`
         # @return [String]
         attr_accessor :markup_type
@@ -13030,7 +13091,7 @@ module Google
         attr_accessor :allow_youtube_shorts
         alias_method :allow_youtube_shorts?, :allow_youtube_shorts
       
-        # Whether the ad group is opted-in to YouTube in-stream.
+        # Whether the ad group is opted-in to YouTube in-stream inventory.
         # Corresponds to the JSON property `allowYoutubeStream`
         # @return [Boolean]
         attr_accessor :allow_youtube_stream
@@ -13298,7 +13359,9 @@ module Google
         alias_method :enable_optimized_targeting?, :enable_optimized_targeting
       
         # Optional. Whether to exclude demographic expansion for Optimized Targeting.
-        # This field only applies to Demand Gen ad groups.
+        # This field can only be set for Demand Gen ad groups. Retrieval and management
+        # of Demand Gen resources is currently in beta. This field is only available to
+        # allowlisted users.
         # Corresponds to the JSON property `excludeDemographicExpansion`
         # @return [Boolean]
         attr_accessor :exclude_demographic_expansion
@@ -13633,8 +13696,8 @@ module Google
         attr_accessor :brand_lift_vendor_configs
       
         # Optional. The third-party vendors measuring brand safety. The following third-
-        # party vendors are applicable: * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `
-        # THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` * `THIRD_PARTY_VENDOR_ZEFR`
+        # party vendors are applicable: * `THIRD_PARTY_VENDOR_ZEFR` * `
+        # THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE`
         # Corresponds to the JSON property `brandSafetyVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV4::ThirdPartyVendorConfig>]
         attr_accessor :brand_safety_vendor_configs
@@ -14289,7 +14352,7 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV4::ImageAsset>]
         attr_accessor :companion_banners
       
-        # The custom parameters to pass custom values to tracking URL template.
+        # The custom parameters and accompanying values to add to the tracking URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -14324,7 +14387,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :headlines
       
-        # The list of lone headlines shown on the call-to-action banner.
+        # The list of long headlines shown on the call-to-action banner.
         # Corresponds to the JSON property `longHeadlines`
         # @return [Array<String>]
         attr_accessor :long_headlines
@@ -14564,8 +14627,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :lead_form_id
       
-        # Optional. The ID of the merchant which is linked to the line item for product
-        # feed.
+        # Optional. The ID of the Merchant Center account used to provide a product feed.
+        # This Merchant Center account must already be linked to the advertiser.
         # Corresponds to the JSON property `linkedMerchantId`
         # @return [Fixnum]
         attr_accessor :linked_merchant_id
@@ -14943,7 +15006,8 @@ module Google
         # @return [String]
         attr_accessor :unavailable_reason
       
-        # Required. The YouTube video asset id. This is ad_asset.ad_asset_id.
+        # Required. The YouTube video asset id. This is the adAssetId of an AdAsset
+        # resource.
         # Corresponds to the JSON property `videoAssetId`
         # @return [Fixnum]
         attr_accessor :video_asset_id
