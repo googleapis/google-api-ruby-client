@@ -1259,6 +1259,33 @@ module Google
         end
       end
       
+      # The DNS config for the endpoint, containing the DNS record name, type and
+      # targets.
+      class DnsConfig
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified domain name (FQDN) of the DNS record, e.g., ".location.
+        # alloydb-psa.goog".
+        # Corresponds to the JSON property `dnsName`
+        # @return [String]
+        attr_accessor :dns_name
+      
+        # The type of the DNS record, e.g., "A", "AAAA", "CNAME".
+        # Corresponds to the JSON property `dnsRecordType`
+        # @return [String]
+        attr_accessor :dns_record_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @dns_record_type = args[:dns_record_type] if args.key?(:dns_record_type)
+        end
+      end
+      
       # Configuration for Dataplex integration.
       class DataplexConfig
         include Google::Apis::Core::Hashable
@@ -1391,6 +1418,131 @@ module Google
         def update!(**args)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @kms_key_versions = args[:kms_key_versions] if args.key?(:kms_key_versions)
+        end
+      end
+      
+      # Endpoint resource.
+      class Endpoint
+        include Google::Apis::Core::Hashable
+      
+        # Annotations to allow client tools to store small amount of arbitrary data.
+        # This is distinct from labels. https://google.aip.dev/128
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Delete time stamp
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # User-settable and human-readable display name for the Endpoint.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The DNS config for the endpoint, containing the DNS record name, type and
+        # targets.
+        # Corresponds to the JSON property `dnsConfig`
+        # @return [Google::Apis::AlloydbV1beta::DnsConfig]
+        attr_accessor :dns_config
+      
+        # Output only. The effective target instances that the endpoint is associated
+        # with. This is a list of target instance names, e.g. projects/`project_number`/
+        # locations/`location`/clusters/`cluster_id`/instances/`instance_id` For write
+        # endpoint, there is only one effective target instance which has to be a
+        # primary instance. Effective target instances are only different from target
+        # instances after a switchover or cross-region failover operation. Otherwise,
+        # effective_target_instances are the same as target_instances. Note that after a
+        # cross-region failover operation, the effective_target_instances can be stale
+        # until the operation to update the endpoint is complete.
+        # Corresponds to the JSON property `effectiveTargetInstances`
+        # @return [Array<String>]
+        attr_accessor :effective_target_instances
+      
+        # The type of the endpoint, either write or read.
+        # Corresponds to the JSON property `endpointType`
+        # @return [String]
+        attr_accessor :endpoint_type
+      
+        # For Resource freshness validation (https://google.aip.dev/154)
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. Identifier. The name of the endpoint resource with the format: *
+        # projects/`project`/locations/`region`/endpoints/`endpoint_id` where the
+        # endpoint ID segment should satisfy the regex expression `[a-z0-9-]+`. For more
+        # details see https://google.aip.dev/122. The prefix of the endpoint resource
+        # name is the name of the parent resource: * projects/`project`/locations/`
+        # region`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to
+        # true if the current state of Endpoint does not match the user's intended state,
+        # and the service is actively updating the Endpoint to reconcile them. This can
+        # happen due to user-triggered updates or system actions like failover or
+        # maintenance.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. The state of the endpoint.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The names of the target instances for the endpoint, should be of format
+        # projects/`project`/locations/`region`/clusters/`cluster`/instances/`instance`.
+        # For write endpoint, there is only one target instance which has to be a
+        # primary instance. For read endpoint, there can be multiple target instances
+        # which can be read or secondary instances. After a cross-region failover or
+        # switchover operation, the endpoint will be associated with a different target
+        # instance. This change will be reflected in the effective_target_instances
+        # field.
+        # Corresponds to the JSON property `targetInstances`
+        # @return [Array<String>]
+        attr_accessor :target_instances
+      
+        # Output only. The system-generated UID of the resource. The UID is assigned
+        # when the resource is created, and it is retained until it is deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @dns_config = args[:dns_config] if args.key?(:dns_config)
+          @effective_target_instances = args[:effective_target_instances] if args.key?(:effective_target_instances)
+          @endpoint_type = args[:endpoint_type] if args.key?(:endpoint_type)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @target_instances = args[:target_instances] if args.key?(:target_instances)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2250,6 +2402,37 @@ module Google
         end
       end
       
+      # Message for response to listing Endpoints
+      class ListEndpointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Endpoints
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::AlloydbV1beta::Endpoint>]
+        attr_accessor :endpoints
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Message for response to listing Instances
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
@@ -2555,6 +2738,13 @@ module Google
         # @return [String]
         attr_accessor :ip
       
+        # Output only. Indicates whether the node set up to be configured as a hot
+        # standby.
+        # Corresponds to the JSON property `isHotStandby`
+        # @return [Boolean]
+        attr_accessor :is_hot_standby
+        alias_method :is_hot_standby?, :is_hot_standby
+      
         # Output only. Determined by state of the compute VM and postgres-service health.
         # Compute VM state can have values listed in https://cloud.google.com/compute/
         # docs/instances/instance-life-cycle and postgres-service health can have values:
@@ -2576,6 +2766,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @ip = args[:ip] if args.key?(:ip)
+          @is_hot_standby = args[:is_hot_standby] if args.key?(:is_hot_standby)
           @state = args[:state] if args.key?(:state)
           @zone_id = args[:zone_id] if args.key?(:zone_id)
         end
@@ -2880,6 +3071,15 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Optional. If set, the promote operation will attempt to recreate the original
+        # primary cluster as a secondary cluster when it comes back online. Otherwise,
+        # the promoted cluster will be a standalone cluster. Currently only supported
+        # when there is a single secondary cluster.
+        # Corresponds to the JSON property `failover`
+        # @return [Boolean]
+        attr_accessor :failover
+        alias_method :failover?, :failover
+      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server ignores the
         # request if it has already been completed. The server guarantees that for at
@@ -2909,6 +3109,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
+          @failover = args[:failover] if args.key?(:failover)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
@@ -3982,7 +4183,7 @@ module Google
       
         # Database resource signal data. This is used to send signals to Condor which
         # are based on the DB/Instance/Fleet level configurations. These will be used to
-        # send signals for all inventory types. Next ID: 9
+        # send signals for all inventory types. Next ID: 10
         # Corresponds to the JSON property `databaseResourceSignalData`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData]
         attr_accessor :database_resource_signal_data
@@ -4017,7 +4218,7 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 31
+        # Common model for database resource instance metadata. Next ID: 32
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -4215,7 +4416,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 31
+      # Common model for database resource instance metadata. Next ID: 32
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -4314,6 +4515,11 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo]
         attr_accessor :maintenance_info
       
+        # Optional. The modes of the database resource.
+        # Corresponds to the JSON property `modes`
+        # @return [Array<String>]
+        attr_accessor :modes
+      
         # DatabaseResourceId will serve as primary key for any resource ingestion event.
         # Corresponds to the JSON property `primaryResourceId`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
@@ -4404,6 +4610,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
           @maintenance_info = args[:maintenance_info] if args.key?(:maintenance_info)
+          @modes = args[:modes] if args.key?(:modes)
           @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
           @primary_resource_location = args[:primary_resource_location] if args.key?(:primary_resource_location)
           @product = args[:product] if args.key?(:product)
@@ -4493,7 +4700,7 @@ module Google
       
       # Database resource signal data. This is used to send signals to Condor which
       # are based on the DB/Instance/Fleet level configurations. These will be used to
-      # send signals for all inventory types. Next ID: 9
+      # send signals for all inventory types. Next ID: 10
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
         include Google::Apis::Core::Hashable
       
@@ -4511,6 +4718,11 @@ module Google
         # Corresponds to the JSON property `lastRefreshTime`
         # @return [String]
         attr_accessor :last_refresh_time
+      
+        # Resource location.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # DatabaseResourceId will serve as primary key for any resource ingestion event.
         # Corresponds to the JSON property `resourceId`
@@ -4548,6 +4760,7 @@ module Google
           @backup_run = args[:backup_run] if args.key?(:backup_run)
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @location = args[:location] if args.key?(:location)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
           @signal_metadata_list = args[:signal_metadata_list] if args.key?(:signal_metadata_list)
