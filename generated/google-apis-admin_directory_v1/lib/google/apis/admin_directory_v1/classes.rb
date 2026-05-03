@@ -5386,9 +5386,9 @@ module Google
       class UserLocation
         include Google::Apis::Core::Hashable
       
-        # Textual location. This is most useful for display purposes to concisely
-        # describe the location. For example 'Mountain View, CA', 'Near Seattle', 'US-
-        # NYC-9TH 9A209A.''
+        # Required. Textual location. This is most useful for display purposes to
+        # concisely describe the location. For example 'Mountain View, CA', 'Near
+        # Seattle', 'US-NYC-9TH 9A209A.''
         # Corresponds to the JSON property `area`
         # @return [String]
         attr_accessor :area
