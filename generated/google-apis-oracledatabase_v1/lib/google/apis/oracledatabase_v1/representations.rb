@@ -1494,6 +1494,7 @@ module Google
           collection :autonomous_databases, as: 'autonomousDatabases', class: Google::Apis::OracledatabaseV1::AutonomousDatabase, decorator: Google::Apis::OracledatabaseV1::AutonomousDatabase::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1512,6 +1513,7 @@ module Google
           collection :cloud_exadata_infrastructures, as: 'cloudExadataInfrastructures', class: Google::Apis::OracledatabaseV1::CloudExadataInfrastructure, decorator: Google::Apis::OracledatabaseV1::CloudExadataInfrastructure::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1521,6 +1523,7 @@ module Google
           collection :cloud_vm_clusters, as: 'cloudVmClusters', class: Google::Apis::OracledatabaseV1::CloudVmCluster, decorator: Google::Apis::OracledatabaseV1::CloudVmCluster::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1584,6 +1587,7 @@ module Google
           collection :db_systems, as: 'dbSystems', class: Google::Apis::OracledatabaseV1::DbSystem, decorator: Google::Apis::OracledatabaseV1::DbSystem::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1611,6 +1615,7 @@ module Google
           collection :exadb_vm_clusters, as: 'exadbVmClusters', class: Google::Apis::OracledatabaseV1::ExadbVmCluster, decorator: Google::Apis::OracledatabaseV1::ExadbVmCluster::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1620,6 +1625,7 @@ module Google
           collection :exascale_db_storage_vaults, as: 'exascaleDbStorageVaults', class: Google::Apis::OracledatabaseV1::ExascaleDbStorageVault, decorator: Google::Apis::OracledatabaseV1::ExascaleDbStorageVault::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       

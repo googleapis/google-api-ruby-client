@@ -3718,6 +3718,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3726,6 +3732,7 @@ module Google
         def update!(**args)
           @autonomous_databases = args[:autonomous_databases] if args.key?(:autonomous_databases)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3768,6 +3775,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3776,6 +3789,7 @@ module Google
         def update!(**args)
           @cloud_exadata_infrastructures = args[:cloud_exadata_infrastructures] if args.key?(:cloud_exadata_infrastructures)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3793,6 +3807,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3801,6 +3821,7 @@ module Google
         def update!(**args)
           @cloud_vm_clusters = args[:cloud_vm_clusters] if args.key?(:cloud_vm_clusters)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3968,6 +3989,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3976,6 +4003,7 @@ module Google
         def update!(**args)
           @db_systems = args[:db_systems] if args.key?(:db_systems)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -4043,6 +4071,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4051,6 +4085,7 @@ module Google
         def update!(**args)
           @exadb_vm_clusters = args[:exadb_vm_clusters] if args.key?(:exadb_vm_clusters)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -4071,6 +4106,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4079,6 +4120,7 @@ module Google
         def update!(**args)
           @exascale_db_storage_vaults = args[:exascale_db_storage_vaults] if args.key?(:exascale_db_storage_vaults)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
