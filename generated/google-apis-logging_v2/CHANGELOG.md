@@ -1,5 +1,9 @@
 # Release history for google-apis-logging_v2
 
+### v0.94.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260421
+
 ### v0.93.0 (2026-04-19)
 
 * Regenerated from discovery document revision 20260328
