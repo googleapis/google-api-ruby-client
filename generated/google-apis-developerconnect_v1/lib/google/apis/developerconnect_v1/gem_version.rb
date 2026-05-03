@@ -16,13 +16,13 @@ module Google
   module Apis
     module DeveloperconnectV1
       # Version of the google-apis-developerconnect_v1 gem
-      GEM_VERSION = "0.24.0"
+      GEM_VERSION = "0.25.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260403"
+      REVISION = "20260426"
     end
   end
 end
