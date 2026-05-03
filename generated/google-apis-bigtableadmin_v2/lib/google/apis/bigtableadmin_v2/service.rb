@@ -893,44 +893,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the memory layer of a cluster. To enable the memory layer, set the
-        # memory_config. To disable the memory layer, unset the memory_config.
-        # @param [String] name
-        #   Identifier. Name of the memory layer. This is always: "projects/`project`/
-        #   instances/`instance`/clusters/`cluster`/memoryLayer".
-        # @param [Google::Apis::BigtableadminV2::MemoryLayer] memory_layer_object
-        # @param [String] update_mask
-        #   Optional. The list of fields to update.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigtableadminV2::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigtableadminV2::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_instance_cluster_memory_layer(name, memory_layer_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v2/{+name}', options)
-          command.request_representation = Google::Apis::BigtableadminV2::MemoryLayer::Representation
-          command.request_object = memory_layer_object
-          command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
-          command.response_class = Google::Apis::BigtableadminV2::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Copy a Cloud Bigtable backup to a new backup in the destination cluster
         # located in the destination instance and project.
         # @param [String] parent
@@ -3131,8 +3093,8 @@ module Google
         end
         
         # Lists information about the supported locations for this service. This method
-        # lists locations based on the resource scope provided in the [
-        # ListLocationsRequest.name] field: * **Global locations**: If `name` is empty,
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
         # the method lists the public locations available to all projects. * **Project-
         # specific locations**: If `name` follows the format `projects/`project``, the
         # method lists locations visible to that specific project. This includes public,
@@ -3143,8 +3105,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
