@@ -803,6 +803,18 @@ module Google
         # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint]
         attr_accessor :tap_prop
       
+        # Output only. The target folded state of the device in a set folded state
+        # action. The valid string values are device-dependent, and can be found using `
+        # adb shell cmd device_state print-states`.
+        # Corresponds to the JSON property `targetFoldedState`
+        # @return [String]
+        attr_accessor :target_folded_state
+      
+        # Output only. The target orientation of the device in a set orientation action.
+        # Corresponds to the JSON property `targetOrientation`
+        # @return [String]
+        attr_accessor :target_orientation
+      
         # Output only. A text input action, that types some text into whatever field is
         # currently focused, if any. Unlike `enter_text` this action requires that the
         # field be brought into focus first, for example by emitting a tap action before
@@ -830,6 +842,8 @@ module Google
           @screenshot = args[:screenshot] if args.key?(:screenshot)
           @swipe = args[:swipe] if args.key?(:swipe)
           @tap_prop = args[:tap_prop] if args.key?(:tap_prop)
+          @target_folded_state = args[:target_folded_state] if args.key?(:target_folded_state)
+          @target_orientation = args[:target_orientation] if args.key?(:target_orientation)
           @text_input = args[:text_input] if args.key?(:text_input)
           @wait = args[:wait] if args.key?(:wait)
         end

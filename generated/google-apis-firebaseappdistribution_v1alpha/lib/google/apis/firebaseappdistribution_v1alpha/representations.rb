@@ -598,6 +598,8 @@ module Google
       
           property :tap_prop, as: 'tap', class: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint, decorator: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint::Representation
       
+          property :target_folded_state, as: 'targetFoldedState'
+          property :target_orientation, as: 'targetOrientation'
           property :text_input, as: 'textInput'
           property :wait, as: 'wait', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionWait, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionWait::Representation
       
