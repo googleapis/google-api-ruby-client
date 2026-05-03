@@ -192,11 +192,170 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an Approval by ID.
+        # Approves an approval. For more information, see [Manage approvals](https://
+        # developers.google.com/workspace/drive/api/guides/approvals). This is used to
+        # update the ReviewerResponse of the requesting user with a Response of `
+        # APPROVED`. If this is the last required reviewer response, this also completes
+        # the approval and sets the approval Status to `APPROVED`.
         # @param [String] file_id
-        #   Required. The ID of the file the Approval is on.
+        #   Required. The ID of the file that the approval is on.
         # @param [String] approval_id
-        #   Required. The ID of the Approval.
+        #   Required. The ID of the approval to approve.
+        # @param [Google::Apis::DriveV3::ApproveApprovalRequest] approve_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def approve_approval(file_id, approval_id, approve_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals/{approvalId}:approve', options)
+          command.request_representation = Google::Apis::DriveV3::ApproveApprovalRequest::Representation
+          command.request_object = approve_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels an approval. For more information, see [Manage approvals](https://
+        # developers.google.com/workspace/drive/api/guides/approvals). Updates the
+        # approval Status to `CANCELLED`. This can be called by any user with the `
+        # writer` permission on the file while the approval Status is `IN_PROGRESS`.
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval to cancel.
+        # @param [Google::Apis::DriveV3::CancelApprovalRequest] cancel_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_approval(file_id, approval_id, cancel_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals/{approvalId}:cancel', options)
+          command.request_representation = Google::Apis::DriveV3::CancelApprovalRequest::Representation
+          command.request_object = cancel_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Comments on an approval. For more information, see [Manage approvals](https://
+        # developers.google.com/workspace/drive/api/guides/approvals). This sends a
+        # notification to both the initiator and the reviewers. Additionally, a message
+        # is also added to the approval activity log.
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval to comment on.
+        # @param [Google::Apis::DriveV3::CommentApprovalRequest] comment_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def comment_approval(file_id, approval_id, comment_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals/{approvalId}:comment', options)
+          command.request_representation = Google::Apis::DriveV3::CommentApprovalRequest::Representation
+          command.request_object = comment_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Declines an approval. For more information, see [Manage approvals](https://
+        # developers.google.com/workspace/drive/api/guides/approvals). This is used to
+        # update the ReviewerResponse of the requesting user with a Response of `
+        # DECLINED`. This also completes the approval and sets the approval Status to `
+        # DECLINED`.
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval to decline.
+        # @param [Google::Apis::DriveV3::DeclineApprovalRequest] decline_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def decline_approval(file_id, approval_id, decline_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals/{approvalId}:decline', options)
+          command.request_representation = Google::Apis::DriveV3::DeclineApprovalRequest::Representation
+          command.request_object = decline_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an approval by ID. For more information, see [Manage approvals](https://
+        # developers.google.com/workspace/drive/api/guides/approvals).
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -225,15 +384,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the Approvals on a file.
+        # Lists the approvals on a file. For more information, see [Manage approvals](
+        # https://developers.google.com/workspace/drive/api/guides/approvals).
         # @param [String] file_id
-        #   Required. The ID of the file the Approval is on.
+        #   Required. The ID of the file that the approval is on.
         # @param [Fixnum] page_size
-        #   The maximum number of Approvals to return. When not set, at most 100 Approvals
-        #   will be returned.
+        #   The maximum number of approvals to return. When not set, at most 100 approvals
+        #   are returned.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
-        #   be set to the value of nextPageToken from a previous response.
+        #   be set to the value of `nextPageToken` from a previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -258,6 +418,83 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reassigns the reviewers on an approval. For more information, see [Manage
+        # approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+        # Adds or replaces reviewers in the ReviewerResponse of the approval. This can
+        # be called by any user with the `writer` permission on the file while the
+        # approval Status is `IN_PROGRESS` and the Response for the reviewer being
+        # reassigned is `NO_RESPONSE`. A user with the `reader` permission can only
+        # reassign an approval that's assigned to themselves. Removing a reviewer isn't
+        # allowed.
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval to reassign.
+        # @param [Google::Apis::DriveV3::ReassignApprovalRequest] reassign_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reassign_approval(file_id, approval_id, reassign_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals/{approvalId}:reassign', options)
+          command.request_representation = Google::Apis::DriveV3::ReassignApprovalRequest::Representation
+          command.request_object = reassign_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts an approval on a file. For more information, see [Manage approvals](
+        # https://developers.google.com/workspace/drive/api/guides/approvals).
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is created on.
+        # @param [Google::Apis::DriveV3::StartApprovalRequest] start_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_approval(file_id, start_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals:start', options)
+          command.request_representation = Google::Apis::DriveV3::StartApprovalRequest::Representation
+          command.request_object = start_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1550,22 +1787,24 @@ module Google
         #   A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the
         #   file was created. Avoid using this key for queries on large item collections
         #   as it might result in timeouts or other issues. For time-related sorting on
-        #   large item collections, use `modifiedTime` instead. * `folder`: The folder ID.
-        #   This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The
-        #   last time the file was modified by the user. * `modifiedTime`: The last time
-        #   the file was modified by anyone. * `name`: The name of the file. This field is
-        #   sorted using alphabetical ordering, so 1, 12, 2, 22. * `name_natural`: The
-        #   name of the file. This field is sorted using natural sort ordering, so 1, 2,
-        #   12, 22. * `quotaBytesUsed`: The number of storage quota bytes used by the file.
-        #   * `recency`: The most recent timestamp from the file's date-time fields. * `
-        #   sharedWithMeTime`: When the file was shared with the user, if applicable. * `
-        #   starred`: Whether the user has starred the file. * `viewedByMeTime`: The last
-        #   time the file was viewed by the user. Each key sorts ascending by default, but
-        #   can be reversed with the `desc` modifier. Example usage: `?orderBy=folder,
-        #   modifiedTime desc,name`.
+        #   large item collections, use `modifiedTime desc` instead. * `folder`: The
+        #   folder ID. This field is sorted using alphabetical ordering. * `
+        #   modifiedByMeTime`: The last time the file was modified by the user. * `
+        #   modifiedTime`: The last time the file was modified by anyone. * `name`: The
+        #   name of the file. This field is sorted using alphabetical ordering, so 1, 12,
+        #   2, 22. * `name_natural`: The name of the file. This field is sorted using
+        #   natural sort ordering, so 1, 2, 12, 22. * `quotaBytesUsed`: The number of
+        #   storage quota bytes used by the file. * `recency`: The most recent timestamp
+        #   from the file's date-time fields. * `sharedWithMeTime`: When the file was
+        #   shared with the user, if applicable. * `starred`: Whether the user has starred
+        #   the file. * `viewedByMeTime`: The last time the file was viewed by the user.
+        #   Each key sorts ascending by default, but can be reversed with the `desc`
+        #   modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.
         # @param [Fixnum] page_size
-        #   The maximum number of files to return per page. Partial or empty result pages
-        #   are possible even before the end of the files list has been reached.
+        #   The maximum number of files to return per page. Pages may be partial or empty
+        #   even before reaching the end of the file list. If unspecified, at most 100
+        #   files are returned for shared drives, and the entire list of files for non-
+        #   shared drives. The maximum value is 100; values above 100 are changed to 100.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of `nextPageToken` from the previous response.

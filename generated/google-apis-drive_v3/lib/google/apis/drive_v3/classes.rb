@@ -313,6 +313,25 @@ module Google
         end
       end
       
+      # Representation of a reviewer addition.
+      class AddReviewer
+        include Google::Apis::Core::Hashable
+      
+        # Required. The email of the reviewer to add.
+        # Corresponds to the JSON property `addedReviewerEmail`
+        # @return [String]
+        attr_accessor :added_reviewer_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @added_reviewer_email = args[:added_reviewer_email] if args.key?(:added_reviewer_email)
+        end
+      end
+      
       # The `apps` resource provides a list of apps that a user has installed, with
       # information about each app's supported MIME types, file extensions, and other
       # details. Some resource methods (such as `apps.get`) require an `appId`. Use
@@ -561,12 +580,12 @@ module Google
         end
       end
       
-      # Metadata for an approval. An approval is a review/approve process for a Drive
-      # item.
+      # Metadata for an approval. An approval is a review or approve process for a
+      # Drive item.
       class Approval
         include Google::Apis::Core::Hashable
       
-        # The Approval ID.
+        # The approval ID.
         # Corresponds to the JSON property `approvalId`
         # @return [String]
         attr_accessor :approval_id
@@ -601,7 +620,7 @@ module Google
         # @return [String]
         attr_accessor :modify_time
       
-        # The responses made on the Approval by reviewers.
+        # The responses made on the approval by reviewers.
         # Corresponds to the JSON property `reviewerResponses`
         # @return [Array<Google::Apis::DriveV3::ReviewerResponse>]
         attr_accessor :reviewer_responses
@@ -636,11 +655,11 @@ module Google
         end
       end
       
-      # The response of an Approvals list request.
+      # The response of an approvals list request.
       class ApprovalList
         include Google::Apis::Core::Hashable
       
-        # The list of Approvals. If nextPageToken is populated, then this list may be
+        # The list of approvals. If `nextPageToken` is populated, then this list may be
         # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DriveV3::Approval>]
@@ -651,10 +670,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The page token for the next page of Approvals. This will be absent if the end
-        # of the Approvals list has been reached. If the token is rejected for any
-        # reason, it should be discarded, and pagination should be restarted from the
-        # first page of results.
+        # The page token for the next page of approvals. This is absent if the end of
+        # the approvals list has been reached. If the token is rejected for any reason,
+        # it should be discarded, and pagination should be restarted from the first page
+        # of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -668,6 +687,48 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Request for approving an approval as a reviewer.
+      class ApproveApprovalRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A message to accompany the reviewer response on the approval. This
+        # message is included in notifications for the action and in the approval
+        # activity log.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Request for cancelling an approval as an initiator.
+      class CancelApprovalRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A message to accompany the cancellation of the approval. This
+        # message is included in notifications for the action and in the approval
+        # activity log.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -716,7 +777,7 @@ module Google
         attr_accessor :removed
         alias_method :removed?, :removed
       
-        # Deprecated: use the drive collection instead.
+        # Deprecated: use the drive collection instead. Next ID: 33
         # Corresponds to the JSON property `teamDrive`
         # @return [Google::Apis::DriveV3::TeamDrive]
         attr_accessor :team_drive
@@ -1042,6 +1103,26 @@ module Google
         end
       end
       
+      # Request for commenting on an approval.
+      class CommentApprovalRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A message to comment on the approval. This message is included in
+        # notifications for the action and in the approval activity log.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # A list of comments on a file.
       class CommentList
         include Google::Apis::Core::Hashable
@@ -1146,6 +1227,27 @@ module Google
         end
       end
       
+      # Request for declining an approval as a reviewer.
+      class DeclineApprovalRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A message to accompany the reviewer response on the approval. This
+        # message is included in notifications for the action and in the approval
+        # activity log.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # Representation of the CSE DecryptionMetadata.
       class DecryptionMetadata
         include Google::Apis::Core::Hashable
@@ -1217,8 +1319,8 @@ module Google
         attr_accessor :restricted_for_readers
         alias_method :restricted_for_readers?, :restricted_for_readers
       
-        # Whether download and copy is restricted for writers. If `true`, download is
-        # also restricted for readers.
+        # Whether download and copy is restricted for writers. If true, download is also
+        # restricted for readers.
         # Corresponds to the JSON property `restrictedForWriters`
         # @return [Boolean]
         attr_accessor :restricted_for_writers
@@ -1853,7 +1955,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Output only. An overview of the labels on the file.
+        # Label information on the file.
         # Corresponds to the JSON property `labelInfo`
         # @return [Google::Apis::DriveV3::File::LabelInfo]
         attr_accessor :label_info
@@ -2000,9 +2102,7 @@ module Google
         # @return [Google::Apis::DriveV3::User]
         attr_accessor :sharing_user
       
-        # Shortcut file details. Only populated for shortcut files, which have the
-        # mimeType field set to `application/vnd.google-apps.shortcut`. Can only be set
-        # on `files.create` requests.
+        # Information about a shortcut file.
         # Corresponds to the JSON property `shortcutDetails`
         # @return [Google::Apis::DriveV3::File::ShortcutDetails]
         attr_accessor :shortcut_details
@@ -2478,6 +2578,12 @@ module Google
           attr_accessor :can_share
           alias_method :can_share?, :can_share
         
+          # Whether the current user can start an approval on the file.
+          # Corresponds to the JSON property `canStartApproval`
+          # @return [Boolean]
+          attr_accessor :can_start_approval
+          alias_method :can_start_approval?, :can_start_approval
+        
           # Output only. Whether the current user can move this file to trash.
           # Corresponds to the JSON property `canTrash`
           # @return [Boolean]
@@ -2545,6 +2651,7 @@ module Google
             @can_remove_my_drive_parent = args[:can_remove_my_drive_parent] if args.key?(:can_remove_my_drive_parent)
             @can_rename = args[:can_rename] if args.key?(:can_rename)
             @can_share = args[:can_share] if args.key?(:can_share)
+            @can_start_approval = args[:can_start_approval] if args.key?(:can_start_approval)
             @can_trash = args[:can_trash] if args.key?(:can_trash)
             @can_trash_children = args[:can_trash_children] if args.key?(:can_trash_children)
             @can_untrash = args[:can_untrash] if args.key?(:can_untrash)
@@ -2780,7 +2887,7 @@ module Google
           end
         end
         
-        # Output only. An overview of the labels on the file.
+        # Label information on the file.
         class LabelInfo
           include Google::Apis::Core::Hashable
         
@@ -2828,9 +2935,7 @@ module Google
           end
         end
         
-        # Shortcut file details. Only populated for shortcut files, which have the
-        # mimeType field set to `application/vnd.google-apps.shortcut`. Can only be set
-        # on `files.create` requests.
+        # Information about a shortcut file.
         class ShortcutDetails
           include Google::Apis::Core::Hashable
         
@@ -3438,12 +3543,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The domain to which this permission refers.
+        # Output only. The domain to which this permission refers.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
       
-        # The email address of the user or group to which this permission refers.
+        # Output only. The email address of the user or group to which this permission
+        # refers.
         # Corresponds to the JSON property `emailAddress`
         # @return [String]
         attr_accessor :email_address
@@ -3674,6 +3780,64 @@ module Google
         end
       end
       
+      # Request for reassigning an approval. Reviewers can be added or replaced, but
+      # not removed.
+      class ReassignApprovalRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of reviewers to add.
+        # Corresponds to the JSON property `addReviewers`
+        # @return [Array<Google::Apis::DriveV3::AddReviewer>]
+        attr_accessor :add_reviewers
+      
+        # Optional. A message to send to the new reviewers. This message is included in
+        # notifications for the action and in the approval activity log.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Optional. The list of reviewer replacements.
+        # Corresponds to the JSON property `replaceReviewers`
+        # @return [Array<Google::Apis::DriveV3::ReplaceReviewer>]
+        attr_accessor :replace_reviewers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_reviewers = args[:add_reviewers] if args.key?(:add_reviewers)
+          @message = args[:message] if args.key?(:message)
+          @replace_reviewers = args[:replace_reviewers] if args.key?(:replace_reviewers)
+        end
+      end
+      
+      # Representation of a reviewer replacement.
+      class ReplaceReviewer
+        include Google::Apis::Core::Hashable
+      
+        # Required. The email of the reviewer to add.
+        # Corresponds to the JSON property `addedReviewerEmail`
+        # @return [String]
+        attr_accessor :added_reviewer_email
+      
+        # Required. The email of the reviewer to remove.
+        # Corresponds to the JSON property `removedReviewerEmail`
+        # @return [String]
+        attr_accessor :removed_reviewer_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @added_reviewer_email = args[:added_reviewer_email] if args.key?(:added_reviewer_email)
+          @removed_reviewer_email = args[:removed_reviewer_email] if args.key?(:removed_reviewer_email)
+        end
+      end
+      
       # A reply to a comment on a file. Some resource methods (such as `replies.update`
       # ) require a `replyId`. Use the `replies.list` method to retrieve the ID for a
       # reply.
@@ -3843,7 +4007,7 @@ module Google
         end
       end
       
-      # A response on an Approval made by a specific Reviewer.
+      # A response on an approval made by a specific reviewer.
       class ReviewerResponse
         include Google::Apis::Core::Hashable
       
@@ -3852,7 +4016,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # A Reviewer’s Response for the Approval.
+        # A reviewer’s response for the approval.
         # Corresponds to the JSON property `response`
         # @return [String]
         attr_accessor :response
@@ -4025,6 +4189,45 @@ module Google
         end
       end
       
+      # Allows creating an approval on a file.
+      class StartApprovalRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The time that the approval is due.
+        # Corresponds to the JSON property `dueTime`
+        # @return [String]
+        attr_accessor :due_time
+      
+        # Optional. Whether to lock the file when starting the approval.
+        # Corresponds to the JSON property `lockFile`
+        # @return [Boolean]
+        attr_accessor :lock_file
+        alias_method :lock_file?, :lock_file
+      
+        # Optional. A message to send to reviewers when notifying them of the approval
+        # request.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Required. The emails of the users who are set to review the approval.
+        # Corresponds to the JSON property `reviewerEmails`
+        # @return [Array<String>]
+        attr_accessor :reviewer_emails
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @due_time = args[:due_time] if args.key?(:due_time)
+          @lock_file = args[:lock_file] if args.key?(:lock_file)
+          @message = args[:message] if args.key?(:message)
+          @reviewer_emails = args[:reviewer_emails] if args.key?(:reviewer_emails)
+        end
+      end
+      
       # 
       class StartPageToken
         include Google::Apis::Core::Hashable
@@ -4091,14 +4294,11 @@ module Google
         end
       end
       
-      # Deprecated: use the drive collection instead.
+      # Deprecated: use the drive collection instead. Next ID: 33
       class TeamDrive
         include Google::Apis::Core::Hashable
       
-        # An image file and cropping parameters from which a background image for this
-        # Team Drive is set. This is a write only field; it can only be set on `drive.
-        # teamdrives.update` requests that don't set `themeId`. When specified, all
-        # fields of the `backgroundImageFile` must be set.
+        # The background image file for a Team Drive.
         # Corresponds to the JSON property `backgroundImageFile`
         # @return [Google::Apis::DriveV3::TeamDrive::BackgroundImageFile]
         attr_accessor :background_image_file
@@ -4183,10 +4383,7 @@ module Google
           @theme_id = args[:theme_id] if args.key?(:theme_id)
         end
         
-        # An image file and cropping parameters from which a background image for this
-        # Team Drive is set. This is a write only field; it can only be set on `drive.
-        # teamdrives.update` requests that don't set `themeId`. When specified, all
-        # fields of the `backgroundImageFile` must be set.
+        # The background image file for a Team Drive.
         class BackgroundImageFile
           include Google::Apis::Core::Hashable
         
@@ -4257,8 +4454,8 @@ module Google
           attr_accessor :can_change_domain_users_only_restriction
           alias_method :can_change_domain_users_only_restriction?, :can_change_domain_users_only_restriction
         
-          # Whether the current user can change organizer-applied download restrictions of
-          # this shared drive.
+          # Output only. Whether the current user can change organizer-applied download
+          # restrictions of this shared drive.
           # Corresponds to the JSON property `canChangeDownloadRestriction`
           # @return [Boolean]
           attr_accessor :can_change_download_restriction

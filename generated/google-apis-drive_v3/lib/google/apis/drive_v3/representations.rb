@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddReviewer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class App
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +89,18 @@ module Google
       end
       
       class ApprovalList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApproveApprovalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelApprovalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommentApprovalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CommentList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +155,12 @@ module Google
       end
       
       class ContentRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeclineApprovalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,6 +370,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReassignApprovalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplaceReviewer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reply
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +413,12 @@ module Google
       end
       
       class RevisionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartApprovalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -505,6 +553,13 @@ module Google
         end
       end
       
+      class AddReviewer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :added_reviewer_email, as: 'addedReviewerEmail'
+        end
+      end
+      
       class App
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -581,6 +636,20 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ApproveApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+        end
+      end
+      
+      class CancelApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
         end
       end
       
@@ -674,6 +743,13 @@ module Google
         end
       end
       
+      class CommentApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+        end
+      end
+      
       class CommentList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -696,6 +772,13 @@ module Google
       
           property :system_restricted, as: 'systemRestricted'
           property :type, as: 'type'
+        end
+      end
+      
+      class DeclineApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
         end
       end
       
@@ -947,6 +1030,7 @@ module Google
             property :can_remove_my_drive_parent, as: 'canRemoveMyDriveParent'
             property :can_rename, as: 'canRename'
             property :can_share, as: 'canShare'
+            property :can_start_approval, as: 'canStartApproval'
             property :can_trash, as: 'canTrash'
             property :can_trash_children, as: 'canTrashChildren'
             property :can_untrash, as: 'canUntrash'
@@ -1230,6 +1314,25 @@ module Google
         end
       end
       
+      class ReassignApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_reviewers, as: 'addReviewers', class: Google::Apis::DriveV3::AddReviewer, decorator: Google::Apis::DriveV3::AddReviewer::Representation
+      
+          property :message, as: 'message'
+          collection :replace_reviewers, as: 'replaceReviewers', class: Google::Apis::DriveV3::ReplaceReviewer, decorator: Google::Apis::DriveV3::ReplaceReviewer::Representation
+      
+        end
+      end
+      
+      class ReplaceReviewer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :added_reviewer_email, as: 'addedReviewerEmail'
+          property :removed_reviewer_email, as: 'removedReviewerEmail'
+        end
+      end
+      
       class Reply
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1309,6 +1412,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :revisions, as: 'revisions', class: Google::Apis::DriveV3::Revision, decorator: Google::Apis::DriveV3::Revision::Representation
       
+        end
+      end
+      
+      class StartApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :due_time, as: 'dueTime'
+          property :lock_file, as: 'lockFile'
+          property :message, as: 'message'
+          collection :reviewer_emails, as: 'reviewerEmails'
         end
       end
       
