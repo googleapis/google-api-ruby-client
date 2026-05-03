@@ -114,6 +114,11 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::Error>]
         attr_accessor :errors
       
+        # Represents a filter for included data on a stream object.
+        # Corresponds to the JSON property `eventFilter`
+        # @return [Google::Apis::DatastreamV1::EventFilter]
+        attr_accessor :event_filter
+      
         # Output only. Backfill job's end time.
         # Corresponds to the JSON property `lastEndTime`
         # @return [String]
@@ -141,6 +146,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @errors = args[:errors] if args.key?(:errors)
+          @event_filter = args[:event_filter] if args.key?(:event_filter)
           @last_end_time = args[:last_end_time] if args.key?(:last_end_time)
           @last_start_time = args[:last_start_time] if args.key?(:last_start_time)
           @state = args[:state] if args.key?(:state)
@@ -3578,7 +3584,7 @@ module Google
       class QuotaFailureViolation
         include Google::Apis::Core::Hashable
       
-        # The API Service from which the `QuotaFailure.Violation` orginates. In some
+        # The API Service from which the `QuotaFailure.Violation` originates. In some
         # cases, Quota issues originate from an API Service other than the one that was
         # called. In other words, a dependency of the called API Service could be the
         # cause of the `QuotaFailure`, and this field would have the dependency API

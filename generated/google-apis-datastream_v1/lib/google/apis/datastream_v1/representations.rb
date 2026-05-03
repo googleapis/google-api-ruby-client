@@ -1019,6 +1019,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :errors, as: 'errors', class: Google::Apis::DatastreamV1::Error, decorator: Google::Apis::DatastreamV1::Error::Representation
       
+          property :event_filter, as: 'eventFilter', class: Google::Apis::DatastreamV1::EventFilter, decorator: Google::Apis::DatastreamV1::EventFilter::Representation
+      
           property :last_end_time, as: 'lastEndTime'
           property :last_start_time, as: 'lastStartTime'
           property :state, as: 'state'
