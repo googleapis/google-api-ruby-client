@@ -1,5 +1,9 @@
 # Release history for google-apis-dns_v1
 
+### v0.53.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260421
+
 ### v0.52.0 (2026-04-19)
 
 * Regenerated from discovery document revision 20260402
