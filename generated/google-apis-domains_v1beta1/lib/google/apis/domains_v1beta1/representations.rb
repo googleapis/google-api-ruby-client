@@ -425,6 +425,7 @@ module Google
           property :management_settings, as: 'managementSettings', class: Google::Apis::DomainsV1beta1::ManagementSettings, decorator: Google::Apis::DomainsV1beta1::ManagementSettings::Representation
       
           property :update_mask, as: 'updateMask'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
