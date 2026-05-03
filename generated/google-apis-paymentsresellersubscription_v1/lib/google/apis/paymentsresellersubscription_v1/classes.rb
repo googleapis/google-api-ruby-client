@@ -1560,12 +1560,21 @@ module Google
       class SuspendSubscriptionRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The mode to suspend the subscription. It's required for partners to
+        # specify the suspend mode, whether suspend immediately and indefinitely, or
+        # cancel the subscription after grace_period_millis or
+        # auto_cancel_duration_millis if it's not resumed.
+        # Corresponds to the JSON property `suspendMode`
+        # @return [String]
+        attr_accessor :suspend_mode
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @suspend_mode = args[:suspend_mode] if args.key?(:suspend_mode)
         end
       end
       

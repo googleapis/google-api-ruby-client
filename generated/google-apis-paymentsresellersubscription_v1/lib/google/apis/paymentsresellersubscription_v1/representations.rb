@@ -793,6 +793,7 @@ module Google
       class SuspendSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :suspend_mode, as: 'suspendMode'
         end
       end
       
