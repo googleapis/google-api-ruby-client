@@ -79,7 +79,6 @@ module Google
       class GoogleHomeEnterpriseSdmV1Device
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ghp_name, as: 'ghpName'
           property :name, as: 'name'
           collection :parent_relations, as: 'parentRelations', class: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1ParentRelation, decorator: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1ParentRelation::Representation
       
@@ -131,7 +130,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
-          property :ghp_parent, as: 'ghpParent'
           property :parent, as: 'parent'
         end
       end
@@ -147,7 +145,6 @@ module Google
       class GoogleHomeEnterpriseSdmV1Structure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ghp_name, as: 'ghpName'
           property :name, as: 'name'
           hash :traits, as: 'traits'
         end
