@@ -1031,7 +1031,7 @@ module Google
         # perimeters provided. This is done atomically. The long-running operation from
         # this RPC has a successful status after all replacements propagate to long-
         # lasting storage. Replacements containing errors result in an error response
-        # for the first error encountered. Upon an error, replacement are cancelled and
+        # for the first error encountered. Upon an error, replacements are cancelled and
         # existing service perimeters are not affected. The Operation.response field
         # contains ReplaceServicePerimetersResponse.
         # @param [String] parent
@@ -1449,12 +1449,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all supported permissions in VPCSC Granular Controls.
+        # Lists all supported permissions in VPC Service Controls ingress and egress
+        # rules for Granular Controls.
         # @param [Fixnum] page_size
         #   Optional. This flag specifies the maximum number of services to return per
-        #   page. Default is 100.
+        #   page. Default value is 100.
         # @param [String] page_token
-        #   Optional. Token to start on a later page. Default is the first page.
+        #   Optional. Use this token to retrieve a specific page of results. Default is
+        #   the first page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1518,9 +1520,10 @@ module Google
         # Lists all VPC-SC supported services.
         # @param [Fixnum] page_size
         #   This flag specifies the maximum number of services to return per page. Default
-        #   is 100.
+        #   value is 100.
         # @param [String] page_token
-        #   Token to start on a later page. Default is the first page.
+        #   Use this token to retrieve a specific page of results. Default is the first
+        #   page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

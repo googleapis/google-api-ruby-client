@@ -1505,13 +1505,13 @@ module Google
       class ListSupportedPermissionsResponse
         include Google::Apis::Core::Hashable
       
-        # The pagination token to retrieve the next page of results. If the value is
-        # empty, no further results remain.
+        # Use this pagination token to retrieve the next page of results. An empty value
+        # indicates that no further results are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of VPC-SC supported permissions.
+        # List of VPC Service Controls supported permissions.
         # Corresponds to the JSON property `supportedPermissions`
         # @return [Array<String>]
         attr_accessor :supported_permissions
@@ -1531,8 +1531,8 @@ module Google
       class ListSupportedServicesResponse
         include Google::Apis::Core::Hashable
       
-        # The pagination token to retrieve the next page of results. If the value is
-        # empty, no further results remain.
+        # Use this pagination token to retrieve the next page of results. An empty value
+        # indicates that no further results are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
