@@ -313,6 +313,13 @@ module Google
         # @return [String]
         attr_accessor :update_mask
       
+        # Optional. If set, validates the request without actually updating the
+        # management settings.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
         def initialize(**args)
            update!(**args)
         end
@@ -321,6 +328,7 @@ module Google
         def update!(**args)
           @management_settings = args[:management_settings] if args.key?(:management_settings)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
       
