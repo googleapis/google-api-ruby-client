@@ -2983,11 +2983,23 @@ module Google
       class ExternalExposure
         include Google::Apis::Core::Hashable
       
+        # The full resource name of the load balancer backend bucket, for example, "//
+        # compute.googleapis.com/projects/`project-id`/global/backendBuckets/`name`"
+        # Corresponds to the JSON property `backendBucket`
+        # @return [String]
+        attr_accessor :backend_bucket
+      
         # The full resource name of load balancer backend service, for example, "//
         # compute.googleapis.com/projects/`project-id`/global/backendServices/`name`".
         # Corresponds to the JSON property `backendService`
         # @return [String]
         attr_accessor :backend_service
+      
+        # The name and version of the exposed web application, for example, "Jenkins 2.
+        # 184".
+        # Corresponds to the JSON property `exposedApplication`
+        # @return [String]
+        attr_accessor :exposed_application
       
         # The resource which is running the exposed service, for example, "//compute.
         # googleapis.com/projects/`project-id`/zones/`zone`/instances/`instance`.”
@@ -3007,11 +3019,28 @@ module Google
         # @return [String]
         attr_accessor :forwarding_rule
       
+        # Hostname of the exposed application, for example, "https://test-app.a.run.app/"
+        # Corresponds to the JSON property `hostnameUri`
+        # @return [String]
+        attr_accessor :hostname_uri
+      
+        # The http response returned by the web application.
+        # Corresponds to the JSON property `httpResponse`
+        # @return [Array<Google::Apis::SecuritycenterV1::HttpResponse>]
+        attr_accessor :http_response
+      
         # The full resource name of the instance group, for example, "//compute.
         # googleapis.com/projects/`project-id`/global/instanceGroups/`name`".
         # Corresponds to the JSON property `instanceGroup`
         # @return [String]
         attr_accessor :instance_group
+      
+        # The full resource name of load balancer backend service in the internal
+        # project having resource exposed via PSC, for example, "//compute.googleapis.
+        # com/projects/`project-id`/global/backendServices/`name`".
+        # Corresponds to the JSON property `internalBackendService`
+        # @return [String]
+        attr_accessor :internal_backend_service
       
         # The full resource name of the load balancer firewall policy, for example, "//
         # compute.googleapis.com/projects/`project-id`/global/firewallPolicies/`policy-
@@ -3026,6 +3055,12 @@ module Google
         # @return [String]
         attr_accessor :network_endpoint_group
       
+        # The full resource name of the network ingress firewall policy, for example, "//
+        # compute.googleapis.com/projects/`project-id`/global/firewallPolicies/`name`".
+        # Corresponds to the JSON property `networkIngressFirewallPolicy`
+        # @return [String]
+        attr_accessor :network_ingress_firewall_policy
+      
         # Private IP address of the exposed endpoint.
         # Corresponds to the JSON property `privateIpAddress`
         # @return [String]
@@ -3035,6 +3070,22 @@ module Google
         # Corresponds to the JSON property `privatePort`
         # @return [String]
         attr_accessor :private_port
+      
+        # The full resource name of the PSC (Private Service Connect) network attachment
+        # that network interface controller is attached to, for example, "//compute.
+        # googleapis.com/projects/`project-id`/regions/`region`/networkAttachments/`name`
+        # "
+        # Corresponds to the JSON property `pscNetworkAttachment`
+        # @return [String]
+        attr_accessor :psc_network_attachment
+      
+        # The full resource name of the PSC (Private Service Connect) service attachment
+        # that the load balancer network endpoint group targets, for example, "//compute.
+        # googleapis.com/projects/`project-id`/regions/`region`/serviceAttachments/`name`
+        # "
+        # Corresponds to the JSON property `pscServiceAttachment`
+        # @return [String]
+        attr_accessor :psc_service_attachment
       
         # Public IP address of the exposed endpoint.
         # Corresponds to the JSON property `publicIpAddress`
@@ -3059,15 +3110,23 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backend_bucket = args[:backend_bucket] if args.key?(:backend_bucket)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
+          @exposed_application = args[:exposed_application] if args.key?(:exposed_application)
           @exposed_endpoint = args[:exposed_endpoint] if args.key?(:exposed_endpoint)
           @exposed_service = args[:exposed_service] if args.key?(:exposed_service)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @hostname_uri = args[:hostname_uri] if args.key?(:hostname_uri)
+          @http_response = args[:http_response] if args.key?(:http_response)
           @instance_group = args[:instance_group] if args.key?(:instance_group)
+          @internal_backend_service = args[:internal_backend_service] if args.key?(:internal_backend_service)
           @load_balancer_firewall_policy = args[:load_balancer_firewall_policy] if args.key?(:load_balancer_firewall_policy)
           @network_endpoint_group = args[:network_endpoint_group] if args.key?(:network_endpoint_group)
+          @network_ingress_firewall_policy = args[:network_ingress_firewall_policy] if args.key?(:network_ingress_firewall_policy)
           @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
           @private_port = args[:private_port] if args.key?(:private_port)
+          @psc_network_attachment = args[:psc_network_attachment] if args.key?(:psc_network_attachment)
+          @psc_service_attachment = args[:psc_service_attachment] if args.key?(:psc_service_attachment)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @public_port = args[:public_port] if args.key?(:public_port)
           @service_firewall_policy = args[:service_firewall_policy] if args.key?(:service_firewall_policy)
@@ -7468,11 +7527,23 @@ module Google
       class GoogleCloudSecuritycenterV2ExternalExposure
         include Google::Apis::Core::Hashable
       
+        # The full resource name of the load balancer backend bucket, for example, "//
+        # compute.googleapis.com/projects/`project-id`/global/backendBuckets/`name`"
+        # Corresponds to the JSON property `backendBucket`
+        # @return [String]
+        attr_accessor :backend_bucket
+      
         # The full resource name of load balancer backend service, for example, "//
         # compute.googleapis.com/projects/`project-id`/global/backendServices/`name`".
         # Corresponds to the JSON property `backendService`
         # @return [String]
         attr_accessor :backend_service
+      
+        # The name and version of the exposed web application, for example, "Jenkins 2.
+        # 184".
+        # Corresponds to the JSON property `exposedApplication`
+        # @return [String]
+        attr_accessor :exposed_application
       
         # The resource which is running the exposed service, for example, "//compute.
         # googleapis.com/projects/`project-id`/zones/`zone`/instances/`instance`.”
@@ -7492,11 +7563,28 @@ module Google
         # @return [String]
         attr_accessor :forwarding_rule
       
+        # Hostname of the exposed application, for example, "https://test-app.a.run.app/"
+        # Corresponds to the JSON property `hostnameUri`
+        # @return [String]
+        attr_accessor :hostname_uri
+      
+        # The http response returned by the web application.
+        # Corresponds to the JSON property `httpResponse`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2HttpResponse>]
+        attr_accessor :http_response
+      
         # The full resource name of the instance group, for example, "//compute.
         # googleapis.com/projects/`project-id`/global/instanceGroups/`name`".
         # Corresponds to the JSON property `instanceGroup`
         # @return [String]
         attr_accessor :instance_group
+      
+        # The full resource name of load balancer backend service in the internal
+        # project having resource exposed via PSC, for example, "//compute.googleapis.
+        # com/projects/`project-id`/global/backendServices/`name`".
+        # Corresponds to the JSON property `internalBackendService`
+        # @return [String]
+        attr_accessor :internal_backend_service
       
         # The full resource name of the load balancer firewall policy, for example, "//
         # compute.googleapis.com/projects/`project-id`/global/firewallPolicies/`policy-
@@ -7511,6 +7599,12 @@ module Google
         # @return [String]
         attr_accessor :network_endpoint_group
       
+        # The full resource name of the network ingress firewall policy, for example, "//
+        # compute.googleapis.com/projects/`project-id`/global/firewallPolicies/`name`".
+        # Corresponds to the JSON property `networkIngressFirewallPolicy`
+        # @return [String]
+        attr_accessor :network_ingress_firewall_policy
+      
         # Private IP address of the exposed endpoint.
         # Corresponds to the JSON property `privateIpAddress`
         # @return [String]
@@ -7520,6 +7614,22 @@ module Google
         # Corresponds to the JSON property `privatePort`
         # @return [String]
         attr_accessor :private_port
+      
+        # The full resource name of the PSC (Private Service Connect) network attachment
+        # that network interface controller is attached to, for example, "//compute.
+        # googleapis.com/projects/`project-id`/regions/`region`/networkAttachments/`name`
+        # "
+        # Corresponds to the JSON property `pscNetworkAttachment`
+        # @return [String]
+        attr_accessor :psc_network_attachment
+      
+        # The full resource name of the PSC (Private Service Connect) service attachment
+        # that the load balancer network endpoint group targets, for example, "//compute.
+        # googleapis.com/projects/`project-id`/regions/`region`/serviceAttachments/`name`
+        # "
+        # Corresponds to the JSON property `pscServiceAttachment`
+        # @return [String]
+        attr_accessor :psc_service_attachment
       
         # Public IP address of the exposed endpoint.
         # Corresponds to the JSON property `publicIpAddress`
@@ -7544,15 +7654,23 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backend_bucket = args[:backend_bucket] if args.key?(:backend_bucket)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
+          @exposed_application = args[:exposed_application] if args.key?(:exposed_application)
           @exposed_endpoint = args[:exposed_endpoint] if args.key?(:exposed_endpoint)
           @exposed_service = args[:exposed_service] if args.key?(:exposed_service)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @hostname_uri = args[:hostname_uri] if args.key?(:hostname_uri)
+          @http_response = args[:http_response] if args.key?(:http_response)
           @instance_group = args[:instance_group] if args.key?(:instance_group)
+          @internal_backend_service = args[:internal_backend_service] if args.key?(:internal_backend_service)
           @load_balancer_firewall_policy = args[:load_balancer_firewall_policy] if args.key?(:load_balancer_firewall_policy)
           @network_endpoint_group = args[:network_endpoint_group] if args.key?(:network_endpoint_group)
+          @network_ingress_firewall_policy = args[:network_ingress_firewall_policy] if args.key?(:network_ingress_firewall_policy)
           @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
           @private_port = args[:private_port] if args.key?(:private_port)
+          @psc_network_attachment = args[:psc_network_attachment] if args.key?(:psc_network_attachment)
+          @psc_service_attachment = args[:psc_service_attachment] if args.key?(:psc_service_attachment)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @public_port = args[:public_port] if args.key?(:public_port)
           @service_firewall_policy = args[:service_firewall_policy] if args.key?(:service_firewall_policy)
@@ -8377,6 +8495,32 @@ module Google
         def update!(**args)
           @group_id = args[:group_id] if args.key?(:group_id)
           @group_type = args[:group_type] if args.key?(:group_type)
+        end
+      end
+      
+      # The http response returned by the web application.
+      class GoogleCloudSecuritycenterV2HttpResponse
+        include Google::Apis::Core::Hashable
+      
+        # The http path for which response code was returned by web application, for
+        # example, "https://test-app.a.run.app/test".
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # The http response code returned by the web application, for example, 200.
+        # Corresponds to the JSON property `statusCode`
+        # @return [String]
+        attr_accessor :status_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @status_code = args[:status_code] if args.key?(:status_code)
         end
       end
       
@@ -11685,6 +11829,32 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # The http response returned by the web application.
+      class HttpResponse
+        include Google::Apis::Core::Hashable
+      
+        # The http path for which response code was returned by web application, for
+        # example, "https://test-app.a.run.app/test".
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # The http response code returned by the web application, for example, 200.
+        # Corresponds to the JSON property `statusCode`
+        # @return [String]
+        attr_accessor :status_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @status_code = args[:status_code] if args.key?(:status_code)
         end
       end
       
