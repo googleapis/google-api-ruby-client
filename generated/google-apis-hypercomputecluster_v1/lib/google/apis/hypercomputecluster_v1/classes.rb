@@ -1229,6 +1229,14 @@ module Google
         # @return [String]
         attr_accessor :lustre
       
+        # Optional. Immutable. Throughput of the instance in MB/s/TiB. Valid values are
+        # 125, 250, 500, 1000. See [Performance tiers and maximum storage capacities](
+        # https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        # for more information.
+        # Corresponds to the JSON property `perUnitStorageThroughput`
+        # @return [Fixnum]
+        attr_accessor :per_unit_storage_throughput
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1239,6 +1247,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @filesystem = args[:filesystem] if args.key?(:filesystem)
           @lustre = args[:lustre] if args.key?(:lustre)
+          @per_unit_storage_throughput = args[:per_unit_storage_throughput] if args.key?(:per_unit_storage_throughput)
         end
       end
       

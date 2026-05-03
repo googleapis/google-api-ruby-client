@@ -822,6 +822,7 @@ module Google
           property :description, as: 'description'
           property :filesystem, as: 'filesystem'
           property :lustre, as: 'lustre'
+          property :per_unit_storage_throughput, :numeric_string => true, as: 'perUnitStorageThroughput'
         end
       end
       
