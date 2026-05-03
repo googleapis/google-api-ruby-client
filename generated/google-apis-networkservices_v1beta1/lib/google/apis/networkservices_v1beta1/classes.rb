@@ -256,6 +256,12 @@ module Google
         # @return [String]
         attr_accessor :resource_uri
       
+        # Optional. List of supported Google Cloud networking proxies in the Project and
+        # Location. resource_uris is mutually exclusive with resource_uri.
+        # Corresponds to the JSON property `resourceUris`
+        # @return [Array<String>]
+        attr_accessor :resource_uris
+      
         def initialize(**args)
            update!(**args)
         end
@@ -263,6 +269,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @resource_uris = args[:resource_uris] if args.key?(:resource_uris)
         end
       end
       
