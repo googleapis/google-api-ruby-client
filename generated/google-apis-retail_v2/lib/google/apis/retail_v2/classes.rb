@@ -6323,9 +6323,10 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseConversationalSearchResult]
         attr_accessor :conversational_search_result
       
-        # Contains the spell corrected query, if found. If the spell correction type is
-        # AUTOMATIC, then the search results are based on corrected_query. Otherwise the
-        # original query is used for search.
+        # Contains the spell corrected query, if found. The search results are based on
+        # corrected_query by default. However, if SearchRequest.SpellCorrectionSpec.mode
+        # is set to SearchRequest.SpellCorrectionSpec.Mode.SUGGESTION_ONLY, the original
+        # query is used for search.
         # Corresponds to the JSON property `correctedQuery`
         # @return [String]
         attr_accessor :corrected_query
