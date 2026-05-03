@@ -1257,6 +1257,13 @@ module Google
         # @return [Google::Apis::OndemandscanningV1beta1::LayerDetails]
         attr_accessor :layer_details
       
+        # Line number in the file where the package is found. Applies only to source
+        # repository scanning. Note: this field is marked as `optional` in other
+        # corresponding protos, but in edition 2023, the "optional" keyword is redundant.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1265,6 +1272,7 @@ module Google
         def update!(**args)
           @file_path = args[:file_path] if args.key?(:file_path)
           @layer_details = args[:layer_details] if args.key?(:layer_details)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       

@@ -1015,6 +1015,7 @@ module Google
           property :file_path, as: 'filePath'
           property :layer_details, as: 'layerDetails', class: Google::Apis::OndemandscanningV1beta1::LayerDetails, decorator: Google::Apis::OndemandscanningV1beta1::LayerDetails::Representation
       
+          property :line_number, as: 'lineNumber'
         end
       end
       
