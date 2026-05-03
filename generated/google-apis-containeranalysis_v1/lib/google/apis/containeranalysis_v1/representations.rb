@@ -22,6 +22,18 @@ module Google
   module Apis
     module ContaineranalysisV1
       
+      class AiSkillAnalysisNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AiSkillAnalysisOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AliasContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGenericArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGoModule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStepResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildWarning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +341,12 @@ module Google
       end
       
       class ContaineranalysisGoogleDevtoolsCloudbuildV1Dependency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGenericArtifactDependency
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1StepResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +467,12 @@ module Google
       end
       
       class ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGenericArtifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -575,6 +617,12 @@ module Google
       end
       
       class FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Finding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1120,6 +1168,21 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AiSkillAnalysisNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AiSkillAnalysisOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :findings, as: 'findings', class: Google::Apis::ContaineranalysisV1::Finding, decorator: Google::Apis::ContaineranalysisV1::Finding::Representation
+      
+          property :skill_name, as: 'skillName'
+        end
+      end
+      
       class AliasContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1487,6 +1550,8 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generic_artifacts, as: 'genericArtifacts', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGenericArtifact, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGenericArtifact::Representation
+      
           collection :go_modules, as: 'goModules', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGoModule, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGoModule::Representation
       
           collection :images, as: 'images'
@@ -1510,6 +1575,14 @@ module Google
           collection :paths, as: 'paths'
           property :timing, as: 'timing', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
       
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGenericArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :folder, as: 'folder'
+          property :registry_path, as: 'registryPath'
         end
       end
       
@@ -1679,6 +1752,8 @@ module Google
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
       
+          collection :results, as: 'results', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1StepResult, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1StepResult::Representation
+      
           property :script, as: 'script'
           collection :secret_env, as: 'secretEnv'
           property :status, as: 'status'
@@ -1688,6 +1763,13 @@ module Google
           collection :volumes, as: 'volumes', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Volume, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Volume::Representation
       
           collection :wait_for, as: 'waitFor'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStepResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :results, as: 'results'
         end
       end
       
@@ -1724,8 +1806,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :empty, as: 'empty'
+          property :generic_artifact, as: 'genericArtifact', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGenericArtifactDependency, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGenericArtifactDependency::Representation
+      
           property :git_source, as: 'gitSource', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceDependency, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceDependency::Representation
       
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGenericArtifactDependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dest_path, as: 'destPath'
+          property :resource, as: 'resource'
         end
       end
       
@@ -1828,6 +1920,10 @@ module Google
       
           collection :build_step_images, as: 'buildStepImages'
           collection :build_step_outputs, as: 'buildStepOutputs'
+          hash :build_step_results, as: 'buildStepResults', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStepResults, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStepResults::Representation
+      
+          collection :generic_artifacts, as: 'genericArtifacts', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGenericArtifact, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGenericArtifact::Representation
+      
           collection :go_modules, as: 'goModules', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGoModule, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGoModule::Representation
       
           collection :images, as: 'images', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage::Representation
@@ -1904,6 +2000,15 @@ module Google
         end
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1StepResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation_content, as: 'attestationContent'
+          property :attestation_type, as: 'attestationType'
+          property :name, as: 'name'
+        end
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1928,6 +2033,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGenericArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_fingerprint, as: 'artifactFingerprint', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
+          hash :file_hashes, as: 'fileHashes', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          property :uri, as: 'uri'
         end
       end
       
@@ -2175,6 +2294,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::ContaineranalysisV1::HashProp, decorator: Google::Apis::ContaineranalysisV1::HashProp::Representation
       
+        end
+      end
+      
+      class Finding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :description, as: 'description'
+          property :file_path, as: 'filePath'
+          property :rule_id, as: 'ruleId'
+          property :severity, as: 'severity'
+          property :snippet, as: 'snippet'
+          property :title, as: 'title'
         end
       end
       
@@ -2511,6 +2643,8 @@ module Google
       class Note
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ai_skill_analysis, as: 'aiSkillAnalysis', class: Google::Apis::ContaineranalysisV1::AiSkillAnalysisNote, decorator: Google::Apis::ContaineranalysisV1::AiSkillAnalysisNote::Representation
+      
           property :attestation, as: 'attestation', class: Google::Apis::ContaineranalysisV1::AttestationNote, decorator: Google::Apis::ContaineranalysisV1::AttestationNote::Representation
       
           property :build, as: 'build', class: Google::Apis::ContaineranalysisV1::BuildNote, decorator: Google::Apis::ContaineranalysisV1::BuildNote::Representation
@@ -2554,6 +2688,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advisory_publish_time, as: 'advisoryPublishTime'
+          property :ai_skill_analysis, as: 'aiSkillAnalysis', class: Google::Apis::ContaineranalysisV1::AiSkillAnalysisOccurrence, decorator: Google::Apis::ContaineranalysisV1::AiSkillAnalysisOccurrence::Representation
+      
           property :attestation, as: 'attestation', class: Google::Apis::ContaineranalysisV1::AttestationOccurrence, decorator: Google::Apis::ContaineranalysisV1::AttestationOccurrence::Representation
       
           property :build, as: 'build', class: Google::Apis::ContaineranalysisV1::BuildOccurrence, decorator: Google::Apis::ContaineranalysisV1::BuildOccurrence::Representation
