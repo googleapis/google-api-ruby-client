@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivateConnectionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProbingDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1032,6 +1038,13 @@ module Google
         end
       end
       
+      class PrivateConnectionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
       class ProbingDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1223,10 +1236,14 @@ module Google
       
           property :cloud_sql_instance, as: 'cloudSqlInstance', class: Google::Apis::NetworkmanagementV1beta1::CloudSqlInstanceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::CloudSqlInstanceInfo::Representation
       
+          property :datastream_private_connection, as: 'datastreamPrivateConnection', class: Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo::Representation
+      
           property :deliver, as: 'deliver', class: Google::Apis::NetworkmanagementV1beta1::DeliverInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DeliverInfo::Representation
       
           property :description, as: 'description'
           property :direct_vpc_egress_connection, as: 'directVpcEgressConnection', class: Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo::Representation
+      
+          property :dms_private_connection, as: 'dmsPrivateConnection', class: Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo::Representation
       
           property :drop, as: 'drop', class: Google::Apis::NetworkmanagementV1beta1::DropInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DropInfo::Representation
       

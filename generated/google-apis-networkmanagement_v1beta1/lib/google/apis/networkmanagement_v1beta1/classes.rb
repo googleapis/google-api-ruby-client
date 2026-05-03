@@ -2487,6 +2487,26 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a Private Connection.
+      class PrivateConnectionInfo
+        include Google::Apis::Core::Hashable
+      
+        # URI of the Private Connection in format "projects/`project_id`/locations/`
+        # location`/privateConnections/`private_connection_id`"
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Results of active probing from the last run of the test.
       class ProbingDetails
         include Google::Apis::Core::Hashable
@@ -3267,6 +3287,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::CloudSqlInstanceInfo]
         attr_accessor :cloud_sql_instance
       
+        # For display only. Metadata associated with a Private Connection.
+        # Corresponds to the JSON property `datastreamPrivateConnection`
+        # @return [Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo]
+        attr_accessor :datastream_private_connection
+      
         # Details of the final state "deliver" and associated resource.
         # Corresponds to the JSON property `deliver`
         # @return [Google::Apis::NetworkmanagementV1beta1::DeliverInfo]
@@ -3282,6 +3307,11 @@ module Google
         # Corresponds to the JSON property `directVpcEgressConnection`
         # @return [Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo]
         attr_accessor :direct_vpc_egress_connection
+      
+        # For display only. Metadata associated with a Private Connection.
+        # Corresponds to the JSON property `dmsPrivateConnection`
+        # @return [Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo]
+        attr_accessor :dms_private_connection
       
         # Details of the final state "drop" and associated resource.
         # Corresponds to the JSON property `drop`
@@ -3463,9 +3493,11 @@ module Google
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
+          @datastream_private_connection = args[:datastream_private_connection] if args.key?(:datastream_private_connection)
           @deliver = args[:deliver] if args.key?(:deliver)
           @description = args[:description] if args.key?(:description)
           @direct_vpc_egress_connection = args[:direct_vpc_egress_connection] if args.key?(:direct_vpc_egress_connection)
+          @dms_private_connection = args[:dms_private_connection] if args.key?(:dms_private_connection)
           @drop = args[:drop] if args.key?(:drop)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @firewall = args[:firewall] if args.key?(:firewall)
