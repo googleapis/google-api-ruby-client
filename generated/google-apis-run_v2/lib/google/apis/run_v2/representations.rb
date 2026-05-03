@@ -538,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1BuildStepResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1BuiltImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +707,12 @@ module Google
       end
       
       class GoogleDevtoolsCloudbuildV1SourceProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1StepResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2069,6 +2081,8 @@ module Google
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
       
+          collection :results, as: 'results', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1StepResult, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1StepResult::Representation
+      
           property :script, as: 'script'
           collection :secret_env, as: 'secretEnv'
           property :status, as: 'status'
@@ -2078,6 +2092,13 @@ module Google
           collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Volume, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Volume::Representation
       
           collection :wait_for, as: 'waitFor'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildStepResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :results, as: 'results'
         end
       end
       
@@ -2292,6 +2313,8 @@ module Google
       
           collection :build_step_images, as: 'buildStepImages'
           collection :build_step_outputs, as: 'buildStepOutputs'
+          hash :build_step_results, as: 'buildStepResults', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuildStepResults, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuildStepResults::Representation
+      
           collection :generic_artifacts, as: 'genericArtifacts', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGenericArtifact, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGenericArtifact::Representation
       
           collection :go_modules, as: 'goModules', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGoModule, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGoModule::Representation
@@ -2367,6 +2390,15 @@ module Google
       
           property :resolved_storage_source_manifest, as: 'resolvedStorageSourceManifest', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1StorageSourceManifest, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1StorageSourceManifest::Representation
       
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1StepResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation_content, as: 'attestationContent'
+          property :attestation_type, as: 'attestationType'
+          property :name, as: 'name'
         end
       end
       
