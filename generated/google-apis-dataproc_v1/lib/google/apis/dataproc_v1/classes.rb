@@ -2346,6 +2346,14 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
+        # Optional. Associates Resource Manager tags with the workload nodes. There is a
+        # max limit of 30 tags. Keys and values can be either in numeric format, such as
+        # tagKeys/`tag_key_id` and tagValues/`tag_value_id`, or in namespaced format,
+        # such as `org_id|project_id`/`tag_key_short_name` and `tag_value_short_name`.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
         # Optional. Service account that used to execute workload.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -2394,6 +2402,7 @@ module Google
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @service_account = args[:service_account] if args.key?(:service_account)
           @staging_bucket = args[:staging_bucket] if args.key?(:staging_bucket)
           @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)

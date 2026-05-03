@@ -2250,6 +2250,7 @@ module Google
           property :kms_key, as: 'kmsKey'
           collection :network_tags, as: 'networkTags'
           property :network_uri, as: 'networkUri'
+          hash :resource_manager_tags, as: 'resourceManagerTags'
           property :service_account, as: 'serviceAccount'
           property :staging_bucket, as: 'stagingBucket'
           property :subnetwork_uri, as: 'subnetworkUri'
