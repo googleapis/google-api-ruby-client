@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1AsyncQueryReasoningEngineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1AsyncRetrieveContextsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5698,12 +5704,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1SavedQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8308,6 +8308,7 @@ module Google
           property :prompt_inputs, as: 'promptInputs', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionPromptInputs, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionPromptInputs::Representation
       
           property :request_origin_tag, as: 'requestOriginTag'
+          property :truncate_input_video, as: 'truncateInputVideo'
           property :video_transform_mask_gcs_uri, as: 'videoTransformMaskGcsUri'
           property :video_transform_strength, as: 'videoTransformStrength'
         end
@@ -8704,6 +8705,14 @@ module Google
       
           property :notebook_runtime_id, as: 'notebookRuntimeId'
           property :notebook_runtime_template, as: 'notebookRuntimeTemplate'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1AsyncQueryReasoningEngineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_gcs_uri, as: 'inputGcsUri'
+          property :output_gcs_uri, as: 'outputGcsUri'
         end
       end
       
@@ -9674,6 +9683,7 @@ module Google
       class GoogleCloudAiplatformV1CopyModelRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_service_account, as: 'customServiceAccount'
           property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec::Representation
       
           property :model_id, as: 'modelId'
@@ -18118,8 +18128,6 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
-          property :warm_pool_config, as: 'warmPoolConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig::Representation
-      
         end
       end
       
@@ -18169,13 +18177,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :limits, as: 'limits'
           hash :requests, as: 'requests'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :target_instance_count, as: 'targetInstanceCount'
         end
       end
       

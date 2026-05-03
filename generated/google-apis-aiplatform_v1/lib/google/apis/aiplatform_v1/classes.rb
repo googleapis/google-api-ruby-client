@@ -61,6 +61,14 @@ module Google
         # @return [String]
         attr_accessor :request_origin_tag
       
+        # If true (default), truncate input videos that exceed the model's maximum frame
+        # count by applying a frame_selection_config to __video_file__ inputs. Set to
+        # false to preserve the existing fail-fast behavior.
+        # Corresponds to the JSON property `truncateInputVideo`
+        # @return [Boolean]
+        attr_accessor :truncate_input_video
+        alias_method :truncate_input_video?, :truncate_input_video
+      
         # GCS URI of the grayscale video mask for Differential Diffusion. Maps to
         # sdedit_video_tmax_scale_map
         # Corresponds to the JSON property `videoTransformMaskGcsUri`
@@ -84,6 +92,7 @@ module Google
           @num_diffusion_steps = args[:num_diffusion_steps] if args.key?(:num_diffusion_steps)
           @prompt_inputs = args[:prompt_inputs] if args.key?(:prompt_inputs)
           @request_origin_tag = args[:request_origin_tag] if args.key?(:request_origin_tag)
+          @truncate_input_video = args[:truncate_input_video] if args.key?(:truncate_input_video)
           @video_transform_mask_gcs_uri = args[:video_transform_mask_gcs_uri] if args.key?(:video_transform_mask_gcs_uri)
           @video_transform_strength = args[:video_transform_strength] if args.key?(:video_transform_strength)
         end
@@ -1444,6 +1453,31 @@ module Google
           @notebook_runtime = args[:notebook_runtime] if args.key?(:notebook_runtime)
           @notebook_runtime_id = args[:notebook_runtime_id] if args.key?(:notebook_runtime_id)
           @notebook_runtime_template = args[:notebook_runtime_template] if args.key?(:notebook_runtime_template)
+        end
+      end
+      
+      # Request message for ReasoningEngineExecutionService.AsyncQueryReasoningEngine.
+      class GoogleCloudAiplatformV1AsyncQueryReasoningEngineRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input Cloud Storage URI for the Async query.
+        # Corresponds to the JSON property `inputGcsUri`
+        # @return [String]
+        attr_accessor :input_gcs_uri
+      
+        # Optional. Output Cloud Storage URI for the Async query.
+        # Corresponds to the JSON property `outputGcsUri`
+        # @return [String]
+        attr_accessor :output_gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_gcs_uri = args[:input_gcs_uri] if args.key?(:input_gcs_uri)
+          @output_gcs_uri = args[:output_gcs_uri] if args.key?(:output_gcs_uri)
         end
       end
       
@@ -4706,6 +4740,18 @@ module Google
       class GoogleCloudAiplatformV1CopyModelRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The user-provided custom service account to use to do the copy model.
+        # If empty, [Vertex AI Service Agent](https://cloud.google.com/vertex-ai/docs/
+        # general/access-control#service-agents) will be used to access resources needed
+        # to upload the model. This account must belong to the destination project where
+        # the model is copied to, i.e., the project specified in the `parent` field of
+        # this request and have the Vertex AI Service Agent role in the source project.
+        # Requires the user copying the Model to have the `iam.serviceAccounts.actAs`
+        # permission on this service account.
+        # Corresponds to the JSON property `customServiceAccount`
+        # @return [String]
+        attr_accessor :custom_service_account
+      
         # Represents a customer-managed encryption key specification that can be applied
         # to a Vertex AI resource.
         # Corresponds to the JSON property `encryptionSpec`
@@ -4738,6 +4784,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_service_account = args[:custom_service_account] if args.key?(:custom_service_account)
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @model_id = args[:model_id] if args.key?(:model_id)
           @parent_model = args[:parent_model] if args.key?(:parent_model)
@@ -22374,7 +22421,7 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Metric]
         attr_accessor :metric
       
-        # Resource name for registered metric.
+        # Optional. Resource name for registered metric.
         # Corresponds to the JSON property `metricResourceName`
         # @return [String]
         attr_accessor :metric_resource_name
@@ -34546,11 +34593,6 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Configuration for a warm pool of sandbox instances.
-        # Corresponds to the JSON property `warmPoolConfig`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig]
-        attr_accessor :warm_pool_config
-      
         def initialize(**args)
            update!(**args)
         end
@@ -34565,7 +34607,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
-          @warm_pool_config = args[:warm_pool_config] if args.key?(:warm_pool_config)
         end
       end
       
@@ -34712,25 +34753,6 @@ module Google
         def update!(**args)
           @limits = args[:limits] if args.key?(:limits)
           @requests = args[:requests] if args.key?(:requests)
-        end
-      end
-      
-      # Configuration for a warm pool of sandbox instances.
-      class GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The target number of pre-warmed instances to maintain.
-        # Corresponds to the JSON property `targetInstanceCount`
-        # @return [Fixnum]
-        attr_accessor :target_instance_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @target_instance_count = args[:target_instance_count] if args.key?(:target_instance_count)
         end
       end
       
