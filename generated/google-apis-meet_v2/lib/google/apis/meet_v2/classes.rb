@@ -230,18 +230,21 @@ module Google
         end
       end
       
-      # Details how to join the conference via a SIP gateway.
+      # Details how to join the conference through a SIP gateway.
       class GatewaySipAccess
         include Google::Apis::Core::Hashable
       
-        # Permanent numeric code for manual entry on specially configured devices.
+        # The permanent numeric code for manual entry on specially configured devices.
         # Corresponds to the JSON property `sipAccessCode`
         # @return [String]
         attr_accessor :sip_access_code
       
-        # The SIP URI the conference can be reached through. The string is on one of the
-        # formats: "sip:@" "sips:@" where currently is the 13-digit universal pin, and
-        # is a valid address to be resolved using a DNS SRV lookup, or a dotted quad.
+        # The Session Initiation Protocol (SIP) URI the conference can be reached
+        # through. The string is in one of these formats: * "sip:USER_ID@GATEWAY_ADDRESS"
+        # * "sips:USER_ID@GATEWAY_ADDRESS" where USER_ID is the 13-digit universal pin (
+        # with the future option to support using a Meet meeting code as well), and
+        # GATEWAY_ADDRESS is a valid address to be resolved using a DNS SRV lookup, or a
+        # dotted quad.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -817,7 +820,7 @@ module Google
         # @return [Google::Apis::MeetV2::SpaceConfig]
         attr_accessor :config
       
-        # Output only. The SIP based access methods that can be used to join the
+        # Output only. The SIP-based access methods that can be used to join the
         # conference. Can be empty.
         # Corresponds to the JSON property `gatewaySipAccess`
         # @return [Array<Google::Apis::MeetV2::GatewaySipAccess>]
