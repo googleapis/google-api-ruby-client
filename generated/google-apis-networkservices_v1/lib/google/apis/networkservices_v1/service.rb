@@ -82,8 +82,8 @@ module Google
         end
         
         # Lists information about the supported locations for this service. This method
-        # lists locations based on the resource scope provided in the [
-        # ListLocationsRequest.name] field: * **Global locations**: If `name` is empty,
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
         # the method lists the public locations available to all projects. * **Project-
         # specific locations**: If `name` follows the format `projects/`project``, the
         # method lists locations visible to that specific project. This includes public,
@@ -94,8 +94,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -1345,6 +1345,8 @@ module Google
         # @param [Google::Apis::NetworkservicesV1::HttpRoute] http_route_object
         # @param [String] http_route_id
         #   Required. Short name of the HttpRoute resource to be created.
+        # @param [String] request_id
+        #   Optional. Idempotent request UUID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1362,7 +1364,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_http_route(parent, http_route_object = nil, http_route_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_http_route(parent, http_route_object = nil, http_route_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/httpRoutes', options)
           command.request_representation = Google::Apis::NetworkservicesV1::HttpRoute::Representation
           command.request_object = http_route_object
@@ -1370,6 +1372,7 @@ module Google
           command.response_class = Google::Apis::NetworkservicesV1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['httpRouteId'] = http_route_id unless http_route_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1441,6 +1444,8 @@ module Google
         # @param [String] parent
         #   Required. The project and location from which the HttpRoutes should be listed,
         #   specified in the format `projects/*/locations/*`.
+        # @param [String] filter
+        #   Optional. Filter expression to restrict the list.
         # @param [Fixnum] page_size
         #   Maximum number of HttpRoutes to return per call.
         # @param [String] page_token
@@ -1468,11 +1473,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_http_routes(parent, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_http_routes(parent, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/httpRoutes', options)
           command.response_representation = Google::Apis::NetworkservicesV1::ListHttpRoutesResponse::Representation
           command.response_class = Google::Apis::NetworkservicesV1::ListHttpRoutesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
