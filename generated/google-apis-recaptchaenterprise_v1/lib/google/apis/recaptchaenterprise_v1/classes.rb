@@ -1992,11 +1992,9 @@ module Google
         # @return [String]
         attr_accessor :ios_bundle_id
       
-        # Output only. Whether the provided user response token is valid. When valid =
-        # false, the reason could be specified in invalid_reason or it could also be due
-        # to a user failing to solve a challenge or a sitekey mismatch (i.e the sitekey
-        # used to generate the token was different than the one specified in the
-        # assessment).
+        # Output only. Indicates whether the provided user response token is valid. If `
+        # false`, the token is invalid, either because the user failed the challenge or
+        # for a reason provided in the `invalid_reason` field.
         # Corresponds to the JSON property `valid`
         # @return [Boolean]
         attr_accessor :valid
