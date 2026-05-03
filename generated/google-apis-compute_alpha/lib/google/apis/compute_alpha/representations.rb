@@ -2974,6 +2974,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageViewsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InitialStateConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4966,6 +4990,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceShutdownDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6353,6 +6383,12 @@ module Google
       end
       
       class Project
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9053,6 +9089,18 @@ module Google
       end
       
       class StoragePoolResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolShareSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolShareSettingsProjectConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -16076,6 +16124,48 @@ module Google
         end
       end
       
+      class ImageView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image', class: Google::Apis::ComputeAlpha::Image, decorator: Google::Apis::ComputeAlpha::Image::Representation
+      
+        end
+      end
+      
+      class ImageViewsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::ImageView, decorator: Google::Apis::ComputeAlpha::ImageView::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ImageViewsListResponse::Warning, decorator: Google::Apis::ComputeAlpha::ImageViewsListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ImageViewsListResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ImageViewsListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class InitialStateConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19754,6 +19844,8 @@ module Google
       
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::ManagedInstanceScheduling, decorator: Google::Apis::ComputeAlpha::ManagedInstanceScheduling::Representation
       
+          property :shutdown_details, as: 'shutdownDetails', class: Google::Apis::ComputeAlpha::ManagedInstanceShutdownDetails, decorator: Google::Apis::ComputeAlpha::ManagedInstanceShutdownDetails::Representation
+      
           property :size_in_unit, as: 'sizeInUnit'
           property :tag, as: 'tag'
           property :target_status, as: 'targetStatus'
@@ -19852,7 +19944,17 @@ module Google
       class ManagedInstanceScheduling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :graceful_shutdown_timestamp, as: 'gracefulShutdownTimestamp'
           property :termination_timestamp, as: 'terminationTimestamp'
+        end
+      end
+      
+      class ManagedInstanceShutdownDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_duration, as: 'maxDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          property :request_timestamp, as: 'requestTimestamp'
         end
       end
       
@@ -20689,6 +20791,7 @@ module Google
       
           collection :alias_ipv6_ranges, as: 'aliasIpv6Ranges', class: Google::Apis::ComputeAlpha::AliasIpRange, decorator: Google::Apis::ComputeAlpha::AliasIpRange::Representation
       
+          property :dns64_eligible, as: 'dns64Eligible'
           property :enable_vpc_scoped_dns, as: 'enableVpcScopedDns'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :igmp_query, as: 'igmpQuery'
@@ -20700,6 +20803,7 @@ module Google
           property :kind, as: 'kind'
           property :mac_address, as: 'macAddress'
           property :name, as: 'name'
+          property :nat64_eligible, as: 'nat64Eligible'
           property :network, as: 'network'
           property :network_attachment, as: 'networkAttachment'
           property :network_ip, as: 'networkIP'
@@ -22491,6 +22595,14 @@ module Google
       
           property :vm_dns_setting, as: 'vmDnsSetting'
           property :xpn_project_status, as: 'xpnProjectStatus'
+        end
+      end
+      
+      class ProjectView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project, as: 'project', class: Google::Apis::ComputeAlpha::Project, decorator: Google::Apis::ComputeAlpha::Project::Representation
+      
         end
       end
       
@@ -27318,6 +27430,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeAlpha::StoragePoolShareSettings, decorator: Google::Apis::ComputeAlpha::StoragePoolShareSettings::Representation
+      
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :state, as: 'state'
           property :status, as: 'status', class: Google::Apis::ComputeAlpha::StoragePoolResourceStatus, decorator: Google::Apis::ComputeAlpha::StoragePoolResourceStatus::Representation
@@ -27486,6 +27600,21 @@ module Google
           property :used_bytes, :numeric_string => true, as: 'usedBytes'
           property :used_reduced_bytes, :numeric_string => true, as: 'usedReducedBytes'
           property :used_throughput, :numeric_string => true, as: 'usedThroughput'
+        end
+      end
+      
+      class StoragePoolShareSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :project_map, as: 'projectMap', class: Google::Apis::ComputeAlpha::StoragePoolShareSettingsProjectConfig, decorator: Google::Apis::ComputeAlpha::StoragePoolShareSettingsProjectConfig::Representation
+      
+        end
+      end
+      
+      class StoragePoolShareSettingsProjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
         end
       end
       
