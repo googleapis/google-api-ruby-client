@@ -214,6 +214,25 @@ module Google
         end
       end
       
+      # Configuration for automatic upgrades.
+      class AutoUpgradeConfig
+        include Google::Apis::Core::Hashable
+      
+        # The scope for automatic rollout creation.
+        # Corresponds to the JSON property `rolloutCreationScope`
+        # @return [Google::Apis::GkehubV1alpha::RolloutCreationScope]
+        attr_accessor :rollout_creation_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout_creation_scope = args[:rollout_creation_scope] if args.key?(:rollout_creation_scope)
+        end
+      end
+      
       # BinaryAuthorizationConfig defines the fleet level configuration of binary
       # authorization feature.
       class BinaryAuthorizationConfig
@@ -3003,6 +3022,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # Request message for force-completing a rollout stage.
+      class ForceCompleteRolloutStageRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The stage number to force-complete.
+        # Corresponds to the JSON property `stageNumber`
+        # @return [Fixnum]
+        attr_accessor :stage_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage_number = args[:stage_number] if args.key?(:stage_number)
         end
       end
       
@@ -6217,6 +6255,25 @@ module Google
         end
       end
       
+      # The scope for automatic rollout creation.
+      class RolloutCreationScope
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of enabled upgrade types.
+        # Corresponds to the JSON property `upgradeTypes`
+        # @return [Array<String>]
+        attr_accessor :upgrade_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upgrade_types = args[:upgrade_types] if args.key?(:upgrade_types)
+        end
+      end
+      
       # Metadata about single cluster (GKE Hub membership) that's part of this Rollout.
       class RolloutMembershipState
         include Google::Apis::Core::Hashable
@@ -6255,6 +6312,11 @@ module Google
       class RolloutSequence
         include Google::Apis::Core::Hashable
       
+        # Configuration for automatic upgrades.
+        # Corresponds to the JSON property `autoUpgradeConfig`
+        # @return [Google::Apis::GkehubV1alpha::AutoUpgradeConfig]
+        attr_accessor :auto_upgrade_config
+      
         # Output only. The timestamp at which the Rollout Sequence was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -6269,6 +6331,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Configuration for automatic upgrades.
+        # Corresponds to the JSON property `effectiveAutoUpgradeConfig`
+        # @return [Google::Apis::GkehubV1alpha::AutoUpgradeConfig]
+        attr_accessor :effective_auto_upgrade_config
       
         # Output only. etag of the Rollout Sequence Ex. abc1234
         # Corresponds to the JSON property `etag`
@@ -6319,9 +6386,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_upgrade_config = args[:auto_upgrade_config] if args.key?(:auto_upgrade_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @effective_auto_upgrade_config = args[:effective_auto_upgrade_config] if args.key?(:effective_auto_upgrade_config)
           @etag = args[:etag] if args.key?(:etag)
           @ignored_clusters_selector = args[:ignored_clusters_selector] if args.key?(:ignored_clusters_selector)
           @labels = args[:labels] if args.key?(:labels)
