@@ -1,5 +1,9 @@
 # Release history for google-apis-managedidentities_v1beta1
 
+### v0.42.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260414
+
 ### v0.41.0 (2026-02-15)
 
 * Regenerated from discovery document revision 20260202
