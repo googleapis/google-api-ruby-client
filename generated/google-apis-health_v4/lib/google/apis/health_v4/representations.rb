@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BasalEnergyBurned
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchDeleteDataPointsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +299,12 @@ module Google
       end
       
       class GoogleDevicesandservicesHealthV4DataType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -658,12 +670,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class WebhookNotificationCloudLog
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Weight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -776,6 +782,15 @@ module Google
           property :google_web_client_id, as: 'googleWebClientId'
           property :package_name, as: 'packageName'
           property :web_client_id, as: 'webClientId'
+        end
+      end
+      
+      class BasalEnergyBurned
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval', class: Google::Apis::HealthV4::ObservationTimeInterval, decorator: Google::Apis::HealthV4::ObservationTimeInterval::Representation
+      
+          property :kcal, as: 'kcal'
         end
       end
       
@@ -1012,6 +1027,8 @@ module Google
       
           property :altitude, as: 'altitude', class: Google::Apis::HealthV4::Altitude, decorator: Google::Apis::HealthV4::Altitude::Representation
       
+          property :basal_energy_burned, as: 'basalEnergyBurned', class: Google::Apis::HealthV4::BasalEnergyBurned, decorator: Google::Apis::HealthV4::BasalEnergyBurned::Representation
+      
           property :body_fat, as: 'bodyFat', class: Google::Apis::HealthV4::BodyFat, decorator: Google::Apis::HealthV4::BodyFat::Representation
       
           property :daily_heart_rate_variability, as: 'dailyHeartRateVariability', class: Google::Apis::HealthV4::DailyHeartRateVariability, decorator: Google::Apis::HealthV4::DailyHeartRateVariability::Representation
@@ -1206,6 +1223,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_response, as: 'httpResponse', class: Google::Apis::HealthV4::HttpResponse, decorator: Google::Apis::HealthV4::HttpResponse::Representation
+      
         end
       end
       
@@ -1465,6 +1490,8 @@ module Google
           property :activity_level, as: 'activityLevel', class: Google::Apis::HealthV4::ActivityLevel, decorator: Google::Apis::HealthV4::ActivityLevel::Representation
       
           property :altitude, as: 'altitude', class: Google::Apis::HealthV4::Altitude, decorator: Google::Apis::HealthV4::Altitude::Representation
+      
+          property :basal_energy_burned, as: 'basalEnergyBurned', class: Google::Apis::HealthV4::BasalEnergyBurned, decorator: Google::Apis::HealthV4::BasalEnergyBurned::Representation
       
           property :body_fat, as: 'bodyFat', class: Google::Apis::HealthV4::BodyFat, decorator: Google::Apis::HealthV4::BodyFat::Representation
       
@@ -1910,14 +1937,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :milliliters_sum, as: 'millilitersSum'
           property :user_provided_unit_last, as: 'userProvidedUnitLast'
-        end
-      end
-      
-      class WebhookNotificationCloudLog
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :http_response, as: 'httpResponse', class: Google::Apis::HealthV4::HttpResponse, decorator: Google::Apis::HealthV4::HttpResponse::Representation
-      
         end
       end
       

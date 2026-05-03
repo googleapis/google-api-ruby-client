@@ -340,6 +340,33 @@ module Google
         end
       end
       
+      # Number of calories burned due to basal metabolic rate (BMR) over a period of
+      # time.
+      class BasalEnergyBurned
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time interval of an observed data point.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::HealthV4::ObservationTimeInterval]
+        attr_accessor :interval
+      
+        # Required. Number of calories burned due to basal metabolic rate in
+        # kilocalories over the observed interval.
+        # Corresponds to the JSON property `kcal`
+        # @return [Float]
+        attr_accessor :kcal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @kcal = args[:kcal] if args.key?(:kcal)
+        end
+      end
+      
       # Request to delete a batch of identifiable data points.
       class BatchDeleteDataPointsRequest
         include Google::Apis::Core::Hashable
@@ -1134,6 +1161,12 @@ module Google
         # @return [Google::Apis::HealthV4::Altitude]
         attr_accessor :altitude
       
+        # Number of calories burned due to basal metabolic rate (BMR) over a period of
+        # time.
+        # Corresponds to the JSON property `basalEnergyBurned`
+        # @return [Google::Apis::HealthV4::BasalEnergyBurned]
+        attr_accessor :basal_energy_burned
+      
         # Body fat measurement.
         # Corresponds to the JSON property `bodyFat`
         # @return [Google::Apis::HealthV4::BodyFat]
@@ -1307,6 +1340,7 @@ module Google
           @active_zone_minutes = args[:active_zone_minutes] if args.key?(:active_zone_minutes)
           @activity_level = args[:activity_level] if args.key?(:activity_level)
           @altitude = args[:altitude] if args.key?(:altitude)
+          @basal_energy_burned = args[:basal_energy_burned] if args.key?(:basal_energy_burned)
           @body_fat = args[:body_fat] if args.key?(:body_fat)
           @daily_heart_rate_variability = args[:daily_heart_rate_variability] if args.key?(:daily_heart_rate_variability)
           @daily_heart_rate_zones = args[:daily_heart_rate_zones] if args.key?(:daily_heart_rate_zones)
@@ -1850,6 +1884,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Log message for a webhook notification sent by the Google Health API to a
+      # subscriber's endpoint. Includes the HTTP response received from the endpoint.
+      class GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog
+        include Google::Apis::Core::Hashable
+      
+        # Represents an HTTP response.
+        # Corresponds to the JSON property `httpResponse`
+        # @return [Google::Apis::HealthV4::HttpResponse]
+        attr_accessor :http_response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_response = args[:http_response] if args.key?(:http_response)
         end
       end
       
@@ -2775,6 +2829,12 @@ module Google
         # @return [Google::Apis::HealthV4::Altitude]
         attr_accessor :altitude
       
+        # Number of calories burned due to basal metabolic rate (BMR) over a period of
+        # time.
+        # Corresponds to the JSON property `basalEnergyBurned`
+        # @return [Google::Apis::HealthV4::BasalEnergyBurned]
+        attr_accessor :basal_energy_burned
+      
         # Body fat measurement.
         # Corresponds to the JSON property `bodyFat`
         # @return [Google::Apis::HealthV4::BodyFat]
@@ -2940,6 +3000,7 @@ module Google
           @active_zone_minutes = args[:active_zone_minutes] if args.key?(:active_zone_minutes)
           @activity_level = args[:activity_level] if args.key?(:activity_level)
           @altitude = args[:altitude] if args.key?(:altitude)
+          @basal_energy_burned = args[:basal_energy_burned] if args.key?(:basal_energy_burned)
           @body_fat = args[:body_fat] if args.key?(:body_fat)
           @daily_heart_rate_variability = args[:daily_heart_rate_variability] if args.key?(:daily_heart_rate_variability)
           @daily_heart_rate_zones = args[:daily_heart_rate_zones] if args.key?(:daily_heart_rate_zones)
@@ -4357,26 +4418,6 @@ module Google
         def update!(**args)
           @milliliters_sum = args[:milliliters_sum] if args.key?(:milliliters_sum)
           @user_provided_unit_last = args[:user_provided_unit_last] if args.key?(:user_provided_unit_last)
-        end
-      end
-      
-      # Log message for a webhook notification sent by the Google Health API to a
-      # subscriber's endpoint. Includes the HTTP response received from the endpoint.
-      class WebhookNotificationCloudLog
-        include Google::Apis::Core::Hashable
-      
-        # Represents an HTTP response.
-        # Corresponds to the JSON property `httpResponse`
-        # @return [Google::Apis::HealthV4::HttpResponse]
-        attr_accessor :http_response
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @http_response = args[:http_response] if args.key?(:http_response)
         end
       end
       
