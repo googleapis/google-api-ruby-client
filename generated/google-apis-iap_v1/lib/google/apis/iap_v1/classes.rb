@@ -1104,7 +1104,8 @@ module Google
         # region(s) where the resource exists (e.g., ["us-east1", "us-west1"]). For
         # multi-regional resources specify the name of each GCP region in the resource's
         # multi-region. NOTE: Only GCP cloud region names are supported - go/cloud-
-        # region-names.
+        # region-names. - Constraints: - Individual location strings must be less than
+        # 1000 bytes. - The cumulative size of all locations must be less than 16KB.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
