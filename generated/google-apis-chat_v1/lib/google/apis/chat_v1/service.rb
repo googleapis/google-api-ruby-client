@@ -533,21 +533,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Returns
-        # all spaces with `spaceType == GROUP_CHAT`, whose human memberships contain
-        # exactly the calling user, and the users specified in `FindGroupChatsRequest.
-        # users`. Only members that have joined the conversation are supported. For an
-        # example, see [Find group chats](https://developers.google.com/workspace/chat/
-        # find-group-chats). If the calling user blocks, or is blocked by, some users,
-        # and no spaces with the entire specified set of users are found, this method
-        # returns spaces that don't include the blocked or blocking users. The specified
-        # set of users must contain only human (non-app) memberships. A request that
-        # contains non-human users doesn't return any spaces. Requires [user
-        # authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user) with one of the following [authorization scopes](https://
-        # developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
-        # `https://www.googleapis.com/auth/chat.memberships.readonly` - `https://www.
-        # googleapis.com/auth/chat.memberships`
+        # Returns all spaces with `spaceType == GROUP_CHAT`, whose human memberships
+        # contain exactly the calling user, and the users specified in `
+        # FindGroupChatsRequest.users`. Only members that have joined the conversation
+        # are supported. For an example, see [Find group chats](https://developers.
+        # google.com/workspace/chat/find-group-chats). If the calling user blocks, or is
+        # blocked by, some users, and no spaces with the entire specified set of users
+        # are found, this method returns spaces that don't include the blocked or
+        # blocking users. The specified set of users must contain only human (non-app)
+        # memberships. A request that contains non-human users doesn't return any spaces.
+        # Requires [user authentication](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-user) with one of the following [authorization
+        # scopes](https://developers.google.com/workspace/chat/authenticate-authorize#
+        # chat-api-scopes): - `https://www.googleapis.com/auth/chat.memberships.readonly`
+        # - `https://www.googleapis.com/auth/chat.memberships`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of spaces to return. The service might return
         #   fewer than this value. If unspecified, at most 10 spaces are returned. The

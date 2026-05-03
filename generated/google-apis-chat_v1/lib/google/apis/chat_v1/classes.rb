@@ -1456,8 +1456,7 @@ module Google
       end
       
       # A response containing group chat spaces with exactly the calling user and the
-      # requested users. [Developer Preview](https://developers.google.com/workspace/
-      # preview):
+      # requested users.
       class FindGroupChatsResponse
         include Google::Apis::Core::Hashable
       
