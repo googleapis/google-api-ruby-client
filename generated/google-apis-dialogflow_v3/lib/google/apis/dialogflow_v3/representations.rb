@@ -2944,6 +2944,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3671,6 +3677,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8910,9 +8922,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :answer_text, as: 'answerText'
+          property :event_source, as: 'eventSource', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource::Representation
+      
           property :faq_source, as: 'faqSource', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource::Representation
       
           property :generative_source, as: 'generativeSource', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource::Representation
+      
+          property :playbook_source, as: 'playbookSource', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event, as: 'event'
+          property :snippets, as: 'snippets', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource::Representation
       
         end
       end
@@ -10194,9 +10219,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :answer_text, as: 'answerText'
+          property :event_source, as: 'eventSource', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource::Representation
+      
           property :faq_source, as: 'faqSource', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource::Representation
       
           property :generative_source, as: 'generativeSource', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource::Representation
+      
+          property :playbook_source, as: 'playbookSource', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event, as: 'event'
+          property :snippets, as: 'snippets', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource::Representation
       
         end
       end
