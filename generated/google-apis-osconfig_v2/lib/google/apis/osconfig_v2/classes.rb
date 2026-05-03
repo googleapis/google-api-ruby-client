@@ -78,183 +78,6 @@ module Google
         end
       end
       
-      # Represents the metadata of a generic long-running operation.
-      class GoogleCloudOsconfigCommonV1OperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. API version used to start the operation.
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # Output only. The time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The time the operation finished running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
-        # Corresponds to the JSON property `requestedCancellation`
-        # @return [Boolean]
-        attr_accessor :requested_cancellation
-        alias_method :requested_cancellation?, :requested_cancellation
-      
-        # Output only. Human-readable status of the operation, if any.
-        # Corresponds to the JSON property `statusMessage`
-        # @return [String]
-        attr_accessor :status_message
-      
-        # Output only. Server-defined resource path for the target of the operation.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Output only. Name of the verb executed by the operation.
-        # Corresponds to the JSON property `verb`
-        # @return [String]
-        attr_accessor :verb
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
-          @status_message = args[:status_message] if args.key?(:status_message)
-          @target = args[:target] if args.key?(:target)
-          @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
-      # Represents the metadata of a generic long-running operation.
-      class GoogleCloudOsconfigCommonV1alphaOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. API version used to start the operation.
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # Output only. The time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The time the operation finished running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
-        # Corresponds to the JSON property `requestedCancellation`
-        # @return [Boolean]
-        attr_accessor :requested_cancellation
-        alias_method :requested_cancellation?, :requested_cancellation
-      
-        # Output only. Human-readable status of the operation, if any.
-        # Corresponds to the JSON property `statusMessage`
-        # @return [String]
-        attr_accessor :status_message
-      
-        # Output only. Server-defined resource path for the target of the operation.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Output only. Name of the verb executed by the operation.
-        # Corresponds to the JSON property `verb`
-        # @return [String]
-        attr_accessor :verb
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
-          @status_message = args[:status_message] if args.key?(:status_message)
-          @target = args[:target] if args.key?(:target)
-          @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
-      # Represents the metadata of a generic long-running operation.
-      class GoogleCloudOsconfigCommonV1mainOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. API version used to start the operation.
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # Output only. The time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The time the operation finished running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
-        # Corresponds to the JSON property `requestedCancellation`
-        # @return [Boolean]
-        attr_accessor :requested_cancellation
-        alias_method :requested_cancellation?, :requested_cancellation
-      
-        # Output only. Human-readable status of the operation, if any.
-        # Corresponds to the JSON property `statusMessage`
-        # @return [String]
-        attr_accessor :status_message
-      
-        # Output only. Server-defined resource path for the target of the operation.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Output only. Name of the verb executed by the operation.
-        # Corresponds to the JSON property `verb`
-        # @return [String]
-        attr_accessor :verb
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
-          @status_message = args[:status_message] if args.key?(:status_message)
-          @target = args[:target] if args.key?(:target)
-          @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
       # OS policy assignment operation metadata provided by OS policy assignment API
       # methods that return long running operations.
       class GoogleCloudOsconfigV1OsPolicyAssignmentOperationMetadata
@@ -615,20 +438,21 @@ module Google
         end
       end
       
-      # PolicyOrchestrator helps managing project+zone level policy resources (e.g. OS
-      # Policy Assignments), by providing tools to create, update and delete them
-      # across projects and locations, at scale. Policy orchestrator functions as an
-      # endless loop. Each iteration orchestrator computes a set of resources that
-      # should be affected, then progressively applies changes to them. If for some
-      # reason this set of resources changes over time (e.g. new projects are added),
-      # the future loop iterations will address that. Orchestrator can either upsert
-      # or delete policy resources. For more details, see the description of the `
-      # action`, and `orchestrated_resource` fields. Note that policy orchestrator do
-      # not "manage" the resources it creates. Every iteration is independent and only
-      # minimal history of past actions is retained (apart from Cloud Logging). If
-      # orchestrator gets deleted, it does not affect the resources it created in the
-      # past. Those will remain where they were. Same applies if projects are removed
-      # from the orchestrator's scope.
+      # A policy orchestrator manages project-level and zone-level policy resources,
+      # such as OS policy assignments. It provides methods to create, update, and
+      # delete these resources across projects and locations at scale. The policy
+      # orchestrator operates as a continuous loop. In each iteration, the
+      # orchestrator identifies the set of resources to be modified and progressively
+      # applies changes. If the set of resources changes over time (for example, if
+      # you add new projects), subsequent iterations address those changes. The
+      # orchestrator can either upsert or delete policy resources. For more details,
+      # see the `action` and `orchestrated_resource` fields. The policy orchestrator
+      # does not manage the lifecycle of the resources it creates. Each iteration is
+      # independent and, besides Cloud Logging, the orchestrator retains only a
+      # minimal history of past actions. Deleting the orchestrator does not affect
+      # previously created resources; these resources remain in their current state.
+      # Similarly, removing projects from the orchestrator's scope does not affect
+      # existing resources.
       class GoogleCloudOsconfigV2PolicyOrchestrator
         include Google::Apis::Core::Hashable
       
@@ -662,10 +486,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. Identifier. In form of * `organizations/`organization_id`/locations/
-        # global/policyOrchestrators/`orchestrator_id`` * `folders/`folder_id`/locations/
-        # global/policyOrchestrators/`orchestrator_id`` * `projects/`
-        # project_id_or_number`/locations/global/policyOrchestrators/`orchestrator_id``
+        # Immutable. Identifier. In the following format: * `organizations/`
+        # organization_id`/locations/global/policyOrchestrators/`orchestrator_id`` * `
+        # folders/`folder_id`/locations/global/policyOrchestrators/`orchestrator_id`` * `
+        # projects/`project_id_or_number`/locations/global/policyOrchestrators/`
+        # orchestrator_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

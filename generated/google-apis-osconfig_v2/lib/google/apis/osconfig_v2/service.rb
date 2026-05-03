@@ -231,10 +231,11 @@ module Google
         
         # Updates an existing policy orchestrator, parented by a folder.
         # @param [String] name
-        #   Immutable. Identifier. In form of * `organizations/`organization_id`/locations/
-        #   global/policyOrchestrators/`orchestrator_id`` * `folders/`folder_id`/locations/
-        #   global/policyOrchestrators/`orchestrator_id`` * `projects/`
-        #   project_id_or_number`/locations/global/policyOrchestrators/`orchestrator_id``
+        #   Immutable. Identifier. In the following format: * `organizations/`
+        #   organization_id`/locations/global/policyOrchestrators/`orchestrator_id`` * `
+        #   folders/`folder_id`/locations/global/policyOrchestrators/`orchestrator_id`` * `
+        #   projects/`project_id_or_number`/locations/global/policyOrchestrators/`
+        #   orchestrator_id``
         # @param [Google::Apis::OsconfigV2::GoogleCloudOsconfigV2PolicyOrchestrator] google_cloud_osconfig_v2__policy_orchestrator_object
         # @param [String] update_mask
         #   Optional. The list of fields to merge into the existing policy orchestrator. A
@@ -612,10 +613,11 @@ module Google
         
         # Updates an existing policy orchestrator, parented by an organization.
         # @param [String] name
-        #   Immutable. Identifier. In form of * `organizations/`organization_id`/locations/
-        #   global/policyOrchestrators/`orchestrator_id`` * `folders/`folder_id`/locations/
-        #   global/policyOrchestrators/`orchestrator_id`` * `projects/`
-        #   project_id_or_number`/locations/global/policyOrchestrators/`orchestrator_id``
+        #   Immutable. Identifier. In the following format: * `organizations/`
+        #   organization_id`/locations/global/policyOrchestrators/`orchestrator_id`` * `
+        #   folders/`folder_id`/locations/global/policyOrchestrators/`orchestrator_id`` * `
+        #   projects/`project_id_or_number`/locations/global/policyOrchestrators/`
+        #   orchestrator_id``
         # @param [Google::Apis::OsconfigV2::GoogleCloudOsconfigV2PolicyOrchestrator] google_cloud_osconfig_v2__policy_orchestrator_object
         # @param [String] update_mask
         #   Optional. The list of fields to merge into the existing policy orchestrator. A
@@ -993,10 +995,11 @@ module Google
         
         # Updates an existing policy orchestrator, parented by a project.
         # @param [String] name
-        #   Immutable. Identifier. In form of * `organizations/`organization_id`/locations/
-        #   global/policyOrchestrators/`orchestrator_id`` * `folders/`folder_id`/locations/
-        #   global/policyOrchestrators/`orchestrator_id`` * `projects/`
-        #   project_id_or_number`/locations/global/policyOrchestrators/`orchestrator_id``
+        #   Immutable. Identifier. In the following format: * `organizations/`
+        #   organization_id`/locations/global/policyOrchestrators/`orchestrator_id`` * `
+        #   folders/`folder_id`/locations/global/policyOrchestrators/`orchestrator_id`` * `
+        #   projects/`project_id_or_number`/locations/global/policyOrchestrators/`
+        #   orchestrator_id``
         # @param [Google::Apis::OsconfigV2::GoogleCloudOsconfigV2PolicyOrchestrator] google_cloud_osconfig_v2__policy_orchestrator_object
         # @param [String] update_mask
         #   Optional. The list of fields to merge into the existing policy orchestrator. A
