@@ -1306,6 +1306,46 @@ module Google
         end
       end
       
+      # OAuth token.
+      class OAuthToken
+        include Google::Apis::Core::Hashable
+      
+        # Required. The OAuth token.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # Optional. The email address encapsulated in the OAuth token.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Optional. The time the OAuth access token will expire. This should be the time
+        # the access token was generated plus the expires_in offset returned from the
+        # Access Token Response.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Optional. The scopes encapsulated in the OAuth token. See https://developers.
+        # google.com/identity/protocols/oauth2/scopes for more information.
+        # Corresponds to the JSON property `scopes`
+        # @return [String]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @email = args[:email] if args.key?(:email)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1635,6 +1675,25 @@ module Google
           @cluster_hostname = args[:cluster_hostname] if args.key?(:cluster_hostname)
           @enable_private_endpoint = args[:enable_private_endpoint] if args.key?(:enable_private_endpoint)
           @service_attachment_uri = args[:service_attachment_uri] if args.key?(:service_attachment_uri)
+        end
+      end
+      
+      # Request message for PushCredentials.
+      class PushCredentialsRequest
+        include Google::Apis::Core::Hashable
+      
+        # OAuth token.
+        # Corresponds to the JSON property `applicationDefaultCredentials`
+        # @return [Google::Apis::WorkstationsV1beta::OAuthToken]
+        attr_accessor :application_default_credentials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_default_credentials = args[:application_default_credentials] if args.key?(:application_default_credentials)
         end
       end
       
@@ -2370,6 +2429,17 @@ module Google
         attr_accessor :enable_audit_agent
         alias_method :enable_audit_agent?, :enable_audit_agent
       
+        # Optional. Enables pushing user provided credentials to Workstations by calling
+        # workstations.pushCredentials. If application_default_credentials are supplied
+        # to pushCredentials, the provided token is returned when tools and applications
+        # running in the user container make a request for Default Application
+        # Credentials. Please note that any credentials supplied are made available to
+        # all users with access to the workstation.
+        # Corresponds to the JSON property `enablePushingCredentials`
+        # @return [Boolean]
+        attr_accessor :enable_pushing_credentials
+        alias_method :enable_pushing_credentials?, :enable_pushing_credentials
+      
         # A customer-managed encryption key (CMEK) for the Compute Engine resources of
         # the associated workstation configuration. Specify the name of your Cloud KMS
         # encryption key and the default service account. We recommend that you use a
@@ -2474,11 +2544,10 @@ module Google
         attr_accessor :replica_zones
       
         # Optional. Number of seconds that a workstation can run until it is
-        # automatically shut down. This field applies to workstations in both
-        # STATE_RUNNING and STATE_SUSPENDED. We recommend that workstations be shut down
-        # daily to reduce costs and so that security updates can be applied upon restart.
-        # The idle_timeout and running_timeout fields are independent of each other.
-        # Note that the running_timeout field shuts down VMs after the specified time,
+        # automatically shut down. We recommend that workstations be shut down daily to
+        # reduce costs and so that security updates can be applied upon restart. The
+        # idle_timeout and running_timeout fields are independent of each other. Note
+        # that the running_timeout field shuts down VMs after the specified time,
         # regardless of whether or not the VMs are idle. Provide duration terminated by `
         # s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12
         # hours). A value of `"0s"` indicates that workstations using this configuration
@@ -2531,6 +2600,7 @@ module Google
           @disable_tcp_connections = args[:disable_tcp_connections] if args.key?(:disable_tcp_connections)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_audit_agent = args[:enable_audit_agent] if args.key?(:enable_audit_agent)
+          @enable_pushing_credentials = args[:enable_pushing_credentials] if args.key?(:enable_pushing_credentials)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @ephemeral_directories = args[:ephemeral_directories] if args.key?(:ephemeral_directories)
           @etag = args[:etag] if args.key?(:etag)

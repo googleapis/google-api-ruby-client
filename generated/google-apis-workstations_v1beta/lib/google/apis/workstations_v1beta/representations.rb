@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OAuthToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +239,12 @@ module Google
       end
       
       class PrivateClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PushCredentialsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -610,6 +622,16 @@ module Google
         end
       end
       
+      class OAuthToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          property :email, as: 'email'
+          property :expire_time, as: 'expireTime'
+          property :scopes, as: 'scopes'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -673,6 +695,14 @@ module Google
           property :cluster_hostname, as: 'clusterHostname'
           property :enable_private_endpoint, as: 'enablePrivateEndpoint'
           property :service_attachment_uri, as: 'serviceAttachmentUri'
+        end
+      end
+      
+      class PushCredentialsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_default_credentials, as: 'applicationDefaultCredentials', class: Google::Apis::WorkstationsV1beta::OAuthToken, decorator: Google::Apis::WorkstationsV1beta::OAuthToken::Representation
+      
         end
       end
       
@@ -838,6 +868,7 @@ module Google
           property :disable_tcp_connections, as: 'disableTcpConnections'
           property :display_name, as: 'displayName'
           property :enable_audit_agent, as: 'enableAuditAgent'
+          property :enable_pushing_credentials, as: 'enablePushingCredentials'
           property :encryption_key, as: 'encryptionKey', class: Google::Apis::WorkstationsV1beta::CustomerEncryptionKey, decorator: Google::Apis::WorkstationsV1beta::CustomerEncryptionKey::Representation
       
           collection :ephemeral_directories, as: 'ephemeralDirectories', class: Google::Apis::WorkstationsV1beta::EphemeralDirectory, decorator: Google::Apis::WorkstationsV1beta::EphemeralDirectory::Representation
