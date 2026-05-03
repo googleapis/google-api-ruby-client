@@ -17083,6 +17083,11 @@ module Google
         attr_accessor :answer_text
       
         # 
+        # Corresponds to the JSON property `eventSource`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource]
+        attr_accessor :event_source
+      
+        # 
         # Corresponds to the JSON property `faqSource`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource]
         attr_accessor :faq_source
@@ -17092,6 +17097,11 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource]
         attr_accessor :generative_source
       
+        # 
+        # Corresponds to the JSON property `playbookSource`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource]
+        attr_accessor :playbook_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17099,8 +17109,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @answer_text = args[:answer_text] if args.key?(:answer_text)
+          @event_source = args[:event_source] if args.key?(:event_source)
           @faq_source = args[:faq_source] if args.key?(:faq_source)
           @generative_source = args[:generative_source] if args.key?(:generative_source)
+          @playbook_source = args[:playbook_source] if args.key?(:playbook_source)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
+        # 
+        # Corresponds to the JSON property `snippets`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource]
+        attr_accessor :snippets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event = args[:event] if args.key?(:event)
+          @snippets = args[:snippets] if args.key?(:snippets)
         end
       end
       
@@ -21230,6 +21267,11 @@ module Google
         attr_accessor :answer_text
       
         # 
+        # Corresponds to the JSON property `eventSource`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource]
+        attr_accessor :event_source
+      
+        # 
         # Corresponds to the JSON property `faqSource`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource]
         attr_accessor :faq_source
@@ -21239,6 +21281,11 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource]
         attr_accessor :generative_source
       
+        # 
+        # Corresponds to the JSON property `playbookSource`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource]
+        attr_accessor :playbook_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21246,8 +21293,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @answer_text = args[:answer_text] if args.key?(:answer_text)
+          @event_source = args[:event_source] if args.key?(:event_source)
           @faq_source = args[:faq_source] if args.key?(:faq_source)
           @generative_source = args[:generative_source] if args.key?(:generative_source)
+          @playbook_source = args[:playbook_source] if args.key?(:playbook_source)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
+        # 
+        # Corresponds to the JSON property `snippets`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource]
+        attr_accessor :snippets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event = args[:event] if args.key?(:event)
+          @snippets = args[:snippets] if args.key?(:snippets)
         end
       end
       
