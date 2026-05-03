@@ -437,7 +437,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :add_label_ids
       
-        # Email address that the message should be forwarded to.
+        # Email address that the message should be forwarded to. This effectively
+        # redirects the message to the address specified in this field, maintaining the
+        # original sender in the "From" field.
         # Corresponds to the JSON property `forward`
         # @return [String]
         attr_accessor :forward
@@ -1610,7 +1612,8 @@ module Google
       
       # Settings associated with a send-as alias, which can be either the primary
       # login address associated with the account or a custom "from" address. Send-as
-      # aliases correspond to the "Send Mail As" feature in the web interface.
+      # aliases correspond to the "Send Mail As" feature in the web interface. The
+      # send-as alias must be a valid email address.
       class SendAs
         include Google::Apis::Core::Hashable
       
