@@ -684,28 +684,71 @@ module Google
       class JsonSchema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :_comment, as: '$comment'
+          hash :_defs, as: '$defs', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          property :_id, as: '$id'
+          property :_ref, as: '$ref'
+          property :_schema, as: '$schema'
           hash :additional_details, as: 'additionalDetails'
+          property :additional_items, as: 'additionalItems', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          property :additional_properties, as: 'additionalProperties', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          collection :all_of, as: 'allOf', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          collection :any_of, as: 'anyOf', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          property :const, as: 'const'
+          property :contains, as: 'contains', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          property :content_encoding, as: 'contentEncoding'
+          property :content_media_type, as: 'contentMediaType'
           property :default, as: 'default'
+          hash :definitions, as: 'definitions', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          hash :dependencies, as: 'dependencies'
           property :description, as: 'description'
+          property :else, as: 'else', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
           collection :enum, as: 'enum'
+          collection :examples, as: 'examples'
           property :exclusive_maximum, as: 'exclusiveMaximum'
           property :exclusive_minimum, as: 'exclusiveMinimum'
           property :format, as: 'format'
+          property :if, as: 'if', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
           property :items, as: 'items', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
           property :jdbc_type, as: 'jdbcType'
           property :max_items, as: 'maxItems'
           property :max_length, as: 'maxLength'
+          property :max_properties, as: 'maxProperties'
           property :maximum, as: 'maximum'
           property :min_items, as: 'minItems'
           property :min_length, as: 'minLength'
+          property :min_properties, as: 'minProperties'
           property :minimum, as: 'minimum'
+          property :multiple_of, as: 'multipleOf'
+          property :not, as: 'not', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          collection :one_of, as: 'oneOf', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
           property :pattern, as: 'pattern'
+          hash :pattern_properties, as: 'patternProperties', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
           hash :properties, as: 'properties', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
+          property :property_names, as: 'propertyNames', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          property :read_only, as: 'readOnly'
           collection :required, as: 'required'
+          property :then_prop, as: 'then', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          property :title, as: 'title'
           collection :type, as: 'type'
           property :unique_items, as: 'uniqueItems'
+          property :write_only, as: 'writeOnly'
         end
       end
       
@@ -766,6 +809,7 @@ module Google
       
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
+          collection :tool_names, as: 'toolNames'
           property :tool_spec, as: 'toolSpec', class: Google::Apis::ConnectorsV2::ToolSpec, decorator: Google::Apis::ConnectorsV2::ToolSpec::Representation
       
         end

@@ -1076,21 +1076,101 @@ module Google
       class JsonSchema
         include Google::Apis::Core::Hashable
       
+        # A comment on the schema.
+        # Corresponds to the JSON property `$comment`
+        # @return [String]
+        attr_accessor :_comment
+      
+        # Definitions for the schema.
+        # Corresponds to the JSON property `$defs`
+        # @return [Hash<String,Google::Apis::ConnectorsV2::JsonSchema>]
+        attr_accessor :_defs
+      
+        # The URI defining the core schema meta-schema.
+        # Corresponds to the JSON property `$id`
+        # @return [String]
+        attr_accessor :_id
+      
+        # A reference to another schema.
+        # Corresponds to the JSON property `$ref`
+        # @return [String]
+        attr_accessor :_ref
+      
+        # The URI defining the schema.
+        # Corresponds to the JSON property `$schema`
+        # @return [String]
+        attr_accessor :_schema
+      
         # Additional details apart from standard json schema fields, this gives
         # flexibility to store metadata about the schema
         # Corresponds to the JSON property `additionalDetails`
         # @return [Hash<String,Object>]
         attr_accessor :additional_details
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `additionalItems`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :additional_items
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `additionalProperties`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :additional_properties
+      
+        # Schema that must be valid against all of the sub-schemas.
+        # Corresponds to the JSON property `allOf`
+        # @return [Array<Google::Apis::ConnectorsV2::JsonSchema>]
+        attr_accessor :all_of
+      
+        # Schema that must be valid against at least one of the sub-schemas.
+        # Corresponds to the JSON property `anyOf`
+        # @return [Array<Google::Apis::ConnectorsV2::JsonSchema>]
+        attr_accessor :any_of
+      
+        # Const value that the data must match.
+        # Corresponds to the JSON property `const`
+        # @return [Object]
+        attr_accessor :const
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `contains`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :contains
+      
+        # Encoding of the content.
+        # Corresponds to the JSON property `contentEncoding`
+        # @return [String]
+        attr_accessor :content_encoding
+      
+        # Media type of the content.
+        # Corresponds to the JSON property `contentMediaType`
+        # @return [String]
+        attr_accessor :content_media_type
+      
         # The default value of the field or object described by this schema.
         # Corresponds to the JSON property `default`
         # @return [Object]
         attr_accessor :default
       
+        # Definitions for the schema.
+        # Corresponds to the JSON property `definitions`
+        # @return [Hash<String,Google::Apis::ConnectorsV2::JsonSchema>]
+        attr_accessor :definitions
+      
+        # Dependencies for the schema.
+        # Corresponds to the JSON property `dependencies`
+        # @return [Hash<String,Object>]
+        attr_accessor :dependencies
+      
         # A description of this schema.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `else`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :else
       
         # Possible values for an enumeration. This works in conjunction with `type` to
         # represent types with a fixed set of legal values
@@ -1098,23 +1178,31 @@ module Google
         # @return [Array<Object>]
         attr_accessor :enum
       
+        # Examples of the value.
+        # Corresponds to the JSON property `examples`
+        # @return [Array<Object>]
+        attr_accessor :examples
+      
         # Whether the maximum number value is exclusive.
         # Corresponds to the JSON property `exclusiveMaximum`
-        # @return [Boolean]
+        # @return [Object]
         attr_accessor :exclusive_maximum
-        alias_method :exclusive_maximum?, :exclusive_maximum
       
         # Whether the minimum number value is exclusive.
         # Corresponds to the JSON property `exclusiveMinimum`
-        # @return [Boolean]
+        # @return [Object]
         attr_accessor :exclusive_minimum
-        alias_method :exclusive_minimum?, :exclusive_minimum
       
         # Format of the value as per https://json-schema.org/understanding-json-schema/
         # reference/string.html#format
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `if`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :if
       
         # JsonSchema representation of schema metadata
         # Corresponds to the JSON property `items`
@@ -1136,6 +1224,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_length
       
+        # Maximum number of properties.
+        # Corresponds to the JSON property `maxProperties`
+        # @return [Fixnum]
+        attr_accessor :max_properties
+      
         # Maximum value of the number field.
         # Corresponds to the JSON property `maximum`
         # @return [Object]
@@ -1151,16 +1244,41 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_length
       
+        # Minimum number of properties.
+        # Corresponds to the JSON property `minProperties`
+        # @return [Fixnum]
+        attr_accessor :min_properties
+      
         # Minimum value of the number field.
         # Corresponds to the JSON property `minimum`
         # @return [Object]
         attr_accessor :minimum
+      
+        # Number must be a multiple of this value.
+        # Corresponds to the JSON property `multipleOf`
+        # @return [Float]
+        attr_accessor :multiple_of
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `not`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :not
+      
+        # Schema that must be valid against at least one of the sub-schemas.
+        # Corresponds to the JSON property `oneOf`
+        # @return [Array<Google::Apis::ConnectorsV2::JsonSchema>]
+        attr_accessor :one_of
       
         # Regex pattern of the string field. This is a string value that describes the
         # regular expression that the string value should match.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
+      
+        # Pattern properties for the schema.
+        # Corresponds to the JSON property `patternProperties`
+        # @return [Hash<String,Google::Apis::ConnectorsV2::JsonSchema>]
+        attr_accessor :pattern_properties
       
         # The child schemas, applicable only if this is of type `object`. The key is the
         # name of the property and the value is the json schema that describes that
@@ -1169,10 +1287,31 @@ module Google
         # @return [Hash<String,Google::Apis::ConnectorsV2::JsonSchema>]
         attr_accessor :properties
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `propertyNames`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :property_names
+      
+        # Whether the value is read-only.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
         # Whether this property is required.
         # Corresponds to the JSON property `required`
         # @return [Array<String>]
         attr_accessor :required
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `then`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :then_prop
+      
+        # A title of the schema.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
       
         # JSON Schema Validation: A Vocabulary for Structural Validation of JSON
         # Corresponds to the JSON property `type`
@@ -1185,32 +1324,67 @@ module Google
         attr_accessor :unique_items
         alias_method :unique_items?, :unique_items
       
+        # Whether the value is write-only.
+        # Corresponds to the JSON property `writeOnly`
+        # @return [Boolean]
+        attr_accessor :write_only
+        alias_method :write_only?, :write_only
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @_comment = args[:_comment] if args.key?(:_comment)
+          @_defs = args[:_defs] if args.key?(:_defs)
+          @_id = args[:_id] if args.key?(:_id)
+          @_ref = args[:_ref] if args.key?(:_ref)
+          @_schema = args[:_schema] if args.key?(:_schema)
           @additional_details = args[:additional_details] if args.key?(:additional_details)
+          @additional_items = args[:additional_items] if args.key?(:additional_items)
+          @additional_properties = args[:additional_properties] if args.key?(:additional_properties)
+          @all_of = args[:all_of] if args.key?(:all_of)
+          @any_of = args[:any_of] if args.key?(:any_of)
+          @const = args[:const] if args.key?(:const)
+          @contains = args[:contains] if args.key?(:contains)
+          @content_encoding = args[:content_encoding] if args.key?(:content_encoding)
+          @content_media_type = args[:content_media_type] if args.key?(:content_media_type)
           @default = args[:default] if args.key?(:default)
+          @definitions = args[:definitions] if args.key?(:definitions)
+          @dependencies = args[:dependencies] if args.key?(:dependencies)
           @description = args[:description] if args.key?(:description)
+          @else = args[:else] if args.key?(:else)
           @enum = args[:enum] if args.key?(:enum)
+          @examples = args[:examples] if args.key?(:examples)
           @exclusive_maximum = args[:exclusive_maximum] if args.key?(:exclusive_maximum)
           @exclusive_minimum = args[:exclusive_minimum] if args.key?(:exclusive_minimum)
           @format = args[:format] if args.key?(:format)
+          @if = args[:if] if args.key?(:if)
           @items = args[:items] if args.key?(:items)
           @jdbc_type = args[:jdbc_type] if args.key?(:jdbc_type)
           @max_items = args[:max_items] if args.key?(:max_items)
           @max_length = args[:max_length] if args.key?(:max_length)
+          @max_properties = args[:max_properties] if args.key?(:max_properties)
           @maximum = args[:maximum] if args.key?(:maximum)
           @min_items = args[:min_items] if args.key?(:min_items)
           @min_length = args[:min_length] if args.key?(:min_length)
+          @min_properties = args[:min_properties] if args.key?(:min_properties)
           @minimum = args[:minimum] if args.key?(:minimum)
+          @multiple_of = args[:multiple_of] if args.key?(:multiple_of)
+          @not = args[:not] if args.key?(:not)
+          @one_of = args[:one_of] if args.key?(:one_of)
           @pattern = args[:pattern] if args.key?(:pattern)
+          @pattern_properties = args[:pattern_properties] if args.key?(:pattern_properties)
           @properties = args[:properties] if args.key?(:properties)
+          @property_names = args[:property_names] if args.key?(:property_names)
+          @read_only = args[:read_only] if args.key?(:read_only)
           @required = args[:required] if args.key?(:required)
+          @then_prop = args[:then_prop] if args.key?(:then_prop)
+          @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
           @unique_items = args[:unique_items] if args.key?(:unique_items)
+          @write_only = args[:write_only] if args.key?(:write_only)
         end
       end
       
@@ -1390,6 +1564,11 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
+        # List of tool names to for selective tool fetching.
+        # Corresponds to the JSON property `toolNames`
+        # @return [Array<String>]
+        attr_accessor :tool_names
+      
         # List of tool specifications.
         # Corresponds to the JSON property `toolSpec`
         # @return [Google::Apis::ConnectorsV2::ToolSpec]
@@ -1404,6 +1583,7 @@ module Google
           @execution_config = args[:execution_config] if args.key?(:execution_config)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
+          @tool_names = args[:tool_names] if args.key?(:tool_names)
           @tool_spec = args[:tool_spec] if args.key?(:tool_spec)
         end
       end
