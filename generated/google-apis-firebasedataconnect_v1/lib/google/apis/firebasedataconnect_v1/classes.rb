@@ -179,7 +179,7 @@ module Google
         end
       end
       
-      # Data Connect specific properties for a path under response.data.
+      # SQL Connect specific properties for a path under response.data.
       class DataConnectProperties
         include Google::Apis::Core::Hashable
       
@@ -219,7 +219,7 @@ module Google
         end
       end
       
-      # A data source that backs Firebase Data Connect services.
+      # A data source that backs Firebase SQL Connect services.
       class Datasource
         include Google::Apis::Core::Hashable
       
@@ -260,7 +260,7 @@ module Google
         end
       end
       
-      # The ExecuteMutation request to Firebase Data Connect.
+      # The ExecuteMutation request to Firebase SQL Connect.
       class ExecuteMutationRequest
         include Google::Apis::Core::Hashable
       
@@ -287,7 +287,7 @@ module Google
         end
       end
       
-      # The ExecuteMutation response from Firebase Data Connect.
+      # The ExecuteMutation response from Firebase SQL Connect.
       class ExecuteMutationResponse
         include Google::Apis::Core::Hashable
       
@@ -319,7 +319,7 @@ module Google
         end
       end
       
-      # The ExecuteQuery request to Firebase Data Connect.
+      # The ExecuteQuery request to Firebase SQL Connect.
       class ExecuteQueryRequest
         include Google::Apis::Core::Hashable
       
@@ -346,7 +346,7 @@ module Google
         end
       end
       
-      # The ExecuteQuery response from Firebase Data Connect.
+      # The ExecuteQuery response from Firebase SQL Connect.
       class ExecuteQueryResponse
         include Google::Apis::Core::Hashable
       
@@ -406,7 +406,7 @@ module Google
       end
       
       # GraphqlError conforms to the GraphQL error spec. https://spec.graphql.org/
-      # draft/#sec-Errors Firebase Data Connect API surfaces `GraphqlError` in various
+      # draft/#sec-Errors Firebase SQL Connect API surfaces `GraphqlError` in various
       # APIs: - Upon compile error, `UpdateSchema` and `UpdateConnector` return Code.
       # Invalid_Argument with a list of `GraphqlError` in error details. - Upon query
       # compile error, `ExecuteGraphql`, `ExecuteGraphqlRead` and `IntrospectGraphql`
@@ -471,7 +471,7 @@ module Google
         attr_accessor :code
       
         # More detailed error message to assist debugging. It contains application
-        # business logic that are inappropriate to leak publicly. In the emulator, Data
+        # business logic that are inappropriate to leak publicly. In the emulator, SQL
         # Connect API always includes it to assist local development and debugging. In
         # the backend, ConnectorService always hides it. GraphqlService without
         # impersonation always include it. GraphqlService with impersonation includes it
@@ -512,7 +512,7 @@ module Google
         end
       end
       
-      # The GraphQL request to Firebase Data Connect. It strives to match the GraphQL
+      # The GraphQL request to Firebase SQL Connect. It strives to match the GraphQL
       # over HTTP spec. https://github.com/graphql/graphql-over-http/blob/main/spec/
       # GraphQLOverHTTP.md#post
       class GraphqlRequest
@@ -572,8 +572,8 @@ module Google
         end
       end
       
-      # The GraphQL response from Firebase Data Connect. It strives to match the
-      # GraphQL over HTTP spec. Note: Firebase Data Connect always responds with `
+      # The GraphQL response from Firebase SQL Connect. It strives to match the
+      # GraphQL over HTTP spec. Note: Firebase SQL Connect always responds with `
       # Content-Type: application/json`. https://github.com/graphql/graphql-over-http/
       # blob/main/spec/GraphQLOverHTTP.md#body
       class GraphqlResponse
@@ -619,7 +619,7 @@ module Google
       class GraphqlResponseExtensions
         include Google::Apis::Core::Hashable
       
-        # Data Connect specific GraphQL extension, a list of paths and properties.
+        # SQL Connect specific GraphQL extension, a list of paths and properties.
         # Corresponds to the JSON property `dataConnect`
         # @return [Array<Google::Apis::FirebasedataconnectV1::DataConnectProperties>]
         attr_accessor :data_connect
@@ -659,7 +659,7 @@ module Google
         end
       end
       
-      # The Impersonate request to Firebase Data Connect.
+      # The Impersonate request to Firebase SQL Connect.
       class ImpersonateRequest
         include Google::Apis::Core::Hashable
       
@@ -1078,16 +1078,16 @@ module Google
         # @return [String]
         attr_accessor :database
       
-        # Output only. Ephemeral is true if this data connect service is served from
+        # Output only. Ephemeral is true if this SQL Connect service is served from
         # temporary in-memory emulation of Postgres. While Cloud SQL is being
-        # provisioned, the data connect service provides the ephemeral service to help
-        # developers get started. Once the Cloud SQL is provisioned, Data Connect
-        # service will transfer its data on a best-effort basis to the Cloud SQL
-        # instance. WARNING: Ephemeral data sources will expire after 24 hour. The data
-        # will be lost if they aren't transferred to the Cloud SQL instance. WARNING:
-        # When `ephemeral=true`, mutations to the database are not guaranteed to be
-        # durably persisted, even if an OK status code is returned. All or parts of the
-        # data may be lost or reverted to earlier versions.
+        # provisioned, the SQL Connect service provides the ephemeral service to help
+        # developers get started. Once the Cloud SQL is provisioned, SQL Connect service
+        # will transfer its data on a best-effort basis to the Cloud SQL instance.
+        # WARNING: Ephemeral data sources will expire after 24 hour. The data will be
+        # lost if they aren't transferred to the Cloud SQL instance. WARNING: When `
+        # ephemeral=true`, mutations to the database are not guaranteed to be durably
+        # persisted, even if an OK status code is returned. All or parts of the data may
+        # be lost or reverted to earlier versions.
         # Corresponds to the JSON property `ephemeral`
         # @return [Boolean]
         attr_accessor :ephemeral
@@ -1132,7 +1132,7 @@ module Google
         end
       end
       
-      # The application schema of a Firebase Data Connect service.
+      # The application schema of a Firebase SQL Connect service.
       class Schema
         include Google::Apis::Core::Hashable
       
@@ -1218,7 +1218,7 @@ module Google
         end
       end
       
-      # A Firebase Data Connect service.
+      # A Firebase SQL Connect service.
       class Service
         include Google::Apis::Core::Hashable
       
@@ -1250,9 +1250,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Identifier. The relative resource name of the Firebase Data Connect service,
-        # in the format: ``` projects/`project`/locations/`location`/services/`service` `
-        # `` Note that the service ID is specific to Firebase Data Connect and does not
+        # Identifier. The relative resource name of the Firebase SQL Connect service, in
+        # the format: ``` projects/`project`/locations/`location`/services/`service` ```
+        # Note that the service ID is specific to Firebase SQL Connect and does not
         # correspond to any of the instance IDs of the underlying data source
         # connections.
         # Corresponds to the JSON property `name`
