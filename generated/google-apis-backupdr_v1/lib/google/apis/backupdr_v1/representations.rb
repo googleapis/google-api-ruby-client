@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchResourceBackupConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchUsableBackupVaultsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1684,6 +1690,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_assured_workload, as: 'isAssuredWorkload'
+        end
+      end
+      
+      class FetchResourceBackupConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resource_backup_configs, as: 'resourceBackupConfigs', class: Google::Apis::BackupdrV1::ResourceBackupConfig, decorator: Google::Apis::BackupdrV1::ResourceBackupConfig::Representation
+      
         end
       end
       

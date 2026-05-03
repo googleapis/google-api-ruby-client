@@ -3535,6 +3535,31 @@ module Google
         end
       end
       
+      # Response for FetchResourceBackupConfigs.
+      class FetchResourceBackupConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of ResourceBackupConfigs for the specified scope.
+        # Corresponds to the JSON property `resourceBackupConfigs`
+        # @return [Array<Google::Apis::BackupdrV1::ResourceBackupConfig>]
+        attr_accessor :resource_backup_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resource_backup_configs = args[:resource_backup_configs] if args.key?(:resource_backup_configs)
+        end
+      end
+      
       # Response message for fetching usable BackupVaults.
       class FetchUsableBackupVaultsResponse
         include Google::Apis::Core::Hashable
