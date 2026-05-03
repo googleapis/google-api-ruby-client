@@ -7032,7 +7032,7 @@ module Google
       class UpdateNamedStyleRequest
         include Google::Apis::Core::Hashable
       
-        # The NamedStyle fields that should be updated. At least `named_style_type must
+        # The NamedStyle fields that should be updated. At least `named_style_type` must
         # be specified. The root `named_style` is implied and should not be specified. A
         # single `"*"` can be used as short-hand for listing every field. For example,
         # to update the text style to bold, set `fields` to include `"text_style"` and `"
