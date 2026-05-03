@@ -1060,6 +1060,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2HttpResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2IamBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1589,6 +1595,12 @@ module Google
       end
       
       class GroupResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2647,15 +2659,24 @@ module Google
       class ExternalExposure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_bucket, as: 'backendBucket'
           property :backend_service, as: 'backendService'
+          property :exposed_application, as: 'exposedApplication'
           property :exposed_endpoint, as: 'exposedEndpoint'
           property :exposed_service, as: 'exposedService'
           property :forwarding_rule, as: 'forwardingRule'
+          property :hostname_uri, as: 'hostnameUri'
+          collection :http_response, as: 'httpResponse', class: Google::Apis::SecuritycenterV1beta1::HttpResponse, decorator: Google::Apis::SecuritycenterV1beta1::HttpResponse::Representation
+      
           property :instance_group, as: 'instanceGroup'
+          property :internal_backend_service, as: 'internalBackendService'
           property :load_balancer_firewall_policy, as: 'loadBalancerFirewallPolicy'
           property :network_endpoint_group, as: 'networkEndpointGroup'
+          property :network_ingress_firewall_policy, as: 'networkIngressFirewallPolicy'
           property :private_ip_address, as: 'privateIpAddress'
           property :private_port, as: 'privatePort'
+          property :psc_network_attachment, as: 'pscNetworkAttachment'
+          property :psc_service_attachment, as: 'pscServiceAttachment'
           property :public_ip_address, as: 'publicIpAddress'
           property :public_port, as: 'publicPort'
           property :service_firewall_policy, as: 'serviceFirewallPolicy'
@@ -3806,15 +3827,24 @@ module Google
       class GoogleCloudSecuritycenterV2ExternalExposure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_bucket, as: 'backendBucket'
           property :backend_service, as: 'backendService'
+          property :exposed_application, as: 'exposedApplication'
           property :exposed_endpoint, as: 'exposedEndpoint'
           property :exposed_service, as: 'exposedService'
           property :forwarding_rule, as: 'forwardingRule'
+          property :hostname_uri, as: 'hostnameUri'
+          collection :http_response, as: 'httpResponse', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2HttpResponse, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2HttpResponse::Representation
+      
           property :instance_group, as: 'instanceGroup'
+          property :internal_backend_service, as: 'internalBackendService'
           property :load_balancer_firewall_policy, as: 'loadBalancerFirewallPolicy'
           property :network_endpoint_group, as: 'networkEndpointGroup'
+          property :network_ingress_firewall_policy, as: 'networkIngressFirewallPolicy'
           property :private_ip_address, as: 'privateIpAddress'
           property :private_port, as: 'privatePort'
+          property :psc_network_attachment, as: 'pscNetworkAttachment'
+          property :psc_service_attachment, as: 'pscServiceAttachment'
           property :public_ip_address, as: 'publicIpAddress'
           property :public_port, as: 'publicPort'
           property :service_firewall_policy, as: 'serviceFirewallPolicy'
@@ -4019,6 +4049,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :group_id, as: 'groupId'
           property :group_type, as: 'groupType'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2HttpResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :status_code, as: 'statusCode'
         end
       end
       
@@ -4934,6 +4972,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
           hash :properties, as: 'properties'
+        end
+      end
+      
+      class HttpResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :status_code, as: 'statusCode'
         end
       end
       
