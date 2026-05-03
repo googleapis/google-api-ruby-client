@@ -202,7 +202,8 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # Output only. The time the document was created.
+        # Output only. The timestamp of the original external publication of the
+        # document.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
