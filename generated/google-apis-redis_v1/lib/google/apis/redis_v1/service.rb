@@ -116,8 +116,8 @@ module Google
         end
         
         # Lists information about the supported locations for this service. This method
-        # lists locations based on the resource scope provided in the [
-        # ListLocationsRequest.name] field: * **Global locations**: If `name` is empty,
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
         # the method lists the public locations available to all projects. * **Project-
         # specific locations**: If `name` follows the format `projects/`project``, the
         # method lists locations visible to that specific project. This includes public,
@@ -128,8 +128,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail

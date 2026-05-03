@@ -1881,7 +1881,7 @@ module Google
         # @return [String]
         attr_accessor :last_refresh_time
       
-        # Resource location.
+        # Required. Resource location.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
