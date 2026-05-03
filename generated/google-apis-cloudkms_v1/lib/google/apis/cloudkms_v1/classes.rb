@@ -3850,7 +3850,7 @@ module Google
         attr_accessor :state
       
         # Output only. The system-defined duration that an instance can remain
-        # unrefreshed until it is automatically disabled. This will have a value of 120
+        # unrefreshed until it is automatically disabled. This will have a value of 730
         # days.
         # Corresponds to the JSON property `unrefreshedDurationUntilDisable`
         # @return [String]
