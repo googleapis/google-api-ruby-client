@@ -61,6 +61,14 @@ module Google
         # @return [String]
         attr_accessor :request_origin_tag
       
+        # If true (default), truncate input videos that exceed the model's maximum frame
+        # count by applying a frame_selection_config to __video_file__ inputs. Set to
+        # false to preserve the existing fail-fast behavior.
+        # Corresponds to the JSON property `truncateInputVideo`
+        # @return [Boolean]
+        attr_accessor :truncate_input_video
+        alias_method :truncate_input_video?, :truncate_input_video
+      
         # GCS URI of the grayscale video mask for Differential Diffusion. Maps to
         # sdedit_video_tmax_scale_map
         # Corresponds to the JSON property `videoTransformMaskGcsUri`
@@ -84,6 +92,7 @@ module Google
           @num_diffusion_steps = args[:num_diffusion_steps] if args.key?(:num_diffusion_steps)
           @prompt_inputs = args[:prompt_inputs] if args.key?(:prompt_inputs)
           @request_origin_tag = args[:request_origin_tag] if args.key?(:request_origin_tag)
+          @truncate_input_video = args[:truncate_input_video] if args.key?(:truncate_input_video)
           @video_transform_mask_gcs_uri = args[:video_transform_mask_gcs_uri] if args.key?(:video_transform_mask_gcs_uri)
           @video_transform_strength = args[:video_transform_strength] if args.key?(:video_transform_strength)
         end
@@ -1938,6 +1947,31 @@ module Google
           @notebook_runtime = args[:notebook_runtime] if args.key?(:notebook_runtime)
           @notebook_runtime_id = args[:notebook_runtime_id] if args.key?(:notebook_runtime_id)
           @notebook_runtime_template = args[:notebook_runtime_template] if args.key?(:notebook_runtime_template)
+        end
+      end
+      
+      # Request message for ReasoningEngineExecutionService.AsyncQueryReasoningEngine.
+      class GoogleCloudAiplatformV1beta1AsyncQueryReasoningEngineRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input Cloud Storage URI for the Async query.
+        # Corresponds to the JSON property `inputGcsUri`
+        # @return [String]
+        attr_accessor :input_gcs_uri
+      
+        # Optional. Output Cloud Storage URI for the Async query.
+        # Corresponds to the JSON property `outputGcsUri`
+        # @return [String]
+        attr_accessor :output_gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_gcs_uri = args[:input_gcs_uri] if args.key?(:input_gcs_uri)
+          @output_gcs_uri = args[:output_gcs_uri] if args.key?(:output_gcs_uri)
         end
       end
       
@@ -4474,6 +4508,25 @@ module Google
         end
       end
       
+      # Response message for ExpressModeService.CheckSignUpEligibility.
+      class GoogleCloudAiplatformV1beta1CheckSignUpEligibilityResponse
+        include Google::Apis::Core::Hashable
+      
+        # The eligibility status of the user.
+        # Corresponds to the JSON property `eligibility`
+        # @return [String]
+        attr_accessor :eligibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligibility = args[:eligibility] if args.key?(:eligibility)
+        end
+      end
+      
       # This message will be placed in the metadata field of a google.longrunning.
       # Operation associated with a CheckTrialEarlyStoppingState request.
       class GoogleCloudAiplatformV1beta1CheckTrialEarlyStoppingStateMetatdata
@@ -5480,6 +5533,18 @@ module Google
       class GoogleCloudAiplatformV1beta1CopyModelRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The user-provided custom service account to use to do the copy model.
+        # If empty, [Vertex AI Service Agent](https://cloud.google.com/vertex-ai/docs/
+        # general/access-control#service-agents) will be used to access resources needed
+        # to upload the model. This account must belong to the destination project where
+        # the model is copied to, i.e., the project specified in the `parent` field of
+        # this request and have the Vertex AI Service Agent role in the source project.
+        # Requires the user copying the Model to have the `iam.serviceAccounts.actAs`
+        # permission on this service account.
+        # Corresponds to the JSON property `customServiceAccount`
+        # @return [String]
+        attr_accessor :custom_service_account
+      
         # Represents a customer-managed encryption key specification that can be applied
         # to a Vertex AI resource.
         # Corresponds to the JSON property `encryptionSpec`
@@ -5512,6 +5577,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_service_account = args[:custom_service_account] if args.key?(:custom_service_account)
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @model_id = args[:model_id] if args.key?(:model_id)
           @parent_model = args[:parent_model] if args.key?(:parent_model)
@@ -26510,7 +26576,7 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metric]
         attr_accessor :metric
       
-        # Resource name for registered metric.
+        # Optional. Resource name for registered metric.
         # Corresponds to the JSON property `metricResourceName`
         # @return [String]
         attr_accessor :metric_resource_name
@@ -32033,7 +32099,8 @@ module Google
         attr_accessor :trace_scope
       
         # Optional. Optional trace view that will be used to query traces. If empty, the
-        # `_Default` view will be used.
+        # `_Default` view will be used. NOTE: This field is not supported yet and will
+        # be ignored if set.
         # Corresponds to the JSON property `traceView`
         # @return [String]
         attr_accessor :trace_view
@@ -40566,6 +40633,25 @@ module Google
         end
       end
       
+      # Response message for ExpressModeService.RetrieveExpressProject.
+      class GoogleCloudAiplatformV1beta1RetrieveExpressProjectResponse
+        include Google::Apis::Core::Hashable
+      
+        # The project for Vertex AI Express Mode.
+        # Corresponds to the JSON property `expressProject`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExpressProject]
+        attr_accessor :express_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @express_project = args[:express_project] if args.key?(:express_project)
+        end
+      end
+      
       # Request message for MemoryBankService.RetrieveMemories.
       class GoogleCloudAiplatformV1beta1RetrieveMemoriesRequest
         include Google::Apis::Core::Hashable
@@ -42064,11 +42150,6 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Configuration for a warm pool of sandbox instances.
-        # Corresponds to the JSON property `warmPoolConfig`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentTemplateWarmPoolConfig]
-        attr_accessor :warm_pool_config
-      
         def initialize(**args)
            update!(**args)
         end
@@ -42083,7 +42164,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
-          @warm_pool_config = args[:warm_pool_config] if args.key?(:warm_pool_config)
         end
       end
       
@@ -42230,25 +42310,6 @@ module Google
         def update!(**args)
           @limits = args[:limits] if args.key?(:limits)
           @requests = args[:requests] if args.key?(:requests)
-        end
-      end
-      
-      # Configuration for a warm pool of sandbox instances.
-      class GoogleCloudAiplatformV1beta1SandboxEnvironmentTemplateWarmPoolConfig
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The target number of pre-warmed instances to maintain.
-        # Corresponds to the JSON property `targetInstanceCount`
-        # @return [Fixnum]
-        attr_accessor :target_instance_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @target_instance_count = args[:target_instance_count] if args.key?(:target_instance_count)
         end
       end
       
@@ -44273,6 +44334,76 @@ module Google
           @track_mean_bounding_box_iou = args[:track_mean_bounding_box_iou] if args.key?(:track_mean_bounding_box_iou)
           @track_mean_mismatch_rate = args[:track_mean_mismatch_rate] if args.key?(:track_mean_mismatch_rate)
           @track_metrics = args[:track_metrics] if args.key?(:track_metrics)
+        end
+      end
+      
+      # The metadata of Multimodal Datasets.
+      class GoogleCloudAiplatformV1beta1SchemaMultimodalDatasetMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for how to read Gemini requests from a multimodal dataset.
+        # Corresponds to the JSON property `geminiRequestReadConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GeminiRequestReadConfig]
+        attr_accessor :gemini_request_read_config
+      
+        # Specifies the input source and configuration.
+        # Corresponds to the JSON property `inputConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaMultimodalDatasetMetadataMultimodalDatasetInputConfig]
+        attr_accessor :input_config
+      
+        # The name of the column in the BigQuery table that contains the keys of the
+        # rows.
+        # Corresponds to the JSON property `keyColumnName`
+        # @return [String]
+        attr_accessor :key_column_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gemini_request_read_config = args[:gemini_request_read_config] if args.key?(:gemini_request_read_config)
+          @input_config = args[:input_config] if args.key?(:input_config)
+          @key_column_name = args[:key_column_name] if args.key?(:key_column_name)
+        end
+      end
+      
+      # Specifies the BigQuery source.
+      class GoogleCloudAiplatformV1beta1SchemaMultimodalDatasetMetadataBigQuerySource
+        include Google::Apis::Core::Hashable
+      
+        # The URI of a BigQuery table. e.g. bq://project.bqDataset.bqTable
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Specifies the input source and configuration.
+      class GoogleCloudAiplatformV1beta1SchemaMultimodalDatasetMetadataMultimodalDatasetInputConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the BigQuery source.
+        # Corresponds to the JSON property `bigquerySource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaMultimodalDatasetMetadataBigQuerySource]
+        attr_accessor :bigquery_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_source = args[:bigquery_source] if args.key?(:bigquery_source)
         end
       end
       
@@ -50583,6 +50714,39 @@ module Google
         end
       end
       
+      # Request message for ExpressModeService.SignUp.
+      class GoogleCloudAiplatformV1beta1SignUpRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to return the default API key string in the response.
+        # Corresponds to the JSON property `getDefaultApiKey`
+        # @return [Boolean]
+        attr_accessor :get_default_api_key
+        alias_method :get_default_api_key?, :get_default_api_key
+      
+        # Required. The desired region for the express project.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Required. Whether the Terms of Service are accepted.
+        # Corresponds to the JSON property `tosAccepted`
+        # @return [Boolean]
+        attr_accessor :tos_accepted
+        alias_method :tos_accepted?, :tos_accepted
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @get_default_api_key = args[:get_default_api_key] if args.key?(:get_default_api_key)
+          @region = args[:region] if args.key?(:region)
+          @tos_accepted = args[:tos_accepted] if args.key?(:tos_accepted)
+        end
+      end
+      
       # The Slack source for the ImportRagFilesRequest.
       class GoogleCloudAiplatformV1beta1SlackSource
         include Google::Apis::Core::Hashable
@@ -56427,6 +56591,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Tuning Spec for Veo LoRA Model Tuning.
+        # Corresponds to the JSON property `veoLoraTuningSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VeoLoraTuningSpec]
+        attr_accessor :veo_lora_tuning_spec
+      
         # Tuning Spec for Veo Model Tuning.
         # Corresponds to the JSON property `veoTuningSpec`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VeoTuningSpec]
@@ -56468,6 +56637,7 @@ module Google
           @tuning_job_metadata = args[:tuning_job_metadata] if args.key?(:tuning_job_metadata)
           @tuning_job_state = args[:tuning_job_state] if args.key?(:tuning_job_state)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @veo_lora_tuning_spec = args[:veo_lora_tuning_spec] if args.key?(:veo_lora_tuning_spec)
           @veo_tuning_spec = args[:veo_tuning_spec] if args.key?(:veo_tuning_spec)
         end
       end
@@ -57719,6 +57889,47 @@ module Google
           @tuning_speed = args[:tuning_speed] if args.key?(:tuning_speed)
           @tuning_task = args[:tuning_task] if args.key?(:tuning_task)
           @veo_data_mixture_ratio = args[:veo_data_mixture_ratio] if args.key?(:veo_data_mixture_ratio)
+        end
+      end
+      
+      # Tuning Spec for Veo LoRA Model Tuning.
+      class GoogleCloudAiplatformV1beta1VeoLoraTuningSpec
+        include Google::Apis::Core::Hashable
+      
+        # Hyperparameters for Veo.
+        # Corresponds to the JSON property `hyperParameters`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VeoHyperParameters]
+        attr_accessor :hyper_parameters
+      
+        # Required. Training dataset used for tuning. The dataset can be specified as
+        # either a Cloud Storage path to a JSONL file or as the resource name of a
+        # Vertex Multimodal Dataset.
+        # Corresponds to the JSON property `trainingDatasetUri`
+        # @return [String]
+        attr_accessor :training_dataset_uri
+      
+        # Optional. Validation dataset used for tuning. The dataset can be specified as
+        # either a Cloud Storage path to a JSONL file or as the resource name of a
+        # Vertex Multimodal Dataset.
+        # Corresponds to the JSON property `validationDatasetUri`
+        # @return [String]
+        attr_accessor :validation_dataset_uri
+      
+        # Optional. The orientation of the video. Defaults to LANDSCAPE.
+        # Corresponds to the JSON property `videoOrientation`
+        # @return [String]
+        attr_accessor :video_orientation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hyper_parameters = args[:hyper_parameters] if args.key?(:hyper_parameters)
+          @training_dataset_uri = args[:training_dataset_uri] if args.key?(:training_dataset_uri)
+          @validation_dataset_uri = args[:validation_dataset_uri] if args.key?(:validation_dataset_uri)
+          @video_orientation = args[:video_orientation] if args.key?(:video_orientation)
         end
       end
       

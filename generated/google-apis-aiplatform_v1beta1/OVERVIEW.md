@@ -1,6 +1,6 @@
-# Simple REST client for version V1beta1 of the Vertex AI API
+# Simple REST client for version V1beta1 of the Agent Platform API
 
-This is a simple client library for version V1beta1 of the Vertex AI API. It provides:
+This is a simple client library for version V1beta1 of the Agent Platform API. It provides:
 
 * A client object that connects to the HTTP/JSON REST endpoint for the service.
 * Ruby objects for data structures related to the service.
@@ -65,7 +65,7 @@ More detailed descriptions of the Google simple REST clients are available in tw
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Aiplatform service in particular.)
 
-For reference information on specific calls in the Vertex AI API, see the {Google::Apis::AiplatformV1beta1::AiplatformService class reference docs}.
+For reference information on specific calls in the Agent Platform API, see the {Google::Apis::AiplatformV1beta1::AiplatformService class reference docs}.
 
 ## Which client should I use?
 
