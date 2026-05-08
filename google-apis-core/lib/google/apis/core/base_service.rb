@@ -262,6 +262,7 @@ module Google
           end
           batch_command.execute(client)
         end
+        
         # Get the current HTTP connection
         # @return [Faraday::Connection]
         def client
