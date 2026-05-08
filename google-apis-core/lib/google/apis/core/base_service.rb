@@ -262,7 +262,6 @@ module Google
           end
           batch_command.execute(client)
         end
-
         # Get the current HTTP connection
         # @return [Faraday::Connection]
         def client
@@ -420,6 +419,7 @@ module Google
           verify_universe_domain!
           template = Addressable::Template.new(root_url + upload_path + path)
           command = StorageUploadCommand.new(method, template, client_version: client_version)
+          command.header["Accept-Encoding"] ||= "gzip"
           command.options = request_options.merge(options)
           apply_command_defaults(command)
           command
@@ -458,6 +458,7 @@ module Google
           verify_universe_domain!
           template = Addressable::Template.new(root_url + base_path + path)
           command = StorageDownloadCommand.new(method, template, client_version: client_version)
+          command.header["Accept-Encoding"] ||= "gzip"
           command.options = request_options.merge(options)
           command.query['alt'] = 'media'
           apply_command_defaults(command)

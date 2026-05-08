@@ -140,6 +140,10 @@ RSpec.describe Google::Apis::Core::BaseService do
       end.to raise_error(Google::Apis::UniverseDomainError)
     end
 
+    it 'should not include Accept-Encoding header' do
+      expect(command.header['Accept-Encoding']).to be_nil
+    end
+
     include_examples 'with options'
   end
 
@@ -173,6 +177,10 @@ RSpec.describe Google::Apis::Core::BaseService do
       expect(command.query).to include('alt' => 'media')
     end
 
+    it 'should not include Accept-Encoding header' do
+      expect(command.header['Accept-Encoding']).to_not eq('gzip')
+    end
+
     include_examples 'with options'
   end
 
@@ -192,6 +200,10 @@ RSpec.describe Google::Apis::Core::BaseService do
       expect(command.query).to include('alt' => 'media')
     end
 
+    it 'should include Accept-Encoding header' do
+      expect(command.header['Accept-Encoding']).to eq('gzip')
+    end
+
     include_examples 'with options'
   end
 
@@ -207,6 +219,10 @@ RSpec.describe Google::Apis::Core::BaseService do
       expect(url).to eql 'https://www.googleapis.com/upload/zoo/animals'
     end
 
+    it 'should not include Accept-Encoding header' do
+      expect(command.header['Accept-Encoding']).to be_nil
+    end
+
     include_examples 'with options'
   end
 
@@ -220,6 +236,10 @@ RSpec.describe Google::Apis::Core::BaseService do
     it 'should build a correct URL' do
       url = command.url.expand({}).to_s
       expect(url).to eql 'https://www.googleapis.com/upload/zoo/animals'
+    end
+
+    it 'should include Accept-Encoding header' do
+      expect(command.header['Accept-Encoding']).to eq('gzip')
     end
 
     include_examples 'with options'
@@ -263,6 +283,7 @@ RSpec.describe Google::Apis::Core::BaseService do
         command
         expect(a_request(:put, upload_url)).to have_been_made.twice
       end
+
     end
     context 'not restart resumable upload if upload is completed' do
       before(:example) do
@@ -429,6 +450,7 @@ Content-Length: \\d+
 Content-Transfer-Encoding: binary
 
 POST /upload/zoo/animals\\? HTTP/1\\.1
+Accept-Encoding: gzip
 X-Goog-Api-Client: #{Regexp.escape(x_goog_api_client_value)}
 Content-Type: multipart/related; boundary=inner
 X-Goog-Upload-Protocol: multipart
