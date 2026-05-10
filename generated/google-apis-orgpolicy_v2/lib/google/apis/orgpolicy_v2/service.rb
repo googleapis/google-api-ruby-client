@@ -58,11 +58,11 @@ module Google
         #   one of the following forms: * `projects/`project_number`` * `projects/`
         #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -239,11 +239,11 @@ module Google
         #   following forms: * `projects/`project_number`` * `projects/`project_id`` * `
         #   folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -328,11 +328,11 @@ module Google
         #   one of the following forms: * `projects/`project_number`` * `projects/`
         #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -469,11 +469,11 @@ module Google
         #   constraints that will be returned from this call. Must be in one of the
         #   following forms: * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -507,12 +507,12 @@ module Google
         # Code.NOT_FOUND` if the constraint does not exist. Note: the supplied policy
         # will perform a full overwrite of all fields.
         # @param [String] name
-        #   Immutable. Name of the constraint. This is unique within the organization.
-        #   Format of the name should be * `organizations/`organization_id`/
-        #   customConstraints/`custom_constraint_id`` Example: `organizations/123/
-        #   customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters
-        #   and the minimum length is 1. Note that the prefix `organizations/`
-        #   organization_id`/customConstraints/custom.` is not counted.
+        #   Immutable. Name of the constraint. This is unique within the organization. The
+        #   name must be of the form: * `organizations/`organization_id`/customConstraints/
+        #   `custom_constraint_id`` Example: `organizations/123/customConstraints/custom.
+        #   createOnlyE2TypeVms` The max length is 71 characters and the minimum length is
+        #   1. Note that the prefix `organizations/`organization_id`/customConstraints/
+        #   custom.` is not counted.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint] google_cloud_orgpolicy_v2_custom_constraint_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -690,11 +690,11 @@ module Google
         #   following forms: * `projects/`project_number`` * `projects/`project_id`` * `
         #   folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -779,11 +779,11 @@ module Google
         #   one of the following forms: * `projects/`project_number`` * `projects/`
         #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -960,11 +960,11 @@ module Google
         #   following forms: * `projects/`project_number`` * `projects/`project_id`` * `
         #   folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

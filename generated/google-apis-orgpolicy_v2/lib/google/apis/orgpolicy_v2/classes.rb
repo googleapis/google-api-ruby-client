@@ -28,7 +28,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Reference to the launch that will be used while audit logging and to control
-        # the launch. Should be set only in the alternate policy.
+        # the launch. Set only in the alternate policy.
         # Corresponds to the JSON property `launch`
         # @return [String]
         attr_accessor :launch
@@ -344,12 +344,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :method_types
       
-        # Immutable. Name of the constraint. This is unique within the organization.
-        # Format of the name should be * `organizations/`organization_id`/
-        # customConstraints/`custom_constraint_id`` Example: `organizations/123/
-        # customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters
-        # and the minimum length is 1. Note that the prefix `organizations/`
-        # organization_id`/customConstraints/custom.` is not counted.
+        # Immutable. Name of the constraint. This is unique within the organization. The
+        # name must be of the form: * `organizations/`organization_id`/customConstraints/
+        # `custom_constraint_id`` Example: `organizations/123/customConstraints/custom.
+        # createOnlyE2TypeVms` The max length is 71 characters and the minimum length is
+        # 1. Note that the prefix `organizations/`organization_id`/customConstraints/
+        # custom.` is not counted.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -393,7 +393,7 @@ module Google
         # @return [Array<Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Constraint>]
         attr_accessor :constraints
       
-        # Page token used to retrieve the next page. This is currently not used.
+        # Page token used to retrieve the next page. This is not used.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -420,8 +420,8 @@ module Google
         # @return [Array<Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint>]
         attr_accessor :custom_constraints
       
-        # Page token used to retrieve the next page. This is currently not used, but the
-        # server may at any point start supplying a valid token.
+        # Page token used to retrieve the next page. This is not used, but the server
+        # may at any point start supplying a valid token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -442,8 +442,8 @@ module Google
       class GoogleCloudOrgpolicyV2ListPoliciesResponse
         include Google::Apis::Core::Hashable
       
-        # Page token used to retrieve the next page. This is currently not used, but the
-        # server may at any point start supplying a valid token.
+        # Page token used to retrieve the next page. This is not used, but the server
+        # may at any point start supplying a valid token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
