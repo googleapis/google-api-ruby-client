@@ -616,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PostgresHomogeneousConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PostgresSourceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1944,6 +1950,8 @@ module Google
           property :performance_config, as: 'performanceConfig', class: Google::Apis::DatamigrationV1::PerformanceConfig, decorator: Google::Apis::DatamigrationV1::PerformanceConfig::Representation
       
           property :phase, as: 'phase'
+          property :postgres_homogeneous_config, as: 'postgresHomogeneousConfig', class: Google::Apis::DatamigrationV1::PostgresHomogeneousConfig, decorator: Google::Apis::DatamigrationV1::PostgresHomogeneousConfig::Representation
+      
           property :postgres_to_sqlserver_config, as: 'postgresToSqlserverConfig', class: Google::Apis::DatamigrationV1::PostgresToSqlServerConfig, decorator: Google::Apis::DatamigrationV1::PostgresToSqlServerConfig::Representation
       
           property :purpose, as: 'purpose'
@@ -2188,6 +2196,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_concurrent_connections, as: 'maxConcurrentConnections'
           property :transaction_timeout, as: 'transactionTimeout'
+        end
+      end
+      
+      class PostgresHomogeneousConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_native_logical, as: 'isNativeLogical'
+          property :max_additional_subscriptions, as: 'maxAdditionalSubscriptions'
         end
       end
       
