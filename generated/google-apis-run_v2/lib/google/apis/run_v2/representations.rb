@@ -1198,6 +1198,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :creator, as: 'creator'
+          property :default_uri_disabled, as: 'defaultUriDisabled'
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
           property :encryption_key, as: 'encryptionKey'
