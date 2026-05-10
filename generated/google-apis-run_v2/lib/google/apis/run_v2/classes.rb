@@ -1354,6 +1354,12 @@ module Google
         # @return [String]
         attr_accessor :creator
       
+        # Optional. Disables public resolution of the default URI of this Instance.
+        # Corresponds to the JSON property `defaultUriDisabled`
+        # @return [Boolean]
+        attr_accessor :default_uri_disabled
+        alias_method :default_uri_disabled?, :default_uri_disabled
+      
         # Output only. The deletion time.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
@@ -1557,6 +1563,7 @@ module Google
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
+          @default_uri_disabled = args[:default_uri_disabled] if args.key?(:default_uri_disabled)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
@@ -5384,7 +5391,7 @@ module Google
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan]
         attr_accessor :pull_timing
       
-        # Declaration of results for this build step.
+        # Output only. Declaration of results for this build step.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1StepResult>]
         attr_accessor :results
