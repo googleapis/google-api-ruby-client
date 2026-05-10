@@ -2150,12 +2150,12 @@ module Google
         # repeated EmailType type = 2; ` string full_name = 1; repeated EmailAddress
         # email_addresses = 2; ` In this example, in proto `field` could take one of the
         # following values: * `full_name` for a violation in the `full_name` value * `
-        # email_addresses[1].email` for a violation in the `email` field of the first `
-        # email_addresses` message * `email_addresses[3].type[2]` for a violation in the
+        # email_addresses[0].email` for a violation in the `email` field of the first `
+        # email_addresses` message * `email_addresses[2].type[1]` for a violation in the
         # second `type` value in the third `email_addresses` message. In JSON, the same
         # values are represented as: * `fullName` for a violation in the `fullName`
-        # value * `emailAddresses[1].email` for a violation in the `email` field of the
-        # first `emailAddresses` message * `emailAddresses[3].type[2]` for a violation
+        # value * `emailAddresses[0].email` for a violation in the `email` field of the
+        # first `emailAddresses` message * `emailAddresses[2].type[1]` for a violation
         # in the second `type` value in the third `emailAddresses` message.
         # Corresponds to the JSON property `field`
         # @return [String]
@@ -3454,6 +3454,11 @@ module Google
         # @return [String]
         attr_accessor :phase
       
+        # Configuration for PostgreSQL to PostgreSQL migrations.
+        # Corresponds to the JSON property `postgresHomogeneousConfig`
+        # @return [Google::Apis::DatamigrationV1::PostgresHomogeneousConfig]
+        attr_accessor :postgres_homogeneous_config
+      
         # Configuration for heterogeneous failback migrations from **PostgreSQL to SQL
         # Server**.
         # Corresponds to the JSON property `postgresToSqlserverConfig`
@@ -3567,6 +3572,7 @@ module Google
           @original_migration_name = args[:original_migration_name] if args.key?(:original_migration_name)
           @performance_config = args[:performance_config] if args.key?(:performance_config)
           @phase = args[:phase] if args.key?(:phase)
+          @postgres_homogeneous_config = args[:postgres_homogeneous_config] if args.key?(:postgres_homogeneous_config)
           @postgres_to_sqlserver_config = args[:postgres_to_sqlserver_config] if args.key?(:postgres_to_sqlserver_config)
           @purpose = args[:purpose] if args.key?(:purpose)
           @reverse_ssh_connectivity = args[:reverse_ssh_connectivity] if args.key?(:reverse_ssh_connectivity)
@@ -4491,6 +4497,33 @@ module Google
         def update!(**args)
           @max_concurrent_connections = args[:max_concurrent_connections] if args.key?(:max_concurrent_connections)
           @transaction_timeout = args[:transaction_timeout] if args.key?(:transaction_timeout)
+        end
+      end
+      
+      # Configuration for PostgreSQL to PostgreSQL migrations.
+      class PostgresHomogeneousConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Whether the migration is native logical.
+        # Corresponds to the JSON property `isNativeLogical`
+        # @return [Boolean]
+        attr_accessor :is_native_logical
+        alias_method :is_native_logical?, :is_native_logical
+      
+        # Optional. Maximum number of additional subscriptions to use for the migration
+        # job.
+        # Corresponds to the JSON property `maxAdditionalSubscriptions`
+        # @return [Fixnum]
+        attr_accessor :max_additional_subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_native_logical = args[:is_native_logical] if args.key?(:is_native_logical)
+          @max_additional_subscriptions = args[:max_additional_subscriptions] if args.key?(:max_additional_subscriptions)
         end
       end
       
