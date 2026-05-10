@@ -5343,6 +5343,13 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :sender
       
+        # Output only. Whether this is a silent message. Silent messages are messages
+        # where Chat suppresses push notifications for recipients.
+        # Corresponds to the JSON property `silent`
+        # @return [Boolean]
+        attr_accessor :silent
+        alias_method :silent?, :silent
+      
         # Metadata about a [slash command](https://developers.google.com/workspace/chat/
         # commands) in Google Chat.
         # Corresponds to the JSON property `slashCommand`
@@ -5411,6 +5418,7 @@ module Google
           @private_message_viewer = args[:private_message_viewer] if args.key?(:private_message_viewer)
           @quoted_message_metadata = args[:quoted_message_metadata] if args.key?(:quoted_message_metadata)
           @sender = args[:sender] if args.key?(:sender)
+          @silent = args[:silent] if args.key?(:silent)
           @slash_command = args[:slash_command] if args.key?(:slash_command)
           @space = args[:space] if args.key?(:space)
           @text = args[:text] if args.key?(:text)

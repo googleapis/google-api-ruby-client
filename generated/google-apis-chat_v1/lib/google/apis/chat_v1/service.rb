@@ -1404,6 +1404,8 @@ module Google
         #   Required. The resource name of the space in which to create a message. Format:
         #   `spaces/`space``
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] create_message_notification_options_notification_type
+        #   The notification type for the message.
         # @param [String] message_id
         #   Optional. A custom ID for a message. Lets Chat apps get, update, or delete a
         #   message without needing to store the system-assigned ID in the message's
@@ -1446,13 +1448,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_space_message(parent, message_object = nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_space_message(parent, message_object = nil, create_message_notification_options_notification_type: nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['createMessageNotificationOptions.notificationType'] = create_message_notification_options_notification_type unless create_message_notification_options_notification_type.nil?
           command.query['messageId'] = message_id unless message_id.nil?
           command.query['messageReplyOption'] = message_reply_option unless message_reply_option.nil?
           command.query['requestId'] = request_id unless request_id.nil?
