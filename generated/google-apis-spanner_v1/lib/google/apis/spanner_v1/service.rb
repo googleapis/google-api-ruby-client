@@ -1059,7 +1059,7 @@ module Google
         # operation.
         # @param [String] parent
         #   Required. The instance of the backup operations. Values are of the form `
-        #   projects//instances/`.
+        #   projects/`project`/instances/`instance``.
         # @param [String] filter
         #   An expression that filters the list of returned backup operations. A filter
         #   expression consists of a field name, a comparison operator, and a value for
@@ -1148,7 +1148,7 @@ module Google
         # backup.
         # @param [String] parent
         #   Required. The name of the destination instance that will contain the backup
-        #   copy. Values are of the form: `projects//instances/`.
+        #   copy. Values are of the form: `projects/`project`/instances/`instance``.
         # @param [Google::Apis::SpannerV1::CopyBackupRequest] copy_backup_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1190,11 +1190,13 @@ module Google
         #   Required. The name of the instance in which the backup is created. This must
         #   be the same instance that contains the database the backup is created from.
         #   The backup will be stored in the locations specified in the instance
-        #   configuration of this instance. Values are of the form `projects//instances/`.
+        #   configuration of this instance. Values are of the form `projects/`project`/
+        #   instances/`instance``.
         # @param [Google::Apis::SpannerV1::Backup] backup_object
         # @param [String] backup_id
         #   Required. The id of the backup to be created. The `backup_id` appended to `
-        #   parent` forms the full backup name of the form `projects//instances//backups/`.
+        #   parent` forms the full backup name of the form `projects/`project`/instances/`
+        #   instance`/backups/`backup_id``.
         # @param [String] encryption_config_encryption_type
         #   Required. The encryption type of the backup.
         # @param [String] encryption_config_kms_key_name
@@ -1205,20 +1207,21 @@ module Google
         #   central1` or `nam3`, then the database instance must also be in `us-central1`
         #   or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
         #   database. Set this field only when encryption_type is `
-        #   CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//
-        #   keyRings//cryptoKeys/`.
+        #   CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects/`project`/
+        #   locations/`location`/keyRings/`key_ring`/cryptoKeys/`kms_key_name``.
         # @param [Array<String>, String] encryption_config_kms_key_names
         #   Optional. Specifies the KMS configuration for the one or more keys used to
-        #   protect the backup. Values are of the form `projects//locations//keyRings//
-        #   cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all
-        #   regions of the backup's instance configuration. Some examples: * For regional (
-        #   single-region) instance configurations, specify a regional location KMS key. *
-        #   For multi-region instance configurations of type `GOOGLE_MANAGED`, either
-        #   specify a multi-region location KMS key or multiple regional location KMS keys
-        #   that cover all regions in the instance configuration. * For an instance
-        #   configuration of type `USER_MANAGED`, specify only regional location KMS keys
-        #   to cover each region in the instance configuration. Multi-region location KMS
-        #   keys aren't supported for `USER_MANAGED` type instance configurations.
+        #   protect the backup. Values are of the form `projects/`project`/locations/`
+        #   location`/keyRings/`key_ring`/cryptoKeys/`kms_key_name``. The keys referenced
+        #   by `kms_key_names` must fully cover all regions of the backup's instance
+        #   configuration. Some examples: * For regional (single-region) instance
+        #   configurations, specify a regional location KMS key. * For multi-region
+        #   instance configurations of type `GOOGLE_MANAGED`, either specify a multi-
+        #   region location KMS key or multiple regional location KMS keys that cover all
+        #   regions in the instance configuration. * For an instance configuration of type
+        #   `USER_MANAGED`, specify only regional location KMS keys to cover each region
+        #   in the instance configuration. Multi-region location KMS keys aren't supported
+        #   for `USER_MANAGED` type instance configurations.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1254,8 +1257,8 @@ module Google
         
         # Deletes a pending or completed Backup.
         # @param [String] name
-        #   Required. Name of the backup to delete. Values are of the form `projects//
-        #   instances//backups/`.
+        #   Required. Name of the backup to delete. Values are of the form `projects/`
+        #   project`/instances/`instance`/backups/`backup``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1285,8 +1288,8 @@ module Google
         
         # Gets metadata on a pending or completed Backup.
         # @param [String] name
-        #   Required. Name of the backup. Values are of the form `projects//instances//
-        #   backups/`.
+        #   Required. Name of the backup. Values are of the form `projects/`project`/
+        #   instances/`instance`/backups/`backup``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1357,8 +1360,8 @@ module Google
         # Lists completed and pending backups. Backups returned are ordered by `
         # create_time` in descending order, starting from the most recent `create_time`.
         # @param [String] parent
-        #   Required. The instance to list backups from. Values are of the form `projects//
-        #   instances/`.
+        #   Required. The instance to list backups from. Values are of the form `projects/`
+        #   project`/instances/`instance``.
         # @param [String] filter
         #   An expression that filters the list of returned backups. A filter expression
         #   consists of a field name, a comparison operator, and a value for filtering.
@@ -1422,11 +1425,11 @@ module Google
         # @param [String] name
         #   Output only for the CreateBackup operation. Required for the UpdateBackup
         #   operation. A globally unique identifier for the backup which cannot be changed.
-        #   Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final
-        #   segment of the name must be between 2 and 60 characters in length. The backup
-        #   is stored in the location(s) specified in the instance configuration of the
-        #   instance containing the backup, identified by the prefix of the backup name of
-        #   the form `projects//instances/`.
+        #   Values are of the form `projects/`project`/instances/`instance`/backups/a-z*[
+        #   a-z0-9]` The final segment of the name must be between 2 and 60 characters in
+        #   length. The backup is stored in the location(s) specified in the instance
+        #   configuration of the instance containing the backup, identified by the prefix
+        #   of the backup name of the form `projects/`project`/instances/`instance``.
         # @param [Google::Apis::SpannerV1::Backup] backup_object
         # @param [String] update_mask
         #   Required. A mask specifying which fields (for example, `expire_time`) in the

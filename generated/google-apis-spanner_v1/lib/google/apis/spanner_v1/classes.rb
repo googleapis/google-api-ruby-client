@@ -442,7 +442,8 @@ module Google
       
         # Required for the CreateBackup operation. Name of the database from which this
         # backup was created. This needs to be in the same instance as the backup.
-        # Values are of the form `projects//instances//databases/`.
+        # Values are of the form `projects/`project`/instances/`instance`/databases/`
+        # database``.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -530,11 +531,11 @@ module Google
       
         # Output only for the CreateBackup operation. Required for the UpdateBackup
         # operation. A globally unique identifier for the backup which cannot be changed.
-        # Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final
-        # segment of the name must be between 2 and 60 characters in length. The backup
-        # is stored in the location(s) specified in the instance configuration of the
-        # instance containing the backup, identified by the prefix of the backup name of
-        # the form `projects//instances/`.
+        # Values are of the form `projects/`project`/instances/`instance`/backups/a-z*[
+        # a-z0-9]` The final segment of the name must be between 2 and 60 characters in
+        # length. The backup is stored in the location(s) specified in the instance
+        # configuration of the instance containing the backup, identified by the prefix
+        # of the backup name of the form `projects/`project`/instances/`instance``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -550,21 +551,22 @@ module Google
         attr_accessor :oldest_version_time
       
         # Output only. The names of the destination backups being created by copying
-        # this source backup. The backup names are of the form `projects//instances//
-        # backups/`. Referencing backups may exist in different instances. The existence
-        # of any referencing backup prevents the backup from being deleted. When the
-        # copy operation is done (either successfully completed or cancelled or the
-        # destination backup is deleted), the reference to the backup is removed.
+        # this source backup. The backup names are of the form `projects/`project`/
+        # instances/`instance`/backups/`backup``. Referencing backups may exist in
+        # different instances. The existence of any referencing backup prevents the
+        # backup from being deleted. When the copy operation is done (either
+        # successfully completed or cancelled or the destination backup is deleted), the
+        # reference to the backup is removed.
         # Corresponds to the JSON property `referencingBackups`
         # @return [Array<String>]
         attr_accessor :referencing_backups
       
         # Output only. The names of the restored databases that reference the backup.
-        # The database names are of the form `projects//instances//databases/`.
-        # Referencing databases may exist in different instances. The existence of any
-        # referencing database prevents the backup from being deleted. When a restored
-        # database from the backup enters the `READY` state, the reference to the backup
-        # is removed.
+        # The database names are of the form `projects/`project`/instances/`instance`/
+        # databases/`database``. Referencing databases may exist in different instances.
+        # The existence of any referencing database prevents the backup from being
+        # deleted. When a restored database from the backup enters the `READY` state,
+        # the reference to the backup is removed.
         # Corresponds to the JSON property `referencingDatabases`
         # @return [Array<String>]
         attr_accessor :referencing_databases
@@ -662,7 +664,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A unique identifier for the instance partition. Values are of the form `
-        # projects//instances//instancePartitions/`
+        # projects/`project`/instances/`instance`/instancePartitions/`
+        # instance_partition_id``
         # Corresponds to the JSON property `instancePartition`
         # @return [String]
         attr_accessor :instance_partition
@@ -1491,24 +1494,25 @@ module Google
         # central1` or `nam3`, then the database instance must also be in `us-central1`
         # or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
         # database. Set this field only when encryption_type is `
-        # CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//
-        # keyRings//cryptoKeys/`.
+        # CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects/`project`/
+        # locations/`location`/keyRings/`key_ring`/cryptoKeys/`kms_key_name``.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
       
         # Optional. Specifies the KMS configuration for the one or more keys used to
-        # protect the backup. Values are of the form `projects//locations//keyRings//
-        # cryptoKeys/`. KMS keys specified can be in any order. The keys referenced by `
-        # kms_key_names` must fully cover all regions of the backup's instance
-        # configuration. Some examples: * For regional (single-region) instance
-        # configurations, specify a regional location KMS key. * For multi-region
-        # instance configurations of type `GOOGLE_MANAGED`, either specify a multi-
-        # region location KMS key or multiple regional location KMS keys that cover all
-        # regions in the instance configuration. * For an instance configuration of type
-        # `USER_MANAGED`, specify only regional location KMS keys to cover each region
-        # in the instance configuration. Multi-region location KMS keys aren't supported
-        # for `USER_MANAGED` type instance configurations.
+        # protect the backup. Values are of the form `projects/`project`/locations/`
+        # location`/keyRings/`key_ring`/cryptoKeys/`kms_key_name``. KMS keys specified
+        # can be in any order. The keys referenced by `kms_key_names` must fully cover
+        # all regions of the backup's instance configuration. Some examples: * For
+        # regional (single-region) instance configurations, specify a regional location
+        # KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`,
+        # either specify a multi-region location KMS key or multiple regional location
+        # KMS keys that cover all regions in the instance configuration. * For an
+        # instance configuration of type `USER_MANAGED`, specify only regional location
+        # KMS keys to cover each region in the instance configuration. Multi-region
+        # location KMS keys aren't supported for `USER_MANAGED` type instance
+        # configurations.
         # Corresponds to the JSON property `kmsKeyNames`
         # @return [Array<String>]
         attr_accessor :kms_key_names
@@ -1542,7 +1546,7 @@ module Google
         attr_accessor :cancel_time
       
         # The name of the backup being created through the copy operation. Values are of
-        # the form `projects//instances//backups/`.
+        # the form `projects/`project`/instances/`instance`/backups/`backup``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1554,7 +1558,7 @@ module Google
         attr_accessor :progress
       
         # The name of the source backup that is being copied. Values are of the form `
-        # projects//instances//backups/`.
+        # projects/`project`/instances/`instance`/backups/`backup``.
         # Corresponds to the JSON property `sourceBackup`
         # @return [String]
         attr_accessor :source_backup
@@ -1577,7 +1581,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The id of the backup copy. The `backup_id` appended to `parent`
-        # forms the full backup_uri of the form `projects//instances//backups/`.
+        # forms the full backup_uri of the form `projects/`project`/instances/`instance`/
+        # backups/`backup``.
         # Corresponds to the JSON property `backupId`
         # @return [String]
         attr_accessor :backup_id
@@ -1599,7 +1604,8 @@ module Google
         # Required. The source backup to be copied. The source backup needs to be in
         # READY state for it to be copied. Once CopyBackup is in progress, the source
         # backup cannot be deleted or cleaned up on expiration until CopyBackup is
-        # finished. Values are of the form: `projects//instances//backups/`.
+        # finished. Values are of the form: `projects/`project`/instances/`instance`/
+        # backups/`backup``.
         # Corresponds to the JSON property `sourceBackup`
         # @return [String]
         attr_accessor :source_backup
@@ -1633,23 +1639,24 @@ module Google
         # central1` or `nam3`, then the database instance must also be in `us-central1`
         # or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
         # database. Set this field only when encryption_type is `
-        # CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//
-        # keyRings//cryptoKeys/`.
+        # CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects/`project`/
+        # locations/`location`/keyRings/`key_ring`/cryptoKeys/`kms_key_name``.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
       
         # Optional. Specifies the KMS configuration for the one or more keys used to
-        # protect the backup. Values are of the form `projects//locations//keyRings//
-        # cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all
-        # regions of the backup's instance configuration. Some examples: * For regional (
-        # single-region) instance configurations, specify a regional location KMS key. *
-        # For multi-region instance configurations of type `GOOGLE_MANAGED`, either
-        # specify a multi-region location KMS key or multiple regional location KMS keys
-        # that cover all regions in the instance configuration. * For an instance
-        # configuration of type `USER_MANAGED`, specify only regional location KMS keys
-        # to cover each region in the instance configuration. Multi-region location KMS
-        # keys aren't supported for `USER_MANAGED` type instance configurations.
+        # protect the backup. Values are of the form `projects/`project`/locations/`
+        # location`/keyRings/`key_ring`/cryptoKeys/`kms_key_name``. The keys referenced
+        # by `kms_key_names` must fully cover all regions of the backup's instance
+        # configuration. Some examples: * For regional (single-region) instance
+        # configurations, specify a regional location KMS key. * For multi-region
+        # instance configurations of type `GOOGLE_MANAGED`, either specify a multi-
+        # region location KMS key or multiple regional location KMS keys that cover all
+        # regions in the instance configuration. * For an instance configuration of type
+        # `USER_MANAGED`, specify only regional location KMS keys to cover each region
+        # in the instance configuration. Multi-region location KMS keys aren't supported
+        # for `USER_MANAGED` type instance configurations.
         # Corresponds to the JSON property `kmsKeyNames`
         # @return [Array<String>]
         attr_accessor :kms_key_names
