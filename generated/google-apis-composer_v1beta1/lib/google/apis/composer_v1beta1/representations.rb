@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrafficRoutingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TriggererResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -784,6 +790,8 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :subnetwork, as: 'subnetwork'
           collection :tags, as: 'tags'
+          property :traffic_routing_config, as: 'trafficRoutingConfig', class: Google::Apis::ComposerV1beta1::TrafficRoutingConfig, decorator: Google::Apis::ComposerV1beta1::TrafficRoutingConfig::Representation
+      
         end
       end
       
@@ -962,6 +970,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :storage_mode, as: 'storageMode'
+        end
+      end
+      
+      class TrafficRoutingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_run_functions_routing, as: 'cloudRunFunctionsRouting'
         end
       end
       

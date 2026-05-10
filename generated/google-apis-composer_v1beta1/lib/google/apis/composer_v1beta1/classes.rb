@@ -1497,6 +1497,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # Configuration for network traffic routing from the Cloud Composer environment
+        # to other services.
+        # Corresponds to the JSON property `trafficRoutingConfig`
+        # @return [Google::Apis::ComposerV1beta1::TrafficRoutingConfig]
+        attr_accessor :traffic_routing_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1516,6 +1522,7 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @tags = args[:tags] if args.key?(:tags)
+          @traffic_routing_config = args[:traffic_routing_config] if args.key?(:traffic_routing_config)
         end
       end
       
@@ -2257,6 +2264,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @storage_mode = args[:storage_mode] if args.key?(:storage_mode)
+        end
+      end
+      
+      # Configuration for network traffic routing from the Cloud Composer environment
+      # to other services.
+      class TrafficRoutingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Controls how network traffic to Cloud Run functions is routed.
+        # Corresponds to the JSON property `cloudRunFunctionsRouting`
+        # @return [String]
+        attr_accessor :cloud_run_functions_routing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_run_functions_routing = args[:cloud_run_functions_routing] if args.key?(:cloud_run_functions_routing)
         end
       end
       
