@@ -641,15 +641,14 @@ module Google
         #   34:56"` - Daily summary date: - Pattern: ``daily_summary_data_type`.date` -
         #   Supported comparison operators: `>=`, `<` - Date literal expected in ISO 8601 `
         #   YYYY-MM-DD` format - Supported logical operators: `AND` - Example: - `
-        #   daily_resting_heart_rate.date >= "2024-08-14"` - `daily_heart_rate_variability.
-        #   date < "2024-08-15"` - Session civil start time (**Excluding Sleep**): -
-        #   Pattern: ``session_data_type`.interval.civil_start_time` - Supported
-        #   comparison operators: `>=`, `<` - Date with optional time literal expected in
-        #   ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format - Supported logical operators: `AND` -
-        #   Example: - `exercise.interval.civil_start_time >= "2023-11-24" AND exercise.
-        #   interval.civil_start_time < "2023-11-25"` - `exercise.interval.
-        #   civil_start_time >= "2024-08-14T12:34:56"` - Session end time (**Sleep
-        #   specific**): - Pattern: `sleep.interval.end_time` - Supported comparison
+        #   daily_heart_rate_variability.date < "2024-08-15"` - Session civil start time (*
+        #   *Excluding Sleep**): - Pattern: ``session_data_type`.interval.civil_start_time`
+        #   - Supported comparison operators: `>=`, `<` - Date with optional time literal
+        #   expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format - Supported logical
+        #   operators: `AND` - Example: - `exercise.interval.civil_start_time >= "2023-11-
+        #   24" AND exercise.interval.civil_start_time < "2023-11-25"` - `exercise.
+        #   interval.civil_start_time >= "2024-08-14T12:34:56"` - Session end time (**
+        #   Sleep specific**): - Pattern: `sleep.interval.end_time` - Supported comparison
         #   operators: `>=`, `<` - Timestamp literal expected in RFC-3339 format -
         #   Supported logical operators: `AND`, `OR` - Example: - `sleep.interval.end_time
         #   >= "2023-11-24T00:00:00Z" AND sleep.interval.end_time < "2023-11-25T00:00:00Z"`
