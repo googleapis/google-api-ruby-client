@@ -1023,8 +1023,8 @@ module Google
         # No | Included | | skills.id | No | Yes | No | Included | | skills.name | No |
         # Yes | No | Included | | skills.description | No | Yes | No | Included | |
         # skills.tags | No | Yes | No | Included | | skills.examples | No | Yes | No |
-        # Included | Examples: * `agentId=urn:agent:projects-123:projects:123:locations:
-        # us-central1:reasoningEngines:1234` to find the agent with the specified agent
+        # Included | Examples: * `agentId="urn:agent:projects-123:projects:123:locations:
+        # us-central1:reasoningEngines:1234"` to find the agent with the specified agent
         # ID. * `name:important` to find agents whose name contains `important` as a
         # word. * `displayName:works*` to find agents whose display name contains words
         # that start with `works`. * `skills.tags:test` to find agents whose skills tags
@@ -1103,8 +1103,8 @@ module Google
         # `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search |
         # |--------------------|-----|-----|-----|----------------| | mcpServerId | Yes
         # | Yes | Yes | Included | | name | No | Yes | Yes | Included | | displayName |
-        # No | Yes | Yes | Included | Examples: * `mcpServerId=urn:mcp:projects-123:
-        # projects:123:locations:us-central1:agentregistry:services:service-id` to find
+        # No | Yes | Yes | Included | Examples: * `mcpServerId="urn:mcp:projects-123:
+        # projects:123:locations:us-central1:agentregistry:services:service-id"` to find
         # the MCP Server with the specified MCP Server ID. * `name:important` to find
         # MCP Servers whose name contains `important` as a word. * `displayName:works*`
         # to find MCP Servers whose display name contains words that start with `works`.
