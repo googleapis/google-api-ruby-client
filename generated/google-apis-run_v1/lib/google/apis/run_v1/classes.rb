@@ -2169,7 +2169,7 @@ module Google
         # @return [Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan]
         attr_accessor :pull_timing
       
-        # Declaration of results for this build step.
+        # Output only. Declaration of results for this build step.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1StepResult>]
         attr_accessor :results
