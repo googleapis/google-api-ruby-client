@@ -2324,6 +2324,7 @@ module Google
       
           property :sender, as: 'sender', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
       
+          property :silent, as: 'silent'
           property :slash_command, as: 'slashCommand', class: Google::Apis::ChatV1::SlashCommand, decorator: Google::Apis::ChatV1::SlashCommand::Representation
       
           property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
