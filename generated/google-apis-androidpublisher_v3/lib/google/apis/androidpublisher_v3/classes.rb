@@ -3499,7 +3499,7 @@ module Google
       end
       
       # Download metadata for split, standalone and universal APKs, as well as asset
-      # pack slices, signed with a given key.
+      # pack slices, signed with a given key. Next ID: 10
       class GeneratedApksPerSigningKey
         include Google::Apis::Core::Hashable
       
@@ -3544,6 +3544,24 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::TargetingInfo]
         attr_accessor :targeting_info
       
+        # List of generated split APKs without automatic protection, signed with a key
+        # corresponding to certificate_sha256_hash. This field is only present if the
+        # app uses automatic protection. In this case, `generated_split_apks` contains
+        # APKs with automatic protection enabled, whereas this field contains APKs
+        # without automatic protection.
+        # Corresponds to the JSON property `unprotectedGeneratedSplitApks`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GeneratedSplitApk>]
+        attr_accessor :unprotected_generated_split_apks
+      
+        # List of generated standalone APKs without automatic protection, signed with a
+        # key corresponding to certificate_sha256_hash. This field is only present if
+        # the app uses automatic protection. In this case, `generated_standalone_apks`
+        # contains APKs with automatic protection enabled, whereas this field contains
+        # APKs without automatic protection.
+        # Corresponds to the JSON property `unprotectedGeneratedStandaloneApks`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GeneratedStandaloneApk>]
+        attr_accessor :unprotected_generated_standalone_apks
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3557,6 +3575,8 @@ module Google
           @generated_standalone_apks = args[:generated_standalone_apks] if args.key?(:generated_standalone_apks)
           @generated_universal_apk = args[:generated_universal_apk] if args.key?(:generated_universal_apk)
           @targeting_info = args[:targeting_info] if args.key?(:targeting_info)
+          @unprotected_generated_split_apks = args[:unprotected_generated_split_apks] if args.key?(:unprotected_generated_split_apks)
+          @unprotected_generated_standalone_apks = args[:unprotected_generated_standalone_apks] if args.key?(:unprotected_generated_standalone_apks)
         end
       end
       

@@ -3155,6 +3155,10 @@ module Google
       
           property :targeting_info, as: 'targetingInfo', class: Google::Apis::AndroidpublisherV3::TargetingInfo, decorator: Google::Apis::AndroidpublisherV3::TargetingInfo::Representation
       
+          collection :unprotected_generated_split_apks, as: 'unprotectedGeneratedSplitApks', class: Google::Apis::AndroidpublisherV3::GeneratedSplitApk, decorator: Google::Apis::AndroidpublisherV3::GeneratedSplitApk::Representation
+      
+          collection :unprotected_generated_standalone_apks, as: 'unprotectedGeneratedStandaloneApks', class: Google::Apis::AndroidpublisherV3::GeneratedStandaloneApk, decorator: Google::Apis::AndroidpublisherV3::GeneratedStandaloneApk::Representation
+      
         end
       end
       
