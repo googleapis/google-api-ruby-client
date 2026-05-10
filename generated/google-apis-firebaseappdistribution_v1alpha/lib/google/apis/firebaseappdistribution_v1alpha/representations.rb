@@ -802,6 +802,7 @@ module Google
           property :login_credential, as: 'loginCredential', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaLoginCredential, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaLoginCredential::Representation
       
           property :name, as: 'name'
+          property :results_bucket, as: 'resultsBucket'
           property :test_case, as: 'testCase'
           property :test_state, as: 'testState'
         end
@@ -863,6 +864,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :results_bucket, as: 'resultsBucket'
           property :robo_crawler, as: 'roboCrawler', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaRoboCrawler, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaRoboCrawler::Representation
       
           collection :test_devices, as: 'testDevices', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice::Representation
