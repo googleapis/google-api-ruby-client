@@ -825,7 +825,8 @@ module Google
       
         # Optional. Input only. Immutable. Tag keys/values directly bound to this
         # resource. For example: "123/environment": "production", "123/costCenter": "
-        # marketing"
+        # marketing" See https://`$universe.dns_names.final_documentation_domain`/pubsub/
+        # docs/tags for more information on using tags with Pub/Sub resources.
         # Corresponds to the JSON property `tags`
         # @return [Hash<String,String>]
         attr_accessor :tags
@@ -2134,9 +2135,10 @@ module Google
         end
       end
       
-      # A subscription resource. If none of `push_config`, `bigquery_config`, or `
-      # cloud_storage_config` is set, then the subscriber will pull and ack messages
-      # using API methods. At most one of these fields may be set.
+      # A subscription resource. If none of `push_config`, `bigquery_config`, `
+      # cloud_storage_config`, or `bigtable_config` is set, then the subscriber will
+      # pull and ack messages using API methods. At most one of these fields may be
+      # set.
       class Subscription
         include Google::Apis::Core::Hashable
       
@@ -2304,7 +2306,8 @@ module Google
       
         # Optional. Input only. Immutable. Tag keys/values directly bound to this
         # resource. For example: "123/environment": "production", "123/costCenter": "
-        # marketing"
+        # marketing" See https://`$universe.dns_names.final_documentation_domain`/pubsub/
+        # docs/tags for more information on using tags with Pub/Sub resources.
         # Corresponds to the JSON property `tags`
         # @return [Hash<String,String>]
         attr_accessor :tags
@@ -2506,7 +2509,8 @@ module Google
       
         # Optional. Input only. Immutable. Tag keys/values directly bound to this
         # resource. For example: "123/environment": "production", "123/costCenter": "
-        # marketing"
+        # marketing" See https://`$universe.dns_names.final_documentation_domain`/pubsub/
+        # docs/tags for more information on using tags with Pub/Sub resources.
         # Corresponds to the JSON property `tags`
         # @return [Hash<String,String>]
         attr_accessor :tags
@@ -2585,9 +2589,10 @@ module Google
       class UpdateSubscriptionRequest
         include Google::Apis::Core::Hashable
       
-        # A subscription resource. If none of `push_config`, `bigquery_config`, or `
-        # cloud_storage_config` is set, then the subscriber will pull and ack messages
-        # using API methods. At most one of these fields may be set.
+        # A subscription resource. If none of `push_config`, `bigquery_config`, `
+        # cloud_storage_config`, or `bigtable_config` is set, then the subscriber will
+        # pull and ack messages using API methods. At most one of these fields may be
+        # set.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PubsubV1::Subscription]
         attr_accessor :subscription
