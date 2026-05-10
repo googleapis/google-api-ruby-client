@@ -158,6 +158,14 @@ module Google
       class AuditLog
         include Google::Apis::Core::Hashable
       
+        # The API version identifier of the operation that uses interface based
+        # versioning (IBV). For example, `"2026-01-01-preview"`. The version identifier
+        # generally follows the format of [variant_]date[_decorator]. It should not be
+        # parsed because the exact format varies across services.
+        # Corresponds to the JSON property `apiVersionIdentifier`
+        # @return [String]
+        attr_accessor :api_version_identifier
+      
         # Authentication information for the operation.
         # Corresponds to the JSON property `authenticationInfo`
         # @return [Google::Apis::ServicecontrolV2::AuthenticationInfo]
@@ -267,6 +275,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_version_identifier = args[:api_version_identifier] if args.key?(:api_version_identifier)
           @authentication_info = args[:authentication_info] if args.key?(:authentication_info)
           @authorization_info = args[:authorization_info] if args.key?(:authorization_info)
           @metadata = args[:metadata] if args.key?(:metadata)
