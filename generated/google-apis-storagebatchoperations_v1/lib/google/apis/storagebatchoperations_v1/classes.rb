@@ -269,6 +269,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_bytes_found
       
+        # Output only. The total number of bytes affected by the transformation. For
+        # example, this counts bytes deleted for `DeleteObject` operations and bytes
+        # rewritten for `RewriteObject` operations.
+        # Corresponds to the JSON property `totalBytesTransformed`
+        # @return [Fixnum]
+        attr_accessor :total_bytes_transformed
+      
         # Output only. Number of objects listed.
         # Corresponds to the JSON property `totalObjectCount`
         # @return [Fixnum]
@@ -286,6 +293,7 @@ module Google
           @object_custom_contexts_updated = args[:object_custom_contexts_updated] if args.key?(:object_custom_contexts_updated)
           @succeeded_object_count = args[:succeeded_object_count] if args.key?(:succeeded_object_count)
           @total_bytes_found = args[:total_bytes_found] if args.key?(:total_bytes_found)
+          @total_bytes_transformed = args[:total_bytes_transformed] if args.key?(:total_bytes_transformed)
           @total_object_count = args[:total_object_count] if args.key?(:total_object_count)
         end
       end
