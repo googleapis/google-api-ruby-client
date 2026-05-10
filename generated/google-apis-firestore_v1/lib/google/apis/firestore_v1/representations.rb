@@ -1985,6 +1985,7 @@ module Google
       class ReadWrite
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency_mode, as: 'concurrencyMode'
           property :retry_transaction, :base64 => true, as: 'retryTransaction'
         end
       end

@@ -1256,7 +1256,8 @@ module Google
         # @param [String] parent
         #   Required. The parent document. In the format: `projects/`project_id`/databases/
         #   `database_id`/documents/`document_path``. For example: `projects/my-project/
-        #   databases/my-database/documents/chatrooms/my-chatroom`
+        #   databases/my-database/documents/chatrooms/my-chatroom` Use `projects/`
+        #   project_id`/databases/`database_id`/documents` to list top-level collections.
         # @param [Google::Apis::FirestoreV1::ListCollectionIdsRequest] list_collection_ids_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2052,8 +2053,8 @@ module Google
         end
         
         # Lists information about the supported locations for this service. This method
-        # lists locations based on the resource scope provided in the [
-        # ListLocationsRequest.name] field: * **Global locations**: If `name` is empty,
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
         # the method lists the public locations available to all projects. * **Project-
         # specific locations**: If `name` follows the format `projects/`project``, the
         # method lists locations visible to that specific project. This includes public,
@@ -2064,8 +2065,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail

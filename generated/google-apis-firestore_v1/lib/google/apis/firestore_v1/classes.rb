@@ -1759,9 +1759,14 @@ module Google
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CmekConfig]
         attr_accessor :cmek_config
       
-        # The concurrency control mode to use for this database. If unspecified in a
-        # CreateDatabase request, this will default based on the database edition:
-        # Optimistic for Enterprise and Pessimistic for all other databases.
+        # The default concurrency control mode to use for this database. If unspecified
+        # in a CreateDatabase request, this will default based on the database edition:
+        # Optimistic for Enterprise and Pessimistic for all other databases. While
+        # transactions can explicitly specify their own concurrency mode, this setting
+        # defines the default behavior when left unspecified. Important: This database-
+        # level setting is not respected for Firestore with MongoDB compatibility. All
+        # transactions through the MongoDB compatibility layer will use optimistic
+        # concurrency control, regardless of this setting.
         # Corresponds to the JSON property `concurrencyMode`
         # @return [String]
         attr_accessor :concurrency_mode
@@ -4077,10 +4082,17 @@ module Google
       end
       
       # Options for a transaction that can be used to read and write documents.
-      # Firestore does not allow 3rd party auth requests to create read-write.
-      # transactions.
       class ReadWrite
         include Google::Apis::Core::Hashable
+      
+        # Optional. The concurrency control mode to use for this transaction. A database
+        # is able to use different concurrency modes for different transactions
+        # simultaneously. 3rd party auth requests are only allowed to create optimistic
+        # read-write transactions and must specify that here even if the database-level
+        # setting is already configured to optimistic.
+        # Corresponds to the JSON property `concurrencyMode`
+        # @return [String]
+        attr_accessor :concurrency_mode
       
         # An optional transaction to retry.
         # Corresponds to the JSON property `retryTransaction`
@@ -4094,6 +4106,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
           @retry_transaction = args[:retry_transaction] if args.key?(:retry_transaction)
         end
       end
@@ -4716,8 +4729,6 @@ module Google
         attr_accessor :read_only
       
         # Options for a transaction that can be used to read and write documents.
-        # Firestore does not allow 3rd party auth requests to create read-write.
-        # transactions.
         # Corresponds to the JSON property `readWrite`
         # @return [Google::Apis::FirestoreV1::ReadWrite]
         attr_accessor :read_write
