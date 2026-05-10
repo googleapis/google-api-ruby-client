@@ -244,6 +244,34 @@ module Google
         end
       end
       
+      # Data Governance tag This is a namespaced name specifying the key and the value.
+      # For example: `project-id/pii/sensitive`.
+      class DataGovernanceTag
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Tag keys are globally unique. Tag key is expected to be in the
+        # namespaced format, for example `parent-id/pii` where `parent-id` is the ID of
+        # the parent organization or project resource for this tag key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Specifies the tag value as the short name, for example `sensitive`.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # The policy used to specify data masking rule.
       class DataMaskingPolicy
         include Google::Apis::Core::Hashable
@@ -274,6 +302,12 @@ module Google
       # Represents the label-policy binding.
       class DataPolicy
         include Google::Apis::Core::Hashable
+      
+        # Data Governance tag This is a namespaced name specifying the key and the value.
+        # For example: `project-id/pii/sensitive`.
+        # Corresponds to the JSON property `dataGovernanceTag`
+        # @return [Google::Apis::BigquerydatapolicyV2::DataGovernanceTag]
+        attr_accessor :data_governance_tag
       
         # The policy used to specify data masking rule.
         # Corresponds to the JSON property `dataMaskingPolicy`
@@ -334,6 +368,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_governance_tag = args[:data_governance_tag] if args.key?(:data_governance_tag)
           @data_masking_policy = args[:data_masking_policy] if args.key?(:data_masking_policy)
           @data_policy_id = args[:data_policy_id] if args.key?(:data_policy_id)
           @data_policy_type = args[:data_policy_type] if args.key?(:data_policy_type)

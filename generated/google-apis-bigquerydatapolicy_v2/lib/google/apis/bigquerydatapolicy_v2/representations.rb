@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataGovernanceTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataMaskingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,14 @@ module Google
         end
       end
       
+      class DataGovernanceTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class DataMaskingPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -178,6 +192,8 @@ module Google
       class DataPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_governance_tag, as: 'dataGovernanceTag', class: Google::Apis::BigquerydatapolicyV2::DataGovernanceTag, decorator: Google::Apis::BigquerydatapolicyV2::DataGovernanceTag::Representation
+      
           property :data_masking_policy, as: 'dataMaskingPolicy', class: Google::Apis::BigquerydatapolicyV2::DataMaskingPolicy, decorator: Google::Apis::BigquerydatapolicyV2::DataMaskingPolicy::Representation
       
           property :data_policy_id, as: 'dataPolicyId'
