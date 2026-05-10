@@ -237,6 +237,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. Misconfigurations or errors in the agent that may affect agent
+        # quality.
+        # Corresponds to the JSON property `validationErrors`
+        # @return [Array<String>]
+        attr_accessor :validation_errors
+      
         def initialize(**args)
            update!(**args)
         end
@@ -265,6 +271,7 @@ module Google
           @toolsets = args[:toolsets] if args.key?(:toolsets)
           @transfer_rules = args[:transfer_rules] if args.key?(:transfer_rules)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @validation_errors = args[:validation_errors] if args.key?(:validation_errors)
         end
       end
       
@@ -291,6 +298,97 @@ module Google
         def update!(**args)
           @tool_ids = args[:tool_ids] if args.key?(:tool_ids)
           @toolset = args[:toolset] if args.key?(:toolset)
+        end
+      end
+      
+      # AgentCard conveys key information about a remote agent. It is a trimmed
+      # version of the AgentCard defined in the A2A protocol https://a2a-protocol.org/
+      # dev/specification/#441-agentcard
+      class AgentCard
+        include Google::Apis::Core::Hashable
+      
+        # Required. A description of the agent's domain of action/solution space.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. A human-readable name for the agent.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Skills represent a unit of ability an agent can perform. This may
+        # somewhat abstract but represents a more focused set of actions that the agent
+        # is highly likely to succeed at.
+        # Corresponds to the JSON property `skills`
+        # @return [Array<Google::Apis::CesV1::AgentSkill>]
+        attr_accessor :skills
+      
+        # Required. Ordered list of supported interfaces. The first entry is preferred.
+        # Corresponds to the JSON property `supportedInterfaces`
+        # @return [Array<Google::Apis::CesV1::AgentInterface>]
+        attr_accessor :supported_interfaces
+      
+        # Required. The version of the agent.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @skills = args[:skills] if args.key?(:skills)
+          @supported_interfaces = args[:supported_interfaces] if args.key?(:supported_interfaces)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Declares a combination of a target URL, transport and protocol version for
+      # interacting with the agent. This allows agents to expose the same
+      # functionality over multiple protocol binding mechanisms.
+      class AgentInterface
+        include Google::Apis::Core::Hashable
+      
+        # Required. The protocol binding supported at this URL. This is an open form
+        # string, to be easily extended for other protocol bindings. The core ones
+        # officially supported are `JSONRPC`, `GRPC` and `HTTP+JSON`.
+        # Corresponds to the JSON property `protocolBinding`
+        # @return [String]
+        attr_accessor :protocol_binding
+      
+        # Required. The version of the A2A protocol this interface exposes. Use the
+        # latest supported minor version per major version. Examples: "0.3", "1.0"
+        # Corresponds to the JSON property `protocolVersion`
+        # @return [String]
+        attr_accessor :protocol_version
+      
+        # Tenant ID to be used in the request when calling the agent.
+        # Corresponds to the JSON property `tenant`
+        # @return [String]
+        attr_accessor :tenant
+      
+        # Required. The URL where this interface is available. Must be a valid absolute
+        # HTTPS URL in production. Example: "https://api.example.com/a2a/v1", "https://
+        # grpc.example.com/a2a"
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @protocol_binding = args[:protocol_binding] if args.key?(:protocol_binding)
+          @protocol_version = args[:protocol_version] if args.key?(:protocol_version)
+          @tenant = args[:tenant] if args.key?(:tenant)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -370,6 +468,63 @@ module Google
           @input_variable_mapping = args[:input_variable_mapping] if args.key?(:input_variable_mapping)
           @output_variable_mapping = args[:output_variable_mapping] if args.key?(:output_variable_mapping)
           @respect_response_interruption_settings = args[:respect_response_interruption_settings] if args.key?(:respect_response_interruption_settings)
+        end
+      end
+      
+      # Represents a distinct capability or function that an agent can perform.
+      class AgentSkill
+        include Google::Apis::Core::Hashable
+      
+        # Required. A detailed description of the skill.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Example prompts or scenarios that this skill can handle.
+        # Corresponds to the JSON property `examples`
+        # @return [Array<String>]
+        attr_accessor :examples
+      
+        # Required. A unique identifier for the agent's skill.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The set of supported input media types for this skill, overriding the agent's
+        # defaults.
+        # Corresponds to the JSON property `inputModes`
+        # @return [Array<String>]
+        attr_accessor :input_modes
+      
+        # Required. A human-readable name for the skill.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The set of supported output media types for this skill, overriding the agent's
+        # defaults.
+        # Corresponds to the JSON property `outputModes`
+        # @return [Array<String>]
+        attr_accessor :output_modes
+      
+        # Required. A set of keywords describing the skill's capabilities.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @examples = args[:examples] if args.key?(:examples)
+          @id = args[:id] if args.key?(:id)
+          @input_modes = args[:input_modes] if args.key?(:input_modes)
+          @name = args[:name] if args.key?(:name)
+          @output_modes = args[:output_modes] if args.key?(:output_modes)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -716,10 +871,20 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. Misconfigurations or warnings in the app.
+        # Corresponds to the JSON property `validationErrors`
+        # @return [Array<String>]
+        attr_accessor :validation_errors
+      
         # Optional. The declarations of the variables.
         # Corresponds to the JSON property `variableDeclarations`
         # @return [Array<Google::Apis::CesV1::AppVariableDeclaration>]
         attr_accessor :variable_declarations
+      
+        # VPC-SC settings for the app.
+        # Corresponds to the JSON property `vpcScSettings`
+        # @return [Google::Apis::CesV1::VpcScSettings]
+        attr_accessor :vpc_sc_settings
       
         def initialize(**args)
            update!(**args)
@@ -752,7 +917,9 @@ module Google
           @time_zone_settings = args[:time_zone_settings] if args.key?(:time_zone_settings)
           @tool_execution_mode = args[:tool_execution_mode] if args.key?(:tool_execution_mode)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @validation_errors = args[:validation_errors] if args.key?(:validation_errors)
           @variable_declarations = args[:variable_declarations] if args.key?(:variable_declarations)
+          @vpc_sc_settings = args[:vpc_sc_settings] if args.key?(:vpc_sc_settings)
         end
       end
       
@@ -5385,6 +5552,39 @@ module Google
         end
       end
       
+      # Represents a tool that allows the agent to call another remote agent.
+      class RemoteAgentTool
+        include Google::Apis::Core::Hashable
+      
+        # AgentCard conveys key information about a remote agent. It is a trimmed
+        # version of the AgentCard defined in the A2A protocol https://a2a-protocol.org/
+        # dev/specification/#441-agentcard
+        # Corresponds to the JSON property `agentCard`
+        # @return [Google::Apis::CesV1::AgentCard]
+        attr_accessor :agent_card
+      
+        # Required. The description of the tool.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The name of the tool.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_card = args[:agent_card] if args.key?(:agent_card)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Request message for AgentService.RestoreAppVersion
       class RestoreAppVersionRequest
         include Google::Apis::Core::Hashable
@@ -6426,10 +6626,21 @@ module Google
         # @return [Google::Apis::CesV1::PythonFunction]
         attr_accessor :python_function
       
+        # Represents a tool that allows the agent to call another remote agent.
+        # Corresponds to the JSON property `remoteAgentTool`
+        # @return [Google::Apis::CesV1::RemoteAgentTool]
+        attr_accessor :remote_agent_tool
+      
         # Pre-defined system tool.
         # Corresponds to the JSON property `systemTool`
         # @return [Google::Apis::CesV1::SystemTool]
         attr_accessor :system_tool
+      
+        # Optional. The timeout for the tool execution. If not set, the default timeout
+        # is 30 seconds for `SYNCHRONOUS` tools and 60 seconds for `ASYNCHRONOUS` tools.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
       
         # Configuration for tool behavior in fake mode.
         # Corresponds to the JSON property `toolFakeConfig`
@@ -6470,7 +6681,9 @@ module Google
           @name = args[:name] if args.key?(:name)
           @open_api_tool = args[:open_api_tool] if args.key?(:open_api_tool)
           @python_function = args[:python_function] if args.key?(:python_function)
+          @remote_agent_tool = args[:remote_agent_tool] if args.key?(:remote_agent_tool)
           @system_tool = args[:system_tool] if args.key?(:system_tool)
+          @timeout = args[:timeout] if args.key?(:timeout)
           @tool_fake_config = args[:tool_fake_config] if args.key?(:tool_fake_config)
           @update_time = args[:update_time] if args.key?(:update_time)
           @widget_tool = args[:widget_tool] if args.key?(:widget_tool)
@@ -6942,6 +7155,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent = args[:agent] if args.key?(:agent)
+        end
+      end
+      
+      # VPC-SC settings for the app.
+      class VpcScSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The allowed HTTP(s) origins that OpenAPI tools in the App are able
+        # to directly call when VPC Service Controls are enabled. These strings must
+        # match the origin exactly, including the port if specified. For example, "https:
+        # //example.com" or "https://example.com:443". This list does not yet apply to
+        # Python tools that may make direct HTTP calls.
+        # Corresponds to the JSON property `allowedOrigins`
+        # @return [Array<String>]
+        attr_accessor :allowed_origins
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_origins = args[:allowed_origins] if args.key?(:allowed_origins)
         end
       end
       

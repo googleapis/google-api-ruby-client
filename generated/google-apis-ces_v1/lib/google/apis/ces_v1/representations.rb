@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentCard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentLlmAgent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +65,12 @@ module Google
       end
       
       class AgentRemoteDialogflowAgent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentSkill
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -862,6 +880,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoteAgentTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreAppVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1102,6 +1126,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcScSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WebSearchQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1181,6 +1211,7 @@ module Google
           collection :transfer_rules, as: 'transferRules', class: Google::Apis::CesV1::TransferRule, decorator: Google::Apis::CesV1::TransferRule::Representation
       
           property :update_time, as: 'updateTime'
+          collection :validation_errors, as: 'validationErrors'
         end
       end
       
@@ -1189,6 +1220,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :tool_ids, as: 'toolIds'
           property :toolset, as: 'toolset'
+        end
+      end
+      
+      class AgentCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+          collection :skills, as: 'skills', class: Google::Apis::CesV1::AgentSkill, decorator: Google::Apis::CesV1::AgentSkill::Representation
+      
+          collection :supported_interfaces, as: 'supportedInterfaces', class: Google::Apis::CesV1::AgentInterface, decorator: Google::Apis::CesV1::AgentInterface::Representation
+      
+          property :version, as: 'version'
+        end
+      end
+      
+      class AgentInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :protocol_binding, as: 'protocolBinding'
+          property :protocol_version, as: 'protocolVersion'
+          property :tenant, as: 'tenant'
+          property :url, as: 'url'
         end
       end
       
@@ -1207,6 +1261,19 @@ module Google
           hash :input_variable_mapping, as: 'inputVariableMapping'
           hash :output_variable_mapping, as: 'outputVariableMapping'
           property :respect_response_interruption_settings, as: 'respectResponseInterruptionSettings'
+        end
+      end
+      
+      class AgentSkill
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :examples, as: 'examples'
+          property :id, as: 'id'
+          collection :input_modes, as: 'inputModes'
+          property :name, as: 'name'
+          collection :output_modes, as: 'outputModes'
+          collection :tags, as: 'tags'
         end
       end
       
@@ -1302,7 +1369,10 @@ module Google
       
           property :tool_execution_mode, as: 'toolExecutionMode'
           property :update_time, as: 'updateTime'
+          collection :validation_errors, as: 'validationErrors'
           collection :variable_declarations, as: 'variableDeclarations', class: Google::Apis::CesV1::AppVariableDeclaration, decorator: Google::Apis::CesV1::AppVariableDeclaration::Representation
+      
+          property :vpc_sc_settings, as: 'vpcScSettings', class: Google::Apis::CesV1::VpcScSettings, decorator: Google::Apis::CesV1::VpcScSettings::Representation
       
         end
       end
@@ -2624,6 +2694,16 @@ module Google
         end
       end
       
+      class RemoteAgentTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_card, as: 'agentCard', class: Google::Apis::CesV1::AgentCard, decorator: Google::Apis::CesV1::AgentCard::Representation
+      
+          property :description, as: 'description'
+          property :name, as: 'name'
+        end
+      end
+      
       class RestoreAppVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2915,8 +2995,11 @@ module Google
       
           property :python_function, as: 'pythonFunction', class: Google::Apis::CesV1::PythonFunction, decorator: Google::Apis::CesV1::PythonFunction::Representation
       
+          property :remote_agent_tool, as: 'remoteAgentTool', class: Google::Apis::CesV1::RemoteAgentTool, decorator: Google::Apis::CesV1::RemoteAgentTool::Representation
+      
           property :system_tool, as: 'systemTool', class: Google::Apis::CesV1::SystemTool, decorator: Google::Apis::CesV1::SystemTool::Representation
       
+          property :timeout, as: 'timeout'
           property :tool_fake_config, as: 'toolFakeConfig', class: Google::Apis::CesV1::ToolFakeConfig, decorator: Google::Apis::CesV1::ToolFakeConfig::Representation
       
           property :update_time, as: 'updateTime'
@@ -3072,6 +3155,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent, as: 'agent'
+        end
+      end
+      
+      class VpcScSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_origins, as: 'allowedOrigins'
         end
       end
       
