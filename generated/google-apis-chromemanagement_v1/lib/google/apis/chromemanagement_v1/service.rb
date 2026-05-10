@@ -1572,6 +1572,64 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generate report of managed Chrome profiles that have a specified app installed.
+        # @param [String] customer
+        #   Required. Customer id or "my_customer" to use the customer associated to the
+        #   account making the request.
+        # @param [String] app_id
+        #   Required. Unique identifier of the app. For Chrome apps and extensions, the 32-
+        #   character id (e.g. ehoadneljpdggcbbknedodolkkjodefl). For Android apps, the
+        #   package name (e.g. com.evernote).
+        # @param [String] app_type
+        #   Type of the app. Optional. If not provided, an app type will be inferred from
+        #   the format of the app ID.
+        # @param [String] filter
+        #   Optional. Query string to filter results, AND-separated fields in EBNF syntax.
+        #   Note: OR operations are not supported in this filter. Supported filter fields:
+        #   * last_active_date
+        # @param [String] order_by
+        #   Optional. Field used to order results. Supported order by fields: * email *
+        #   profile_id * profile_permanent_id
+        # @param [String] org_unit_id
+        #   Optional. The ID of the organizational unit.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return. Maximum and default are 100.
+        # @param [String] page_token
+        #   Optional. Token to specify the page of the request to be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindInstalledAppProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindInstalledAppProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def find_customer_report_installed_app_profiles(customer, app_id: nil, app_type: nil, filter: nil, order_by: nil, org_unit_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:findInstalledAppProfiles', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindInstalledAppProfilesResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindInstalledAppProfilesResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['appId'] = app_id unless app_id.nil?
+          command.query['appType'] = app_type unless app_type.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get telemetry device.
         # @param [String] name
         #   Required. Name of the `TelemetryDevice` to return.
