@@ -279,6 +279,7 @@ module Google
           property :object_custom_contexts_updated, :numeric_string => true, as: 'objectCustomContextsUpdated'
           property :succeeded_object_count, :numeric_string => true, as: 'succeededObjectCount'
           property :total_bytes_found, :numeric_string => true, as: 'totalBytesFound'
+          property :total_bytes_transformed, :numeric_string => true, as: 'totalBytesTransformed'
           property :total_object_count, :numeric_string => true, as: 'totalObjectCount'
         end
       end
