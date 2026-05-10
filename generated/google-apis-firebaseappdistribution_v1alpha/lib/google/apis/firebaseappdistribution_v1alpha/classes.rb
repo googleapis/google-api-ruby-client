@@ -1458,6 +1458,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Input only. The custom Cloud Storage bucket where test results are
+        # stored. Format: `projects/`project_number`/buckets/`bucket`` If not provided,
+        # the default test lab bucket is used.
+        # Corresponds to the JSON property `resultsBucket`
+        # @return [String]
+        attr_accessor :results_bucket
+      
         # Optional. The test case that was used to generate this release test. Note: The
         # test case may have changed or been deleted since the release test was created.
         # Format: `projects/`project_number`/apps/`app`/testCases/`test_case``
@@ -1482,6 +1489,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @login_credential = args[:login_credential] if args.key?(:login_credential)
           @name = args[:name] if args.key?(:name)
+          @results_bucket = args[:results_bucket] if args.key?(:results_bucket)
           @test_case = args[:test_case] if args.key?(:test_case)
           @test_state = args[:test_state] if args.key?(:test_state)
         end
@@ -1672,6 +1680,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The custom Cloud Storage bucket where test results are stored.
+        # Format: `projects/`project_number`/buckets/`bucket`` If not provided, the
+        # default test lab bucket is used.
+        # Corresponds to the JSON property `resultsBucket`
+        # @return [String]
+        attr_accessor :results_bucket
+      
         # Configuration for Robo crawler
         # Corresponds to the JSON property `roboCrawler`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaRoboCrawler]
@@ -1690,6 +1705,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @results_bucket = args[:results_bucket] if args.key?(:results_bucket)
           @robo_crawler = args[:robo_crawler] if args.key?(:robo_crawler)
           @test_devices = args[:test_devices] if args.key?(:test_devices)
         end
