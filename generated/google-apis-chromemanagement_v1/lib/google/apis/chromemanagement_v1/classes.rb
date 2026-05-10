@@ -1947,6 +1947,38 @@ module Google
         end
       end
       
+      # Response containing a list of profiles with queried app installed.
+      class GoogleChromeManagementV1FindInstalledAppProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to specify the next page of the request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of profiles which have the app installed. Sorted in ascending
+        # alphabetical order on the profile.Email field.
+        # Corresponds to the JSON property `profiles`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ProfileAppInstallInstance>]
+        attr_accessor :profiles
+      
+        # Total number of profiles matching request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @profiles = args[:profiles] if args.key?(:profiles)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # Information of a graphics adapter (GPU).
       class GoogleChromeManagementV1GraphicsAdapterInfo
         include Google::Apis::Core::Hashable
@@ -2945,6 +2977,44 @@ module Google
           @printer_id = args[:printer_id] if args.key?(:printer_id)
           @printer_model = args[:printer_model] if args.key?(:printer_model)
           @user_count = args[:user_count] if args.key?(:user_count)
+        end
+      end
+      
+      # Describes a profile reporting Chrome Profile information.
+      class GoogleChromeManagementV1ProfileAppInstallInstance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The email of the profile.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. The Chrome client side profile ID.
+        # Corresponds to the JSON property `profileId`
+        # @return [String]
+        attr_accessor :profile_id
+      
+        # Output only. The organizational unit id of the profile.
+        # Corresponds to the JSON property `profileOrgUnitId`
+        # @return [String]
+        attr_accessor :profile_org_unit_id
+      
+        # Output only. Profile permanent ID is the unique identifier of a profile within
+        # one customer.
+        # Corresponds to the JSON property `profilePermanentId`
+        # @return [String]
+        attr_accessor :profile_permanent_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @profile_id = args[:profile_id] if args.key?(:profile_id)
+          @profile_org_unit_id = args[:profile_org_unit_id] if args.key?(:profile_org_unit_id)
+          @profile_permanent_id = args[:profile_permanent_id] if args.key?(:profile_permanent_id)
         end
       end
       
@@ -4979,6 +5049,11 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1GoogleSecOpsConfig]
         attr_accessor :google_sec_ops_config
       
+        # MIP label connector config.
+        # Corresponds to the JSON property `mipLabelConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MipLabelConfig]
+        attr_accessor :mip_label_config
+      
         # Palo Alto Networks connector config.
         # Corresponds to the JSON property `paloAltoNetworksConfig`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PaloAltoNetworksConfig]
@@ -5010,6 +5085,7 @@ module Google
           @crowd_strike_xdr_config = args[:crowd_strike_xdr_config] if args.key?(:crowd_strike_xdr_config)
           @device_trust_config = args[:device_trust_config] if args.key?(:device_trust_config)
           @google_sec_ops_config = args[:google_sec_ops_config] if args.key?(:google_sec_ops_config)
+          @mip_label_config = args[:mip_label_config] if args.key?(:mip_label_config)
           @palo_alto_networks_config = args[:palo_alto_networks_config] if args.key?(:palo_alto_networks_config)
           @pub_sub_config = args[:pub_sub_config] if args.key?(:pub_sub_config)
           @pub_sub_xdr_config = args[:pub_sub_xdr_config] if args.key?(:pub_sub_xdr_config)
@@ -5392,6 +5468,33 @@ module Google
         def update!(**args)
           @connector_configs = args[:connector_configs] if args.key?(:connector_configs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # MIP label connector config.
+      class GoogleChromeManagementVersionsV1MipLabelConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Domain can be used optionally for the corner case where one Dasher
+        # customer ID maps to multiple Microsoft tenant ID. Each domain can be verified
+        # with at most one Microsoft tenant.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
+      
+        # Required. Microsoft tenant ID.
+        # Corresponds to the JSON property `microsoftTenantId`
+        # @return [String]
+        attr_accessor :microsoft_tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domains = args[:domains] if args.key?(:domains)
+          @microsoft_tenant_id = args[:microsoft_tenant_id] if args.key?(:microsoft_tenant_id)
         end
       end
       

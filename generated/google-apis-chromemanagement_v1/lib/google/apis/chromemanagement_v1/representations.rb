@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1FindInstalledAppProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1GraphicsAdapterInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +419,12 @@ module Google
       end
       
       class GoogleChromeManagementV1PrinterReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1ProfileAppInstallInstance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -755,6 +767,12 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1MipLabelConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1430,6 +1448,16 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1FindInstalledAppProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :profiles, as: 'profiles', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ProfileAppInstallInstance, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ProfileAppInstallInstance::Representation
+      
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
       class GoogleChromeManagementV1GraphicsAdapterInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1671,6 +1699,16 @@ module Google
           property :printer_id, as: 'printerId'
           property :printer_model, as: 'printerModel'
           property :user_count, :numeric_string => true, as: 'userCount'
+        end
+      end
+      
+      class GoogleChromeManagementV1ProfileAppInstallInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :profile_id, as: 'profileId'
+          property :profile_org_unit_id, as: 'profileOrgUnitId'
+          property :profile_permanent_id, as: 'profilePermanentId'
         end
       end
       
@@ -2227,6 +2265,8 @@ module Google
       
           property :google_sec_ops_config, as: 'googleSecOpsConfig', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1GoogleSecOpsConfig, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1GoogleSecOpsConfig::Representation
       
+          property :mip_label_config, as: 'mipLabelConfig', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MipLabelConfig, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MipLabelConfig::Representation
+      
           property :palo_alto_networks_config, as: 'paloAltoNetworksConfig', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PaloAltoNetworksConfig, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PaloAltoNetworksConfig::Representation
       
           property :pub_sub_config, as: 'pubSubConfig', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PubSubConfig, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PubSubConfig::Representation
@@ -2347,6 +2387,14 @@ module Google
           collection :connector_configs, as: 'connectorConfigs', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1MipLabelConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domains, as: 'domains'
+          property :microsoft_tenant_id, as: 'microsoftTenantId'
         end
       end
       
