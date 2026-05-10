@@ -51,6 +51,68 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Finds orphan ResourceEvents matching the criteria and moves them to the
+        # ArchivedResourceEvents table.
+        # @param [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsRequest] google_cloud_assuredworkloads_v1beta1_archive_resource_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def archive_assuredworkload_resource_events(google_cloud_assuredworkloads_v1beta1_archive_resource_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/assuredworkloads:archiveResourceEvents', options)
+          command.request_representation = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsRequest::Representation
+          command.request_object = google_cloud_assuredworkloads_v1beta1_archive_resource_events_request_object
+          command.response_representation = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Finds matching ArchivedResourceEvents and moves them back to the
+        # ResourceEvents table.
+        # @param [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1RevertArchivedResourceEventsRequest] google_cloud_assuredworkloads_v1beta1_revert_archived_resource_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1RevertArchivedResourceEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1RevertArchivedResourceEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revert_assuredworkload_archived_resource_events(google_cloud_assuredworkloads_v1beta1_revert_archived_resource_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/assuredworkloads:revertArchivedResourceEvents', options)
+          command.request_representation = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1RevertArchivedResourceEventsRequest::Representation
+          command.request_object = google_cloud_assuredworkloads_v1beta1_revert_archived_resource_events_request_object
+          command.response_representation = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1RevertArchivedResourceEventsResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1RevertArchivedResourceEventsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name

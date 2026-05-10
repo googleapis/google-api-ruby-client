@@ -165,6 +165,76 @@ module Google
         end
       end
       
+      # Request for archiving resource events.
+      class GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Time to set as ArchiveTime in the archive table. If not provided,
+        # the current time is used.
+        # Corresponds to the JSON property `archiveTime`
+        # @return [String]
+        attr_accessor :archive_time
+      
+        # Required. The number of events to process in a single transaction batch.
+        # Corresponds to the JSON property `batchSize`
+        # @return [Fixnum]
+        attr_accessor :batch_size
+      
+        # Required. Only events with EventTime earlier than this cutoff will be archived.
+        # Corresponds to the JSON property `eventCutoffTime`
+        # @return [String]
+        attr_accessor :event_cutoff_time
+      
+        # Required. The maximum total number of events to move in this request.
+        # Corresponds to the JSON property `maxEventsMove`
+        # @return [Fixnum]
+        attr_accessor :max_events_move
+      
+        # Required. The organization ID for which to archive events.
+        # Corresponds to the JSON property `organizationId`
+        # @return [Fixnum]
+        attr_accessor :organization_id
+      
+        # Required. The region of the workload(s) whose events should be archived. This
+        # is used to filter workloads based on AssurantWorkloadData.region.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_time = args[:archive_time] if args.key?(:archive_time)
+          @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @event_cutoff_time = args[:event_cutoff_time] if args.key?(:event_cutoff_time)
+          @max_events_move = args[:max_events_move] if args.key?(:max_events_move)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+          @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # Response for archiving resource events.
+      class GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total number of events successfully moved to the archive table.
+        # Corresponds to the JSON property `movedEventsCount`
+        # @return [Fixnum]
+        attr_accessor :moved_events_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @moved_events_count = args[:moved_events_count] if args.key?(:moved_events_count)
+        end
+      end
+      
       # Represents move analysis results for an asset.
       class GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis
         include Google::Apis::Core::Hashable
@@ -607,6 +677,77 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for reverting archived resource events.
+      class GoogleCloudAssuredworkloadsV1beta1RevertArchivedResourceEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Only events within this time range will be reverted. This helps
+        # prevent reverting everything when something goes wrong.
+        # Corresponds to the JSON property `archiveEndTime`
+        # @return [String]
+        attr_accessor :archive_end_time
+      
+        # Required. Only events within this time range will be reverted. This helps
+        # prevent reverting everything when something goes wrong.
+        # Corresponds to the JSON property `archiveStartTime`
+        # @return [String]
+        attr_accessor :archive_start_time
+      
+        # Required. The number of events to process in a single transaction batch.
+        # Corresponds to the JSON property `batchSize`
+        # @return [Fixnum]
+        attr_accessor :batch_size
+      
+        # Required. The maximum total number of events to move in this request.
+        # Corresponds to the JSON property `maxEventsMove`
+        # @return [Fixnum]
+        attr_accessor :max_events_move
+      
+        # Required. The organization ID for which to revert events.
+        # Corresponds to the JSON property `organizationId`
+        # @return [Fixnum]
+        attr_accessor :organization_id
+      
+        # Required. The region of the workload(s) whose events should be reverted. This
+        # is used to filter workloads based on AssurantWorkloadData.region.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_end_time = args[:archive_end_time] if args.key?(:archive_end_time)
+          @archive_start_time = args[:archive_start_time] if args.key?(:archive_start_time)
+          @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @max_events_move = args[:max_events_move] if args.key?(:max_events_move)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+          @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # Response for reverting archived resource events.
+      class GoogleCloudAssuredworkloadsV1beta1RevertArchivedResourceEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total number of events successfully moved to the original table.
+        # Corresponds to the JSON property `movedEventsCount`
+        # @return [Fixnum]
+        attr_accessor :moved_events_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @moved_events_count = args[:moved_events_count] if args.key?(:moved_events_count)
         end
       end
       
