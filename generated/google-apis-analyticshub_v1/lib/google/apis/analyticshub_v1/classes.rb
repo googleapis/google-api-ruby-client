@@ -846,9 +846,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Defines the destination Pub/Sub subscription. If none of `push_config`, `
-        # bigquery_config`, `cloud_storage_config`, `pubsub_export_config`, or `
-        # pubsublite_export_config` is set, then the subscriber will pull and ack
-        # messages using API methods. At most one of these fields may be set.
+        # bigquery_config`, `cloud_storage_config`, `bigtable_config`, `
+        # pubsub_export_config`, or `pubsublite_export_config` is set, then the
+        # subscriber will pull and ack messages using API methods. At most one of these
+        # fields may be set.
         # Corresponds to the JSON property `pubsubSubscription`
         # @return [Google::Apis::AnalyticshubV1::GooglePubsubV1Subscription]
         attr_accessor :pubsub_subscription
@@ -1091,9 +1092,10 @@ module Google
       end
       
       # Defines the destination Pub/Sub subscription. If none of `push_config`, `
-      # bigquery_config`, `cloud_storage_config`, `pubsub_export_config`, or `
-      # pubsublite_export_config` is set, then the subscriber will pull and ack
-      # messages using API methods. At most one of these fields may be set.
+      # bigquery_config`, `cloud_storage_config`, `bigtable_config`, `
+      # pubsub_export_config`, or `pubsublite_export_config` is set, then the
+      # subscriber will pull and ack messages using API methods. At most one of these
+      # fields may be set.
       class GooglePubsubV1Subscription
         include Google::Apis::Core::Hashable
       
