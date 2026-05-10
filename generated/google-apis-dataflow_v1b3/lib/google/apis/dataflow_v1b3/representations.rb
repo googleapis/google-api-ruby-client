@@ -2204,6 +2204,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :location, as: 'location'
           property :name, as: 'name'
+          property :sha256, as: 'sha256'
         end
       end
       

@@ -3820,6 +3820,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The hex-encoded SHA256 checksum of the package. If the checksum is
+        # provided, the worker will verify the checksum of the package before using it.
+        # If the checksum does not match, the worker will fail to start.
+        # Corresponds to the JSON property `sha256`
+        # @return [String]
+        attr_accessor :sha256
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3828,6 +3835,7 @@ module Google
         def update!(**args)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @sha256 = args[:sha256] if args.key?(:sha256)
         end
       end
       
