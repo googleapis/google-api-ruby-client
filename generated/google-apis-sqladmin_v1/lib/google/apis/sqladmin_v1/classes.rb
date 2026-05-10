@@ -4416,41 +4416,42 @@ module Google
         end
       end
       
-      # Performance Capture configuration.
+      # Performance capture configuration.
       class PerformanceCaptureConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Enable or disable the Performance Capture feature.
+        # Optional. Enables or disables the performance capture feature.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # Optional. The minimum number of consecutive readings above threshold that
-        # triggers instance state capture.
+        # Optional. Specifies the minimum number of consecutive probe threshold that
+        # triggers performance capture.
         # Corresponds to the JSON property `probeThreshold`
         # @return [Fixnum]
         attr_accessor :probe_threshold
       
-        # Optional. The time interval in seconds between any two probes.
+        # Optional. Specifies the interval in seconds between consecutive probes that
+        # check if any trigger condition thresholds have been reached.
         # Corresponds to the JSON property `probingIntervalSeconds`
         # @return [Fixnum]
         attr_accessor :probing_interval_seconds
       
-        # Optional. The minimum number of server threads running to trigger the capture
-        # on primary.
+        # Optional. Specifies the minimum number of MySQL `Threads_running` to trigger
+        # the performance capture on the primary instance.
         # Corresponds to the JSON property `runningThreadsThreshold`
         # @return [Fixnum]
         attr_accessor :running_threads_threshold
       
-        # Optional. The minimum number of seconds replica must be lagging behind primary
-        # to trigger capture on replica.
+        # Optional. Specifies the minimum number of seconds replica must be lagging
+        # behind primary instance to trigger the performance capture on replica.
         # Corresponds to the JSON property `secondsBehindSourceThreshold`
         # @return [Fixnum]
         attr_accessor :seconds_behind_source_threshold
       
-        # Optional. The amount of time in seconds that a transaction needs to have been
-        # open before the watcher starts recording it.
+        # Optional. Specifies the amount of time in seconds that a transaction needs to
+        # have been open before the watcher starts recording it.
         # Corresponds to the JSON property `transactionDurationThreshold`
         # @return [Fixnum]
         attr_accessor :transaction_duration_threshold
@@ -5399,7 +5400,7 @@ module Google
         # @return [Google::Apis::SqladminV1::PasswordValidationPolicy]
         attr_accessor :password_validation_policy
       
-        # Performance Capture configuration.
+        # Performance capture configuration.
         # Corresponds to the JSON property `performanceCaptureConfig`
         # @return [Google::Apis::SqladminV1::PerformanceCaptureConfig]
         attr_accessor :performance_capture_config
