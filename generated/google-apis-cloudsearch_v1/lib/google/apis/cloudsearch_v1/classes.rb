@@ -6324,8 +6324,7 @@ module Google
         end
       end
       
-      # This field does not contain anything as of now and is just used as an
-      # indicator that the suggest result was a phrase completion.
+      # 
       class QuerySuggestion
         include Google::Apis::Core::Hashable
       
@@ -6426,6 +6425,12 @@ module Google
       class RequestOptions
         include Google::Apis::Core::Hashable
       
+        # The BCP-47 language code, such as "pt" or "en". It represents the user's
+        # preferred Display Language.
+        # Corresponds to the JSON property `clientDisplayLanguageCode`
+        # @return [String]
+        attr_accessor :client_display_language_code
+      
         # Shared request debug options for all cloudsearch RPC methods.
         # Corresponds to the JSON property `debugOptions`
         # @return [Google::Apis::CloudsearchV1::DebugOptions]
@@ -6464,6 +6469,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_display_language_code = args[:client_display_language_code] if args.key?(:client_display_language_code)
           @debug_options = args[:debug_options] if args.key?(:debug_options)
           @language_code = args[:language_code] if args.key?(:language_code)
           @search_application_id = args[:search_application_id] if args.key?(:search_application_id)
@@ -7674,8 +7680,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::PeopleSuggestion]
         attr_accessor :people_suggestion
       
-        # This field does not contain anything as of now and is just used as an
-        # indicator that the suggest result was a phrase completion.
+        # This field will be present if the suggested query is a word/phrase completion.
         # Corresponds to the JSON property `querySuggestion`
         # @return [Google::Apis::CloudsearchV1::QuerySuggestion]
         attr_accessor :query_suggestion
