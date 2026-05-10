@@ -2506,10 +2506,17 @@ module Google
       end
       
       # Options for a transaction that can be used to read and write documents.
-      # Firestore does not allow 3rd party auth requests to create read-write.
-      # transactions.
       class ReadWrite
         include Google::Apis::Core::Hashable
+      
+        # Optional. The concurrency control mode to use for this transaction. A database
+        # is able to use different concurrency modes for different transactions
+        # simultaneously. 3rd party auth requests are only allowed to create optimistic
+        # read-write transactions and must specify that here even if the database-level
+        # setting is already configured to optimistic.
+        # Corresponds to the JSON property `concurrencyMode`
+        # @return [String]
+        attr_accessor :concurrency_mode
       
         # An optional transaction to retry.
         # Corresponds to the JSON property `retryTransaction`
@@ -2523,6 +2530,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
           @retry_transaction = args[:retry_transaction] if args.key?(:retry_transaction)
         end
       end
@@ -3145,8 +3153,6 @@ module Google
         attr_accessor :read_only
       
         # Options for a transaction that can be used to read and write documents.
-        # Firestore does not allow 3rd party auth requests to create read-write.
-        # transactions.
         # Corresponds to the JSON property `readWrite`
         # @return [Google::Apis::FirestoreV1beta1::ReadWrite]
         attr_accessor :read_write

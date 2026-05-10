@@ -513,7 +513,8 @@ module Google
         # @param [String] parent
         #   Required. The parent document. In the format: `projects/`project_id`/databases/
         #   `database_id`/documents/`document_path``. For example: `projects/my-project/
-        #   databases/my-database/documents/chatrooms/my-chatroom`
+        #   databases/my-database/documents/chatrooms/my-chatroom` Use `projects/`
+        #   project_id`/databases/`database_id`/documents` to list top-level collections.
         # @param [Google::Apis::FirestoreV1beta1::ListCollectionIdsRequest] list_collection_ids_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
