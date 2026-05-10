@@ -260,6 +260,7 @@ module Google
       class AuditLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version_identifier, as: 'apiVersionIdentifier'
           property :authentication_info, as: 'authenticationInfo', class: Google::Apis::ServicecontrolV2::AuthenticationInfo, decorator: Google::Apis::ServicecontrolV2::AuthenticationInfo::Representation
       
           collection :authorization_info, as: 'authorizationInfo', class: Google::Apis::ServicecontrolV2::AuthorizationInfo, decorator: Google::Apis::ServicecontrolV2::AuthorizationInfo::Representation
