@@ -5498,6 +5498,11 @@ module Google
       class DependentFieldValue
         include Google::Apis::Core::Hashable
       
+        # Optional. The ID of the dynamic feed that value's field will match against.
+        # Corresponds to the JSON property `dynamicFeedId`
+        # @return [Fixnum]
+        attr_accessor :dynamic_feed_id
+      
         # Optional. The ID of the element that value's field will match against.
         # Corresponds to the JSON property `elementId`
         # @return [Fixnum]
@@ -5514,6 +5519,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dynamic_feed_id = args[:dynamic_feed_id] if args.key?(:dynamic_feed_id)
           @element_id = args[:element_id] if args.key?(:element_id)
           @field_id = args[:field_id] if args.key?(:field_id)
         end
