@@ -1248,6 +1248,15 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
+        # Output only. Determines whether the product is [archived](https://support.
+        # google.com/merchants/answer/11909930). To archive or restore your product,
+        # visit Merchant Center products page. Learn also more about [offer visibility](
+        # https://support.google.com/merchants/answer/12488713).
+        # Corresponds to the JSON property `archived`
+        # @return [Boolean]
+        attr_accessor :archived
+        alias_method :archived?, :archived
+      
         # Attributes.
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::MerchantapiProductsV1beta::Attributes]
@@ -1348,6 +1357,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @archived = args[:archived] if args.key?(:archived)
           @attributes = args[:attributes] if args.key?(:attributes)
           @automated_discounts = args[:automated_discounts] if args.key?(:automated_discounts)
           @base64_encoded_name = args[:base64_encoded_name] if args.key?(:base64_encoded_name)
