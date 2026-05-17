@@ -412,6 +412,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsApplicationLoadBalancerDetails]
         attr_accessor :aws_application_load_balancer_details
       
+        # Contains details for an AWS Athena Work Group asset.
+        # Corresponds to the JSON property `awsAthenaWorkGroupDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsAthenaWorkGroupDetails]
+        attr_accessor :aws_athena_work_group_details
+      
         # Asset information specific for AWS Autoscaling Group.
         # Corresponds to the JSON property `awsAutoscalingGroupDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsAutoscalingGroupDetails]
@@ -472,10 +477,30 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails]
         attr_accessor :aws_elb_load_balancer_details
       
+        # Contains details for an AWS EMR Cluster asset.
+        # Corresponds to the JSON property `awsEmrClusterDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEmrClusterDetails]
+        attr_accessor :aws_emr_cluster_details
+      
+        # Contains details for an AWS Firehose asset.
+        # Corresponds to the JSON property `awsFirehoseDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsFirehoseDetails]
+        attr_accessor :aws_firehose_details
+      
+        # Contains details for an AWS Glue Job asset.
+        # Corresponds to the JSON property `awsGlueJobDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsGlueJobDetails]
+        attr_accessor :aws_glue_job_details
+      
         # Asset information specific for AWS Internet Gateways.
         # Corresponds to the JSON property `awsInternetGatewayDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsInternetGatewayDetails]
         attr_accessor :aws_internet_gateway_details
+      
+        # Contains details for an AWS Kinesis Stream asset.
+        # Corresponds to the JSON property `awsKinesisStreamDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsKinesisStreamDetails]
+        attr_accessor :aws_kinesis_stream_details
       
         # Asset information specific for AWS Lambda functions.
         # Corresponds to the JSON property `awsLambdaFunctionDetails`
@@ -609,6 +634,7 @@ module Google
           @aws_api_gateway_rest_api_details = args[:aws_api_gateway_rest_api_details] if args.key?(:aws_api_gateway_rest_api_details)
           @aws_app_sync_graphql_api_details = args[:aws_app_sync_graphql_api_details] if args.key?(:aws_app_sync_graphql_api_details)
           @aws_application_load_balancer_details = args[:aws_application_load_balancer_details] if args.key?(:aws_application_load_balancer_details)
+          @aws_athena_work_group_details = args[:aws_athena_work_group_details] if args.key?(:aws_athena_work_group_details)
           @aws_autoscaling_group_details = args[:aws_autoscaling_group_details] if args.key?(:aws_autoscaling_group_details)
           @aws_batch_compute_environment_details = args[:aws_batch_compute_environment_details] if args.key?(:aws_batch_compute_environment_details)
           @aws_cloud_front_distribution_details = args[:aws_cloud_front_distribution_details] if args.key?(:aws_cloud_front_distribution_details)
@@ -621,7 +647,11 @@ module Google
           @aws_elastic_ip_address_details = args[:aws_elastic_ip_address_details] if args.key?(:aws_elastic_ip_address_details)
           @aws_elastic_network_interface_details = args[:aws_elastic_network_interface_details] if args.key?(:aws_elastic_network_interface_details)
           @aws_elb_load_balancer_details = args[:aws_elb_load_balancer_details] if args.key?(:aws_elb_load_balancer_details)
+          @aws_emr_cluster_details = args[:aws_emr_cluster_details] if args.key?(:aws_emr_cluster_details)
+          @aws_firehose_details = args[:aws_firehose_details] if args.key?(:aws_firehose_details)
+          @aws_glue_job_details = args[:aws_glue_job_details] if args.key?(:aws_glue_job_details)
           @aws_internet_gateway_details = args[:aws_internet_gateway_details] if args.key?(:aws_internet_gateway_details)
+          @aws_kinesis_stream_details = args[:aws_kinesis_stream_details] if args.key?(:aws_kinesis_stream_details)
           @aws_lambda_function_details = args[:aws_lambda_function_details] if args.key?(:aws_lambda_function_details)
           @aws_nat_gateway_details = args[:aws_nat_gateway_details] if args.key?(:aws_nat_gateway_details)
           @aws_redshift_details = args[:aws_redshift_details] if args.key?(:aws_redshift_details)
@@ -672,6 +702,11 @@ module Google
         # Corresponds to the JSON property `awsApplicationLoadBalancerDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsApplicationLoadBalancerDetails]
         attr_accessor :aws_application_load_balancer_details
+      
+        # Contains details for an AWS Athena Work Group asset.
+        # Corresponds to the JSON property `awsAthenaWorkGroupDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsAthenaWorkGroupDetails]
+        attr_accessor :aws_athena_work_group_details
       
         # Asset information specific for AWS Autoscaling Group.
         # Corresponds to the JSON property `awsAutoscalingGroupDetails`
@@ -733,10 +768,30 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails]
         attr_accessor :aws_elb_load_balancer_details
       
+        # Contains details for an AWS EMR Cluster asset.
+        # Corresponds to the JSON property `awsEmrClusterDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEmrClusterDetails]
+        attr_accessor :aws_emr_cluster_details
+      
+        # Contains details for an AWS Firehose asset.
+        # Corresponds to the JSON property `awsFirehoseDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsFirehoseDetails]
+        attr_accessor :aws_firehose_details
+      
+        # Contains details for an AWS Glue Job asset.
+        # Corresponds to the JSON property `awsGlueJobDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsGlueJobDetails]
+        attr_accessor :aws_glue_job_details
+      
         # Asset information specific for AWS Internet Gateways.
         # Corresponds to the JSON property `awsInternetGatewayDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsInternetGatewayDetails]
         attr_accessor :aws_internet_gateway_details
+      
+        # Contains details for an AWS Kinesis Stream asset.
+        # Corresponds to the JSON property `awsKinesisStreamDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsKinesisStreamDetails]
+        attr_accessor :aws_kinesis_stream_details
       
         # Asset information specific for AWS Lambda functions.
         # Corresponds to the JSON property `awsLambdaFunctionDetails`
@@ -841,6 +896,7 @@ module Google
           @aws_api_gateway_rest_api_details = args[:aws_api_gateway_rest_api_details] if args.key?(:aws_api_gateway_rest_api_details)
           @aws_app_sync_graphql_api_details = args[:aws_app_sync_graphql_api_details] if args.key?(:aws_app_sync_graphql_api_details)
           @aws_application_load_balancer_details = args[:aws_application_load_balancer_details] if args.key?(:aws_application_load_balancer_details)
+          @aws_athena_work_group_details = args[:aws_athena_work_group_details] if args.key?(:aws_athena_work_group_details)
           @aws_autoscaling_group_details = args[:aws_autoscaling_group_details] if args.key?(:aws_autoscaling_group_details)
           @aws_batch_compute_environment_details = args[:aws_batch_compute_environment_details] if args.key?(:aws_batch_compute_environment_details)
           @aws_cloud_front_distribution_details = args[:aws_cloud_front_distribution_details] if args.key?(:aws_cloud_front_distribution_details)
@@ -853,7 +909,11 @@ module Google
           @aws_elastic_ip_address_details = args[:aws_elastic_ip_address_details] if args.key?(:aws_elastic_ip_address_details)
           @aws_elastic_network_interface_details = args[:aws_elastic_network_interface_details] if args.key?(:aws_elastic_network_interface_details)
           @aws_elb_load_balancer_details = args[:aws_elb_load_balancer_details] if args.key?(:aws_elb_load_balancer_details)
+          @aws_emr_cluster_details = args[:aws_emr_cluster_details] if args.key?(:aws_emr_cluster_details)
+          @aws_firehose_details = args[:aws_firehose_details] if args.key?(:aws_firehose_details)
+          @aws_glue_job_details = args[:aws_glue_job_details] if args.key?(:aws_glue_job_details)
           @aws_internet_gateway_details = args[:aws_internet_gateway_details] if args.key?(:aws_internet_gateway_details)
+          @aws_kinesis_stream_details = args[:aws_kinesis_stream_details] if args.key?(:aws_kinesis_stream_details)
           @aws_lambda_function_details = args[:aws_lambda_function_details] if args.key?(:aws_lambda_function_details)
           @aws_nat_gateway_details = args[:aws_nat_gateway_details] if args.key?(:aws_nat_gateway_details)
           @aws_redshift_details = args[:aws_redshift_details] if args.key?(:aws_redshift_details)
@@ -1195,6 +1255,19 @@ module Google
         end
       end
       
+      # Contains details for an AWS Athena Work Group asset.
+      class AwsAthenaWorkGroupDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Asset information specific for AWS Autoscaling Group.
       class AwsAutoscalingGroupDetails
         include Google::Apis::Core::Hashable
@@ -1382,8 +1455,60 @@ module Google
         end
       end
       
+      # Contains details for an AWS EMR Cluster asset.
+      class AwsEmrClusterDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Contains details for an AWS Firehose asset.
+      class AwsFirehoseDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Contains details for an AWS Glue Job asset.
+      class AwsGlueJobDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Asset information specific for AWS Internet Gateways.
       class AwsInternetGatewayDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Contains details for an AWS Kinesis Stream asset.
+      class AwsKinesisStreamDetails
         include Google::Apis::Core::Hashable
       
         def initialize(**args)

@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsAthenaWorkGroupDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsAutoscalingGroupDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,7 +274,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsEmrClusterDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsFirehoseDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsGlueJobDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsInternetGatewayDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsKinesisStreamDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1780,6 +1810,8 @@ module Google
       
           property :aws_application_load_balancer_details, as: 'awsApplicationLoadBalancerDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsApplicationLoadBalancerDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsApplicationLoadBalancerDetails::Representation
       
+          property :aws_athena_work_group_details, as: 'awsAthenaWorkGroupDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsAthenaWorkGroupDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsAthenaWorkGroupDetails::Representation
+      
           property :aws_autoscaling_group_details, as: 'awsAutoscalingGroupDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsAutoscalingGroupDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsAutoscalingGroupDetails::Representation
       
           property :aws_batch_compute_environment_details, as: 'awsBatchComputeEnvironmentDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsBatchComputeEnvironmentDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsBatchComputeEnvironmentDetails::Representation
@@ -1804,7 +1836,15 @@ module Google
       
           property :aws_elb_load_balancer_details, as: 'awsElbLoadBalancerDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails::Representation
       
+          property :aws_emr_cluster_details, as: 'awsEmrClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEmrClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEmrClusterDetails::Representation
+      
+          property :aws_firehose_details, as: 'awsFirehoseDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsFirehoseDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsFirehoseDetails::Representation
+      
+          property :aws_glue_job_details, as: 'awsGlueJobDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsGlueJobDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsGlueJobDetails::Representation
+      
           property :aws_internet_gateway_details, as: 'awsInternetGatewayDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsInternetGatewayDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsInternetGatewayDetails::Representation
+      
+          property :aws_kinesis_stream_details, as: 'awsKinesisStreamDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsKinesisStreamDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsKinesisStreamDetails::Representation
       
           property :aws_lambda_function_details, as: 'awsLambdaFunctionDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails::Representation
       
@@ -1857,6 +1897,8 @@ module Google
       
           property :aws_application_load_balancer_details, as: 'awsApplicationLoadBalancerDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsApplicationLoadBalancerDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsApplicationLoadBalancerDetails::Representation
       
+          property :aws_athena_work_group_details, as: 'awsAthenaWorkGroupDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsAthenaWorkGroupDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsAthenaWorkGroupDetails::Representation
+      
           property :aws_autoscaling_group_details, as: 'awsAutoscalingGroupDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsAutoscalingGroupDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsAutoscalingGroupDetails::Representation
       
           property :aws_batch_compute_environment_details, as: 'awsBatchComputeEnvironmentDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsBatchComputeEnvironmentDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsBatchComputeEnvironmentDetails::Representation
@@ -1881,7 +1923,15 @@ module Google
       
           property :aws_elb_load_balancer_details, as: 'awsElbLoadBalancerDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails::Representation
       
+          property :aws_emr_cluster_details, as: 'awsEmrClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEmrClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEmrClusterDetails::Representation
+      
+          property :aws_firehose_details, as: 'awsFirehoseDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsFirehoseDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsFirehoseDetails::Representation
+      
+          property :aws_glue_job_details, as: 'awsGlueJobDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsGlueJobDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsGlueJobDetails::Representation
+      
           property :aws_internet_gateway_details, as: 'awsInternetGatewayDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsInternetGatewayDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsInternetGatewayDetails::Representation
+      
+          property :aws_kinesis_stream_details, as: 'awsKinesisStreamDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsKinesisStreamDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsKinesisStreamDetails::Representation
       
           property :aws_lambda_function_details, as: 'awsLambdaFunctionDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails::Representation
       
@@ -2024,6 +2074,12 @@ module Google
         end
       end
       
+      class AwsAthenaWorkGroupDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AwsAutoscalingGroupDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2105,7 +2161,31 @@ module Google
         end
       end
       
+      class AwsEmrClusterDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsFirehoseDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsGlueJobDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AwsInternetGatewayDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsKinesisStreamDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
