@@ -43,6 +43,12 @@ module Google
         # @return [Google::Apis::DatamanagerV1::DeviceInfo]
         attr_accessor :landing_page_device_info
       
+        # Optional. The mobile identifier for advertisers. This would be IDFA on iOS,
+        # AdID on Android, or other platforms’ identifiers for advertisers.
+        # Corresponds to the JSON property `mobileDeviceId`
+        # @return [String]
+        attr_accessor :mobile_device_id
+      
         # Optional. Session attributes for event attribution and modeling.
         # Corresponds to the JSON property `sessionAttributes`
         # @return [String]
@@ -63,6 +69,7 @@ module Google
           @gbraid = args[:gbraid] if args.key?(:gbraid)
           @gclid = args[:gclid] if args.key?(:gclid)
           @landing_page_device_info = args[:landing_page_device_info] if args.key?(:landing_page_device_info)
+          @mobile_device_id = args[:mobile_device_id] if args.key?(:mobile_device_id)
           @session_attributes = args[:session_attributes] if args.key?(:session_attributes)
           @wbraid = args[:wbraid] if args.key?(:wbraid)
         end
@@ -239,6 +246,14 @@ module Google
       class CartData
         include Google::Apis::Core::Hashable
       
+        # Optional. The list of coupon codes that were applied to the cart. Cart-level
+        # and item-level coupon codes are independent. If the event is for a Google
+        # Analytics destination, only provide a single coupon code. Google Analytics
+        # ignores additional coupon codes.
+        # Corresponds to the JSON property `couponCodes`
+        # @return [Array<String>]
+        attr_accessor :coupon_codes
+      
         # Optional. The list of items associated with the event.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DatamanagerV1::Item>]
@@ -271,6 +286,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @coupon_codes = args[:coupon_codes] if args.key?(:coupon_codes)
           @items = args[:items] if args.key?(:items)
           @merchant_feed_label = args[:merchant_feed_label] if args.key?(:merchant_feed_label)
           @merchant_feed_language_code = args[:merchant_feed_language_code] if args.key?(:merchant_feed_language_code)
@@ -415,6 +431,27 @@ module Google
       class DeviceInfo
         include Google::Apis::Core::Hashable
       
+        # Optional. The brand of the device.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # Optional. The brand or type of the browser.
+        # Corresponds to the JSON property `browser`
+        # @return [String]
+        attr_accessor :browser
+      
+        # Optional. The version of the browser.
+        # Corresponds to the JSON property `browserVersion`
+        # @return [String]
+        attr_accessor :browser_version
+      
+        # Optional. The category of device. For example, “desktop”, “tablet”, “mobile”, “
+        # smart TV”.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
         # Optional. The IP address of the device for the given context. **Note:** Google
         # Ads does not support IP address matching for end users in the European
         # Economic Area (EEA), United Kingdom (UK), or Switzerland (CH). Add logic to
@@ -428,6 +465,36 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # Optional. The language the device uses in ISO 639-1 format.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Optional. The model of the device.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Optional. The operating system or platform of the device.
+        # Corresponds to the JSON property `operatingSystem`
+        # @return [String]
+        attr_accessor :operating_system
+      
+        # Optional. The version of the operating system or platform.
+        # Corresponds to the JSON property `operatingSystemVersion`
+        # @return [String]
+        attr_accessor :operating_system_version
+      
+        # Optional. The height of the screen in pixels.
+        # Corresponds to the JSON property `screenHeight`
+        # @return [Fixnum]
+        attr_accessor :screen_height
+      
+        # Optional. The width of the screen in pixels.
+        # Corresponds to the JSON property `screenWidth`
+        # @return [Fixnum]
+        attr_accessor :screen_width
+      
         # Optional. The user-agent string of the device for the given context.
         # Corresponds to the JSON property `userAgent`
         # @return [String]
@@ -439,7 +506,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @brand = args[:brand] if args.key?(:brand)
+          @browser = args[:browser] if args.key?(:browser)
+          @browser_version = args[:browser_version] if args.key?(:browser_version)
+          @category = args[:category] if args.key?(:category)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @model = args[:model] if args.key?(:model)
+          @operating_system = args[:operating_system] if args.key?(:operating_system)
+          @operating_system_version = args[:operating_system_version] if args.key?(:operating_system_version)
+          @screen_height = args[:screen_height] if args.key?(:screen_height)
+          @screen_width = args[:screen_width] if args.key?(:screen_width)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
         end
       end
@@ -547,6 +624,12 @@ module Google
         # @return [Array<Google::Apis::DatamanagerV1::EventParameter>]
         attr_accessor :additional_event_parameters
       
+        # Optional. A unique identifier for the user instance of an app client for this
+        # GA4 app stream.
+        # Corresponds to the JSON property `appInstanceId`
+        # @return [String]
+        attr_accessor :app_instance_id
+      
         # The cart data associated with the event.
         # Corresponds to the JSON property `cartData`
         # @return [Google::Apis::DatamanagerV1::CartData]
@@ -593,6 +676,11 @@ module Google
         # @return [Google::Apis::DatamanagerV1::DeviceInfo]
         attr_accessor :event_device_info
       
+        # The location where the event occurred.
+        # Corresponds to the JSON property `eventLocation`
+        # @return [Google::Apis::DatamanagerV1::EventLocation]
+        attr_accessor :event_location
+      
         # Optional. The name of the event. Required for GA4 events.
         # Corresponds to the JSON property `eventName`
         # @return [String]
@@ -619,8 +707,13 @@ module Google
         # @return [String]
         attr_accessor :last_updated_timestamp
       
-        # Optional. The unique identifier for this event. Required for conversions using
-        # multiple data sources.
+        # Data that identifies the user. At least one identifier is required.
+        # Corresponds to the JSON property `thirdPartyUserData`
+        # @return [Google::Apis::DatamanagerV1::UserData]
+        attr_accessor :third_party_user_data
+      
+        # Optional. The unique identifier for this event. Required for events sent as an
+        # additional data source for tag conversions.
         # Corresponds to the JSON property `transactionId`
         # @return [String]
         attr_accessor :transaction_id
@@ -650,6 +743,7 @@ module Google
         def update!(**args)
           @ad_identifiers = args[:ad_identifiers] if args.key?(:ad_identifiers)
           @additional_event_parameters = args[:additional_event_parameters] if args.key?(:additional_event_parameters)
+          @app_instance_id = args[:app_instance_id] if args.key?(:app_instance_id)
           @cart_data = args[:cart_data] if args.key?(:cart_data)
           @client_id = args[:client_id] if args.key?(:client_id)
           @consent = args[:consent] if args.key?(:consent)
@@ -658,15 +752,67 @@ module Google
           @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
           @destination_references = args[:destination_references] if args.key?(:destination_references)
           @event_device_info = args[:event_device_info] if args.key?(:event_device_info)
+          @event_location = args[:event_location] if args.key?(:event_location)
           @event_name = args[:event_name] if args.key?(:event_name)
           @event_source = args[:event_source] if args.key?(:event_source)
           @event_timestamp = args[:event_timestamp] if args.key?(:event_timestamp)
           @experimental_fields = args[:experimental_fields] if args.key?(:experimental_fields)
           @last_updated_timestamp = args[:last_updated_timestamp] if args.key?(:last_updated_timestamp)
+          @third_party_user_data = args[:third_party_user_data] if args.key?(:third_party_user_data)
           @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
           @user_data = args[:user_data] if args.key?(:user_data)
           @user_id = args[:user_id] if args.key?(:user_id)
           @user_properties = args[:user_properties] if args.key?(:user_properties)
+        end
+      end
+      
+      # The location where the event occurred.
+      class EventLocation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the city where the event occurred.
+        # Corresponds to the JSON property `city`
+        # @return [String]
+        attr_accessor :city
+      
+        # Optional. The continent code in UN M49 format where the event occurred.
+        # Corresponds to the JSON property `continentCode`
+        # @return [String]
+        attr_accessor :continent_code
+      
+        # Optional. The 2-letter CLDR region code of the user's address.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Optional. Required for Store Sales. The identifier to represent a physical
+        # store where the event happened.
+        # Corresponds to the JSON property `storeId`
+        # @return [String]
+        attr_accessor :store_id
+      
+        # Optional. The subcontinent code in UN M49 format where the event occurred.
+        # Corresponds to the JSON property `subcontinentCode`
+        # @return [String]
+        attr_accessor :subcontinent_code
+      
+        # Optional. The ISO 3166-2 subdivision code where the event occurred.
+        # Corresponds to the JSON property `subdivisionCode`
+        # @return [String]
+        attr_accessor :subdivision_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @city = args[:city] if args.key?(:city)
+          @continent_code = args[:continent_code] if args.key?(:continent_code)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @store_id = args[:store_id] if args.key?(:store_id)
+          @subcontinent_code = args[:subcontinent_code] if args.key?(:subcontinent_code)
+          @subdivision_code = args[:subdivision_code] if args.key?(:subdivision_code)
         end
       end
       
@@ -1219,10 +1365,44 @@ module Google
         # @return [Array<Google::Apis::DatamanagerV1::ItemParameter>]
         attr_accessor :additional_item_parameters
       
+        # Optional. The conversion value associated with this item within the event, for
+        # cases where the conversion value is different for each item.
+        # Corresponds to the JSON property `conversionValue`
+        # @return [Float]
+        attr_accessor :conversion_value
+      
+        # Optional. Additional key/value pair information to send to the conversion
+        # containers (conversion action or Floodlight activity), when tracking per-item
+        # conversions.
+        # Corresponds to the JSON property `customVariables`
+        # @return [Array<Google::Apis::DatamanagerV1::ItemCustomVariable>]
+        attr_accessor :custom_variables
+      
         # Optional. A unique identifier to reference the item.
         # Corresponds to the JSON property `itemId`
         # @return [String]
         attr_accessor :item_id
+      
+        # Optional. The feed label of the Merchant Center feed. If countries are still
+        # being used, the 2-letter country code in ISO-3166-1 alpha-2 can be used
+        # instead. For Store Sales events this will override the value set at the cart
+        # level. This field is ignored for other events.
+        # Corresponds to the JSON property `merchantFeedLabel`
+        # @return [String]
+        attr_accessor :merchant_feed_label
+      
+        # Optional. The language code in ISO 639-1 associated with the Merchant Center
+        # feed where your items are uploaded.
+        # Corresponds to the JSON property `merchantFeedLanguageCode`
+        # @return [String]
+        attr_accessor :merchant_feed_language_code
+      
+        # Optional. The Merchant Center ID associated with the item. For Store Sales
+        # events this will override the value set at the cart level. This field is
+        # ignored for other events.
+        # Corresponds to the JSON property `merchantId`
+        # @return [String]
+        attr_accessor :merchant_id
       
         # Optional. The product ID within the Merchant Center account.
         # Corresponds to the JSON property `merchantProductId`
@@ -1247,10 +1427,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_item_parameters = args[:additional_item_parameters] if args.key?(:additional_item_parameters)
+          @conversion_value = args[:conversion_value] if args.key?(:conversion_value)
+          @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
           @item_id = args[:item_id] if args.key?(:item_id)
+          @merchant_feed_label = args[:merchant_feed_label] if args.key?(:merchant_feed_label)
+          @merchant_feed_language_code = args[:merchant_feed_language_code] if args.key?(:merchant_feed_language_code)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @merchant_product_id = args[:merchant_product_id] if args.key?(:merchant_product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
           @unit_price = args[:unit_price] if args.key?(:unit_price)
+        end
+      end
+      
+      # Item-level custom variable for ads conversions.
+      class ItemCustomVariable
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Reference string used to determine which of the Event.
+        # destination_references the custom variable should be sent to. If empty, the
+        # Event.destination_references will be used.
+        # Corresponds to the JSON property `destinationReferences`
+        # @return [Array<String>]
+        attr_accessor :destination_references
+      
+        # Optional. The value to store for the custom variable.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        # Optional. The name of the custom variable to set. If the variable is not found
+        # for the given destination, it will be ignored.
+        # Corresponds to the JSON property `variable`
+        # @return [String]
+        attr_accessor :variable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_references = args[:destination_references] if args.key?(:destination_references)
+          @value = args[:value] if args.key?(:value)
+          @variable = args[:variable] if args.key?(:variable)
         end
       end
       
@@ -2148,11 +2367,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :display_network_members_count
       
+        # Output only. Estimated number of members in this user list on Gmail.
+        # Corresponds to the JSON property `gmailMembersCount`
+        # @return [Fixnum]
+        attr_accessor :gmail_members_count
+      
         # Output only. Estimated number of members in this user list in the google.com
         # domain. These are the members available for targeting in Search campaigns.
         # Corresponds to the JSON property `searchNetworkMembersCount`
         # @return [Fixnum]
         attr_accessor :search_network_members_count
+      
+        # Output only. Estimated number of members in this user list on YouTube.
+        # Corresponds to the JSON property `youtubeMembersCount`
+        # @return [Fixnum]
+        attr_accessor :youtube_members_count
       
         def initialize(**args)
            update!(**args)
@@ -2161,7 +2390,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_network_members_count = args[:display_network_members_count] if args.key?(:display_network_members_count)
+          @gmail_members_count = args[:gmail_members_count] if args.key?(:gmail_members_count)
           @search_network_members_count = args[:search_network_members_count] if args.key?(:search_network_members_count)
+          @youtube_members_count = args[:youtube_members_count] if args.key?(:youtube_members_count)
         end
       end
       

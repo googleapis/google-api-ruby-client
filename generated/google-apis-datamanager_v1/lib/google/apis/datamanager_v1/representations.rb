@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,12 @@ module Google
       end
       
       class Item
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ItemCustomVariable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -509,6 +521,7 @@ module Google
           property :gclid, as: 'gclid'
           property :landing_page_device_info, as: 'landingPageDeviceInfo', class: Google::Apis::DatamanagerV1::DeviceInfo, decorator: Google::Apis::DatamanagerV1::DeviceInfo::Representation
       
+          property :mobile_device_id, as: 'mobileDeviceId'
           property :session_attributes, as: 'sessionAttributes'
           property :wbraid, as: 'wbraid'
         end
@@ -565,6 +578,7 @@ module Google
       class CartData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :coupon_codes, as: 'couponCodes'
           collection :items, as: 'items', class: Google::Apis::DatamanagerV1::Item, decorator: Google::Apis::DatamanagerV1::Item::Representation
       
           property :merchant_feed_label, as: 'merchantFeedLabel'
@@ -616,7 +630,17 @@ module Google
       class DeviceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :brand, as: 'brand'
+          property :browser, as: 'browser'
+          property :browser_version, as: 'browserVersion'
+          property :category, as: 'category'
           property :ip_address, as: 'ipAddress'
+          property :language_code, as: 'languageCode'
+          property :model, as: 'model'
+          property :operating_system, as: 'operatingSystem'
+          property :operating_system_version, as: 'operatingSystemVersion'
+          property :screen_height, as: 'screenHeight'
+          property :screen_width, as: 'screenWidth'
           property :user_agent, as: 'userAgent'
         end
       end
@@ -660,6 +684,7 @@ module Google
       
           collection :additional_event_parameters, as: 'additionalEventParameters', class: Google::Apis::DatamanagerV1::EventParameter, decorator: Google::Apis::DatamanagerV1::EventParameter::Representation
       
+          property :app_instance_id, as: 'appInstanceId'
           property :cart_data, as: 'cartData', class: Google::Apis::DatamanagerV1::CartData, decorator: Google::Apis::DatamanagerV1::CartData::Representation
       
           property :client_id, as: 'clientId'
@@ -672,18 +697,34 @@ module Google
           collection :destination_references, as: 'destinationReferences'
           property :event_device_info, as: 'eventDeviceInfo', class: Google::Apis::DatamanagerV1::DeviceInfo, decorator: Google::Apis::DatamanagerV1::DeviceInfo::Representation
       
+          property :event_location, as: 'eventLocation', class: Google::Apis::DatamanagerV1::EventLocation, decorator: Google::Apis::DatamanagerV1::EventLocation::Representation
+      
           property :event_name, as: 'eventName'
           property :event_source, as: 'eventSource'
           property :event_timestamp, as: 'eventTimestamp'
           collection :experimental_fields, as: 'experimentalFields', class: Google::Apis::DatamanagerV1::ExperimentalField, decorator: Google::Apis::DatamanagerV1::ExperimentalField::Representation
       
           property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
+          property :third_party_user_data, as: 'thirdPartyUserData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
+      
           property :transaction_id, as: 'transactionId'
           property :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
       
           property :user_id, as: 'userId'
           property :user_properties, as: 'userProperties', class: Google::Apis::DatamanagerV1::UserProperties, decorator: Google::Apis::DatamanagerV1::UserProperties::Representation
       
+        end
+      end
+      
+      class EventLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :city, as: 'city'
+          property :continent_code, as: 'continentCode'
+          property :region_code, as: 'regionCode'
+          property :store_id, as: 'storeId'
+          property :subcontinent_code, as: 'subcontinentCode'
+          property :subdivision_code, as: 'subdivisionCode'
         end
       end
       
@@ -849,10 +890,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_item_parameters, as: 'additionalItemParameters', class: Google::Apis::DatamanagerV1::ItemParameter, decorator: Google::Apis::DatamanagerV1::ItemParameter::Representation
       
+          property :conversion_value, as: 'conversionValue'
+          collection :custom_variables, as: 'customVariables', class: Google::Apis::DatamanagerV1::ItemCustomVariable, decorator: Google::Apis::DatamanagerV1::ItemCustomVariable::Representation
+      
           property :item_id, as: 'itemId'
+          property :merchant_feed_label, as: 'merchantFeedLabel'
+          property :merchant_feed_language_code, as: 'merchantFeedLanguageCode'
+          property :merchant_id, as: 'merchantId'
           property :merchant_product_id, as: 'merchantProductId'
           property :quantity, :numeric_string => true, as: 'quantity'
           property :unit_price, as: 'unitPrice'
+        end
+      end
+      
+      class ItemCustomVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destination_references, as: 'destinationReferences'
+          property :value, as: 'value'
+          property :variable, as: 'variable'
         end
       end
       
@@ -1138,7 +1194,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_network_members_count, :numeric_string => true, as: 'displayNetworkMembersCount'
+          property :gmail_members_count, :numeric_string => true, as: 'gmailMembersCount'
           property :search_network_members_count, :numeric_string => true, as: 'searchNetworkMembersCount'
+          property :youtube_members_count, :numeric_string => true, as: 'youtubeMembersCount'
         end
       end
       
