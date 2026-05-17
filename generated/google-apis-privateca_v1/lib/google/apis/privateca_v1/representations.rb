@@ -565,6 +565,7 @@ module Google
           property :pem_certificate, as: 'pemCertificate'
           collection :pem_certificate_chain, as: 'pemCertificateChain'
           property :pem_csr, as: 'pemCsr'
+          property :requested_not_before_time, as: 'requestedNotBeforeTime'
           property :revocation_details, as: 'revocationDetails', class: Google::Apis::PrivatecaV1::RevocationDetails, decorator: Google::Apis::PrivatecaV1::RevocationDetails::Representation
       
           property :subject_mode, as: 'subjectMode'
@@ -797,6 +798,7 @@ module Google
       class IssuancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_requester_specified_not_before_time, as: 'allowRequesterSpecifiedNotBeforeTime'
           property :allowed_issuance_modes, as: 'allowedIssuanceModes', class: Google::Apis::PrivatecaV1::IssuanceModes, decorator: Google::Apis::PrivatecaV1::IssuanceModes::Representation
       
           collection :allowed_key_types, as: 'allowedKeyTypes', class: Google::Apis::PrivatecaV1::AllowedKeyType, decorator: Google::Apis::PrivatecaV1::AllowedKeyType::Representation
