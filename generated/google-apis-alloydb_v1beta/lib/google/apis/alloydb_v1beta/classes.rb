@@ -1009,6 +1009,11 @@ module Google
       class ConnectionPoolConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. The number of running AuthProxy poolers per instance.
+        # Corresponds to the JSON property `authproxyPoolerCount`
+        # @return [Fixnum]
+        attr_accessor :authproxy_pooler_count
+      
         # Optional. Whether to enable Managed Connection Pool (MCP).
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
@@ -1031,6 +1036,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @authproxy_pooler_count = args[:authproxy_pooler_count] if args.key?(:authproxy_pooler_count)
           @enabled = args[:enabled] if args.key?(:enabled)
           @flags = args[:flags] if args.key?(:flags)
           @pooler_count = args[:pooler_count] if args.key?(:pooler_count)
