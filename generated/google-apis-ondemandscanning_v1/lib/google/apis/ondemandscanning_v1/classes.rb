@@ -31,6 +31,11 @@ module Google
         # @return [Array<Google::Apis::OndemandscanningV1::Finding>]
         attr_accessor :findings
       
+        # Maximum severity found among findings.
+        # Corresponds to the JSON property `maxSeverity`
+        # @return [String]
+        attr_accessor :max_severity
+      
         # Name of the skill that produced this analysis.
         # Corresponds to the JSON property `skillName`
         # @return [String]
@@ -43,6 +48,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @findings = args[:findings] if args.key?(:findings)
+          @max_severity = args[:max_severity] if args.key?(:max_severity)
           @skill_name = args[:skill_name] if args.key?(:skill_name)
         end
       end
@@ -635,23 +641,27 @@ module Google
       class Cvss
         include Google::Apis::Core::Hashable
       
-        # 
+        # Attack Complexity (AC). Defined in CVSS v2, v3, v4.
         # Corresponds to the JSON property `attackComplexity`
         # @return [String]
         attr_accessor :attack_complexity
       
-        # Base Metrics Represents the intrinsic characteristics of a vulnerability that
-        # are constant over time and across user environments.
+        # Attack Requirements (AT). Defined in CVSS v4.
+        # Corresponds to the JSON property `attackRequirements`
+        # @return [String]
+        attr_accessor :attack_requirements
+      
+        # Attack Vector (AV). Defined in CVSS v2, v3, v4.
         # Corresponds to the JSON property `attackVector`
         # @return [String]
         attr_accessor :attack_vector
       
-        # 
+        # Authentication (Au). Defined in CVSS v2.
         # Corresponds to the JSON property `authentication`
         # @return [String]
         attr_accessor :authentication
       
-        # 
+        # Availability Impact (A). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `availabilityImpact`
         # @return [String]
         attr_accessor :availability_impact
@@ -661,7 +671,7 @@ module Google
         # @return [Float]
         attr_accessor :base_score
       
-        # 
+        # Confidentiality Impact (C). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `confidentialityImpact`
         # @return [String]
         attr_accessor :confidentiality_impact
@@ -676,25 +686,55 @@ module Google
         # @return [Float]
         attr_accessor :impact_score
       
-        # 
+        # Integrity Impact (I). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `integrityImpact`
         # @return [String]
         attr_accessor :integrity_impact
       
-        # 
+        # Privileges Required (PR). Defined in CVSS v3, v4.
         # Corresponds to the JSON property `privilegesRequired`
         # @return [String]
         attr_accessor :privileges_required
       
-        # 
+        # Scope (S). Defined in CVSS v3.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
       
-        # 
+        # Subsequent System Availability Impact (SA). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemAvailabilityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_availability_impact
+      
+        # Subsequent System Confidentiality Impact (SC). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemConfidentialityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_confidentiality_impact
+      
+        # Subsequent System Integrity Impact (SI). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemIntegrityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_integrity_impact
+      
+        # User Interaction (UI). Defined in CVSS v3, v4.
         # Corresponds to the JSON property `userInteraction`
         # @return [String]
         attr_accessor :user_interaction
+      
+        # Vulnerable System Availability Impact (VA). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemAvailabilityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_availability_impact
+      
+        # Vulnerable System Confidentiality Impact (VC). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemConfidentialityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_confidentiality_impact
+      
+        # Vulnerable System Integrity Impact (VI). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemIntegrityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_integrity_impact
       
         def initialize(**args)
            update!(**args)
@@ -703,6 +743,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attack_complexity = args[:attack_complexity] if args.key?(:attack_complexity)
+          @attack_requirements = args[:attack_requirements] if args.key?(:attack_requirements)
           @attack_vector = args[:attack_vector] if args.key?(:attack_vector)
           @authentication = args[:authentication] if args.key?(:authentication)
           @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
@@ -713,7 +754,13 @@ module Google
           @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
           @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
           @scope = args[:scope] if args.key?(:scope)
+          @subsequent_system_availability_impact = args[:subsequent_system_availability_impact] if args.key?(:subsequent_system_availability_impact)
+          @subsequent_system_confidentiality_impact = args[:subsequent_system_confidentiality_impact] if args.key?(:subsequent_system_confidentiality_impact)
+          @subsequent_system_integrity_impact = args[:subsequent_system_integrity_impact] if args.key?(:subsequent_system_integrity_impact)
           @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+          @vulnerable_system_availability_impact = args[:vulnerable_system_availability_impact] if args.key?(:vulnerable_system_availability_impact)
+          @vulnerable_system_confidentiality_impact = args[:vulnerable_system_confidentiality_impact] if args.key?(:vulnerable_system_confidentiality_impact)
+          @vulnerable_system_integrity_impact = args[:vulnerable_system_integrity_impact] if args.key?(:vulnerable_system_integrity_impact)
         end
       end
       
@@ -1294,35 +1341,20 @@ module Google
         # @return [String]
         attr_accessor :category
       
-        # Detailed description of the finding.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
+        # Location details with file path and line number.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::OndemandscanningV1::FindingLocation]
+        attr_accessor :location
       
-        # Path to the file where the finding was detected.
-        # Corresponds to the JSON property `filePath`
+        # Scanner determines which engine (e.g. static, llm) emitted the finding.
+        # Corresponds to the JSON property `scanner`
         # @return [String]
-        attr_accessor :file_path
-      
-        # Unique identifier of the rule that produced this finding.
-        # Corresponds to the JSON property `ruleId`
-        # @return [String]
-        attr_accessor :rule_id
+        attr_accessor :scanner
       
         # Severity of the finding.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
-      
-        # Code snippet relevant to the finding.
-        # Corresponds to the JSON property `snippet`
-        # @return [String]
-        attr_accessor :snippet
-      
-        # Title of the finding.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
       
         def initialize(**args)
            update!(**args)
@@ -1331,12 +1363,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @category = args[:category] if args.key?(:category)
-          @description = args[:description] if args.key?(:description)
-          @file_path = args[:file_path] if args.key?(:file_path)
-          @rule_id = args[:rule_id] if args.key?(:rule_id)
+          @location = args[:location] if args.key?(:location)
+          @scanner = args[:scanner] if args.key?(:scanner)
           @severity = args[:severity] if args.key?(:severity)
-          @snippet = args[:snippet] if args.key?(:snippet)
-          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Location details with file path and line number.
+      class FindingLocation
+        include Google::Apis::Core::Hashable
+      
+        # Relative path of the file containing the finding.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
+        # Line number (1-based), or 0 if whole File / unknown.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_path = args[:file_path] if args.key?(:file_path)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
