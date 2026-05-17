@@ -715,7 +715,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the labels on the specified messages.
+        # Modifies the labels and the Classification Label values on the specified
+        # messages. For administrators modifying messages for users in their
+        # organization, requests require authorization with a [service account](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+        # domain-wide delegation authority](https://developers.google.com/identity/
+        # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+        # the `https://www.googleapis.com/auth/gmail.modify.restricted` scope.
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -995,7 +1001,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the labels on the specified message.
+        # Modifies the labels and the Classification Label values on the specified
+        # message. For administrators modifying message for users in their organization,
+        # requests require authorization with a [service account](https://developers.
+        # google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide
+        # delegation authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.modify.restricted` scope.
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
