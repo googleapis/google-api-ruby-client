@@ -309,7 +309,9 @@ module Google
         
         # Returns the IAM permissions that the caller has on the specified Access
         # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
-        # ServicePerimeter. This method does not support other resources.
+        # ServicePerimeter. This method does not support other resources. **IAM
+        # Permissions**: No specific IAM permission is required to call this method. It
+        # returns the subset of the requested permissions that the caller possesses.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See [
         #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
@@ -581,7 +583,9 @@ module Google
         
         # Returns the IAM permissions that the caller has on the specified Access
         # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
-        # ServicePerimeter. This method does not support other resources.
+        # ServicePerimeter. This method does not support other resources. **IAM
+        # Permissions**: No specific IAM permission is required to call this method. It
+        # returns the subset of the requested permissions that the caller possesses.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See [
         #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
@@ -1069,7 +1073,9 @@ module Google
         
         # Returns the IAM permissions that the caller has on the specified Access
         # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
-        # ServicePerimeter. This method does not support other resources.
+        # ServicePerimeter. This method does not support other resources. **IAM
+        # Permissions**: No specific IAM permission is required to call this method. It
+        # returns the subset of the requested permissions that the caller possesses.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See [
         #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
@@ -1485,7 +1491,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a VPC-SC supported service based on the service name.
+        # Returns a VPC-SC supported service based on the service name. **IAM
+        # Permissions**: Requires the following IAM permissions to use this method: - `
+        # serviceusage.services.use` on the project.
         # @param [String] name
         #   The name of the service to get information about. The names must be in the
         #   same format as used in defining a service perimeter, for example, `storage.
@@ -1517,7 +1525,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all VPC-SC supported services.
+        # Lists all VPC-SC supported services. **IAM Permissions**: Requires the
+        # following IAM permissions to use this method: - `serviceusage.services.use` on
+        # the project.
         # @param [Fixnum] page_size
         #   This flag specifies the maximum number of services to return per page. Default
         #   value is 100.
