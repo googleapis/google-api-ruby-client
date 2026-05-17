@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FindingLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Fingerprint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -669,6 +675,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :findings, as: 'findings', class: Google::Apis::OndemandscanningV1beta1::Finding, decorator: Google::Apis::OndemandscanningV1beta1::Finding::Representation
       
+          property :max_severity, as: 'maxSeverity'
           property :skill_name, as: 'skillName'
         end
       end
@@ -842,6 +849,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attack_complexity, as: 'attackComplexity'
+          property :attack_requirements, as: 'attackRequirements'
           property :attack_vector, as: 'attackVector'
           property :authentication, as: 'authentication'
           property :availability_impact, as: 'availabilityImpact'
@@ -852,7 +860,13 @@ module Google
           property :integrity_impact, as: 'integrityImpact'
           property :privileges_required, as: 'privilegesRequired'
           property :scope, as: 'scope'
+          property :subsequent_system_availability_impact, as: 'subsequentSystemAvailabilityImpact'
+          property :subsequent_system_confidentiality_impact, as: 'subsequentSystemConfidentialityImpact'
+          property :subsequent_system_integrity_impact, as: 'subsequentSystemIntegrityImpact'
           property :user_interaction, as: 'userInteraction'
+          property :vulnerable_system_availability_impact, as: 'vulnerableSystemAvailabilityImpact'
+          property :vulnerable_system_confidentiality_impact, as: 'vulnerableSystemConfidentialityImpact'
+          property :vulnerable_system_integrity_impact, as: 'vulnerableSystemIntegrityImpact'
         end
       end
       
@@ -1023,12 +1037,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
-          property :description, as: 'description'
-          property :file_path, as: 'filePath'
-          property :rule_id, as: 'ruleId'
+          property :location, as: 'location', class: Google::Apis::OndemandscanningV1beta1::FindingLocation, decorator: Google::Apis::OndemandscanningV1beta1::FindingLocation::Representation
+      
+          property :scanner, as: 'scanner'
           property :severity, as: 'severity'
-          property :snippet, as: 'snippet'
-          property :title, as: 'title'
+        end
+      end
+      
+      class FindingLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_path, as: 'filePath'
+          property :line_number, :numeric_string => true, as: 'lineNumber'
         end
       end
       
