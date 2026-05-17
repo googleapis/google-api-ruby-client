@@ -26,7 +26,7 @@ module Google
       class Answer
         include Google::Apis::Core::Hashable
       
-        # The text of the answer.
+        # Contains the text of the answer.
         # Corresponds to the JSON property `answerText`
         # @return [String]
         attr_accessor :answer_text
