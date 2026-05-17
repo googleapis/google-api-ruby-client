@@ -1,5 +1,9 @@
 # Release history for google-apis-solar_v1
 
+### v0.11.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260506
+
 ### v0.10.0 (2026-02-15)
 
 * Regenerated from discovery document revision 20260208
