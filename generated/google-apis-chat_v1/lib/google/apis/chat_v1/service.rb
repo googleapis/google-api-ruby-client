@@ -863,8 +863,8 @@ module Google
         #   provided should match the call that provided the page token. Passing different
         #   values to the other parameters might lead to unexpected results.
         # @param [String] query
-        #   Required. A search query. You can search by using the following parameters: - `
-        #   create_time` - `customer` - `display_name` - `external_user_allowed` - `
+        #   Required. A search query. You can search by using the following parameters : -
+        #   `create_time` - `customer` - `display_name` - `external_user_allowed` - `
         #   last_active_time` - `space_history_state` - `space_type` `create_time` and `
         #   last_active_time` accept a timestamp in [RFC-3339](https://www.rfc-editor.org/
         #   rfc/rfc3339) format and the supported comparison operators are: `=`, `<`, `>`,
