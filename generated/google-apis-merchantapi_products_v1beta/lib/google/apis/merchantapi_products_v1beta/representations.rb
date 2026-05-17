@@ -501,6 +501,7 @@ module Google
       class Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :archived, as: 'archived'
           property :attributes, as: 'attributes', class: Google::Apis::MerchantapiProductsV1beta::Attributes, decorator: Google::Apis::MerchantapiProductsV1beta::Attributes::Representation
       
           property :automated_discounts, as: 'automatedDiscounts', class: Google::Apis::MerchantapiProductsV1beta::AutomatedDiscounts, decorator: Google::Apis::MerchantapiProductsV1beta::AutomatedDiscounts::Representation
