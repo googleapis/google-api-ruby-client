@@ -3076,7 +3076,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Disables geoJSON indexing for the field. By default, geoJSON points
-        # are indexed.
+        # are indexed. Firestore GeoPoints are indexed regardless of this value.
         # Corresponds to the JSON property `geoJsonIndexingDisabled`
         # @return [Boolean]
         attr_accessor :geo_json_indexing_disabled
@@ -3107,9 +3107,8 @@ module Google
         attr_accessor :text_language
       
         # Optional. The field in the document that specifies which language to use for
-        # that specific document. For indexes with MONGODB_COMPATIBLE_API ApiScope: if
-        # unspecified, the language is taken from the "language" field if it exists or
-        # from `text_language` if it does not.
+        # that specific document. If unspecified, the language is taken from the "
+        # language" field if it exists or from `text_language` if it does not.
         # Corresponds to the JSON property `textLanguageOverrideFieldPath`
         # @return [String]
         attr_accessor :text_language_override_field_path
