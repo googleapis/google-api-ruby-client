@@ -28,7 +28,7 @@ module Google
       class Alert
         include Google::Apis::Core::Hashable
       
-        # Optional. AI summary of the finding.
+        # Optional. AI summary of the alert.
         # Corresponds to the JSON property `aiSummary`
         # @return [String]
         attr_accessor :ai_summary
@@ -182,7 +182,7 @@ module Google
       class AlertDocument
         include Google::Apis::Core::Hashable
       
-        # Output only. AI summary of the finding.
+        # Output only. AI summary of the document.
         # Corresponds to the JSON property `aiSummary`
         # @return [String]
         attr_accessor :ai_summary
