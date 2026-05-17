@@ -5320,6 +5320,11 @@ module Google
         attr_accessor :auto_time_required
         alias_method :auto_time_required?, :auto_time_required
       
+        # Optional. The policy for the autofill service.
+        # Corresponds to the JSON property `autofillPolicy`
+        # @return [String]
+        attr_accessor :autofill_policy
+      
         # This field has no effect.
         # Corresponds to the JSON property `blockApplicationsEnabled`
         # @return [Boolean]
@@ -5926,6 +5931,7 @@ module Google
           @assist_content_policy = args[:assist_content_policy] if args.key?(:assist_content_policy)
           @auto_date_and_time_zone = args[:auto_date_and_time_zone] if args.key?(:auto_date_and_time_zone)
           @auto_time_required = args[:auto_time_required] if args.key?(:auto_time_required)
+          @autofill_policy = args[:autofill_policy] if args.key?(:autofill_policy)
           @block_applications_enabled = args[:block_applications_enabled] if args.key?(:block_applications_enabled)
           @bluetooth_config_disabled = args[:bluetooth_config_disabled] if args.key?(:bluetooth_config_disabled)
           @bluetooth_contact_sharing_disabled = args[:bluetooth_contact_sharing_disabled] if args.key?(:bluetooth_contact_sharing_disabled)

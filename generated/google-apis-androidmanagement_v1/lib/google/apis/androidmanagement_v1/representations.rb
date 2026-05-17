@@ -2398,6 +2398,7 @@ module Google
           property :assist_content_policy, as: 'assistContentPolicy'
           property :auto_date_and_time_zone, as: 'autoDateAndTimeZone'
           property :auto_time_required, as: 'autoTimeRequired'
+          property :autofill_policy, as: 'autofillPolicy'
           property :block_applications_enabled, as: 'blockApplicationsEnabled'
           property :bluetooth_config_disabled, as: 'bluetoothConfigDisabled'
           property :bluetooth_contact_sharing_disabled, as: 'bluetoothContactSharingDisabled'
