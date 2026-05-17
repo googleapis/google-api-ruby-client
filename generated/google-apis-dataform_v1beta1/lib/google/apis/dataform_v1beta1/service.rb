@@ -113,8 +113,8 @@ module Google
         end
         
         # Lists information about the supported locations for this service. This method
-        # lists locations based on the resource scope provided in the [
-        # ListLocationsRequest.name] field: * **Global locations**: If `name` is empty,
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
         # the method lists the public locations available to all projects. * **Project-
         # specific locations**: If `name` follows the format `projects/`project``, the
         # method lists locations visible to that specific project. This includes public,
@@ -125,8 +125,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -1405,7 +1405,8 @@ module Google
         
         # Fetches a single CompilationResult.
         # @param [String] name
-        #   Required. The compilation result's name.
+        #   Required. The compilation result's name. LINT.ThenChange(//depot/google3/
+        #   google/cloud/dataform/v2main/data_pipelines.proto:GetCompilationResultRequest)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1438,7 +1439,8 @@ module Google
         #   Required. The repository in which to list compilation results. Must be in the
         #   format `projects/*/locations/*/repositories/*`.
         # @param [String] filter
-        #   Optional. Filter for the returned list.
+        #   Optional. Filter for the returned list. LINT.ThenChange(//depot/google3/google/
+        #   cloud/dataform/v2main/data_pipelines.proto:ListCompilationResultsRequest)
         # @param [String] order_by
         #   Optional. This field only supports ordering by `name` and `create_time`. If
         #   unspecified, the server will choose the ordering. If specified, the default
@@ -1535,7 +1537,9 @@ module Google
         # @param [Google::Apis::DataformV1beta1::ReleaseConfig] release_config_object
         # @param [String] release_config_id
         #   Required. The ID to use for the release config, which will become the final
-        #   component of the release config's resource name.
+        #   component of the release config's resource name. LINT.ThenChange(//depot/
+        #   google3/google/cloud/dataform/v2main/data_pipelines.proto:
+        #   CreateReleaseConfigRequest)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1568,7 +1572,8 @@ module Google
         
         # Deletes a single ReleaseConfig.
         # @param [String] name
-        #   Required. The release config's name.
+        #   Required. The release config's name. LINT.ThenChange(//depot/google3/google/
+        #   cloud/dataform/v2main/data_pipelines.proto:DeleteReleaseConfigRequest)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1598,7 +1603,8 @@ module Google
         
         # Fetches a single ReleaseConfig.
         # @param [String] name
-        #   Required. The release config's name.
+        #   Required. The release config's name. LINT.ThenChange(//depot/google3/google/
+        #   cloud/dataform/v2main/data_pipelines.proto:GetReleaseConfigRequest)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1638,7 +1644,9 @@ module Google
         #   Optional. Page token received from a previous `ListReleaseConfigs` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
         #   parameters provided to `ListReleaseConfigs`, with the exception of `page_size`,
-        #   must match the call that provided the page token.
+        #   must match the call that provided the page token. LINT.ThenChange(//depot/
+        #   google3/google/cloud/dataform/v2main/data_pipelines.proto:
+        #   ListReleaseConfigsRequest)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
