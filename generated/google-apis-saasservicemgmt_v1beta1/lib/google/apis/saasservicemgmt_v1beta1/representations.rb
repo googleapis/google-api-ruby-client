@@ -495,9 +495,11 @@ module Google
       class EvaluationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocation_id, as: 'allocationId'
           property :condition, as: 'condition'
           property :id, as: 'id'
           property :target, as: 'target'
+          property :variant_id, as: 'variantId'
         end
       end
       
@@ -507,7 +509,9 @@ module Google
           collection :allocations, as: 'allocations', class: Google::Apis::SaasservicemgmtV1beta1::Allocation, decorator: Google::Apis::SaasservicemgmtV1beta1::Allocation::Representation
       
           collection :attributes, as: 'attributes'
+          property :default_allocation, as: 'defaultAllocation'
           property :default_target, as: 'defaultTarget'
+          property :default_variant, as: 'defaultVariant'
           collection :rules, as: 'rules', class: Google::Apis::SaasservicemgmtV1beta1::EvaluationRule, decorator: Google::Apis::SaasservicemgmtV1beta1::EvaluationRule::Representation
       
           collection :variants, as: 'variants', class: Google::Apis::SaasservicemgmtV1beta1::Variant, decorator: Google::Apis::SaasservicemgmtV1beta1::Variant::Representation
