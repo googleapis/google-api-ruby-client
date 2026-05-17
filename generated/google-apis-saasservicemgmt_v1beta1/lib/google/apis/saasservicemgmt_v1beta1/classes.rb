@@ -335,6 +335,11 @@ module Google
       class EvaluationRule
         include Google::Apis::Core::Hashable
       
+        # Optional. The ID of an allocation to target.
+        # Corresponds to the JSON property `allocationId`
+        # @return [String]
+        attr_accessor :allocation_id
+      
         # Required. A Common Expression Language (CEL) expression that evaluates to a
         # boolean. The expression is evaluated against the provided context. If it
         # returns true, the rule's target is applied.
@@ -347,11 +352,17 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Required. The target variant or allocation to apply if the condition is met.
-        # This should match the name of a defined variant or allocation's ID.
+        # Optional. Deprecated: Use `rule_target` instead. The target variant or
+        # allocation to apply if the condition is met. This should match the name of a
+        # defined variant or allocation's ID.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
+      
+        # Optional. The name of a variant to target.
+        # Corresponds to the JSON property `variantId`
+        # @return [String]
+        attr_accessor :variant_id
       
         def initialize(**args)
            update!(**args)
@@ -359,9 +370,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocation_id = args[:allocation_id] if args.key?(:allocation_id)
           @condition = args[:condition] if args.key?(:condition)
           @id = args[:id] if args.key?(:id)
           @target = args[:target] if args.key?(:target)
+          @variant_id = args[:variant_id] if args.key?(:variant_id)
         end
       end
       
@@ -380,10 +393,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :attributes
       
-        # Required. Default variant or allocation of the flag.
+        # Optional. The ID of an allocation to use as the default.
+        # Corresponds to the JSON property `defaultAllocation`
+        # @return [String]
+        attr_accessor :default_allocation
+      
+        # Optional. Deprecated: Use `base_target` instead. Default variant or allocation
+        # of the flag.
         # Corresponds to the JSON property `defaultTarget`
         # @return [String]
         attr_accessor :default_target
+      
+        # Optional. The name of a variant to use as the default.
+        # Corresponds to the JSON property `defaultVariant`
+        # @return [String]
+        attr_accessor :default_variant
       
         # Optional. Evaluation rules define the logic for evaluating the flag against a
         # given context. The rules are evaluated sequentially in their specified order.
@@ -404,7 +428,9 @@ module Google
         def update!(**args)
           @allocations = args[:allocations] if args.key?(:allocations)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @default_allocation = args[:default_allocation] if args.key?(:default_allocation)
           @default_target = args[:default_target] if args.key?(:default_target)
+          @default_variant = args[:default_variant] if args.key?(:default_variant)
           @rules = args[:rules] if args.key?(:rules)
           @variants = args[:variants] if args.key?(:variants)
         end
