@@ -766,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpannerChangeStreamPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpannerColumn
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2251,6 +2257,13 @@ module Google
         end
       end
       
+      class SpannerChangeStreamPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class SpannerColumn
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2329,6 +2342,8 @@ module Google
           property :mysql_log_position, as: 'mysqlLogPosition', class: Google::Apis::DatastreamV1::MysqlLogPosition, decorator: Google::Apis::DatastreamV1::MysqlLogPosition::Representation
       
           property :oracle_scn_position, as: 'oracleScnPosition', class: Google::Apis::DatastreamV1::OracleScnPosition, decorator: Google::Apis::DatastreamV1::OracleScnPosition::Representation
+      
+          property :spanner_change_stream_position, as: 'spannerChangeStreamPosition', class: Google::Apis::DatastreamV1::SpannerChangeStreamPosition, decorator: Google::Apis::DatastreamV1::SpannerChangeStreamPosition::Representation
       
           property :sql_server_lsn_position, as: 'sqlServerLsnPosition', class: Google::Apis::DatastreamV1::SqlServerLsnPosition, decorator: Google::Apis::DatastreamV1::SqlServerLsnPosition::Representation
       

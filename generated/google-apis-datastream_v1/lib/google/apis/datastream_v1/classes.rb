@@ -4282,6 +4282,27 @@ module Google
         end
       end
       
+      # Represents a position in a Spanner change stream from which to start
+      # replicating.
+      class SpannerChangeStreamPosition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The timestamp to start change stream queries from. The timestamp
+        # must be a positive value.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Spanner column.
       class SpannerColumn
         include Google::Apis::Core::Hashable
@@ -4530,6 +4551,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleScnPosition]
         attr_accessor :oracle_scn_position
       
+        # Represents a position in a Spanner change stream from which to start
+        # replicating.
+        # Corresponds to the JSON property `spannerChangeStreamPosition`
+        # @return [Google::Apis::DatastreamV1::SpannerChangeStreamPosition]
+        attr_accessor :spanner_change_stream_position
+      
         # SQL Server LSN position
         # Corresponds to the JSON property `sqlServerLsnPosition`
         # @return [Google::Apis::DatastreamV1::SqlServerLsnPosition]
@@ -4545,6 +4572,7 @@ module Google
           @mysql_gtid_position = args[:mysql_gtid_position] if args.key?(:mysql_gtid_position)
           @mysql_log_position = args[:mysql_log_position] if args.key?(:mysql_log_position)
           @oracle_scn_position = args[:oracle_scn_position] if args.key?(:oracle_scn_position)
+          @spanner_change_stream_position = args[:spanner_change_stream_position] if args.key?(:spanner_change_stream_position)
           @sql_server_lsn_position = args[:sql_server_lsn_position] if args.key?(:sql_server_lsn_position)
         end
       end
