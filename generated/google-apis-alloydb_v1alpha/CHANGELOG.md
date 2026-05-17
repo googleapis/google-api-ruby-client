@@ -1,5 +1,9 @@
 # Release history for google-apis-alloydb_v1alpha
 
+### v0.52.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260507
+
 ### v0.51.0 (2026-05-10)
 
 * Regenerated from discovery document revision 20260423
