@@ -264,11 +264,11 @@ module Google
         #   Mask that identifies which fields on the course to update. This field is
         #   required to do an update. The update will fail if invalid fields are specified.
         #   The following fields are valid: * `courseState` * `description` * `
-        #   descriptionHeading` * `name` * `ownerId` * `room` * `section` * `subject` Note:
-        #   patches to ownerId are treated as being effective immediately, but in
-        #   practice it may take some time for the ownership transfer of all affected
-        #   resources to complete. When set in a query parameter, this field should be
-        #   specified as `updateMask=,,...`
+        #   descriptionHeading` * `name` * `ownerId` * `room` * `section` * `subject` * `
+        #   levels` Note: patches to ownerId are treated as being effective immediately,
+        #   but in practice it may take some time for the ownership transfer of all
+        #   affected resources to complete. When set in a query parameter, this field
+        #   should be specified as `updateMask=,,...`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -299,11 +299,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a course. This method returns the following error codes: * `
-        # PERMISSION_DENIED` if the requesting user is not permitted to modify the
-        # requested course or for access errors. * `NOT_FOUND` if no course exists with
-        # the requested ID. * `FAILED_PRECONDITION` for the following request errors: *
-        # CourseNotModifiable * CourseTitleCannotContainUrl
+        # Updates a course. Note: Unlike other fields, `levels` is not cleared if
+        # omitted from the request. The `UpdateCourse` method only modifies `levels` if
+        # it is explicitly provided; otherwise, the existing value is preserved. Use the
+        # `PatchCourse` method to clear the `levels` field. This method returns the
+        # following error codes: * `PERMISSION_DENIED` if the requesting user is not
+        # permitted to modify the requested course or for access errors. * `NOT_FOUND`
+        # if no course exists with the requested ID. * `FAILED_PRECONDITION` for the
+        # following request errors: * CourseNotModifiable * CourseTitleCannotContainUrl
         # @param [String] id
         #   Identifier of the course to update. This identifier can be either the
         #   Classroom-assigned identifier or an alias.

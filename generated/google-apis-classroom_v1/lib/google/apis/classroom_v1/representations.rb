@@ -553,6 +553,8 @@ module Google
       class AddOnAttachmentStudentSubmission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_work_submission_id, as: 'courseWorkSubmissionId'
+          property :id, as: 'id'
           property :points_earned, as: 'pointsEarned'
           property :post_submission_state, as: 'postSubmissionState'
           property :user_id, as: 'userId'
@@ -657,6 +659,7 @@ module Google
       
           property :guardians_enabled, as: 'guardiansEnabled'
           property :id, as: 'id'
+          property :levels, as: 'levels'
           property :name, as: 'name'
           property :owner_id, as: 'ownerId'
           property :room, as: 'room'
