@@ -784,54 +784,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Omnichannel
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OmnichannelIntegrationConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OmnichannelIntegrationConfigCesAppConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OmnichannelIntegrationConfigChannelConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OmnichannelIntegrationConfigRoutingConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OmnichannelIntegrationConfigSubscriberConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OmnichannelIntegrationConfigWhatsappConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OmnichannelOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class OpenApiTool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2526,84 +2478,6 @@ module Google
           property :oauth_grant_type, as: 'oauthGrantType'
           collection :scopes, as: 'scopes'
           property :token_endpoint, as: 'tokenEndpoint'
-        end
-      end
-      
-      class Omnichannel
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          property :etag, as: 'etag'
-          property :integration_config, as: 'integrationConfig', class: Google::Apis::CesV1::OmnichannelIntegrationConfig, decorator: Google::Apis::CesV1::OmnichannelIntegrationConfig::Representation
-      
-          property :name, as: 'name'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class OmnichannelIntegrationConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :channel_configs, as: 'channelConfigs', class: Google::Apis::CesV1::OmnichannelIntegrationConfigChannelConfig, decorator: Google::Apis::CesV1::OmnichannelIntegrationConfigChannelConfig::Representation
-      
-          hash :routing_configs, as: 'routingConfigs', class: Google::Apis::CesV1::OmnichannelIntegrationConfigRoutingConfig, decorator: Google::Apis::CesV1::OmnichannelIntegrationConfigRoutingConfig::Representation
-      
-          hash :subscriber_configs, as: 'subscriberConfigs', class: Google::Apis::CesV1::OmnichannelIntegrationConfigSubscriberConfig, decorator: Google::Apis::CesV1::OmnichannelIntegrationConfigSubscriberConfig::Representation
-      
-        end
-      end
-      
-      class OmnichannelIntegrationConfigCesAppConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :app, as: 'app'
-        end
-      end
-      
-      class OmnichannelIntegrationConfigChannelConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :whatsapp_config, as: 'whatsappConfig', class: Google::Apis::CesV1::OmnichannelIntegrationConfigWhatsappConfig, decorator: Google::Apis::CesV1::OmnichannelIntegrationConfigWhatsappConfig::Representation
-      
-        end
-      end
-      
-      class OmnichannelIntegrationConfigRoutingConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :subscriber_key, as: 'subscriberKey'
-        end
-      end
-      
-      class OmnichannelIntegrationConfigSubscriberConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ces_app_config, as: 'cesAppConfig', class: Google::Apis::CesV1::OmnichannelIntegrationConfigCesAppConfig, decorator: Google::Apis::CesV1::OmnichannelIntegrationConfigCesAppConfig::Representation
-      
-        end
-      end
-      
-      class OmnichannelIntegrationConfigWhatsappConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :meta_business_portfolio_id, as: 'metaBusinessPortfolioId'
-          property :phone_number, as: 'phoneNumber'
-          property :phone_number_id, as: 'phoneNumberId'
-          property :webhook_verify_token, as: 'webhookVerifyToken'
-          property :whatsapp_business_account_id, as: 'whatsappBusinessAccountId'
-          property :whatsapp_business_token, as: 'whatsappBusinessToken'
-        end
-      end
-      
-      class OmnichannelOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
         end
       end
       
