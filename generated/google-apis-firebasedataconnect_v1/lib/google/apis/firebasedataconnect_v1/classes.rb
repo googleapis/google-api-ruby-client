@@ -93,6 +93,32 @@ module Google
         end
       end
       
+      # A chunk of code.
+      class CodeChunk
+        include Google::Apis::Core::Hashable
+      
+        # Required. The code content string.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Optional. Specifies the language if we expand support beyond GraphQL (e.g.,
+        # SQL or JSON) The standard is BCP-47 language code.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
       # Connector consists of a set of operations, i.e. queries and mutations.
       class Connector
         include Google::Apis::Core::Hashable
@@ -402,6 +428,129 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # Request message for GenerateQuery.
+      class GenerateQueryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The natural language description of the desired query. Example: "
+        # Find all users who signed up in the last 7 days."
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        # Optional. The user's locally defined FDC Schema(s). If not defined, the
+        # backend will fetch the user's deployed schema.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::FirebasedataconnectV1::Schema>]
+        attr_accessor :schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt = args[:prompt] if args.key?(:prompt)
+          @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # Output for streaming generate query requests
+      class GenerateQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a chunk of content.
+        # Corresponds to the JSON property `part`
+        # @return [Google::Apis::FirebasedataconnectV1::Part]
+        attr_accessor :part
+      
+        # Represents the progress of the server side generation request.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::FirebasedataconnectV1::GenerationStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @part = args[:part] if args.key?(:part)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Request message for GenerateSchema.
+      class GenerateSchemaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The natural language description of the data model to generate.
+        # Example: "A blog system with Users, Posts, and Comments. Users can have
+        # multiple posts."
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt = args[:prompt] if args.key?(:prompt)
+        end
+      end
+      
+      # Output for streaming generate schema requests
+      class GenerateSchemaResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a chunk of content.
+        # Corresponds to the JSON property `part`
+        # @return [Google::Apis::FirebasedataconnectV1::Part]
+        attr_accessor :part
+      
+        # Represents the progress of the server side generation request.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::FirebasedataconnectV1::GenerationStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @part = args[:part] if args.key?(:part)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Represents the progress of the server side generation request.
+      class GenerationStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A message providing more details about the state.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. The state of generation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1064,6 +1213,31 @@ module Google
         end
       end
       
+      # Represents a chunk of content.
+      class Part
+        include Google::Apis::Core::Hashable
+      
+        # A chunk of code.
+        # Corresponds to the JSON property `codeChunk`
+        # @return [Google::Apis::FirebasedataconnectV1::CodeChunk]
+        attr_accessor :code_chunk
+      
+        # A chunk of conversational text.
+        # Corresponds to the JSON property `textChunk`
+        # @return [Google::Apis::FirebasedataconnectV1::TextChunk]
+        attr_accessor :text_chunk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code_chunk = args[:code_chunk] if args.key?(:code_chunk)
+          @text_chunk = args[:text_chunk] if args.key?(:text_chunk)
+        end
+      end
+      
       # Settings for PostgreSQL data source.
       class PostgreSql
         include Google::Apis::Core::Hashable
@@ -1099,12 +1273,14 @@ module Google
         # @return [String]
         attr_accessor :schema
       
-        # Optional. Configure how to perform Postgresql schema migration.
+        # Optional. Configure how to perform automatic PostgreSQL schema migration
+        # before deploying the FDC schema. This is an additive-only operation.
         # Corresponds to the JSON property `schemaMigration`
         # @return [String]
         attr_accessor :schema_migration
       
-        # Optional. Configure how much Postgresql schema validation to perform.
+        # Optional. Configure how much PostgreSQL schema validation to perform against
+        # the live database before deploying the FDC schema.
         # Corresponds to the JSON property `schemaValidation`
         # @return [String]
         attr_accessor :schema_validation
@@ -1374,6 +1550,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # A chunk of conversational text.
+      class TextChunk
+        include Google::Apis::Core::Hashable
+      
+        # Required. The text content string.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
