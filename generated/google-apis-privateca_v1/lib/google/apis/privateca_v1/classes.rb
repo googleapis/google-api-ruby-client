@@ -518,6 +518,17 @@ module Google
         # @return [String]
         attr_accessor :pem_csr
       
+        # Optional. The requested not_before_time of this Certificate. This field may
+        # only be set if the CaPool.IssuancePolicy.
+        # allow_requester_specified_not_before_time field is set to true for the issuing
+        # CaPool. If this field is specified, the certificate will be issued with this '
+        # not_before_time'. If this is not specified, the 'not_before_time' will be set
+        # to the issuance time or issuance time minus backdate_duration depending on the
+        # CaPool configuration.
+        # Corresponds to the JSON property `requestedNotBeforeTime`
+        # @return [String]
+        attr_accessor :requested_not_before_time
+      
         # Describes fields that are relavent to the revocation of a Certificate.
         # Corresponds to the JSON property `revocationDetails`
         # @return [Google::Apis::PrivatecaV1::RevocationDetails]
@@ -551,6 +562,7 @@ module Google
           @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
           @pem_certificate_chain = args[:pem_certificate_chain] if args.key?(:pem_certificate_chain)
           @pem_csr = args[:pem_csr] if args.key?(:pem_csr)
+          @requested_not_before_time = args[:requested_not_before_time] if args.key?(:requested_not_before_time)
           @revocation_details = args[:revocation_details] if args.key?(:revocation_details)
           @subject_mode = args[:subject_mode] if args.key?(:subject_mode)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1439,6 +1451,18 @@ module Google
       class IssuancePolicy
         include Google::Apis::Core::Hashable
       
+        # Optional. If set to true, allows requesters to specify the
+        # requested_not_before_time field when creating a Certificate. Certificates
+        # requested with this option enabled will have a 'not_before_time' equal to the
+        # value specified in the request. The 'not_after_time' will be adjusted to
+        # preserve the requested lifetime. The maximum time that a certificate can be
+        # backdated with these options is 48 hours in the past. This option cannot be
+        # set if backdate_duration is set.
+        # Corresponds to the JSON property `allowRequesterSpecifiedNotBeforeTime`
+        # @return [Boolean]
+        attr_accessor :allow_requester_specified_not_before_time
+        alias_method :allow_requester_specified_not_before_time?, :allow_requester_specified_not_before_time
+      
         # IssuanceModes specifies the allowed ways in which Certificates may be
         # requested from this CaPool.
         # Corresponds to the JSON property `allowedIssuanceModes`
@@ -1494,6 +1518,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_requester_specified_not_before_time = args[:allow_requester_specified_not_before_time] if args.key?(:allow_requester_specified_not_before_time)
           @allowed_issuance_modes = args[:allowed_issuance_modes] if args.key?(:allowed_issuance_modes)
           @allowed_key_types = args[:allowed_key_types] if args.key?(:allowed_key_types)
           @backdate_duration = args[:backdate_duration] if args.key?(:backdate_duration)
