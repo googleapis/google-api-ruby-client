@@ -16335,6 +16335,7 @@ module Google
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::AttachedDisk, decorator: Google::Apis::ComputeAlpha::AttachedDisk::Representation
       
           collection :machine_types, as: 'machineTypes'
+          property :min_cpu_platform, as: 'minCpuPlatform'
           property :rank, :numeric_string => true, as: 'rank'
         end
       end

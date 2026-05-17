@@ -2083,24 +2083,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # Specifies the disk type to use to create the instance. If not specified,
-        # the default is pd-standard, specified using the full URL.
-        # For example:
-        # https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/pd-
-        # standard
-        # For a full list of acceptable values, seePersistent disk
-        # types. If you specify this field when creating a VM, you can provide
-        # either the full or partial URL. For example, the following values are
-        # valid:
         # 
-        # 
-        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/
-        # diskTypes/diskType
-        # - projects/project/zones/zone/diskTypes/diskType
-        # - zones/zone/diskTypes/diskType
-        # If you specify this field when creating or updating an instance template
-        # or all-instances configuration, specify the type of the disk, not the
-        # URL. For example: pd-standard.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -26227,6 +26210,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :machine_types
       
+        # Name of the minimum CPU platform to be used by this instance selection.
+        # e.g. 'Intel Ice Lake'.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
         # Rank when prioritizing the shape flexibilities.
         # The instance selections with rank are considered
         # first, in the ascending order of the rank.
@@ -26243,6 +26232,7 @@ module Google
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @rank = args[:rank] if args.key?(:rank)
         end
       end
@@ -43698,7 +43688,13 @@ module Google
         attr_accessor :name
       
         # The URL of the network to which all network endpoints in the NEG belong.
-        # Uses default project network if unspecified.
+        # For networkEndpointType GCE_VM_IP_PORT,GCE_VM_IP_PORTMAP or
+        # NON_GCP_PRIVATE_IP_PORT,
+        # if this field is not specified, a default network will be used.
+        # This field cannot be set for NEGs with networkEndpointType set toSERVERLESS or
+        # PRIVATE_SERVICE_CONNECT and for
+        # global NEGs.
+        # For all other network endpoint types, this field is required.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -44097,7 +44093,13 @@ module Google
         attr_accessor :default_port
       
         # The URL of the network to which all network endpoints in the NEG belong.
-        # Uses default project network if unspecified.
+        # For networkEndpointType GCE_VM_IP_PORT,GCE_VM_IP_PORTMAP or
+        # NON_GCP_PRIVATE_IP_PORT,
+        # if this field is not specified, a default network will be used.
+        # This field cannot be set for NEGs with networkEndpointType set toSERVERLESS or
+        # PRIVATE_SERVICE_CONNECT and for
+        # global NEGs.
+        # For all other network endpoint types, this field is required.
         # [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `network`
         # @return [String]
