@@ -138,6 +138,33 @@ module Google
         end
       end
       
+      # Additional supported options for serving Drive events.
+      class DriveOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. For subscriptions to Google Drive events, whether to
+        # receive events about Drive files that are children of the target folder or
+        # shared drive. * If `false`, the subscription only receives events about
+        # changes to the folder or shared drive that's specified as the `targetResource`.
+        # * If `true`, the `mimeType` field of the `file` resource must be set to `
+        # application/vnd.google-apps.folder`. For details, see [Google Drive event
+        # types](https://developers.google.com/workspace/events/guides/events-drive#
+        # event-types).
+        # Corresponds to the JSON property `includeDescendants`
+        # @return [Boolean]
+        attr_accessor :include_descendants
+        alias_method :include_descendants?, :include_descendants
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_descendants = args[:include_descendants] if args.key?(:include_descendants)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -728,6 +755,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Additional supported options for serving Drive events.
+        # Corresponds to the JSON property `driveOptions`
+        # @return [Google::Apis::WorkspaceeventsV1::DriveOptions]
+        attr_accessor :drive_options
+      
         # Optional. This checksum is computed by the server based on the value of other
         # fields, and might be sent on update requests to ensure the client has an up-to-
         # date value before proceeding.
@@ -843,6 +875,7 @@ module Google
         def update!(**args)
           @authority = args[:authority] if args.key?(:authority)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @drive_options = args[:drive_options] if args.key?(:drive_options)
           @etag = args[:etag] if args.key?(:etag)
           @event_types = args[:event_types] if args.key?(:event_types)
           @expire_time = args[:expire_time] if args.key?(:expire_time)

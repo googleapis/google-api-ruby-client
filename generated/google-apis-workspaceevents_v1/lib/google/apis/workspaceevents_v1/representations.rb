@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DriveOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -207,6 +213,13 @@ module Google
         end
       end
       
+      class DriveOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_descendants, as: 'includeDescendants'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -362,6 +375,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authority, as: 'authority'
           property :create_time, as: 'createTime'
+          property :drive_options, as: 'driveOptions', class: Google::Apis::WorkspaceeventsV1::DriveOptions, decorator: Google::Apis::WorkspaceeventsV1::DriveOptions::Representation
+      
           property :etag, as: 'etag'
           collection :event_types, as: 'eventTypes'
           property :expire_time, as: 'expireTime'
