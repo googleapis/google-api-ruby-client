@@ -531,6 +531,12 @@ module Google
         # @return [String]
         attr_accessor :location_name
       
+        # Output only. The Place ID of the location to which the user is invited. Not
+        # always populated.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -539,6 +545,7 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @location_name = args[:location_name] if args.key?(:location_name)
+          @place_id = args[:place_id] if args.key?(:place_id)
         end
       end
       
