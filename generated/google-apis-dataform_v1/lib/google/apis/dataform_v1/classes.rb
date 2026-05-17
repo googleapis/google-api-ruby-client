@@ -1816,7 +1816,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations which could not be reached.
+        # Locations which could not be reached. LINT.ThenChange(//depot/google3/google/
+        # cloud/dataform/v2main/data_pipelines.proto:ListCompilationResultsResponse)
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1907,7 +1908,8 @@ module Google
         # @return [Array<Google::Apis::DataformV1::ReleaseConfig>]
         attr_accessor :release_configs
       
-        # Locations which could not be reached.
+        # Locations which could not be reached. LINT.ThenChange(//depot/google3/google/
+        # cloud/dataform/v2main/data_pipelines.proto:ListReleaseConfigsResponse)
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -2338,9 +2340,9 @@ module Google
         # @return [String]
         attr_accessor :contents
       
-        # Output only. The ID of the Vertex job that executed the notebook in contents
-        # and also the ID used for the outputs created in Google Cloud Storage buckets.
-        # Only set once the job has started to run.
+        # Output only. The ID of the Gemini Enterprise Agent Platform job that executed
+        # the notebook in contents and also the ID used for the outputs created in
+        # Google Cloud Storage buckets. Only set once the job has started to run.
         # Corresponds to the JSON property `jobId`
         # @return [String]
         attr_accessor :job_id
@@ -3194,7 +3196,8 @@ module Google
       
         # Output only. All the metadata information that is used internally to serve the
         # resource. For example: timestamps, flags, status fields, etc. The format of
-        # this field is a JSON string.
+        # this field is a JSON string. LINT.ThenChange(//depot/google3/google/cloud/
+        # dataform/v2main/data_pipelines.proto:ReleaseConfig)
         # Corresponds to the JSON property `internalMetadata`
         # @return [String]
         attr_accessor :internal_metadata
