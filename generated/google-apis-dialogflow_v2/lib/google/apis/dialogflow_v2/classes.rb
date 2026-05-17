@@ -7997,6 +7997,18 @@ module Google
         # @return [String]
         attr_accessor :confirmation_requirement
       
+        # 
+        # Corresponds to the JSON property `proactiveEnabled`
+        # @return [Boolean]
+        attr_accessor :proactive_enabled
+        alias_method :proactive_enabled?, :proactive_enabled
+      
+        # 
+        # Corresponds to the JSON property `reactiveEnabled`
+        # @return [Boolean]
+        attr_accessor :reactive_enabled
+        alias_method :reactive_enabled?, :reactive_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8005,6 +8017,8 @@ module Google
         def update!(**args)
           @ces_app = args[:ces_app] if args.key?(:ces_app)
           @confirmation_requirement = args[:confirmation_requirement] if args.key?(:confirmation_requirement)
+          @proactive_enabled = args[:proactive_enabled] if args.key?(:proactive_enabled)
+          @reactive_enabled = args[:reactive_enabled] if args.key?(:reactive_enabled)
         end
       end
       

@@ -6626,6 +6626,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ces_app, as: 'cesApp'
           property :confirmation_requirement, as: 'confirmationRequirement'
+          property :proactive_enabled, as: 'proactiveEnabled'
+          property :reactive_enabled, as: 'reactiveEnabled'
         end
       end
       
