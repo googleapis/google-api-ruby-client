@@ -2054,6 +2054,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Directories to persist across workstation sessions.
+        # Corresponds to the JSON property `persistentDirectories`
+        # @return [Array<Google::Apis::WorkstationsV1beta::WorkstationPersistentDirectory>]
+        attr_accessor :persistent_directories
+      
         # Output only. Indicates whether this workstation is currently being updated to
         # match its intended state.
         # Corresponds to the JSON property `reconciling`
@@ -2124,6 +2129,7 @@ module Google
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @persistent_directories = args[:persistent_directories] if args.key?(:persistent_directories)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @runtime_host = args[:runtime_host] if args.key?(:runtime_host)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -2620,6 +2626,66 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A Persistent Directory backed by a Compute Engine regional persistent disk
+      # within the workstation.
+      class WorkstationGceRegionalPersistentDisk
+        include Google::Apis::Core::Hashable
+      
+        # The name of the persistent directory.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The desired size of the persistent directory in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+        end
+      end
+      
+      # A directory to persist across workstation sessions. Updates to this field will
+      # only take effect on this workstation after it is restarted.
+      class WorkstationPersistentDirectory
+        include Google::Apis::Core::Hashable
+      
+        # A Persistent Directory backed by a Compute Engine regional persistent disk
+        # within the workstation.
+        # Corresponds to the JSON property `gcePd`
+        # @return [Google::Apis::WorkstationsV1beta::WorkstationGceRegionalPersistentDisk]
+        attr_accessor :gce_pd
+      
+        # Optional. The mount path of the persistent directory.
+        # Corresponds to the JSON property `mountPath`
+        # @return [String]
+        attr_accessor :mount_path
+      
+        # Optional. Size of the persistent directory in GB. If specified in an update
+        # request, this is the desired size of the directory.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gce_pd = args[:gce_pd] if args.key?(:gce_pd)
+          @mount_path = args[:mount_path] if args.key?(:mount_path)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
         end
       end
     end
