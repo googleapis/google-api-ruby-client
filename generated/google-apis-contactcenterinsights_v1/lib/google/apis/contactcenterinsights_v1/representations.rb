@@ -22,6 +22,90 @@ module Google
   module Apis
     module ContactcenterinsightsV1
       
+      class GoogleCloudAiplatformV1Blob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1CodeExecutionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1Content
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ExecutableCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FileData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FunctionCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FunctionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FunctionResponseBlob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FunctionResponseFileData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FunctionResponsePart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1Part
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PartMediaResolution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PartialArg
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1VideoMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudCesV1mainAgentTransfer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -640,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1DiagnosticReportConversationSlice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1DiagnosticReportIntentStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1241,6 +1331,24 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1LossPattern
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1LossPatternLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1LossPatternLinkBotInstructionLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1LossPatternLinkConversationLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2140,6 +2248,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1DiagnosticReportConversationSlice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1DiagnosticReportIntentStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2549,6 +2663,24 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1LossPattern
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1LossPatternLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1LossPatternLinkBotInstructionLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1LossPatternLinkConversationLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3244,6 +3376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1mainDiagnosticReportConversationSlice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1mainDiagnosticReportIntentStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3658,6 +3796,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1mainLossPatternLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainLossPatternLinkBotInstructionLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainLossPatternLinkConversationLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1mainMetricValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4040,6 +4196,152 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1Blob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :display_name, as: 'displayName'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CodeExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :outcome, as: 'outcome'
+          property :output, as: 'output'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1Content
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :parts, as: 'parts', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1Part, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1Part::Representation
+      
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ExecutableCode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :language, as: 'language'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FileData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :file_uri, as: 'fileUri'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FunctionCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :args, as: 'args'
+          property :name, as: 'name'
+          collection :partial_args, as: 'partialArgs', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1PartialArg, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1PartialArg::Representation
+      
+          property :will_continue, as: 'willContinue'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FunctionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :parts, as: 'parts', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FunctionResponsePart, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FunctionResponsePart::Representation
+      
+          hash :response, as: 'response'
+          property :scheduling, as: 'scheduling'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FunctionResponseBlob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :display_name, as: 'displayName'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FunctionResponseFileData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :file_uri, as: 'fileUri'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FunctionResponsePart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_data, as: 'fileData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FunctionResponseFileData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FunctionResponseFileData::Representation
+      
+          property :inline_data, as: 'inlineData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FunctionResponseBlob, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FunctionResponseBlob::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1Part
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_execution_result, as: 'codeExecutionResult', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1CodeExecutionResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1CodeExecutionResult::Representation
+      
+          property :executable_code, as: 'executableCode', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1ExecutableCode, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1ExecutableCode::Representation
+      
+          property :file_data, as: 'fileData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FileData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FileData::Representation
+      
+          property :function_call, as: 'functionCall', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FunctionCall, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FunctionCall::Representation
+      
+          property :function_response, as: 'functionResponse', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FunctionResponse, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1FunctionResponse::Representation
+      
+          property :inline_data, as: 'inlineData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1Blob, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1Blob::Representation
+      
+          property :media_resolution, as: 'mediaResolution', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1PartMediaResolution, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1PartMediaResolution::Representation
+      
+          property :text, as: 'text'
+          property :thought, as: 'thought'
+          property :thought_signature, :base64 => true, as: 'thoughtSignature'
+          property :video_metadata, as: 'videoMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1VideoMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1VideoMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PartMediaResolution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :level, as: 'level'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PartialArg
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :json_path, as: 'jsonPath'
+          property :null_value, as: 'nullValue'
+          property :number_value, as: 'numberValue'
+          property :string_value, as: 'stringValue'
+          property :will_continue, as: 'willContinue'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1VideoMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_offset, as: 'endOffset'
+          property :fps, as: 'fps'
+          property :start_offset, as: 'startOffset'
+        end
       end
       
       class GoogleCloudCesV1mainAgentTransfer
@@ -5181,12 +5483,22 @@ module Google
       class GoogleCloudContactcenterinsightsV1DiagnosticReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :conversation_slices, as: 'conversationSlices', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReportConversationSlice, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReportConversationSlice::Representation
+      
           collection :intent_stats, as: 'intentStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReportIntentStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReportIntentStats::Representation
       
           collection :loss_patterns, as: 'lossPatterns', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1LossPattern, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1LossPattern::Representation
       
           hash :metrics, as: 'metrics', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1MetricValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1MetricValue::Representation
       
+          property :report, as: 'report'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1DiagnosticReportConversationSlice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_ids, as: 'conversationIds'
         end
       end
       
@@ -6148,8 +6460,40 @@ module Google
           property :display_name, as: 'displayName'
           property :examples, as: 'examples'
           property :id, as: 'id'
+          collection :links, as: 'links', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1LossPatternLink, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1LossPatternLink::Representation
+      
           property :percentage, as: 'percentage'
           property :suggested_fixes, as: 'suggestedFixes'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1LossPatternLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bot_instruction_link, as: 'botInstructionLink', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1LossPatternLinkBotInstructionLink, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1LossPatternLinkBotInstructionLink::Representation
+      
+          property :conversation_link, as: 'conversationLink', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1LossPatternLinkConversationLink, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1LossPatternLinkConversationLink::Representation
+      
+          property :end_byte_index, as: 'endByteIndex'
+          property :highlighted_text, as: 'highlightedText'
+          property :location_type, as: 'locationType'
+          property :start_byte_index, as: 'startByteIndex'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1LossPatternLinkBotInstructionLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_line, as: 'endLine'
+          property :start_line, as: 'startLine'
+          property :subagent, as: 'subagent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1LossPatternLinkConversationLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_id, as: 'conversationId'
         end
       end
       
@@ -6709,6 +7053,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1RedirectAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :query_params, as: 'queryParams'
           property :relative_path, as: 'relativePath'
         end
       end
@@ -6879,6 +7224,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1SherlockStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+          property :content, as: 'content', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1Content::Representation
+      
+          collection :state_deltas, as: 'stateDeltas'
+          property :step_id, as: 'stepId'
           collection :text_input, as: 'textInput'
           property :thought, as: 'thought'
           collection :tool_calls, as: 'toolCalls', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ToolCall, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ToolCall::Representation
@@ -7796,12 +8146,22 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1DiagnosticReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :conversation_slices, as: 'conversationSlices', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DiagnosticReportConversationSlice, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DiagnosticReportConversationSlice::Representation
+      
           collection :intent_stats, as: 'intentStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DiagnosticReportIntentStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DiagnosticReportIntentStats::Representation
       
           collection :loss_patterns, as: 'lossPatterns', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1LossPattern, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1LossPattern::Representation
       
           hash :metrics, as: 'metrics', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1MetricValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1MetricValue::Representation
       
+          property :report, as: 'report'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1DiagnosticReportConversationSlice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_ids, as: 'conversationIds'
         end
       end
       
@@ -8470,8 +8830,40 @@ module Google
           property :display_name, as: 'displayName'
           property :examples, as: 'examples'
           property :id, as: 'id'
+          collection :links, as: 'links', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1LossPatternLink, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1LossPatternLink::Representation
+      
           property :percentage, as: 'percentage'
           property :suggested_fixes, as: 'suggestedFixes'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1LossPatternLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bot_instruction_link, as: 'botInstructionLink', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1LossPatternLinkBotInstructionLink, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1LossPatternLinkBotInstructionLink::Representation
+      
+          property :conversation_link, as: 'conversationLink', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1LossPatternLinkConversationLink, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1LossPatternLinkConversationLink::Representation
+      
+          property :end_byte_index, as: 'endByteIndex'
+          property :highlighted_text, as: 'highlightedText'
+          property :location_type, as: 'locationType'
+          property :start_byte_index, as: 'startByteIndex'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1LossPatternLinkBotInstructionLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_line, as: 'endLine'
+          property :start_line, as: 'startLine'
+          property :subagent, as: 'subagent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1LossPatternLinkConversationLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_id, as: 'conversationId'
         end
       end
       
@@ -8891,6 +9283,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1SherlockStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+          property :content, as: 'content', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1Content::Representation
+      
+          collection :state_deltas, as: 'stateDeltas'
+          property :step_id, as: 'stepId'
           collection :text_input, as: 'textInput'
           property :thought, as: 'thought'
           collection :tool_calls, as: 'toolCalls', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ToolCall, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ToolCall::Representation
@@ -9782,12 +10179,22 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainDiagnosticReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :conversation_slices, as: 'conversationSlices', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDiagnosticReportConversationSlice, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDiagnosticReportConversationSlice::Representation
+      
           collection :intent_stats, as: 'intentStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDiagnosticReportIntentStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDiagnosticReportIntentStats::Representation
       
           collection :loss_patterns, as: 'lossPatterns', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainLossPattern, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainLossPattern::Representation
       
           hash :metrics, as: 'metrics', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainMetricValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainMetricValue::Representation
       
+          property :report, as: 'report'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDiagnosticReportConversationSlice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_ids, as: 'conversationIds'
         end
       end
       
@@ -10456,8 +10863,40 @@ module Google
           property :display_name, as: 'displayName'
           property :examples, as: 'examples'
           property :id, as: 'id'
+          collection :links, as: 'links', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainLossPatternLink, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainLossPatternLink::Representation
+      
           property :percentage, as: 'percentage'
           property :suggested_fixes, as: 'suggestedFixes'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainLossPatternLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bot_instruction_link, as: 'botInstructionLink', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainLossPatternLinkBotInstructionLink, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainLossPatternLinkBotInstructionLink::Representation
+      
+          property :conversation_link, as: 'conversationLink', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainLossPatternLinkConversationLink, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainLossPatternLinkConversationLink::Representation
+      
+          property :end_byte_index, as: 'endByteIndex'
+          property :highlighted_text, as: 'highlightedText'
+          property :location_type, as: 'locationType'
+          property :start_byte_index, as: 'startByteIndex'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainLossPatternLinkBotInstructionLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_line, as: 'endLine'
+          property :start_line, as: 'startLine'
+          property :subagent, as: 'subagent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainLossPatternLinkConversationLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_id, as: 'conversationId'
         end
       end
       
@@ -10877,6 +11316,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainSherlockStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+          property :content, as: 'content', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudAiplatformV1Content::Representation
+      
+          collection :state_deltas, as: 'stateDeltas'
+          property :step_id, as: 'stepId'
           collection :text_input, as: 'textInput'
           property :thought, as: 'thought'
           collection :tool_calls, as: 'toolCalls', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainToolCall, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainToolCall::Representation
