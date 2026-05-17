@@ -1143,6 +1143,133 @@ module Google
         end
       end
       
+      # A gateway that can apply specialized traffic processing.
+      class Gateway
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The aggregate processing capacity of this gateway.
+        # Corresponds to the JSON property `capacity`
+        # @return [String]
+        attr_accessor :capacity
+      
+        # Output only. The list of Cloud Routers that are connected to this gateway.
+        # Should be in the form: https://www.googleapis.com/compute/v1/projects/`project`
+        # /regions/`region`/routers/`router`
+        # Corresponds to the JSON property `cloudRouters`
+        # @return [Array<String>]
+        attr_accessor :cloud_routers
+      
+        # Optional. A list of IP ranges that are reserved for this gateway's internal
+        # intfrastructure.
+        # Corresponds to the JSON property `ipRangeReservations`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::IpRangeReservation>]
+        attr_accessor :ip_range_reservations
+      
+        # Output only. The URI of the connected SACAttachment. Should be in the form:
+        # projects/`project`/locations/`location`/sacAttachments/`sac_attachment`
+        # Corresponds to the JSON property `sacAttachment`
+        # @return [String]
+        attr_accessor :sac_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity = args[:capacity] if args.key?(:capacity)
+          @cloud_routers = args[:cloud_routers] if args.key?(:cloud_routers)
+          @ip_range_reservations = args[:ip_range_reservations] if args.key?(:ip_range_reservations)
+          @sac_attachment = args[:sac_attachment] if args.key?(:sac_attachment)
+        end
+      end
+      
+      # A gateway advertised route is a route that a gateway spoke advertises
+      # somewhere.
+      class GatewayAdvertisedRoute
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the gateway advertised route was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # An optional description of the gateway advertised route.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Immutable. This route's advertised IP address range. Must be a valid CIDR-
+        # formatted prefix. If an IP address is provided without a subnet mask, it is
+        # interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/
+        # 128`.
+        # Corresponds to the JSON property `ipRange`
+        # @return [String]
+        attr_accessor :ip_range
+      
+        # Optional labels in key-value pair format. For more information about labels,
+        # see [Requirements for labels](https://cloud.google.com/resource-manager/docs/
+        # creating-managing-labels#requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the gateway advertised route. Route names must be
+        # unique and use the following form: `projects/`project_number`/locations/`
+        # region`/spokes/`spoke`/gatewayAdvertisedRoutes/`gateway_advertised_route_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The priority of this advertised route. You can choose a value from `
+        # 0` to `65335`. If you don't provide a value, Google Cloud assigns a priority
+        # of `100` to the ranges.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # Optional. The recipient of this advertised route.
+        # Corresponds to the JSON property `recipient`
+        # @return [String]
+        attr_accessor :recipient
+      
+        # Output only. The current lifecycle state of this gateway advertised route.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The Google-generated UUID for the gateway advertised route. This
+        # value is unique across all gateway advertised route resources. If a gateway
+        # advertised route is deleted and another with the same name is created, the new
+        # route is assigned a different `unique_id`.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        # Output only. The time the gateway advertised route was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @ip_range = args[:ip_range] if args.key?(:ip_range)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
+          @recipient = args[:recipient] if args.key?(:recipient)
+          @state = args[:state] if args.key?(:state)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class GoogleLongrunningCancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -1746,6 +1873,28 @@ module Google
         end
       end
       
+      # A list of IP ranges that are reserved for this gateway's internal
+      # intfrastructure.
+      class IpRangeReservation
+        include Google::Apis::Core::Hashable
+      
+        # Required. A block of IP addresses used to allocate supporting infrastructure
+        # for this gateway. This block must not overlap with subnets in any spokes or
+        # peer VPC networks that the gateway can communicate with. Example: "10.1.2.0/24"
+        # Corresponds to the JSON property `ipRange`
+        # @return [String]
+        attr_accessor :ip_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_range = args[:ip_range] if args.key?(:ip_range)
+        end
+      end
+      
       # A collection of VLAN attachment resources. These resources should be redundant
       # attachments that all advertise the same prefixes to Google Cloud.
       # Alternatively, in active/passive configurations, all attachments should be
@@ -2126,6 +2275,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destinations = args[:destinations] if args.key?(:destinations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for HubService.ListGatewayAdvertisedRoutes method.
+      class ListGatewayAdvertisedRoutesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested gateway advertised routes.
+        # Corresponds to the JSON property `gatewayAdvertisedRoutes`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute>]
+        attr_accessor :gateway_advertised_routes
+      
+        # The token for the next page of the response. To see more results, use this
+        # value as the page_token for your next request. If this value is empty, there
+        # are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Hubs that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_advertised_routes = args[:gateway_advertised_routes] if args.key?(:gateway_advertised_routes)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -4582,6 +4764,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :field_paths_pending_update
       
+        # A gateway that can apply specialized traffic processing.
+        # Corresponds to the JSON property `gateway`
+        # @return [Google::Apis::NetworkconnectivityV1::Gateway]
+        attr_accessor :gateway
+      
         # Optional. The name of the group that this spoke is associated with.
         # Corresponds to the JSON property `group`
         # @return [String]
@@ -4677,6 +4864,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @field_paths_pending_update = args[:field_paths_pending_update] if args.key?(:field_paths_pending_update)
+          @gateway = args[:gateway] if args.key?(:gateway)
           @group = args[:group] if args.key?(:group)
           @hub = args[:hub] if args.key?(:hub)
           @labels = args[:labels] if args.key?(:labels)

@@ -154,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Gateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GatewayAdvertisedRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IpRangeReservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LinkedInterconnectAttachments
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +269,12 @@ module Google
       end
       
       class ListDestinationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGatewayAdvertisedRoutesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -882,6 +906,33 @@ module Google
         end
       end
       
+      class Gateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity, as: 'capacity'
+          collection :cloud_routers, as: 'cloudRouters'
+          collection :ip_range_reservations, as: 'ipRangeReservations', class: Google::Apis::NetworkconnectivityV1::IpRangeReservation, decorator: Google::Apis::NetworkconnectivityV1::IpRangeReservation::Representation
+      
+          property :sac_attachment, as: 'sacAttachment'
+        end
+      end
+      
+      class GatewayAdvertisedRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :ip_range, as: 'ipRange'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :priority, as: 'priority'
+          property :recipient, as: 'recipient'
+          property :state, as: 'state'
+          property :unique_id, as: 'uniqueId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1007,6 +1058,13 @@ module Google
         end
       end
       
+      class IpRangeReservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_range, as: 'ipRange'
+        end
+      end
+      
       class LinkedInterconnectAttachments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1087,6 +1145,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destinations, as: 'destinations', class: Google::Apis::NetworkconnectivityV1::Destination, decorator: Google::Apis::NetworkconnectivityV1::Destination::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListGatewayAdvertisedRoutesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateway_advertised_routes, as: 'gatewayAdvertisedRoutes', class: Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute, decorator: Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -1691,6 +1759,8 @@ module Google
           property :description, as: 'description'
           property :etag, as: 'etag'
           collection :field_paths_pending_update, as: 'fieldPathsPendingUpdate'
+          property :gateway, as: 'gateway', class: Google::Apis::NetworkconnectivityV1::Gateway, decorator: Google::Apis::NetworkconnectivityV1::Gateway::Representation
+      
           property :group, as: 'group'
           property :hub, as: 'hub'
           hash :labels, as: 'labels'
