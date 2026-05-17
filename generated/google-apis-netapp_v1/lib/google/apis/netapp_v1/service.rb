@@ -1251,7 +1251,7 @@ module Google
         
         # Updates the Kms config properties with the full spec
         # @param [String] name
-        #   Identifier. Name of the KmsConfig. Format: `projects/`project`/locations/`
+        #   Identifier. Name of the `KmsConfig`. Format: `projects/`project`/locations/`
         #   location`/kmsConfigs/`kms_config``
         # @param [Google::Apis::NetappV1::KmsConfig] kms_config_object
         # @param [String] update_mask
@@ -1725,7 +1725,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool`
+        # `ExecuteOntapDelete` sends the ONTAP `DELETE` request to the `StoragePool`
         # cluster.
         # @param [String] ontap_path
         #   Required. The resource path of the ONTAP resource. Format: `projects/`
@@ -1759,8 +1759,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool`
-        # cluster.
+        # `ExecuteOntapGet` sends the ONTAP `GET` request to the `StoragePool` cluster.
         # @param [String] ontap_path
         #   Required. The resource path of the ONTAP resource. Format: `projects/`
         #   project_number`/locations/`location_id`/storagePools/`storage_pool_id`/ontap/`
@@ -1793,7 +1792,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool`
+        # `ExecuteOntapPatch` sends the ONTAP `PATCH` request to the `StoragePool`
         # cluster.
         # @param [String] ontap_path
         #   Required. The resource path of the ONTAP resource. Format: `projects/`
@@ -1830,11 +1829,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # `ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool`
-        # cluster.
+        # `ExecuteOntapPost` sends the ONTAP `POST` request to the `StoragePool` cluster.
         # @param [String] ontap_path
-        #   Required. The resource path of the ONTAP resource. Format: `projects/`
-        #   project_number`/locations/`location_id`/storagePools/`storage_pool_id`/ontap/`
+        #   Required. The path of the ONTAP resource. Format: `projects/`project_number`/
+        #   locations/`location_id`/storagePools/`storage_pool_id`/ontap/`
         #   ontap_resource_path``. For example: `projects/123456789/locations/us-central1/
         #   storagePools/my-storage-pool/ontap/api/storage/volumes`.
         # @param [Google::Apis::NetappV1::ExecuteOntapPostRequest] execute_ontap_post_request_object

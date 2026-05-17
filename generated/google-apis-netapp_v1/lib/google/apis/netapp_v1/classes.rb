@@ -248,9 +248,9 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot
       
-        # Volume full name of this backup belongs to. Either source_volume or
-        # ontap_source should be provided. Format: `projects/`projects_id`/locations/`
-        # location`/volumes/`volume_id``
+        # The resource name of the volume that this backup belongs to. You must provide
+        # either `source_volume` or `ontap_source`. Format: `projects/`project_id`/
+        # locations/`location`/volumes/`volume_id``
         # Corresponds to the JSON property `sourceVolume`
         # @return [String]
         attr_accessor :source_volume
@@ -984,7 +984,7 @@ module Google
         # @return [String]
         attr_accessor :peer_cluster_name
       
-        # Optional. List of IPv4 ip addresses to be used for peering.
+        # Optional. List of IPv4 IP addresses to be used for peering.
         # Corresponds to the JSON property `peerIpAddresses`
         # @return [Array<String>]
         attr_accessor :peer_ip_addresses
@@ -1432,7 +1432,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Identifier. Name of the KmsConfig. Format: `projects/`project`/locations/`
+        # Identifier. Name of the `KmsConfig`. Format: `projects/`project`/locations/`
         # location`/kmsConfigs/`kms_config``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1473,7 +1473,7 @@ module Google
       end
       
       # Configuration for a Large Capacity Volume. A Large Capacity Volume supports
-      # sizes ranging from 4.8 TiB to 20 PiB, it is composed of multiple internal
+      # sizes ranging from 4.8 TiB to 20 PiB; it is composed of multiple internal
       # constituents, and must be created in a large capacity pool.
       class LargeCapacityConfig
         include Google::Apis::Core::Hashable
@@ -2429,8 +2429,8 @@ module Google
       
         # Full name of the backup resource. Format for standard backup: projects/`
         # project`/locations/`location`/backupVaults/`backup_vault_id`/backups/`
-        # backup_id` Format for BackupDR backup: projects/`project`/locations/`location`/
-        # backupVaults/`backup_vault`/dataSources/`data_source`/backups/`backup`
+        # backup_id`. Format for BackupDR backup: projects/`project`/locations/`location`
+        # /backupVaults/`backup_vault`/dataSources/`data_source`/backups/`backup`
         # Corresponds to the JSON property `sourceBackup`
         # @return [String]
         attr_accessor :source_backup
@@ -2886,7 +2886,7 @@ module Google
         alias_method :ldap_enabled?, :ldap_enabled
       
         # Optional. Mode of the storage pool. This field is used to control whether the
-        # user can perform the ONTAP operations on the storage pool using the GCNV ONTAP
+        # user can perform ONTAP operations on the storage pool using the GCNV ONTAP
         # Mode APIs. If not specified during creation, it defaults to `DEFAULT`.
         # Corresponds to the JSON property `mode`
         # @return [String]
@@ -3343,7 +3343,7 @@ module Google
         alias_method :large_capacity?, :large_capacity
       
         # Configuration for a Large Capacity Volume. A Large Capacity Volume supports
-        # sizes ranging from 4.8 TiB to 20 PiB, it is composed of multiple internal
+        # sizes ranging from 4.8 TiB to 20 PiB; it is composed of multiple internal
         # constituents, and must be created in a large capacity pool.
         # Corresponds to the JSON property `largeCapacityConfig`
         # @return [Google::Apis::NetappV1::LargeCapacityConfig]
