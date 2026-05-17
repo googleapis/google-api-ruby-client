@@ -27,7 +27,7 @@ module Google
       class BootDisk
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. Size of the disk in gigabytes. Must be at least 10GB.
+        # Required. Immutable. Size of the disk in gigabytes. Must be at least 40GB.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -2002,7 +2002,7 @@ module Google
         end
       end
       
-      # A resource representing a form of persistent storage that is accessible to
+      # A resource representing a form of persistent storage that can be mounted onto
       # compute resources in the cluster.
       class StorageResource
         include Google::Apis::Core::Hashable
