@@ -892,8 +892,10 @@ module Google
         end
       end
       
-      # A source that can be used to represent a field within various parts of a
-      # structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+      # A source that can be used to represent a "field of data" within various parts
+      # of a structured query, such as in SELECT, WHERE, or ORDER BY clauses. The term
+      # "field of data" is used here because it is not limited to literal fields in
+      # the underlying data schema.
       class FieldSource
         include Google::Apis::Core::Hashable
       
@@ -950,7 +952,10 @@ module Google
         # like aggregation, casting, regex extraction, or assigns an alias. Use
         # ProjectedField when you need more than just the raw source field name (for
         # which you might use FieldSource directly in QueryBuilderConfig's field_sources
-        # list if no transformations or specific operation type are needed).
+        # list if no transformations or specific operation type are needed).A
+        # ProjectedField can represent either a field present in the data schema (
+        # specified via the field property) or a virtual field that is computed from
+        # other fields (specified via the virtual_field property).
         # Corresponds to the JSON property `projectedField`
         # @return [Google::Apis::LoggingV2::ProjectedField]
         attr_accessor :projected_field
@@ -983,14 +988,18 @@ module Google
         # @return [String]
         attr_accessor :comparator
       
-        # A source that can be used to represent a field within various parts of a
-        # structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+        # A source that can be used to represent a "field of data" within various parts
+        # of a structured query, such as in SELECT, WHERE, or ORDER BY clauses. The term
+        # "field of data" is used here because it is not limited to literal fields in
+        # the underlying data schema.
         # Corresponds to the JSON property `fieldSource`
         # @return [Google::Apis::LoggingV2::FieldSource]
         attr_accessor :field_source
       
-        # A source that can be used to represent a field within various parts of a
-        # structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+        # A source that can be used to represent a "field of data" within various parts
+        # of a structured query, such as in SELECT, WHERE, or ORDER BY clauses. The term
+        # "field of data" is used here because it is not limited to literal fields in
+        # the underlying data schema.
         # Corresponds to the JSON property `fieldSourceValue`
         # @return [Google::Apis::LoggingV2::FieldSource]
         attr_accessor :field_source_value
@@ -3584,7 +3593,10 @@ module Google
       # like aggregation, casting, regex extraction, or assigns an alias. Use
       # ProjectedField when you need more than just the raw source field name (for
       # which you might use FieldSource directly in QueryBuilderConfig's field_sources
-      # list if no transformations or specific operation type are needed).
+      # list if no transformations or specific operation type are needed).A
+      # ProjectedField can represent either a field present in the data schema (
+      # specified via the field property) or a virtual field that is computed from
+      # other fields (specified via the virtual_field property).
       class ProjectedField
         include Google::Apis::Core::Hashable
       
@@ -3603,8 +3615,8 @@ module Google
         # @return [String]
         attr_accessor :cast
       
-        # The field name. This will be the field that is selected using the dot notation
-        # to display the drill down value.
+        # Optional. The field name. This will be the field that is selected using the
+        # dot notation to display the drill down value.
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
@@ -4210,8 +4222,10 @@ module Google
       class SortOrderParameter
         include Google::Apis::Core::Hashable
       
-        # A source that can be used to represent a field within various parts of a
-        # structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+        # A source that can be used to represent a "field of data" within various parts
+        # of a structured query, such as in SELECT, WHERE, or ORDER BY clauses. The term
+        # "field of data" is used here because it is not limited to literal fields in
+        # the underlying data schema.
         # Corresponds to the JSON property `fieldSource`
         # @return [Google::Apis::LoggingV2::FieldSource]
         attr_accessor :field_source
