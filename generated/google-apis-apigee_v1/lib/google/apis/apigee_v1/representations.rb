@@ -2391,6 +2391,7 @@ module Google
           property :has_extensible_policy, as: 'hasExtensiblePolicy'
           collection :integration_endpoints, as: 'integrationEndpoints'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :mcp, as: 'mcp'
           property :name, as: 'name'
           collection :policies, as: 'policies'
           collection :proxies, as: 'proxies'

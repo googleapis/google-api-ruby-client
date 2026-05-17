@@ -1299,7 +1299,10 @@ module Google
         # updating. The API product name required in the request URL is the internal
         # name of the product, not the display name. While they may be the same, it
         # depends on whether the API product was created via UI or API. View the list of
-        # API products to identify their internal names.
+        # API products to identify their internal names. **Note:** We recommend that you
+        # avoid making concurrent update requests for the same resource. Near-
+        # simultaneous writes to the same entity can result in conflicts and unexpected
+        # behavior. Ensure operations are sequential when modifying a single resource.
         # @param [String] name
         #   Required. Name of the API product. Use the following structure in your request:
         #   `organizations/`org`/apiproducts/`apiproduct`` If the resource has the `space`
@@ -2777,7 +2780,11 @@ module Google
         # Updates an AppGroup. This API replaces the existing AppGroup details with
         # those specified in the request. Include or exclude any existing details that
         # you want to retain or delete, respectively. Note that the state of the
-        # AppGroup should be updated using `action`, and not via AppGroup.
+        # AppGroup should be updated using `action`, and not via AppGroup. **Note:** We
+        # recommend that you avoid making concurrent update requests for the same
+        # resource. Near-simultaneous writes to the same entity can result in conflicts
+        # and unexpected behavior. Ensure operations are sequential when modifying a
+        # single resource.
         # @param [String] name
         #   Required. Name of the AppGroup. Use the following structure in your request: `
         #   organizations/`org`/appgroups/`app_group_name``
@@ -2816,7 +2823,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the monetization configuration for the AppGroup.
+        # Updates the monetization configuration for the AppGroup. **Note:** We
+        # recommend that you avoid making concurrent update requests for the same
+        # resource. Near-simultaneous writes to the same entity can result in conflicts
+        # and unexpected behavior. Ensure operations are sequential when modifying a
+        # single resource.
         # @param [String] name
         #   Required. Monetization configuration for the AppGroup. Use the following
         #   structure in your request: `organizations/`org`/appgroups/`app_group`/
@@ -3003,7 +3014,10 @@ module Google
         # it is the primary key used to identify the app and cannot be changed. This API
         # replaces the existing attributes with those specified in the request. Include
         # or exclude any existing attributes that you want to retain or delete,
-        # respectively.
+        # respectively. **Note:** We recommend that you avoid making concurrent update
+        # requests for the same resource. Near-simultaneous writes to the same entity
+        # can result in conflicts and unexpected behavior. Ensure operations are
+        # sequential when modifying a single resource.
         # @param [String] name
         #   Required. Name of the AppGroup app. Use the following structure in your
         #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app``
@@ -4128,7 +4142,10 @@ module Google
         # Any custom attributes associated with these entities are cached for at least
         # 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn`
         # element on the OAuthV2 policy won't be able to expire an access token in less
-        # than 180 seconds.
+        # than 180 seconds. **Note:** We recommend that you avoid making concurrent
+        # update requests for the same resource. Near-simultaneous writes to the same
+        # entity can result in conflicts and unexpected behavior. Ensure operations are
+        # sequential when modifying a single resource.
         # @param [String] name
         #   Required. Email address of the developer. Use the following structure in your
         #   request: `organizations/`org`/developers/`developer_email``
@@ -4469,7 +4486,10 @@ module Google
         # changed. * Scopes associated with the app. Instead, use the
         # ReplaceDeveloperAppKey API. This API replaces the existing attributes with
         # those specified in the request. Include or exclude any existing attributes
-        # that you want to retain or delete, respectively.
+        # that you want to retain or delete, respectively. **Note:** We recommend that
+        # you avoid making concurrent update requests for the same resource. Near-
+        # simultaneous writes to the same entity can result in conflicts and unexpected
+        # behavior. Ensure operations are sequential when modifying a single resource.
         # @param [String] name
         #   Required. Name of the developer app. Use the following structure in your
         #   request: `organizations/`org`/developers/`developer_email`/apps/`app``
