@@ -4024,6 +4024,228 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a GatewayAdvertisedRoute
+        # @param [String] parent
+        #   Required. The parent resource.
+        # @param [Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute] gateway_advertised_route_object
+        # @param [String] gateway_advertised_route_id
+        #   Required. Unique id for the route to create.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that a request doesn't
+        #   result in creation of duplicate commitments for at least 60 minutes. For
+        #   example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check to see whether the original operation was received. If it was,
+        #   the server ignores the second request. This behavior prevents clients from
+        #   mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_spoke_gateway_advertised_route(parent, gateway_advertised_route_object = nil, gateway_advertised_route_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/gatewayAdvertisedRoutes', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute::Representation
+          command.request_object = gateway_advertised_route_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['gatewayAdvertisedRouteId'] = gateway_advertised_route_id unless gateway_advertised_route_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a GatewayAdvertisedRoute
+        # @param [String] name
+        #   Required. The name of the gateway advertised route to delete.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that a request doesn't
+        #   result in creation of duplicate commitments for at least 60 minutes. For
+        #   example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check to see whether the original operation was received. If it was,
+        #   the server ignores the second request. This behavior prevents clients from
+        #   mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_spoke_gateway_advertised_route(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a GatewayAdvertisedRoute
+        # @param [String] name
+        #   Required. The name of the gateway advertised route to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_spoke_gateway_advertised_route(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List GatewayAdvertisedRoutes
+        # @param [String] parent
+        #   Required. The parent resource's name.
+        # @param [String] filter
+        #   An expression that filters the list of results.
+        # @param [String] order_by
+        #   Sort the results by a certain order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results per page that should be returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListGatewayAdvertisedRoutes`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListGatewayAdvertisedRoutes` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::ListGatewayAdvertisedRoutesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::ListGatewayAdvertisedRoutesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_spoke_gateway_advertised_routes(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/gatewayAdvertisedRoutes', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::ListGatewayAdvertisedRoutesResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::ListGatewayAdvertisedRoutesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a GatewayAdvertisedRoute
+        # @param [String] name
+        #   Identifier. The name of the gateway advertised route. Route names must be
+        #   unique and use the following form: `projects/`project_number`/locations/`
+        #   region`/spokes/`spoke`/gatewayAdvertisedRoutes/`gateway_advertised_route_id``
+        # @param [Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute] gateway_advertised_route_object
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that a request doesn't
+        #   result in creation of duplicate commitments for at least 60 minutes. For
+        #   example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check to see whether the original operation was received. If it was,
+        #   the server ignores the second request. This behavior prevents clients from
+        #   mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
+        # @param [String] update_mask
+        #   Optional. In the case of an update to an existing group, field mask is used to
+        #   specify the fields to be overwritten. The fields specified in the update_mask
+        #   are relative to the resource, not the full request. A field is overwritten if
+        #   it is in the mask. If the user does not provide a mask, then all fields are
+        #   overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_spoke_gateway_advertised_route(name, gateway_advertised_route_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute::Representation
+          command.request_object = gateway_advertised_route_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new Transport in a given project and location.
         # @param [String] parent
         #   Required. Value for parent.
