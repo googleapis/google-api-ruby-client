@@ -1156,11 +1156,11 @@ module Google
         # @param [String] name
         #   Required. The name of the GoogleApiSource to be deleted.
         # @param [Boolean] allow_missing
-        #   Optional. If set to true, and the MessageBus is not found, the request will
-        #   succeed but no action will be taken on the server.
+        #   Optional. If set to true, and the GoogleApiSource is not found, the request
+        #   will succeed but no action will be taken on the server.
         # @param [String] etag
-        #   Optional. If provided, the MessageBus will only be deleted if the etag matches
-        #   the current etag on the resource.
+        #   Optional. If provided, the GoogleApiSource will only be deleted if the etag
+        #   matches the current etag on the resource.
         # @param [Boolean] validate_only
         #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
