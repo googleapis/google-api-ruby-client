@@ -1555,6 +1555,7 @@ module Google
           collection :command, as: 'command'
           hash :env, as: 'env'
           property :image, as: 'image'
+          property :script, as: 'script'
         end
       end
       

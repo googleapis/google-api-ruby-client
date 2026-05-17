@@ -1570,6 +1570,12 @@ module Google
         # @return [String]
         attr_accessor :image
       
+        # Optional. Shell script to execute. If provided then command and args cannot be
+        # specified.
+        # Corresponds to the JSON property `script`
+        # @return [String]
+        attr_accessor :script
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1580,6 +1586,7 @@ module Google
           @command = args[:command] if args.key?(:command)
           @env = args[:env] if args.key?(:env)
           @image = args[:image] if args.key?(:image)
+          @script = args[:script] if args.key?(:script)
         end
       end
       
