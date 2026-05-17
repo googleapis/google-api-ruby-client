@@ -825,6 +825,15 @@ module Google
         # @return [String]
         attr_accessor :until
       
+        # Optional. If set to true, the request will only perform a dry run. By default (
+        # once the behavior change is fully rolled out), this will default to true.
+        # During the transition period, the default depends on the Mendel flag status
+        # for the project.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
         # Optional. Specifies which version of the resources to delete.
         # Corresponds to the JSON property `versionConfig`
         # @return [String]
@@ -839,6 +848,7 @@ module Google
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
           @type = args[:type] if args.key?(:type)
           @until = args[:until] if args.key?(:until)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
           @version_config = args[:version_config] if args.key?(:version_config)
         end
       end

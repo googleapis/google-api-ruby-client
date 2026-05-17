@@ -1494,6 +1494,7 @@ module Google
       
           property :type, as: 'type'
           property :until, as: 'until'
+          property :validate_only, as: 'validateOnly'
           property :version_config, as: 'versionConfig'
         end
       end
