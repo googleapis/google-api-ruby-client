@@ -269,6 +269,57 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves a streaming response of lineage links connected to the requested
+        # assets by performing a breadth-first search in the given direction. Links
+        # represent the data flow between **source** (upstream) and **target** (
+        # downstream) assets in transformation pipelines. Links are stored in the same
+        # project as the Lineage Events that create them. This method retrieves links
+        # from all valid locations provided in the request. This method supports Column-
+        # Level Lineage (CLL) along with wildcard support to retrieve all CLL for an
+        # Entity FQN. Following permissions are required to retrieve links: * `
+        # datalineage.events.get` permission for the project where the link is stored
+        # for entity-level lineage. * `datalineage.events.getFields` permission for the
+        # project where the link is stored for column-level lineage. This method also
+        # returns processes that created the links if explicitly requested by setting [
+        # max_process_per_link](google.cloud.datacatalog.lineage.v1.
+        # SearchLineageStreamingRequest.limits.max_process_per_link) is non-zero and
+        # full process details are requested via `links.processes.process` in the [
+        # FieldMask](https://developers.google.com/workspace/docs/api/how-tos/field-
+        # masks#read_with_a_field_mask). Permission required to retrieve processes: * `
+        # datalineage.processes.get` permission for the project where the process is
+        # stored.
+        # @param [String] parent
+        #   Required. The project and location to initiate the search from.
+        # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest] google_cloud_datacatalog_lineage_v1_search_lineage_streaming_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_lineage_streaming(parent, google_cloud_datacatalog_lineage_v1_search_lineage_streaming_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:searchLineageStreaming', options)
+          command.request_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest::Representation
+          command.request_object = google_cloud_datacatalog_lineage_v1_search_lineage_streaming_request_object
+          command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse::Representation
+          command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieve a list of links connected to a specific asset. Links represent the
         # data flow between **source** (upstream) and **target** (downstream) assets in
         # transformation pipelines. Links are stored in the same project as the Lineage
