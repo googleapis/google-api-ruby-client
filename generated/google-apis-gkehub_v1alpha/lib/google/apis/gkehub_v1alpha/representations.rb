@@ -886,6 +886,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationalState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Origin
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1043,12 +1049,6 @@ module Google
       end
       
       class RolloutSequence
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RolloutSequenceState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2775,6 +2775,15 @@ module Google
         end
       end
       
+      class OperationalState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reasons, as: 'reasons'
+          property :state, as: 'state'
+          property :state_change_time, as: 'stateChangeTime'
+        end
+      end
+      
       class Origin
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3053,21 +3062,12 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
-          collection :stages, as: 'stages', class: Google::Apis::GkehubV1alpha::Stage, decorator: Google::Apis::GkehubV1alpha::Stage::Representation
+          property :operational_state, as: 'operationalState', class: Google::Apis::GkehubV1alpha::OperationalState, decorator: Google::Apis::GkehubV1alpha::OperationalState::Representation
       
-          property :state, as: 'state', class: Google::Apis::GkehubV1alpha::RolloutSequenceState, decorator: Google::Apis::GkehubV1alpha::RolloutSequenceState::Representation
+          collection :stages, as: 'stages', class: Google::Apis::GkehubV1alpha::Stage, decorator: Google::Apis::GkehubV1alpha::Stage::Representation
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class RolloutSequenceState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :last_state_change_time, as: 'lastStateChangeTime'
-          property :lifecycle_state, as: 'lifecycleState'
-          collection :state_reasons, as: 'stateReasons'
         end
       end
       

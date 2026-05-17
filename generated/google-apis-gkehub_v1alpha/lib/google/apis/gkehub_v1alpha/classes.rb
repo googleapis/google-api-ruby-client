@@ -5346,6 +5346,38 @@ module Google
         end
       end
       
+      # Operational state of the Rollout Sequence.
+      class OperationalState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Reasons for the Rollout Sequence state.
+        # Corresponds to the JSON property `reasons`
+        # @return [Array<String>]
+        attr_accessor :reasons
+      
+        # Output only. State of the Rollout Sequence.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The timestamp at which the operational state was last changed.
+        # Used to track how long it has been in the current state.
+        # Corresponds to the JSON property `stateChangeTime`
+        # @return [String]
+        attr_accessor :state_change_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reasons = args[:reasons] if args.key?(:reasons)
+          @state = args[:state] if args.key?(:state)
+          @state_change_time = args[:state_change_time] if args.key?(:state_change_time)
+        end
+      end
+      
       # Origin defines where this MembershipFeatureSpec originated from.
       class Origin
         include Google::Apis::Core::Hashable
@@ -6308,7 +6340,7 @@ module Google
         end
       end
       
-      # RolloutSequence defines the desired order of upgrades.
+      # RolloutSequence defines the desired order of upgrades. Next ID: 20
       class RolloutSequence
         include Google::Apis::Core::Hashable
       
@@ -6358,15 +6390,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Operational state of the Rollout Sequence.
+        # Corresponds to the JSON property `operationalState`
+        # @return [Google::Apis::GkehubV1alpha::OperationalState]
+        attr_accessor :operational_state
+      
         # Required. Ordered list of stages that constitutes this Rollout.
         # Corresponds to the JSON property `stages`
         # @return [Array<Google::Apis::GkehubV1alpha::Stage>]
         attr_accessor :stages
-      
-        # State and reasons of the Rollout Sequence.
-        # Corresponds to the JSON property `state`
-        # @return [Google::Apis::GkehubV1alpha::RolloutSequenceState]
-        attr_accessor :state
       
         # Output only. Google-generated UUID for this resource. This is unique across
         # all Rollout Sequence resources. If a Rollout Sequence resource is deleted and
@@ -6395,42 +6427,10 @@ module Google
           @ignored_clusters_selector = args[:ignored_clusters_selector] if args.key?(:ignored_clusters_selector)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @operational_state = args[:operational_state] if args.key?(:operational_state)
           @stages = args[:stages] if args.key?(:stages)
-          @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # State and reasons of the Rollout Sequence.
-      class RolloutSequenceState
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The timestamp at which the LifecycleState was last changed. Used
-        # to track how long it has been in the current state.
-        # Corresponds to the JSON property `lastStateChangeTime`
-        # @return [String]
-        attr_accessor :last_state_change_time
-      
-        # Output only. Lifecycle state of the Rollout Sequence.
-        # Corresponds to the JSON property `lifecycleState`
-        # @return [String]
-        attr_accessor :lifecycle_state
-      
-        # Output only. StateReason represents the reason for the Rollout Sequence state.
-        # Corresponds to the JSON property `stateReasons`
-        # @return [Array<String>]
-        attr_accessor :state_reasons
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @last_state_change_time = args[:last_state_change_time] if args.key?(:last_state_change_time)
-          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
-          @state_reasons = args[:state_reasons] if args.key?(:state_reasons)
         end
       end
       
