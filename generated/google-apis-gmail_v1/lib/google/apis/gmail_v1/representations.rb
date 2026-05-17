@@ -377,8 +377,11 @@ module Google
       class BatchModifyMessagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_classification_labels, as: 'addClassificationLabels', class: Google::Apis::GmailV1::ClassificationLabelValue, decorator: Google::Apis::GmailV1::ClassificationLabelValue::Representation
+      
           collection :add_label_ids, as: 'addLabelIds'
           collection :ids, as: 'ids'
+          collection :remove_classification_label_ids, as: 'removeClassificationLabelIds'
           collection :remove_label_ids, as: 'removeLabelIds'
         end
       end
@@ -774,7 +777,10 @@ module Google
       class ModifyMessageRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_classification_labels, as: 'addClassificationLabels', class: Google::Apis::GmailV1::ClassificationLabelValue, decorator: Google::Apis::GmailV1::ClassificationLabelValue::Representation
+      
           collection :add_label_ids, as: 'addLabelIds'
+          collection :remove_classification_label_ids, as: 'removeClassificationLabelIds'
           collection :remove_label_ids, as: 'removeLabelIds'
         end
       end

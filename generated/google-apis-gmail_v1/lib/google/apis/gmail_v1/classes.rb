@@ -78,6 +78,17 @@ module Google
       class BatchModifyMessagesRequest
         include Google::Apis::Core::Hashable
       
+        # A list of Classification Label values to add. If a Classification Label with
+        # the same label ID is already applied to the message, fields with existing
+        # field IDs will be updated and fields with new field IDs will be added. There's
+        # a limit of 20 Classification Label values per request. If the message is
+        # already classified and the final total number of Classification Label values
+        # exceeds the maximum allowed number of Classification Label values per message,
+        # the modification fails.
+        # Corresponds to the JSON property `addClassificationLabels`
+        # @return [Array<Google::Apis::GmailV1::ClassificationLabelValue>]
+        attr_accessor :add_classification_labels
+      
         # A list of label IDs to add to messages.
         # Corresponds to the JSON property `addLabelIds`
         # @return [Array<String>]
@@ -87,6 +98,11 @@ module Google
         # Corresponds to the JSON property `ids`
         # @return [Array<String>]
         attr_accessor :ids
+      
+        # A list of Classification Label values to remove from messages.
+        # Corresponds to the JSON property `removeClassificationLabelIds`
+        # @return [Array<String>]
+        attr_accessor :remove_classification_label_ids
       
         # A list of label IDs to remove from messages.
         # Corresponds to the JSON property `removeLabelIds`
@@ -99,8 +115,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_classification_labels = args[:add_classification_labels] if args.key?(:add_classification_labels)
           @add_label_ids = args[:add_label_ids] if args.key?(:add_label_ids)
           @ids = args[:ids] if args.key?(:ids)
+          @remove_classification_label_ids = args[:remove_classification_label_ids] if args.key?(:remove_classification_label_ids)
           @remove_label_ids = args[:remove_label_ids] if args.key?(:remove_label_ids)
         end
       end
@@ -1281,7 +1299,9 @@ module Google
         # schemas can be queried using the Google Drive Labels API. Each classification
         # label ID must be unique. If duplicate IDs are provided, only one will be
         # retained, and the selection is arbitrary. Only used for Google Workspace
-        # accounts.
+        # accounts. There's a limit of 20 Classification Label values per request. If
+        # the Classification Label values exceeds the maximum allowed number, the
+        # request fails.
         # Corresponds to the JSON property `classificationLabelValues`
         # @return [Array<Google::Apis::GmailV1::ClassificationLabelValue>]
         attr_accessor :classification_label_values
@@ -1484,11 +1504,27 @@ module Google
       class ModifyMessageRequest
         include Google::Apis::Core::Hashable
       
+        # A list of classification label values to add. If a Classification Label with
+        # the same label ID is already applied to the message, fields with existing
+        # field IDs will be updated and fields with new field IDs will be added. There's
+        # a limit of 20 Classification Label values per request. If the message is
+        # already classified and the final total number of Classification Label values
+        # exceeds the maximum allowed number of Classification Label values per message,
+        # the modification fails.
+        # Corresponds to the JSON property `addClassificationLabels`
+        # @return [Array<Google::Apis::GmailV1::ClassificationLabelValue>]
+        attr_accessor :add_classification_labels
+      
         # A list of IDs of labels to add to this message. You can add up to 100 labels
         # with each update.
         # Corresponds to the JSON property `addLabelIds`
         # @return [Array<String>]
         attr_accessor :add_label_ids
+      
+        # A list of Classification Label values to remove from this message.
+        # Corresponds to the JSON property `removeClassificationLabelIds`
+        # @return [Array<String>]
+        attr_accessor :remove_classification_label_ids
       
         # A list IDs of labels to remove from this message. You can remove up to 100
         # labels with each update.
@@ -1502,7 +1538,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_classification_labels = args[:add_classification_labels] if args.key?(:add_classification_labels)
           @add_label_ids = args[:add_label_ids] if args.key?(:add_label_ids)
+          @remove_classification_label_ids = args[:remove_classification_label_ids] if args.key?(:remove_classification_label_ids)
           @remove_label_ids = args[:remove_label_ids] if args.key?(:remove_label_ids)
         end
       end
