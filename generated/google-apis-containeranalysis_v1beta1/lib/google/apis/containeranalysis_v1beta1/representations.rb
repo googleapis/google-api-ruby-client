@@ -622,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FindingLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Fingerprint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1131,6 +1137,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :findings, as: 'findings', class: Google::Apis::ContaineranalysisV1beta1::Finding, decorator: Google::Apis::ContaineranalysisV1beta1::Finding::Representation
       
+          property :max_severity, as: 'maxSeverity'
           property :skill_name, as: 'skillName'
         end
       end
@@ -2241,12 +2248,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
-          property :description, as: 'description'
-          property :file_path, as: 'filePath'
-          property :rule_id, as: 'ruleId'
+          property :location, as: 'location', class: Google::Apis::ContaineranalysisV1beta1::FindingLocation, decorator: Google::Apis::ContaineranalysisV1beta1::FindingLocation::Representation
+      
+          property :scanner, as: 'scanner'
           property :severity, as: 'severity'
-          property :snippet, as: 'snippet'
-          property :title, as: 'title'
+        end
+      end
+      
+      class FindingLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_path, as: 'filePath'
+          property :line_number, :numeric_string => true, as: 'lineNumber'
         end
       end
       
