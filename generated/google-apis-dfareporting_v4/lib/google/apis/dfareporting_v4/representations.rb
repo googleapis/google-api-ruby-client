@@ -3077,6 +3077,7 @@ module Google
       class DependentFieldValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dynamic_feed_id, :numeric_string => true, as: 'dynamicFeedId'
           property :element_id, :numeric_string => true, as: 'elementId'
           property :field_id, as: 'fieldId'
         end
