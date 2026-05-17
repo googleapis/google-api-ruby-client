@@ -889,6 +889,9 @@ module Google
       end
       
       # Value of a daily rollup for a single civil time interval (aggregation window)
+      # of reconciled data points from all data sources, excluding those data points
+      # that are identified as recorded by wearables in intervals when they were not
+      # actually worn.
       class DailyRollupDataPoint
         include Google::Apis::Core::Hashable
       
@@ -1806,7 +1809,10 @@ module Google
       class ExportExerciseTcxResponse
         include Google::Apis::Core::Hashable
       
-        # Contains the exported TCX data.
+        # Contains the exported TCX data. This field is intended for gRPC clients, as
+        # media download integration is not supported for gRPC. HTTP clients should
+        # instead use the `alt=media` query parameter to download the raw binary TCX
+        # file.
         # Corresponds to the JSON property `tcxData`
         # @return [String]
         attr_accessor :tcx_data
@@ -2002,7 +2008,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The root mean square of successive differences between normal
-        # heartbeats. This is a measure of heart rate variability used by Fitbit.
+        # heartbeats. This is a measure of heart rate variability used by Google Health.
         # Corresponds to the JSON property `rootMeanSquareOfSuccessiveDifferencesMilliseconds`
         # @return [Float]
         attr_accessor :root_mean_square_of_successive_differences_milliseconds
@@ -3212,7 +3218,10 @@ module Google
         end
       end
       
-      # Value of a rollup for a single physical time interval (aggregation window)
+      # Value of a rollup for a single physical time interval (aggregation window) of
+      # reconciled data points from all data sources, excluding those data points that
+      # are identified as recorded by wearables in intervals when they were not
+      # actually worn.
       class RollupDataPoint
         include Google::Apis::Core::Hashable
       
@@ -4070,8 +4079,9 @@ module Google
       class SubscriberConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Supported data types are: "altitude", "distance", "floors", "sleep",
-        # "steps", "weight". Values should be in kebab-case.
+        # Required. See [Google Health API data types](https://developers.google.com/
+        # health/data-types) for the list of supported data types. Values should be in
+        # kebab-case.
         # Corresponds to the JSON property `dataTypes`
         # @return [Array<String>]
         attr_accessor :data_types
@@ -4380,7 +4390,9 @@ module Google
         # @return [Float]
         attr_accessor :milliliters
       
-        # Optional. Value representing the user provided unit.
+        # Optional. Value representing the user provided unit, used only for user-facing
+        # input and display purposes. In the API format, all volume quantities are
+        # converted to milliliters.
         # Corresponds to the JSON property `userProvidedUnit`
         # @return [String]
         attr_accessor :user_provided_unit

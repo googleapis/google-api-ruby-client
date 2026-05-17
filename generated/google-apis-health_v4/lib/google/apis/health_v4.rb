@@ -32,6 +32,24 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # See your Google Health activity and fitness data
+      AUTH_GOOGLEHEALTH_ACTIVITY_AND_FITNESS_READONLY = 'https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly'
+
+      # See your Google Health health metrics and measurement data
+      AUTH_GOOGLEHEALTH_HEALTH_METRICS_AND_MEASUREMENTS_READONLY = 'https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly'
+
+      # See exercise GPS location data in Google Health
+      AUTH_GOOGLEHEALTH_LOCATION_READONLY = 'https://www.googleapis.com/auth/googlehealth.location.readonly'
+
+      # See your Google Health profile data
+      AUTH_GOOGLEHEALTH_PROFILE_READONLY = 'https://www.googleapis.com/auth/googlehealth.profile.readonly'
+
+      # See your Google Health settings
+      AUTH_GOOGLEHEALTH_SETTINGS_READONLY = 'https://www.googleapis.com/auth/googlehealth.settings.readonly'
+
+      # See your Google Health sleep data
+      AUTH_GOOGLEHEALTH_SLEEP_READONLY = 'https://www.googleapis.com/auth/googlehealth.sleep.readonly'
     end
   end
 end
