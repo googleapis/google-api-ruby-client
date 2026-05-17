@@ -977,6 +977,7 @@ module Google
       class ConnectionPoolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :authproxy_pooler_count, as: 'authproxyPoolerCount'
           property :enabled, as: 'enabled'
           hash :flags, as: 'flags'
           property :pooler_count, as: 'poolerCount'
