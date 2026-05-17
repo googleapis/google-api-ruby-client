@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CodeChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Connector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,36 @@ module Google
       end
       
       class File
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateQueryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateSchemaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateSchemaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Part
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PostgreSql
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Workaround
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,6 +304,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance, as: 'instance'
+        end
+      end
+      
+      class CodeChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :language_code, as: 'languageCode'
         end
       end
       
@@ -347,6 +403,50 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :path, as: 'path'
+        end
+      end
+      
+      class GenerateQueryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt, as: 'prompt'
+          collection :schemas, as: 'schemas', class: Google::Apis::FirebasedataconnectV1::Schema, decorator: Google::Apis::FirebasedataconnectV1::Schema::Representation
+      
+        end
+      end
+      
+      class GenerateQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :part, as: 'part', class: Google::Apis::FirebasedataconnectV1::Part, decorator: Google::Apis::FirebasedataconnectV1::Part::Representation
+      
+          property :status, as: 'status', class: Google::Apis::FirebasedataconnectV1::GenerationStatus, decorator: Google::Apis::FirebasedataconnectV1::GenerationStatus::Representation
+      
+        end
+      end
+      
+      class GenerateSchemaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt, as: 'prompt'
+        end
+      end
+      
+      class GenerateSchemaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :part, as: 'part', class: Google::Apis::FirebasedataconnectV1::Part, decorator: Google::Apis::FirebasedataconnectV1::Part::Representation
+      
+          property :status, as: 'status', class: Google::Apis::FirebasedataconnectV1::GenerationStatus, decorator: Google::Apis::FirebasedataconnectV1::GenerationStatus::Representation
+      
+        end
+      end
+      
+      class GenerationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :state, as: 'state'
         end
       end
       
@@ -524,6 +624,16 @@ module Google
         end
       end
       
+      class Part
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_chunk, as: 'codeChunk', class: Google::Apis::FirebasedataconnectV1::CodeChunk, decorator: Google::Apis::FirebasedataconnectV1::CodeChunk::Representation
+      
+          property :text_chunk, as: 'textChunk', class: Google::Apis::FirebasedataconnectV1::TextChunk, decorator: Google::Apis::FirebasedataconnectV1::TextChunk::Representation
+      
+        end
+      end
+      
       class PostgreSql
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -594,6 +704,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TextChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
         end
       end
       
