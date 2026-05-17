@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AntivirusInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApproveDeviceUserRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -796,6 +802,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WindowsSpecificDeviceAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WipeDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -845,6 +857,15 @@ module Google
           property :supports_work_profile, as: 'supportsWorkProfile'
           property :verified_boot, as: 'verifiedBoot'
           property :verify_apps_enabled, as: 'verifyAppsEnabled'
+        end
+      end
+      
+      class AntivirusInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :product_guid, as: 'productGuid'
+          property :product_state, as: 'productState'
         end
       end
       
@@ -1076,6 +1097,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_specific_attributes, as: 'androidSpecificAttributes', class: Google::Apis::CloudidentityV1beta1::AndroidAttributes, decorator: Google::Apis::CloudidentityV1beta1::AndroidAttributes::Representation
       
+          collection :antivirus_info, as: 'antivirusInfo', class: Google::Apis::CloudidentityV1beta1::AntivirusInfo, decorator: Google::Apis::CloudidentityV1beta1::AntivirusInfo::Representation
+      
           property :asset_tag, as: 'assetTag'
           property :baseband_version, as: 'basebandVersion'
           property :bootloader_version, as: 'bootloaderVersion'
@@ -1103,6 +1126,7 @@ module Google
           property :model, as: 'model'
           property :name, as: 'name'
           property :network_operator, as: 'networkOperator'
+          property :os_firewall_status, as: 'osFirewallStatus'
           property :os_version, as: 'osVersion'
           collection :other_accounts, as: 'otherAccounts'
           property :owner_type, as: 'ownerType'
@@ -1111,6 +1135,8 @@ module Google
           property :serial_number, as: 'serialNumber'
           property :unified_device_id, as: 'unifiedDeviceId'
           collection :wifi_mac_addresses, as: 'wifiMacAddresses'
+          property :windows_specific_device_attributes, as: 'windowsSpecificDeviceAttributes', class: Google::Apis::CloudidentityV1beta1::WindowsSpecificDeviceAttributes, decorator: Google::Apis::CloudidentityV1beta1::WindowsSpecificDeviceAttributes::Representation
+      
         end
       end
       
@@ -2077,6 +2103,16 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class WindowsSpecificDeviceAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :hotfixes, as: 'hotfixes'
+          property :secure_boot_mode, as: 'secureBootMode'
+          property :windows_machine_domain, as: 'windowsMachineDomain'
+          property :windows_user_domain, as: 'windowsUserDomain'
         end
       end
       

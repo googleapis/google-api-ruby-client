@@ -136,6 +136,37 @@ module Google
         end
       end
       
+      # Resource representing the anti-virus information of a Device.
+      class AntivirusInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The display name of the anti-virus software.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The GUID of the anti-virus product.
+        # Corresponds to the JSON property `productGuid`
+        # @return [String]
+        attr_accessor :product_guid
+      
+        # Output only. The state of the anti-virus.
+        # Corresponds to the JSON property `productState`
+        # @return [String]
+        attr_accessor :product_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @product_guid = args[:product_guid] if args.key?(:product_guid)
+          @product_state = args[:product_state] if args.key?(:product_state)
+        end
+      end
+      
       # Request message for approving the device to access user data.
       class ApproveDeviceUserRequest
         include Google::Apis::Core::Hashable
@@ -954,6 +985,11 @@ module Google
         # @return [Google::Apis::CloudidentityV1beta1::AndroidAttributes]
         attr_accessor :android_specific_attributes
       
+        # Output only. Anti-virus information for the device.
+        # Corresponds to the JSON property `antivirusInfo`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::AntivirusInfo>]
+        attr_accessor :antivirus_info
+      
         # Asset tag of the device.
         # Corresponds to the JSON property `assetTag`
         # @return [String]
@@ -1088,6 +1124,11 @@ module Google
         # @return [String]
         attr_accessor :network_operator
       
+        # Output only. OS firewall status of the device.
+        # Corresponds to the JSON property `osFirewallStatus`
+        # @return [String]
+        attr_accessor :os_firewall_status
+      
         # Output only. OS version of the device. Example: Android 8.1.0.
         # Corresponds to the JSON property `osVersion`
         # @return [String]
@@ -1132,6 +1173,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :wifi_mac_addresses
       
+        # Represents the Windows specific attributes of a Device.
+        # Corresponds to the JSON property `windowsSpecificDeviceAttributes`
+        # @return [Google::Apis::CloudidentityV1beta1::WindowsSpecificDeviceAttributes]
+        attr_accessor :windows_specific_device_attributes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1139,6 +1185,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @android_specific_attributes = args[:android_specific_attributes] if args.key?(:android_specific_attributes)
+          @antivirus_info = args[:antivirus_info] if args.key?(:antivirus_info)
           @asset_tag = args[:asset_tag] if args.key?(:asset_tag)
           @baseband_version = args[:baseband_version] if args.key?(:baseband_version)
           @bootloader_version = args[:bootloader_version] if args.key?(:bootloader_version)
@@ -1164,6 +1211,7 @@ module Google
           @model = args[:model] if args.key?(:model)
           @name = args[:name] if args.key?(:name)
           @network_operator = args[:network_operator] if args.key?(:network_operator)
+          @os_firewall_status = args[:os_firewall_status] if args.key?(:os_firewall_status)
           @os_version = args[:os_version] if args.key?(:os_version)
           @other_accounts = args[:other_accounts] if args.key?(:other_accounts)
           @owner_type = args[:owner_type] if args.key?(:owner_type)
@@ -1172,6 +1220,7 @@ module Google
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @unified_device_id = args[:unified_device_id] if args.key?(:unified_device_id)
           @wifi_mac_addresses = args[:wifi_mac_addresses] if args.key?(:wifi_mac_addresses)
+          @windows_specific_device_attributes = args[:windows_specific_device_attributes] if args.key?(:windows_specific_device_attributes)
         end
       end
       
@@ -4603,6 +4652,45 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents the Windows specific attributes of a Device.
+      class WindowsSpecificDeviceAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The hotfixes installed on the device.
+        # Corresponds to the JSON property `hotfixes`
+        # @return [Array<String>]
+        attr_accessor :hotfixes
+      
+        # Output only. Secure boot mode of the device.
+        # Corresponds to the JSON property `secureBootMode`
+        # @return [String]
+        attr_accessor :secure_boot_mode
+      
+        # Output only. The domain of the machine that the user is logged into. This is
+        # different from the windows_user_domain as the user could be logged into a
+        # domain different from the machine domain.
+        # Corresponds to the JSON property `windowsMachineDomain`
+        # @return [String]
+        attr_accessor :windows_machine_domain
+      
+        # Output only. The domain of the user account that is logged into the machine.
+        # Corresponds to the JSON property `windowsUserDomain`
+        # @return [String]
+        attr_accessor :windows_user_domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hotfixes = args[:hotfixes] if args.key?(:hotfixes)
+          @secure_boot_mode = args[:secure_boot_mode] if args.key?(:secure_boot_mode)
+          @windows_machine_domain = args[:windows_machine_domain] if args.key?(:windows_machine_domain)
+          @windows_user_domain = args[:windows_user_domain] if args.key?(:windows_user_domain)
         end
       end
       
