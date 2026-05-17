@@ -46,6 +46,11 @@ module Google
         # @return [Google::Apis::SolarV1::LatLng]
         attr_accessor :center
       
+        # Information about solar arrays detected on the building.
+        # Corresponds to the JSON property `detectedArrays`
+        # @return [Google::Apis::SolarV1::BuildingInsightsDetectedArrays]
+        attr_accessor :detected_arrays
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -112,6 +117,7 @@ module Google
           @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
           @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
           @center = args[:center] if args.key?(:center)
+          @detected_arrays = args[:detected_arrays] if args.key?(:detected_arrays)
           @imagery_date = args[:imagery_date] if args.key?(:imagery_date)
           @imagery_processed_date = args[:imagery_processed_date] if args.key?(:imagery_processed_date)
           @imagery_quality = args[:imagery_quality] if args.key?(:imagery_quality)
@@ -120,6 +126,38 @@ module Google
           @region_code = args[:region_code] if args.key?(:region_code)
           @solar_potential = args[:solar_potential] if args.key?(:solar_potential)
           @statistical_area = args[:statistical_area] if args.key?(:statistical_area)
+        end
+      end
+      
+      # Information about solar arrays detected on the building.
+      class BuildingInsightsDetectedArrays
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the detection status of solar arrays for this building.
+        # Corresponds to the JSON property `detectionStatus`
+        # @return [String]
+        attr_accessor :detection_status
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `latestCaptureDate`
+        # @return [Google::Apis::SolarV1::Date]
+        attr_accessor :latest_capture_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detection_status = args[:detection_status] if args.key?(:detection_status)
+          @latest_capture_date = args[:latest_capture_date] if args.key?(:latest_capture_date)
         end
       end
       
