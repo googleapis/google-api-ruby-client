@@ -44,6 +44,11 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Finding>]
         attr_accessor :findings
       
+        # Optional. Maximum severity found among findings.
+        # Corresponds to the JSON property `maxSeverity`
+        # @return [String]
+        attr_accessor :max_severity
+      
         # Optional. Name of the skill that produced this analysis.
         # Corresponds to the JSON property `skillName`
         # @return [String]
@@ -56,6 +61,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @findings = args[:findings] if args.key?(:findings)
+          @max_severity = args[:max_severity] if args.key?(:max_severity)
           @skill_name = args[:skill_name] if args.key?(:skill_name)
         end
       end
@@ -972,38 +978,43 @@ module Google
       # and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2
       # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3
       # details, see https://www.first.org/cvss/specification-document CVSS v3
-      # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+      # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator For CVSS v4
+      # details, see https://www.first.org/cvss/v4.0/user-guide CVSS v4 calculator:
+      # https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator
       class Cvss
         include Google::Apis::Core::Hashable
       
-        # Defined in CVSS v3, CVSS v2
+        # Optional. Attack Complexity (AC). Defined in CVSS v2, v3, v4.
         # Corresponds to the JSON property `attackComplexity`
         # @return [String]
         attr_accessor :attack_complexity
       
-        # Base Metrics Represents the intrinsic characteristics of a vulnerability that
-        # are constant over time and across user environments. Defined in CVSS v3, CVSS
-        # v2
+        # Optional. Attack Requirements (AT). Defined in CVSS v4.
+        # Corresponds to the JSON property `attackRequirements`
+        # @return [String]
+        attr_accessor :attack_requirements
+      
+        # Optional. Attack Vector (AV). Defined in CVSS v2, v3, v4.
         # Corresponds to the JSON property `attackVector`
         # @return [String]
         attr_accessor :attack_vector
       
-        # Defined in CVSS v2
+        # Optional. Authentication (Au). Defined in CVSS v2.
         # Corresponds to the JSON property `authentication`
         # @return [String]
         attr_accessor :authentication
       
-        # Defined in CVSS v3, CVSS v2
+        # Optional. Availability Impact (A). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `availabilityImpact`
         # @return [String]
         attr_accessor :availability_impact
       
-        # The base score is a function of the base metric scores.
+        # Optional. The base score is a function of the base metric scores.
         # Corresponds to the JSON property `baseScore`
         # @return [Float]
         attr_accessor :base_score
       
-        # Defined in CVSS v3, CVSS v2
+        # Optional. Confidentiality Impact (C). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `confidentialityImpact`
         # @return [String]
         attr_accessor :confidentiality_impact
@@ -1018,25 +1029,55 @@ module Google
         # @return [Float]
         attr_accessor :impact_score
       
-        # Defined in CVSS v3, CVSS v2
+        # Optional. Integrity Impact (I). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `integrityImpact`
         # @return [String]
         attr_accessor :integrity_impact
       
-        # Defined in CVSS v3
+        # Optional. Privileges Required (PR). Defined in CVSS v3, v4.
         # Corresponds to the JSON property `privilegesRequired`
         # @return [String]
         attr_accessor :privileges_required
       
-        # Defined in CVSS v3
+        # Optional. Scope (S). Defined in CVSS v3.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
       
-        # Defined in CVSS v3
+        # Optional. Subsequent System Availability Impact (SA). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemAvailabilityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_availability_impact
+      
+        # Optional. Subsequent System Confidentiality Impact (SC). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemConfidentialityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_confidentiality_impact
+      
+        # Optional. Subsequent System Integrity Impact (SI). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemIntegrityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_integrity_impact
+      
+        # Optional. User Interaction (UI). Defined in CVSS v3, v4.
         # Corresponds to the JSON property `userInteraction`
         # @return [String]
         attr_accessor :user_interaction
+      
+        # Optional. Vulnerable System Availability Impact (VA). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemAvailabilityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_availability_impact
+      
+        # Optional. Vulnerable System Confidentiality Impact (VC). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemConfidentialityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_confidentiality_impact
+      
+        # Optional. Vulnerable System Integrity Impact (VI). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemIntegrityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_integrity_impact
       
         def initialize(**args)
            update!(**args)
@@ -1045,6 +1086,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attack_complexity = args[:attack_complexity] if args.key?(:attack_complexity)
+          @attack_requirements = args[:attack_requirements] if args.key?(:attack_requirements)
           @attack_vector = args[:attack_vector] if args.key?(:attack_vector)
           @authentication = args[:authentication] if args.key?(:authentication)
           @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
@@ -1055,7 +1097,13 @@ module Google
           @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
           @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
           @scope = args[:scope] if args.key?(:scope)
+          @subsequent_system_availability_impact = args[:subsequent_system_availability_impact] if args.key?(:subsequent_system_availability_impact)
+          @subsequent_system_confidentiality_impact = args[:subsequent_system_confidentiality_impact] if args.key?(:subsequent_system_confidentiality_impact)
+          @subsequent_system_integrity_impact = args[:subsequent_system_integrity_impact] if args.key?(:subsequent_system_integrity_impact)
           @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+          @vulnerable_system_availability_impact = args[:vulnerable_system_availability_impact] if args.key?(:vulnerable_system_availability_impact)
+          @vulnerable_system_confidentiality_impact = args[:vulnerable_system_confidentiality_impact] if args.key?(:vulnerable_system_confidentiality_impact)
+          @vulnerable_system_integrity_impact = args[:vulnerable_system_integrity_impact] if args.key?(:vulnerable_system_integrity_impact)
         end
       end
       
@@ -4536,35 +4584,21 @@ module Google
         # @return [String]
         attr_accessor :category
       
-        # Optional. Detailed description of the finding.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
+        # Location details with file path and line number.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::FindingLocation]
+        attr_accessor :location
       
-        # Optional. Path to the file where the finding was detected.
-        # Corresponds to the JSON property `filePath`
+        # Optional. Scanner determines which engine (e.g. static, llm) emitted the
+        # finding.
+        # Corresponds to the JSON property `scanner`
         # @return [String]
-        attr_accessor :file_path
-      
-        # Optional. Unique identifier of the rule that produced this finding.
-        # Corresponds to the JSON property `ruleId`
-        # @return [String]
-        attr_accessor :rule_id
+        attr_accessor :scanner
       
         # Optional. Severity of the finding.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
-      
-        # Optional. Code snippet relevant to the finding.
-        # Corresponds to the JSON property `snippet`
-        # @return [String]
-        attr_accessor :snippet
-      
-        # Optional. Title of the finding.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
       
         def initialize(**args)
            update!(**args)
@@ -4573,12 +4607,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @category = args[:category] if args.key?(:category)
-          @description = args[:description] if args.key?(:description)
-          @file_path = args[:file_path] if args.key?(:file_path)
-          @rule_id = args[:rule_id] if args.key?(:rule_id)
+          @location = args[:location] if args.key?(:location)
+          @scanner = args[:scanner] if args.key?(:scanner)
           @severity = args[:severity] if args.key?(:severity)
-          @snippet = args[:snippet] if args.key?(:snippet)
-          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Location details with file path and line number.
+      class FindingLocation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Relative path of the file containing the finding.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
+        # Optional. Line number (1-based), or 0 if whole File / unknown.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_path = args[:file_path] if args.key?(:file_path)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -8483,7 +8539,9 @@ module Google
         # and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2
         # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3
         # details, see https://www.first.org/cvss/specification-document CVSS v3
-        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator For CVSS v4
+        # details, see https://www.first.org/cvss/v4.0/user-guide CVSS v4 calculator:
+        # https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator
         # Corresponds to the JSON property `cvssV2`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
         attr_accessor :cvss_v2
@@ -8492,7 +8550,9 @@ module Google
         # and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2
         # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3
         # details, see https://www.first.org/cvss/specification-document CVSS v3
-        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator For CVSS v4
+        # details, see https://www.first.org/cvss/v4.0/user-guide CVSS v4 calculator:
+        # https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator
         # Corresponds to the JSON property `cvssV3`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
         attr_accessor :cvss_v3
@@ -8630,7 +8690,9 @@ module Google
         # and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2
         # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3
         # details, see https://www.first.org/cvss/specification-document CVSS v3
-        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator For CVSS v4
+        # details, see https://www.first.org/cvss/v4.0/user-guide CVSS v4 calculator:
+        # https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator
         # Corresponds to the JSON property `cvssV2`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
         attr_accessor :cvss_v2
