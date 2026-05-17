@@ -1435,14 +1435,13 @@ module Google
         attr_accessor :cluster_type
       
         # Optional. A Cloud Storage bucket used to stage job dependencies, config files,
-        # and job driver console output. If you do not specify a staging bucket, Cloud
-        # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
-        # cluster's staging bucket according to the Compute Engine zone where your
-        # cluster is deployed, and then create and manage this project-level, per-
-        # location bucket (see Dataproc staging and temp buckets (https://cloud.google.
-        # com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
-        # requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage
-        # bucket.
+        # and job driver console output. If you do not specify a staging bucket,
+        # Dataproc determines a Cloud Storage location (US, ASIA, or EU) for the cluster
+        # staging bucket according to the Compute Engine zone where the cluster is
+        # deployed, and then creates and manages this project-level, per-location bucket
+        # (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/
+        # concepts/configuring-clusters/staging-bucket)). This field requires a Cloud
+        # Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         # Corresponds to the JSON property `configBucket`
         # @return [String]
         attr_accessor :config_bucket
@@ -1533,14 +1532,14 @@ module Google
       
         # Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data,
         # such as Spark and MapReduce history files. If you do not specify a temp
-        # bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for
-        # your cluster's temp bucket according to the Compute Engine zone where your
-        # cluster is deployed, and then create and manage this project-level, per-
-        # location bucket. The default bucket has a TTL of 90 days, but you can use any
-        # TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (
-        # https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-
-        # bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI
-        # to a Cloud Storage bucket.
+        # bucket, Dataproc determines a Cloud Storage location (US, ASIA, or EU) for the
+        # cluster temp bucket according to the Compute Engine zone where the cluster is
+        # deployed, and then creates and manages this project-level, per-location bucket.
+        # The default bucket has a TTL of 90 days, but you can use any TTL (or none) if
+        # you specify a bucket (see Dataproc staging and temp buckets (https://cloud.
+        # google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This
+        # field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud
+        # Storage bucket.
         # Corresponds to the JSON property `tempBucket`
         # @return [String]
         attr_accessor :temp_bucket
@@ -1859,8 +1858,8 @@ module Google
       class ConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Defines whether the instance should have confidential compute
-        # enabled.
+        # Optional. Deprecated: Use 'confidential_instance_type' instead. Defines
+        # whether the instance should have confidential compute enabled.
         # Corresponds to the JSON property `enableConfidentialCompute`
         # @return [Boolean]
         attr_accessor :enable_confidential_compute
@@ -2125,18 +2124,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
       
-        # Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-
-        # balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent
-        # Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive).
-        # See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
+        # Optional. Type of the boot disk (default is pd-standard). Valid values: pd-
+        # balanced (Persistent Disk Balanced Solid State Drive), pd-ssd (Persistent Disk
+        # Solid State Drive), or pd-standard (Persistent Disk Hard Disk Drive). See Disk
+        # types (https://cloud.google.com/compute/docs/disks#disk-types).
         # Corresponds to the JSON property `bootDiskType`
         # @return [String]
         attr_accessor :boot_disk_type
       
-        # Optional. Interface type of local SSDs (default is "scsi"). Valid values: "
-        # scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
-        # See local SSD performance (https://cloud.google.com/compute/docs/disks/local-
-        # ssd#performance).
+        # Optional. Interface type of local SSDs (default is scsi). Valid values: scsi (
+        # Small Computer System Interface), nvme (Non-Volatile Memory Express). See
+        # local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#
+        # performance).
         # Corresponds to the JSON property `localSsdInterface`
         # @return [String]
         attr_accessor :local_ssd_interface
@@ -3106,7 +3105,7 @@ module Google
         # Optional. The Compute Engine network to be used for machine communications.
         # Cannot be specified with subnetwork_uri. If neither network_uri nor
         # subnetwork_uri is specified, the "default" network of the project is used, if
-        # it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://
+        # it exists. Cannot be a Custom Subnet Network (see Using Subnetworks (https://
         # cloud.google.com/compute/docs/subnetworks) for more information).A full URL,
         # partial URI, or short name are valid. Examples: https://www.googleapis.com/
         # compute/v1/projects/[project_id]/global/networks/default projects/[project_id]/
@@ -11922,8 +11921,8 @@ module Google
         attr_accessor :kubernetes_cluster_config
       
         # Optional. A Cloud Storage bucket used to stage job dependencies, config files,
-        # and job driver console output. If you do not specify a staging bucket, Cloud
-        # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
+        # and job driver console output. If you do not specify a staging bucket,
+        # Dataproc determines a Cloud Storage location (US, ASIA, or EU) for your
         # cluster's staging bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
         # location bucket (see Dataproc staging and temp buckets (https://cloud.google.
