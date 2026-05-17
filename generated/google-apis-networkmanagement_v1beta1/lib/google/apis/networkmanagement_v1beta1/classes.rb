@@ -892,6 +892,14 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint]
         attr_accessor :cloud_function
       
+        # A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.
+        # com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable
+        # only to source endpoint. The format is: projects/`project`/locations/`location`
+        # /jobs/`job`
+        # Corresponds to the JSON property `cloudRunJob`
+        # @return [String]
+        attr_accessor :cloud_run_job
+      
         # Wrapper for Cloud Run revision attributes.
         # Corresponds to the JSON property `cloudRunRevision`
         # @return [Google::Apis::NetworkmanagementV1beta1::CloudRunRevisionEndpoint]
@@ -1016,6 +1024,7 @@ module Google
         def update!(**args)
           @app_engine_version = args[:app_engine_version] if args.key?(:app_engine_version)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
+          @cloud_run_job = args[:cloud_run_job] if args.key?(:cloud_run_job)
           @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @datastream_private_connection = args[:datastream_private_connection] if args.key?(:datastream_private_connection)
