@@ -461,7 +461,12 @@ module Google
         attr_accessor :bot_type
       
         # Optional. Enumerated string value that indicates the identity of the bot,
-        # formatted in kebab-case.
+        # formatted in kebab-case. Current example values include the following: *
+        # google-agent * browser-base * chat-gpt * aws-bedrock * cybaa-bot * cloudflare *
+        # payhawk Ensure that your applications can handle identifier values not
+        # explicitly listed here. Deprecated values might take some time to stop showing
+        # up in responses. New values can be pushed so this list should be taken as non
+        # exhaustive.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
