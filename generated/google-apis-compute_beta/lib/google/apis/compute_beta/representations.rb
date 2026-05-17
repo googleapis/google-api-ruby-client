@@ -11824,6 +11824,11 @@ module Google
           property :source_image_id, as: 'sourceImageId'
           property :source_instant_snapshot, as: 'sourceInstantSnapshot'
           property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
+          property :source_machine_image, as: 'sourceMachineImage'
+          property :source_machine_image_disk_device_name, as: 'sourceMachineImageDiskDeviceName'
+          property :source_machine_image_encryption_key, as: 'sourceMachineImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :source_machine_image_id, as: 'sourceMachineImageId'
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
@@ -16256,6 +16261,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_name, as: 'customerName'
           property :description, as: 'description'
+          property :effective_location, as: 'effectiveLocation'
           collection :expected_outages, as: 'expectedOutages', class: Google::Apis::ComputeBeta::InterconnectOutageNotification, decorator: Google::Apis::ComputeBeta::InterconnectOutageNotification::Representation
       
           property :google_ip_address, as: 'googleIpAddress'
@@ -17594,6 +17600,8 @@ module Google
       class MachineImageParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_disks, as: 'excludedDisks'
+          collection :included_disks, as: 'includedDisks'
           hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end

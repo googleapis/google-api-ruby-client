@@ -1991,24 +1991,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # Specifies the disk type to use to create the instance. If not specified,
-        # the default is pd-standard, specified using the full URL.
-        # For example:
-        # https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/pd-
-        # standard
-        # For a full list of acceptable values, seePersistent disk
-        # types. If you specify this field when creating a VM, you can provide
-        # either the full or partial URL. For example, the following values are
-        # valid:
         # 
-        # 
-        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/
-        # diskTypes/diskType
-        # - projects/project/zones/zone/diskTypes/diskType
-        # - zones/zone/diskTypes/diskType
-        # If you specify this field when creating or updating an instance template
-        # or all-instances configuration, specify the type of the disk, not the
-        # URL. For example: pd-standard.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -10817,6 +10800,43 @@ module Google
         # @return [String]
         attr_accessor :source_instant_snapshot_id
       
+        # The machine image to create the disk from. You can provide this as a
+        # partial or full URL to the resource. For example, the following are valid
+        # values:
+        # 
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/global/
+        # machineImages/machineImage
+        # - projects/project/global/machineImages/machineImage
+        # - global/machineImages/machineImage
+        # Corresponds to the JSON property `sourceMachineImage`
+        # @return [String]
+        attr_accessor :source_machine_image
+      
+        # The device name of a disk within a given machine image. The
+        # source_machine_image must be specified.
+        # Corresponds to the JSON property `sourceMachineImageDiskDeviceName`
+        # @return [String]
+        attr_accessor :source_machine_image_disk_device_name
+      
+        # Thecustomer-supplied
+        # encryption key of the source machine image. Required if the source
+        # machine image is protected by a customer-supplied encryption key.
+        # Corresponds to the JSON property `sourceMachineImageEncryptionKey`
+        # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
+        attr_accessor :source_machine_image_encryption_key
+      
+        # Output only. [Output Only] The unique ID of the machine image used to create
+        # this disk.
+        # This value identifies the exact machine image that was used to create this
+        # persistent disk. For example, if you created the persistent disk from a
+        # machine image that was later deleted and recreated under the same name, the
+        # source machine image ID would identify the exact version of the machine
+        # image that was used.
+        # Corresponds to the JSON property `sourceMachineImageId`
+        # @return [String]
+        attr_accessor :source_machine_image_id
+      
         # The source snapshot used to create this disk. You can provide this as a
         # partial or full URL to the resource. For example, the following are valid
         # values:
@@ -10961,6 +10981,10 @@ module Google
           @source_image_id = args[:source_image_id] if args.key?(:source_image_id)
           @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
           @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
+          @source_machine_image = args[:source_machine_image] if args.key?(:source_machine_image)
+          @source_machine_image_disk_device_name = args[:source_machine_image_disk_device_name] if args.key?(:source_machine_image_disk_device_name)
+          @source_machine_image_encryption_key = args[:source_machine_image_encryption_key] if args.key?(:source_machine_image_encryption_key)
+          @source_machine_image_id = args[:source_machine_image_id] if args.key?(:source_machine_image_id)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
           @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
@@ -29990,6 +30014,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Output only. [Output Only] URL of the InterconnectLocation object that
+        # represents where
+        # this connection is to be provisioned. By default it will be the same as the
+        # location field.
+        # Corresponds to the JSON property `effectiveLocation`
+        # @return [String]
+        attr_accessor :effective_location
+      
         # Output only. [Output Only] A list of outages expected for this Interconnect.
         # Corresponds to the JSON property `expectedOutages`
         # @return [Array<Google::Apis::ComputeBeta::InterconnectOutageNotification>]
@@ -30231,6 +30263,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
           @description = args[:description] if args.key?(:description)
+          @effective_location = args[:effective_location] if args.key?(:effective_location)
           @expected_outages = args[:expected_outages] if args.key?(:expected_outages)
           @google_ip_address = args[:google_ip_address] if args.key?(:google_ip_address)
           @google_reference_id = args[:google_reference_id] if args.key?(:google_reference_id)
@@ -35830,6 +35863,18 @@ module Google
       class MachineImageParams
         include Google::Apis::Core::Hashable
       
+        # Input only. [Input Only] Specifies the list of disk device names that must be
+        # excluded from the new machine image.
+        # Corresponds to the JSON property `excludedDisks`
+        # @return [Array<String>]
+        attr_accessor :excluded_disks
+      
+        # Input only. [Input Only] Specifies the list of disk device names that must be
+        # included with the new machine image.
+        # Corresponds to the JSON property `includedDisks`
+        # @return [Array<String>]
+        attr_accessor :included_disks
+      
         # Input only. Resource manager tags to be bound to the machine image. Tag keys
         # and values
         # have the same definition as resource
@@ -35848,6 +35893,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @excluded_disks = args[:excluded_disks] if args.key?(:excluded_disks)
+          @included_disks = args[:included_disks] if args.key?(:included_disks)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
@@ -39052,7 +39099,13 @@ module Google
         attr_accessor :name
       
         # The URL of the network to which all network endpoints in the NEG belong.
-        # Uses default project network if unspecified.
+        # For networkEndpointType GCE_VM_IP_PORT,GCE_VM_IP_PORTMAP or
+        # NON_GCP_PRIVATE_IP_PORT,
+        # if this field is not specified, a default network will be used.
+        # This field cannot be set for NEGs with networkEndpointType set toSERVERLESS or
+        # PRIVATE_SERVICE_CONNECT and for
+        # global NEGs.
+        # For all other network endpoint types, this field is required.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -39437,7 +39490,13 @@ module Google
         attr_accessor :default_port
       
         # The URL of the network to which all network endpoints in the NEG belong.
-        # Uses default project network if unspecified.
+        # For networkEndpointType GCE_VM_IP_PORT,GCE_VM_IP_PORTMAP or
+        # NON_GCP_PRIVATE_IP_PORT,
+        # if this field is not specified, a default network will be used.
+        # This field cannot be set for NEGs with networkEndpointType set toSERVERLESS or
+        # PRIVATE_SERVICE_CONNECT and for
+        # global NEGs.
+        # For all other network endpoint types, this field is required.
         # [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `network`
         # @return [String]
