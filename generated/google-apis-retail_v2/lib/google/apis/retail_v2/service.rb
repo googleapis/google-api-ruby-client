@@ -386,8 +386,9 @@ module Google
         #   Required. Immutable. The fully qualified resource name of the catalog.
         # @param [Google::Apis::RetailV2::GoogleCloudRetailV2Catalog] google_cloud_retail_v2_catalog_object
         # @param [String] update_mask
-        #   Indicates which fields in the provided Catalog to update. If an unsupported or
-        #   unknown field is provided, an INVALID_ARGUMENT error is returned.
+        #   Optional. Indicates which fields in the provided Catalog to update. If an
+        #   unsupported or unknown field is provided, an INVALID_ARGUMENT error is
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -481,9 +482,9 @@ module Google
         #   Format: `projects/*/locations/*/catalogs/*/attributesConfig`
         # @param [Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig] google_cloud_retail_v2_attributes_config_object
         # @param [String] update_mask
-        #   Indicates which fields in the provided AttributesConfig to update. The
-        #   following is the only supported field: * AttributesConfig.catalog_attributes
-        #   If not set, all supported fields are updated.
+        #   Optional. Indicates which fields in the provided AttributesConfig to update.
+        #   The following is the only supported field: * AttributesConfig.
+        #   catalog_attributes If not set, all supported fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -520,9 +521,9 @@ module Google
         #   completionConfig`
         # @param [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig] google_cloud_retail_v2_completion_config_object
         # @param [String] update_mask
-        #   Indicates which fields in the provided CompletionConfig to update. The
-        #   following are the only supported fields: * CompletionConfig.matching_order *
-        #   CompletionConfig.max_suggestions * CompletionConfig.min_prefix_length *
+        #   Optional. Indicates which fields in the provided CompletionConfig to update.
+        #   The following are the only supported fields: * CompletionConfig.matching_order
+        #   * CompletionConfig.max_suggestions * CompletionConfig.min_prefix_length *
         #   CompletionConfig.auto_learning If not set, all supported fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
