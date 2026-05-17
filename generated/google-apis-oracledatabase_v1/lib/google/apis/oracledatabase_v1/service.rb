@@ -2156,6 +2156,929 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new GoldengateConnectionAssignment in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource where this GoldengateConnectionAssignment will
+        #   be created. Format: projects/`project`/locations/`location`
+        # @param [Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment] goldengate_connection_assignment_object
+        # @param [String] goldengate_connection_assignment_id
+        #   Required. The ID of the GoldengateConnectionAssignment to create.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_goldengate_connection_assignment(parent, goldengate_connection_assignment_object = nil, goldengate_connection_assignment_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/goldengateConnectionAssignments', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment::Representation
+          command.request_object = goldengate_connection_assignment_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['goldengateConnectionAssignmentId'] = goldengate_connection_assignment_id unless goldengate_connection_assignment_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single GoldengateConnectionAssignment.
+        # @param [String] name
+        #   Required. The name of the GoldengateConnectionAssignment to delete. Format:
+        #   projects/`project`/locations/`location`/goldengateConnectionAssignments/`
+        #   goldengate_connection_assignment`
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_goldengate_connection_assignment(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single GoldengateConnectionAssignment.
+        # @param [String] name
+        #   Required. The name of the GoldengateConnectionAssignment to retrieve. Format:
+        #   projects/`project`/locations/`location`/goldengateConnectionAssignments/`
+        #   goldengate_connection_assignment`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_goldengate_connection_assignment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists GoldengateConnectionAssignments in a given project and location.
+        # @param [String] parent
+        #   Required. The parent value for the GoldengateConnectionAssignments. Format:
+        #   projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. A filter expression that filters GoldengateConnectionAssignments
+        #   listed in the response.
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "DESC" after a field name for descending.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of GoldengateConnectionAssignments to return. The
+        #   service may return fewer than this value. If unspecified, at most 50
+        #   GoldengateConnectionAssignments will be returned. The maximum value is 1000;
+        #   values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   ListGoldengateConnectionAssignments` call. Provide this to retrieve the
+        #   subsequent page. When paginating, all other parameters provided to `
+        #   ListGoldengateConnectionAssignments` must match the call that provided the
+        #   page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListGoldengateConnectionAssignmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListGoldengateConnectionAssignmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_goldengate_connection_assignments(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/goldengateConnectionAssignments', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListGoldengateConnectionAssignmentsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListGoldengateConnectionAssignmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tests a single GoldengateConnectionAssignment.
+        # @param [String] name
+        #   Required. Name of the connection assignment for which to test connection.
+        #   projects/`project`/locations/`region`/goldengateConnectionAssignments/`
+        #   goldengate_connection_assignment`
+        # @param [Google::Apis::OracledatabaseV1::TestGoldengateConnectionAssignmentRequest] test_goldengate_connection_assignment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::TestGoldengateConnectionAssignmentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::TestGoldengateConnectionAssignmentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_goldengate_connection_assignment(name, test_goldengate_connection_assignment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:test', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::TestGoldengateConnectionAssignmentRequest::Representation
+          command.request_object = test_goldengate_connection_assignment_request_object
+          command.response_representation = Google::Apis::OracledatabaseV1::TestGoldengateConnectionAssignmentResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::TestGoldengateConnectionAssignmentResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single GoldengateConnectionType.
+        # @param [String] name
+        #   Required. Name of the resource in the format: projects/`project`/locations/`
+        #   location`/goldengateConnectionTypes/`goldengate_connection_type`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::GoldengateConnectionType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::GoldengateConnectionType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_goldengate_connection_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::GoldengateConnectionType::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::GoldengateConnectionType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists GoldengateConnectionTypes in a given project and location.
+        # @param [String] parent
+        #   Required. Parent value for ListGoldengateConnectionTypesRequest Format:
+        #   projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. The
+        #   connection_type field must be specified in the format: `connection_type="
+        #   ORACLE"`.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListGoldengateConnectionTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListGoldengateConnectionTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_goldengate_connection_types(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/goldengateConnectionTypes', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListGoldengateConnectionTypesResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListGoldengateConnectionTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new GoldengateConnection in a given project and location.
+        # @param [String] parent
+        #   Required. The value for parent of the GoldengateConnection in the following
+        #   format: projects/`project`/locations/`location`.
+        # @param [Google::Apis::OracledatabaseV1::GoldengateConnection] goldengate_connection_object
+        # @param [String] goldengate_connection_id
+        #   Required. The ID of the GoldengateConnection to create. This value is
+        #   restricted to (^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$) and must be a maximum of 63
+        #   characters in length. The value must start with a letter and end with a letter
+        #   or a number.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_goldengate_connection(parent, goldengate_connection_object = nil, goldengate_connection_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/goldengateConnections', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::GoldengateConnection::Representation
+          command.request_object = goldengate_connection_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['goldengateConnectionId'] = goldengate_connection_id unless goldengate_connection_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single GoldengateConnection.
+        # @param [String] name
+        #   Required. The name of the GoldengateConnection in the following format:
+        #   projects/`project`/locations/`location`/goldengateConnections/`
+        #   goldengate_connection`.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_goldengate_connection(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single GoldengateConnection.
+        # @param [String] name
+        #   Required. The name of the GoldengateConnection in the following format:
+        #   projects/`project`/locations/`location`/goldengateConnections/`
+        #   goldengate_connection`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::GoldengateConnection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::GoldengateConnection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_goldengate_connection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::GoldengateConnection::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::GoldengateConnection
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the GoldengateConnections for the given project and location.
+        # @param [String] parent
+        #   Required. The parent value for GoldengateConnections in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request.
+        # @param [String] order_by
+        #   Optional. An expression for ordering the results of the request.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50
+        #   GoldengateConnections will be returned. The maximum value is 1000; values
+        #   above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous ListGoldengateConnections
+        #   call. Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListGoldengateConnectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListGoldengateConnectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_goldengate_connections(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/goldengateConnections', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListGoldengateConnectionsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListGoldengateConnectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single GoldengateDeploymentEnvironment.
+        # @param [String] name
+        #   Required. Name of the resource with the format: projects/`project`/locations/`
+        #   location`/goldengateDeploymentEnvironments/`goldengate_deployment_environment`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::GoldengateDeploymentEnvironment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::GoldengateDeploymentEnvironment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_goldengate_deployment_environment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::GoldengateDeploymentEnvironment::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::GoldengateDeploymentEnvironment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists GoldengateDeploymentEnvironments in a given project and location.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of
+        #   GoldengateDeploymentEnvironments. Format: projects/`project`/locations/`
+        #   location`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50
+        #   deployment environments will be returned. The maximum value is 1000; values
+        #   above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListGoldengateDeploymentEnvironmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListGoldengateDeploymentEnvironmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_goldengate_deployment_environments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/goldengateDeploymentEnvironments', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListGoldengateDeploymentEnvironmentsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListGoldengateDeploymentEnvironmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single GoldenGateDeploymentType.
+        # @param [String] name
+        #   Required. The name of the GoldengateDeploymentType to retrieve. Format:
+        #   projects/`project`/locations/`location`/goldengateDeploymentTypes/`
+        #   goldengate_deployment_type`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::GoldengateDeploymentType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::GoldengateDeploymentType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_goldengate_deployment_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::GoldengateDeploymentType::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::GoldengateDeploymentType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists GoldenGateDeploymentTypes in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource. Format: projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Either the
+        #   deployment_type and ogg_version fields must be specified in the format: `
+        #   deployment_type="DATABASE_ORACLE"` or `ogg_version="version"`. Allowed values
+        #   for deployment_type are: `DATABASE_ORACLE`, `BIGDATA`, `
+        #   DATABASE_MICROSOFT_SQLSERVER`, `DATABASE_MYSQL`, `DATABASE_POSTGRESQL`, `
+        #   DATABASE_DB2ZOS`, `DATABASE_DB2I`, `GGSA`, `DATA_TRANSFORMS`.
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListGoldengateDeploymentTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListGoldengateDeploymentTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_goldengate_deployment_types(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/goldengateDeploymentTypes', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListGoldengateDeploymentTypesResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListGoldengateDeploymentTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single GoldengateDeploymentVersion.
+        # @param [String] name
+        #   Required. The name of the GoldengateDeploymentVersion to retrieve. Format:
+        #   projects/`project`/locations/`location`/goldengateDeploymentVersions/`
+        #   goldengate_deployment_version`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::GoldengateDeploymentVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::GoldengateDeploymentVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_goldengate_deployment_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::GoldengateDeploymentVersion::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::GoldengateDeploymentVersion
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists GoldengateDeploymentVersions in a given project and location.
+        # @param [String] parent
+        #   Required. Parent value for ListGoldengateDeploymentVersionsRequest Format:
+        #   projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Either the
+        #   deployment_id and deployment_type fields must be specified in the format: `
+        #   deployment_id="id"` or `deployment_type="DATABASE_ORACLE"`.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default. The maximum value is
+        #   1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListGoldengateDeploymentVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListGoldengateDeploymentVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_goldengate_deployment_versions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/goldengateDeploymentVersions', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListGoldengateDeploymentVersionsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListGoldengateDeploymentVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new GoldengateDeployment in a given project and location.
+        # @param [String] parent
+        #   Required. The value for parent of the GoldengateDeployment in the following
+        #   format: projects/`project`/locations/`location`.
+        # @param [Google::Apis::OracledatabaseV1::GoldengateDeployment] goldengate_deployment_object
+        # @param [String] goldengate_deployment_id
+        #   Required. The ID of the GoldengateDeployment to create. This value is
+        #   restricted to (^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$) and must be a maximum of 63
+        #   characters in length. The value must start with a letter and end with a letter
+        #   or a number.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_goldengate_deployment(parent, goldengate_deployment_object = nil, goldengate_deployment_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/goldengateDeployments', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::GoldengateDeployment::Representation
+          command.request_object = goldengate_deployment_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['goldengateDeploymentId'] = goldengate_deployment_id unless goldengate_deployment_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single GoldengateDeployment.
+        # @param [String] name
+        #   Required. The name of the GoldengateDeployment in the following format:
+        #   projects/`project`/locations/`location`/goldengateDeployments/`
+        #   goldengate_deployment`.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_goldengate_deployment(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single GoldengateDeployment.
+        # @param [String] name
+        #   Required. The name of the GoldengateDeployment in the following format:
+        #   projects/`project`/locations/`location`/goldengateDeployments/`
+        #   goldengate_deployment`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::GoldengateDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::GoldengateDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_goldengate_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::GoldengateDeployment::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::GoldengateDeployment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the GoldengateDeployments for the given project and location.
+        # @param [String] parent
+        #   Required. The parent value for GoldengateDeployments in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request.
+        # @param [String] order_by
+        #   Optional. An expression for ordering the results of the request.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50
+        #   GoldengateDeployments will be returned. The maximum value is 1000; values
+        #   above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous ListGoldengateDeployments
+        #   call. Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListGoldengateDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListGoldengateDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_goldengate_deployments(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/goldengateDeployments', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListGoldengateDeploymentsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListGoldengateDeploymentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts a single GoldengateDeployment.
+        # @param [String] name
+        #   Required. The name of the Goldengate Deployment in the following format:
+        #   projects/`project`/locations/`location`/goldengateDeployments/`
+        #   goldengate_deployment`.
+        # @param [Google::Apis::OracledatabaseV1::StartGoldengateDeploymentRequest] start_goldengate_deployment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_goldengate_deployment(name, start_goldengate_deployment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:start', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::StartGoldengateDeploymentRequest::Representation
+          command.request_object = start_goldengate_deployment_request_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops a single GoldengateDeployment.
+        # @param [String] name
+        #   Required. The name of the Goldengate Deployment in the following format:
+        #   projects/`project`/locations/`location`/goldengateDeployments/`
+        #   goldengate_deployment`.
+        # @param [Google::Apis::OracledatabaseV1::StopGoldengateDeploymentRequest] stop_goldengate_deployment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_goldengate_deployment(name, stop_goldengate_deployment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:stop', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::StopGoldengateDeploymentRequest::Representation
+          command.request_object = stop_goldengate_deployment_request_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new ODB Network in a given project and location.
         # @param [String] parent
         #   Required. The parent value for the OdbNetwork in the following format:

@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AmazonS3IcebergStorage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutonomousDatabase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +89,12 @@ module Google
       end
       
       class AutonomousDbVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureDataLakeStorageIcebergStorage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeploymentDiagnosticData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,7 +376,325 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlueIcebergCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateAmazonKinesisConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateAmazonRedshiftConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateAmazonS3ConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateAzureDataLakeStorageConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateAzureSynapseAnalyticsConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateBackupSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateConnectionAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateConnectionAssignmentProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateConnectionType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateDatabricksConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateDb2ConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateDeploymentEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateDeploymentLock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateDeploymentProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateDeploymentType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateDeploymentVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateDeploymentVersionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateElasticsearchConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateGenericConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateGoldengateConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateGoogleBigQueryConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateGoogleCloudStorageConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateGooglePubsubConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateGroupToRolesMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateHdfsConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateIcebergConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateJavaMessageServiceConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateKafkaConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateKafkaSchemaRegistryConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateMaintenanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateMaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateMicrosoftFabricConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateMicrosoftSqlserverConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateMongodbConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateMysqlConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateOciObjectStorageConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateOggDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateOracleAiDataPlatformConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateOracleConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateOracleNosqlConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengatePlacement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengatePostgresqlConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateRedisConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoldengateSnowflakeConnectionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudStorageIcebergStorage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IcebergCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IcebergStorage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IdentityConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngressIp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KafkaBootstrapServer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -472,6 +808,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListGoldengateConnectionAssignmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGoldengateConnectionTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGoldengateConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGoldengateDeploymentEnvironmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGoldengateDeploymentTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGoldengateDeploymentVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGoldengateDeploymentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -532,6 +910,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NameValuePair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NessieIcebergCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OdbNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -580,7 +970,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolarisIcebergCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoveVirtualMachineExadbVmClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestIcebergCatalog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -616,6 +1018,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartGoldengateDeploymentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -628,6 +1036,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StopGoldengateDeploymentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageSizeDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -635,6 +1049,24 @@ module Google
       end
       
       class SwitchoverAutonomousDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestConnectionAssignmentError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestGoldengateConnectionAssignmentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestGoldengateConnectionAssignmentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -658,6 +1090,18 @@ module Google
           property :high, as: 'high'
           property :low, as: 'low'
           property :medium, as: 'medium'
+        end
+      end
+      
+      class AmazonS3IcebergStorage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_key_id, as: 'accessKeyId'
+          property :bucket, as: 'bucket'
+          property :endpoint, as: 'endpoint'
+          property :region, as: 'region'
+          property :scheme_type, as: 'schemeType'
+          property :secret_access_key_secret, as: 'secretAccessKeySecret'
         end
       end
       
@@ -865,6 +1309,16 @@ module Google
           property :name, as: 'name'
           property :version, as: 'version'
           property :workload_uri, as: 'workloadUri'
+        end
+      end
+      
+      class AzureDataLakeStorageIcebergStorage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_key_secret, as: 'accountKeySecret'
+          property :azure_account, as: 'azureAccount'
+          property :container, as: 'container'
+          property :endpoint, as: 'endpoint'
         end
       end
       
@@ -1304,6 +1758,18 @@ module Google
         end
       end
       
+      class DeploymentDiagnosticData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :diagnostic_end_time, as: 'diagnosticEndTime'
+          property :diagnostic_start_time, as: 'diagnosticStartTime'
+          property :diagnostic_state, as: 'diagnosticState'
+          property :namespace, as: 'namespace'
+          property :object, as: 'object'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1462,11 +1928,826 @@ module Google
         end
       end
       
+      class GlueIcebergCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :glue_id, as: 'glueId'
+        end
+      end
+      
+      class GoldengateAmazonKinesisConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_key_id, as: 'accessKeyId'
+          property :aws_region, as: 'awsRegion'
+          property :endpoint, as: 'endpoint'
+          property :secret_access_key_secret, as: 'secretAccessKeySecret'
+          property :technology_type, as: 'technologyType'
+        end
+      end
+      
+      class GoldengateAmazonRedshiftConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_url, as: 'connectionUrl'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :technology_type, as: 'technologyType'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateAmazonS3ConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_key_id, as: 'accessKeyId'
+          property :endpoint, as: 'endpoint'
+          property :region, as: 'region'
+          property :secret_access_key_secret, as: 'secretAccessKeySecret'
+          property :technology_type, as: 'technologyType'
+        end
+      end
+      
+      class GoldengateAzureDataLakeStorageConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account'
+          property :account_key_secret, as: 'accountKeySecret'
+          property :authentication_type, as: 'authenticationType'
+          property :azure_authority_host, as: 'azureAuthorityHost'
+          property :azure_tenant_id, as: 'azureTenantId'
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :endpoint, as: 'endpoint'
+          property :sas_token_secret, as: 'sasTokenSecret'
+          property :technology_type, as: 'technologyType'
+        end
+      end
+      
+      class GoldengateAzureSynapseAnalyticsConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_string, as: 'connectionString'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :technology_type, as: 'technologyType'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateBackupSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_scheduled_time, as: 'backupScheduledTime'
+          property :bucket, as: 'bucket'
+          property :compartment_id, as: 'compartmentId'
+          property :frequency_backup_scheduled, as: 'frequencyBackupScheduled'
+          property :metadata_only, as: 'metadataOnly'
+          property :namespace, as: 'namespace'
+        end
+      end
+      
+      class GoldengateConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :entitlement_id, as: 'entitlementId'
+          property :gcp_oracle_zone, as: 'gcpOracleZone'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :oci_url, as: 'ociUrl'
+          property :odb_network, as: 'odbNetwork'
+          property :odb_subnet, as: 'odbSubnet'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::GoldengateConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateConnectionProperties::Representation
+      
+        end
+      end
+      
+      class GoldengateConnectionAssignment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :entitlement_id, as: 'entitlementId'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::GoldengateConnectionAssignmentProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateConnectionAssignmentProperties::Representation
+      
+        end
+      end
+      
+      class GoldengateConnectionAssignmentProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :goldengate_connection, as: 'goldengateConnection'
+          property :goldengate_deployment, as: 'goldengateDeployment'
+          property :ocid, as: 'ocid'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoldengateConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amazon_kinesis_connection_properties, as: 'amazonKinesisConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateAmazonKinesisConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateAmazonKinesisConnectionProperties::Representation
+      
+          property :amazon_redshift_connection_properties, as: 'amazonRedshiftConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateAmazonRedshiftConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateAmazonRedshiftConnectionProperties::Representation
+      
+          property :amazon_s3_connection_properties, as: 'amazonS3ConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateAmazonS3ConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateAmazonS3ConnectionProperties::Representation
+      
+          property :azure_data_lake_storage_connection_properties, as: 'azureDataLakeStorageConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateAzureDataLakeStorageConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateAzureDataLakeStorageConnectionProperties::Representation
+      
+          property :azure_synapse_analytics_connection_properties, as: 'azureSynapseAnalyticsConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateAzureSynapseAnalyticsConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateAzureSynapseAnalyticsConnectionProperties::Representation
+      
+          property :connection_type, as: 'connectionType'
+          property :databricks_connection_properties, as: 'databricksConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateDatabricksConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateDatabricksConnectionProperties::Representation
+      
+          property :db2_connection_properties, as: 'db2ConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateDb2ConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateDb2ConnectionProperties::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :elasticsearch_connection_properties, as: 'elasticsearchConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateElasticsearchConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateElasticsearchConnectionProperties::Representation
+      
+          property :generic_connection_properties, as: 'genericConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateGenericConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateGenericConnectionProperties::Representation
+      
+          property :goldengate_connection_properties, as: 'goldengateConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateGoldengateConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateGoldengateConnectionProperties::Representation
+      
+          property :google_big_query_connection_properties, as: 'googleBigQueryConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateGoogleBigQueryConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateGoogleBigQueryConnectionProperties::Representation
+      
+          property :google_cloud_storage_connection_properties, as: 'googleCloudStorageConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateGoogleCloudStorageConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateGoogleCloudStorageConnectionProperties::Representation
+      
+          property :google_pubsub_connection_properties, as: 'googlePubsubConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateGooglePubsubConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateGooglePubsubConnectionProperties::Representation
+      
+          property :hdfs_connection_properties, as: 'hdfsConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateHdfsConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateHdfsConnectionProperties::Representation
+      
+          property :iceberg_connection_properties, as: 'icebergConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateIcebergConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateIcebergConnectionProperties::Representation
+      
+          collection :ingress_ip_addresses, as: 'ingressIpAddresses'
+          property :java_message_service_connection_properties, as: 'javaMessageServiceConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateJavaMessageServiceConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateJavaMessageServiceConnectionProperties::Representation
+      
+          property :kafka_connection_properties, as: 'kafkaConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateKafkaConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateKafkaConnectionProperties::Representation
+      
+          property :kafka_schema_registry_connection_properties, as: 'kafkaSchemaRegistryConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateKafkaSchemaRegistryConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateKafkaSchemaRegistryConnectionProperties::Representation
+      
+          property :lifecycle_details, as: 'lifecycleDetails'
+          property :lifecycle_state, as: 'lifecycleState'
+          property :microsoft_fabric_connection_properties, as: 'microsoftFabricConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateMicrosoftFabricConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateMicrosoftFabricConnectionProperties::Representation
+      
+          property :microsoft_sqlserver_connection_properties, as: 'microsoftSqlserverConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateMicrosoftSqlserverConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateMicrosoftSqlserverConnectionProperties::Representation
+      
+          property :mongodb_connection_properties, as: 'mongodbConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateMongodbConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateMongodbConnectionProperties::Representation
+      
+          property :mysql_connection_properties, as: 'mysqlConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateMysqlConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateMysqlConnectionProperties::Representation
+      
+          property :oci_object_storage_connection_properties, as: 'ociObjectStorageConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateOciObjectStorageConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateOciObjectStorageConnectionProperties::Representation
+      
+          property :ocid, as: 'ocid'
+          property :oracle_ai_data_platform_connection_properties, as: 'oracleAiDataPlatformConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateOracleAiDataPlatformConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateOracleAiDataPlatformConnectionProperties::Representation
+      
+          property :oracle_connection_properties, as: 'oracleConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateOracleConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateOracleConnectionProperties::Representation
+      
+          property :oracle_nosql_connection_properties, as: 'oracleNosqlConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateOracleNosqlConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateOracleNosqlConnectionProperties::Representation
+      
+          property :postgresql_connection_properties, as: 'postgresqlConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengatePostgresqlConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengatePostgresqlConnectionProperties::Representation
+      
+          property :redis_connection_properties, as: 'redisConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateRedisConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateRedisConnectionProperties::Representation
+      
+          property :routing_method, as: 'routingMethod'
+          property :snowflake_connection_properties, as: 'snowflakeConnectionProperties', class: Google::Apis::OracledatabaseV1::GoldengateSnowflakeConnectionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateSnowflakeConnectionProperties::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoldengateConnectionType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_type, as: 'connectionType'
+          property :name, as: 'name'
+          collection :technology_types, as: 'technologyTypes'
+        end
+      end
+      
+      class GoldengateDatabricksConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_type, as: 'authenticationType'
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :connection_url, as: 'connectionUrl'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :storage_credential, as: 'storageCredential'
+          property :technology_type, as: 'technologyType'
+        end
+      end
+      
+      class GoldengateDb2ConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_attributes, as: 'additionalAttributes', class: Google::Apis::OracledatabaseV1::NameValuePair, decorator: Google::Apis::OracledatabaseV1::NameValuePair::Representation
+      
+          property :database, as: 'database'
+          property :host, as: 'host'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :port, as: 'port'
+          property :security_protocol, as: 'securityProtocol'
+          property :ssl_client_keystash_file, as: 'sslClientKeystashFile'
+          property :ssl_client_keystoredb_file, as: 'sslClientKeystoredbFile'
+          property :ssl_server_certificate_file, as: 'sslServerCertificateFile'
+          property :technology_type, as: 'technologyType'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :entitlement_id, as: 'entitlementId'
+          property :gcp_oracle_zone, as: 'gcpOracleZone'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :oci_url, as: 'ociUrl'
+          property :odb_network, as: 'odbNetwork'
+          property :odb_subnet, as: 'odbSubnet'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::GoldengateDeploymentProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateDeploymentProperties::Representation
+      
+        end
+      end
+      
+      class GoldengateDeploymentEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_scaling_enabled, as: 'autoScalingEnabled'
+          property :category, as: 'category'
+          property :default_cpu_core_count, as: 'defaultCpuCoreCount'
+          property :display_name, as: 'displayName'
+          property :environment_type, as: 'environmentType'
+          property :max_cpu_core_count, as: 'maxCpuCoreCount'
+          property :memory_gb_per_cpu_core, as: 'memoryGbPerCpuCore'
+          property :min_cpu_core_count, as: 'minCpuCoreCount'
+          property :name, as: 'name'
+          property :network_bandwidth_gbps_per_cpu_core, as: 'networkBandwidthGbpsPerCpuCore'
+          property :storage_usage_limit_gb_per_cpu_core, as: 'storageUsageLimitGbPerCpuCore'
+        end
+      end
+      
+      class GoldengateDeploymentLock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compartment_id, as: 'compartmentId'
+          property :create_time, as: 'createTime'
+          property :message, as: 'message'
+          property :related_resource_id, as: 'relatedResourceId'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoldengateDeploymentProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_schedule, as: 'backupSchedule', class: Google::Apis::OracledatabaseV1::GoldengateBackupSchedule, decorator: Google::Apis::OracledatabaseV1::GoldengateBackupSchedule::Representation
+      
+          property :category, as: 'category'
+          property :cpu_core_count, as: 'cpuCoreCount'
+          property :deployment_backup_id, as: 'deploymentBackupId'
+          property :deployment_diagnostic_data, as: 'deploymentDiagnosticData', class: Google::Apis::OracledatabaseV1::DeploymentDiagnosticData, decorator: Google::Apis::OracledatabaseV1::DeploymentDiagnosticData::Representation
+      
+          property :deployment_role, as: 'deploymentRole'
+          property :deployment_type, as: 'deploymentType'
+          property :deployment_url, as: 'deploymentUrl'
+          property :description, as: 'description'
+          property :environment_type, as: 'environmentType'
+          property :fqdn, as: 'fqdn'
+          property :healthy, as: 'healthy'
+          collection :ingress_ips, as: 'ingressIps', class: Google::Apis::OracledatabaseV1::IngressIp, decorator: Google::Apis::OracledatabaseV1::IngressIp::Representation
+      
+          property :is_auto_scaling_enabled, as: 'isAutoScalingEnabled'
+          property :is_latest_version, as: 'isLatestVersion'
+          property :is_public, as: 'isPublic'
+          property :is_storage_utilization_limit_exceeded, as: 'isStorageUtilizationLimitExceeded'
+          property :last_backup_schedule_time, as: 'lastBackupScheduleTime'
+          property :license_model, as: 'licenseModel'
+          property :lifecycle_details, as: 'lifecycleDetails'
+          property :lifecycle_state, as: 'lifecycleState'
+          property :lifecycle_sub_state, as: 'lifecycleSubState'
+          property :load_balancer_id, as: 'loadBalancerId'
+          property :load_balancer_subnet_id, as: 'loadBalancerSubnetId'
+          collection :locks, as: 'locks', class: Google::Apis::OracledatabaseV1::GoldengateDeploymentLock, decorator: Google::Apis::OracledatabaseV1::GoldengateDeploymentLock::Representation
+      
+          property :maintenance_config, as: 'maintenanceConfig', class: Google::Apis::OracledatabaseV1::GoldengateMaintenanceConfig, decorator: Google::Apis::OracledatabaseV1::GoldengateMaintenanceConfig::Representation
+      
+          property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::OracledatabaseV1::GoldengateMaintenanceWindow, decorator: Google::Apis::OracledatabaseV1::GoldengateMaintenanceWindow::Representation
+      
+          property :next_backup_schedule_time, as: 'nextBackupScheduleTime'
+          property :next_maintenance_action_type, as: 'nextMaintenanceActionType'
+          property :next_maintenance_description, as: 'nextMaintenanceDescription'
+          property :next_maintenance_time, as: 'nextMaintenanceTime'
+          collection :nsg_ids, as: 'nsgIds'
+          property :ocid, as: 'ocid'
+          property :ogg_data, as: 'oggData', class: Google::Apis::OracledatabaseV1::GoldengateOggDeployment, decorator: Google::Apis::OracledatabaseV1::GoldengateOggDeployment::Representation
+      
+          property :ogg_version_support_end_time, as: 'oggVersionSupportEndTime'
+          collection :placements, as: 'placements', class: Google::Apis::OracledatabaseV1::GoldengatePlacement, decorator: Google::Apis::OracledatabaseV1::GoldengatePlacement::Representation
+      
+          property :private_ip_address, as: 'privateIpAddress'
+          property :public_ip_address, as: 'publicIpAddress'
+          property :role_change_time, as: 'roleChangeTime'
+          property :storage_utilization_bytes, :numeric_string => true, as: 'storageUtilizationBytes'
+          property :update_time, as: 'updateTime'
+          property :upgrade_required_time, as: 'upgradeRequiredTime'
+        end
+      end
+      
+      class GoldengateDeploymentType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          collection :connection_types, as: 'connectionTypes'
+          property :default_username, as: 'defaultUsername'
+          property :deployment_type, as: 'deploymentType'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :ogg_version, as: 'oggVersion'
+          collection :source_technologies, as: 'sourceTechnologies'
+          collection :supported_capabilities, as: 'supportedCapabilities'
+          property :supported_technologies_url, as: 'supportedTechnologiesUrl'
+          collection :target_technologies, as: 'targetTechnologies'
+        end
+      end
+      
+      class GoldengateDeploymentVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :ocid, as: 'ocid'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::GoldengateDeploymentVersionProperties, decorator: Google::Apis::OracledatabaseV1::GoldengateDeploymentVersionProperties::Representation
+      
+        end
+      end
+      
+      class GoldengateDeploymentVersionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_type, as: 'deploymentType'
+          property :ogg_version, as: 'oggVersion'
+          property :release_time, as: 'releaseTime'
+          property :release_type, as: 'releaseType'
+          property :security_fix, as: 'securityFix'
+          property :support_end_time, as: 'supportEndTime'
+        end
+      end
+      
+      class GoldengateElasticsearchConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_type, as: 'authenticationType'
+          property :fingerprint, as: 'fingerprint'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :security_protocol, as: 'securityProtocol'
+          property :servers, as: 'servers'
+          property :technology_type, as: 'technologyType'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateGenericConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :technology_type, as: 'technologyType'
+        end
+      end
+      
+      class GoldengateGoldengateConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :goldengate_deployment_id, as: 'goldengateDeploymentId'
+          property :host, as: 'host'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :port, as: 'port'
+          property :technology_type, as: 'technologyType'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateGoogleBigQueryConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account_key_file, as: 'serviceAccountKeyFile'
+          property :technology_type, as: 'technologyType'
+        end
+      end
+      
+      class GoldengateGoogleCloudStorageConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account_key_file, as: 'serviceAccountKeyFile'
+          property :technology_type, as: 'technologyType'
+        end
+      end
+      
+      class GoldengateGooglePubsubConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account_key_file, as: 'serviceAccountKeyFile'
+          property :technology_type, as: 'technologyType'
+        end
+      end
+      
+      class GoldengateGroupToRolesMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :administrator_group_id, as: 'administratorGroupId'
+          property :operator_group_id, as: 'operatorGroupId'
+          property :security_group_id, as: 'securityGroupId'
+          property :user_group_id, as: 'userGroupId'
+        end
+      end
+      
+      class GoldengateHdfsConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :core_site_xml, as: 'coreSiteXml'
+          property :technology_type, as: 'technologyType'
+        end
+      end
+      
+      class GoldengateIcebergConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog, as: 'catalog', class: Google::Apis::OracledatabaseV1::IcebergCatalog, decorator: Google::Apis::OracledatabaseV1::IcebergCatalog::Representation
+      
+          property :storage, as: 'storage', class: Google::Apis::OracledatabaseV1::IcebergStorage, decorator: Google::Apis::OracledatabaseV1::IcebergStorage::Representation
+      
+          property :technology_type, as: 'technologyType'
+        end
+      end
+      
+      class GoldengateJavaMessageServiceConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_type, as: 'authenticationType'
+          property :connection_factory, as: 'connectionFactory'
+          property :connection_url, as: 'connectionUrl'
+          property :jndi_connection_factory, as: 'jndiConnectionFactory'
+          property :jndi_initial_context_factory, as: 'jndiInitialContextFactory'
+          property :jndi_provider_url, as: 'jndiProviderUrl'
+          property :jndi_security_credentials_secret, as: 'jndiSecurityCredentialsSecret'
+          property :jndi_security_principal, as: 'jndiSecurityPrincipal'
+          property :key_store_file, as: 'keyStoreFile'
+          property :key_store_password, as: 'keyStorePassword'
+          property :key_store_password_secret_version, as: 'keyStorePasswordSecretVersion'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :security_protocol, as: 'securityProtocol'
+          property :ssl_key_password, as: 'sslKeyPassword'
+          property :ssl_key_password_secret_version, as: 'sslKeyPasswordSecretVersion'
+          property :technology_type, as: 'technologyType'
+          property :trust_store_file, as: 'trustStoreFile'
+          property :trust_store_password, as: 'trustStorePassword'
+          property :trust_store_password_secret_version, as: 'trustStorePasswordSecretVersion'
+          property :use_jndi, as: 'useJndi'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateKafkaConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bootstrap_servers, as: 'bootstrapServers', class: Google::Apis::OracledatabaseV1::KafkaBootstrapServer, decorator: Google::Apis::OracledatabaseV1::KafkaBootstrapServer::Representation
+      
+          property :cluster_id, as: 'clusterId'
+          property :consumer_properties_file, as: 'consumerPropertiesFile'
+          property :key_store_file, as: 'keyStoreFile'
+          property :key_store_password, as: 'keyStorePassword'
+          property :key_store_password_secret_version, as: 'keyStorePasswordSecretVersion'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :producer_properties_file, as: 'producerPropertiesFile'
+          property :security_protocol, as: 'securityProtocol'
+          property :ssl_key_password, as: 'sslKeyPassword'
+          property :ssl_key_password_secret_version, as: 'sslKeyPasswordSecretVersion'
+          property :stream_pool_id, as: 'streamPoolId'
+          property :technology_type, as: 'technologyType'
+          property :trust_store_file, as: 'trustStoreFile'
+          property :trust_store_password, as: 'trustStorePassword'
+          property :trust_store_password_secret_version, as: 'trustStorePasswordSecretVersion'
+          property :use_resource_principal, as: 'useResourcePrincipal'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateKafkaSchemaRegistryConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_type, as: 'authenticationType'
+          property :key_store_file, as: 'keyStoreFile'
+          property :key_store_password, as: 'keyStorePassword'
+          property :key_store_password_secret_version, as: 'keyStorePasswordSecretVersion'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :ssl_key_password, as: 'sslKeyPassword'
+          property :ssl_key_password_secret_version, as: 'sslKeyPasswordSecretVersion'
+          property :technology_type, as: 'technologyType'
+          property :trust_store_file, as: 'trustStoreFile'
+          property :trust_store_password, as: 'trustStorePassword'
+          property :trust_store_password_secret_version, as: 'trustStorePasswordSecretVersion'
+          property :url, as: 'url'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateMaintenanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_release_upgrade_period_days, as: 'bundleReleaseUpgradePeriodDays'
+          property :interim_release_upgrade_period_days, as: 'interimReleaseUpgradePeriodDays'
+          property :is_interim_release_auto_upgrade_enabled, as: 'isInterimReleaseAutoUpgradeEnabled'
+          property :major_release_upgrade_period_days, as: 'majorReleaseUpgradePeriodDays'
+          property :security_patch_upgrade_period_days, as: 'securityPatchUpgradePeriodDays'
+        end
+      end
+      
+      class GoldengateMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :start_hour, as: 'startHour'
+        end
+      end
+      
+      class GoldengateMicrosoftFabricConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :endpoint, as: 'endpoint'
+          property :technology_type, as: 'technologyType'
+          property :tenant_id, as: 'tenantId'
+        end
+      end
+      
+      class GoldengateMicrosoftSqlserverConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_attributes, as: 'additionalAttributes', class: Google::Apis::OracledatabaseV1::NameValuePair, decorator: Google::Apis::OracledatabaseV1::NameValuePair::Representation
+      
+          property :database, as: 'database'
+          property :host, as: 'host'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :port, as: 'port'
+          property :security_protocol, as: 'securityProtocol'
+          property :server_certificate_validation_required, as: 'serverCertificateValidationRequired'
+          property :ssl_ca_file, as: 'sslCaFile'
+          property :technology_type, as: 'technologyType'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateMongodbConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_string, as: 'connectionString'
+          property :database_id, as: 'databaseId'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :security_protocol, as: 'securityProtocol'
+          property :technology_type, as: 'technologyType'
+          property :tls_ca_file, as: 'tlsCaFile'
+          property :tls_certificate_key_file, as: 'tlsCertificateKeyFile'
+          property :tls_certificate_key_file_password, as: 'tlsCertificateKeyFilePassword'
+          property :tls_certificate_key_file_password_secret_version, as: 'tlsCertificateKeyFilePasswordSecretVersion'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateMysqlConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_attributes, as: 'additionalAttributes', class: Google::Apis::OracledatabaseV1::NameValuePair, decorator: Google::Apis::OracledatabaseV1::NameValuePair::Representation
+      
+          property :database, as: 'database'
+          property :db_system_id, as: 'dbSystemId'
+          property :host, as: 'host'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :port, as: 'port'
+          property :security_protocol, as: 'securityProtocol'
+          property :ssl_ca_file, as: 'sslCaFile'
+          property :ssl_cert_file, as: 'sslCertFile'
+          property :ssl_crl_file, as: 'sslCrlFile'
+          property :ssl_key_file, as: 'sslKeyFile'
+          property :ssl_mode, as: 'sslMode'
+          property :technology_type, as: 'technologyType'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateOciObjectStorageConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_key_file, as: 'privateKeyFile'
+          property :private_key_passphrase_secret, as: 'privateKeyPassphraseSecret'
+          property :public_key_fingerprint, as: 'publicKeyFingerprint'
+          property :region, as: 'region'
+          property :technology_type, as: 'technologyType'
+          property :tenancy_id, as: 'tenancyId'
+          property :use_resource_principal, as: 'useResourcePrincipal'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoldengateOggDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_password, as: 'adminPassword'
+          property :admin_password_secret_version, as: 'adminPasswordSecretVersion'
+          property :admin_username, as: 'adminUsername'
+          property :certificate, as: 'certificate'
+          property :credential_store, as: 'credentialStore'
+          property :deployment, as: 'deployment'
+          property :group_roles_mapping, as: 'groupRolesMapping', class: Google::Apis::OracledatabaseV1::GoldengateGroupToRolesMapping, decorator: Google::Apis::OracledatabaseV1::GoldengateGroupToRolesMapping::Representation
+      
+          property :identity_domain_id, as: 'identityDomainId'
+          property :ogg_version, as: 'oggVersion'
+          property :password_secret_id, as: 'passwordSecretId'
+        end
+      end
+      
+      class GoldengateOracleAiDataPlatformConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_url, as: 'connectionUrl'
+          property :private_key_file, as: 'privateKeyFile'
+          property :private_key_passphrase_secret, as: 'privateKeyPassphraseSecret'
+          property :public_key_fingerprint, as: 'publicKeyFingerprint'
+          property :region, as: 'region'
+          property :technology_type, as: 'technologyType'
+          property :tenancy_id, as: 'tenancyId'
+          property :use_resource_principal, as: 'useResourcePrincipal'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoldengateOracleConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_mode, as: 'authenticationMode'
+          property :connection_string, as: 'connectionString'
+          property :gcp_oracle_database_id, as: 'gcpOracleDatabaseId'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :session_mode, as: 'sessionMode'
+          property :technology_type, as: 'technologyType'
+          property :username, as: 'username'
+          property :wallet_file, as: 'walletFile'
+        end
+      end
+      
+      class GoldengateOracleNosqlConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_key_file, as: 'privateKeyFile'
+          property :private_key_passphrase_secret, as: 'privateKeyPassphraseSecret'
+          property :public_key_fingerprint, as: 'publicKeyFingerprint'
+          property :region, as: 'region'
+          property :technology_type, as: 'technologyType'
+          property :tenancy_id, as: 'tenancyId'
+          property :use_resource_principal, as: 'useResourcePrincipal'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoldengatePlacement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_domain, as: 'availabilityDomain'
+          property :fault_domain, as: 'faultDomain'
+        end
+      end
+      
+      class GoldengatePostgresqlConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_attributes, as: 'additionalAttributes', class: Google::Apis::OracledatabaseV1::NameValuePair, decorator: Google::Apis::OracledatabaseV1::NameValuePair::Representation
+      
+          property :database, as: 'database'
+          property :db_system_id, as: 'dbSystemId'
+          property :host, as: 'host'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :port, as: 'port'
+          property :security_protocol, as: 'securityProtocol'
+          property :ssl_ca_file, as: 'sslCaFile'
+          property :ssl_cert_file, as: 'sslCertFile'
+          property :ssl_crl_file, as: 'sslCrlFile'
+          property :ssl_key_file, as: 'sslKeyFile'
+          property :ssl_mode, as: 'sslMode'
+          property :technology_type, as: 'technologyType'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateRedisConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_type, as: 'authenticationType'
+          property :key_store_file, as: 'keyStoreFile'
+          property :key_store_password, as: 'keyStorePassword'
+          property :key_store_password_secret_version, as: 'keyStorePasswordSecretVersion'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :redis_cluster_id, as: 'redisClusterId'
+          property :security_protocol, as: 'securityProtocol'
+          property :servers, as: 'servers'
+          property :technology_type, as: 'technologyType'
+          property :trust_store_file, as: 'trustStoreFile'
+          property :trust_store_password, as: 'trustStorePassword'
+          property :trust_store_password_secret_version, as: 'trustStorePasswordSecretVersion'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoldengateSnowflakeConnectionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_type, as: 'authenticationType'
+          property :connection_url, as: 'connectionUrl'
+          property :password, as: 'password'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :private_key_file, as: 'privateKeyFile'
+          property :private_key_passphrase_secret, as: 'privateKeyPassphraseSecret'
+          property :technology_type, as: 'technologyType'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoogleCloudStorageIcebergStorage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :project_id, as: 'projectId'
+          property :service_account_key_file, as: 'serviceAccountKeyFile'
+        end
+      end
+      
+      class IcebergCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_type, as: 'catalogType'
+          property :glue_iceberg_catalog, as: 'glueIcebergCatalog', class: Google::Apis::OracledatabaseV1::GlueIcebergCatalog, decorator: Google::Apis::OracledatabaseV1::GlueIcebergCatalog::Representation
+      
+          property :nessie_iceberg_catalog, as: 'nessieIcebergCatalog', class: Google::Apis::OracledatabaseV1::NessieIcebergCatalog, decorator: Google::Apis::OracledatabaseV1::NessieIcebergCatalog::Representation
+      
+          property :polaris_iceberg_catalog, as: 'polarisIcebergCatalog', class: Google::Apis::OracledatabaseV1::PolarisIcebergCatalog, decorator: Google::Apis::OracledatabaseV1::PolarisIcebergCatalog::Representation
+      
+          property :rest_iceberg_catalog, as: 'restIcebergCatalog', class: Google::Apis::OracledatabaseV1::RestIcebergCatalog, decorator: Google::Apis::OracledatabaseV1::RestIcebergCatalog::Representation
+      
+        end
+      end
+      
+      class IcebergStorage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amazon_s3_iceberg_storage, as: 'amazonS3IcebergStorage', class: Google::Apis::OracledatabaseV1::AmazonS3IcebergStorage, decorator: Google::Apis::OracledatabaseV1::AmazonS3IcebergStorage::Representation
+      
+          property :azure_data_lake_storage_iceberg_storage, as: 'azureDataLakeStorageIcebergStorage', class: Google::Apis::OracledatabaseV1::AzureDataLakeStorageIcebergStorage, decorator: Google::Apis::OracledatabaseV1::AzureDataLakeStorageIcebergStorage::Representation
+      
+          property :google_cloud_storage_iceberg_storage, as: 'googleCloudStorageIcebergStorage', class: Google::Apis::OracledatabaseV1::GoogleCloudStorageIcebergStorage, decorator: Google::Apis::OracledatabaseV1::GoogleCloudStorageIcebergStorage::Representation
+      
+          property :storage_type, as: 'storageType'
+        end
+      end
+      
       class IdentityConnector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_state, as: 'connectionState'
           property :service_agent_email, as: 'serviceAgentEmail'
+        end
+      end
+      
+      class IngressIp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingress_ip_address, as: 'ingressIpAddress'
+        end
+      end
+      
+      class KafkaBootstrapServer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
+          property :private_ip_address, as: 'privateIpAddress'
         end
       end
       
@@ -1638,6 +2919,76 @@ module Google
         end
       end
       
+      class ListGoldengateConnectionAssignmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :goldengate_connection_assignments, as: 'goldengateConnectionAssignments', class: Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment, decorator: Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListGoldengateConnectionTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :goldengate_connection_types, as: 'goldengateConnectionTypes', class: Google::Apis::OracledatabaseV1::GoldengateConnectionType, decorator: Google::Apis::OracledatabaseV1::GoldengateConnectionType::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListGoldengateConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :goldengate_connections, as: 'goldengateConnections', class: Google::Apis::OracledatabaseV1::GoldengateConnection, decorator: Google::Apis::OracledatabaseV1::GoldengateConnection::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListGoldengateDeploymentEnvironmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :goldengate_deployment_environments, as: 'goldengateDeploymentEnvironments', class: Google::Apis::OracledatabaseV1::GoldengateDeploymentEnvironment, decorator: Google::Apis::OracledatabaseV1::GoldengateDeploymentEnvironment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListGoldengateDeploymentTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :goldengate_deployment_types, as: 'goldengateDeploymentTypes', class: Google::Apis::OracledatabaseV1::GoldengateDeploymentType, decorator: Google::Apis::OracledatabaseV1::GoldengateDeploymentType::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListGoldengateDeploymentVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :goldengate_deployment_versions, as: 'goldengateDeploymentVersions', class: Google::Apis::OracledatabaseV1::GoldengateDeploymentVersion, decorator: Google::Apis::OracledatabaseV1::GoldengateDeploymentVersion::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListGoldengateDeploymentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :goldengate_deployments, as: 'goldengateDeployments', class: Google::Apis::OracledatabaseV1::GoldengateDeployment, decorator: Google::Apis::OracledatabaseV1::GoldengateDeployment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1734,6 +3085,22 @@ module Google
           property :grid_image_id, as: 'gridImageId'
           property :name, as: 'name'
           property :version, as: 'version'
+        end
+      end
+      
+      class NameValuePair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
+      class NessieIcebergCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch, as: 'branch'
+          property :uri, as: 'uri'
         end
       end
       
@@ -1840,11 +3207,30 @@ module Google
         end
       end
       
+      class PolarisIcebergCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :polaris_catalog, as: 'polarisCatalog'
+          property :principal_role, as: 'principalRole'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class RemoveVirtualMachineExadbVmClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :hostnames, as: 'hostnames'
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class RestIcebergCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :properties, as: 'properties'
+          property :uri, as: 'uri'
         end
       end
       
@@ -1886,6 +3272,12 @@ module Google
         end
       end
       
+      class StartGoldengateDeploymentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1896,6 +3288,12 @@ module Google
       end
       
       class StopAutonomousDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class StopGoldengateDeploymentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1913,6 +3311,34 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :peer_autonomous_database, as: 'peerAutonomousDatabase'
+        end
+      end
+      
+      class TestConnectionAssignmentError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :code, as: 'code'
+          property :issue, as: 'issue'
+          property :message, as: 'message'
+        end
+      end
+      
+      class TestGoldengateConnectionAssignmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class TestGoldengateConnectionAssignmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::OracledatabaseV1::TestConnectionAssignmentError, decorator: Google::Apis::OracledatabaseV1::TestConnectionAssignmentError::Representation
+      
+          collection :errors, as: 'errors', class: Google::Apis::OracledatabaseV1::TestConnectionAssignmentError, decorator: Google::Apis::OracledatabaseV1::TestConnectionAssignmentError::Representation
+      
+          property :result_type, as: 'resultType'
         end
       end
       

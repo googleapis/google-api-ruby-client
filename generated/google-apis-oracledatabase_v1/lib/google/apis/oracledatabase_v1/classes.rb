@@ -57,6 +57,55 @@ module Google
         end
       end
       
+      # The Amazon S3 Iceberg storage.
+      class AmazonS3IcebergStorage
+        include Google::Apis::Core::Hashable
+      
+        # Required. The access key ID of Amazon S3.
+        # Corresponds to the JSON property `accessKeyId`
+        # @return [String]
+        attr_accessor :access_key_id
+      
+        # Required. The bucket of Amazon S3.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Optional. The endpoint of Amazon S3.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Required. The region of Amazon S3.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Required. The scheme type of Amazon S3.
+        # Corresponds to the JSON property `schemeType`
+        # @return [String]
+        attr_accessor :scheme_type
+      
+        # Optional. The secret access key of Amazon S3.
+        # Corresponds to the JSON property `secretAccessKeySecret`
+        # @return [String]
+        attr_accessor :secret_access_key_secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @region = args[:region] if args.key?(:region)
+          @scheme_type = args[:scheme_type] if args.key?(:scheme_type)
+          @secret_access_key_secret = args[:secret_access_key_secret] if args.key?(:secret_access_key_secret)
+        end
+      end
+      
       # Details of the Autonomous Database resource. https://docs.oracle.com/en-us/
       # iaas/api/#/en/database/20160918/AutonomousDatabase/
       class AutonomousDatabase
@@ -1105,6 +1154,43 @@ module Google
           @name = args[:name] if args.key?(:name)
           @version = args[:version] if args.key?(:version)
           @workload_uri = args[:workload_uri] if args.key?(:workload_uri)
+        end
+      end
+      
+      # The Azure Data Lake Storage Iceberg storage.
+      class AzureDataLakeStorageIcebergStorage
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The account key of Azure Data Lake Storage.
+        # Corresponds to the JSON property `accountKeySecret`
+        # @return [String]
+        attr_accessor :account_key_secret
+      
+        # Required. The account of Azure Data Lake Storage.
+        # Corresponds to the JSON property `azureAccount`
+        # @return [String]
+        attr_accessor :azure_account
+      
+        # Required. The container of Azure Data Lake Storage.
+        # Corresponds to the JSON property `container`
+        # @return [String]
+        attr_accessor :container
+      
+        # Optional. The endpoint of Azure Data Lake Storage.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_key_secret = args[:account_key_secret] if args.key?(:account_key_secret)
+          @azure_account = args[:azure_account] if args.key?(:azure_account)
+          @container = args[:container] if args.key?(:container)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
         end
       end
       
@@ -2990,6 +3076,55 @@ module Google
         end
       end
       
+      # The deployment diagnostic data.
+      class DeploymentDiagnosticData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The bucket name.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Output only. The time diagnostic end.
+        # Corresponds to the JSON property `diagnosticEndTime`
+        # @return [String]
+        attr_accessor :diagnostic_end_time
+      
+        # Output only. The time diagnostic start.
+        # Corresponds to the JSON property `diagnosticStartTime`
+        # @return [String]
+        attr_accessor :diagnostic_start_time
+      
+        # Output only. The diagnostic state.
+        # Corresponds to the JSON property `diagnosticState`
+        # @return [String]
+        attr_accessor :diagnostic_state
+      
+        # Output only. The namespace name.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        # Output only. The object name.
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @diagnostic_end_time = args[:diagnostic_end_time] if args.key?(:diagnostic_end_time)
+          @diagnostic_start_time = args[:diagnostic_start_time] if args.key?(:diagnostic_start_time)
+          @diagnostic_state = args[:diagnostic_state] if args.key?(:diagnostic_state)
+          @namespace = args[:namespace] if args.key?(:namespace)
+          @object = args[:object] if args.key?(:object)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -3626,6 +3761,3524 @@ module Google
         end
       end
       
+      # The Glue Iceberg catalog.
+      class GlueIcebergCatalog
+        include Google::Apis::Core::Hashable
+      
+        # Required. The catalog ID of Glue.
+        # Corresponds to the JSON property `glueId`
+        # @return [String]
+        attr_accessor :glue_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @glue_id = args[:glue_id] if args.key?(:glue_id)
+        end
+      end
+      
+      # The properties of GoldengateAmazonKinesisConnection.
+      class GoldengateAmazonKinesisConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Access key ID to access the Amazon Kinesis.
+        # Corresponds to the JSON property `accessKeyId`
+        # @return [String]
+        attr_accessor :access_key_id
+      
+        # Optional. The name of the AWS region. If not provided, Goldengate will default
+        # to 'us-west-1'.
+        # Corresponds to the JSON property `awsRegion`
+        # @return [String]
+        attr_accessor :aws_region
+      
+        # Optional. The endpoint URL of the Amazon Kinesis service. e.g.: 'https://
+        # kinesis.us-east-1.amazonaws.com' If not provided, Goldengate will default to '
+        # https://kinesis..amazonaws.com'.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Optional. Secret access key to access the Amazon Kinesis.
+        # Corresponds to the JSON property `secretAccessKeySecret`
+        # @return [String]
+        attr_accessor :secret_access_key_secret
+      
+        # Optional. The technology type of AmazonKinesisConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
+          @aws_region = args[:aws_region] if args.key?(:aws_region)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @secret_access_key_secret = args[:secret_access_key_secret] if args.key?(:secret_access_key_secret)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+        end
+      end
+      
+      # The properties of GoldengateAmazonRedshiftConnection.
+      class GoldengateAmazonRedshiftConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Connection URL. e.g.: 'jdbc:redshift://aws-redshift-instance.
+        # aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
+        # Corresponds to the JSON property `connectionUrl`
+        # @return [String]
+        attr_accessor :connection_url
+      
+        # Optional. Input only. The password Oracle Goldengate uses for Amazon Redshift
+        # connection in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses for Amazon Redshift
+        # connection. Format: projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The technology type of AmazonRedshiftConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The username Oracle Goldengate uses to connect the associated system
+        # of the given technology.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_url = args[:connection_url] if args.key?(:connection_url)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The properties of GoldengateAmazonS3Connection.
+      class GoldengateAmazonS3ConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Access key ID to access the Amazon S3 bucket.
+        # Corresponds to the JSON property `accessKeyId`
+        # @return [String]
+        attr_accessor :access_key_id
+      
+        # Optional. The Amazon Endpoint for S3.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Optional. The name of the AWS region where the bucket is created.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Optional. Secret access key to access the Amazon S3 bucket.
+        # Corresponds to the JSON property `secretAccessKeySecret`
+        # @return [String]
+        attr_accessor :secret_access_key_secret
+      
+        # Optional. The technology type of AmazonS3Connection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @region = args[:region] if args.key?(:region)
+          @secret_access_key_secret = args[:secret_access_key_secret] if args.key?(:secret_access_key_secret)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+        end
+      end
+      
+      # The properties of GoldengateAzureDataLakeStorageConnection.
+      class GoldengateAzureDataLakeStorageConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Sets the Azure storage account name.
+        # Corresponds to the JSON property `account`
+        # @return [String]
+        attr_accessor :account
+      
+        # Optional. Azure storage account key. This property is required when '
+        # authentication_type' is set to 'SHARED_KEY'.
+        # Corresponds to the JSON property `accountKeySecret`
+        # @return [String]
+        attr_accessor :account_key_secret
+      
+        # Optional. Authentication mechanism to access Azure Data Lake Storage.
+        # Corresponds to the JSON property `authenticationType`
+        # @return [String]
+        attr_accessor :authentication_type
+      
+        # Optional. The endpoint used for authentication with Microsoft Entra ID (
+        # formerly Azure Active Directory). Default value: https://login.microsoftonline.
+        # com
+        # Corresponds to the JSON property `azureAuthorityHost`
+        # @return [String]
+        attr_accessor :azure_authority_host
+      
+        # Optional. Azure tenant ID of the application. This property is required when '
+        # authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+        # Corresponds to the JSON property `azureTenantId`
+        # @return [String]
+        attr_accessor :azure_tenant_id
+      
+        # Optional. Azure client ID of the application. This property is required when '
+        # authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Optional. Azure client secret (aka application password) for authentication.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Optional. Azure Storage service endpoint. e.g: https://test.blob.core.windows.
+        # net
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Optional. Credential that uses a shared access signature (SAS) to authenticate
+        # to an Azure Service.
+        # Corresponds to the JSON property `sasTokenSecret`
+        # @return [String]
+        attr_accessor :sas_token_secret
+      
+        # Optional. The technology type of AzureDataLakeStorageConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account = args[:account] if args.key?(:account)
+          @account_key_secret = args[:account_key_secret] if args.key?(:account_key_secret)
+          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
+          @azure_authority_host = args[:azure_authority_host] if args.key?(:azure_authority_host)
+          @azure_tenant_id = args[:azure_tenant_id] if args.key?(:azure_tenant_id)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @sas_token_secret = args[:sas_token_secret] if args.key?(:sas_token_secret)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+        end
+      end
+      
+      # The properties of GoldengateAzureSynapseAnalyticsConnection.
+      class GoldengateAzureSynapseAnalyticsConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. JDBC connection string. e.g.: 'jdbc:sqlserver://.sql.azuresynapse.
+        # net:1433;database=;encrypt=true;trustServerCertificate=false;
+        # hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
+        # Corresponds to the JSON property `connectionString`
+        # @return [String]
+        attr_accessor :connection_string
+      
+        # Optional. Input only. The password Oracle Goldengate uses for Azure Synapse
+        # Analytics connection in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses for Azure Synapse Analytics
+        # connection. Format: projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The technology type of AzureSynapseAnalyticsConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The username Oracle Goldengate uses to connect the associated system
+        # of the given technology.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_string = args[:connection_string] if args.key?(:connection_string)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The backup schedule of the GoldengateDeployment.
+      class GoldengateBackupSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp of when the backup was scheduled.
+        # Corresponds to the JSON property `backupScheduledTime`
+        # @return [String]
+        attr_accessor :backup_scheduled_time
+      
+        # Output only. The bucket name.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Output only. The compartment id.
+        # Corresponds to the JSON property `compartmentId`
+        # @return [String]
+        attr_accessor :compartment_id
+      
+        # Output only. The frequency backup scheduled.
+        # Corresponds to the JSON property `frequencyBackupScheduled`
+        # @return [String]
+        attr_accessor :frequency_backup_scheduled
+      
+        # Output only. If metadata only.
+        # Corresponds to the JSON property `metadataOnly`
+        # @return [Boolean]
+        attr_accessor :metadata_only
+        alias_method :metadata_only?, :metadata_only
+      
+        # Output only. The namespace name.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_scheduled_time = args[:backup_scheduled_time] if args.key?(:backup_scheduled_time)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @compartment_id = args[:compartment_id] if args.key?(:compartment_id)
+          @frequency_backup_scheduled = args[:frequency_backup_scheduled] if args.key?(:frequency_backup_scheduled)
+          @metadata_only = args[:metadata_only] if args.key?(:metadata_only)
+          @namespace = args[:namespace] if args.key?(:namespace)
+        end
+      end
+      
+      # Details of the GoldengateConnection resource.
+      class GoldengateConnection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The date and time that the GoldengateConnection was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The ID of the subscription entitlement associated with the
+        # GoldengateConnection.
+        # Corresponds to the JSON property `entitlementId`
+        # @return [String]
+        attr_accessor :entitlement_id
+      
+        # Optional. The GCP Oracle zone where Oracle GoldengateConnection is hosted.
+        # Example: us-east4-b-r2. If not specified, the system will pick a zone based on
+        # availability.
+        # Corresponds to the JSON property `gcpOracleZone`
+        # @return [String]
+        attr_accessor :gcp_oracle_zone
+      
+        # Optional. The labels or tags associated with the GoldengateConnection.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the GoldengateConnection resource in the following
+        # format: projects/`project`/locations/`region`/goldengateConnections/`
+        # goldengate_connection`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. HTTPS link to OCI resources exposed to Customer via UI Interface.
+        # Corresponds to the JSON property `ociUrl`
+        # @return [String]
+        attr_accessor :oci_url
+      
+        # Optional. The name of the OdbNetwork associated with the GoldengateConnection.
+        # The format is projects/`project`/locations/`location`/odbNetworks/`odb_network`
+        # . It is optional but if specified, this should match the parent ODBNetwork of
+        # the OdbSubnet.
+        # Corresponds to the JSON property `odbNetwork`
+        # @return [String]
+        attr_accessor :odb_network
+      
+        # Optional. The name of the OdbSubnet associated with the GoldengateConnection
+        # for IP allocation. Format: projects/`project`/locations/`location`/odbNetworks/
+        # `odb_network`/odbSubnets/`odb_subnet`
+        # Corresponds to the JSON property `odbSubnet`
+        # @return [String]
+        attr_accessor :odb_subnet
+      
+        # The properties of a GoldengateConnection.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateConnectionProperties]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
+          @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @oci_url = args[:oci_url] if args.key?(:oci_url)
+          @odb_network = args[:odb_network] if args.key?(:odb_network)
+          @odb_subnet = args[:odb_subnet] if args.key?(:odb_subnet)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Represents the metadata of a Goldengate Connection Assignment.
+      class GoldengateConnectionAssignment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the connection assignment was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The display name for the GoldengateConnectionAssignment.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The OCID of the entitlement linked to this resource.
+        # Corresponds to the JSON property `entitlementId`
+        # @return [String]
+        attr_accessor :entitlement_id
+      
+        # Optional. The labels or tags associated with the
+        # GoldengateConnectionAssignment.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the GoldengateConnectionAssignment resource in the
+        # following format: projects/`project`/locations/`region`/
+        # goldengateConnectionAssignments/`goldengate_connection_assignment`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The properties of a GoldengateConnectionAssignment.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateConnectionAssignmentProperties]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # The properties of a GoldengateConnectionAssignment.
+      class GoldengateConnectionAssignmentProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Credential store alias.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # Required. The GoldengateConnection resource to be assigned. Format: projects/`
+        # project`/locations/`location`/goldengateConnections/`goldengate_connection`
+        # Corresponds to the JSON property `goldengateConnection`
+        # @return [String]
+        attr_accessor :goldengate_connection
+      
+        # Required. The GoldenGateDeployment to assign the connection to. Format:
+        # projects/`project`/locations/`location`/goldengateDeployments/`
+        # goldengate_deployment`
+        # Corresponds to the JSON property `goldengateDeployment`
+        # @return [String]
+        attr_accessor :goldengate_deployment
+      
+        # Output only. The [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/
+        # identifiers.htm) of the connection assignment being referenced.
+        # Corresponds to the JSON property `ocid`
+        # @return [String]
+        attr_accessor :ocid
+      
+        # Output only. The lifecycle state of the connection assignment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @goldengate_connection = args[:goldengate_connection] if args.key?(:goldengate_connection)
+          @goldengate_deployment = args[:goldengate_deployment] if args.key?(:goldengate_deployment)
+          @ocid = args[:ocid] if args.key?(:ocid)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The properties of a GoldengateConnection.
+      class GoldengateConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # The properties of GoldengateAmazonKinesisConnection.
+        # Corresponds to the JSON property `amazonKinesisConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateAmazonKinesisConnectionProperties]
+        attr_accessor :amazon_kinesis_connection_properties
+      
+        # The properties of GoldengateAmazonRedshiftConnection.
+        # Corresponds to the JSON property `amazonRedshiftConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateAmazonRedshiftConnectionProperties]
+        attr_accessor :amazon_redshift_connection_properties
+      
+        # The properties of GoldengateAmazonS3Connection.
+        # Corresponds to the JSON property `amazonS3ConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateAmazonS3ConnectionProperties]
+        attr_accessor :amazon_s3_connection_properties
+      
+        # The properties of GoldengateAzureDataLakeStorageConnection.
+        # Corresponds to the JSON property `azureDataLakeStorageConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateAzureDataLakeStorageConnectionProperties]
+        attr_accessor :azure_data_lake_storage_connection_properties
+      
+        # The properties of GoldengateAzureSynapseAnalyticsConnection.
+        # Corresponds to the JSON property `azureSynapseAnalyticsConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateAzureSynapseAnalyticsConnectionProperties]
+        attr_accessor :azure_synapse_analytics_connection_properties
+      
+        # Required. The connection type.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # The properties of GoldengateDatabricksConnection.
+        # Corresponds to the JSON property `databricksConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateDatabricksConnectionProperties]
+        attr_accessor :databricks_connection_properties
+      
+        # The properties of GoldengateDb2Connection.
+        # Corresponds to the JSON property `db2ConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateDb2ConnectionProperties]
+        attr_accessor :db2_connection_properties
+      
+        # Optional. Metadata about this specific object.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. An object's Display Name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The properties of GoldengateElasticsearchConnection.
+        # Corresponds to the JSON property `elasticsearchConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateElasticsearchConnectionProperties]
+        attr_accessor :elasticsearch_connection_properties
+      
+        # The properties of GoldengateGenericConnectionProperties.
+        # Corresponds to the JSON property `genericConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateGenericConnectionProperties]
+        attr_accessor :generic_connection_properties
+      
+        # The properties of GoldengateGoldengateConnectionProperties.
+        # Corresponds to the JSON property `goldengateConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateGoldengateConnectionProperties]
+        attr_accessor :goldengate_connection_properties
+      
+        # The properties of GoldengateGoogleBigQueryConnectionProperties.
+        # Corresponds to the JSON property `googleBigQueryConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateGoogleBigQueryConnectionProperties]
+        attr_accessor :google_big_query_connection_properties
+      
+        # The properties of GoldengateGoogleCloudStorageConnectionProperties.
+        # Corresponds to the JSON property `googleCloudStorageConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateGoogleCloudStorageConnectionProperties]
+        attr_accessor :google_cloud_storage_connection_properties
+      
+        # The properties of GoldengateGooglePubsubConnection.
+        # Corresponds to the JSON property `googlePubsubConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateGooglePubsubConnectionProperties]
+        attr_accessor :google_pubsub_connection_properties
+      
+        # The properties of GoldengateHdfsConnection.
+        # Corresponds to the JSON property `hdfsConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateHdfsConnectionProperties]
+        attr_accessor :hdfs_connection_properties
+      
+        # The properties of GoldengateIcebergConnection.
+        # Corresponds to the JSON property `icebergConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateIcebergConnectionProperties]
+        attr_accessor :iceberg_connection_properties
+      
+        # Output only. The Ingress IPs of the GoldengateConnection.
+        # Corresponds to the JSON property `ingressIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :ingress_ip_addresses
+      
+        # The properties of GoldengateJavaMessageServiceConnection.
+        # Corresponds to the JSON property `javaMessageServiceConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateJavaMessageServiceConnectionProperties]
+        attr_accessor :java_message_service_connection_properties
+      
+        # The properties of GoldengateKafkaConnection.
+        # Corresponds to the JSON property `kafkaConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateKafkaConnectionProperties]
+        attr_accessor :kafka_connection_properties
+      
+        # The properties of GoldengateKafkaSchemaRegistryConnection.
+        # Corresponds to the JSON property `kafkaSchemaRegistryConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateKafkaSchemaRegistryConnectionProperties]
+        attr_accessor :kafka_schema_registry_connection_properties
+      
+        # Output only. Describes the object's current state in detail. For example, it
+        # can be used to provide actionable information for a resource in a Failed state.
+        # Corresponds to the JSON property `lifecycleDetails`
+        # @return [String]
+        attr_accessor :lifecycle_details
+      
+        # Output only. The lifecycle state of the connection.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # The properties of GoldengateMicrosoftFabricConnection.
+        # Corresponds to the JSON property `microsoftFabricConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateMicrosoftFabricConnectionProperties]
+        attr_accessor :microsoft_fabric_connection_properties
+      
+        # The properties of GoldengateMicrosoftSqlserverConnection.
+        # Corresponds to the JSON property `microsoftSqlserverConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateMicrosoftSqlserverConnectionProperties]
+        attr_accessor :microsoft_sqlserver_connection_properties
+      
+        # The properties of GoldengateMongodbConnection.
+        # Corresponds to the JSON property `mongodbConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateMongodbConnectionProperties]
+        attr_accessor :mongodb_connection_properties
+      
+        # Properties of GoldengateMysqlConnection.
+        # Corresponds to the JSON property `mysqlConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateMysqlConnectionProperties]
+        attr_accessor :mysql_connection_properties
+      
+        # The properties of GoldengateOciObjectStorageConnection.
+        # Corresponds to the JSON property `ociObjectStorageConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateOciObjectStorageConnectionProperties]
+        attr_accessor :oci_object_storage_connection_properties
+      
+        # Output only. The [OCID] of the connection being referenced.
+        # Corresponds to the JSON property `ocid`
+        # @return [String]
+        attr_accessor :ocid
+      
+        # The properties of GoldengateOracleAIDataPlatformConnection.
+        # Corresponds to the JSON property `oracleAiDataPlatformConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateOracleAiDataPlatformConnectionProperties]
+        attr_accessor :oracle_ai_data_platform_connection_properties
+      
+        # The properties of Goldengate Oracle Database Connection.
+        # Corresponds to the JSON property `oracleConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateOracleConnectionProperties]
+        attr_accessor :oracle_connection_properties
+      
+        # The properties of GoldengateOracleNosqlConnection.
+        # Corresponds to the JSON property `oracleNosqlConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateOracleNosqlConnectionProperties]
+        attr_accessor :oracle_nosql_connection_properties
+      
+        # The properties of GoldengatePostgresqlConnection.
+        # Corresponds to the JSON property `postgresqlConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengatePostgresqlConnectionProperties]
+        attr_accessor :postgresql_connection_properties
+      
+        # The properties of GoldengateRedisConnection.
+        # Corresponds to the JSON property `redisConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateRedisConnectionProperties]
+        attr_accessor :redis_connection_properties
+      
+        # Optional. The routing method for the GoldengateConnection.
+        # Corresponds to the JSON property `routingMethod`
+        # @return [String]
+        attr_accessor :routing_method
+      
+        # The properties of GoldengateSnowflakeConnection.
+        # Corresponds to the JSON property `snowflakeConnectionProperties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateSnowflakeConnectionProperties]
+        attr_accessor :snowflake_connection_properties
+      
+        # Output only. The time the resource was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amazon_kinesis_connection_properties = args[:amazon_kinesis_connection_properties] if args.key?(:amazon_kinesis_connection_properties)
+          @amazon_redshift_connection_properties = args[:amazon_redshift_connection_properties] if args.key?(:amazon_redshift_connection_properties)
+          @amazon_s3_connection_properties = args[:amazon_s3_connection_properties] if args.key?(:amazon_s3_connection_properties)
+          @azure_data_lake_storage_connection_properties = args[:azure_data_lake_storage_connection_properties] if args.key?(:azure_data_lake_storage_connection_properties)
+          @azure_synapse_analytics_connection_properties = args[:azure_synapse_analytics_connection_properties] if args.key?(:azure_synapse_analytics_connection_properties)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
+          @databricks_connection_properties = args[:databricks_connection_properties] if args.key?(:databricks_connection_properties)
+          @db2_connection_properties = args[:db2_connection_properties] if args.key?(:db2_connection_properties)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @elasticsearch_connection_properties = args[:elasticsearch_connection_properties] if args.key?(:elasticsearch_connection_properties)
+          @generic_connection_properties = args[:generic_connection_properties] if args.key?(:generic_connection_properties)
+          @goldengate_connection_properties = args[:goldengate_connection_properties] if args.key?(:goldengate_connection_properties)
+          @google_big_query_connection_properties = args[:google_big_query_connection_properties] if args.key?(:google_big_query_connection_properties)
+          @google_cloud_storage_connection_properties = args[:google_cloud_storage_connection_properties] if args.key?(:google_cloud_storage_connection_properties)
+          @google_pubsub_connection_properties = args[:google_pubsub_connection_properties] if args.key?(:google_pubsub_connection_properties)
+          @hdfs_connection_properties = args[:hdfs_connection_properties] if args.key?(:hdfs_connection_properties)
+          @iceberg_connection_properties = args[:iceberg_connection_properties] if args.key?(:iceberg_connection_properties)
+          @ingress_ip_addresses = args[:ingress_ip_addresses] if args.key?(:ingress_ip_addresses)
+          @java_message_service_connection_properties = args[:java_message_service_connection_properties] if args.key?(:java_message_service_connection_properties)
+          @kafka_connection_properties = args[:kafka_connection_properties] if args.key?(:kafka_connection_properties)
+          @kafka_schema_registry_connection_properties = args[:kafka_schema_registry_connection_properties] if args.key?(:kafka_schema_registry_connection_properties)
+          @lifecycle_details = args[:lifecycle_details] if args.key?(:lifecycle_details)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @microsoft_fabric_connection_properties = args[:microsoft_fabric_connection_properties] if args.key?(:microsoft_fabric_connection_properties)
+          @microsoft_sqlserver_connection_properties = args[:microsoft_sqlserver_connection_properties] if args.key?(:microsoft_sqlserver_connection_properties)
+          @mongodb_connection_properties = args[:mongodb_connection_properties] if args.key?(:mongodb_connection_properties)
+          @mysql_connection_properties = args[:mysql_connection_properties] if args.key?(:mysql_connection_properties)
+          @oci_object_storage_connection_properties = args[:oci_object_storage_connection_properties] if args.key?(:oci_object_storage_connection_properties)
+          @ocid = args[:ocid] if args.key?(:ocid)
+          @oracle_ai_data_platform_connection_properties = args[:oracle_ai_data_platform_connection_properties] if args.key?(:oracle_ai_data_platform_connection_properties)
+          @oracle_connection_properties = args[:oracle_connection_properties] if args.key?(:oracle_connection_properties)
+          @oracle_nosql_connection_properties = args[:oracle_nosql_connection_properties] if args.key?(:oracle_nosql_connection_properties)
+          @postgresql_connection_properties = args[:postgresql_connection_properties] if args.key?(:postgresql_connection_properties)
+          @redis_connection_properties = args[:redis_connection_properties] if args.key?(:redis_connection_properties)
+          @routing_method = args[:routing_method] if args.key?(:routing_method)
+          @snowflake_connection_properties = args[:snowflake_connection_properties] if args.key?(:snowflake_connection_properties)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Details of the Goldengate Connection Type resource.
+      class GoldengateConnectionType
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The connection type of the Goldengate Connection Type resource.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # Identifier. The name of the Goldengate Connection Type resource with the
+        # format: projects/`project`/locations/`region`/goldengateConnectionTypes/`
+        # goldengate_connection_type`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The technology type of the Goldengate Connection Type resource.
+        # Corresponds to the JSON property `technologyTypes`
+        # @return [Array<String>]
+        attr_accessor :technology_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
+          @name = args[:name] if args.key?(:name)
+          @technology_types = args[:technology_types] if args.key?(:technology_types)
+        end
+      end
+      
+      # The properties of GoldengateDatabricksConnection.
+      class GoldengateDatabricksConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Authentication type for Databricks.
+        # Corresponds to the JSON property `authenticationType`
+        # @return [String]
+        attr_accessor :authentication_type
+      
+        # Optional. OAuth client id, only applicable for authentication_type ==
+        # OAUTH_M2M
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Optional. OAuth client secret, only applicable for authentication_type ==
+        # OAUTH_M2M
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Optional. Connection URL. e.g.: 'jdbc:databricks://adb-33934.4.azuredatabricks.
+        # net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########
+        # 44/0##3-7-hlrb'
+        # Corresponds to the JSON property `connectionUrl`
+        # @return [String]
+        attr_accessor :connection_url
+      
+        # Optional. Input only. The password used to connect to Databricks in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password used to connect to Databricks. Format: projects/`
+        # project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. External storage credential name to access files on object storage
+        # such as ADLS Gen2, S3 or Cloud Storage.
+        # Corresponds to the JSON property `storageCredential`
+        # @return [String]
+        attr_accessor :storage_credential
+      
+        # Optional. The technology type of DatabricksConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @connection_url = args[:connection_url] if args.key?(:connection_url)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @storage_credential = args[:storage_credential] if args.key?(:storage_credential)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+        end
+      end
+      
+      # The properties of GoldengateDb2Connection.
+      class GoldengateDb2ConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An array of name-value pair attribute entries. Used as additional
+        # parameters in connection string.
+        # Corresponds to the JSON property `additionalAttributes`
+        # @return [Array<Google::Apis::OracledatabaseV1::NameValuePair>]
+        attr_accessor :additional_attributes
+      
+        # Optional. The name of the database.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Optional. The name or address of a host.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Optional. Input only. The password Oracle Goldengate uses for Db2 connection
+        # in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses for Db2 connection. Format:
+        # projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The port of an endpoint usually specified for a connection.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Optional. Security protocol for the DB2 database.
+        # Corresponds to the JSON property `securityProtocol`
+        # @return [String]
+        attr_accessor :security_protocol
+      
+        # Optional. The keystash file which contains the encrypted password to the key
+        # database file. Not supported for IBM Db2 for i.
+        # Corresponds to the JSON property `sslClientKeystashFile`
+        # @return [String]
+        attr_accessor :ssl_client_keystash_file
+      
+        # Optional. The keystore file created at the client containing the server
+        # certificate / CA root certificate. Not supported for IBM Db2 for i.
+        # Corresponds to the JSON property `sslClientKeystoredbFile`
+        # @return [String]
+        attr_accessor :ssl_client_keystoredb_file
+      
+        # Optional. The file which contains the self-signed server certificate /
+        # Certificate Authority (CA) certificate.
+        # Corresponds to the JSON property `sslServerCertificateFile`
+        # @return [String]
+        attr_accessor :ssl_server_certificate_file
+      
+        # Optional. The technology type of Db2Connection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The username Oracle Goldengate uses to connect to the DB2 database.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_attributes = args[:additional_attributes] if args.key?(:additional_attributes)
+          @database = args[:database] if args.key?(:database)
+          @host = args[:host] if args.key?(:host)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @port = args[:port] if args.key?(:port)
+          @security_protocol = args[:security_protocol] if args.key?(:security_protocol)
+          @ssl_client_keystash_file = args[:ssl_client_keystash_file] if args.key?(:ssl_client_keystash_file)
+          @ssl_client_keystoredb_file = args[:ssl_client_keystoredb_file] if args.key?(:ssl_client_keystoredb_file)
+          @ssl_server_certificate_file = args[:ssl_server_certificate_file] if args.key?(:ssl_server_certificate_file)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # GoldengateDeployment Goldengate Deployment resource model.
+      class GoldengateDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The date and time that the GoldengateDeployment was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The display name for the GoldengateDeployment.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The ID of the subscription entitlement associated with the
+        # GoldengateDeployment
+        # Corresponds to the JSON property `entitlementId`
+        # @return [String]
+        attr_accessor :entitlement_id
+      
+        # Optional. The GCP Oracle zone where Oracle GoldengateDeployment is hosted.
+        # Example: us-east4-b-r2. If not specified, the system will pick a zone based on
+        # availability.
+        # Corresponds to the JSON property `gcpOracleZone`
+        # @return [String]
+        attr_accessor :gcp_oracle_zone
+      
+        # Optional. The labels or tags associated with the GoldengateDeployment.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the GoldengateDeployment resource in the following
+        # format: projects/`project`/locations/`region`/goldengateDeployments/`
+        # goldengate_deployment`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. HTTPS link to OCI resources exposed to Customer via UI Interface.
+        # Corresponds to the JSON property `ociUrl`
+        # @return [String]
+        attr_accessor :oci_url
+      
+        # Optional. The name of the OdbNetwork associated with the GoldengateDeployment.
+        # Corresponds to the JSON property `odbNetwork`
+        # @return [String]
+        attr_accessor :odb_network
+      
+        # Required. The name of the OdbSubnet associated with the GoldengateDeployment
+        # for IP allocation.
+        # Corresponds to the JSON property `odbSubnet`
+        # @return [String]
+        attr_accessor :odb_subnet
+      
+        # Properties of GoldengateDeployment.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateDeploymentProperties]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
+          @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @oci_url = args[:oci_url] if args.key?(:oci_url)
+          @odb_network = args[:odb_network] if args.key?(:odb_network)
+          @odb_subnet = args[:odb_subnet] if args.key?(:odb_subnet)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Details of the Goldengate Deployment Environment resource.
+      class GoldengateDeploymentEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether auto scaling is enabled by default for the Goldengate
+        # Deployment Environment resource.
+        # Corresponds to the JSON property `autoScalingEnabled`
+        # @return [Boolean]
+        attr_accessor :auto_scaling_enabled
+        alias_method :auto_scaling_enabled?, :auto_scaling_enabled
+      
+        # Output only. The category of the Goldengate Deployment Environment resource.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Output only. The default CPU core count of the Goldengate Deployment
+        # Environment resource.
+        # Corresponds to the JSON property `defaultCpuCoreCount`
+        # @return [Fixnum]
+        attr_accessor :default_cpu_core_count
+      
+        # The display name of the Goldengate Deployment Environment resource.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The environment type of the Goldengate Deployment Environment
+        # resource.
+        # Corresponds to the JSON property `environmentType`
+        # @return [String]
+        attr_accessor :environment_type
+      
+        # Output only. The max CPU core count of the Goldengate Deployment Environment
+        # resource.
+        # Corresponds to the JSON property `maxCpuCoreCount`
+        # @return [Fixnum]
+        attr_accessor :max_cpu_core_count
+      
+        # Output only. The memory per CPU core in GBs of the Goldengate Deployment
+        # Environment resource.
+        # Corresponds to the JSON property `memoryGbPerCpuCore`
+        # @return [Fixnum]
+        attr_accessor :memory_gb_per_cpu_core
+      
+        # Output only. The min CPU core count of the Goldengate Deployment Environment
+        # resource.
+        # Corresponds to the JSON property `minCpuCoreCount`
+        # @return [Fixnum]
+        attr_accessor :min_cpu_core_count
+      
+        # Identifier. The name of the Goldengate Deployment Environment resource with
+        # the format: projects/`project`/locations/`location`/
+        # goldengateDeploymentEnvironments/`goldengate_deployment_environment`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The network bandwidth per CPU core in Gbps of the Goldengate
+        # Deployment Environment resource.
+        # Corresponds to the JSON property `networkBandwidthGbpsPerCpuCore`
+        # @return [Fixnum]
+        attr_accessor :network_bandwidth_gbps_per_cpu_core
+      
+        # Output only. The storage usage limit per CPU core in GBs of the Goldengate
+        # Deployment Environment resource.
+        # Corresponds to the JSON property `storageUsageLimitGbPerCpuCore`
+        # @return [Fixnum]
+        attr_accessor :storage_usage_limit_gb_per_cpu_core
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_scaling_enabled = args[:auto_scaling_enabled] if args.key?(:auto_scaling_enabled)
+          @category = args[:category] if args.key?(:category)
+          @default_cpu_core_count = args[:default_cpu_core_count] if args.key?(:default_cpu_core_count)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @environment_type = args[:environment_type] if args.key?(:environment_type)
+          @max_cpu_core_count = args[:max_cpu_core_count] if args.key?(:max_cpu_core_count)
+          @memory_gb_per_cpu_core = args[:memory_gb_per_cpu_core] if args.key?(:memory_gb_per_cpu_core)
+          @min_cpu_core_count = args[:min_cpu_core_count] if args.key?(:min_cpu_core_count)
+          @name = args[:name] if args.key?(:name)
+          @network_bandwidth_gbps_per_cpu_core = args[:network_bandwidth_gbps_per_cpu_core] if args.key?(:network_bandwidth_gbps_per_cpu_core)
+          @storage_usage_limit_gb_per_cpu_core = args[:storage_usage_limit_gb_per_cpu_core] if args.key?(:storage_usage_limit_gb_per_cpu_core)
+        end
+      end
+      
+      # The lock of the GoldengateDeployment.
+      class GoldengateDeploymentLock
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The compartment id.
+        # Corresponds to the JSON property `compartmentId`
+        # @return [String]
+        attr_accessor :compartment_id
+      
+        # Output only. The time created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. The related resource id.
+        # Corresponds to the JSON property `relatedResourceId`
+        # @return [String]
+        attr_accessor :related_resource_id
+      
+        # Output only. The type of lock.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compartment_id = args[:compartment_id] if args.key?(:compartment_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @message = args[:message] if args.key?(:message)
+          @related_resource_id = args[:related_resource_id] if args.key?(:related_resource_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Properties of GoldengateDeployment.
+      class GoldengateDeploymentProperties
+        include Google::Apis::Core::Hashable
+      
+        # The backup schedule of the GoldengateDeployment.
+        # Corresponds to the JSON property `backupSchedule`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateBackupSchedule]
+        attr_accessor :backup_schedule
+      
+        # Output only. The category of the GoldengateDeployment.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Optional. The Minimum number of OCPUs to be made available for this Deployment.
+        # Corresponds to the JSON property `cpuCoreCount`
+        # @return [Fixnum]
+        attr_accessor :cpu_core_count
+      
+        # Output only. The deployment backup id of the GoldengateDeployment.
+        # Corresponds to the JSON property `deploymentBackupId`
+        # @return [String]
+        attr_accessor :deployment_backup_id
+      
+        # The deployment diagnostic data.
+        # Corresponds to the JSON property `deploymentDiagnosticData`
+        # @return [Google::Apis::OracledatabaseV1::DeploymentDiagnosticData]
+        attr_accessor :deployment_diagnostic_data
+      
+        # Output only. The deployment role of the GoldengateDeployment.
+        # Corresponds to the JSON property `deploymentRole`
+        # @return [String]
+        attr_accessor :deployment_role
+      
+        # Required. A valid Goldengate Deployment type. For a list of supported types,
+        # use the `ListGoldengateDeploymentTypes` operation.
+        # Corresponds to the JSON property `deploymentType`
+        # @return [String]
+        attr_accessor :deployment_type
+      
+        # Output only. The deployment url of the GoldengateDeployment.
+        # Corresponds to the JSON property `deploymentUrl`
+        # @return [String]
+        attr_accessor :deployment_url
+      
+        # Optional. The description of the GoldengateDeployment.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The environment type of the GoldengateDeployment.
+        # Corresponds to the JSON property `environmentType`
+        # @return [String]
+        attr_accessor :environment_type
+      
+        # Output only. The Fully Qualified Domain Name of the GoldengateDeployment.
+        # Corresponds to the JSON property `fqdn`
+        # @return [String]
+        attr_accessor :fqdn
+      
+        # Output only. Whether the GoldengateDeployment is healthy.
+        # Corresponds to the JSON property `healthy`
+        # @return [Boolean]
+        attr_accessor :healthy
+        alias_method :healthy?, :healthy
+      
+        # Output only. The ingress ips of the GoldengateDeployment.
+        # Corresponds to the JSON property `ingressIps`
+        # @return [Array<Google::Apis::OracledatabaseV1::IngressIp>]
+        attr_accessor :ingress_ips
+      
+        # Optional. Indicates if auto scaling is enabled for the Deployment's CPU core
+        # count.
+        # Corresponds to the JSON property `isAutoScalingEnabled`
+        # @return [Boolean]
+        attr_accessor :is_auto_scaling_enabled
+        alias_method :is_auto_scaling_enabled?, :is_auto_scaling_enabled
+      
+        # Output only. Whether the GoldengateDeployment is of the latest version.
+        # Corresponds to the JSON property `isLatestVersion`
+        # @return [Boolean]
+        attr_accessor :is_latest_version
+        alias_method :is_latest_version?, :is_latest_version
+      
+        # Output only. Whether the GoldengateDeployment is public.
+        # Corresponds to the JSON property `isPublic`
+        # @return [Boolean]
+        attr_accessor :is_public
+        alias_method :is_public?, :is_public
+      
+        # Output only. Whether storage utilization limit is exceeded of the
+        # GoldengateDeployment.
+        # Corresponds to the JSON property `isStorageUtilizationLimitExceeded`
+        # @return [Boolean]
+        attr_accessor :is_storage_utilization_limit_exceeded
+        alias_method :is_storage_utilization_limit_exceeded?, :is_storage_utilization_limit_exceeded
+      
+        # Output only. The time last backup scheduled of the GoldengateDeployment.
+        # Corresponds to the JSON property `lastBackupScheduleTime`
+        # @return [String]
+        attr_accessor :last_backup_schedule_time
+      
+        # Optional. The Oracle license model that applies to a Deployment.
+        # Corresponds to the JSON property `licenseModel`
+        # @return [String]
+        attr_accessor :license_model
+      
+        # Output only. The lifecycle details of the GoldengateDeployment.
+        # Corresponds to the JSON property `lifecycleDetails`
+        # @return [String]
+        attr_accessor :lifecycle_details
+      
+        # Output only. State of the GoldengateDeployment.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # Output only. The lifecycle sub-state of the GoldengateDeployment.
+        # Corresponds to the JSON property `lifecycleSubState`
+        # @return [String]
+        attr_accessor :lifecycle_sub_state
+      
+        # Output only. The load balancer id of the GoldengateDeployment.
+        # Corresponds to the JSON property `loadBalancerId`
+        # @return [String]
+        attr_accessor :load_balancer_id
+      
+        # Output only. The load balancer subnet id of the GoldengateDeployment.
+        # Corresponds to the JSON property `loadBalancerSubnetId`
+        # @return [String]
+        attr_accessor :load_balancer_subnet_id
+      
+        # Output only. The locks of the GoldengateDeployment.
+        # Corresponds to the JSON property `locks`
+        # @return [Array<Google::Apis::OracledatabaseV1::GoldengateDeploymentLock>]
+        attr_accessor :locks
+      
+        # The maintenance configuration of the GoldengateDeployment.
+        # Corresponds to the JSON property `maintenanceConfig`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateMaintenanceConfig]
+        attr_accessor :maintenance_config
+      
+        # The maintenance window of the GoldengateDeployment.
+        # Corresponds to the JSON property `maintenanceWindow`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateMaintenanceWindow]
+        attr_accessor :maintenance_window
+      
+        # Output only. The time next backup scheduled of the GoldengateDeployment.
+        # Corresponds to the JSON property `nextBackupScheduleTime`
+        # @return [String]
+        attr_accessor :next_backup_schedule_time
+      
+        # Output only. The next maintenance action type of the GoldengateDeployment.
+        # Corresponds to the JSON property `nextMaintenanceActionType`
+        # @return [String]
+        attr_accessor :next_maintenance_action_type
+      
+        # Output only. The next maintenance description of the GoldengateDeployment.
+        # Corresponds to the JSON property `nextMaintenanceDescription`
+        # @return [String]
+        attr_accessor :next_maintenance_description
+      
+        # Output only. The time of next maintenance of the GoldengateDeployment.
+        # Corresponds to the JSON property `nextMaintenanceTime`
+        # @return [String]
+        attr_accessor :next_maintenance_time
+      
+        # Output only. The nsg ids of the GoldengateDeployment.
+        # Corresponds to the JSON property `nsgIds`
+        # @return [Array<String>]
+        attr_accessor :nsg_ids
+      
+        # Output only. OCID of the GoldengateDeployment.
+        # Corresponds to the JSON property `ocid`
+        # @return [String]
+        attr_accessor :ocid
+      
+        # The Ogg data of the GoldengateDeployment.
+        # Corresponds to the JSON property `oggData`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateOggDeployment]
+        attr_accessor :ogg_data
+      
+        # Output only. The time ogg version supported until of the GoldengateDeployment.
+        # Corresponds to the JSON property `oggVersionSupportEndTime`
+        # @return [String]
+        attr_accessor :ogg_version_support_end_time
+      
+        # Output only. The placements of the GoldengateDeployment.
+        # Corresponds to the JSON property `placements`
+        # @return [Array<Google::Apis::OracledatabaseV1::GoldengatePlacement>]
+        attr_accessor :placements
+      
+        # Output only. The private ip address of the GoldengateDeployment.
+        # Corresponds to the JSON property `privateIpAddress`
+        # @return [String]
+        attr_accessor :private_ip_address
+      
+        # Output only. The public ip address of the GoldengateDeployment.
+        # Corresponds to the JSON property `publicIpAddress`
+        # @return [String]
+        attr_accessor :public_ip_address
+      
+        # Output only. The time when the role of the GoldengateDeployment was changed.
+        # Corresponds to the JSON property `roleChangeTime`
+        # @return [String]
+        attr_accessor :role_change_time
+      
+        # Output only. The storage utilization in bytes of the GoldengateDeployment.
+        # Corresponds to the JSON property `storageUtilizationBytes`
+        # @return [Fixnum]
+        attr_accessor :storage_utilization_bytes
+      
+        # Output only. The time the GoldengateDeployment was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. The time upgrade required of the GoldengateDeployment.
+        # Corresponds to the JSON property `upgradeRequiredTime`
+        # @return [String]
+        attr_accessor :upgrade_required_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_schedule = args[:backup_schedule] if args.key?(:backup_schedule)
+          @category = args[:category] if args.key?(:category)
+          @cpu_core_count = args[:cpu_core_count] if args.key?(:cpu_core_count)
+          @deployment_backup_id = args[:deployment_backup_id] if args.key?(:deployment_backup_id)
+          @deployment_diagnostic_data = args[:deployment_diagnostic_data] if args.key?(:deployment_diagnostic_data)
+          @deployment_role = args[:deployment_role] if args.key?(:deployment_role)
+          @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
+          @deployment_url = args[:deployment_url] if args.key?(:deployment_url)
+          @description = args[:description] if args.key?(:description)
+          @environment_type = args[:environment_type] if args.key?(:environment_type)
+          @fqdn = args[:fqdn] if args.key?(:fqdn)
+          @healthy = args[:healthy] if args.key?(:healthy)
+          @ingress_ips = args[:ingress_ips] if args.key?(:ingress_ips)
+          @is_auto_scaling_enabled = args[:is_auto_scaling_enabled] if args.key?(:is_auto_scaling_enabled)
+          @is_latest_version = args[:is_latest_version] if args.key?(:is_latest_version)
+          @is_public = args[:is_public] if args.key?(:is_public)
+          @is_storage_utilization_limit_exceeded = args[:is_storage_utilization_limit_exceeded] if args.key?(:is_storage_utilization_limit_exceeded)
+          @last_backup_schedule_time = args[:last_backup_schedule_time] if args.key?(:last_backup_schedule_time)
+          @license_model = args[:license_model] if args.key?(:license_model)
+          @lifecycle_details = args[:lifecycle_details] if args.key?(:lifecycle_details)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @lifecycle_sub_state = args[:lifecycle_sub_state] if args.key?(:lifecycle_sub_state)
+          @load_balancer_id = args[:load_balancer_id] if args.key?(:load_balancer_id)
+          @load_balancer_subnet_id = args[:load_balancer_subnet_id] if args.key?(:load_balancer_subnet_id)
+          @locks = args[:locks] if args.key?(:locks)
+          @maintenance_config = args[:maintenance_config] if args.key?(:maintenance_config)
+          @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
+          @next_backup_schedule_time = args[:next_backup_schedule_time] if args.key?(:next_backup_schedule_time)
+          @next_maintenance_action_type = args[:next_maintenance_action_type] if args.key?(:next_maintenance_action_type)
+          @next_maintenance_description = args[:next_maintenance_description] if args.key?(:next_maintenance_description)
+          @next_maintenance_time = args[:next_maintenance_time] if args.key?(:next_maintenance_time)
+          @nsg_ids = args[:nsg_ids] if args.key?(:nsg_ids)
+          @ocid = args[:ocid] if args.key?(:ocid)
+          @ogg_data = args[:ogg_data] if args.key?(:ogg_data)
+          @ogg_version_support_end_time = args[:ogg_version_support_end_time] if args.key?(:ogg_version_support_end_time)
+          @placements = args[:placements] if args.key?(:placements)
+          @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
+          @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
+          @role_change_time = args[:role_change_time] if args.key?(:role_change_time)
+          @storage_utilization_bytes = args[:storage_utilization_bytes] if args.key?(:storage_utilization_bytes)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade_required_time = args[:upgrade_required_time] if args.key?(:upgrade_required_time)
+        end
+      end
+      
+      # Details of the Goldengate Deployment Type resource.
+      class GoldengateDeploymentType
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The category of the Goldengate Deployment Type resource.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Output only. The connection types of the Goldengate Deployment Type resource.
+        # Corresponds to the JSON property `connectionTypes`
+        # @return [Array<String>]
+        attr_accessor :connection_types
+      
+        # Output only. The default username of the Goldengate Deployment Type resource.
+        # Corresponds to the JSON property `defaultUsername`
+        # @return [String]
+        attr_accessor :default_username
+      
+        # Output only. The deployment type of the Goldengate Deployment Type resource.
+        # Corresponds to the JSON property `deploymentType`
+        # @return [String]
+        attr_accessor :deployment_type
+      
+        # Output only. The display name of the Goldengate Deployment Type resource.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The name of the Goldengate Deployment Type resource with the
+        # format: projects/`project`/locations/`region`/goldengateDeploymentTypes/`
+        # goldengate_deployment_type`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The Ogg version of the Goldengate Deployment Type resource.
+        # Corresponds to the JSON property `oggVersion`
+        # @return [String]
+        attr_accessor :ogg_version
+      
+        # Output only. The source technologies of the Goldengate Deployment Type
+        # resource.
+        # Corresponds to the JSON property `sourceTechnologies`
+        # @return [Array<String>]
+        attr_accessor :source_technologies
+      
+        # Output only. The supported capabilities of the Goldengate Deployment Type
+        # resource.
+        # Corresponds to the JSON property `supportedCapabilities`
+        # @return [Array<String>]
+        attr_accessor :supported_capabilities
+      
+        # Output only. The supported technologies URL of the Goldengate Deployment Type
+        # resource.
+        # Corresponds to the JSON property `supportedTechnologiesUrl`
+        # @return [String]
+        attr_accessor :supported_technologies_url
+      
+        # Output only. The target technologies of the Goldengate Deployment Type
+        # resource.
+        # Corresponds to the JSON property `targetTechnologies`
+        # @return [Array<String>]
+        attr_accessor :target_technologies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @connection_types = args[:connection_types] if args.key?(:connection_types)
+          @default_username = args[:default_username] if args.key?(:default_username)
+          @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @ogg_version = args[:ogg_version] if args.key?(:ogg_version)
+          @source_technologies = args[:source_technologies] if args.key?(:source_technologies)
+          @supported_capabilities = args[:supported_capabilities] if args.key?(:supported_capabilities)
+          @supported_technologies_url = args[:supported_technologies_url] if args.key?(:supported_technologies_url)
+          @target_technologies = args[:target_technologies] if args.key?(:target_technologies)
+        end
+      end
+      
+      # Details of the Goldengate Deployment Version resource.
+      class GoldengateDeploymentVersion
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the Goldengate Deployment Version resource with the
+        # format: projects/`project`/locations/`location`/goldengateDeploymentVersions/`
+        # goldengate_deployment_version`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The deployment version ocid of the Goldengate Deployment Version
+        # resource.
+        # Corresponds to the JSON property `ocid`
+        # @return [String]
+        attr_accessor :ocid
+      
+        # Properties of GoldengateDeploymentVersion.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateDeploymentVersionProperties]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @ocid = args[:ocid] if args.key?(:ocid)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Properties of GoldengateDeploymentVersion.
+      class GoldengateDeploymentVersionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The deployment type of the Goldengate Deployment Version resource.
+        # Corresponds to the JSON property `deploymentType`
+        # @return [String]
+        attr_accessor :deployment_type
+      
+        # Output only. The OGG version of the Goldengate Deployment Version resource.
+        # Corresponds to the JSON property `oggVersion`
+        # @return [String]
+        attr_accessor :ogg_version
+      
+        # Output only. The release time of the Goldengate Deployment Version resource.
+        # Corresponds to the JSON property `releaseTime`
+        # @return [String]
+        attr_accessor :release_time
+      
+        # Output only. The release type of the Goldengate Deployment Version resource.
+        # Corresponds to the JSON property `releaseType`
+        # @return [String]
+        attr_accessor :release_type
+      
+        # Optional. Whether the Goldengate Deployment Version resource is a security fix.
+        # Corresponds to the JSON property `securityFix`
+        # @return [Boolean]
+        attr_accessor :security_fix
+        alias_method :security_fix?, :security_fix
+      
+        # Output only. The support end time of the Goldengate Deployment Version
+        # resource.
+        # Corresponds to the JSON property `supportEndTime`
+        # @return [String]
+        attr_accessor :support_end_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
+          @ogg_version = args[:ogg_version] if args.key?(:ogg_version)
+          @release_time = args[:release_time] if args.key?(:release_time)
+          @release_type = args[:release_type] if args.key?(:release_type)
+          @security_fix = args[:security_fix] if args.key?(:security_fix)
+          @support_end_time = args[:support_end_time] if args.key?(:support_end_time)
+        end
+      end
+      
+      # The properties of GoldengateElasticsearchConnection.
+      class GoldengateElasticsearchConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Authentication type for Elasticsearch.
+        # Corresponds to the JSON property `authenticationType`
+        # @return [String]
+        attr_accessor :authentication_type
+      
+        # Optional. Fingerprint required by TLS security protocol. Eg.: '
+        # 6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # Optional. Input only. The password Oracle Goldengate uses for Elastic Search
+        # connection in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses for Elastic Search
+        # connection. Format: projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. Security protocol for Elasticsearch.
+        # Corresponds to the JSON property `securityProtocol`
+        # @return [String]
+        attr_accessor :security_protocol
+      
+        # Optional. Comma separated list of Elasticsearch server addresses, specified as
+        # host:port entries, where :port is optional. If port is not specified, it
+        # defaults to 9200. Example: "server1.example.com:4000,server2.example.com:4000"
+        # Corresponds to the JSON property `servers`
+        # @return [String]
+        attr_accessor :servers
+      
+        # Optional. The technology type of ElasticsearchConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The username Oracle Goldengate uses to connect the associated system
+        # of the given technology.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @security_protocol = args[:security_protocol] if args.key?(:security_protocol)
+          @servers = args[:servers] if args.key?(:servers)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The properties of GoldengateGenericConnectionProperties.
+      class GoldengateGenericConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The host of the GenericConnection.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Optional. The technology type.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+        end
+      end
+      
+      # The properties of GoldengateGoldengateConnectionProperties.
+      class GoldengateGoldengateConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the GoldengateDeployment associated with the
+        # GoldengateConnection. Format: projects/`project`/locations/`location`/
+        # goldengateDeployments/`goldengate_deployment`
+        # Corresponds to the JSON property `goldengateDeploymentId`
+        # @return [String]
+        attr_accessor :goldengate_deployment_id
+      
+        # Optional. The host of the GoldengateConnection.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Optional. Input only. The password used to connect to the Oracle Goldengate in
+        # plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password used to connect to the Oracle Goldengate. Format:
+        # projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The port of the GoldengateConnection.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Optional. The technology type.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The username credential.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goldengate_deployment_id = args[:goldengate_deployment_id] if args.key?(:goldengate_deployment_id)
+          @host = args[:host] if args.key?(:host)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @port = args[:port] if args.key?(:port)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The properties of GoldengateGoogleBigQueryConnectionProperties.
+      class GoldengateGoogleBigQueryConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The service account key file Cloud Storage containing the
+        # credentials required to use Google BigQuery.
+        # Corresponds to the JSON property `serviceAccountKeyFile`
+        # @return [String]
+        attr_accessor :service_account_key_file
+      
+        # Optional. The technology type.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account_key_file = args[:service_account_key_file] if args.key?(:service_account_key_file)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+        end
+      end
+      
+      # The properties of GoldengateGoogleCloudStorageConnectionProperties.
+      class GoldengateGoogleCloudStorageConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The service account key Cloud Storage file containing the
+        # credentials required to use Google Cloud Storage.
+        # Corresponds to the JSON property `serviceAccountKeyFile`
+        # @return [String]
+        attr_accessor :service_account_key_file
+      
+        # Optional. The technology type.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account_key_file = args[:service_account_key_file] if args.key?(:service_account_key_file)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+        end
+      end
+      
+      # The properties of GoldengateGooglePubsubConnection.
+      class GoldengateGooglePubsubConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The content of the service account key file containing the
+        # credentials required to use Google Pub/Sub.
+        # Corresponds to the JSON property `serviceAccountKeyFile`
+        # @return [String]
+        attr_accessor :service_account_key_file
+      
+        # Optional. The technology type of GooglePubsubConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account_key_file = args[:service_account_key_file] if args.key?(:service_account_key_file)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+        end
+      end
+      
+      # The group to roles mapping of the GoldengateDeployment.
+      class GoldengateGroupToRolesMapping
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The administrator group id.
+        # Corresponds to the JSON property `administratorGroupId`
+        # @return [String]
+        attr_accessor :administrator_group_id
+      
+        # Output only. The operator group id.
+        # Corresponds to the JSON property `operatorGroupId`
+        # @return [String]
+        attr_accessor :operator_group_id
+      
+        # Output only. The security group id.
+        # Corresponds to the JSON property `securityGroupId`
+        # @return [String]
+        attr_accessor :security_group_id
+      
+        # Output only. The user group id.
+        # Corresponds to the JSON property `userGroupId`
+        # @return [String]
+        attr_accessor :user_group_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @administrator_group_id = args[:administrator_group_id] if args.key?(:administrator_group_id)
+          @operator_group_id = args[:operator_group_id] if args.key?(:operator_group_id)
+          @security_group_id = args[:security_group_id] if args.key?(:security_group_id)
+          @user_group_id = args[:user_group_id] if args.key?(:user_group_id)
+        end
+      end
+      
+      # The properties of GoldengateHdfsConnection.
+      class GoldengateHdfsConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The content of the Hadoop Distributed File System configuration file
+        # (core-site.xml).
+        # Corresponds to the JSON property `coreSiteXml`
+        # @return [String]
+        attr_accessor :core_site_xml
+      
+        # Optional. The technology type of HdfsConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @core_site_xml = args[:core_site_xml] if args.key?(:core_site_xml)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+        end
+      end
+      
+      # The properties of GoldengateIcebergConnection.
+      class GoldengateIcebergConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # The Iceberg catalog details.
+        # Corresponds to the JSON property `catalog`
+        # @return [Google::Apis::OracledatabaseV1::IcebergCatalog]
+        attr_accessor :catalog
+      
+        # The Iceberg storage details.
+        # Corresponds to the JSON property `storage`
+        # @return [Google::Apis::OracledatabaseV1::IcebergStorage]
+        attr_accessor :storage
+      
+        # Required. The technology type of Iceberg connection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @storage = args[:storage] if args.key?(:storage)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+        end
+      end
+      
+      # The properties of GoldengateJavaMessageServiceConnection.
+      class GoldengateJavaMessageServiceConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Authentication type for Java Message Service.
+        # Corresponds to the JSON property `authenticationType`
+        # @return [String]
+        attr_accessor :authentication_type
+      
+        # Optional. The Java class implementing javax.jms.ConnectionFactory interface
+        # supplied by the JMS provider.
+        # Corresponds to the JSON property `connectionFactory`
+        # @return [String]
+        attr_accessor :connection_factory
+      
+        # Optional. Connection URL of the Java Message Service, specifying the protocol,
+        # host, and port. e.g.: 'mq://myjms.host.domain:7676'
+        # Corresponds to the JSON property `connectionUrl`
+        # @return [String]
+        attr_accessor :connection_url
+      
+        # Optional. The Connection Factory can be looked up using this name. e.g.: '
+        # ConnectionFactory'
+        # Corresponds to the JSON property `jndiConnectionFactory`
+        # @return [String]
+        attr_accessor :jndi_connection_factory
+      
+        # Optional. The implementation of javax.naming.spi.InitialContextFactory
+        # interface used to obtain initial naming context.
+        # Corresponds to the JSON property `jndiInitialContextFactory`
+        # @return [String]
+        attr_accessor :jndi_initial_context_factory
+      
+        # Optional. The URL that Java Message Service will use to contact the JNDI
+        # provider. e.g.: 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
+        # Corresponds to the JSON property `jndiProviderUrl`
+        # @return [String]
+        attr_accessor :jndi_provider_url
+      
+        # Optional. The password associated to the principal.
+        # Corresponds to the JSON property `jndiSecurityCredentialsSecret`
+        # @return [String]
+        attr_accessor :jndi_security_credentials_secret
+      
+        # Optional. Specifies the identity of the principal (user) to be authenticated.
+        # Corresponds to the JSON property `jndiSecurityPrincipal`
+        # @return [String]
+        attr_accessor :jndi_security_principal
+      
+        # Optional. The content of the KeyStore file.
+        # Corresponds to the JSON property `keyStoreFile`
+        # @return [String]
+        attr_accessor :key_store_file
+      
+        # Optional. Input only. The KeyStore password in plain text.
+        # Corresponds to the JSON property `keyStorePassword`
+        # @return [String]
+        attr_accessor :key_store_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the KeyStore password. Format: projects/`project`/secrets/`
+        # secret`/versions/`version`.
+        # Corresponds to the JSON property `keyStorePasswordSecretVersion`
+        # @return [String]
+        attr_accessor :key_store_password_secret_version
+      
+        # Optional. Input only. The password Oracle Goldengate uses to connect the Java
+        # Message Service in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses to connect the associated
+        # Java Message Service. Format: projects/`project`/secrets/`secret`/versions/`
+        # version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. Security protocol for Java Message Service.
+        # Corresponds to the JSON property `securityProtocol`
+        # @return [String]
+        attr_accessor :security_protocol
+      
+        # Optional. Input only. The password for the cert inside of the KeyStore in
+        # plain text.
+        # Corresponds to the JSON property `sslKeyPassword`
+        # @return [String]
+        attr_accessor :ssl_key_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password for the cert inside of the KeyStore. Format:
+        # projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `sslKeyPasswordSecretVersion`
+        # @return [String]
+        attr_accessor :ssl_key_password_secret_version
+      
+        # Optional. The technology type of JavaMessageServiceConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The content of the TrustStore file.
+        # Corresponds to the JSON property `trustStoreFile`
+        # @return [String]
+        attr_accessor :trust_store_file
+      
+        # Optional. Input only. The TrustStore password in plain text.
+        # Corresponds to the JSON property `trustStorePassword`
+        # @return [String]
+        attr_accessor :trust_store_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the TrustStore password. Format: projects/`project`/secrets/`
+        # secret`/versions/`version`.
+        # Corresponds to the JSON property `trustStorePasswordSecretVersion`
+        # @return [String]
+        attr_accessor :trust_store_password_secret_version
+      
+        # Optional. If set to true, Java Naming and Directory Interface (JNDI)
+        # properties should be provided.
+        # Corresponds to the JSON property `useJndi`
+        # @return [Boolean]
+        attr_accessor :use_jndi
+        alias_method :use_jndi?, :use_jndi
+      
+        # Optional. The username Oracle Goldengate uses to connect to the Java Message
+        # Service.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
+          @connection_factory = args[:connection_factory] if args.key?(:connection_factory)
+          @connection_url = args[:connection_url] if args.key?(:connection_url)
+          @jndi_connection_factory = args[:jndi_connection_factory] if args.key?(:jndi_connection_factory)
+          @jndi_initial_context_factory = args[:jndi_initial_context_factory] if args.key?(:jndi_initial_context_factory)
+          @jndi_provider_url = args[:jndi_provider_url] if args.key?(:jndi_provider_url)
+          @jndi_security_credentials_secret = args[:jndi_security_credentials_secret] if args.key?(:jndi_security_credentials_secret)
+          @jndi_security_principal = args[:jndi_security_principal] if args.key?(:jndi_security_principal)
+          @key_store_file = args[:key_store_file] if args.key?(:key_store_file)
+          @key_store_password = args[:key_store_password] if args.key?(:key_store_password)
+          @key_store_password_secret_version = args[:key_store_password_secret_version] if args.key?(:key_store_password_secret_version)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @security_protocol = args[:security_protocol] if args.key?(:security_protocol)
+          @ssl_key_password = args[:ssl_key_password] if args.key?(:ssl_key_password)
+          @ssl_key_password_secret_version = args[:ssl_key_password_secret_version] if args.key?(:ssl_key_password_secret_version)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @trust_store_file = args[:trust_store_file] if args.key?(:trust_store_file)
+          @trust_store_password = args[:trust_store_password] if args.key?(:trust_store_password)
+          @trust_store_password_secret_version = args[:trust_store_password_secret_version] if args.key?(:trust_store_password_secret_version)
+          @use_jndi = args[:use_jndi] if args.key?(:use_jndi)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The properties of GoldengateKafkaConnection.
+      class GoldengateKafkaConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Kafka bootstrap. Equivalent of bootstrap.servers configuration
+        # property in Kafka: list of KafkaBootstrapServer objects specified by host/port.
+        # Used for establishing the initial connection to the Kafka cluster. Example: "
+        # server1.example.com:9092,server2.example.com:9092"
+        # Corresponds to the JSON property `bootstrapServers`
+        # @return [Array<Google::Apis::OracledatabaseV1::KafkaBootstrapServer>]
+        attr_accessor :bootstrap_servers
+      
+        # Optional. The OCID of the Kafka cluster being referenced from OCI Streaming
+        # with Apache Kafka.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # Optional. The content of the consumer.properties file.
+        # Corresponds to the JSON property `consumerPropertiesFile`
+        # @return [String]
+        attr_accessor :consumer_properties_file
+      
+        # Optional. The content of the KeyStore file.
+        # Corresponds to the JSON property `keyStoreFile`
+        # @return [String]
+        attr_accessor :key_store_file
+      
+        # Optional. Input only. The KeyStore password in plain text.
+        # Corresponds to the JSON property `keyStorePassword`
+        # @return [String]
+        attr_accessor :key_store_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the KeyStore password. Format: projects/`project`/secrets/`
+        # secret`/versions/`version`.
+        # Corresponds to the JSON property `keyStorePasswordSecretVersion`
+        # @return [String]
+        attr_accessor :key_store_password_secret_version
+      
+        # Optional. Input only. The password for Kafka basic/SASL auth in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password for Kafka basic/SASL auth. Format: projects/`
+        # project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The content of the producer.properties file.
+        # Corresponds to the JSON property `producerPropertiesFile`
+        # @return [String]
+        attr_accessor :producer_properties_file
+      
+        # Optional. Security Type for Kafka.
+        # Corresponds to the JSON property `securityProtocol`
+        # @return [String]
+        attr_accessor :security_protocol
+      
+        # Optional. Input only. The password for the cert inside of the KeyStore in
+        # plain text.
+        # Corresponds to the JSON property `sslKeyPassword`
+        # @return [String]
+        attr_accessor :ssl_key_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password for the cert inside of the KeyStore. Format:
+        # projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `sslKeyPasswordSecretVersion`
+        # @return [String]
+        attr_accessor :ssl_key_password_secret_version
+      
+        # Optional. The OCID of the stream pool being referenced.
+        # Corresponds to the JSON property `streamPoolId`
+        # @return [String]
+        attr_accessor :stream_pool_id
+      
+        # Optional. The technology type of KafkaConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The content of the TrustStore file.
+        # Corresponds to the JSON property `trustStoreFile`
+        # @return [String]
+        attr_accessor :trust_store_file
+      
+        # Optional. Input only. The TrustStore password in plain text.
+        # Corresponds to the JSON property `trustStorePassword`
+        # @return [String]
+        attr_accessor :trust_store_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the TrustStore password. Format: projects/`project`/secrets/`
+        # secret`/versions/`version`.
+        # Corresponds to the JSON property `trustStorePasswordSecretVersion`
+        # @return [String]
+        attr_accessor :trust_store_password_secret_version
+      
+        # Optional. Specifies that the user intends to authenticate to the instance
+        # using a resource principal. Applicable only for OCI Streaming connections.
+        # Corresponds to the JSON property `useResourcePrincipal`
+        # @return [Boolean]
+        attr_accessor :use_resource_principal
+        alias_method :use_resource_principal?, :use_resource_principal
+      
+        # Optional. The username Oracle Goldengate uses to connect the associated system
+        # of the given technology.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bootstrap_servers = args[:bootstrap_servers] if args.key?(:bootstrap_servers)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @consumer_properties_file = args[:consumer_properties_file] if args.key?(:consumer_properties_file)
+          @key_store_file = args[:key_store_file] if args.key?(:key_store_file)
+          @key_store_password = args[:key_store_password] if args.key?(:key_store_password)
+          @key_store_password_secret_version = args[:key_store_password_secret_version] if args.key?(:key_store_password_secret_version)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @producer_properties_file = args[:producer_properties_file] if args.key?(:producer_properties_file)
+          @security_protocol = args[:security_protocol] if args.key?(:security_protocol)
+          @ssl_key_password = args[:ssl_key_password] if args.key?(:ssl_key_password)
+          @ssl_key_password_secret_version = args[:ssl_key_password_secret_version] if args.key?(:ssl_key_password_secret_version)
+          @stream_pool_id = args[:stream_pool_id] if args.key?(:stream_pool_id)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @trust_store_file = args[:trust_store_file] if args.key?(:trust_store_file)
+          @trust_store_password = args[:trust_store_password] if args.key?(:trust_store_password)
+          @trust_store_password_secret_version = args[:trust_store_password_secret_version] if args.key?(:trust_store_password_secret_version)
+          @use_resource_principal = args[:use_resource_principal] if args.key?(:use_resource_principal)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The properties of GoldengateKafkaSchemaRegistryConnection.
+      class GoldengateKafkaSchemaRegistryConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Used authentication mechanism to access Schema Registry.
+        # Corresponds to the JSON property `authenticationType`
+        # @return [String]
+        attr_accessor :authentication_type
+      
+        # Optional. The content of the KeyStore file.
+        # Corresponds to the JSON property `keyStoreFile`
+        # @return [String]
+        attr_accessor :key_store_file
+      
+        # Optional. Input only. The KeyStore password in plain text.
+        # Corresponds to the JSON property `keyStorePassword`
+        # @return [String]
+        attr_accessor :key_store_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the KeyStore password. Format: projects/`project`/secrets/`
+        # secret`/versions/`version`.
+        # Corresponds to the JSON property `keyStorePasswordSecretVersion`
+        # @return [String]
+        attr_accessor :key_store_password_secret_version
+      
+        # Optional. Input only. The password to access Schema Registry in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password to access Schema Registry using basic
+        # authentication. Format: projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. Input only. The password for the cert inside the KeyStore in plain
+        # text.
+        # Corresponds to the JSON property `sslKeyPassword`
+        # @return [String]
+        attr_accessor :ssl_key_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password for the cert inside the KeyStore. Format: projects/
+        # `project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `sslKeyPasswordSecretVersion`
+        # @return [String]
+        attr_accessor :ssl_key_password_secret_version
+      
+        # Optional. The technology type of KafkaSchemaRegistryConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The content of the TrustStore file.
+        # Corresponds to the JSON property `trustStoreFile`
+        # @return [String]
+        attr_accessor :trust_store_file
+      
+        # Optional. Input only. The TrustStore password in plain text.
+        # Corresponds to the JSON property `trustStorePassword`
+        # @return [String]
+        attr_accessor :trust_store_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the TrustStore password. Format: projects/`project`/secrets/`
+        # secret`/versions/`version`.
+        # Corresponds to the JSON property `trustStorePasswordSecretVersion`
+        # @return [String]
+        attr_accessor :trust_store_password_secret_version
+      
+        # Optional. Kafka Schema Registry URL. e.g.: 'https://server1.us.oracle.com:8081'
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # Optional. The username to access Schema Registry using basic authentication.
+        # This value is injected into 'schema.registry.basic.auth.user.info=user:
+        # password' configuration property.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
+          @key_store_file = args[:key_store_file] if args.key?(:key_store_file)
+          @key_store_password = args[:key_store_password] if args.key?(:key_store_password)
+          @key_store_password_secret_version = args[:key_store_password_secret_version] if args.key?(:key_store_password_secret_version)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @ssl_key_password = args[:ssl_key_password] if args.key?(:ssl_key_password)
+          @ssl_key_password_secret_version = args[:ssl_key_password_secret_version] if args.key?(:ssl_key_password_secret_version)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @trust_store_file = args[:trust_store_file] if args.key?(:trust_store_file)
+          @trust_store_password = args[:trust_store_password] if args.key?(:trust_store_password)
+          @trust_store_password_secret_version = args[:trust_store_password_secret_version] if args.key?(:trust_store_password_secret_version)
+          @url = args[:url] if args.key?(:url)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The maintenance configuration of the GoldengateDeployment.
+      class GoldengateMaintenanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines auto upgrade period for bundle releases. Manually configured
+        # period cannot be longer than service defined period for bundle releases. This
+        # period must be shorter or equal to major release upgrade period. Not passing
+        # this field during create will equate to using the service default.
+        # Corresponds to the JSON property `bundleReleaseUpgradePeriodDays`
+        # @return [Fixnum]
+        attr_accessor :bundle_release_upgrade_period_days
+      
+        # Optional. Defines auto upgrade period for interim releases. This period must
+        # be shorter or equal to bundle release upgrade period.
+        # Corresponds to the JSON property `interimReleaseUpgradePeriodDays`
+        # @return [Fixnum]
+        attr_accessor :interim_release_upgrade_period_days
+      
+        # Optional. By default auto upgrade for interim releases are not enabled. If
+        # auto-upgrade is enabled for interim release, you have to specify
+        # interim_release_upgrade_period_days too.
+        # Corresponds to the JSON property `isInterimReleaseAutoUpgradeEnabled`
+        # @return [Boolean]
+        attr_accessor :is_interim_release_auto_upgrade_enabled
+        alias_method :is_interim_release_auto_upgrade_enabled?, :is_interim_release_auto_upgrade_enabled
+      
+        # Optional. Defines auto upgrade period for major releases. Manually configured
+        # period cannot be longer than service defined period for major releases. Not
+        # passing this field during create will equate to using the service default.
+        # Corresponds to the JSON property `majorReleaseUpgradePeriodDays`
+        # @return [Fixnum]
+        attr_accessor :major_release_upgrade_period_days
+      
+        # Optional. Defines auto upgrade period for releases with security fix. Manually
+        # configured period cannot be longer than service defined period for security
+        # releases. Not passing this field during create will equate to using the
+        # service default.
+        # Corresponds to the JSON property `securityPatchUpgradePeriodDays`
+        # @return [Fixnum]
+        attr_accessor :security_patch_upgrade_period_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_release_upgrade_period_days = args[:bundle_release_upgrade_period_days] if args.key?(:bundle_release_upgrade_period_days)
+          @interim_release_upgrade_period_days = args[:interim_release_upgrade_period_days] if args.key?(:interim_release_upgrade_period_days)
+          @is_interim_release_auto_upgrade_enabled = args[:is_interim_release_auto_upgrade_enabled] if args.key?(:is_interim_release_auto_upgrade_enabled)
+          @major_release_upgrade_period_days = args[:major_release_upgrade_period_days] if args.key?(:major_release_upgrade_period_days)
+          @security_patch_upgrade_period_days = args[:security_patch_upgrade_period_days] if args.key?(:security_patch_upgrade_period_days)
+        end
+      end
+      
+      # The maintenance window of the GoldengateDeployment.
+      class GoldengateMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Required. Days of the week.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Required. Start hour for maintenance period. Hour is in UTC.
+        # Corresponds to the JSON property `startHour`
+        # @return [Fixnum]
+        attr_accessor :start_hour
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @start_hour = args[:start_hour] if args.key?(:start_hour)
+        end
+      end
+      
+      # The properties of GoldengateMicrosoftFabricConnection.
+      class GoldengateMicrosoftFabricConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Azure client ID of the application.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Optional. Client secret associated with the client id.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Optional. Optional Microsoft Fabric service endpoint. Default value: https://
+        # onelake.dfs.fabric.microsoft.com
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Optional. The technology type of MicrosoftFabricConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. Azure tenant ID of the application.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+        end
+      end
+      
+      # The properties of GoldengateMicrosoftSqlserverConnection.
+      class GoldengateMicrosoftSqlserverConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An array of name-value pair attribute entries. Used as additional
+        # parameters in connection string.
+        # Corresponds to the JSON property `additionalAttributes`
+        # @return [Array<Google::Apis::OracledatabaseV1::NameValuePair>]
+        attr_accessor :additional_attributes
+      
+        # Optional. The name of the database.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Optional. The name or address of a host.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Optional. Input only. The password Oracle Goldengate uses for Microsoft SQL
+        # Server connection in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses for Microsoft SQL Server
+        # connection. Format: projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The port of an endpoint usually specified for a connection.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Optional. Security Type for Microsoft SQL Server.
+        # Corresponds to the JSON property `securityProtocol`
+        # @return [String]
+        attr_accessor :security_protocol
+      
+        # Optional. If set to true, the driver validates the certificate that is sent by
+        # the database server.
+        # Corresponds to the JSON property `serverCertificateValidationRequired`
+        # @return [Boolean]
+        attr_accessor :server_certificate_validation_required
+        alias_method :server_certificate_validation_required?, :server_certificate_validation_required
+      
+        # Optional. Database Certificate - The content of a .pem or .crt file containing
+        # the server public key (for 1-way SSL).
+        # Corresponds to the JSON property `sslCaFile`
+        # @return [String]
+        attr_accessor :ssl_ca_file
+      
+        # Optional. The technology type of MicrosoftSqlserverConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The username Oracle Goldengate uses to connect to the Microsoft SQL
+        # Server.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_attributes = args[:additional_attributes] if args.key?(:additional_attributes)
+          @database = args[:database] if args.key?(:database)
+          @host = args[:host] if args.key?(:host)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @port = args[:port] if args.key?(:port)
+          @security_protocol = args[:security_protocol] if args.key?(:security_protocol)
+          @server_certificate_validation_required = args[:server_certificate_validation_required] if args.key?(:server_certificate_validation_required)
+          @ssl_ca_file = args[:ssl_ca_file] if args.key?(:ssl_ca_file)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The properties of GoldengateMongodbConnection.
+      class GoldengateMongodbConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. MongoDB connection string. e.g.: 'mongodb://mongodb0.example.com:
+        # 27017/recordsrecords'
+        # Corresponds to the JSON property `connectionString`
+        # @return [String]
+        attr_accessor :connection_string
+      
+        # Optional. The OCID of the Oracle Autonomous Json Database.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # Optional. Input only. The password Oracle Goldengate uses to connect the
+        # Mongodb connection in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses to connect the Mongodb
+        # connection. Format: projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. Security Type for MongoDB.
+        # Corresponds to the JSON property `securityProtocol`
+        # @return [String]
+        attr_accessor :security_protocol
+      
+        # Optional. The technology type of MongodbConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. Database Certificate - The content of a .pem file, containing the
+        # server public key (for 1 and 2-way SSL).
+        # Corresponds to the JSON property `tlsCaFile`
+        # @return [String]
+        attr_accessor :tls_ca_file
+      
+        # Optional. Client Certificate - The content of a .pem file, containing the
+        # client public key (for 2-way SSL).
+        # Corresponds to the JSON property `tlsCertificateKeyFile`
+        # @return [String]
+        attr_accessor :tls_certificate_key_file
+      
+        # Optional. Input only. The Client Certificate key file password in plain text.
+        # Corresponds to the JSON property `tlsCertificateKeyFilePassword`
+        # @return [String]
+        attr_accessor :tls_certificate_key_file_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the Client Certificate key file password in Secret Manager.
+        # Format: projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `tlsCertificateKeyFilePasswordSecretVersion`
+        # @return [String]
+        attr_accessor :tls_certificate_key_file_password_secret_version
+      
+        # Optional. The username Oracle Goldengate uses to connect to the database.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_string = args[:connection_string] if args.key?(:connection_string)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @security_protocol = args[:security_protocol] if args.key?(:security_protocol)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @tls_ca_file = args[:tls_ca_file] if args.key?(:tls_ca_file)
+          @tls_certificate_key_file = args[:tls_certificate_key_file] if args.key?(:tls_certificate_key_file)
+          @tls_certificate_key_file_password = args[:tls_certificate_key_file_password] if args.key?(:tls_certificate_key_file_password)
+          @tls_certificate_key_file_password_secret_version = args[:tls_certificate_key_file_password_secret_version] if args.key?(:tls_certificate_key_file_password_secret_version)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Properties of GoldengateMysqlConnection.
+      class GoldengateMysqlConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An array of name-value pair attribute entries. Used as additional
+        # parameters in connection string.
+        # Corresponds to the JSON property `additionalAttributes`
+        # @return [Array<Google::Apis::OracledatabaseV1::NameValuePair>]
+        attr_accessor :additional_attributes
+      
+        # Optional. The name of the database.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Optional. The OCID of the database system being referenced.
+        # Corresponds to the JSON property `dbSystemId`
+        # @return [String]
+        attr_accessor :db_system_id
+      
+        # Optional. The name or address of a host.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Optional. Input only. The password Oracle Goldengate uses to connect to MySQL
+        # in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses to connect to MySQL. Format:
+        # projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The port of an endpoint usually specified for a connection.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Optional. Security Type for MySQL.
+        # Corresponds to the JSON property `securityProtocol`
+        # @return [String]
+        attr_accessor :security_protocol
+      
+        # Optional. Database Certificate - The content of a .pem or .crt file containing
+        # the server public key (for 1 and 2-way SSL).
+        # Corresponds to the JSON property `sslCaFile`
+        # @return [String]
+        attr_accessor :ssl_ca_file
+      
+        # Optional. Client Certificate - The content of a .pem or .crt file containing
+        # the client public key (for 2-way SSL).
+        # Corresponds to the JSON property `sslCertFile`
+        # @return [String]
+        attr_accessor :ssl_cert_file
+      
+        # Optional. The list of certificates revoked by the trusted certificate
+        # authorities (Trusted CA).
+        # Corresponds to the JSON property `sslCrlFile`
+        # @return [String]
+        attr_accessor :ssl_crl_file
+      
+        # Optional. Client Key - The content of a .pem or .crt file containing the
+        # client private key (for 2-way SSL).
+        # Corresponds to the JSON property `sslKeyFile`
+        # @return [String]
+        attr_accessor :ssl_key_file
+      
+        # Optional. SSL modes for MySQL.
+        # Corresponds to the JSON property `sslMode`
+        # @return [String]
+        attr_accessor :ssl_mode
+      
+        # Optional. The technology type of MysqlConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The username Oracle Goldengate uses to connect the associated system
+        # of the given technology.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_attributes = args[:additional_attributes] if args.key?(:additional_attributes)
+          @database = args[:database] if args.key?(:database)
+          @db_system_id = args[:db_system_id] if args.key?(:db_system_id)
+          @host = args[:host] if args.key?(:host)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @port = args[:port] if args.key?(:port)
+          @security_protocol = args[:security_protocol] if args.key?(:security_protocol)
+          @ssl_ca_file = args[:ssl_ca_file] if args.key?(:ssl_ca_file)
+          @ssl_cert_file = args[:ssl_cert_file] if args.key?(:ssl_cert_file)
+          @ssl_crl_file = args[:ssl_crl_file] if args.key?(:ssl_crl_file)
+          @ssl_key_file = args[:ssl_key_file] if args.key?(:ssl_key_file)
+          @ssl_mode = args[:ssl_mode] if args.key?(:ssl_mode)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The properties of GoldengateOciObjectStorageConnection.
+      class GoldengateOciObjectStorageConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The content of the private key file (PEM file) corresponding to the
+        # API key of the fingerprint.
+        # Corresponds to the JSON property `privateKeyFile`
+        # @return [String]
+        attr_accessor :private_key_file
+      
+        # Optional. The passphrase of the private key.
+        # Corresponds to the JSON property `privateKeyPassphraseSecret`
+        # @return [String]
+        attr_accessor :private_key_passphrase_secret
+      
+        # Optional. The fingerprint of the API Key of the user specified by the userId.
+        # Corresponds to the JSON property `publicKeyFingerprint`
+        # @return [String]
+        attr_accessor :public_key_fingerprint
+      
+        # Optional. The name of the region of OCI Object Storage. e.g.: us-ashburn-1 If
+        # the region is not provided, backend will default to the default region.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Optional. The technology type of OciObjectStorageConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The OCID of the related OCI tenancy.
+        # Corresponds to the JSON property `tenancyId`
+        # @return [String]
+        attr_accessor :tenancy_id
+      
+        # Optional. Specifies that the user intends to authenticate to the instance
+        # using a resource principal.
+        # Corresponds to the JSON property `useResourcePrincipal`
+        # @return [Boolean]
+        attr_accessor :use_resource_principal
+        alias_method :use_resource_principal?, :use_resource_principal
+      
+        # Optional. The OCID of the OCI user who will access the Object Storage. The
+        # user must have write access to the bucket they want to connect to.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_key_file = args[:private_key_file] if args.key?(:private_key_file)
+          @private_key_passphrase_secret = args[:private_key_passphrase_secret] if args.key?(:private_key_passphrase_secret)
+          @public_key_fingerprint = args[:public_key_fingerprint] if args.key?(:public_key_fingerprint)
+          @region = args[:region] if args.key?(:region)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @tenancy_id = args[:tenancy_id] if args.key?(:tenancy_id)
+          @use_resource_principal = args[:use_resource_principal] if args.key?(:use_resource_principal)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # The Ogg data of the GoldengateDeployment.
+      class GoldengateOggDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Goldengate deployment console password in plain text.
+        # Corresponds to the JSON property `adminPassword`
+        # @return [String]
+        attr_accessor :admin_password
+      
+        # Optional. Input only. The Goldengate deployment console password secret
+        # version.
+        # Corresponds to the JSON property `adminPasswordSecretVersion`
+        # @return [String]
+        attr_accessor :admin_password_secret_version
+      
+        # Required. The Goldengate deployment console username.
+        # Corresponds to the JSON property `adminUsername`
+        # @return [String]
+        attr_accessor :admin_username
+      
+        # Output only. The certificate of the GoldengateDeployment.
+        # Corresponds to the JSON property `certificate`
+        # @return [String]
+        attr_accessor :certificate
+      
+        # Output only. The credential store of the GoldengateDeployment.
+        # Corresponds to the JSON property `credentialStore`
+        # @return [String]
+        attr_accessor :credential_store
+      
+        # Required. The name given to the Goldengate service deployment. The name must
+        # be 1 to 32 characters long, must contain only alphanumeric characters and must
+        # start with a letter.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # The group to roles mapping of the GoldengateDeployment.
+        # Corresponds to the JSON property `groupRolesMapping`
+        # @return [Google::Apis::OracledatabaseV1::GoldengateGroupToRolesMapping]
+        attr_accessor :group_roles_mapping
+      
+        # Output only. The identity domain id of the GoldengateDeployment.
+        # Corresponds to the JSON property `identityDomainId`
+        # @return [String]
+        attr_accessor :identity_domain_id
+      
+        # Optional. Version of OGG
+        # Corresponds to the JSON property `oggVersion`
+        # @return [String]
+        attr_accessor :ogg_version
+      
+        # Output only. The password secret id of the GoldengateDeployment.
+        # Corresponds to the JSON property `passwordSecretId`
+        # @return [String]
+        attr_accessor :password_secret_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_password = args[:admin_password] if args.key?(:admin_password)
+          @admin_password_secret_version = args[:admin_password_secret_version] if args.key?(:admin_password_secret_version)
+          @admin_username = args[:admin_username] if args.key?(:admin_username)
+          @certificate = args[:certificate] if args.key?(:certificate)
+          @credential_store = args[:credential_store] if args.key?(:credential_store)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @group_roles_mapping = args[:group_roles_mapping] if args.key?(:group_roles_mapping)
+          @identity_domain_id = args[:identity_domain_id] if args.key?(:identity_domain_id)
+          @ogg_version = args[:ogg_version] if args.key?(:ogg_version)
+          @password_secret_id = args[:password_secret_id] if args.key?(:password_secret_id)
+        end
+      end
+      
+      # The properties of GoldengateOracleAIDataPlatformConnection.
+      class GoldengateOracleAiDataPlatformConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Connection URL. It must start with 'jdbc:spark://'
+        # Corresponds to the JSON property `connectionUrl`
+        # @return [String]
+        attr_accessor :connection_url
+      
+        # Optional. The content of the private key file (PEM file) corresponding to the
+        # API key of the fingerprint.
+        # Corresponds to the JSON property `privateKeyFile`
+        # @return [String]
+        attr_accessor :private_key_file
+      
+        # Optional. The passphrase of the private key.
+        # Corresponds to the JSON property `privateKeyPassphraseSecret`
+        # @return [String]
+        attr_accessor :private_key_passphrase_secret
+      
+        # Optional. The fingerprint of the API Key of the user specified by the user_id.
+        # Corresponds to the JSON property `publicKeyFingerprint`
+        # @return [String]
+        attr_accessor :public_key_fingerprint
+      
+        # Optional. The name of the region. e.g.: us-ashburn-1
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Optional. The technology type of OracleAiDataPlatformConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The OCID of the related OCI tenancy.
+        # Corresponds to the JSON property `tenancyId`
+        # @return [String]
+        attr_accessor :tenancy_id
+      
+        # Optional. Specifies that the user intends to authenticate to the instance
+        # using a resource principal.
+        # Corresponds to the JSON property `useResourcePrincipal`
+        # @return [Boolean]
+        attr_accessor :use_resource_principal
+        alias_method :use_resource_principal?, :use_resource_principal
+      
+        # Optional. The OCID of the OCI user who will access.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_url = args[:connection_url] if args.key?(:connection_url)
+          @private_key_file = args[:private_key_file] if args.key?(:private_key_file)
+          @private_key_passphrase_secret = args[:private_key_passphrase_secret] if args.key?(:private_key_passphrase_secret)
+          @public_key_fingerprint = args[:public_key_fingerprint] if args.key?(:public_key_fingerprint)
+          @region = args[:region] if args.key?(:region)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @tenancy_id = args[:tenancy_id] if args.key?(:tenancy_id)
+          @use_resource_principal = args[:use_resource_principal] if args.key?(:use_resource_principal)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # The properties of Goldengate Oracle Database Connection.
+      class GoldengateOracleConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Authentication mode.
+        # Corresponds to the JSON property `authenticationMode`
+        # @return [String]
+        attr_accessor :authentication_mode
+      
+        # Optional. Connect descriptor or Easy Connect Naming method used to connect to
+        # a database.
+        # Corresponds to the JSON property `connectionString`
+        # @return [String]
+        attr_accessor :connection_string
+      
+        # Optional. Database instance id of database in Oracle Database @ Google Cloud.
+        # If gcp_oracle_database_id is provided, connection_string must be empty.
+        # Corresponds to the JSON property `gcpOracleDatabaseId`
+        # @return [String]
+        attr_accessor :gcp_oracle_database_id
+      
+        # Optional. Input only. The password Oracle Goldengate uses in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses. Format: projects/`project`/
+        # secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The mode of the database connection session to be established by the
+        # data client.
+        # Corresponds to the JSON property `sessionMode`
+        # @return [String]
+        attr_accessor :session_mode
+      
+        # Optional. The technology type.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The username Oracle Goldengate uses to connect.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        # Optional. The wallet contents Oracle Goldengate uses to make connections to a
+        # database.
+        # Corresponds to the JSON property `walletFile`
+        # @return [String]
+        attr_accessor :wallet_file
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_mode = args[:authentication_mode] if args.key?(:authentication_mode)
+          @connection_string = args[:connection_string] if args.key?(:connection_string)
+          @gcp_oracle_database_id = args[:gcp_oracle_database_id] if args.key?(:gcp_oracle_database_id)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @session_mode = args[:session_mode] if args.key?(:session_mode)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @username = args[:username] if args.key?(:username)
+          @wallet_file = args[:wallet_file] if args.key?(:wallet_file)
+        end
+      end
+      
+      # The properties of GoldengateOracleNosqlConnection.
+      class GoldengateOracleNosqlConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The content of the private key file (PEM file) corresponding to the
+        # API key of the fingerprint.
+        # Corresponds to the JSON property `privateKeyFile`
+        # @return [String]
+        attr_accessor :private_key_file
+      
+        # Optional. The passphrase of the private key.
+        # Corresponds to the JSON property `privateKeyPassphraseSecret`
+        # @return [String]
+        attr_accessor :private_key_passphrase_secret
+      
+        # Optional. The fingerprint of the API Key of the user specified by the userId.
+        # Corresponds to the JSON property `publicKeyFingerprint`
+        # @return [String]
+        attr_accessor :public_key_fingerprint
+      
+        # Optional. The name of the region. e.g.: us-ashburn-1
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Optional. The technology type of OracleNosqlConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The OCID of the OCI tenancy.
+        # Corresponds to the JSON property `tenancyId`
+        # @return [String]
+        attr_accessor :tenancy_id
+      
+        # Optional. Specifies that the user intends to authenticate to the instance
+        # using a resource principal.
+        # Corresponds to the JSON property `useResourcePrincipal`
+        # @return [Boolean]
+        attr_accessor :use_resource_principal
+        alias_method :use_resource_principal?, :use_resource_principal
+      
+        # Optional. The OCID of the OCI user who will access the Oracle NoSQL database.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_key_file = args[:private_key_file] if args.key?(:private_key_file)
+          @private_key_passphrase_secret = args[:private_key_passphrase_secret] if args.key?(:private_key_passphrase_secret)
+          @public_key_fingerprint = args[:public_key_fingerprint] if args.key?(:public_key_fingerprint)
+          @region = args[:region] if args.key?(:region)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @tenancy_id = args[:tenancy_id] if args.key?(:tenancy_id)
+          @use_resource_principal = args[:use_resource_principal] if args.key?(:use_resource_principal)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # The placement of the GoldengateDeployment.
+      class GoldengatePlacement
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The availability domain.
+        # Corresponds to the JSON property `availabilityDomain`
+        # @return [String]
+        attr_accessor :availability_domain
+      
+        # Output only. The fault domain.
+        # Corresponds to the JSON property `faultDomain`
+        # @return [String]
+        attr_accessor :fault_domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+          @fault_domain = args[:fault_domain] if args.key?(:fault_domain)
+        end
+      end
+      
+      # The properties of GoldengatePostgresqlConnection.
+      class GoldengatePostgresqlConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An array of name-value pair attribute entries. Used as additional
+        # parameters in connection string.
+        # Corresponds to the JSON property `additionalAttributes`
+        # @return [Array<Google::Apis::OracledatabaseV1::NameValuePair>]
+        attr_accessor :additional_attributes
+      
+        # Optional. The name of the database.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Optional. The OCID of the database system being referenced.
+        # Corresponds to the JSON property `dbSystemId`
+        # @return [String]
+        attr_accessor :db_system_id
+      
+        # Optional. The name or address of a host.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Optional. Input only. The password Oracle Goldengate uses for PostgreSQL
+        # connection in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses for PostgreSQL connection.
+        # Format: projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The port of an endpoint usually specified for a connection.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Optional. Security protocol for PostgreSQL.
+        # Corresponds to the JSON property `securityProtocol`
+        # @return [String]
+        attr_accessor :security_protocol
+      
+        # Optional. The certificate of the trusted certificate authorities (Trusted CA)
+        # for PostgreSQL.
+        # Corresponds to the JSON property `sslCaFile`
+        # @return [String]
+        attr_accessor :ssl_ca_file
+      
+        # Optional. The certificate of the PostgreSQL server.
+        # Corresponds to the JSON property `sslCertFile`
+        # @return [String]
+        attr_accessor :ssl_cert_file
+      
+        # Optional. The list of certificates revoked by the trusted certificate
+        # authorities (Trusted CA).
+        # Corresponds to the JSON property `sslCrlFile`
+        # @return [String]
+        attr_accessor :ssl_crl_file
+      
+        # Optional. The private key of the PostgreSQL server.
+        # Corresponds to the JSON property `sslKeyFile`
+        # @return [String]
+        attr_accessor :ssl_key_file
+      
+        # Optional. SSL modes for PostgreSQL.
+        # Corresponds to the JSON property `sslMode`
+        # @return [String]
+        attr_accessor :ssl_mode
+      
+        # Optional. The technology type of PostgresqlConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The username Oracle Goldengate uses to connect the associated system
+        # of the given technology.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_attributes = args[:additional_attributes] if args.key?(:additional_attributes)
+          @database = args[:database] if args.key?(:database)
+          @db_system_id = args[:db_system_id] if args.key?(:db_system_id)
+          @host = args[:host] if args.key?(:host)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @port = args[:port] if args.key?(:port)
+          @security_protocol = args[:security_protocol] if args.key?(:security_protocol)
+          @ssl_ca_file = args[:ssl_ca_file] if args.key?(:ssl_ca_file)
+          @ssl_cert_file = args[:ssl_cert_file] if args.key?(:ssl_cert_file)
+          @ssl_crl_file = args[:ssl_crl_file] if args.key?(:ssl_crl_file)
+          @ssl_key_file = args[:ssl_key_file] if args.key?(:ssl_key_file)
+          @ssl_mode = args[:ssl_mode] if args.key?(:ssl_mode)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The properties of GoldengateRedisConnection.
+      class GoldengateRedisConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Authentication type for Redis.
+        # Corresponds to the JSON property `authenticationType`
+        # @return [String]
+        attr_accessor :authentication_type
+      
+        # Optional. The content of the KeyStore file.
+        # Corresponds to the JSON property `keyStoreFile`
+        # @return [String]
+        attr_accessor :key_store_file
+      
+        # Optional. Input only. The KeyStore password in plain text.
+        # Corresponds to the JSON property `keyStorePassword`
+        # @return [String]
+        attr_accessor :key_store_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the KeyStore password. Format: projects/`project`/secrets/`
+        # secret`/versions/`version`.
+        # Corresponds to the JSON property `keyStorePasswordSecretVersion`
+        # @return [String]
+        attr_accessor :key_store_password_secret_version
+      
+        # Optional. Input only. The password Oracle Goldengate uses for Redis connection
+        # in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses for Redis connection.
+        # Format: projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The OCID of the Redis cluster.
+        # Corresponds to the JSON property `redisClusterId`
+        # @return [String]
+        attr_accessor :redis_cluster_id
+      
+        # Optional. Security protocol for Redis.
+        # Corresponds to the JSON property `securityProtocol`
+        # @return [String]
+        attr_accessor :security_protocol
+      
+        # Optional. Comma separated list of Redis server addresses, specified as host:
+        # port entries, where :port is optional. If port is not specified, it defaults
+        # to 6379. Example: "server1.example.com:6379,server2.example.com:6379"
+        # Corresponds to the JSON property `servers`
+        # @return [String]
+        attr_accessor :servers
+      
+        # Optional. The technology type of RedisConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The content of the TrustStore file.
+        # Corresponds to the JSON property `trustStoreFile`
+        # @return [String]
+        attr_accessor :trust_store_file
+      
+        # Optional. Input only. The TrustStore password in plain text.
+        # Corresponds to the JSON property `trustStorePassword`
+        # @return [String]
+        attr_accessor :trust_store_password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the TrustStore password. Format: projects/`project`/secrets/`
+        # secret`/versions/`version`.
+        # Corresponds to the JSON property `trustStorePasswordSecretVersion`
+        # @return [String]
+        attr_accessor :trust_store_password_secret_version
+      
+        # Optional. The username Oracle Goldengate uses to connect the associated system
+        # of the given technology.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
+          @key_store_file = args[:key_store_file] if args.key?(:key_store_file)
+          @key_store_password = args[:key_store_password] if args.key?(:key_store_password)
+          @key_store_password_secret_version = args[:key_store_password_secret_version] if args.key?(:key_store_password_secret_version)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @redis_cluster_id = args[:redis_cluster_id] if args.key?(:redis_cluster_id)
+          @security_protocol = args[:security_protocol] if args.key?(:security_protocol)
+          @servers = args[:servers] if args.key?(:servers)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @trust_store_file = args[:trust_store_file] if args.key?(:trust_store_file)
+          @trust_store_password = args[:trust_store_password] if args.key?(:trust_store_password)
+          @trust_store_password_secret_version = args[:trust_store_password_secret_version] if args.key?(:trust_store_password_secret_version)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The properties of GoldengateSnowflakeConnection.
+      class GoldengateSnowflakeConnectionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Used authentication mechanism to access Snowflake.
+        # Corresponds to the JSON property `authenticationType`
+        # @return [String]
+        attr_accessor :authentication_type
+      
+        # Optional. JDBC connection URL. e.g.: 'jdbc:snowflake://.snowflakecomputing.com/
+        # ?warehouse=&db='
+        # Corresponds to the JSON property `connectionUrl`
+        # @return [String]
+        attr_accessor :connection_url
+      
+        # Optional. Input only. The password Oracle Goldengate uses to connect to
+        # Snowflake platform in plain text.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the password Oracle Goldengate uses to connect to Snowflake
+        # platform. Format: projects/`project`/secrets/`secret`/versions/`version`.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Optional. The content of private key file in PEM format.
+        # Corresponds to the JSON property `privateKeyFile`
+        # @return [String]
+        attr_accessor :private_key_file
+      
+        # Optional. Password if the private key file is encrypted.
+        # Corresponds to the JSON property `privateKeyPassphraseSecret`
+        # @return [String]
+        attr_accessor :private_key_passphrase_secret
+      
+        # Optional. The technology type of SnowflakeConnection.
+        # Corresponds to the JSON property `technologyType`
+        # @return [String]
+        attr_accessor :technology_type
+      
+        # Optional. The username Oracle Goldengate uses to connect to Snowflake.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
+          @connection_url = args[:connection_url] if args.key?(:connection_url)
+          @password = args[:password] if args.key?(:password)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @private_key_file = args[:private_key_file] if args.key?(:private_key_file)
+          @private_key_passphrase_secret = args[:private_key_passphrase_secret] if args.key?(:private_key_passphrase_secret)
+          @technology_type = args[:technology_type] if args.key?(:technology_type)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # The Google Cloud Storage Iceberg storage.
+      class GoogleCloudStorageIcebergStorage
+        include Google::Apis::Core::Hashable
+      
+        # Required. The bucket of Google Cloud Storage.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Required. The project ID of Google Cloud Storage.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Optional. The service account key file of Google Cloud Storage.
+        # Corresponds to the JSON property `serviceAccountKeyFile`
+        # @return [String]
+        attr_accessor :service_account_key_file
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @service_account_key_file = args[:service_account_key_file] if args.key?(:service_account_key_file)
+        end
+      end
+      
+      # The Iceberg catalog details.
+      class IcebergCatalog
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of Iceberg catalog.
+        # Corresponds to the JSON property `catalogType`
+        # @return [String]
+        attr_accessor :catalog_type
+      
+        # The Glue Iceberg catalog.
+        # Corresponds to the JSON property `glueIcebergCatalog`
+        # @return [Google::Apis::OracledatabaseV1::GlueIcebergCatalog]
+        attr_accessor :glue_iceberg_catalog
+      
+        # The Nessie Iceberg catalog.
+        # Corresponds to the JSON property `nessieIcebergCatalog`
+        # @return [Google::Apis::OracledatabaseV1::NessieIcebergCatalog]
+        attr_accessor :nessie_iceberg_catalog
+      
+        # The Polaris Iceberg catalog.
+        # Corresponds to the JSON property `polarisIcebergCatalog`
+        # @return [Google::Apis::OracledatabaseV1::PolarisIcebergCatalog]
+        attr_accessor :polaris_iceberg_catalog
+      
+        # The REST Iceberg catalog.
+        # Corresponds to the JSON property `restIcebergCatalog`
+        # @return [Google::Apis::OracledatabaseV1::RestIcebergCatalog]
+        attr_accessor :rest_iceberg_catalog
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog_type = args[:catalog_type] if args.key?(:catalog_type)
+          @glue_iceberg_catalog = args[:glue_iceberg_catalog] if args.key?(:glue_iceberg_catalog)
+          @nessie_iceberg_catalog = args[:nessie_iceberg_catalog] if args.key?(:nessie_iceberg_catalog)
+          @polaris_iceberg_catalog = args[:polaris_iceberg_catalog] if args.key?(:polaris_iceberg_catalog)
+          @rest_iceberg_catalog = args[:rest_iceberg_catalog] if args.key?(:rest_iceberg_catalog)
+        end
+      end
+      
+      # The Iceberg storage details.
+      class IcebergStorage
+        include Google::Apis::Core::Hashable
+      
+        # The Amazon S3 Iceberg storage.
+        # Corresponds to the JSON property `amazonS3IcebergStorage`
+        # @return [Google::Apis::OracledatabaseV1::AmazonS3IcebergStorage]
+        attr_accessor :amazon_s3_iceberg_storage
+      
+        # The Azure Data Lake Storage Iceberg storage.
+        # Corresponds to the JSON property `azureDataLakeStorageIcebergStorage`
+        # @return [Google::Apis::OracledatabaseV1::AzureDataLakeStorageIcebergStorage]
+        attr_accessor :azure_data_lake_storage_iceberg_storage
+      
+        # The Google Cloud Storage Iceberg storage.
+        # Corresponds to the JSON property `googleCloudStorageIcebergStorage`
+        # @return [Google::Apis::OracledatabaseV1::GoogleCloudStorageIcebergStorage]
+        attr_accessor :google_cloud_storage_iceberg_storage
+      
+        # Required. The type of Iceberg storage.
+        # Corresponds to the JSON property `storageType`
+        # @return [String]
+        attr_accessor :storage_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amazon_s3_iceberg_storage = args[:amazon_s3_iceberg_storage] if args.key?(:amazon_s3_iceberg_storage)
+          @azure_data_lake_storage_iceberg_storage = args[:azure_data_lake_storage_iceberg_storage] if args.key?(:azure_data_lake_storage_iceberg_storage)
+          @google_cloud_storage_iceberg_storage = args[:google_cloud_storage_iceberg_storage] if args.key?(:google_cloud_storage_iceberg_storage)
+          @storage_type = args[:storage_type] if args.key?(:storage_type)
+        end
+      end
+      
       # The identity connector details which will allow OCI to securely access the
       # resources in the customer project.
       class IdentityConnector
@@ -3651,6 +7304,63 @@ module Google
         def update!(**args)
           @connection_state = args[:connection_state] if args.key?(:connection_state)
           @service_agent_email = args[:service_agent_email] if args.key?(:service_agent_email)
+        end
+      end
+      
+      # The ingress IPs of the GoldengateDeployment.
+      class IngressIp
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ingress IP.
+        # Corresponds to the JSON property `ingressIpAddress`
+        # @return [String]
+        attr_accessor :ingress_ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ingress_ip_address = args[:ingress_ip_address] if args.key?(:ingress_ip_address)
+        end
+      end
+      
+      # Represents a Kafka bootstrap server with host name, optional port defaults to
+      # 9092, and an optional private ip.
+      class KafkaBootstrapServer
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name or address of a host.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Optional. The port of an endpoint usually specified for a connection.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Optional. The private IP address of the connection's endpoint in the customer'
+        # s VCN, typically a database endpoint or a big data endpoint (e.g. Kafka
+        # bootstrap server). In case the privateIp is provided, the subnetId must also
+        # be provided. In case the privateIp (and the subnetId) is not provided it is
+        # assumed the datasource is publicly accessible. In case the connection is
+        # accessible only privately, the lack of privateIp will result in not being able
+        # to access the connection.
+        # Corresponds to the JSON property `privateIpAddress`
+        # @return [String]
+        attr_accessor :private_ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @port = args[:port] if args.key?(:port)
+          @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
         end
       end
       
@@ -4149,6 +7859,229 @@ module Google
         end
       end
       
+      # Response message for listing GoldengateConnectionAssignments.
+      class ListGoldengateConnectionAssignmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of GoldengateConnectionAssignments.
+        # Corresponds to the JSON property `goldengateConnectionAssignments`
+        # @return [Array<Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment>]
+        attr_accessor :goldengate_connection_assignments
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goldengate_connection_assignments = args[:goldengate_connection_assignments] if args.key?(:goldengate_connection_assignments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing GoldengateConnectionTypes
+      class ListGoldengateConnectionTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of GoldengateConnectionType
+        # Corresponds to the JSON property `goldengateConnectionTypes`
+        # @return [Array<Google::Apis::OracledatabaseV1::GoldengateConnectionType>]
+        attr_accessor :goldengate_connection_types
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goldengate_connection_types = args[:goldengate_connection_types] if args.key?(:goldengate_connection_types)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response for `GoldengateConnection.List`.
+      class ListGoldengateConnectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of GoldengateConnections.
+        # Corresponds to the JSON property `goldengateConnections`
+        # @return [Array<Google::Apis::OracledatabaseV1::GoldengateConnection>]
+        attr_accessor :goldengate_connections
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Optional. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goldengate_connections = args[:goldengate_connections] if args.key?(:goldengate_connections)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing GoldengateDeploymentEnvironments
+      class ListGoldengateDeploymentEnvironmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of GoldengateDeploymentEnvironment
+        # Corresponds to the JSON property `goldengateDeploymentEnvironments`
+        # @return [Array<Google::Apis::OracledatabaseV1::GoldengateDeploymentEnvironment>]
+        attr_accessor :goldengate_deployment_environments
+      
+        # A token identifying a page of results the server should return. If this field
+        # is empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goldengate_deployment_environments = args[:goldengate_deployment_environments] if args.key?(:goldengate_deployment_environments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing GoldengateDeploymentTypes
+      class ListGoldengateDeploymentTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of GoldengateDeploymentType
+        # Corresponds to the JSON property `goldengateDeploymentTypes`
+        # @return [Array<Google::Apis::OracledatabaseV1::GoldengateDeploymentType>]
+        attr_accessor :goldengate_deployment_types
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. The resource names of locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goldengate_deployment_types = args[:goldengate_deployment_types] if args.key?(:goldengate_deployment_types)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing GoldengateDeploymentVersions
+      class ListGoldengateDeploymentVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of GoldengateDeploymentVersion
+        # Corresponds to the JSON property `goldengateDeploymentVersions`
+        # @return [Array<Google::Apis::OracledatabaseV1::GoldengateDeploymentVersion>]
+        attr_accessor :goldengate_deployment_versions
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goldengate_deployment_versions = args[:goldengate_deployment_versions] if args.key?(:goldengate_deployment_versions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response for `GoldengateDeployment.List`.
+      class ListGoldengateDeploymentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of GoldengateDeployments.
+        # Corresponds to the JSON property `goldengateDeployments`
+        # @return [Array<Google::Apis::OracledatabaseV1::GoldengateDeployment>]
+        attr_accessor :goldengate_deployments
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Optional. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goldengate_deployments = args[:goldengate_deployments] if args.key?(:goldengate_deployments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -4500,6 +8433,57 @@ module Google
           @grid_image_id = args[:grid_image_id] if args.key?(:grid_image_id)
           @name = args[:name] if args.key?(:name)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # A name-value pair representing an attribute entry usable in a list of
+      # attributes.
+      class NameValuePair
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the property entry.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Required. The value of the property entry.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The Nessie Iceberg catalog.
+      class NessieIcebergCatalog
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Nessie branch.
+        # Corresponds to the JSON property `branch`
+        # @return [String]
+        attr_accessor :branch
+      
+        # Required. The Nessie uri.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch = args[:branch] if args.key?(:branch)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -4940,6 +8924,49 @@ module Google
         end
       end
       
+      # The Polaris Iceberg catalog.
+      class PolarisIcebergCatalog
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Polaris client ID.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Optional. The Polaris client secret.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Required. The catalog name within Polaris.
+        # Corresponds to the JSON property `polarisCatalog`
+        # @return [String]
+        attr_accessor :polaris_catalog
+      
+        # Required. The Polaris principal role.
+        # Corresponds to the JSON property `principalRole`
+        # @return [String]
+        attr_accessor :principal_role
+      
+        # Required. The Polaris uri.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @polaris_catalog = args[:polaris_catalog] if args.key?(:polaris_catalog)
+          @principal_role = args[:principal_role] if args.key?(:principal_role)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # The request for `ExadbVmCluster.RemoveVirtualMachine`.
       class RemoveVirtualMachineExadbVmClusterRequest
         include Google::Apis::Core::Hashable
@@ -4968,6 +8995,32 @@ module Google
         def update!(**args)
           @hostnames = args[:hostnames] if args.key?(:hostnames)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # The REST Iceberg catalog.
+      class RestIcebergCatalog
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The content of the configuration file containing additional
+        # properties for the REST catalog.
+        # Corresponds to the JSON property `properties`
+        # @return [String]
+        attr_accessor :properties
+      
+        # Required. The REST uri.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @properties = args[:properties] if args.key?(:properties)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -5080,6 +9133,19 @@ module Google
         end
       end
       
+      # The request for `GoldengateDeployment.Start`.
+      class StartGoldengateDeploymentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -5121,6 +9187,19 @@ module Google
       
       # The request for `AutonomousDatabase.Stop`.
       class StopAutonomousDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request for `GoldengateDeployment.Stop`.
+      class StopGoldengateDeploymentRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -5177,6 +9256,95 @@ module Google
         # Update properties of this object
         def update!(**args)
           @peer_autonomous_database = args[:peer_autonomous_database] if args.key?(:peer_autonomous_database)
+        end
+      end
+      
+      # Error details for TestGoldengateConnectionAssignment.
+      class TestConnectionAssignmentError
+        include Google::Apis::Core::Hashable
+      
+        # The text describing the action required to fix the issue.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # A short error code that defines the error, meant for programmatic parsing.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # The text describing the root cause of the reported issue.
+        # Corresponds to the JSON property `issue`
+        # @return [String]
+        attr_accessor :issue
+      
+        # A human-readable error message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @code = args[:code] if args.key?(:code)
+          @issue = args[:issue] if args.key?(:issue)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Request message for TestGoldengateConnectionAssignment.
+      class TestGoldengateConnectionAssignmentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The type of the test of the assigned connection. The only type
+        # actually supported is DEFAULT.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The result of the connectivity test performed between the Goldengate
+      # deployment and the associated database / service.
+      class TestGoldengateConnectionAssignmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Error details for TestGoldengateConnectionAssignment.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::OracledatabaseV1::TestConnectionAssignmentError]
+        attr_accessor :error
+      
+        # List of test connection assignment error objects.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::OracledatabaseV1::TestConnectionAssignmentError>]
+        attr_accessor :errors
+      
+        # Type of the result i.e. Success, Failure or Timeout.
+        # Corresponds to the JSON property `resultType`
+        # @return [String]
+        attr_accessor :result_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @errors = args[:errors] if args.key?(:errors)
+          @result_type = args[:result_type] if args.key?(:result_type)
         end
       end
       
