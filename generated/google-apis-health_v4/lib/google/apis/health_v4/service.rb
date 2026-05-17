@@ -525,11 +525,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports exercise data in TCX format. Note: While the Authorization section
-        # below states that any one of the listed scopes is accepted, this specific
-        # method requires the user to provide both one of the `activity_and_fitness`
-        # scopes (`normal` or `readonly`) AND one of the `location` scopes (`normal` or `
-        # readonly`) in their access token to succeed.
+        # Exports exercise data in TCX format. **IMPORTANT:** HTTP clients must append `?
+        # alt=media` to the request URL to download the raw TCX file. Example: `https://
+        # health.googleapis.com/v4/users/me/dataTypes/exercise/dataPoints/EXERCISE_ID:
+        # exportExerciseTcx?alt=media` Without `alt=media`, the server returns a JSON
+        # response (`ExportExerciseTcxResponse`) which is intended primarily for gRPC
+        # clients. **Note:** While the Authorization section below states that any one
+        # of the listed scopes is accepted, this specific method requires the user to
+        # provide both one of the `activity_and_fitness` scopes (`normal` or `readonly`)
+        # AND one of the `location` scopes (`normal` or `readonly`) in their access
+        # token to succeed.
         # @param [String] name
         #   Required. The resource name of the exercise data point to export. Format: `
         #   users/`user`/dataTypes/exercise/dataPoints/`data_point`` Example: `users/me/
@@ -641,24 +646,29 @@ module Google
         #   34:56"` - Daily summary date: - Pattern: ``daily_summary_data_type`.date` -
         #   Supported comparison operators: `>=`, `<` - Date literal expected in ISO 8601 `
         #   YYYY-MM-DD` format - Supported logical operators: `AND` - Example: - `
-        #   daily_heart_rate_variability.date < "2024-08-15"` - Session civil start time (*
-        #   *Excluding Sleep**): - Pattern: ``session_data_type`.interval.civil_start_time`
-        #   - Supported comparison operators: `>=`, `<` - Date with optional time literal
-        #   expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format - Supported logical
-        #   operators: `AND` - Example: - `exercise.interval.civil_start_time >= "2023-11-
-        #   24" AND exercise.interval.civil_start_time < "2023-11-25"` - `exercise.
-        #   interval.civil_start_time >= "2024-08-14T12:34:56"` - Session end time (**
-        #   Sleep specific**): - Pattern: `sleep.interval.end_time` - Supported comparison
-        #   operators: `>=`, `<` - Timestamp literal expected in RFC-3339 format -
-        #   Supported logical operators: `AND`, `OR` - Example: - `sleep.interval.end_time
-        #   >= "2023-11-24T00:00:00Z" AND sleep.interval.end_time < "2023-11-25T00:00:00Z"`
-        #   - Session civil end time (**Sleep specific**): - Pattern: `sleep.interval.
-        #   civil_end_time` - Supported comparison operators: `>=`, `<` - Date with
-        #   optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format -
-        #   Supported logical operators: `AND`, `OR` - Example: - `sleep.interval.
-        #   civil_end_time >= "2023-11-24" AND sleep.interval.civil_end_time < "2023-11-25"
-        #   ` Data points in the response will be ordered by the interval start time in
-        #   descending order.
+        #   daily_heart_rate_variability.date < "2024-08-15"` - Session start time (**ECG
+        #   specific**): - Pattern: `electrocardiogram.interval.start_time` - Supported
+        #   comparison operators: `>=` - Timestamp literal expected in RFC-3339 format -
+        #   Example: - `electrocardiogram.interval.start_time >= "2024-08-14T12:34:56Z"` -
+        #   Note: Only filtering by start time is supported for ECG. Filtering by end time
+        #   (e.g., `electrocardiogram.interval.end_time`) is not supported. - Session
+        #   civil start time (**Excluding Sleep**): - Pattern: ``session_data_type`.
+        #   interval.civil_start_time` - Supported comparison operators: `>=`, `<` - Date
+        #   with optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format
+        #   - Supported logical operators: `AND` - Example: - `exercise.interval.
+        #   civil_start_time >= "2023-11-24" AND exercise.interval.civil_start_time < "
+        #   2023-11-25"` - `exercise.interval.civil_start_time >= "2024-08-14T12:34:56"` -
+        #   Session end time (**Sleep specific**): - Pattern: `sleep.interval.end_time` -
+        #   Supported comparison operators: `>=`, `<` - Timestamp literal expected in RFC-
+        #   3339 format - Supported logical operators: `AND`, `OR` - Example: - `sleep.
+        #   interval.end_time >= "2023-11-24T00:00:00Z" AND sleep.interval.end_time < "
+        #   2023-11-25T00:00:00Z"` - Session civil end time (**Sleep specific**): -
+        #   Pattern: `sleep.interval.civil_end_time` - Supported comparison operators: `>=`
+        #   , `<` - Date with optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:
+        #   mm:ss]` format - Supported logical operators: `AND`, `OR` - Example: - `sleep.
+        #   interval.civil_end_time >= "2023-11-24" AND sleep.interval.civil_end_time < "
+        #   2023-11-25"` Data points in the response will be ordered by the interval start
+        #   time in descending order.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of data points to return. If unspecified, at most
         #   1440 data points will be returned. The maximum page size is 10000; values
