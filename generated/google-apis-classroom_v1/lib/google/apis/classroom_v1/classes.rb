@@ -128,6 +128,19 @@ module Google
       class AddOnAttachmentStudentSubmission
         include Google::Apis::Core::Hashable
       
+        # Output only. Identifier of the course work submission under which this
+        # attachment submission was made.
+        # Corresponds to the JSON property `courseWorkSubmissionId`
+        # @return [String]
+        attr_accessor :course_work_submission_id
+      
+        # Output only. Classroom-assigned identifier for this student submission. This
+        # is unique among submissions for the relevant course work and add-on attachment
+        # combination.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Student grade on this attachment. If unset, no grade was set.
         # Corresponds to the JSON property `pointsEarned`
         # @return [Float]
@@ -151,6 +164,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @course_work_submission_id = args[:course_work_submission_id] if args.key?(:course_work_submission_id)
+          @id = args[:id] if args.key?(:id)
           @points_earned = args[:points_earned] if args.key?(:points_earned)
           @post_submission_state = args[:post_submission_state] if args.key?(:post_submission_state)
           @user_id = args[:user_id] if args.key?(:user_id)
@@ -524,6 +539,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Optional. Levels for the course. Examples: "9th grade", "Middle school", "4th -
+        # 5th", "K-2", "3000". If set, this field must be a valid UTF-8 string and
+        # fewer than 1000 characters. This field can only be cleared using the `
+        # PatchCourse` method.
+        # Corresponds to the JSON property `levels`
+        # @return [String]
+        attr_accessor :levels
+      
         # Name of the course. For example, "10th Grade Biology". The name is required.
         # It must be between 1 and 750 characters and a valid UTF-8 string.
         # Corresponds to the JSON property `name`
@@ -593,6 +616,7 @@ module Google
           @gradebook_settings = args[:gradebook_settings] if args.key?(:gradebook_settings)
           @guardians_enabled = args[:guardians_enabled] if args.key?(:guardians_enabled)
           @id = args[:id] if args.key?(:id)
+          @levels = args[:levels] if args.key?(:levels)
           @name = args[:name] if args.key?(:name)
           @owner_id = args[:owner_id] if args.key?(:owner_id)
           @room = args[:room] if args.key?(:room)
