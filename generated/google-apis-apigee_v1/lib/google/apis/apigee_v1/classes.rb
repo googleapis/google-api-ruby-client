@@ -1306,6 +1306,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_at
       
+        # Output only. Whether this proxy revision is detected as an MCP (Model Context
+        # Protocol) proxy. A proxy revision is identified as MCP if it has a proxy
+        # endpoint with the `/mcp` base path that routes to the MCP target URL.
+        # Corresponds to the JSON property `mcp`
+        # @return [Boolean]
+        attr_accessor :mcp
+        alias_method :mcp?, :mcp
+      
         # Name of the API proxy.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1405,6 +1413,7 @@ module Google
           @has_extensible_policy = args[:has_extensible_policy] if args.key?(:has_extensible_policy)
           @integration_endpoints = args[:integration_endpoints] if args.key?(:integration_endpoints)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @mcp = args[:mcp] if args.key?(:mcp)
           @name = args[:name] if args.key?(:name)
           @policies = args[:policies] if args.key?(:policies)
           @proxies = args[:proxies] if args.key?(:proxies)
