@@ -26,6 +26,11 @@ module Google
       class CloudAiLargeModelsVisionGenerateVideoExperiments
         include Google::Apis::Core::Hashable
       
+        # Optional. Video codec to use for output.
+        # Corresponds to the JSON property `codec`
+        # @return [String]
+        attr_accessor :codec
+      
         # Conditioning frames for veo experimental models ONLY, not to be confused with
         # keyframes (ID:31) in GenerateVideoRequest.
         # Corresponds to the JSON property `conditioningFrames`
@@ -86,6 +91,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @codec = args[:codec] if args.key?(:codec)
           @conditioning_frames = args[:conditioning_frames] if args.key?(:conditioning_frames)
           @human_pose = args[:human_pose] if args.key?(:human_pose)
           @model_name = args[:model_name] if args.key?(:model_name)
@@ -1460,12 +1466,18 @@ module Google
       class GoogleCloudAiplatformV1AsyncQueryReasoningEngineRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Input Cloud Storage URI for the Async query.
+        # Optional. Input Cloud Storage URI for the Async query. If you are not bringing
+        # your own container (BYOC), the content of the file should be a JSON object
+        # with an `input` field matching the `input` field of `
+        # QueryReasoningEngineRequest` (e.g. `` "input": ` "user_id": "hello", "message":
+        # "$QUERY"` ``). For BYOC, the content of the file depends on the the agent
+        # application.
         # Corresponds to the JSON property `inputGcsUri`
         # @return [String]
         attr_accessor :input_gcs_uri
       
-        # Optional. Output Cloud Storage URI for the Async query.
+        # Optional. Output Cloud Storage URI for the Async query. This contains the
+        # final response of the query.
         # Corresponds to the JSON property `outputGcsUri`
         # @return [String]
         attr_accessor :output_gcs_uri
@@ -3512,6 +3524,42 @@ module Google
           @text_count = args[:text_count] if args.key?(:text_count)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
           @video_duration_seconds = args[:video_duration_seconds] if args.key?(:video_duration_seconds)
+        end
+      end
+      
+      # Request message for ReasoningEngineExecutionService.
+      # CancelAsyncQueryReasoningEngine.
+      class GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the longrunning operation returned from
+        # AsyncQueryReasoningEngine. Format: `projects/`project`/locations/`location`/
+        # operations/`operation``
+        # Corresponds to the JSON property `operationName`
+        # @return [String]
+        attr_accessor :operation_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_name = args[:operation_name] if args.key?(:operation_name)
+        end
+      end
+      
+      # Response message for ReasoningEngineExecutionService.
+      # CancelAsyncQueryReasoningEngine.
+      class GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -10407,7 +10455,8 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetCustomMetric>]
         attr_accessor :dataset_custom_metrics
       
-        # Required. The metrics to be calculated in the evaluation run.
+        # Optional. The metrics to be calculated in the evaluation run. Required when
+        # analysis_configs is not set.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetric>]
         attr_accessor :metrics
@@ -15601,6 +15650,13 @@ module Google
       class GoogleCloudAiplatformV1FunctionDeclaration
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies the function Behavior. If not specified, the system keeps
+        # the current function call behavior. This field is currently only supported by
+        # the BidiGenerateContent method.
+        # Corresponds to the JSON property `behavior`
+        # @return [String]
+        attr_accessor :behavior
+      
         # Optional. Description and purpose of the function. Model uses it to decide how
         # and whether to call the function.
         # Corresponds to the JSON property `description`
@@ -15649,6 +15705,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @behavior = args[:behavior] if args.key?(:behavior)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
@@ -32490,8 +32547,8 @@ module Google
         # @return [String]
         attr_accessor :pickle_object_gcs_uri
       
-        # Optional. The Python version. Supported values are 3.9, 3.10, 3.11, 3.12, 3.13,
-        # 3.14. If not specified, the default value is 3.10.
+        # Optional. The Python version. Supported values are 3.10, 3.11, 3.12, 3.13, 3.
+        # 14. If not specified, the default value is 3.10.
         # Corresponds to the JSON property `pythonVersion`
         # @return [String]
         attr_accessor :python_version
@@ -32728,8 +32785,8 @@ module Google
         # @return [String]
         attr_accessor :requirements_file
       
-        # Optional. The version of Python to use. Support version includes 3.9, 3.10, 3.
-        # 11, 3.12, 3.13, 3.14. If not specified, default value is 3.10.
+        # Optional. The version of Python to use. Supported versions include 3.10, 3.11,
+        # 3.12, 3.13, 3.14. If not specified, default value is 3.10.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -34316,8 +34373,7 @@ module Google
         attr_accessor :sandbox_environment_snapshot
       
         # Optional. The name of the SandboxEnvironmentTemplate specified in the parent
-        # Agent Engine resource that this SandboxEnvironment is created from. Only one
-        # of `sandbox_environment_template` and `spec` should be set.
+        # Agent Engine resource that this SandboxEnvironment is created from.
         # Corresponds to the JSON property `sandboxEnvironmentTemplate`
         # @return [String]
         attr_accessor :sandbox_environment_template
@@ -34385,11 +34441,6 @@ module Google
         # @return [String]
         attr_accessor :routing_token
       
-        # Output only. The hostname of the SandboxEnvironment.
-        # Corresponds to the JSON property `sandboxHostname`
-        # @return [String]
-        attr_accessor :sandbox_hostname
-      
         # Output only. The internal IP address of the SandboxEnvironment.
         # Corresponds to the JSON property `sandboxInternalIp`
         # @return [String]
@@ -34404,7 +34455,6 @@ module Google
           @load_balancer_hostname = args[:load_balancer_hostname] if args.key?(:load_balancer_hostname)
           @load_balancer_ip = args[:load_balancer_ip] if args.key?(:load_balancer_ip)
           @routing_token = args[:routing_token] if args.key?(:routing_token)
-          @sandbox_hostname = args[:sandbox_hostname] if args.key?(:sandbox_hostname)
           @sandbox_internal_ip = args[:sandbox_internal_ip] if args.key?(:sandbox_internal_ip)
         end
       end

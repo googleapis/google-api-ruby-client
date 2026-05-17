@@ -622,6 +622,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1CancelBatchPredictionJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8299,6 +8311,7 @@ module Google
       class CloudAiLargeModelsVisionGenerateVideoExperiments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :codec, as: 'codec'
           collection :conditioning_frames, as: 'conditioningFrames', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame::Representation
       
           property :human_pose, as: 'humanPose', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionHumanPose, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionHumanPose::Representation
@@ -9299,6 +9312,19 @@ module Google
           property :text_count, as: 'textCount'
           property :total_token_count, as: 'totalTokenCount'
           property :video_duration_seconds, as: 'videoDurationSeconds'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_name, as: 'operationName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -12704,6 +12730,7 @@ module Google
       class GoogleCloudAiplatformV1FunctionDeclaration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :behavior, as: 'behavior'
           property :description, as: 'description'
           property :name, as: 'name'
           property :parameters, as: 'parameters', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
@@ -18076,7 +18103,6 @@ module Google
           property :load_balancer_hostname, as: 'loadBalancerHostname'
           property :load_balancer_ip, as: 'loadBalancerIp'
           property :routing_token, as: 'routingToken'
-          property :sandbox_hostname, as: 'sandboxHostname'
           property :sandbox_internal_ip, as: 'sandboxInternalIp'
         end
       end
