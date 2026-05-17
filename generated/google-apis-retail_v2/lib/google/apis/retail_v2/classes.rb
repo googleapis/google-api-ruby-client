@@ -4994,9 +4994,9 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttribute]
         attr_accessor :catalog_attribute
       
-        # Indicates which fields in the provided CatalogAttribute to update. The
-        # following are NOT supported: * CatalogAttribute.key If not set, all supported
-        # fields are updated.
+        # Optional. Indicates which fields in the provided CatalogAttribute to update.
+        # The following are NOT supported: * CatalogAttribute.key If not set, all
+        # supported fields are updated.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
