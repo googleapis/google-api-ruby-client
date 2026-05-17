@@ -230,6 +230,26 @@ module Google
         end
       end
       
+      # Metadata for traits of a single device.
+      class DeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last
+        # Spanner commit timestamp.
+        # Corresponds to the JSON property `traitCommitTimestamps`
+        # @return [Hash<String,String>]
+        attr_accessor :trait_commit_timestamps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trait_commit_timestamps = args[:trait_commit_timestamps] if args.key?(:trait_commit_timestamps)
+        end
+      end
+      
       # Identifiers used to describe the device.
       class DeviceNames
         include Google::Apis::Core::Hashable
@@ -397,6 +417,13 @@ module Google
         # @return [String]
         attr_accessor :agent_user_id
       
+        # Optional. If true, the response will include device metadata in the
+        # device_metadata field.
+        # Corresponds to the JSON property `includeDeviceMetadata`
+        # @return [Boolean]
+        attr_accessor :include_device_metadata
+        alias_method :include_device_metadata?, :include_device_metadata
+      
         # Required. Inputs containing third-party device IDs for which to get the device
         # states.
         # Corresponds to the JSON property `inputs`
@@ -415,6 +442,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_user_id = args[:agent_user_id] if args.key?(:agent_user_id)
+          @include_device_metadata = args[:include_device_metadata] if args.key?(:include_device_metadata)
           @inputs = args[:inputs] if args.key?(:inputs)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
@@ -493,6 +521,13 @@ module Google
       class QueryResponsePayload
         include Google::Apis::Core::Hashable
       
+        # Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last
+        # Spanner commit timestamp. If a trait has no recorded timestamp, it will be
+        # omitted from this map.
+        # Corresponds to the JSON property `deviceMetadata`
+        # @return [Hash<String,Google::Apis::HomegraphV1::DeviceMetadata>]
+        attr_accessor :device_metadata
+      
         # States of the devices. Map of third-party device ID to struct of device states.
         # Corresponds to the JSON property `devices`
         # @return [Hash<String,Hash<String,Object>>]
@@ -504,6 +539,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @device_metadata = args[:device_metadata] if args.key?(:device_metadata)
           @devices = args[:devices] if args.key?(:devices)
         end
       end
