@@ -6757,6 +6757,16 @@ module Google
       class GooglePrivacyDlpV2InspectTemplate
         include Google::Apis::Core::Hashable
       
+        # Optional. Enables the use of limited-availability built-in infoTypes in
+        # inspect_config. These infoTypes are supported only in specific regions and can
+        # cause scanning errors if used elsewhere. For more information, see https://
+        # cloud.google.com/sensitive-data-protection/docs/locations#location-
+        # specific_limitations to learn more about location-specific limitations.
+        # Corresponds to the JSON property `allowLimitedAvailabilityInfoTypes`
+        # @return [Boolean]
+        attr_accessor :allow_limited_availability_info_types
+        alias_method :allow_limited_availability_info_types?, :allow_limited_availability_info_types
+      
         # Output only. The creation timestamp of an inspectTemplate.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -6796,6 +6806,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_limited_availability_info_types = args[:allow_limited_availability_info_types] if args.key?(:allow_limited_availability_info_types)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)

@@ -4129,6 +4129,7 @@ module Google
       class GooglePrivacyDlpV2InspectTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_limited_availability_info_types, as: 'allowLimitedAvailabilityInfoTypes'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
