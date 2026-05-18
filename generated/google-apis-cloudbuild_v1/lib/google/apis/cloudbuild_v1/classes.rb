@@ -178,6 +178,13 @@ module Google
       class Artifacts
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of generic artifacts to be uploaded to Artifact Registry upon
+        # successful completion of all build steps. If any artifacts fail to be pushed,
+        # the build is marked FAILURE.
+        # Corresponds to the JSON property `genericArtifacts`
+        # @return [Array<Google::Apis::CloudbuildV1::GenericArtifact>]
+        attr_accessor :generic_artifacts
+      
         # Optional. A list of Go modules to be uploaded to Artifact Registry upon
         # successful completion of all build steps. If any objects fail to be pushed,
         # the build is marked FAILURE.
@@ -241,6 +248,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @generic_artifacts = args[:generic_artifacts] if args.key?(:generic_artifacts)
           @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
@@ -2018,6 +2026,11 @@ module Google
         attr_accessor :empty
         alias_method :empty?, :empty
       
+        # Represents a generic artifact as a build dependency.
+        # Corresponds to the JSON property `genericArtifact`
+        # @return [Google::Apis::CloudbuildV1::GenericArtifactDependency]
+        attr_accessor :generic_artifact
+      
         # Represents a git repository as a build dependency.
         # Corresponds to the JSON property `gitSource`
         # @return [Google::Apis::CloudbuildV1::GitSourceDependency]
@@ -2030,6 +2043,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @empty = args[:empty] if args.key?(:empty)
+          @generic_artifact = args[:generic_artifact] if args.key?(:generic_artifact)
           @git_source = args[:git_source] if args.key?(:git_source)
         end
       end
@@ -2164,6 +2178,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # Generic artifact to upload to Artifact Registry upon successful completion of
+      # all build steps.
+      class GenericArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Required. Path to the generic artifact in the build's workspace to be uploaded
+        # to Artifact Registry.
+        # Corresponds to the JSON property `folder`
+        # @return [String]
+        attr_accessor :folder
+      
+        # Required. Registry path to upload the generic artifact to, in the form
+        # projects/$PROJECT/locations/$LOCATION/repositories/$REPO/packages/$PACKAGE/
+        # versions/$VERSION
+        # Corresponds to the JSON property `registryPath`
+        # @return [String]
+        attr_accessor :registry_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder = args[:folder] if args.key?(:folder)
+          @registry_path = args[:registry_path] if args.key?(:registry_path)
+        end
+      end
+      
+      # Represents a generic artifact as a build dependency.
+      class GenericArtifactDependency
+        include Google::Apis::Core::Hashable
+      
+        # Required. Where the artifact files should be placed on the worker.
+        # Corresponds to the JSON property `destPath`
+        # @return [String]
+        attr_accessor :dest_path
+      
+        # Required. The location to download the artifact files from. Ex: projects/p1/
+        # locations/us/repositories/r1/packages/p1/versions/v1
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       
@@ -4043,6 +4112,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :build_step_outputs
       
+        # Output only. Generic artifacts uploaded to Artifact Registry at the end of the
+        # build.
+        # Corresponds to the JSON property `genericArtifacts`
+        # @return [Array<Google::Apis::CloudbuildV1::UploadedGenericArtifact>]
+        attr_accessor :generic_artifacts
+      
         # Optional. Go module artifacts uploaded to Artifact Registry at the end of the
         # build.
         # Corresponds to the JSON property `goModules`
@@ -4085,6 +4160,7 @@ module Google
           @artifact_timing = args[:artifact_timing] if args.key?(:artifact_timing)
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
           @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
+          @generic_artifacts = args[:generic_artifacts] if args.key?(:generic_artifacts)
           @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
@@ -4637,6 +4713,52 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # A generic artifact uploaded to Artifact Registry using the GenericArtifact
+      # directive.
+      class UploadedGenericArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Container message for hashes of byte content of files, used in
+        # SourceProvenance messages to verify integrity of source input to the build.
+        # Corresponds to the JSON property `artifactFingerprint`
+        # @return [Google::Apis::CloudbuildV1::FileHashes]
+        attr_accessor :artifact_fingerprint
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
+        # Output only. The file hashes that make up the generic artifact.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Hash<String,Google::Apis::CloudbuildV1::FileHashes>]
+        attr_accessor :file_hashes
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::CloudbuildV1::TimeSpan]
+        attr_accessor :push_timing
+      
+        # Output only. URI of the uploaded artifact. Ex: projects/p1/locations/us/
+        # repositories/r1/packages/p1/versions/v1
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_fingerprint = args[:artifact_fingerprint] if args.key?(:artifact_fingerprint)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       

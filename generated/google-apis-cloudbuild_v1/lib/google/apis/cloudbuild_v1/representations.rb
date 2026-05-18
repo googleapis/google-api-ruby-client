@@ -292,6 +292,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenericArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenericArtifactDependency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GitConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -682,6 +694,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadedGenericArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UploadedGoModule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -784,6 +802,8 @@ module Google
       class Artifacts
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generic_artifacts, as: 'genericArtifacts', class: Google::Apis::CloudbuildV1::GenericArtifact, decorator: Google::Apis::CloudbuildV1::GenericArtifact::Representation
+      
           collection :go_modules, as: 'goModules', class: Google::Apis::CloudbuildV1::GoModule, decorator: Google::Apis::CloudbuildV1::GoModule::Representation
       
           collection :images, as: 'images'
@@ -1231,6 +1251,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :empty, as: 'empty'
+          property :generic_artifact, as: 'genericArtifact', class: Google::Apis::CloudbuildV1::GenericArtifactDependency, decorator: Google::Apis::CloudbuildV1::GenericArtifactDependency::Representation
+      
           property :git_source, as: 'gitSource', class: Google::Apis::CloudbuildV1::GitSourceDependency, decorator: Google::Apis::CloudbuildV1::GitSourceDependency::Representation
       
         end
@@ -1276,6 +1298,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::CloudbuildV1::HashProp, decorator: Google::Apis::CloudbuildV1::HashProp::Representation
       
+        end
+      end
+      
+      class GenericArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :folder, as: 'folder'
+          property :registry_path, as: 'registryPath'
+        end
+      end
+      
+      class GenericArtifactDependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dest_path, as: 'destPath'
+          property :resource, as: 'resource'
         end
       end
       
@@ -1773,6 +1811,8 @@ module Google
       
           collection :build_step_images, as: 'buildStepImages'
           collection :build_step_outputs, as: 'buildStepOutputs'
+          collection :generic_artifacts, as: 'genericArtifacts', class: Google::Apis::CloudbuildV1::UploadedGenericArtifact, decorator: Google::Apis::CloudbuildV1::UploadedGenericArtifact::Representation
+      
           collection :go_modules, as: 'goModules', class: Google::Apis::CloudbuildV1::UploadedGoModule, decorator: Google::Apis::CloudbuildV1::UploadedGoModule::Representation
       
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1::BuiltImage, decorator: Google::Apis::CloudbuildV1::BuiltImage::Representation
@@ -1944,6 +1984,20 @@ module Google
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class UploadedGenericArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_fingerprint, as: 'artifactFingerprint', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
+      
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
+          hash :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
+      
+          property :uri, as: 'uri'
         end
       end
       
