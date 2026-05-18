@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -712,6 +718,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedMachineLearningDiagnosticsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedOpenTelemetryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1114,6 +1126,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScheduleUpgradeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecondaryBootDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1283,6 +1301,12 @@ module Google
       end
       
       class SwapConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaintConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1562,6 +1586,8 @@ module Google
       class Autopilot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_policy_config, as: 'clusterPolicyConfig', class: Google::Apis::ContainerV1::ClusterPolicyConfig, decorator: Google::Apis::ContainerV1::ClusterPolicyConfig::Representation
+      
           property :enabled, as: 'enabled'
           property :privileged_admission_config, as: 'privilegedAdmissionConfig', class: Google::Apis::ContainerV1::PrivilegedAdmissionConfig, decorator: Google::Apis::ContainerV1::PrivilegedAdmissionConfig::Representation
       
@@ -1814,6 +1840,8 @@ module Google
           property :logging_service, as: 'loggingService'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1::MaintenancePolicy, decorator: Google::Apis::ContainerV1::MaintenancePolicy::Representation
       
+          property :managed_machine_learning_diagnostics_config, as: 'managedMachineLearningDiagnosticsConfig', class: Google::Apis::ContainerV1::ManagedMachineLearningDiagnosticsConfig, decorator: Google::Apis::ContainerV1::ManagedMachineLearningDiagnosticsConfig::Representation
+      
           property :managed_opentelemetry_config, as: 'managedOpentelemetryConfig', class: Google::Apis::ContainerV1::ManagedOpenTelemetryConfig, decorator: Google::Apis::ContainerV1::ManagedOpenTelemetryConfig::Representation
       
           property :master_auth, as: 'masterAuth', class: Google::Apis::ContainerV1::MasterAuth, decorator: Google::Apis::ContainerV1::MasterAuth::Representation
@@ -1857,6 +1885,8 @@ module Google
       
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :schedule_upgrade_config, as: 'scheduleUpgradeConfig', class: Google::Apis::ContainerV1::ScheduleUpgradeConfig, decorator: Google::Apis::ContainerV1::ScheduleUpgradeConfig::Representation
+      
           property :secret_manager_config, as: 'secretManagerConfig', class: Google::Apis::ContainerV1::SecretManagerConfig, decorator: Google::Apis::ContainerV1::SecretManagerConfig::Representation
       
           property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::ContainerV1::SecurityPostureConfig, decorator: Google::Apis::ContainerV1::SecurityPostureConfig::Representation
@@ -1902,6 +1932,16 @@ module Google
         end
       end
       
+      class ClusterPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_standard_node_pools, as: 'noStandardNodePools'
+          property :no_system_impersonation, as: 'noSystemImpersonation'
+          property :no_system_mutation, as: 'noSystemMutation'
+          property :no_unsafe_webhooks, as: 'noUnsafeWebhooks'
+        end
+      end
+      
       class ClusterUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1916,6 +1956,8 @@ module Google
           property :desired_authenticator_groups_config, as: 'desiredAuthenticatorGroupsConfig', class: Google::Apis::ContainerV1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1::AuthenticatorGroupsConfig::Representation
       
           property :desired_auto_ipam_config, as: 'desiredAutoIpamConfig', class: Google::Apis::ContainerV1::AutoIpamConfig, decorator: Google::Apis::ContainerV1::AutoIpamConfig::Representation
+      
+          property :desired_autopilot_cluster_policy_config, as: 'desiredAutopilotClusterPolicyConfig', class: Google::Apis::ContainerV1::ClusterPolicyConfig, decorator: Google::Apis::ContainerV1::ClusterPolicyConfig::Representation
       
           property :desired_autopilot_workload_policy_config, as: 'desiredAutopilotWorkloadPolicyConfig', class: Google::Apis::ContainerV1::WorkloadPolicyConfig, decorator: Google::Apis::ContainerV1::WorkloadPolicyConfig::Representation
       
@@ -1966,6 +2008,8 @@ module Google
           property :desired_logging_config, as: 'desiredLoggingConfig', class: Google::Apis::ContainerV1::LoggingConfig, decorator: Google::Apis::ContainerV1::LoggingConfig::Representation
       
           property :desired_logging_service, as: 'desiredLoggingService'
+          property :desired_managed_machine_learning_diagnostics_config, as: 'desiredManagedMachineLearningDiagnosticsConfig', class: Google::Apis::ContainerV1::ManagedMachineLearningDiagnosticsConfig, decorator: Google::Apis::ContainerV1::ManagedMachineLearningDiagnosticsConfig::Representation
+      
           property :desired_managed_opentelemetry_config, as: 'desiredManagedOpentelemetryConfig', class: Google::Apis::ContainerV1::ManagedOpenTelemetryConfig, decorator: Google::Apis::ContainerV1::ManagedOpenTelemetryConfig::Representation
       
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig::Representation
@@ -2713,6 +2757,7 @@ module Google
       class LustreCsiDriverConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_multi_nic, as: 'disableMultiNic'
           property :enable_legacy_lustre_port, as: 'enableLegacyLustrePort'
           property :enabled, as: 'enabled'
         end
@@ -2746,6 +2791,13 @@ module Google
       
           property :recurring_window, as: 'recurringWindow', class: Google::Apis::ContainerV1::RecurringTimeWindow, decorator: Google::Apis::ContainerV1::RecurringTimeWindow::Representation
       
+        end
+      end
+      
+      class ManagedMachineLearningDiagnosticsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -2980,6 +3032,8 @@ module Google
           property :spot, as: 'spot'
           collection :storage_pools, as: 'storagePools'
           collection :tags, as: 'tags'
+          property :taint_config, as: 'taintConfig', class: Google::Apis::ContainerV1::TaintConfig, decorator: Google::Apis::ContainerV1::TaintConfig::Representation
+      
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaint, decorator: Google::Apis::ContainerV1::NodeTaint::Representation
       
           property :windows_node_config, as: 'windowsNodeConfig', class: Google::Apis::ContainerV1::WindowsNodeConfig, decorator: Google::Apis::ContainerV1::WindowsNodeConfig::Representation
@@ -3516,6 +3570,13 @@ module Google
         end
       end
       
+      class ScheduleUpgradeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class SecondaryBootDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3815,6 +3876,13 @@ module Google
       
           property :ephemeral_local_ssd_profile, as: 'ephemeralLocalSsdProfile', class: Google::Apis::ContainerV1::EphemeralLocalSsdProfile, decorator: Google::Apis::ContainerV1::EphemeralLocalSsdProfile::Representation
       
+        end
+      end
+      
+      class TaintConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture_taint_behavior, as: 'architectureTaintBehavior'
         end
       end
       
