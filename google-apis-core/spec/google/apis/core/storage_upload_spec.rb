@@ -69,11 +69,10 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
         .with(body: 'Hello world')).to have_been_made
     end
 
-    it 'should include an accept-encoding header' do
+    it 'should include an Accept-Encoding header in the outgoing request' do
       command.execute(client)
       expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
-        .with { |req| req.headers['Accept-Encoding'] = 'gzip' }
-            ).to have_been_made
+        .with { |req| req.headers['Accept-Encoding'].include?('gzip') }).to have_been_made
     end
   end
 
