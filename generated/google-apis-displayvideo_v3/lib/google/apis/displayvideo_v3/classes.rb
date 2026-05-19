@@ -159,10 +159,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :ad_group_ad_id
       
-        # The unique ID of the ad group that the ad belongs to. *Caution*: Parent ad
-        # groups for Demand Gen ads are not currently retrieveable using `advertisers.
-        # adGroups.list` or `advertisers.adGroups.get`. Demand Gen ads can be identified
-        # by the absence of the `ad_details` union field.
+        # Required. The unique ID of the ad group that the ad belongs to.
         # Corresponds to the JSON property `adGroupId`
         # @return [Fixnum]
         attr_accessor :ad_group_id
@@ -177,7 +174,7 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV3::AdUrl>]
         attr_accessor :ad_urls
       
-        # Output only. The unique ID of the advertiser the ad belongs to.
+        # Required. The unique ID of the advertiser the ad belongs to.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
         attr_accessor :advertiser_id
@@ -192,8 +189,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::BumperAd]
         attr_accessor :bumper_ad
       
-        # The display name of the ad. Must be UTF-8 encoded with a maximum size of 255
-        # bytes.
+        # Required. The display name of the ad. Must be UTF-8 encoded with a maximum
+        # size of 255 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -203,7 +200,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::DisplayVideoSourceAd]
         attr_accessor :display_video_source_ad
       
-        # The entity status of the ad.
+        # Required. The entity status of the ad.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
