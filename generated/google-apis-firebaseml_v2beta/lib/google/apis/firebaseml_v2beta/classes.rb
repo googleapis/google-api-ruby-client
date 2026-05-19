@@ -987,9 +987,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Schema is used to define the format of input/output data. Represents a select
-        # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
-        # schema-object). More fields may be added in the future as needed.
+        # Defines the schema of input and output data. This is a subset of the [OpenAPI
+        # 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object).
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :parameters
@@ -1004,9 +1003,8 @@ module Google
         # @return [Object]
         attr_accessor :parameters_json_schema
       
-        # Schema is used to define the format of input/output data. Represents a select
-        # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
-        # schema-object). More fields may be added in the future as needed.
+        # Defines the schema of input and output data. This is a subset of the [OpenAPI
+        # 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object).
         # Corresponds to the JSON property `response`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :response
@@ -1562,9 +1560,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :response_modalities
       
-        # Schema is used to define the format of input/output data. Represents a select
-        # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
-        # schema-object). More fields may be added in the future as needed.
+        # Defines the schema of input and output data. This is a subset of the [OpenAPI
+        # 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object).
         # Corresponds to the JSON property `responseSchema`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :response_schema
@@ -3065,154 +3062,166 @@ module Google
         end
       end
       
-      # Schema is used to define the format of input/output data. Represents a select
-      # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
-      # schema-object). More fields may be added in the future as needed.
+      # Defines the schema of input and output data. This is a subset of the [OpenAPI
+      # 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object).
       class GoogleCloudAiplatformV1beta1Schema
         include Google::Apis::Core::Hashable
       
-        # Optional. Can either be a boolean or an object; controls the presence of
-        # additional properties.
+        # Optional. If `type` is `OBJECT`, specifies how to handle properties not
+        # defined in `properties`. If it is a boolean `false`, no additional properties
+        # are allowed. If it is a schema, additional properties are allowed if they
+        # conform to the schema.
         # Corresponds to the JSON property `additionalProperties`
         # @return [Object]
         attr_accessor :additional_properties
       
-        # Optional. The value should be validated against any (one or more) of the
-        # subschemas in the list.
+        # Optional. The instance must be valid against any (one or more) of the
+        # subschemas listed in `any_of`.
         # Corresponds to the JSON property `anyOf`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema>]
         attr_accessor :any_of
       
-        # Optional. Default value of the data.
+        # Optional. Default value to use if the field is not specified.
         # Corresponds to the JSON property `default`
         # @return [Object]
         attr_accessor :default
       
-        # Optional. A map of definitions for use by `ref` Only allowed at the root of
-        # the schema.
+        # Optional. `defs` provides a map of schema definitions that can be reused by `
+        # ref` elsewhere in the schema. Only allowed at root level of the schema.
         # Corresponds to the JSON property `defs`
         # @return [Hash<String,Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema>]
         attr_accessor :defs
       
-        # Optional. The description of the data.
+        # Optional. Description of the schema.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. Possible values of the element of primitive type with enum format.
-        # Examples: 1. We can define direction as : `type:STRING, format:enum, enum:["
-        # EAST", NORTH", "SOUTH", "WEST"]` 2. We can define apartment number as : `type:
-        # INTEGER, format:enum, enum:["101", "201", "301"]`
+        # Optional. Possible values of the field. This field can be used to restrict a
+        # value to a fixed set of values. To mark a field as an enum, set `format` to `
+        # enum` and provide the list of possible values in `enum`. For example: 1. To
+        # define directions: ``type:STRING, format:enum, enum:["EAST", "NORTH", "SOUTH",
+        # "WEST"]`` 2. To define apartment numbers: ``type:INTEGER, format:enum, enum:["
+        # 101", "201", "301"]``
         # Corresponds to the JSON property `enum`
         # @return [Array<String>]
         attr_accessor :enum
       
-        # Optional. Example of the object. Will only populated when the object is the
-        # root.
+        # Optional. Example of an instance of this schema.
         # Corresponds to the JSON property `example`
         # @return [Object]
         attr_accessor :example
       
-        # Optional. The format of the data. Supported formats: for NUMBER type: "float",
-        # "double" for INTEGER type: "int32", "int64" for STRING type: "email", "byte",
-        # etc
+        # Optional. The format of the data. For `NUMBER` type, format can be `float` or `
+        # double`. For `INTEGER` type, format can be `int32` or `int64`. For `STRING`
+        # type, format can be `email`, `byte`, `date`, `date-time`, `password`, and
+        # other formats to further refine the data type.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
       
-        # Schema is used to define the format of input/output data. Represents a select
-        # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
-        # schema-object). More fields may be added in the future as needed.
+        # Defines the schema of input and output data. This is a subset of the [OpenAPI
+        # 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object).
         # Corresponds to the JSON property `items`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :items
       
-        # Optional. Maximum number of the elements for Type.ARRAY.
+        # Optional. If type is `ARRAY`, `max_items` specifies the maximum number of
+        # items in an array.
         # Corresponds to the JSON property `maxItems`
         # @return [Fixnum]
         attr_accessor :max_items
       
-        # Optional. Maximum length of the Type.STRING
+        # Optional. If type is `STRING`, `max_length` specifies the maximum length of
+        # the string.
         # Corresponds to the JSON property `maxLength`
         # @return [Fixnum]
         attr_accessor :max_length
       
-        # Optional. Maximum number of the properties for Type.OBJECT.
+        # Optional. If type is `OBJECT`, `max_properties` specifies the maximum number
+        # of properties that can be provided.
         # Corresponds to the JSON property `maxProperties`
         # @return [Fixnum]
         attr_accessor :max_properties
       
-        # Optional. Maximum value of the Type.INTEGER and Type.NUMBER
+        # Optional. If type is `INTEGER` or `NUMBER`, `maximum` specifies the maximum
+        # allowed value.
         # Corresponds to the JSON property `maximum`
         # @return [Float]
         attr_accessor :maximum
       
-        # Optional. Minimum number of the elements for Type.ARRAY.
+        # Optional. If type is `ARRAY`, `min_items` specifies the minimum number of
+        # items in an array.
         # Corresponds to the JSON property `minItems`
         # @return [Fixnum]
         attr_accessor :min_items
       
-        # Optional. SCHEMA FIELDS FOR TYPE STRING Minimum length of the Type.STRING
+        # Optional. If type is `STRING`, `min_length` specifies the minimum length of
+        # the string.
         # Corresponds to the JSON property `minLength`
         # @return [Fixnum]
         attr_accessor :min_length
       
-        # Optional. Minimum number of the properties for Type.OBJECT.
+        # Optional. If type is `OBJECT`, `min_properties` specifies the minimum number
+        # of properties that can be provided.
         # Corresponds to the JSON property `minProperties`
         # @return [Fixnum]
         attr_accessor :min_properties
       
-        # Optional. SCHEMA FIELDS FOR TYPE INTEGER and NUMBER Minimum value of the Type.
-        # INTEGER and Type.NUMBER
+        # Optional. If type is `INTEGER` or `NUMBER`, `minimum` specifies the minimum
+        # allowed value.
         # Corresponds to the JSON property `minimum`
         # @return [Float]
         attr_accessor :minimum
       
-        # Optional. Indicates if the value may be null.
+        # Optional. Indicates if the value of this field can be null.
         # Corresponds to the JSON property `nullable`
         # @return [Boolean]
         attr_accessor :nullable
         alias_method :nullable?, :nullable
       
-        # Optional. Pattern of the Type.STRING to restrict a string to a regular
-        # expression.
+        # Optional. If type is `STRING`, `pattern` specifies a regular expression that
+        # the string must match.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
       
-        # Optional. SCHEMA FIELDS FOR TYPE OBJECT Properties of Type.OBJECT.
+        # Optional. If type is `OBJECT`, `properties` is a map of property names to
+        # schema definitions for each property of the object.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema>]
         attr_accessor :properties
       
-        # Optional. The order of the properties. Not a standard field in open api spec.
-        # Only used to support the order of the properties.
+        # Optional. Order of properties displayed or used where order matters. This is
+        # not a standard field in OpenAPI specification, but can be used to control the
+        # order of properties.
         # Corresponds to the JSON property `propertyOrdering`
         # @return [Array<String>]
         attr_accessor :property_ordering
       
-        # Optional. Allows indirect references between schema nodes. The value should be
-        # a valid reference to a child of the root `defs`. For example, the following
-        # schema defines a reference to a schema node named "Pet": type: object
-        # properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name:
-        # type: string The value of the "pet" property is a reference to the schema node
-        # named "Pet". See details in https://json-schema.org/understanding-json-schema/
-        # structuring
+        # Optional. Allows referencing another schema definition to use in place of this
+        # schema. The value must be a valid reference to a schema in `defs`. For example,
+        # the following schema defines a reference to a schema node named "Pet": type:
+        # object properties: pet: ref: #/defs/Pet defs: Pet: type: object properties:
+        # name: type: string The value of the "pet" property is a reference to the
+        # schema node named "Pet". See details in https://json-schema.org/understanding-
+        # json-schema/structuring
         # Corresponds to the JSON property `ref`
         # @return [String]
         attr_accessor :ref
       
-        # Optional. Required properties of Type.OBJECT.
+        # Optional. If type is `OBJECT`, `required` lists the names of properties that
+        # must be present.
         # Corresponds to the JSON property `required`
         # @return [Array<String>]
         attr_accessor :required
       
-        # Optional. The title of the Schema.
+        # Optional. Title for the schema.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # Optional. The type of the data.
+        # Optional. Data type of the schema field.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3435,6 +3444,12 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval]
         attr_accessor :google_search_retrieval
       
+        # ParallelAiSearch tool type. A tool that uses the Parallel.ai search engine for
+        # grounding.
+        # Corresponds to the JSON property `parallelAiSearch`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolParallelAiSearch]
+        attr_accessor :parallel_ai_search
+      
         # Defines a retrieval tool that model can call to access external knowledge.
         # Corresponds to the JSON property `retrieval`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval]
@@ -3458,6 +3473,7 @@ module Google
           @google_maps = args[:google_maps] if args.key?(:google_maps)
           @google_search = args[:google_search] if args.key?(:google_search)
           @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
+          @parallel_ai_search = args[:parallel_ai_search] if args.key?(:parallel_ai_search)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
           @url_context = args[:url_context] if args.key?(:url_context)
         end
@@ -3558,6 +3574,42 @@ module Google
         def update!(**args)
           @blocking_confidence = args[:blocking_confidence] if args.key?(:blocking_confidence)
           @exclude_domains = args[:exclude_domains] if args.key?(:exclude_domains)
+        end
+      end
+      
+      # ParallelAiSearch tool type. A tool that uses the Parallel.ai search engine for
+      # grounding.
+      class GoogleCloudAiplatformV1beta1ToolParallelAiSearch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The API key for ParallelAiSearch. If an API key is not provided, the
+        # system will attempt to verify access by checking for an active Parallel.ai
+        # subscription through the Google Cloud Marketplace. See https://docs.parallel.
+        # ai/search/search-quickstart for more details.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # Optional. Custom configs for ParallelAiSearch. This field can be used to pass
+        # any parameter from the Parallel.ai Search API. See the Parallel.ai
+        # documentation for the full list of available parameters and their usage: https:
+        # //docs.parallel.ai/api-reference/search-beta/search Currently only `
+        # source_policy`, `excerpts`, `max_results`, `mode`, `fetch_policy` can be set
+        # via this field. For example: ` "source_policy": ` "include_domains": ["google.
+        # com", "wikipedia.org"], "exclude_domains": ["example.com"] `, "fetch_policy": `
+        # "max_age_seconds": 3600 ` `
+        # Corresponds to the JSON property `customConfigs`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @custom_configs = args[:custom_configs] if args.key?(:custom_configs)
         end
       end
       
