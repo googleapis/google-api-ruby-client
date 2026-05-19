@@ -187,18 +187,18 @@ RSpec.describe Google::Apis::Core::BaseService do
   context 'when making storage download commands' do
     let(:command) { service.send(:make_storage_download_command, :get, 'zoo/animals', authorization: 'foo') }
 
-    # it 'should return the correct command type' do
-    #   expect(command).to be_an_instance_of(Google::Apis::Core::StorageDownloadCommand)
-    # end
+    it 'should return the correct command type' do
+      expect(command).to be_an_instance_of(Google::Apis::Core::StorageDownloadCommand)
+    end
 
-    # it 'should build a correct URL' do
-    #   url = command.url.expand({}).to_s
-    #   expect(url).to eql 'https://www.googleapis.com/zoo/animals'
-    # end
+    it 'should build a correct URL' do
+      url = command.url.expand({}).to_s
+      expect(url).to eql 'https://www.googleapis.com/zoo/animals'
+    end
 
-    # it 'should include alt=media in params' do
-    #   expect(command.query).to include('alt' => 'media')
-    # end
+    it 'should include alt=media in params' do
+      expect(command.query).to include('alt' => 'media')
+    end
 
     it 'should include Accept-Encoding header' do
       expect(command.options.header['Accept-Encoding']).to eq('gzip')
