@@ -422,7 +422,9 @@ module Google
           command = StorageUploadCommand.new(method, template, client_version: client_version)
           command.options = request_options.merge(options)
           command.options.header = command.options.header&.dup || {}
-          command.options.header['Accept-Encoding'] ||= 'gzip'
+          unless command.options.header.any? { |k, _| k.to_s.casecmp('accept-encoding') == 0 }
+            command.options.header['Accept-Encoding'] = 'gzip'
+          end
           apply_command_defaults(command)
           command
         end
@@ -462,7 +464,9 @@ module Google
           command = StorageDownloadCommand.new(method, template, client_version: client_version)
           command.options = request_options.merge(options)
           command.options.header = command.options.header&.dup || {}
-          command.options.header['Accept-Encoding'] ||= 'gzip'
+          unless command.options.header.any? { |k, _| k.to_s.casecmp('accept-encoding') == 0 }
+            command.options.header['Accept-Encoding'] = 'gzip'
+          end
           command.query['alt'] = 'media'
           apply_command_defaults(command)
           command

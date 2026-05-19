@@ -141,7 +141,7 @@ RSpec.describe Google::Apis::Core::BaseService do
     end
 
     it 'should not include Accept-Encoding header' do
-      expect(command.header['Accept-Encoding']).to be_nil
+      expect(command.options.header&.[]('Accept-Encoding')).to be_nil
     end
 
     include_examples 'with options'
@@ -178,7 +178,7 @@ RSpec.describe Google::Apis::Core::BaseService do
     end
 
     it 'should not include Accept-Encoding header' do
-      expect(command.options.header['Accept-Encoding']).to be_nil
+      expect(command.options.header&.[]('Accept-Encoding')).to be_nil
     end
 
     include_examples 'with options'
@@ -220,7 +220,7 @@ RSpec.describe Google::Apis::Core::BaseService do
     end
 
     it 'should not include Accept-Encoding header' do
-      expect(command.options.header['Accept-Encoding']).to be_nil
+      expect(command.options.header&.[]('Accept-Encoding')).to be_nil
     end
 
     include_examples 'with options'
