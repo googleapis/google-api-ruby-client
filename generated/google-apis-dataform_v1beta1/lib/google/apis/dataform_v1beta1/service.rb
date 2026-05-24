@@ -933,6 +933,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes a single Repository asynchronously.
+        # @param [String] name
+        #   Required. The repository's name.
+        # @param [Google::Apis::DataformV1beta1::DeleteRepositoryLongRunningRequest] delete_repository_long_running_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_repository_long_running(name, delete_repository_long_running_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:deleteLongRunning', options)
+          command.request_representation = Google::Apis::DataformV1beta1::DeleteRepositoryLongRunningRequest::Representation
+          command.request_object = delete_repository_long_running_request_object
+          command.response_representation = Google::Apis::DataformV1beta1::Operation::Representation
+          command.response_class = Google::Apis::DataformV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetches a Repository's history of commits. The Repository must not have a
         # value for `git_remote_settings.url`.
         # @param [String] name
@@ -3263,8 +3296,8 @@ module Google
         #   orderBy="display_name"` * `orderBy="display_name desc"`
         # @param [Fixnum] page_size
         #   Optional. Maximum number of TeamFolders to return. The server may return fewer
-        #   items than requested. If unspecified, the server will pick an appropriate
-        #   default.
+        #   items than requested. If unspecified, the server will pick a default of
+        #   page_size = 50.
         # @param [String] page_token
         #   Optional. Page token received from a previous `SearchTeamFolders` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other

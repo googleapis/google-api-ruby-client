@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteRepositoryLongRunningRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteTeamFolderTreeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1119,6 +1125,13 @@ module Google
         end
       end
       
+      class DeleteRepositoryLongRunningRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
+        end
+      end
+      
       class DeleteTeamFolderTreeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1261,6 +1274,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication_token_secret_version, as: 'authenticationTokenSecretVersion'
           property :default_branch, as: 'defaultBranch'
+          property :effective_default_branch, as: 'effectiveDefaultBranch'
           property :ssh_authentication_config, as: 'sshAuthenticationConfig', class: Google::Apis::DataformV1beta1::SshAuthenticationConfig, decorator: Google::Apis::DataformV1beta1::SshAuthenticationConfig::Representation
       
           property :token_status, as: 'tokenStatus'

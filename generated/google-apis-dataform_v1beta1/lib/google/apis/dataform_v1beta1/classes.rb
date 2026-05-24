@@ -1085,6 +1085,31 @@ module Google
         end
       end
       
+      # `DeleteRepositoryLongRunning` request message.
+      class DeleteRepositoryLongRunningRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, child resources of this repository (compilation
+        # results and workflow invocations) will also be deleted. Otherwise, the request
+        # will only succeed if the repository has no child resources. **Note:** *This
+        # flag doesn't support deletion of workspaces, release configs or workflow
+        # configs. If any of such resources exists in the repository, the request will
+        # fail.*
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+        end
+      end
+      
       # `DeleteTeamFolderTree` request message.
       class DeleteTeamFolderTreeRequest
         include Google::Apis::Core::Hashable
@@ -1113,12 +1138,14 @@ module Google
       class DirectoryEntry
         include Google::Apis::Core::Hashable
       
-        # A child directory in the directory.
+        # A child directory in the directory. The path is returned including the full
+        # folder structure from the root.
         # Corresponds to the JSON property `directory`
         # @return [String]
         attr_accessor :directory
       
-        # A file in the directory.
+        # A file in the directory. The path is returned including the full folder
+        # structure from the root.
         # Corresponds to the JSON property `file`
         # @return [String]
         attr_accessor :file
@@ -1541,11 +1568,16 @@ module Google
         # @return [String]
         attr_accessor :authentication_token_secret_version
       
-        # Required. The Git remote's default branch name. If not set, `main` will be
-        # used and stored for the repository.
+        # Optional. The Git remote's default branch name. If not set `main` will be used.
         # Corresponds to the JSON property `defaultBranch`
         # @return [String]
         attr_accessor :default_branch
+      
+        # Output only. The Git remote's effective default branch name. This is the
+        # default branch name of the Git remote if it is set, otherwise it is `main`.
+        # Corresponds to the JSON property `effectiveDefaultBranch`
+        # @return [String]
+        attr_accessor :effective_default_branch
       
         # Configures fields for performing SSH authentication.
         # Corresponds to the JSON property `sshAuthenticationConfig`
@@ -1572,6 +1604,7 @@ module Google
         def update!(**args)
           @authentication_token_secret_version = args[:authentication_token_secret_version] if args.key?(:authentication_token_secret_version)
           @default_branch = args[:default_branch] if args.key?(:default_branch)
+          @effective_default_branch = args[:effective_default_branch] if args.key?(:effective_default_branch)
           @ssh_authentication_config = args[:ssh_authentication_config] if args.key?(:ssh_authentication_config)
           @token_status = args[:token_status] if args.key?(:token_status)
           @url = args[:url] if args.key?(:url)
