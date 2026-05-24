@@ -94,6 +94,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Warning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WarningsInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelSubmissionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -149,6 +161,7 @@ module Google
       class PublishItemRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_on_warnings, as: 'blockOnWarnings'
           collection :deploy_infos, as: 'deployInfos', class: Google::Apis::ChromewebstoreV2::DeployInfo, decorator: Google::Apis::ChromewebstoreV2::DeployInfo::Representation
       
           property :publish_type, as: 'publishType'
@@ -162,6 +175,8 @@ module Google
           property :item_id, as: 'itemId'
           property :name, as: 'name'
           property :state, as: 'state'
+          property :warning_info, as: 'warningInfo', class: Google::Apis::ChromewebstoreV2::WarningsInfo, decorator: Google::Apis::ChromewebstoreV2::WarningsInfo::Representation
+      
         end
       end
       
@@ -191,6 +206,22 @@ module Google
           property :item_id, as: 'itemId'
           property :name, as: 'name'
           property :upload_state, as: 'uploadState'
+        end
+      end
+      
+      class Warning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class WarningsInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :warnings, as: 'warnings', class: Google::Apis::ChromewebstoreV2::Warning, decorator: Google::Apis::ChromewebstoreV2::Warning::Representation
+      
         end
       end
     end

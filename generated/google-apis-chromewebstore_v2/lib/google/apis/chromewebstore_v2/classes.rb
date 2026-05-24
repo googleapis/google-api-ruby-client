@@ -190,6 +190,16 @@ module Google
       class PublishItemRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. When set to true the request will fail if there are any warnings
+        # during validation and the details will be included in the error_details.
+        # Otherwise warnings are treated as non-blocking and will be ignored for
+        # validation but will be included in the response for inspection. Defaults to `
+        # false` if unset.
+        # Corresponds to the JSON property `blockOnWarnings`
+        # @return [Boolean]
+        attr_accessor :block_on_warnings
+        alias_method :block_on_warnings?, :block_on_warnings
+      
         # Optional. Additional deploy information including the desired initial
         # percentage rollout. Defaults to the current value saved in the developer
         # dashboard if unset.
@@ -217,6 +227,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @block_on_warnings = args[:block_on_warnings] if args.key?(:block_on_warnings)
           @deploy_infos = args[:deploy_infos] if args.key?(:deploy_infos)
           @publish_type = args[:publish_type] if args.key?(:publish_type)
           @skip_review = args[:skip_review] if args.key?(:skip_review)
@@ -242,6 +253,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Message containing details on warnings encountered during PublishItem.
+        # Corresponds to the JSON property `warningInfo`
+        # @return [Google::Apis::ChromewebstoreV2::WarningsInfo]
+        attr_accessor :warning_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -251,6 +267,7 @@ module Google
           @item_id = args[:item_id] if args.key?(:item_id)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
+          @warning_info = args[:warning_info] if args.key?(:warning_info)
         end
       end
       
@@ -338,6 +355,53 @@ module Google
           @item_id = args[:item_id] if args.key?(:item_id)
           @name = args[:name] if args.key?(:name)
           @upload_state = args[:upload_state] if args.key?(:upload_state)
+        end
+      end
+      
+      # Represents a single warning encountered during the request.
+      class Warning
+        include Google::Apis::Core::Hashable
+      
+        # A description of the warning. Developers should use this message to understand
+        # the warning and take appropriate action to resolve the issue.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The reason for the warning. This is a constant value that identifies the
+        # proximate cause of the warning. This should be at most 63 characters and match
+        # a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Message containing details on warnings encountered during PublishItem.
+      class WarningsInfo
+        include Google::Apis::Core::Hashable
+      
+        # All warnings encountered during the request.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::ChromewebstoreV2::Warning>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
     end
