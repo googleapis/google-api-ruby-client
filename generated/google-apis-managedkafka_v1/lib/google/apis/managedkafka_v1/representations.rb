@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchemaSubject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchemaVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -893,6 +899,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :contexts, as: 'contexts'
           property :name, as: 'name'
+        end
+      end
+      
+      class SchemaSubject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :versions, as: 'versions'
         end
       end
       
