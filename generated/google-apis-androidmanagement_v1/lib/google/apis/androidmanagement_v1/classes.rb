@@ -1085,13 +1085,18 @@ module Google
         # @return [String]
         attr_accessor :package_sha256_hash
       
-        # The SHA-1 hash of each android.content.pm.Signature (https://developer.android.
-        # com/reference/android/content/pm/Signature.html) associated with the app
-        # package. Each byte of each hash value is represented as a two-digit
-        # hexadecimal number.
+        # Deprecated. Use signingKeyCerts instead. The SHA-1 hash of each android.
+        # content.pm.Signature (https://developer.android.com/reference/android/content/
+        # pm/Signature.html) associated with the app package. Each byte of each hash
+        # value is represented as a two-digit hexadecimal number.
         # Corresponds to the JSON property `signingKeyCertFingerprints`
         # @return [Array<String>]
         attr_accessor :signing_key_cert_fingerprints
+      
+        # Output only. Signing key certificates of the app.
+        # Corresponds to the JSON property `signingKeyCerts`
+        # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert>]
+        attr_accessor :signing_key_certs
       
         # Application state.
         # Corresponds to the JSON property `state`
@@ -1128,6 +1133,7 @@ module Google
           @package_name = args[:package_name] if args.key?(:package_name)
           @package_sha256_hash = args[:package_sha256_hash] if args.key?(:package_sha256_hash)
           @signing_key_cert_fingerprints = args[:signing_key_cert_fingerprints] if args.key?(:signing_key_cert_fingerprints)
+          @signing_key_certs = args[:signing_key_certs] if args.key?(:signing_key_certs)
           @state = args[:state] if args.key?(:state)
           @user_facing_type = args[:user_facing_type] if args.key?(:user_facing_type)
           @version_code = args[:version_code] if args.key?(:version_code)
