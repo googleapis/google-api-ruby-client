@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2AllMessages
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2AllOtherBigQueryTables
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +365,24 @@ module Google
       end
       
       class GooglePrivacyDlpV2ContentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2Conversation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ConversationLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ConversationMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2227,6 +2251,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2AllMessages
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2AllOtherBigQueryTables
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2707,6 +2737,8 @@ module Google
       
           property :content_metadata, as: 'contentMetadata', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentMetadata, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentMetadata::Representation
       
+          property :conversation, as: 'conversation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Conversation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Conversation::Representation
+      
           property :table, as: 'table', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Table, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Table::Representation
       
           property :value, as: 'value'
@@ -2719,6 +2751,8 @@ module Google
           property :container_name, as: 'containerName'
           property :container_timestamp, as: 'containerTimestamp'
           property :container_version, as: 'containerVersion'
+          property :conversation_location, as: 'conversationLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ConversationLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ConversationLocation::Representation
+      
           property :document_location, as: 'documentLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DocumentLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DocumentLocation::Representation
       
           property :image_location, as: 'imageLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageLocation::Representation
@@ -2735,6 +2769,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :properties, as: 'properties', class: Google::Apis::DlpV2::GooglePrivacyDlpV2KeyValueMetadataProperty, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2KeyValueMetadataProperty::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2Conversation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :messages, as: 'messages', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ConversationMessage, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ConversationMessage::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2ConversationLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_messages, as: 'allMessages', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AllMessages, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AllMessages::Representation
+      
+          property :message_index, as: 'messageIndex'
+        end
+      end
+      
+      class GooglePrivacyDlpV2ConversationMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :message_type, as: 'messageType'
+          property :participant_id, as: 'participantId'
         end
       end
       
