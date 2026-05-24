@@ -437,6 +437,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :input_variable_mapping
       
+        # Optional. The name of the variable that contains the language code to be used
+        # for the Dialogflow session. If unspecified, the default language code of the
+        # Dialogflow agent will be used.
+        # Corresponds to the JSON property `languageCodeVariable`
+        # @return [String]
+        attr_accessor :language_code_variable
+      
         # Optional. The mapping of the Dialogflow session parameters names to the app
         # variables names to be sent back to the CES agent after the Dialogflow agent
         # execution ends.
@@ -466,6 +473,7 @@ module Google
           @environment_id = args[:environment_id] if args.key?(:environment_id)
           @flow_id = args[:flow_id] if args.key?(:flow_id)
           @input_variable_mapping = args[:input_variable_mapping] if args.key?(:input_variable_mapping)
+          @language_code_variable = args[:language_code_variable] if args.key?(:language_code_variable)
           @output_variable_mapping = args[:output_variable_mapping] if args.key?(:output_variable_mapping)
           @respect_response_interruption_settings = args[:respect_response_interruption_settings] if args.key?(:respect_response_interruption_settings)
         end
@@ -4187,6 +4195,471 @@ module Google
         end
       end
       
+      # Artifacts represent task outputs.
+      class LfA2aV1Artifact
+        include Google::Apis::Core::Hashable
+      
+        # Required. Unique identifier (e.g. UUID) for the artifact. It must be unique
+        # within a task.
+        # Corresponds to the JSON property `artifactId`
+        # @return [String]
+        attr_accessor :artifact_id
+      
+        # Optional. A human readable description of the artifact.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The URIs of extensions that are present or contributed to this Artifact.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<String>]
+        attr_accessor :extensions
+      
+        # Optional. Metadata included with the artifact.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # A human readable name for the artifact.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The content of the artifact. Must contain at least one part.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::CesV1::LfA2aV1Part>]
+        attr_accessor :parts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+          @description = args[:description] if args.key?(:description)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @parts = args[:parts] if args.key?(:parts)
+        end
+      end
+      
+      # Defines authentication details, used for push notifications.
+      class LfA2aV1AuthenticationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Push Notification credentials. Format depends on the scheme (e.g., token for
+        # Bearer).
+        # Corresponds to the JSON property `credentials`
+        # @return [String]
+        attr_accessor :credentials
+      
+        # Required. HTTP Authentication Scheme from the [IANA registry](https://www.iana.
+        # org/assignments/http-authschemes/). Examples: `Bearer`, `Basic`, `Digest`.
+        # Scheme names are case-insensitive per [RFC 9110 Section 11.1](https://www.rfc-
+        # editor.org/rfc/rfc9110#section-11.1).
+        # Corresponds to the JSON property `scheme`
+        # @return [String]
+        attr_accessor :scheme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @credentials = args[:credentials] if args.key?(:credentials)
+          @scheme = args[:scheme] if args.key?(:scheme)
+        end
+      end
+      
+      # `Message` is one unit of communication between client and server. It can be
+      # associated with a context and/or a task. For server messages, `context_id`
+      # must be provided, and `task_id` only if a task was created. For client
+      # messages, both fields are optional, with the caveat that if both are provided,
+      # they have to match (the `context_id` has to be the one that is set on the task)
+      # . If only `task_id` is provided, the server will infer `context_id` from it.
+      class LfA2aV1Message
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The context id of the message. If set, the message will be
+        # associated with the given context.
+        # Corresponds to the JSON property `contextId`
+        # @return [String]
+        attr_accessor :context_id
+      
+        # The URIs of extensions that are present or contributed to this Message.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<String>]
+        attr_accessor :extensions
+      
+        # Required. The unique identifier (e.g. UUID) of the message. This is created by
+        # the message creator.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
+        # Optional. Any metadata to provide along with the message.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Required. Parts is the container of the message content.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::CesV1::LfA2aV1Part>]
+        attr_accessor :parts
+      
+        # A list of task IDs that this message references for additional context.
+        # Corresponds to the JSON property `referenceTaskIds`
+        # @return [Array<String>]
+        attr_accessor :reference_task_ids
+      
+        # Required. Identifies the sender of the message.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        # Optional. The task id of the message. If set, the message will be associated
+        # with the given task.
+        # Corresponds to the JSON property `taskId`
+        # @return [String]
+        attr_accessor :task_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_id = args[:context_id] if args.key?(:context_id)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @parts = args[:parts] if args.key?(:parts)
+          @reference_task_ids = args[:reference_task_ids] if args.key?(:reference_task_ids)
+          @role = args[:role] if args.key?(:role)
+          @task_id = args[:task_id] if args.key?(:task_id)
+        end
+      end
+      
+      # `Part` represents a container for a section of communication content. Parts
+      # can be purely textual, some sort of file (image, video, etc) or a structured
+      # data blob (i.e. JSON).
+      class LfA2aV1Part
+        include Google::Apis::Core::Hashable
+      
+        # Arbitrary structured `data` as a JSON value (object, array, string, number,
+        # boolean, or null).
+        # Corresponds to the JSON property `data`
+        # @return [Object]
+        attr_accessor :data
+      
+        # An optional `filename` for the file (e.g., "document.pdf").
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        # The `media_type` (MIME type) of the part content (e.g., "text/plain", "
+        # application/json", "image/png"). This field is available for all part types.
+        # Corresponds to the JSON property `mediaType`
+        # @return [String]
+        attr_accessor :media_type
+      
+        # Optional. metadata associated with this part.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The `raw` byte content of a file. In JSON serialization, this is encoded as a
+        # base64 string.
+        # Corresponds to the JSON property `raw`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw
+      
+        # The string content of the `text` part.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # A `url` pointing to the file's content.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @filename = args[:filename] if args.key?(:filename)
+          @media_type = args[:media_type] if args.key?(:media_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @raw = args[:raw] if args.key?(:raw)
+          @text = args[:text] if args.key?(:text)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Configuration of a send message request.
+      class LfA2aV1SendMessageConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # A list of media types the client is prepared to accept for response parts.
+        # Agents SHOULD use this to tailor their output.
+        # Corresponds to the JSON property `acceptedOutputModes`
+        # @return [Array<String>]
+        attr_accessor :accepted_output_modes
+      
+        # The maximum number of most recent messages from the task's history to retrieve
+        # in the response. An unset value means the client does not impose any limit. A
+        # value of zero is a request to not include any messages. The server MUST NOT
+        # return more messages than the provided value, but MAY apply a lower limit.
+        # Corresponds to the JSON property `historyLength`
+        # @return [Fixnum]
+        attr_accessor :history_length
+      
+        # If `true`, the operation returns immediately after creating the task, even if
+        # processing is still in progress. If `false` (default), the operation MUST wait
+        # until the task reaches a terminal (`COMPLETED`, `FAILED`, `CANCELED`, `
+        # REJECTED`) or interrupted (`INPUT_REQUIRED`, `AUTH_REQUIRED`) state before
+        # returning.
+        # Corresponds to the JSON property `returnImmediately`
+        # @return [Boolean]
+        attr_accessor :return_immediately
+        alias_method :return_immediately?, :return_immediately
+      
+        # A container associating a push notification configuration with a specific task.
+        # Corresponds to the JSON property `taskPushNotificationConfig`
+        # @return [Google::Apis::CesV1::LfA2aV1TaskPushNotificationConfig]
+        attr_accessor :task_push_notification_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accepted_output_modes = args[:accepted_output_modes] if args.key?(:accepted_output_modes)
+          @history_length = args[:history_length] if args.key?(:history_length)
+          @return_immediately = args[:return_immediately] if args.key?(:return_immediately)
+          @task_push_notification_config = args[:task_push_notification_config] if args.key?(:task_push_notification_config)
+        end
+      end
+      
+      # Represents a request for the `SendMessage` method.
+      class LfA2aV1SendMessageRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of a send message request.
+        # Corresponds to the JSON property `configuration`
+        # @return [Google::Apis::CesV1::LfA2aV1SendMessageConfiguration]
+        attr_accessor :configuration
+      
+        # `Message` is one unit of communication between client and server. It can be
+        # associated with a context and/or a task. For server messages, `context_id`
+        # must be provided, and `task_id` only if a task was created. For client
+        # messages, both fields are optional, with the caveat that if both are provided,
+        # they have to match (the `context_id` has to be the one that is set on the task)
+        # . If only `task_id` is provided, the server will infer `context_id` from it.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::CesV1::LfA2aV1Message]
+        attr_accessor :message
+      
+        # A flexible key-value map for passing additional context or parameters.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configuration = args[:configuration] if args.key?(:configuration)
+          @message = args[:message] if args.key?(:message)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # Represents the response for the `SendMessage` method.
+      class LfA2aV1SendMessageResponse
+        include Google::Apis::Core::Hashable
+      
+        # `Message` is one unit of communication between client and server. It can be
+        # associated with a context and/or a task. For server messages, `context_id`
+        # must be provided, and `task_id` only if a task was created. For client
+        # messages, both fields are optional, with the caveat that if both are provided,
+        # they have to match (the `context_id` has to be the one that is set on the task)
+        # . If only `task_id` is provided, the server will infer `context_id` from it.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::CesV1::LfA2aV1Message]
+        attr_accessor :message
+      
+        # `Task` is the core unit of action for A2A. It has a current status and when
+        # results are created for the task they are stored in the artifact. If there are
+        # multiple turns for a task, these are stored in history.
+        # Corresponds to the JSON property `task`
+        # @return [Google::Apis::CesV1::LfA2aV1Task]
+        attr_accessor :task
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @task = args[:task] if args.key?(:task)
+        end
+      end
+      
+      # `Task` is the core unit of action for A2A. It has a current status and when
+      # results are created for the task they are stored in the artifact. If there are
+      # multiple turns for a task, these are stored in history.
+      class LfA2aV1Task
+        include Google::Apis::Core::Hashable
+      
+        # A set of output artifacts for a `Task`.
+        # Corresponds to the JSON property `artifacts`
+        # @return [Array<Google::Apis::CesV1::LfA2aV1Artifact>]
+        attr_accessor :artifacts
+      
+        # Unique identifier (e.g. UUID) for the contextual collection of interactions (
+        # tasks and messages).
+        # Corresponds to the JSON property `contextId`
+        # @return [String]
+        attr_accessor :context_id
+      
+        # protolint:disable REPEATED_FIELD_NAMES_PLURALIZED The history of interactions
+        # from a `Task`.
+        # Corresponds to the JSON property `history`
+        # @return [Array<Google::Apis::CesV1::LfA2aV1Message>]
+        attr_accessor :history
+      
+        # Required. Unique identifier (e.g. UUID) for the task, generated by the server
+        # for a new task.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # protolint:enable REPEATED_FIELD_NAMES_PLURALIZED A key/value object to store
+        # custom metadata about a task.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # A container for the status of a task
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::CesV1::LfA2aV1TaskStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifacts = args[:artifacts] if args.key?(:artifacts)
+          @context_id = args[:context_id] if args.key?(:context_id)
+          @history = args[:history] if args.key?(:history)
+          @id = args[:id] if args.key?(:id)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # A container associating a push notification configuration with a specific task.
+      class LfA2aV1TaskPushNotificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines authentication details, used for push notifications.
+        # Corresponds to the JSON property `authentication`
+        # @return [Google::Apis::CesV1::LfA2aV1AuthenticationInfo]
+        attr_accessor :authentication
+      
+        # The push notification configuration details. A unique identifier (e.g. UUID)
+        # for this push notification configuration.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The ID of the task this configuration is associated with.
+        # Corresponds to the JSON property `taskId`
+        # @return [String]
+        attr_accessor :task_id
+      
+        # Optional. Tenant ID.
+        # Corresponds to the JSON property `tenant`
+        # @return [String]
+        attr_accessor :tenant
+      
+        # A token unique for this task or session.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # Required. The URL where the notification should be sent.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication = args[:authentication] if args.key?(:authentication)
+          @id = args[:id] if args.key?(:id)
+          @task_id = args[:task_id] if args.key?(:task_id)
+          @tenant = args[:tenant] if args.key?(:tenant)
+          @token = args[:token] if args.key?(:token)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # A container for the status of a task
+      class LfA2aV1TaskStatus
+        include Google::Apis::Core::Hashable
+      
+        # `Message` is one unit of communication between client and server. It can be
+        # associated with a context and/or a task. For server messages, `context_id`
+        # must be provided, and `task_id` only if a task was created. For client
+        # messages, both fields are optional, with the caveat that if both are provided,
+        # they have to match (the `context_id` has to be the one that is set on the task)
+        # . If only `task_id` is provided, the server will infer `context_id` from it.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::CesV1::LfA2aV1Message]
+        attr_accessor :message
+      
+        # Required. The current state of this task.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # ISO 8601 Timestamp when the status was recorded. Example: "2023-10-27T10:00:
+        # 00Z"
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
       # Response message for AgentService.ListAgents.
       class ListAgentsResponse
         include Google::Apis::Core::Hashable
@@ -4654,6 +5127,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The name override of the MCP tool. This is populated if the name was
+        # overridden by a Toolset override.
+        # Corresponds to the JSON property `nameOverride`
+        # @return [String]
+        attr_accessor :name_override
+      
         # Represents a select subset of an OpenAPI 3.0 schema object.
         # Corresponds to the JSON property `outputSchema`
         # @return [Google::Apis::CesV1::Schema]
@@ -4673,6 +5152,11 @@ module Google
         # @return [Google::Apis::CesV1::ServiceDirectoryConfig]
         attr_accessor :service_directory_config
       
+        # Output only. The dynamic availability state of the tool on the external server.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # The TLS configuration.
         # Corresponds to the JSON property `tlsConfig`
         # @return [Google::Apis::CesV1::TlsConfig]
@@ -4689,10 +5173,87 @@ module Google
           @description = args[:description] if args.key?(:description)
           @input_schema = args[:input_schema] if args.key?(:input_schema)
           @name = args[:name] if args.key?(:name)
+          @name_override = args[:name_override] if args.key?(:name_override)
           @output_schema = args[:output_schema] if args.key?(:output_schema)
           @server_address = args[:server_address] if args.key?(:server_address)
           @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @state = args[:state] if args.key?(:state)
           @tls_config = args[:tls_config] if args.key?(:tls_config)
+        end
+      end
+      
+      # Container for a tool's core definition elements that are snapshot. Schemas in
+      # the snapshot are used as-is and cannot be overridden.
+      class McpToolDefinition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The description of the MCP tool. This can be overridden by `
+        # description_override` in `McpToolOverride`.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Represents a select subset of an OpenAPI 3.0 schema object.
+        # Corresponds to the JSON property `inputSchema`
+        # @return [Google::Apis::CesV1::Schema]
+        attr_accessor :input_schema
+      
+        # Represents a select subset of an OpenAPI 3.0 schema object.
+        # Corresponds to the JSON property `outputSchema`
+        # @return [Google::Apis::CesV1::Schema]
+        attr_accessor :output_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @input_schema = args[:input_schema] if args.key?(:input_schema)
+          @output_schema = args[:output_schema] if args.key?(:output_schema)
+        end
+      end
+      
+      # Overrides associated with a given tool in a Toolset. This enables "pinning" or
+      # "overriding" of tool definitions from the external dynamic server.
+      class McpToolOverride
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If present, this tool uses this description instead of the original
+        # description from the server.
+        # Corresponds to the JSON property `descriptionOverride`
+        # @return [String]
+        attr_accessor :description_override
+      
+        # Optional. If present, this tool uses this name in the Agent instead of the
+        # original name. This is primarily used as an alias if the MCP server offers
+        # poorly named tools.
+        # Corresponds to the JSON property `nameOverride`
+        # @return [String]
+        attr_accessor :name_override
+      
+        # Container for a tool's core definition elements that are snapshot. Schemas in
+        # the snapshot are used as-is and cannot be overridden.
+        # Corresponds to the JSON property `snapshot`
+        # @return [Google::Apis::CesV1::McpToolDefinition]
+        attr_accessor :snapshot
+      
+        # Required. The original name of the tool as it is emitted by the MCP server.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description_override = args[:description_override] if args.key?(:description_override)
+          @name_override = args[:name_override] if args.key?(:name_override)
+          @snapshot = args[:snapshot] if args.key?(:snapshot)
+          @tool = args[:tool] if args.key?(:tool)
         end
       end
       
@@ -4732,6 +5293,13 @@ module Google
         # @return [Google::Apis::CesV1::TlsConfig]
         attr_accessor :tls_config
       
+        # Optional. Overrides for individual tools within this toolset. This allows
+        # overriding specific details like descriptions, names, or pinning the tools'
+        # states so they aren't fully dynamic.
+        # Corresponds to the JSON property `toolOverrides`
+        # @return [Array<Google::Apis::CesV1::McpToolOverride>]
+        attr_accessor :tool_overrides
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4743,6 +5311,7 @@ module Google
           @server_address = args[:server_address] if args.key?(:server_address)
           @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
           @tls_config = args[:tls_config] if args.key?(:tls_config)
+          @tool_overrides = args[:tool_overrides] if args.key?(:tool_overrides)
         end
       end
       
@@ -5246,6 +5815,11 @@ module Google
         # @return [String]
         attr_accessor :python_code
       
+        # Configuration for tools using Service Directory.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::CesV1::ServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5255,6 +5829,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @python_code = args[:python_code] if args.key?(:python_code)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
         end
       end
       
@@ -5409,6 +5984,14 @@ module Google
       class RetrieveToolsRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the returned tools will contain raw descriptions and
+        # schemas directly from the server, bypassing any stored persistence
+        # configurations (overrides/snapshots).
+        # Corresponds to the JSON property `bypassPersistenceConfig`
+        # @return [Boolean]
+        attr_accessor :bypass_persistence_config
+        alias_method :bypass_persistence_config?, :bypass_persistence_config
+      
         # Optional. The identifiers of the tools to retrieve from the toolset. If empty,
         # all tools in the toolset will be returned.
         # Corresponds to the JSON property `toolIds`
@@ -5421,6 +6004,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bypass_persistence_config = args[:bypass_persistence_config] if args.key?(:bypass_persistence_config)
           @tool_ids = args[:tool_ids] if args.key?(:tool_ids)
         end
       end

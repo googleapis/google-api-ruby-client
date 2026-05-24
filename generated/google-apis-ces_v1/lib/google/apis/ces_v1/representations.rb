@@ -652,6 +652,66 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LfA2aV1Artifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfA2aV1AuthenticationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfA2aV1Message
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfA2aV1Part
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfA2aV1SendMessageConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfA2aV1SendMessageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfA2aV1SendMessageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfA2aV1Task
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfA2aV1TaskPushNotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfA2aV1TaskStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAgentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -737,6 +797,18 @@ module Google
       end
       
       class McpTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class McpToolDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class McpToolOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1211,6 +1283,7 @@ module Google
           property :environment_id, as: 'environmentId'
           property :flow_id, as: 'flowId'
           hash :input_variable_mapping, as: 'inputVariableMapping'
+          property :language_code_variable, as: 'languageCodeVariable'
           hash :output_variable_mapping, as: 'outputVariableMapping'
           property :respect_response_interruption_settings, as: 'respectResponseInterruptionSettings'
         end
@@ -2247,6 +2320,125 @@ module Google
         end
       end
       
+      class LfA2aV1Artifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_id, as: 'artifactId'
+          property :description, as: 'description'
+          collection :extensions, as: 'extensions'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          collection :parts, as: 'parts', class: Google::Apis::CesV1::LfA2aV1Part, decorator: Google::Apis::CesV1::LfA2aV1Part::Representation
+      
+        end
+      end
+      
+      class LfA2aV1AuthenticationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :credentials, as: 'credentials'
+          property :scheme, as: 'scheme'
+        end
+      end
+      
+      class LfA2aV1Message
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_id, as: 'contextId'
+          collection :extensions, as: 'extensions'
+          property :message_id, as: 'messageId'
+          hash :metadata, as: 'metadata'
+          collection :parts, as: 'parts', class: Google::Apis::CesV1::LfA2aV1Part, decorator: Google::Apis::CesV1::LfA2aV1Part::Representation
+      
+          collection :reference_task_ids, as: 'referenceTaskIds'
+          property :role, as: 'role'
+          property :task_id, as: 'taskId'
+        end
+      end
+      
+      class LfA2aV1Part
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data'
+          property :filename, as: 'filename'
+          property :media_type, as: 'mediaType'
+          hash :metadata, as: 'metadata'
+          property :raw, :base64 => true, as: 'raw'
+          property :text, as: 'text'
+          property :url, as: 'url'
+        end
+      end
+      
+      class LfA2aV1SendMessageConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accepted_output_modes, as: 'acceptedOutputModes'
+          property :history_length, as: 'historyLength'
+          property :return_immediately, as: 'returnImmediately'
+          property :task_push_notification_config, as: 'taskPushNotificationConfig', class: Google::Apis::CesV1::LfA2aV1TaskPushNotificationConfig, decorator: Google::Apis::CesV1::LfA2aV1TaskPushNotificationConfig::Representation
+      
+        end
+      end
+      
+      class LfA2aV1SendMessageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :configuration, as: 'configuration', class: Google::Apis::CesV1::LfA2aV1SendMessageConfiguration, decorator: Google::Apis::CesV1::LfA2aV1SendMessageConfiguration::Representation
+      
+          property :message, as: 'message', class: Google::Apis::CesV1::LfA2aV1Message, decorator: Google::Apis::CesV1::LfA2aV1Message::Representation
+      
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class LfA2aV1SendMessageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::CesV1::LfA2aV1Message, decorator: Google::Apis::CesV1::LfA2aV1Message::Representation
+      
+          property :task, as: 'task', class: Google::Apis::CesV1::LfA2aV1Task, decorator: Google::Apis::CesV1::LfA2aV1Task::Representation
+      
+        end
+      end
+      
+      class LfA2aV1Task
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :artifacts, as: 'artifacts', class: Google::Apis::CesV1::LfA2aV1Artifact, decorator: Google::Apis::CesV1::LfA2aV1Artifact::Representation
+      
+          property :context_id, as: 'contextId'
+          collection :history, as: 'history', class: Google::Apis::CesV1::LfA2aV1Message, decorator: Google::Apis::CesV1::LfA2aV1Message::Representation
+      
+          property :id, as: 'id'
+          hash :metadata, as: 'metadata'
+          property :status, as: 'status', class: Google::Apis::CesV1::LfA2aV1TaskStatus, decorator: Google::Apis::CesV1::LfA2aV1TaskStatus::Representation
+      
+        end
+      end
+      
+      class LfA2aV1TaskPushNotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication, as: 'authentication', class: Google::Apis::CesV1::LfA2aV1AuthenticationInfo, decorator: Google::Apis::CesV1::LfA2aV1AuthenticationInfo::Representation
+      
+          property :id, as: 'id'
+          property :task_id, as: 'taskId'
+          property :tenant, as: 'tenant'
+          property :token, as: 'token'
+          property :url, as: 'url'
+        end
+      end
+      
+      class LfA2aV1TaskStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::CesV1::LfA2aV1Message, decorator: Google::Apis::CesV1::LfA2aV1Message::Representation
+      
+          property :state, as: 'state'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
       class ListAgentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2400,13 +2592,37 @@ module Google
           property :input_schema, as: 'inputSchema', class: Google::Apis::CesV1::Schema, decorator: Google::Apis::CesV1::Schema::Representation
       
           property :name, as: 'name'
+          property :name_override, as: 'nameOverride'
           property :output_schema, as: 'outputSchema', class: Google::Apis::CesV1::Schema, decorator: Google::Apis::CesV1::Schema::Representation
       
           property :server_address, as: 'serverAddress'
           property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::CesV1::ServiceDirectoryConfig, decorator: Google::Apis::CesV1::ServiceDirectoryConfig::Representation
       
+          property :state, as: 'state'
           property :tls_config, as: 'tlsConfig', class: Google::Apis::CesV1::TlsConfig, decorator: Google::Apis::CesV1::TlsConfig::Representation
       
+        end
+      end
+      
+      class McpToolDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :input_schema, as: 'inputSchema', class: Google::Apis::CesV1::Schema, decorator: Google::Apis::CesV1::Schema::Representation
+      
+          property :output_schema, as: 'outputSchema', class: Google::Apis::CesV1::Schema, decorator: Google::Apis::CesV1::Schema::Representation
+      
+        end
+      end
+      
+      class McpToolOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description_override, as: 'descriptionOverride'
+          property :name_override, as: 'nameOverride'
+          property :snapshot, as: 'snapshot', class: Google::Apis::CesV1::McpToolDefinition, decorator: Google::Apis::CesV1::McpToolDefinition::Representation
+      
+          property :tool, as: 'tool'
         end
       end
       
@@ -2420,6 +2636,8 @@ module Google
           property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::CesV1::ServiceDirectoryConfig, decorator: Google::Apis::CesV1::ServiceDirectoryConfig::Representation
       
           property :tls_config, as: 'tlsConfig', class: Google::Apis::CesV1::TlsConfig, decorator: Google::Apis::CesV1::TlsConfig::Representation
+      
+          collection :tool_overrides, as: 'toolOverrides', class: Google::Apis::CesV1::McpToolOverride, decorator: Google::Apis::CesV1::McpToolOverride::Representation
       
         end
       end
@@ -2556,6 +2774,8 @@ module Google
           property :description, as: 'description'
           property :name, as: 'name'
           property :python_code, as: 'pythonCode'
+          property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::CesV1::ServiceDirectoryConfig, decorator: Google::Apis::CesV1::ServiceDirectoryConfig::Representation
+      
         end
       end
       
@@ -2609,6 +2829,7 @@ module Google
       class RetrieveToolsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bypass_persistence_config, as: 'bypassPersistenceConfig'
           collection :tool_ids, as: 'toolIds'
         end
       end
