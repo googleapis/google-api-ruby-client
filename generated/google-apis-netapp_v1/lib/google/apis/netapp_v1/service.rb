@@ -1658,6 +1658,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Restores a backup to an ONTAP-mode volume.
+        # @param [String] name
+        #   Required. The resource name of the ONTAP mode storage pool, in the format of `
+        #   projects/`project`/locations/`location`/storagePools/`storage_pool``
+        # @param [Google::Apis::NetappV1::RestoreVolumeRequest] restore_volume_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_storage_pool_volume(name, restore_volume_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:restoreVolume', options)
+          command.request_representation = Google::Apis::NetappV1::RestoreVolumeRequest::Representation
+          command.request_object = restore_volume_request_object
+          command.response_representation = Google::Apis::NetappV1::Operation::Representation
+          command.response_class = Google::Apis::NetappV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # This operation will switch the active/replica zone for a regional storagePool.
         # @param [String] name
         #   Required. Name of the storage pool
@@ -1683,6 +1717,40 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:switch', options)
           command.request_representation = Google::Apis::NetappV1::SwitchActiveReplicaZoneRequest::Representation
           command.request_object = switch_active_replica_zone_request_object
+          command.response_representation = Google::Apis::NetappV1::Operation::Representation
+          command.response_class = Google::Apis::NetappV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the backup configuration for an ONTAP-mode volume.
+        # @param [String] name
+        #   Required. The resource name of the StoragePool, in the format: projects/`
+        #   projectNumber`/locations/`locationId`/storagePools/`poolId`
+        # @param [Google::Apis::NetappV1::UpdateBackupConfigRequest] update_backup_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_storage_pool_backup_config(name, update_backup_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:updateBackupConfig', options)
+          command.request_representation = Google::Apis::NetappV1::UpdateBackupConfigRequest::Representation
+          command.request_object = update_backup_config_request_object
           command.response_representation = Google::Apis::NetappV1::Operation::Representation
           command.response_class = Google::Apis::NetappV1::Operation
           command.params['name'] = name unless name.nil?
@@ -1720,6 +1788,53 @@ module Google
           command.response_representation = Google::Apis::NetappV1::Operation::Representation
           command.response_class = Google::Apis::NetappV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists backup configurations for all volumes in an ONTAP-mode Storage Pool.
+        # @param [String] parent
+        #   Required. The ONTAP StoragePool for which to retrieve backup configuration
+        #   information, in the format `projects/`project`/locations/`location`/
+        #   storagePools/`storage_pool``.
+        # @param [String] filter
+        #   Optional. The standard list filter.
+        # @param [String] order_by
+        #   Optional. Sort results. Supported values are "volume_id" or ""
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. The service may return fewer
+        #   than this value. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000. If unspecified or set to 0, a default of 50 will be used.
+        # @param [String] page_token
+        #   Optional. The next_page_token value to use if there are additional results to
+        #   retrieve for this list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::ListBackupConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::ListBackupConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_storage_pool_backup_configs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backupConfigs', options)
+          command.response_representation = Google::Apis::NetappV1::ListBackupConfigsResponse::Representation
+          command.response_class = Google::Apis::NetappV1::ListBackupConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

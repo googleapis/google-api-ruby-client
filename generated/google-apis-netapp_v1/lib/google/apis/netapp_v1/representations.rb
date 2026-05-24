@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupVault
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBackupConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBackupPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +322,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OntapSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OntapVolumeTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +365,12 @@ module Google
       end
       
       class RestoreParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreVolumeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateBackupConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserCommands
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +485,12 @@ module Google
       end
       
       class Volume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VolumeBackupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -499,6 +541,8 @@ module Google
           property :enforced_retention_end_time, as: 'enforcedRetentionEndTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :ontap_source, as: 'ontapSource', class: Google::Apis::NetappV1::OntapSource, decorator: Google::Apis::NetappV1::OntapSource::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :source_snapshot, as: 'sourceSnapshot'
@@ -543,6 +587,14 @@ module Google
           property :manual_backup_immutable, as: 'manualBackupImmutable'
           property :monthly_backup_immutable, as: 'monthlyBackupImmutable'
           property :weekly_backup_immutable, as: 'weeklyBackupImmutable'
+        end
+      end
+      
+      class BackupSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          collection :file_list, as: 'fileList'
         end
       end
       
@@ -818,6 +870,16 @@ module Google
         end
       end
       
+      class ListBackupConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :volume_backup_configs, as: 'volumeBackupConfigs', class: Google::Apis::NetappV1::VolumeBackupConfig, decorator: Google::Apis::NetappV1::VolumeBackupConfig::Representation
+      
+        end
+      end
+      
       class ListBackupPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -979,6 +1041,23 @@ module Google
         end
       end
       
+      class OntapSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot_uuid, as: 'snapshotUuid'
+          property :storage_pool, as: 'storagePool'
+          property :volume_uuid, as: 'volumeUuid'
+        end
+      end
+      
+      class OntapVolumeTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restore_destination_path, as: 'restoreDestinationPath'
+          property :volume_uuid, as: 'volumeUuid'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1061,6 +1140,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_backup, as: 'sourceBackup'
           property :source_snapshot, as: 'sourceSnapshot'
+        end
+      end
+      
+      class RestoreVolumeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_source, as: 'backupSource', class: Google::Apis::NetappV1::BackupSource, decorator: Google::Apis::NetappV1::BackupSource::Representation
+      
+          property :ontap_volume_target, as: 'ontapVolumeTarget', class: Google::Apis::NetappV1::OntapVolumeTarget, decorator: Google::Apis::NetappV1::OntapVolumeTarget::Representation
+      
         end
       end
       
@@ -1221,6 +1310,16 @@ module Google
         end
       end
       
+      class UpdateBackupConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_config, as: 'backupConfig', class: Google::Apis::NetappV1::BackupConfig, decorator: Google::Apis::NetappV1::BackupConfig::Representation
+      
+          property :update_mask, as: 'updateMask'
+          property :volume_uuid, as: 'volumeUuid'
+        end
+      end
+      
       class UserCommands
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1308,6 +1407,15 @@ module Google
           property :unix_permissions, as: 'unixPermissions'
           property :used_gib, :numeric_string => true, as: 'usedGib'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class VolumeBackupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_config, as: 'backupConfig', class: Google::Apis::NetappV1::BackupConfig, decorator: Google::Apis::NetappV1::BackupConfig::Representation
+      
+          property :volume_uuid, as: 'volumeUuid'
         end
       end
       
