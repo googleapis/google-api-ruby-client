@@ -699,6 +699,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :additional_guests, as: 'additionalGuests'
+          property :async_operation, as: 'asyncOperation'
           property :comment, as: 'comment'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
