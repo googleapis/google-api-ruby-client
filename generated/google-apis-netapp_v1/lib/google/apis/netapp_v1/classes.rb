@@ -228,6 +228,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Represents ONTAP source details.
+        # Corresponds to the JSON property `ontapSource`
+        # @return [Google::Apis::NetappV1::OntapSource]
+        attr_accessor :ontap_source
+      
         # Output only. Reserved for future use
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -287,6 +292,7 @@ module Google
           @enforced_retention_end_time = args[:enforced_retention_end_time] if args.key?(:enforced_retention_end_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @ontap_source = args[:ontap_source] if args.key?(:ontap_source)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
@@ -470,6 +476,33 @@ module Google
           @manual_backup_immutable = args[:manual_backup_immutable] if args.key?(:manual_backup_immutable)
           @monthly_backup_immutable = args[:monthly_backup_immutable] if args.key?(:monthly_backup_immutable)
           @weekly_backup_immutable = args[:weekly_backup_immutable] if args.key?(:weekly_backup_immutable)
+        end
+      end
+      
+      # Represents the backup source of the restore operation.
+      class BackupSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The backup resource name.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # Optional. List of files to be restored in the form of their absolute path as
+        # in source volume. If provided, only these files will be restored. If not
+        # provided, the entire backup will be restored (Full Backup Restore)
+        # Corresponds to the JSON property `fileList`
+        # @return [Array<String>]
+        attr_accessor :file_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @file_list = args[:file_list] if args.key?(:file_list)
         end
       end
       
@@ -1525,6 +1558,38 @@ module Google
         end
       end
       
+      # Message for response to listing BackupConfigs in an ONTAP StoragePool.
+      class ListBackupConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token you can use to retrieve the next page of results. Not returned if
+        # there are no more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # A list of backup configurations for volumes in the pool.
+        # Corresponds to the JSON property `volumeBackupConfigs`
+        # @return [Array<Google::Apis::NetappV1::VolumeBackupConfig>]
+        attr_accessor :volume_backup_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @volume_backup_configs = args[:volume_backup_configs] if args.key?(:volume_backup_configs)
+        end
+      end
+      
       # ListBackupPoliciesResponse contains all the backup policies requested.
       class ListBackupPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -2066,6 +2131,64 @@ module Google
         end
       end
       
+      # Represents ONTAP source details.
+      class OntapSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The UUID of the ONTAP source snapshot.
+        # Corresponds to the JSON property `snapshotUuid`
+        # @return [String]
+        attr_accessor :snapshot_uuid
+      
+        # Required. Name of the storage pool. This must be specified for creating
+        # backups for ONTAP mode volumes. Format: `projects/`projects_id`/locations/`
+        # location`/storagePools/`storage_pool_id``
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
+        # Required. The UUID of the ONTAP source volume.
+        # Corresponds to the JSON property `volumeUuid`
+        # @return [String]
+        attr_accessor :volume_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshot_uuid = args[:snapshot_uuid] if args.key?(:snapshot_uuid)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
+          @volume_uuid = args[:volume_uuid] if args.key?(:volume_uuid)
+        end
+      end
+      
+      # Represents the ONTAP volume target of the restore operation.
+      class OntapVolumeTarget
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Absolute directory path in the destination volume.
+        # Corresponds to the JSON property `restoreDestinationPath`
+        # @return [String]
+        attr_accessor :restore_destination_path
+      
+        # Required. The UUID of the ONTAP volume to restore to.
+        # Corresponds to the JSON property `volumeUuid`
+        # @return [String]
+        attr_accessor :volume_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restore_destination_path = args[:restore_destination_path] if args.key?(:restore_destination_path)
+          @volume_uuid = args[:volume_uuid] if args.key?(:volume_uuid)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -2449,6 +2572,31 @@ module Google
         def update!(**args)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
+        end
+      end
+      
+      # Request message for `RestoreVolume` API.
+      class RestoreVolumeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents the backup source of the restore operation.
+        # Corresponds to the JSON property `backupSource`
+        # @return [Google::Apis::NetappV1::BackupSource]
+        attr_accessor :backup_source
+      
+        # Represents the ONTAP volume target of the restore operation.
+        # Corresponds to the JSON property `ontapVolumeTarget`
+        # @return [Google::Apis::NetappV1::OntapVolumeTarget]
+        attr_accessor :ontap_volume_target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_source = args[:backup_source] if args.key?(:backup_source)
+          @ontap_volume_target = args[:ontap_volume_target] if args.key?(:ontap_volume_target)
         end
       end
       
@@ -3152,6 +3300,40 @@ module Google
         end
       end
       
+      # Request message for UpdateBackupConfig
+      class UpdateBackupConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # BackupConfig contains backup related config on a volume.
+        # Corresponds to the JSON property `backupConfig`
+        # @return [Google::Apis::NetappV1::BackupConfig]
+        attr_accessor :backup_config
+      
+        # Required. Field mask is used to specify the fields to be overwritten in the
+        # BackupConfig for the Volume. The fields specified in the update_mask are
+        # relative to the resource, not the full request. A field will be overwritten if
+        # it is in the mask.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        # Required. The UUID of the ONTAP-mode volume.
+        # Corresponds to the JSON property `volumeUuid`
+        # @return [String]
+        attr_accessor :volume_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_config = args[:backup_config] if args.key?(:backup_config)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @volume_uuid = args[:volume_uuid] if args.key?(:volume_uuid)
+        end
+      end
+      
       # UserCommands contains the commands to be executed by the customer.
       class UserCommands
         include Google::Apis::Core::Hashable
@@ -3536,6 +3718,31 @@ module Google
           @unix_permissions = args[:unix_permissions] if args.key?(:unix_permissions)
           @used_gib = args[:used_gib] if args.key?(:used_gib)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Backup configuration for a volume in a pool.
+      class VolumeBackupConfig
+        include Google::Apis::Core::Hashable
+      
+        # BackupConfig contains backup related config on a volume.
+        # Corresponds to the JSON property `backupConfig`
+        # @return [Google::Apis::NetappV1::BackupConfig]
+        attr_accessor :backup_config
+      
+        # Provides the Ontap UUID of the volume within the pool.
+        # Corresponds to the JSON property `volumeUuid`
+        # @return [String]
+        attr_accessor :volume_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_config = args[:backup_config] if args.key?(:backup_config)
+          @volume_uuid = args[:volume_uuid] if args.key?(:volume_uuid)
         end
       end
       
