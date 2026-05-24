@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Dataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1697,6 +1703,14 @@ module Google
         end
       end
       
+      class CustomRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :group_indexes, as: 'groupIndexes'
+          property :pattern, as: 'pattern'
+        end
+      end
+      
       class Dataset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2435,6 +2449,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_info_types, as: 'additionalInfoTypes'
+          collection :custom_regexes, as: 'customRegexes', class: Google::Apis::HealthcareV1beta1::CustomRegex, decorator: Google::Apis::HealthcareV1beta1::CustomRegex::Representation
+      
           collection :exclude_info_types, as: 'excludeInfoTypes'
           property :text_redaction_mode, as: 'textRedactionMode'
         end

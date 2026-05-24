@@ -1555,6 +1555,31 @@ module Google
         end
       end
       
+      # Defines a custom regular expression pattern to detect and redact in the image.
+      class CustomRegex
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The capturing group indexes to redact. skip_request_analyics: true
+        # Corresponds to the JSON property `groupIndexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :group_indexes
+      
+        # Optional. The regular expression pattern to match.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_indexes = args[:group_indexes] if args.key?(:group_indexes)
+          @pattern = args[:pattern] if args.key?(:pattern)
+        end
+      end
+      
       # A message representing a health dataset. A health dataset represents a
       # collection of healthcare data pertaining to one or more patients. This may
       # include multiple modalities of healthcare data, such as electronic medical
@@ -4465,6 +4490,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_info_types
       
+        # Optional. Custom regex patterns to redact from the image.
+        # Corresponds to the JSON property `customRegexes`
+        # @return [Array<Google::Apis::HealthcareV1beta1::CustomRegex>]
+        attr_accessor :custom_regexes
+      
         # InfoTypes to skip redacting, overriding those used by `text_redaction_mode`.
         # Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`
         # or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
@@ -4484,6 +4514,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_info_types = args[:additional_info_types] if args.key?(:additional_info_types)
+          @custom_regexes = args[:custom_regexes] if args.key?(:custom_regexes)
           @exclude_info_types = args[:exclude_info_types] if args.key?(:exclude_info_types)
           @text_redaction_mode = args[:text_redaction_mode] if args.key?(:text_redaction_mode)
         end
