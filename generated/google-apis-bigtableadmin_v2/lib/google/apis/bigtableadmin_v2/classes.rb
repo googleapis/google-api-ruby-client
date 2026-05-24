@@ -227,7 +227,7 @@ module Google
         # Optional. A list of Cloud Bigtable zones where automated backups are allowed
         # to be created. If empty, automated backups will be created in all zones of the
         # instance. Locations are in the format `projects/`project`/locations/`zone``.
-        # This field can only set for tables in Enterprise Plus instances.
+        # You can set this field only for tables in Enterprise Plus instances.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -3970,7 +3970,7 @@ module Google
         end
       end
       
-      # Represents a protobuf schema.
+      # Represents a collection of protobuf schemas.
       class ProtoSchema
         include Google::Apis::Core::Hashable
       
@@ -4141,7 +4141,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Represents a protobuf schema.
+        # Represents a collection of protobuf schemas.
         # Corresponds to the JSON property `protoSchema`
         # @return [Google::Apis::BigtableadminV2::ProtoSchema]
         attr_accessor :proto_schema
