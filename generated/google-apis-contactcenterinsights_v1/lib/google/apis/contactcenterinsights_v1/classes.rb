@@ -3498,6 +3498,11 @@ module Google
         # @return [String]
         attr_accessor :entry_subagent_display_name
       
+        # The entry subagent's ID.
+        # Corresponds to the JSON property `entrySubagentId`
+        # @return [String]
+        attr_accessor :entry_subagent_id
+      
         # The agent's location.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -3537,6 +3542,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
           @entry_subagent_display_name = args[:entry_subagent_display_name] if args.key?(:entry_subagent_display_name)
+          @entry_subagent_id = args[:entry_subagent_id] if args.key?(:entry_subagent_id)
           @location = args[:location] if args.key?(:location)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
@@ -4380,7 +4386,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # A diagnostic report containing aggregate metrics and intent breakdowns.
+        # A diagnostic report containing loss patterns and problematic slice stats.
         # Corresponds to the JSON property `diagnosticReport`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReport]
         attr_accessor :diagnostic_report
@@ -4451,6 +4457,28 @@ module Google
       class GoogleCloudContactcenterinsightsV1DiagnoseConversationsRequest
         include Google::Apis::Core::Hashable
       
+        # ces agent display name (e.g., "Steering", "Billing").
+        # Corresponds to the JSON property `agentDisplayName`
+        # @return [String]
+        attr_accessor :agent_display_name
+      
+        # ces agent id to diagnose.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # Required. The CES App ID.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Optional. Optional but highly recommended. ces app version. If provided,
+        # specific version of agent instruction will be retrieved. If empty or set to '-'
+        # , will use the latest draft version of instruction.
+        # Corresponds to the JSON property `appVersion`
+        # @return [String]
+        attr_accessor :app_version
+      
         # Optional. Deprecated: If true, the request will be validated and a simulation
         # of the analysis will be performed without actually executing the task. This
         # field is unused. Use validate_only instead.
@@ -4473,7 +4501,14 @@ module Google
         attr_accessor :full_report
         alias_method :full_report?, :full_report
       
-        # Optional. Specific instructions for the agent.
+        # Optional. A unique identifier used to group multiple diagnostic requests
+        # triggered under the same run batch or cron job.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # Optional. Deprecated: Specific instructions for the agent. Use app_id and
+        # subagent fields instead.
         # Corresponds to the JSON property `instructions`
         # @return [String]
         attr_accessor :instructions
@@ -4526,9 +4561,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_display_name = args[:agent_display_name] if args.key?(:agent_display_name)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_version = args[:app_version] if args.key?(:app_version)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @filter = args[:filter] if args.key?(:filter)
           @full_report = args[:full_report] if args.key?(:full_report)
+          @group_id = args[:group_id] if args.key?(:group_id)
           @instructions = args[:instructions] if args.key?(:instructions)
           @max_steps = args[:max_steps] if args.key?(:max_steps)
           @metric_type = args[:metric_type] if args.key?(:metric_type)
@@ -4588,10 +4628,30 @@ module Google
       class GoogleCloudContactcenterinsightsV1Diagnostic
         include Google::Apis::Core::Hashable
       
+        # Output only. The display name of the agent associated with the diagnostic.
+        # Corresponds to the JSON property `agentDisplayName`
+        # @return [String]
+        attr_accessor :agent_display_name
+      
+        # Output only. The ID of the agent associated with the diagnostic.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
         # Output only. The complete sequence of thoughts and actions taken by the agent.
         # Corresponds to the JSON property `analysisSummary`
         # @return [String]
         attr_accessor :analysis_summary
+      
+        # Output only. The application ID associated with the diagnostic.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Output only. The application version associated with the diagnostic.
+        # Corresponds to the JSON property `appVersion`
+        # @return [String]
+        attr_accessor :app_version
       
         # Output only. The filter used to select the conversations that were included in
         # the diagnostic.
@@ -4604,12 +4664,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The timestamp when the group was created.
+        # Corresponds to the JSON property `groupCreateTime`
+        # @return [String]
+        attr_accessor :group_create_time
+      
         # Immutable. Identifier. The resource name of the diagnostic.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # A diagnostic report containing aggregate metrics and intent breakdowns.
+        # A diagnostic report containing loss patterns and problematic slice stats.
         # Corresponds to the JSON property `report`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReport]
         attr_accessor :report
@@ -4620,15 +4685,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_display_name = args[:agent_display_name] if args.key?(:agent_display_name)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
           @analysis_summary = args[:analysis_summary] if args.key?(:analysis_summary)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_version = args[:app_version] if args.key?(:app_version)
           @conversation_filter = args[:conversation_filter] if args.key?(:conversation_filter)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @group_create_time = args[:group_create_time] if args.key?(:group_create_time)
           @name = args[:name] if args.key?(:name)
           @report = args[:report] if args.key?(:report)
         end
       end
       
-      # A diagnostic report containing aggregate metrics and intent breakdowns.
+      # A diagnostic report containing loss patterns and problematic slice stats.
       class GoogleCloudContactcenterinsightsV1DiagnosticReport
         include Google::Apis::Core::Hashable
       
@@ -13009,6 +13079,11 @@ module Google
         # @return [String]
         attr_accessor :entry_subagent_display_name
       
+        # The entry subagent's ID.
+        # Corresponds to the JSON property `entrySubagentId`
+        # @return [String]
+        attr_accessor :entry_subagent_id
+      
         # The agent's location.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -13048,6 +13123,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
           @entry_subagent_display_name = args[:entry_subagent_display_name] if args.key?(:entry_subagent_display_name)
+          @entry_subagent_id = args[:entry_subagent_id] if args.key?(:entry_subagent_id)
           @location = args[:location] if args.key?(:location)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
@@ -13653,7 +13729,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # A diagnostic report containing aggregate metrics and intent breakdowns.
+        # A diagnostic report containing loss patterns and problematic slice stats.
         # Corresponds to the JSON property `diagnosticReport`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DiagnosticReport]
         attr_accessor :diagnostic_report
@@ -13724,6 +13800,28 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1DiagnoseConversationsRequest
         include Google::Apis::Core::Hashable
       
+        # ces agent display name (e.g., "Steering", "Billing").
+        # Corresponds to the JSON property `agentDisplayName`
+        # @return [String]
+        attr_accessor :agent_display_name
+      
+        # ces agent id to diagnose.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # Required. The CES App ID.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Optional. Optional but highly recommended. ces app version. If provided,
+        # specific version of agent instruction will be retrieved. If empty or set to '-'
+        # , will use the latest draft version of instruction.
+        # Corresponds to the JSON property `appVersion`
+        # @return [String]
+        attr_accessor :app_version
+      
         # Optional. Deprecated: If true, the request will be validated and a simulation
         # of the analysis will be performed without actually executing the task. This
         # field is unused. Use validate_only instead.
@@ -13746,7 +13844,14 @@ module Google
         attr_accessor :full_report
         alias_method :full_report?, :full_report
       
-        # Optional. Specific instructions for the agent.
+        # Optional. A unique identifier used to group multiple diagnostic requests
+        # triggered under the same run batch or cron job.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # Optional. Deprecated: Specific instructions for the agent. Use app_id and
+        # subagent fields instead.
         # Corresponds to the JSON property `instructions`
         # @return [String]
         attr_accessor :instructions
@@ -13799,9 +13904,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_display_name = args[:agent_display_name] if args.key?(:agent_display_name)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_version = args[:app_version] if args.key?(:app_version)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @filter = args[:filter] if args.key?(:filter)
           @full_report = args[:full_report] if args.key?(:full_report)
+          @group_id = args[:group_id] if args.key?(:group_id)
           @instructions = args[:instructions] if args.key?(:instructions)
           @max_steps = args[:max_steps] if args.key?(:max_steps)
           @metric_type = args[:metric_type] if args.key?(:metric_type)
@@ -13857,7 +13967,7 @@ module Google
         end
       end
       
-      # A diagnostic report containing aggregate metrics and intent breakdowns.
+      # A diagnostic report containing loss patterns and problematic slice stats.
       class GoogleCloudContactcenterinsightsV1alpha1DiagnosticReport
         include Google::Apis::Core::Hashable
       
@@ -20172,6 +20282,11 @@ module Google
         # @return [String]
         attr_accessor :entry_subagent_display_name
       
+        # The entry subagent's ID.
+        # Corresponds to the JSON property `entrySubagentId`
+        # @return [String]
+        attr_accessor :entry_subagent_id
+      
         # The agent's location.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -20211,6 +20326,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
           @entry_subagent_display_name = args[:entry_subagent_display_name] if args.key?(:entry_subagent_display_name)
+          @entry_subagent_id = args[:entry_subagent_id] if args.key?(:entry_subagent_id)
           @location = args[:location] if args.key?(:location)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
@@ -20816,7 +20932,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # A diagnostic report containing aggregate metrics and intent breakdowns.
+        # A diagnostic report containing loss patterns and problematic slice stats.
         # Corresponds to the JSON property `diagnosticReport`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDiagnosticReport]
         attr_accessor :diagnostic_report
@@ -20887,6 +21003,28 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainDiagnoseConversationsRequest
         include Google::Apis::Core::Hashable
       
+        # ces agent display name (e.g., "Steering", "Billing").
+        # Corresponds to the JSON property `agentDisplayName`
+        # @return [String]
+        attr_accessor :agent_display_name
+      
+        # ces agent id to diagnose.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # Required. The CES App ID.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Optional. Optional but highly recommended. ces app version. If provided,
+        # specific version of agent instruction will be retrieved. If empty or set to '-'
+        # , will use the latest draft version of instruction.
+        # Corresponds to the JSON property `appVersion`
+        # @return [String]
+        attr_accessor :app_version
+      
         # Optional. Deprecated: If true, the request will be validated and a simulation
         # of the analysis will be performed without actually executing the task. This
         # field is unused. Use validate_only instead.
@@ -20909,7 +21047,14 @@ module Google
         attr_accessor :full_report
         alias_method :full_report?, :full_report
       
-        # Optional. Specific instructions for the agent.
+        # Optional. A unique identifier used to group multiple diagnostic requests
+        # triggered under the same run batch or cron job.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # Optional. Deprecated: Specific instructions for the agent. Use app_id and
+        # subagent fields instead.
         # Corresponds to the JSON property `instructions`
         # @return [String]
         attr_accessor :instructions
@@ -20962,9 +21107,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_display_name = args[:agent_display_name] if args.key?(:agent_display_name)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_version = args[:app_version] if args.key?(:app_version)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @filter = args[:filter] if args.key?(:filter)
           @full_report = args[:full_report] if args.key?(:full_report)
+          @group_id = args[:group_id] if args.key?(:group_id)
           @instructions = args[:instructions] if args.key?(:instructions)
           @max_steps = args[:max_steps] if args.key?(:max_steps)
           @metric_type = args[:metric_type] if args.key?(:metric_type)
@@ -21020,7 +21170,7 @@ module Google
         end
       end
       
-      # A diagnostic report containing aggregate metrics and intent breakdowns.
+      # A diagnostic report containing loss patterns and problematic slice stats.
       class GoogleCloudContactcenterinsightsV1mainDiagnosticReport
         include Google::Apis::Core::Hashable
       
