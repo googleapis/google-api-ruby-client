@@ -178,6 +178,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateMonitoringPointConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateProviderAccessTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeoLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GkeNetworkPolicyInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +215,18 @@ module Google
       end
       
       class GoogleServiceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Host
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpBody
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -250,6 +280,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMonitoringPointsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListNetworkMonitoringProvidersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListNetworkPathsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +305,12 @@ module Google
       end
       
       class ListVpcFlowLogsConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWebPathsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MonitoringPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NatInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +353,24 @@ module Google
       end
       
       class NetworkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkMonitoringProvider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkPath
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +407,12 @@ module Google
       end
       
       class ProbingDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProviderTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -461,6 +545,12 @@ module Google
       end
       
       class VpnTunnelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebPath
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -775,6 +865,28 @@ module Google
         end
       end
       
+      class GenerateMonitoringPointConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config, as: 'config'
+        end
+      end
+      
+      class GenerateProviderAccessTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :provider_access_token, as: 'providerAccessToken'
+        end
+      end
+      
+      class GeoLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_address, as: 'formattedAddress'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
       class GkeNetworkPolicyInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -806,6 +918,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :google_service_type, as: 'googleServiceType'
           property :source_ip, as: 'sourceIp'
+        end
+      end
+      
+      class Host
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_instance_id, as: 'cloudInstanceId'
+          property :cloud_project_id, as: 'cloudProjectId'
+          property :cloud_provider, as: 'cloudProvider'
+          property :cloud_region, as: 'cloudRegion'
+          collection :cloud_virtual_network_ids, as: 'cloudVirtualNetworkIds'
+          property :cloud_zone, as: 'cloudZone'
+          property :os, as: 'os'
+        end
+      end
+      
+      class HttpBody
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_type, as: 'contentType'
+          property :data, :base64 => true, as: 'data'
+          collection :extensions, as: 'extensions'
         end
       end
       
@@ -891,6 +1025,33 @@ module Google
         end
       end
       
+      class ListMonitoringPointsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :monitoring_points, as: 'monitoringPoints', class: Google::Apis::NetworkmanagementV1::MonitoringPoint, decorator: Google::Apis::NetworkmanagementV1::MonitoringPoint::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListNetworkMonitoringProvidersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_monitoring_providers, as: 'networkMonitoringProviders', class: Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider, decorator: Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListNetworkPathsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_paths, as: 'networkPaths', class: Google::Apis::NetworkmanagementV1::NetworkPath, decorator: Google::Apis::NetworkmanagementV1::NetworkPath::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -907,6 +1068,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
           collection :vpc_flow_logs_configs, as: 'vpcFlowLogsConfigs', class: Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig, decorator: Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig::Representation
+      
+        end
+      end
+      
+      class ListWebPathsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :web_paths, as: 'webPaths', class: Google::Apis::NetworkmanagementV1::WebPath, decorator: Google::Apis::NetworkmanagementV1::WebPath::Representation
       
         end
       end
@@ -961,6 +1131,35 @@ module Google
         end
       end
       
+      class MonitoringPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_geo_location_enabled, as: 'autoGeoLocationEnabled'
+          property :connection_status, as: 'connectionStatus'
+          property :create_time, as: 'createTime'
+          property :deployment_type, as: 'deploymentType'
+          property :display_name, as: 'displayName'
+          collection :errors, as: 'errors'
+          property :geo_location, as: 'geoLocation', class: Google::Apis::NetworkmanagementV1::GeoLocation, decorator: Google::Apis::NetworkmanagementV1::GeoLocation::Representation
+      
+          property :guid, as: 'guid'
+          property :host, as: 'host', class: Google::Apis::NetworkmanagementV1::Host, decorator: Google::Apis::NetworkmanagementV1::Host::Representation
+      
+          property :hostname, as: 'hostname'
+          property :name, as: 'name'
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::NetworkmanagementV1::NetworkInterface, decorator: Google::Apis::NetworkmanagementV1::NetworkInterface::Representation
+      
+          property :originating_ip, as: 'originatingIp'
+          collection :provider_tags, as: 'providerTags', class: Google::Apis::NetworkmanagementV1::ProviderTag, decorator: Google::Apis::NetworkmanagementV1::ProviderTag::Representation
+      
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+          property :upgrade_available, as: 'upgradeAvailable'
+          property :upgrade_type, as: 'upgradeType'
+          property :version, as: 'version'
+        end
+      end
+      
       class NatInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -989,6 +1188,56 @@ module Google
           property :matched_subnet_uri, as: 'matchedSubnetUri'
           property :region, as: 'region'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class NetworkInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adapter_description, as: 'adapterDescription'
+          property :cidr, as: 'cidr'
+          property :interface_name, as: 'interfaceName'
+          property :ip_address, as: 'ipAddress'
+          property :mac_address, as: 'macAddress'
+          property :speed, :numeric_string => true, as: 'speed'
+          property :vlan_id, :numeric_string => true, as: 'vlanId'
+        end
+      end
+      
+      class NetworkMonitoringProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :errors, as: 'errors'
+          property :name, as: 'name'
+          property :provider_type, as: 'providerType'
+          property :provider_uri, as: 'providerUri'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class NetworkPath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :destination, as: 'destination'
+          property :destination_geo_location, as: 'destinationGeoLocation', class: Google::Apis::NetworkmanagementV1::GeoLocation, decorator: Google::Apis::NetworkmanagementV1::GeoLocation::Representation
+      
+          property :destination_monitoring_point_id, as: 'destinationMonitoringPointId'
+          property :display_name, as: 'displayName'
+          property :dual_ended, as: 'dualEnded'
+          property :monitoring_enabled, as: 'monitoringEnabled'
+          property :monitoring_policy_display_name, as: 'monitoringPolicyDisplayName'
+          property :monitoring_policy_id, as: 'monitoringPolicyId'
+          property :monitoring_status, as: 'monitoringStatus'
+          property :name, as: 'name'
+          property :network_protocol, as: 'networkProtocol'
+          collection :provider_tags, as: 'providerTags', class: Google::Apis::NetworkmanagementV1::ProviderTag, decorator: Google::Apis::NetworkmanagementV1::ProviderTag::Representation
+      
+          property :provider_ui_uri, as: 'providerUiUri'
+          property :source_monitoring_point_id, as: 'sourceMonitoringPointId'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1062,6 +1311,15 @@ module Google
           property :sent_probe_count, as: 'sentProbeCount'
           property :successful_probe_count, as: 'successfulProbeCount'
           property :verify_time, as: 'verifyTime'
+        end
+      end
+      
+      class ProviderTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :resource_type, as: 'resourceType'
+          property :value, as: 'value'
         end
       end
       
@@ -1394,6 +1652,30 @@ module Google
           property :source_gateway, as: 'sourceGateway'
           property :source_gateway_ip, as: 'sourceGatewayIp'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class WebPath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :destination, as: 'destination'
+          property :destination_geo_location, as: 'destinationGeoLocation', class: Google::Apis::NetworkmanagementV1::GeoLocation, decorator: Google::Apis::NetworkmanagementV1::GeoLocation::Representation
+      
+          property :display_name, as: 'displayName'
+          property :interval, as: 'interval'
+          property :monitoring_enabled, as: 'monitoringEnabled'
+          property :monitoring_policy_display_name, as: 'monitoringPolicyDisplayName'
+          property :monitoring_policy_id, as: 'monitoringPolicyId'
+          property :monitoring_status, as: 'monitoringStatus'
+          property :name, as: 'name'
+          collection :provider_tags, as: 'providerTags', class: Google::Apis::NetworkmanagementV1::ProviderTag, decorator: Google::Apis::NetworkmanagementV1::ProviderTag::Representation
+      
+          property :provider_ui_uri, as: 'providerUiUri'
+          property :related_network_path_id, as: 'relatedNetworkPathId'
+          property :source_monitoring_point_id, as: 'sourceMonitoringPointId'
+          property :update_time, as: 'updateTime'
+          property :workflow_type, as: 'workflowType'
         end
       end
     end
