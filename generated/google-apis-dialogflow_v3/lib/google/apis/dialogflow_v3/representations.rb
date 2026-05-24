@@ -2986,6 +2986,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2KnowledgeOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3719,6 +3725,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8977,12 +8989,15 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :ces_debug_info, as: 'cesDebugInfo'
           property :datastore_response_reason, as: 'datastoreResponseReason'
           property :ingested_context_reference_debug_info, as: 'ingestedContextReferenceDebugInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo::Representation
       
           property :knowledge_assist_behavior, as: 'knowledgeAssistBehavior', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior::Representation
       
           property :query_categorization_failure_reason, as: 'queryCategorizationFailureReason'
+          property :query_generation_debug_info, as: 'queryGenerationDebugInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo::Representation
+      
           property :query_generation_failure_reason, as: 'queryGenerationFailureReason'
           property :service_latency, as: 'serviceLatency', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ServiceLatency, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ServiceLatency::Representation
       
@@ -9009,6 +9024,15 @@ module Google
           property :use_custom_safety_filter_level, as: 'useCustomSafetyFilterLevel'
           property :use_pubsub_delivery, as: 'usePubsubDelivery'
           property :use_translated_message, as: 'useTranslatedMessage'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :candidates_token_count, as: 'candidatesTokenCount'
+          property :prompt_token_count, as: 'promptTokenCount'
+          property :total_token_count, as: 'totalTokenCount'
         end
       end
       
@@ -10274,12 +10298,15 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :ces_debug_info, as: 'cesDebugInfo'
           property :datastore_response_reason, as: 'datastoreResponseReason'
           property :ingested_context_reference_debug_info, as: 'ingestedContextReferenceDebugInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo::Representation
       
           property :knowledge_assist_behavior, as: 'knowledgeAssistBehavior', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior::Representation
       
           property :query_categorization_failure_reason, as: 'queryCategorizationFailureReason'
+          property :query_generation_debug_info, as: 'queryGenerationDebugInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo::Representation
+      
           property :query_generation_failure_reason, as: 'queryGenerationFailureReason'
           property :service_latency, as: 'serviceLatency', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ServiceLatency, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ServiceLatency::Representation
       
@@ -10306,6 +10333,15 @@ module Google
           property :use_custom_safety_filter_level, as: 'useCustomSafetyFilterLevel'
           property :use_pubsub_delivery, as: 'usePubsubDelivery'
           property :use_translated_message, as: 'useTranslatedMessage'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :candidates_token_count, as: 'candidatesTokenCount'
+          property :prompt_token_count, as: 'promptTokenCount'
+          property :total_token_count, as: 'totalTokenCount'
         end
       end
       
