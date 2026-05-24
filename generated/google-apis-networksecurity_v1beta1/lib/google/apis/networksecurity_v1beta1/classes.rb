@@ -278,6 +278,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. A list of authorization network rules to match against the incoming
+        # request. A policy match occurs when at least one network rule matches the
+        # request. At least one network rule is required for Allow or Deny Action if no
+        # HTTP rules are provided. Network rules are mutually exclusive with HTTP rules.
+        # Limited to 5 rules.
+        # Corresponds to the JSON property `networkRules`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRule>]
+        attr_accessor :network_rules
+      
         # Optional. Immutable. Defines the type of authorization being performed. If not
         # specified, `REQUEST_AUTHZ` is applied. This field cannot be changed once
         # AuthzPolicy is created.
@@ -308,6 +317,7 @@ module Google
           @http_rules = args[:http_rules] if args.key?(:http_rules)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @network_rules = args[:network_rules] if args.key?(:network_rules)
           @policy_profile = args[:policy_profile] if args.key?(:policy_profile)
           @target = args[:target] if args.key?(:target)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -674,6 +684,15 @@ module Google
         # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch>]
         attr_accessor :paths
       
+        # Optional. A list of SNIs to match against. The match can be one of exact,
+        # prefix, suffix, or contains (substring match). If there is no SNI (i.e.
+        # plaintext HTTP traffic), the request will be denied. Matches are always case
+        # sensitive unless the ignoreCase is set. Limited to 10 SNIs per Authorization
+        # Policy.
+        # Corresponds to the JSON property `snis`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch>]
+        attr_accessor :snis
+      
         def initialize(**args)
            update!(**args)
         end
@@ -685,6 +704,7 @@ module Google
           @mcp = args[:mcp] if args.key?(:mcp)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
           @paths = args[:paths] if args.key?(:paths)
+          @snis = args[:snis] if args.key?(:snis)
         end
       end
       
@@ -1316,10 +1336,11 @@ module Google
       class FirewallEndpoint
         include Google::Apis::Core::Hashable
       
-        # Output only. List of networks that are associated with this endpoint in the
-        # local zone. This is a projection of the FirewallEndpointAssociations pointing
-        # at this endpoint. A network will only appear in this list after traffic
-        # routing is fully configured. Format: projects/`project`/global/networks/`name`.
+        # Output only. Deprecated: List of networks that are associated with this
+        # endpoint in the local zone. This is a projection of the
+        # FirewallEndpointAssociations pointing at this endpoint. A network will only
+        # appear in this list after traffic routing is fully configured. Format:
+        # projects/`project`/global/networks/`name`.
         # Corresponds to the JSON property `associatedNetworks`
         # @return [Array<String>]
         attr_accessor :associated_networks

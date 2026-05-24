@@ -818,6 +818,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :network_rules, as: 'networkRules', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRule, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRule::Representation
+      
           property :policy_profile, as: 'policyProfile'
           property :target, as: 'target', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyTarget, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyTarget::Representation
       
@@ -933,6 +935,8 @@ module Google
       
           collection :methods_prop, as: 'methods'
           collection :paths, as: 'paths', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          collection :snis, as: 'snis', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch::Representation
       
         end
       end
