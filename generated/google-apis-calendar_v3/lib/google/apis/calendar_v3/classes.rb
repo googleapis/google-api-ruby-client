@@ -1741,6 +1741,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :additional_guests
       
+        # If present, indicates the status of an asynchronous operation ongoing for this
+        # attendee (e.g. listing of members of large attendee groups). Read-only. The
+        # default is to not be present.
+        # Possible values are:
+        # - "inProgress" - The asynchronous operation is in progress.
+        # - (not present) - Otherwise.
+        # Corresponds to the JSON property `asyncOperation`
+        # @return [String]
+        attr_accessor :async_operation
+      
         # The attendee's response comment. Optional.
         # Corresponds to the JSON property `comment`
         # @return [String]
@@ -1814,6 +1824,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_guests = args[:additional_guests] if args.key?(:additional_guests)
+          @async_operation = args[:async_operation] if args.key?(:async_operation)
           @comment = args[:comment] if args.key?(:comment)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
