@@ -1297,6 +1297,8 @@ module Google
           property :package_name, as: 'packageName'
           property :package_sha256_hash, as: 'packageSha256Hash'
           collection :signing_key_cert_fingerprints, as: 'signingKeyCertFingerprints'
+          collection :signing_key_certs, as: 'signingKeyCerts', class: Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert, decorator: Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert::Representation
+      
           property :state, as: 'state'
           property :user_facing_type, as: 'userFacingType'
           property :version_code, as: 'versionCode'
