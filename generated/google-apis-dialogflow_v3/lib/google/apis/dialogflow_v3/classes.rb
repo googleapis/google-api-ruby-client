@@ -15817,6 +15817,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `cesDebugInfo`
+        # @return [Hash<String,Object>]
+        attr_accessor :ces_debug_info
+      
+        # 
         # Corresponds to the JSON property `datastoreResponseReason`
         # @return [String]
         attr_accessor :datastore_response_reason
@@ -15837,6 +15842,11 @@ module Google
         attr_accessor :query_categorization_failure_reason
       
         # 
+        # Corresponds to the JSON property `queryGenerationDebugInfo`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo]
+        attr_accessor :query_generation_debug_info
+      
+        # 
         # Corresponds to the JSON property `queryGenerationFailureReason`
         # @return [String]
         attr_accessor :query_generation_failure_reason
@@ -15852,10 +15862,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ces_debug_info = args[:ces_debug_info] if args.key?(:ces_debug_info)
           @datastore_response_reason = args[:datastore_response_reason] if args.key?(:datastore_response_reason)
           @ingested_context_reference_debug_info = args[:ingested_context_reference_debug_info] if args.key?(:ingested_context_reference_debug_info)
           @knowledge_assist_behavior = args[:knowledge_assist_behavior] if args.key?(:knowledge_assist_behavior)
           @query_categorization_failure_reason = args[:query_categorization_failure_reason] if args.key?(:query_categorization_failure_reason)
+          @query_generation_debug_info = args[:query_generation_debug_info] if args.key?(:query_generation_debug_info)
           @query_generation_failure_reason = args[:query_generation_failure_reason] if args.key?(:query_generation_failure_reason)
           @service_latency = args[:service_latency] if args.key?(:service_latency)
         end
@@ -15989,6 +16001,37 @@ module Google
           @use_custom_safety_filter_level = args[:use_custom_safety_filter_level] if args.key?(:use_custom_safety_filter_level)
           @use_pubsub_delivery = args[:use_pubsub_delivery] if args.key?(:use_pubsub_delivery)
           @use_translated_message = args[:use_translated_message] if args.key?(:use_translated_message)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `candidatesTokenCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_token_count
+      
+        # 
+        # Corresponds to the JSON property `promptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_token_count
+      
+        # 
+        # Corresponds to the JSON property `totalTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
         end
       end
       
@@ -20001,6 +20044,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `cesDebugInfo`
+        # @return [Hash<String,Object>]
+        attr_accessor :ces_debug_info
+      
+        # 
         # Corresponds to the JSON property `datastoreResponseReason`
         # @return [String]
         attr_accessor :datastore_response_reason
@@ -20021,6 +20069,11 @@ module Google
         attr_accessor :query_categorization_failure_reason
       
         # 
+        # Corresponds to the JSON property `queryGenerationDebugInfo`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo]
+        attr_accessor :query_generation_debug_info
+      
+        # 
         # Corresponds to the JSON property `queryGenerationFailureReason`
         # @return [String]
         attr_accessor :query_generation_failure_reason
@@ -20036,10 +20089,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ces_debug_info = args[:ces_debug_info] if args.key?(:ces_debug_info)
           @datastore_response_reason = args[:datastore_response_reason] if args.key?(:datastore_response_reason)
           @ingested_context_reference_debug_info = args[:ingested_context_reference_debug_info] if args.key?(:ingested_context_reference_debug_info)
           @knowledge_assist_behavior = args[:knowledge_assist_behavior] if args.key?(:knowledge_assist_behavior)
           @query_categorization_failure_reason = args[:query_categorization_failure_reason] if args.key?(:query_categorization_failure_reason)
+          @query_generation_debug_info = args[:query_generation_debug_info] if args.key?(:query_generation_debug_info)
           @query_generation_failure_reason = args[:query_generation_failure_reason] if args.key?(:query_generation_failure_reason)
           @service_latency = args[:service_latency] if args.key?(:service_latency)
         end
@@ -20173,6 +20228,37 @@ module Google
           @use_custom_safety_filter_level = args[:use_custom_safety_filter_level] if args.key?(:use_custom_safety_filter_level)
           @use_pubsub_delivery = args[:use_pubsub_delivery] if args.key?(:use_pubsub_delivery)
           @use_translated_message = args[:use_translated_message] if args.key?(:use_translated_message)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `candidatesTokenCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_token_count
+      
+        # 
+        # Corresponds to the JSON property `promptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_token_count
+      
+        # 
+        # Corresponds to the JSON property `totalTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
         end
       end
       
