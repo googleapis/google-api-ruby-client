@@ -646,6 +646,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1CheckEnablementStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1ChromeBrowserProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -731,6 +737,30 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1DeviceTrustConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1DisableInsightsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1DisableInsightsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1EnableInsightsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1EnableInsightsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2149,6 +2179,13 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1CheckEnablementStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :insights_state, as: 'insightsState'
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1ChromeBrowserProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2334,6 +2371,33 @@ module Google
           collection :service_accounts, as: 'serviceAccounts'
           property :service_provider, as: 'serviceProvider'
           collection :url_matchers, as: 'urlMatchers'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1DisableInsightsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1DisableInsightsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :insights_state, as: 'insightsState'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1EnableInsightsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :target_ous, as: 'targetOus'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1EnableInsightsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :insights_state, as: 'insightsState'
         end
       end
       
