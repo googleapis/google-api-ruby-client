@@ -291,6 +291,19 @@ module Google
         end
       end
       
+      # If set, indicates that the finding applies to all messages in the conversation.
+      class GooglePrivacyDlpV2AllMessages
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Catch-all for all other tables not specified by other filters. Should always
       # be last, except for single-table configurations, which will only have a
       # TableReference target.
@@ -1950,6 +1963,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentMetadata]
         attr_accessor :content_metadata
       
+        # Complete conversation or slice of a conversation. It is assumed that all
+        # included messages are contiguous and ordered in chronological order.
+        # Corresponds to the JSON property `conversation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Conversation]
+        attr_accessor :conversation
+      
         # Structured content to inspect. Up to 50,000 `Value`s per request allowed. See
         # https://cloud.google.com/sensitive-data-protection/docs/inspecting-structured-
         # text#inspecting_a_table to learn more.
@@ -1970,6 +1989,7 @@ module Google
         def update!(**args)
           @byte_item = args[:byte_item] if args.key?(:byte_item)
           @content_metadata = args[:content_metadata] if args.key?(:content_metadata)
+          @conversation = args[:conversation] if args.key?(:conversation)
           @table = args[:table] if args.key?(:table)
           @value = args[:value] if args.key?(:value)
         end
@@ -2003,6 +2023,11 @@ module Google
         # @return [String]
         attr_accessor :container_version
       
+        # Location within a conversation.
+        # Corresponds to the JSON property `conversationLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ConversationLocation]
+        attr_accessor :conversation_location
+      
         # Location of a finding within a document.
         # Corresponds to the JSON property `documentLocation`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DocumentLocation]
@@ -2032,6 +2057,7 @@ module Google
           @container_name = args[:container_name] if args.key?(:container_name)
           @container_timestamp = args[:container_timestamp] if args.key?(:container_timestamp)
           @container_version = args[:container_version] if args.key?(:container_version)
+          @conversation_location = args[:conversation_location] if args.key?(:conversation_location)
           @document_location = args[:document_location] if args.key?(:document_location)
           @image_location = args[:image_location] if args.key?(:image_location)
           @metadata_location = args[:metadata_location] if args.key?(:metadata_location)
@@ -2055,6 +2081,87 @@ module Google
         # Update properties of this object
         def update!(**args)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Complete conversation or slice of a conversation. It is assumed that all
+      # included messages are contiguous and ordered in chronological order.
+      class GooglePrivacyDlpV2Conversation
+        include Google::Apis::Core::Hashable
+      
+        # Messages exchanged within this conversation. The maximum number of messages
+        # allowed is 50k. The order of the messages is assumed to be chronological and
+        # will be used to index findings in the response.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ConversationMessage>]
+        attr_accessor :messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
+      # Location within a conversation.
+      class GooglePrivacyDlpV2ConversationLocation
+        include Google::Apis::Core::Hashable
+      
+        # If set, indicates that the finding applies to all messages in the conversation.
+        # Corresponds to the JSON property `allMessages`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AllMessages]
+        attr_accessor :all_messages
+      
+        # Matches an index of a message in the conversation provided in the request.
+        # Corresponds to the JSON property `messageIndex`
+        # @return [Fixnum]
+        attr_accessor :message_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_messages = args[:all_messages] if args.key?(:all_messages)
+          @message_index = args[:message_index] if args.key?(:message_index)
+        end
+      end
+      
+      # Single message in a conversation.
+      class GooglePrivacyDlpV2ConversationMessage
+        include Google::Apis::Core::Hashable
+      
+        # The contents of this message.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The type of message.
+        # Corresponds to the JSON property `messageType`
+        # @return [String]
+        attr_accessor :message_type
+      
+        # Optional. The identifier of the participant. For example 'test-user' or '
+        # gemini'. The participant ID can contain lowercase letters, numbers, and
+        # hyphens; that is, it must match the regular expression: `^[a-z]([a-z0-9-]`0,61`
+        # [a-z0-9])?$`. The maximum length is 63 characters.
+        # Corresponds to the JSON property `participantId`
+        # @return [String]
+        attr_accessor :participant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @message_type = args[:message_type] if args.key?(:message_type)
+          @participant_id = args[:participant_id] if args.key?(:participant_id)
         end
       end
       
@@ -6757,11 +6864,11 @@ module Google
       class GooglePrivacyDlpV2InspectTemplate
         include Google::Apis::Core::Hashable
       
-        # Optional. Enables the use of limited-availability built-in infoTypes in
-        # inspect_config. These infoTypes are supported only in specific regions and can
-        # cause scanning errors if used elsewhere. For more information, see https://
-        # cloud.google.com/sensitive-data-protection/docs/locations#location-
-        # specific_limitations to learn more about location-specific limitations.
+        # Optional. Enables the use of [limited-availability built-in infoTypes](https://
+        # docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
+        # limited-availability-infotypes) in inspect_config. These infoTypes are
+        # supported only in specific regions and can cause scanning errors if used
+        # elsewhere.
         # Corresponds to the JSON property `allowLimitedAvailabilityInfoTypes`
         # @return [Boolean]
         attr_accessor :allow_limited_availability_info_types
