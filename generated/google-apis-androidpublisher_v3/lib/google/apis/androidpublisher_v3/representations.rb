@@ -850,6 +850,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InGracePeriodStateContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InappproductsBatchDeleteRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1085,6 +1091,12 @@ module Google
       end
       
       class OfferTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OnHoldStateContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1487,6 +1499,12 @@ module Google
       end
       
       class RemoteInAppUpdateDataPerBundle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RenewalDeclinedContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3303,6 +3321,14 @@ module Google
         end
       end
       
+      class InGracePeriodStateContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :renewal_declined, as: 'renewalDeclined', class: Google::Apis::AndroidpublisherV3::RenewalDeclinedContext, decorator: Google::Apis::AndroidpublisherV3::RenewalDeclinedContext::Representation
+      
+        end
+      end
+      
       class InappproductsBatchDeleteRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3694,6 +3720,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :tag, as: 'tag'
+        end
+      end
+      
+      class OnHoldStateContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :renewal_declined, as: 'renewalDeclined', class: Google::Apis::AndroidpublisherV3::RenewalDeclinedContext, decorator: Google::Apis::AndroidpublisherV3::RenewalDeclinedContext::Representation
+      
         end
       end
       
@@ -4371,6 +4405,13 @@ module Google
         end
       end
       
+      class RenewalDeclinedContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pending_order_id, as: 'pendingOrderId'
+        end
+      end
+      
       class RentOfferDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4773,11 +4814,15 @@ module Google
           property :etag, as: 'etag'
           property :external_account_identifiers, as: 'externalAccountIdentifiers', class: Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers, decorator: Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers::Representation
       
+          property :in_grace_period_state_context, as: 'inGracePeriodStateContext', class: Google::Apis::AndroidpublisherV3::InGracePeriodStateContext, decorator: Google::Apis::AndroidpublisherV3::InGracePeriodStateContext::Representation
+      
           property :kind, as: 'kind'
           property :latest_order_id, as: 'latestOrderId'
           collection :line_items, as: 'lineItems', class: Google::Apis::AndroidpublisherV3::SubscriptionPurchaseLineItem, decorator: Google::Apis::AndroidpublisherV3::SubscriptionPurchaseLineItem::Representation
       
           property :linked_purchase_token, as: 'linkedPurchaseToken'
+          property :on_hold_state_context, as: 'onHoldStateContext', class: Google::Apis::AndroidpublisherV3::OnHoldStateContext, decorator: Google::Apis::AndroidpublisherV3::OnHoldStateContext::Representation
+      
           property :out_of_app_purchase_context, as: 'outOfAppPurchaseContext', class: Google::Apis::AndroidpublisherV3::OutOfAppPurchaseContext, decorator: Google::Apis::AndroidpublisherV3::OutOfAppPurchaseContext::Representation
       
           property :paused_state_context, as: 'pausedStateContext', class: Google::Apis::AndroidpublisherV3::PausedStateContext, decorator: Google::Apis::AndroidpublisherV3::PausedStateContext::Representation
