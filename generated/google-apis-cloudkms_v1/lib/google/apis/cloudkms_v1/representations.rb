@@ -965,6 +965,7 @@ module Google
           property :protection_level, as: 'protectionLevel'
           property :public_key, as: 'publicKey', class: Google::Apis::CloudkmsV1::WrappingPublicKey, decorator: Google::Apis::CloudkmsV1::WrappingPublicKey::Representation
       
+          property :public_key_format, as: 'publicKeyFormat'
           property :state, as: 'state'
         end
       end
@@ -1490,6 +1491,7 @@ module Google
       class WrappingPublicKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
           property :pem, as: 'pem'
         end
       end

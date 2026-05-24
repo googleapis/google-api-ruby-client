@@ -2530,6 +2530,13 @@ module Google
         # Returns metadata for a given ImportJob.
         # @param [String] name
         #   Required. The name of the ImportJob to get.
+        # @param [String] public_key_format
+        #   Optional. Specifies the WrappingPublicKey format. If not specified: * For RSA-
+        #   based import methods, the wrapping key will be returned in PEM format * For
+        #   pure ML-KEM-based import methods, the wrapping key will be returned in the raw
+        #   bytes format specified in FIPS-203 * For X-Wing-based import methods, the
+        #   wrapping key will be returned in the raw bytes format specified in https://
+        #   datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2547,11 +2554,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_key_ring_import_job(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_key_ring_import_job(name, public_key_format: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudkmsV1::ImportJob::Representation
           command.response_class = Google::Apis::CloudkmsV1::ImportJob
           command.params['name'] = name unless name.nil?
+          command.query['publicKeyFormat'] = public_key_format unless public_key_format.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
