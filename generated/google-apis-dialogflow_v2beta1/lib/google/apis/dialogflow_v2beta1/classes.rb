@@ -9498,6 +9498,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `cesDebugInfo`
+        # @return [Hash<String,Object>]
+        attr_accessor :ces_debug_info
+      
+        # 
         # Corresponds to the JSON property `datastoreResponseReason`
         # @return [String]
         attr_accessor :datastore_response_reason
@@ -9518,6 +9523,11 @@ module Google
         attr_accessor :query_categorization_failure_reason
       
         # 
+        # Corresponds to the JSON property `queryGenerationDebugInfo`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo]
+        attr_accessor :query_generation_debug_info
+      
+        # 
         # Corresponds to the JSON property `queryGenerationFailureReason`
         # @return [String]
         attr_accessor :query_generation_failure_reason
@@ -9533,10 +9543,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ces_debug_info = args[:ces_debug_info] if args.key?(:ces_debug_info)
           @datastore_response_reason = args[:datastore_response_reason] if args.key?(:datastore_response_reason)
           @ingested_context_reference_debug_info = args[:ingested_context_reference_debug_info] if args.key?(:ingested_context_reference_debug_info)
           @knowledge_assist_behavior = args[:knowledge_assist_behavior] if args.key?(:knowledge_assist_behavior)
           @query_categorization_failure_reason = args[:query_categorization_failure_reason] if args.key?(:query_categorization_failure_reason)
+          @query_generation_debug_info = args[:query_generation_debug_info] if args.key?(:query_generation_debug_info)
           @query_generation_failure_reason = args[:query_generation_failure_reason] if args.key?(:query_generation_failure_reason)
           @service_latency = args[:service_latency] if args.key?(:service_latency)
         end
@@ -9670,6 +9682,37 @@ module Google
           @use_custom_safety_filter_level = args[:use_custom_safety_filter_level] if args.key?(:use_custom_safety_filter_level)
           @use_pubsub_delivery = args[:use_pubsub_delivery] if args.key?(:use_pubsub_delivery)
           @use_translated_message = args[:use_translated_message] if args.key?(:use_translated_message)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `candidatesTokenCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_token_count
+      
+        # 
+        # Corresponds to the JSON property `promptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_token_count
+      
+        # 
+        # Corresponds to the JSON property `totalTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
         end
       end
       
@@ -12698,6 +12741,11 @@ module Google
         attr_accessor :security_settings
       
         # 
+        # Corresponds to the JSON property `sipConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SipConfig]
+        attr_accessor :sip_config
+      
+        # 
         # Corresponds to the JSON property `sttConfig`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfig]
         attr_accessor :stt_config
@@ -12741,6 +12789,7 @@ module Google
           @new_recognition_result_notification_config = args[:new_recognition_result_notification_config] if args.key?(:new_recognition_result_notification_config)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @security_settings = args[:security_settings] if args.key?(:security_settings)
+          @sip_config = args[:sip_config] if args.key?(:sip_config)
           @stt_config = args[:stt_config] if args.key?(:stt_config)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @tts_config = args[:tts_config] if args.key?(:tts_config)
@@ -17370,6 +17419,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `cesDebugInfo`
+        # @return [Hash<String,Object>]
+        attr_accessor :ces_debug_info
+      
+        # 
         # Corresponds to the JSON property `datastoreResponseReason`
         # @return [String]
         attr_accessor :datastore_response_reason
@@ -17390,6 +17444,11 @@ module Google
         attr_accessor :query_categorization_failure_reason
       
         # 
+        # Corresponds to the JSON property `queryGenerationDebugInfo`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo]
+        attr_accessor :query_generation_debug_info
+      
+        # 
         # Corresponds to the JSON property `queryGenerationFailureReason`
         # @return [String]
         attr_accessor :query_generation_failure_reason
@@ -17405,10 +17464,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ces_debug_info = args[:ces_debug_info] if args.key?(:ces_debug_info)
           @datastore_response_reason = args[:datastore_response_reason] if args.key?(:datastore_response_reason)
           @ingested_context_reference_debug_info = args[:ingested_context_reference_debug_info] if args.key?(:ingested_context_reference_debug_info)
           @knowledge_assist_behavior = args[:knowledge_assist_behavior] if args.key?(:knowledge_assist_behavior)
           @query_categorization_failure_reason = args[:query_categorization_failure_reason] if args.key?(:query_categorization_failure_reason)
+          @query_generation_debug_info = args[:query_generation_debug_info] if args.key?(:query_generation_debug_info)
           @query_generation_failure_reason = args[:query_generation_failure_reason] if args.key?(:query_generation_failure_reason)
           @service_latency = args[:service_latency] if args.key?(:service_latency)
         end
@@ -17542,6 +17603,37 @@ module Google
           @use_custom_safety_filter_level = args[:use_custom_safety_filter_level] if args.key?(:use_custom_safety_filter_level)
           @use_pubsub_delivery = args[:use_pubsub_delivery] if args.key?(:use_pubsub_delivery)
           @use_translated_message = args[:use_translated_message] if args.key?(:use_translated_message)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `candidatesTokenCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_token_count
+      
+        # 
+        # Corresponds to the JSON property `promptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_token_count
+      
+        # 
+        # Corresponds to the JSON property `totalTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
         end
       end
       
@@ -19653,6 +19745,66 @@ module Google
         def update!(**args)
           @participant_role = args[:participant_role] if args.key?(:participant_role)
           @suggestion_feature_config = args[:suggestion_feature_config] if args.key?(:suggestion_feature_config)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1SipConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `allowVirtualAgentInteraction`
+        # @return [Boolean]
+        attr_accessor :allow_virtual_agent_interaction
+        alias_method :allow_virtual_agent_interaction?, :allow_virtual_agent_interaction
+      
+        # 
+        # Corresponds to the JSON property `copyInboundCallLegHeaders`
+        # @return [Array<String>]
+        attr_accessor :copy_inbound_call_leg_headers
+      
+        # 
+        # Corresponds to the JSON property `createConversationOnTheFly`
+        # @return [Boolean]
+        attr_accessor :create_conversation_on_the_fly
+        alias_method :create_conversation_on_the_fly?, :create_conversation_on_the_fly
+      
+        # 
+        # Corresponds to the JSON property `ignoreReinviteMediaDirection`
+        # @return [Boolean]
+        attr_accessor :ignore_reinvite_media_direction
+        alias_method :ignore_reinvite_media_direction?, :ignore_reinvite_media_direction
+      
+        # 
+        # Corresponds to the JSON property `inactiveStart`
+        # @return [Boolean]
+        attr_accessor :inactive_start
+        alias_method :inactive_start?, :inactive_start
+      
+        # 
+        # Corresponds to the JSON property `keepConversationRunning`
+        # @return [Boolean]
+        attr_accessor :keep_conversation_running
+        alias_method :keep_conversation_running?, :keep_conversation_running
+      
+        # 
+        # Corresponds to the JSON property `maxAudioRecordingDuration`
+        # @return [String]
+        attr_accessor :max_audio_recording_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_virtual_agent_interaction = args[:allow_virtual_agent_interaction] if args.key?(:allow_virtual_agent_interaction)
+          @copy_inbound_call_leg_headers = args[:copy_inbound_call_leg_headers] if args.key?(:copy_inbound_call_leg_headers)
+          @create_conversation_on_the_fly = args[:create_conversation_on_the_fly] if args.key?(:create_conversation_on_the_fly)
+          @ignore_reinvite_media_direction = args[:ignore_reinvite_media_direction] if args.key?(:ignore_reinvite_media_direction)
+          @inactive_start = args[:inactive_start] if args.key?(:inactive_start)
+          @keep_conversation_running = args[:keep_conversation_running] if args.key?(:keep_conversation_running)
+          @max_audio_recording_duration = args[:max_audio_recording_duration] if args.key?(:max_audio_recording_duration)
         end
       end
       
