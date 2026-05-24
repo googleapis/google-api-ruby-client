@@ -4613,6 +4613,25 @@ module Google
         end
       end
       
+      # Response from checking the enablement status of insights for the customer.
+      class GoogleChromeManagementVersionsV1CheckEnablementStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # The state of the insights feature.
+        # Corresponds to the JSON property `insightsState`
+        # @return [String]
+        attr_accessor :insights_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights_state = args[:insights_state] if args.key?(:insights_state)
+        end
+      end
+      
       # A representation of a Chrome browser profile.
       class GoogleChromeManagementVersionsV1ChromeBrowserProfile
         include Google::Apis::Core::Hashable
@@ -5306,6 +5325,79 @@ module Google
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
           @service_provider = args[:service_provider] if args.key?(:service_provider)
           @url_matchers = args[:url_matchers] if args.key?(:url_matchers)
+        end
+      end
+      
+      # Request to disable insights for the customer.
+      class GoogleChromeManagementVersionsV1DisableInsightsRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response from disabling insights for the customer.
+      class GoogleChromeManagementVersionsV1DisableInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The state of the insights feature.
+        # Corresponds to the JSON property `insightsState`
+        # @return [String]
+        attr_accessor :insights_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights_state = args[:insights_state] if args.key?(:insights_state)
+        end
+      end
+      
+      # Request to enable insights for the customer.
+      class GoogleChromeManagementVersionsV1EnableInsightsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Organizational Units to set up required connectors for.
+        # Organizational Units are provided as paths relative to root. If this field is
+        # not set, connectors will be set up at root OU (as if it were set to ["/"]).
+        # Example: ["/corp/sales", "/eng"]
+        # Corresponds to the JSON property `targetOus`
+        # @return [Array<String>]
+        attr_accessor :target_ous
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_ous = args[:target_ous] if args.key?(:target_ous)
+        end
+      end
+      
+      # Response from enabling insights for the customer.
+      class GoogleChromeManagementVersionsV1EnableInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The state of the insights feature.
+        # Corresponds to the JSON property `insightsState`
+        # @return [String]
+        attr_accessor :insights_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights_state = args[:insights_state] if args.key?(:insights_state)
         end
       end
       

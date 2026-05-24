@@ -691,6 +691,103 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the setting state of the insights feature for the customer.
+        # @param [String] customer
+        #   Required. The customer to check the enablement status for. Format: customers/`
+        #   customer_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CheckEnablementStatusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CheckEnablementStatusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_customer_enterprise_security_insight_enablement_status(customer, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/enterprise/securityInsights:checkEnablementStatus', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CheckEnablementStatusResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CheckEnablementStatusResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Disables insights for the customer.
+        # @param [String] customer
+        #   Required. The customer to disable insights for. Format: customers/`customer`
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsRequest] google_chrome_management_versions_v1_disable_insights_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_customer_enterprise_security_insight(customer, google_chrome_management_versions_v1_disable_insights_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+customer}/enterprise/securityInsights:disable', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsRequest::Representation
+          command.request_object = google_chrome_management_versions_v1_disable_insights_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enables insights for the customer and sets up required chrome connectors.
+        # @param [String] customer
+        #   Required. The customer to enable insights for. Format: customers/`customer`
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsRequest] google_chrome_management_versions_v1_enable_insights_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_customer_enterprise_security_insight(customer, google_chrome_management_versions_v1_enable_insights_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+customer}/enterprise/securityInsights:enable', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsRequest::Representation
+          command.request_object = google_chrome_management_versions_v1_enable_insights_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the data collected from a Chrome browser profile.
         # @param [String] name
         #   Required. Format: customers/`customer_id`/profiles/`profile_permanent_id`
