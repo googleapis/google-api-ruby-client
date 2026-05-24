@@ -2413,6 +2413,13 @@ module Google
         # @return [String]
         attr_accessor :project
       
+        # Optional. Whether to use the project service account for the Compute Engine
+        # instance.
+        # Corresponds to the JSON property `useProjectServiceAccount`
+        # @return [Boolean]
+        attr_accessor :use_project_service_account
+        alias_method :use_project_service_account?, :use_project_service_account
+      
         # Required. The zone of the Compute Engine instance.
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -2425,6 +2432,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @project = args[:project] if args.key?(:project)
+          @use_project_service_account = args[:use_project_service_account] if args.key?(:use_project_service_account)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -3185,6 +3193,12 @@ module Google
         # @return [String]
         attr_accessor :project
       
+        # Optional. Whether to use the project service account for the disk.
+        # Corresponds to the JSON property `useProjectServiceAccount`
+        # @return [Boolean]
+        attr_accessor :use_project_service_account
+        alias_method :use_project_service_account?, :use_project_service_account
+      
         # Required. Target zone for the disk.
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -3197,6 +3211,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @project = args[:project] if args.key?(:project)
+          @use_project_service_account = args[:use_project_service_account] if args.key?(:use_project_service_account)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -5196,6 +5211,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :replica_zones
       
+        # Optional. Whether to use the project service account for the disk.
+        # Corresponds to the JSON property `useProjectServiceAccount`
+        # @return [Boolean]
+        attr_accessor :use_project_service_account
+        alias_method :use_project_service_account?, :use_project_service_account
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5205,6 +5226,7 @@ module Google
           @project = args[:project] if args.key?(:project)
           @region = args[:region] if args.key?(:region)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
+          @use_project_service_account = args[:use_project_service_account] if args.key?(:use_project_service_account)
         end
       end
       

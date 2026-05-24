@@ -1407,6 +1407,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :project, as: 'project'
+          property :use_project_service_account, as: 'useProjectServiceAccount'
           property :zone, as: 'zone'
         end
       end
@@ -1592,6 +1593,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :project, as: 'project'
+          property :use_project_service_account, as: 'useProjectServiceAccount'
           property :zone, as: 'zone'
         end
       end
@@ -2123,6 +2125,7 @@ module Google
           property :project, as: 'project'
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
+          property :use_project_service_account, as: 'useProjectServiceAccount'
         end
       end
       
