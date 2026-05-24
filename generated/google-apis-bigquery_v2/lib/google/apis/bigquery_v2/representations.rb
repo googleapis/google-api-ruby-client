@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataPolicyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataPolicyOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +473,12 @@ module Google
       end
       
       class GenAiErrorStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenAiFunctionCacheStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -815,6 +827,12 @@ module Google
       end
       
       class MaterializedViewStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetadataCacheStalenessInsight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1246,6 +1264,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableChangeInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TableConstraints
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1310,6 +1334,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Categories
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class DataGovernanceTagsInfo
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
           include Google::Apis::Core::JsonObjectSupport
@@ -1865,6 +1895,14 @@ module Google
         end
       end
       
+      class DataPolicyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_policies, as: 'dataPolicies', class: Google::Apis::BigqueryV2::DataPolicyOption, decorator: Google::Apis::BigqueryV2::DataPolicyOption::Representation
+      
+        end
+      end
+      
       class DataPolicyOption
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2261,6 +2299,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_cpu, as: 'containerCpu'
           property :container_memory, as: 'containerMemory'
+          property :container_request_concurrency, :numeric_string => true, as: 'containerRequestConcurrency'
           property :max_batching_rows, :numeric_string => true, as: 'maxBatchingRows'
           property :runtime_connection, as: 'runtimeConnection'
           property :runtime_version, as: 'runtimeVersion'
@@ -2311,6 +2350,13 @@ module Google
         end
       end
       
+      class GenAiFunctionCacheStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_cache_hit_rows, :numeric_string => true, as: 'numCacheHitRows'
+        end
+      end
+      
       class GenAiFunctionCostOptimizationStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2330,6 +2376,8 @@ module Google
       class GenAiFunctionStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_stats, as: 'cacheStats', class: Google::Apis::BigqueryV2::GenAiFunctionCacheStats, decorator: Google::Apis::BigqueryV2::GenAiFunctionCacheStats::Representation
+      
           property :cost_optimization_stats, as: 'costOptimizationStats', class: Google::Apis::BigqueryV2::GenAiFunctionCostOptimizationStats, decorator: Google::Apis::BigqueryV2::GenAiFunctionCostOptimizationStats::Representation
       
           property :error_stats, as: 'errorStats', class: Google::Apis::BigqueryV2::GenAiFunctionErrorStats, decorator: Google::Apis::BigqueryV2::GenAiFunctionErrorStats::Representation
@@ -3161,6 +3209,14 @@ module Google
         end
       end
       
+      class MetadataCacheStalenessInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avg_previous_staleness_ms, as: 'avgPreviousStalenessMs'
+          property :staleness_percentage_increase, as: 'stalenessPercentageIncrease'
+        end
+      end
+      
       class MetadataCacheStatistics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3302,6 +3358,8 @@ module Google
           collection :stage_performance_change_insights, as: 'stagePerformanceChangeInsights', class: Google::Apis::BigqueryV2::StagePerformanceChangeInsight, decorator: Google::Apis::BigqueryV2::StagePerformanceChangeInsight::Representation
       
           collection :stage_performance_standalone_insights, as: 'stagePerformanceStandaloneInsights', class: Google::Apis::BigqueryV2::StagePerformanceStandaloneInsight, decorator: Google::Apis::BigqueryV2::StagePerformanceStandaloneInsight::Representation
+      
+          collection :table_change_insights, as: 'tableChangeInsights', class: Google::Apis::BigqueryV2::TableChangeInsight, decorator: Google::Apis::BigqueryV2::TableChangeInsight::Representation
       
         end
       end
@@ -4033,6 +4091,17 @@ module Google
         end
       end
       
+      class TableChangeInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata_cache_not_used_but_used_previously, as: 'metadataCacheNotUsedButUsedPreviously'
+          property :metadata_cache_staleness_insight, as: 'metadataCacheStalenessInsight', class: Google::Apis::BigqueryV2::MetadataCacheStalenessInsight, decorator: Google::Apis::BigqueryV2::MetadataCacheStalenessInsight::Representation
+      
+          property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+      
+        end
+      end
+      
       class TableConstraints
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4135,7 +4204,11 @@ module Google
           property :categories, as: 'categories', class: Google::Apis::BigqueryV2::TableFieldSchema::Categories, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Categories::Representation
       
           property :collation, as: 'collation'
+          property :data_governance_tags_info, as: 'dataGovernanceTagsInfo', class: Google::Apis::BigqueryV2::TableFieldSchema::DataGovernanceTagsInfo, decorator: Google::Apis::BigqueryV2::TableFieldSchema::DataGovernanceTagsInfo::Representation
+      
           collection :data_policies, as: 'dataPolicies', class: Google::Apis::BigqueryV2::DataPolicyOption, decorator: Google::Apis::BigqueryV2::DataPolicyOption::Representation
+      
+          property :data_policy_list, as: 'dataPolicyList', class: Google::Apis::BigqueryV2::DataPolicyList, decorator: Google::Apis::BigqueryV2::DataPolicyList::Representation
       
           property :default_value_expression, as: 'defaultValueExpression'
           property :description, as: 'description'
@@ -4162,6 +4235,13 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :names, as: 'names'
+          end
+        end
+        
+        class DataGovernanceTagsInfo
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            hash :data_governance_tags, as: 'dataGovernanceTags'
           end
         end
         

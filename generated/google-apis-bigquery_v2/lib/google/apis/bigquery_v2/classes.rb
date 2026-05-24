@@ -1778,6 +1778,28 @@ module Google
         end
       end
       
+      # A list of data policy options. For more information, see [Mask data by
+      # applying data policies to a column](https://docs.cloud.google.com/bigquery/
+      # docs/column-data-masking#data-policies-on-column).
+      class DataPolicyList
+        include Google::Apis::Core::Hashable
+      
+        # Contains a list of data policy options. At most 9 data policies are allowed
+        # per field.
+        # Corresponds to the JSON property `dataPolicies`
+        # @return [Array<Google::Apis::BigqueryV2::DataPolicyOption>]
+        attr_accessor :data_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_policies = args[:data_policies] if args.key?(:data_policies)
+        end
+      end
+      
       # Data policy option. For more information, see [Mask data by applying data
       # policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-
       # masking#data-policies-on-column).
@@ -3546,6 +3568,12 @@ module Google
         # @return [String]
         attr_accessor :container_memory
       
+        # Optional. Maximum number of requests that a Cloud Run instance can handle
+        # concurrently. If absent or if `0`, a default concurrency is used.
+        # Corresponds to the JSON property `containerRequestConcurrency`
+        # @return [Fixnum]
+        attr_accessor :container_request_concurrency
+      
         # Optional. Maximum number of rows in each batch sent to the external runtime.
         # If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
         # Corresponds to the JSON property `maxBatchingRows`
@@ -3572,6 +3600,7 @@ module Google
         def update!(**args)
           @container_cpu = args[:container_cpu] if args.key?(:container_cpu)
           @container_memory = args[:container_memory] if args.key?(:container_memory)
+          @container_request_concurrency = args[:container_request_concurrency] if args.key?(:container_request_concurrency)
           @max_batching_rows = args[:max_batching_rows] if args.key?(:max_batching_rows)
           @runtime_connection = args[:runtime_connection] if args.key?(:runtime_connection)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
@@ -3736,6 +3765,25 @@ module Google
         end
       end
       
+      # Provides cache statistics for a GenAi function call.
+      class GenAiFunctionCacheStats
+        include Google::Apis::Core::Hashable
+      
+        # Number of rows served from cache.
+        # Corresponds to the JSON property `numCacheHitRows`
+        # @return [Fixnum]
+        attr_accessor :num_cache_hit_rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_cache_hit_rows = args[:num_cache_hit_rows] if args.key?(:num_cache_hit_rows)
+        end
+      end
+      
       # Provides cost optimization statistics for a GenAi function call.
       class GenAiFunctionCostOptimizationStats
         include Google::Apis::Core::Hashable
@@ -3790,6 +3838,11 @@ module Google
       class GenAiFunctionStats
         include Google::Apis::Core::Hashable
       
+        # Provides cache statistics for a GenAi function call.
+        # Corresponds to the JSON property `cacheStats`
+        # @return [Google::Apis::BigqueryV2::GenAiFunctionCacheStats]
+        attr_accessor :cache_stats
+      
         # Provides cost optimization statistics for a GenAi function call.
         # Corresponds to the JSON property `costOptimizationStats`
         # @return [Google::Apis::BigqueryV2::GenAiFunctionCostOptimizationStats]
@@ -3822,6 +3875,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_stats = args[:cache_stats] if args.key?(:cache_stats)
           @cost_optimization_stats = args[:cost_optimization_stats] if args.key?(:cost_optimization_stats)
           @error_stats = args[:error_stats] if args.key?(:error_stats)
           @function_name = args[:function_name] if args.key?(:function_name)
@@ -7253,6 +7307,33 @@ module Google
         end
       end
       
+      # Column Metadata Index staleness detailed infnormation.
+      class MetadataCacheStalenessInsight
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Average column metadata index staleness of previous runs with the
+        # same query hash.
+        # Corresponds to the JSON property `avgPreviousStalenessMs`
+        # @return [String]
+        attr_accessor :avg_previous_staleness_ms
+      
+        # Output only. The percent increase in staleness between the current job and the
+        # average staleness of previous jobs with the same query hash.
+        # Corresponds to the JSON property `stalenessPercentageIncrease`
+        # @return [Float]
+        attr_accessor :staleness_percentage_increase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avg_previous_staleness_ms = args[:avg_previous_staleness_ms] if args.key?(:avg_previous_staleness_ms)
+          @staleness_percentage_increase = args[:staleness_percentage_increase] if args.key?(:staleness_percentage_increase)
+        end
+      end
+      
       # Statistics for metadata caching in queried tables.
       class MetadataCacheStatistics
         include Google::Apis::Core::Hashable
@@ -7751,6 +7832,12 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::StagePerformanceStandaloneInsight>]
         attr_accessor :stage_performance_standalone_insights
       
+        # Output only. Performance insights for table-level attributes that changed
+        # compared to previous runs.
+        # Corresponds to the JSON property `tableChangeInsights`
+        # @return [Array<Google::Apis::BigqueryV2::TableChangeInsight>]
+        attr_accessor :table_change_insights
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7760,6 +7847,7 @@ module Google
           @avg_previous_execution_ms = args[:avg_previous_execution_ms] if args.key?(:avg_previous_execution_ms)
           @stage_performance_change_insights = args[:stage_performance_change_insights] if args.key?(:stage_performance_change_insights)
           @stage_performance_standalone_insights = args[:stage_performance_standalone_insights] if args.key?(:stage_performance_standalone_insights)
+          @table_change_insights = args[:table_change_insights] if args.key?(:table_change_insights)
         end
       end
       
@@ -10749,6 +10837,40 @@ module Google
         end
       end
       
+      # Table-level performance insights compared to previous runs. These insights don'
+      # t apply to specific query stages, rather they apply to the whole table.
+      class TableChangeInsight
+        include Google::Apis::Core::Hashable
+      
+        # Output only. True if the table's column metadata index was not used in the
+        # current job, but was used in a previous job with the same query hash.
+        # Corresponds to the JSON property `metadataCacheNotUsedButUsedPreviously`
+        # @return [Boolean]
+        attr_accessor :metadata_cache_not_used_but_used_previously
+        alias_method :metadata_cache_not_used_but_used_previously?, :metadata_cache_not_used_but_used_previously
+      
+        # Column Metadata Index staleness detailed infnormation.
+        # Corresponds to the JSON property `metadataCacheStalenessInsight`
+        # @return [Google::Apis::BigqueryV2::MetadataCacheStalenessInsight]
+        attr_accessor :metadata_cache_staleness_insight
+      
+        # Output only. The table that was queried.
+        # Corresponds to the JSON property `tableReference`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :table_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_cache_not_used_but_used_previously = args[:metadata_cache_not_used_but_used_previously] if args.key?(:metadata_cache_not_used_but_used_previously)
+          @metadata_cache_staleness_insight = args[:metadata_cache_staleness_insight] if args.key?(:metadata_cache_staleness_insight)
+          @table_reference = args[:table_reference] if args.key?(:table_reference)
+        end
+      end
+      
       # The TableConstraints defines the primary key and foreign key.
       class TableConstraints
         include Google::Apis::Core::Hashable
@@ -11083,11 +11205,33 @@ module Google
         # @return [String]
         attr_accessor :collation
       
+        # Optional. Specifies the data governance tags on this field. This field works
+        # with other column-level security fields as follows: - Precedence: If a data
+        # governance tag is attached to a column, it takes precedence over the policy
+        # tag attached to the column. However, if a data policy is attached to a column,
+        # it takes precedence over the data governance tag. - Patching behavior (how
+        # this field behaves during a `Table.patch` schema update): - Unset: If the `
+        # data_governance_tags_info` field is omitted from the update request, the
+        # existing tags on the column are preserved. - Empty Field: To clear data
+        # governance tags from a column, send the `data_governance_tags_info` field as
+        # an empty object. This will remove all tags from the column. - Updating tags:
+        # To replace existing tag, send the field with the new tag.
+        # Corresponds to the JSON property `dataGovernanceTagsInfo`
+        # @return [Google::Apis::BigqueryV2::TableFieldSchema::DataGovernanceTagsInfo]
+        attr_accessor :data_governance_tags_info
+      
         # Optional. Data policies attached to this field, used for field-level access
         # control.
         # Corresponds to the JSON property `dataPolicies`
         # @return [Array<Google::Apis::BigqueryV2::DataPolicyOption>]
         attr_accessor :data_policies
+      
+        # A list of data policy options. For more information, see [Mask data by
+        # applying data policies to a column](https://docs.cloud.google.com/bigquery/
+        # docs/column-data-masking#data-policies-on-column).
+        # Corresponds to the JSON property `dataPolicyList`
+        # @return [Google::Apis::BigqueryV2::DataPolicyList]
+        attr_accessor :data_policy_list
       
         # Optional. A SQL expression to specify the [default value] (https://cloud.
         # google.com/bigquery/docs/default-values) for this field.
@@ -11207,7 +11351,9 @@ module Google
         def update!(**args)
           @categories = args[:categories] if args.key?(:categories)
           @collation = args[:collation] if args.key?(:collation)
+          @data_governance_tags_info = args[:data_governance_tags_info] if args.key?(:data_governance_tags_info)
           @data_policies = args[:data_policies] if args.key?(:data_policies)
+          @data_policy_list = args[:data_policy_list] if args.key?(:data_policy_list)
           @default_value_expression = args[:default_value_expression] if args.key?(:default_value_expression)
           @description = args[:description] if args.key?(:description)
           @fields = args[:fields] if args.key?(:fields)
@@ -11241,6 +11387,43 @@ module Google
           # Update properties of this object
           def update!(**args)
             @names = args[:names] if args.key?(:names)
+          end
+        end
+        
+        # Optional. Specifies the data governance tags on this field. This field works
+        # with other column-level security fields as follows: - Precedence: If a data
+        # governance tag is attached to a column, it takes precedence over the policy
+        # tag attached to the column. However, if a data policy is attached to a column,
+        # it takes precedence over the data governance tag. - Patching behavior (how
+        # this field behaves during a `Table.patch` schema update): - Unset: If the `
+        # data_governance_tags_info` field is omitted from the update request, the
+        # existing tags on the column are preserved. - Empty Field: To clear data
+        # governance tags from a column, send the `data_governance_tags_info` field as
+        # an empty object. This will remove all tags from the column. - Updating tags:
+        # To replace existing tag, send the field with the new tag.
+        class DataGovernanceTagsInfo
+          include Google::Apis::Core::Hashable
+        
+          # Optional. The data governance tags added to this field are used for field-
+          # level access control. Only one data governance tag is currently supported on a
+          # field. Tag keys are globally unique. Tag key is expected to be in the
+          # namespaced format, for example "123456789012/pii" where 123456789012 is the ID
+          # of the parent organization or project resource for this tag key. Tag value is
+          # expected to be the short name, for example "sensitive". See [Tag definitions](
+          # https://cloud.google.com/iam/docs/tags-access-control#definitions) for more
+          # details. For example: "123456789012/pii": "sensitive", "myProject/cost_center":
+          # "sales"
+          # Corresponds to the JSON property `dataGovernanceTags`
+          # @return [Hash<String,String>]
+          attr_accessor :data_governance_tags
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @data_governance_tags = args[:data_governance_tags] if args.key?(:data_governance_tags)
           end
         end
         
