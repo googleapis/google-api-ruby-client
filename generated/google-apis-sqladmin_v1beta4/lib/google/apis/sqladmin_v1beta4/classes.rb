@@ -5332,7 +5332,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1beta4::DenyMaintenancePeriod>]
         attr_accessor :deny_maintenance_periods
       
-        # Optional. The edition of the instance.
+        # Optional. The edition type of the Cloud SQL instance.
         # Corresponds to the JSON property `edition`
         # @return [String]
         attr_accessor :edition
