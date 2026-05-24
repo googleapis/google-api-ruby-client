@@ -1148,6 +1148,12 @@ module Google
         attr_accessor :sha256_hash
       
         # # gdata.* are outside protos with mising documentation
+        # Corresponds to the JSON property `sha512Hash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha512_hash
+      
+        # # gdata.* are outside protos with mising documentation
         # Corresponds to the JSON property `timestamp`
         # @return [Fixnum]
         attr_accessor :timestamp
@@ -1191,6 +1197,7 @@ module Google
           @reference_type = args[:reference_type] if args.key?(:reference_type)
           @sha1_hash = args[:sha1_hash] if args.key?(:sha1_hash)
           @sha256_hash = args[:sha256_hash] if args.key?(:sha256_hash)
+          @sha512_hash = args[:sha512_hash] if args.key?(:sha512_hash)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @token = args[:token] if args.key?(:token)
         end
