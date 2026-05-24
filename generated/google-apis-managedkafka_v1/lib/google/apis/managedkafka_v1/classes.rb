@@ -1747,6 +1747,37 @@ module Google
         end
       end
       
+      # Subject defines the evolution scope of schemas as a holder of schema versions.
+      class SchemaSubject
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the subject. Structured like: `projects/`project`/
+        # locations/`location`/schemaRegistries/`schema_registry`/subjects/`subject`` or
+        # `projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        # contexts/`context`/subjects/`subject`` Subject name `subject` can contain the
+        # following: * Up to 255 UTF-8 bytes. * Allowed characters: letters (uppercase
+        # or lowercase), numbers, and the following special characters: `.`, `-`, `_`, `+
+        # `, `%`, and `~`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The versions of the subject.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<String>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
       # Version of a schema.
       class SchemaVersion
         include Google::Apis::Core::Hashable
