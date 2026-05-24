@@ -5072,6 +5072,10 @@ module Google
         # Lists diagnostics.
         # @param [String] parent
         #   Required. The parent resource of the diagnostics.
+        # @param [String] app_id
+        #   Optional. The CES App ID to filter diagnostics by.
+        # @param [String] app_version
+        #   Optional. The CES App version to filter diagnostics by.
         # @param [String] filter
         #   Optional. A filter to apply to the list (e.g. `create_time > "2023-01-01T00:00:
         #   00Z"`).
@@ -5099,11 +5103,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_diagnostics(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_diagnostics(parent, app_id: nil, app_version: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/diagnostics', options)
           command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListDiagnosticsResponse::Representation
           command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListDiagnosticsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['appId'] = app_id unless app_id.nil?
+          command.query['appVersion'] = app_version unless app_version.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

@@ -5164,6 +5164,7 @@ module Google
           property :display_name, as: 'displayName'
           property :disposition_code, as: 'dispositionCode'
           property :entry_subagent_display_name, as: 'entrySubagentDisplayName'
+          property :entry_subagent_id, as: 'entrySubagentId'
           property :location, as: 'location'
           property :team, as: 'team'
           collection :teams, as: 'teams'
@@ -5442,9 +5443,14 @@ module Google
       class GoogleCloudContactcenterinsightsV1DiagnoseConversationsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_display_name, as: 'agentDisplayName'
+          property :agent_id, as: 'agentId'
+          property :app_id, as: 'appId'
+          property :app_version, as: 'appVersion'
           property :dry_run, as: 'dryRun'
           property :filter, as: 'filter'
           property :full_report, as: 'fullReport'
+          property :group_id, as: 'groupId'
           property :instructions, as: 'instructions'
           property :max_steps, as: 'maxSteps'
           property :metric_type, as: 'metricType'
@@ -5471,9 +5477,14 @@ module Google
       class GoogleCloudContactcenterinsightsV1Diagnostic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_display_name, as: 'agentDisplayName'
+          property :agent_id, as: 'agentId'
           property :analysis_summary, as: 'analysisSummary'
+          property :app_id, as: 'appId'
+          property :app_version, as: 'appVersion'
           property :conversation_filter, as: 'conversationFilter'
           property :create_time, as: 'createTime'
+          property :group_create_time, as: 'groupCreateTime'
           property :name, as: 'name'
           property :report, as: 'report', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReport, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReport::Representation
       
@@ -7909,6 +7920,7 @@ module Google
           property :display_name, as: 'displayName'
           property :disposition_code, as: 'dispositionCode'
           property :entry_subagent_display_name, as: 'entrySubagentDisplayName'
+          property :entry_subagent_id, as: 'entrySubagentId'
           property :location, as: 'location'
           property :team, as: 'team'
           collection :teams, as: 'teams'
@@ -8117,9 +8129,14 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1DiagnoseConversationsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_display_name, as: 'agentDisplayName'
+          property :agent_id, as: 'agentId'
+          property :app_id, as: 'appId'
+          property :app_version, as: 'appVersion'
           property :dry_run, as: 'dryRun'
           property :filter, as: 'filter'
           property :full_report, as: 'fullReport'
+          property :group_id, as: 'groupId'
           property :instructions, as: 'instructions'
           property :max_steps, as: 'maxSteps'
           property :metric_type, as: 'metricType'
@@ -9942,6 +9959,7 @@ module Google
           property :display_name, as: 'displayName'
           property :disposition_code, as: 'dispositionCode'
           property :entry_subagent_display_name, as: 'entrySubagentDisplayName'
+          property :entry_subagent_id, as: 'entrySubagentId'
           property :location, as: 'location'
           property :team, as: 'team'
           collection :teams, as: 'teams'
@@ -10150,9 +10168,14 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainDiagnoseConversationsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_display_name, as: 'agentDisplayName'
+          property :agent_id, as: 'agentId'
+          property :app_id, as: 'appId'
+          property :app_version, as: 'appVersion'
           property :dry_run, as: 'dryRun'
           property :filter, as: 'filter'
           property :full_report, as: 'fullReport'
+          property :group_id, as: 'groupId'
           property :instructions, as: 'instructions'
           property :max_steps, as: 'maxSteps'
           property :metric_type, as: 'metricType'
