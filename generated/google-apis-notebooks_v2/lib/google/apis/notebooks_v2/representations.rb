@@ -819,6 +819,7 @@ module Google
       class UpgradeInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_family, as: 'imageFamily'
         end
       end
       
