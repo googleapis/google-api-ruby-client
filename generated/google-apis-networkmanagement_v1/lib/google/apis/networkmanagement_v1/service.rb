@@ -1110,6 +1110,593 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a NetworkMonitoringProvider resource.
+        # @param [String] parent
+        #   Required. Parent value for CreateNetworkMonitoringProviderRequest. Format:
+        #   projects/`project`/locations/`location`
+        # @param [Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider] network_monitoring_provider_object
+        # @param [String] network_monitoring_provider_id
+        #   Required. The ID to use for the NetworkMonitoringProvider resource, which will
+        #   become the final component of the NetworkMonitoringProvider resource's name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_network_monitoring_provider(parent, network_monitoring_provider_object = nil, network_monitoring_provider_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/networkMonitoringProviders', options)
+          command.request_representation = Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider::Representation
+          command.request_object = network_monitoring_provider_object
+          command.response_representation = Google::Apis::NetworkmanagementV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['networkMonitoringProviderId'] = network_monitoring_provider_id unless network_monitoring_provider_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a NetworkMonitoringProvider resource and all of its child resources.
+        # @param [String] name
+        #   Required. Name of the resource. Format: projects/`project`/locations/`location`
+        #   /networkMonitoringProviders/`network_monitoring_provider`
+        # @param [Boolean] force
+        #   Optional. If set to true, any nested MonitoringPoints, NetworkPaths and
+        #   WebPaths resources from this NetworkMonitoringProvider will also be deleted.
+        #   Otherwise, the request will only work if there are no nested resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_network_monitoring_provider(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates Monitoring Point configuration of a NetworkMonitoringProvider
+        # resource.
+        # @param [String] name
+        #   Required. Name of the resource. Format: projects/`project`/locations/`location`
+        #   /networkMonitoringProviders/`network_monitoring_provider`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::GenerateMonitoringPointConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::GenerateMonitoringPointConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_network_monitoring_provider_monitoring_point_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:generateMonitoringPointConfig', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::GenerateMonitoringPointConfigResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::GenerateMonitoringPointConfigResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates a provider access token for a given Google access token. Provider
+        # access token is a short-lived token that is used to access resources in the
+        # provider's platform.
+        # @param [String] name
+        #   Required. Name of the resource. Format: projects/`project`/locations/`location`
+        #   /networkMonitoringProviders/`network_monitoring_provider`
+        # @param [String] gcp_access_token
+        #   Required. Google access token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::GenerateProviderAccessTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::GenerateProviderAccessTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_network_monitoring_provider_provider_access_token(name, gcp_access_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:generateProviderAccessToken', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::GenerateProviderAccessTokenResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::GenerateProviderAccessTokenResponse
+          command.params['name'] = name unless name.nil?
+          command.query['gcpAccessToken'] = gcp_access_token unless gcp_access_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the NetworkMonitoringProvider resource.
+        # @param [String] name
+        #   Required. Name of the resource. Format: `projects/`project`/locations/`
+        #   location`/networkMonitoringProviders/`network_monitoring_provider``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_network_monitoring_provider(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::NetworkMonitoringProvider
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists NetworkMonitoringProviders for a given project and location.
+        # @param [String] parent
+        #   Required. Parent value for ListNetworkMonitoringProvidersRequest. Format: `
+        #   projects/`project`/locations/`location``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of monitoring points to return. The service may
+        #   return fewer than this value. If unspecified, at most 20 monitoring points
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListMonitoringPoints` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListMonitoringPoints` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListNetworkMonitoringProvidersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListNetworkMonitoringProvidersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_network_monitoring_providers(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/networkMonitoringProviders', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListNetworkMonitoringProvidersResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListNetworkMonitoringProvidersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Downloads an install script for MonitoringPoints for a given network
+        # monitoring provider.
+        # @param [String] parent
+        #   Required. Parent value for DownloadInstallScriptRequest. Format: projects/`
+        #   project`/locations/`location`/networkMonitoringProviders/`
+        #   network_monitoring_provider`
+        # @param [String] _password
+        #   Optional. Password for logging into the MonitoringPoint.
+        # @param [String] hostname
+        #   Required. The hostname of the MonitoringPoint, e.g. "test-vm"
+        # @param [String] monitoring_point_type
+        #   Required. The type of the monitoring point.
+        # @param [String] ntp_server_address
+        #   Optional. Network Time Protocol a user can configure. If the user omits the
+        #   field, the default is either NTP servers provided in the DHCP lease or a set
+        #   of well-known NTP servers pre-configured on the monitoring point. This field
+        #   can be an IP address or FQDN.
+        # @param [String] ntp_server_secondary_address
+        #   Optional. Second NTP server.
+        # @param [String] static_ip_address_dns_server_address
+        #   Required. DNS server.
+        # @param [String] static_ip_address_dns_server_secondary_address
+        #   Optional. Second DNS server.
+        # @param [String] static_ip_address_domain
+        #   Optional. Domain name of the MonitoringPoint.
+        # @param [String] static_ip_address_gateway_address
+        #   Required. Gateway IP address. Example: "100.80.40.1".
+        # @param [String] static_ip_address_ip_address
+        #   Required. IP address of the MonitoringPoint.
+        # @param [String] static_ip_address_netmask
+        #   Optional. Networkmask and CIDR range. Example: "255.255.255.0/24"
+        # @param [String] time_zone_id
+        #   IANA Time Zone Database time zone. For example "America/New_York".
+        # @param [String] time_zone_version
+        #   Optional. IANA Time Zone Database version number. For example "2019a".
+        # @param [Boolean] use_dhcp
+        #   Optional. Dynamic Host Configuration Protocol, is a network management
+        #   protocol that automatically assigns IP addresses and other network
+        #   configuration parameters to devices connecting to a network.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_project_location_network_monitoring_provider_monitoring_point_install_script(parent, _password: nil, hostname: nil, monitoring_point_type: nil, ntp_server_address: nil, ntp_server_secondary_address: nil, static_ip_address_dns_server_address: nil, static_ip_address_dns_server_secondary_address: nil, static_ip_address_domain: nil, static_ip_address_gateway_address: nil, static_ip_address_ip_address: nil, static_ip_address_netmask: nil, time_zone_id: nil, time_zone_version: nil, use_dhcp: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/monitoringPoints:downloadInstallScript', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::HttpBody::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['_password'] = _password unless _password.nil?
+          command.query['hostname'] = hostname unless hostname.nil?
+          command.query['monitoringPointType'] = monitoring_point_type unless monitoring_point_type.nil?
+          command.query['ntpServerAddress'] = ntp_server_address unless ntp_server_address.nil?
+          command.query['ntpServerSecondaryAddress'] = ntp_server_secondary_address unless ntp_server_secondary_address.nil?
+          command.query['staticIpAddress.dnsServerAddress'] = static_ip_address_dns_server_address unless static_ip_address_dns_server_address.nil?
+          command.query['staticIpAddress.dnsServerSecondaryAddress'] = static_ip_address_dns_server_secondary_address unless static_ip_address_dns_server_secondary_address.nil?
+          command.query['staticIpAddress.domain'] = static_ip_address_domain unless static_ip_address_domain.nil?
+          command.query['staticIpAddress.gatewayAddress'] = static_ip_address_gateway_address unless static_ip_address_gateway_address.nil?
+          command.query['staticIpAddress.ipAddress'] = static_ip_address_ip_address unless static_ip_address_ip_address.nil?
+          command.query['staticIpAddress.netmask'] = static_ip_address_netmask unless static_ip_address_netmask.nil?
+          command.query['timeZone.id'] = time_zone_id unless time_zone_id.nil?
+          command.query['timeZone.version'] = time_zone_version unless time_zone_version.nil?
+          command.query['useDhcp'] = use_dhcp unless use_dhcp.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Downloads an install script for a specific Container MonitoringPoint.
+        # @param [String] name
+        #   Required. Resource name of the MonitoringPoint. Format: projects/`project`/
+        #   locations/`location`/networkMonitoringProviders/`network_monitoring_provider`/
+        #   monitoringPoints/`monitoring_point`
+        # @param [String] hostname
+        #   Optional. The hostname of the MonitoringPoint, e.g. "test-vm"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_project_location_network_monitoring_provider_monitoring_point_recreate_install_script(name, hostname: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:downloadRecreateInstallScript', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::HttpBody::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['hostname'] = hostname unless hostname.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Downloads the server connect configuration for a given network monitoring
+        # provider.
+        # @param [String] parent
+        #   Required. Parent value for DownloadServerConnectConfigRequest. Format:
+        #   projects/`project`/locations/`location`/networkMonitoringProviders/`
+        #   network_monitoring_provider`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_project_location_network_monitoring_provider_monitoring_point_server_connect_config(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/monitoringPoints:downloadServerConnectConfig', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::HttpBody::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the MonitoringPoint resource.
+        # @param [String] name
+        #   Required. Name of the resource. Format: projects/`project`/locations/`location`
+        #   /networkMonitoringProviders/`network_monitoring_provider`/monitoringPoints/`
+        #   monitoring_point`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::MonitoringPoint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::MonitoringPoint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_network_monitoring_provider_monitoring_point(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::MonitoringPoint::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::MonitoringPoint
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists MonitoringPoints for a given network monitoring provider.
+        # @param [String] parent
+        #   Required. Parent value for ListMonitoringPointsRequest. Format: projects/`
+        #   project`/locations/`location`/networkMonitoringProviders/`
+        #   network_monitoring_provider`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of monitoring points to return. The service may
+        #   return fewer than this value. If unspecified, at most 20 monitoring points
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListMonitoringPoints` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListMonitoringPoints` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListMonitoringPointsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListMonitoringPointsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_network_monitoring_provider_monitoring_points(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/monitoringPoints', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListMonitoringPointsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListMonitoringPointsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the NetworkPath resource.
+        # @param [String] name
+        #   Required. Name of the resource. Format: projects/`project`/locations/`location`
+        #   /networkMonitoringProviders/`network_monitoring_provider`/networkPaths/`
+        #   network_path`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::NetworkPath] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::NetworkPath]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_network_monitoring_provider_network_path(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::NetworkPath::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::NetworkPath
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists NetworkPaths for a given network monitoring provider.
+        # @param [String] parent
+        #   Required. Parent value for ListNetworkPathsRequest. Format: projects/`project`/
+        #   locations/`location`/networkMonitoringProviders/`network_monitoring_provider`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of network paths to return. The service may
+        #   return fewer than this value. If unspecified, at most 20 network pathswill be
+        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListNetworkPaths` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListNetworkPaths` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListNetworkPathsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListNetworkPathsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_network_monitoring_provider_network_paths(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/networkPaths', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListNetworkPathsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListNetworkPathsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the WebPath resource.
+        # @param [String] name
+        #   Required. Name of the resource.. Format: projects/`project`/locations/`
+        #   location`/networkMonitoringProviders/`network_monitoring_provider`/webPaths/`
+        #   web_path`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::WebPath] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::WebPath]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_network_monitoring_provider_web_path(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::WebPath::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::WebPath
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists WebPaths for a given network monitoring provider.
+        # @param [String] parent
+        #   Required. Parent value for ListWebPathsRequest. Format: projects/`project`/
+        #   locations/`location`/networkMonitoringProviders/`network_monitoring_provider`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of web paths to return. The service may return
+        #   fewer than this value. If unspecified, at most 20 web paths will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListWebPaths` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListWebPaths` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListWebPathsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListWebPathsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_network_monitoring_provider_web_paths(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/webPaths', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListWebPathsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListWebPathsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same
         # settings already exists (even if the ID is different), the creation fails.
         # Notes: 1. Creating a configuration with `state=DISABLED` will fail 2. The
