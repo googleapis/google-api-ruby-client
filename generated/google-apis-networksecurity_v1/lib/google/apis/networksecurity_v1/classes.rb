@@ -278,6 +278,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. A list of authorization network rules to match against the incoming
+        # request. A policy match occurs when at least one network rule matches the
+        # request. At least one network rule is required for Allow or Deny Action if no
+        # HTTP rules are provided. Network rules are mutually exclusive with HTTP rules.
+        # Limited to 5 rules.
+        # Corresponds to the JSON property `networkRules`
+        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRule>]
+        attr_accessor :network_rules
+      
         # Optional. Immutable. Defines the type of authorization being performed. If not
         # specified, `REQUEST_AUTHZ` is applied. This field cannot be changed once
         # AuthzPolicy is created.
@@ -308,6 +317,7 @@ module Google
           @http_rules = args[:http_rules] if args.key?(:http_rules)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @network_rules = args[:network_rules] if args.key?(:network_rules)
           @policy_profile = args[:policy_profile] if args.key?(:policy_profile)
           @target = args[:target] if args.key?(:target)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -674,6 +684,15 @@ module Google
         # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch>]
         attr_accessor :paths
       
+        # Optional. A list of SNIs to match against. The match can be one of exact,
+        # prefix, suffix, or contains (substring match). If there is no SNI (i.e.
+        # plaintext HTTP traffic), the request will be denied. Matches are always case
+        # sensitive unless the ignoreCase is set. Limited to 10 SNIs per Authorization
+        # Policy.
+        # Corresponds to the JSON property `snis`
+        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch>]
+        attr_accessor :snis
+      
         def initialize(**args)
            update!(**args)
         end
@@ -685,6 +704,7 @@ module Google
           @mcp = args[:mcp] if args.key?(:mcp)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
           @paths = args[:paths] if args.key?(:paths)
+          @snis = args[:snis] if args.key?(:snis)
         end
       end
       
@@ -1316,10 +1336,11 @@ module Google
       class FirewallEndpoint
         include Google::Apis::Core::Hashable
       
-        # Output only. List of networks that are associated with this endpoint in the
-        # local zone. This is a projection of the FirewallEndpointAssociations pointing
-        # at this endpoint. A network will only appear in this list after traffic
-        # routing is fully configured. Format: projects/`project`/global/networks/`name`.
+        # Output only. Deprecated: List of networks that are associated with this
+        # endpoint in the local zone. This is a projection of the
+        # FirewallEndpointAssociations pointing at this endpoint. A network will only
+        # appear in this list after traffic routing is fully configured. Format:
+        # projects/`project`/global/networks/`name`.
         # Corresponds to the JSON property `associatedNetworks`
         # @return [Array<String>]
         attr_accessor :associated_networks
@@ -3294,6 +3315,68 @@ module Google
         end
       end
       
+      # Response for `ListSACAttachments` method.
+      class ListSacAttachmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SACAttachments.
+        # Corresponds to the JSON property `sacAttachments`
+        # @return [Array<Google::Apis::NetworksecurityV1::SacAttachment>]
+        attr_accessor :sac_attachments
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sac_attachments = args[:sac_attachments] if args.key?(:sac_attachments)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for `ListSACRealms` method.
+      class ListSacRealmsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SACRealms.
+        # Corresponds to the JSON property `sacRealms`
+        # @return [Array<Google::Apis::NetworksecurityV1::SacRealm>]
+        attr_accessor :sac_realms
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sac_realms = args[:sac_realms] if args.key?(:sac_realms)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response returned by the ListSecurityProfileGroups method.
       class ListSecurityProfileGroupsResponse
         include Google::Apis::Core::Hashable
@@ -4249,6 +4332,151 @@ module Google
         def update!(**args)
           @destinations = args[:destinations] if args.key?(:destinations)
           @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Represents a Secure Access Connect (SAC) attachment resource. A Secure Access
+      # Connect attachment enables NCC Gateway to process traffic with an SSE product.
+      class SacAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the attachment was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Optional list of labels applied to the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Resource name, in the form `projects/`project`/locations/`location`
+        # /sacAttachments/`sac_attachment``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. NCC Gateway associated with the attachment. This can be input as an
+        # ID or a full resource name. The output always has the form `projects/`
+        # project_number`/locations/`location`/spokes/`ncc_gateway``.
+        # Corresponds to the JSON property `nccGateway`
+        # @return [String]
+        attr_accessor :ncc_gateway
+      
+        # Required. SAC Realm which owns the attachment. This can be input as an ID or a
+        # full resource name. The output always has the form `projects/`project_number`/
+        # locations/`location`/sacRealms/`sac_realm``.
+        # Corresponds to the JSON property `sacRealm`
+        # @return [String]
+        attr_accessor :sac_realm
+      
+        # Output only. State of the attachment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the attachment was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @ncc_gateway = args[:ncc_gateway] if args.key?(:ncc_gateway)
+          @sac_realm = args[:sac_realm] if args.key?(:sac_realm)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a Secure Access Connect (SAC) realm resource. A Secure Access
+      # Connect realm establishes a connection between your Google Cloud project and
+      # an SSE service.
+      class SacRealm
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the realm was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Optional list of labels applied to the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Resource name, in the form `projects/`project`/locations/global/
+        # sacRealms/`sacRealm``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Key to be shared with SSE service provider to establish global handshake.
+        # Corresponds to the JSON property `pairingKey`
+        # @return [Google::Apis::NetworksecurityV1::SacRealmPairingKey]
+        attr_accessor :pairing_key
+      
+        # Immutable. SSE service provider associated with the realm.
+        # Corresponds to the JSON property `securityService`
+        # @return [String]
+        attr_accessor :security_service
+      
+        # Output only. State of the realm.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the realm was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
+          @security_service = args[:security_service] if args.key?(:security_service)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Key to be shared with SSE service provider to establish global handshake.
+      class SacRealmPairingKey
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp in UTC of when this resource is considered expired. It
+        # expires 7 days after creation.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. Key value.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @key = args[:key] if args.key?(:key)
         end
       end
       

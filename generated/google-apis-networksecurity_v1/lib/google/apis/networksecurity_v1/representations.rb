@@ -514,6 +514,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSacAttachmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSacRealmsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSecurityProfileGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -635,6 +647,24 @@ module Google
       end
       
       class Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SacAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SacRealm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SacRealmPairingKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -776,6 +806,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :network_rules, as: 'networkRules', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRule, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRule::Representation
+      
           property :policy_profile, as: 'policyProfile'
           property :target, as: 'target', class: Google::Apis::NetworksecurityV1::AuthzPolicyTarget, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyTarget::Representation
       
@@ -891,6 +923,8 @@ module Google
       
           collection :methods_prop, as: 'methods'
           collection :paths, as: 'paths', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          collection :snis, as: 'snis', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
       
         end
       end
@@ -1553,6 +1587,26 @@ module Google
         end
       end
       
+      class ListSacAttachmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sac_attachments, as: 'sacAttachments', class: Google::Apis::NetworksecurityV1::SacAttachment, decorator: Google::Apis::NetworksecurityV1::SacAttachment::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListSacRealmsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sac_realms, as: 'sacRealms', class: Google::Apis::NetworksecurityV1::SacRealm, decorator: Google::Apis::NetworksecurityV1::SacRealm::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListSecurityProfileGroupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1783,6 +1837,41 @@ module Google
       
           collection :sources, as: 'sources', class: Google::Apis::NetworksecurityV1::Source, decorator: Google::Apis::NetworksecurityV1::Source::Representation
       
+        end
+      end
+      
+      class SacAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :ncc_gateway, as: 'nccGateway'
+          property :sac_realm, as: 'sacRealm'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SacRealm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :pairing_key, as: 'pairingKey', class: Google::Apis::NetworksecurityV1::SacRealmPairingKey, decorator: Google::Apis::NetworksecurityV1::SacRealmPairingKey::Representation
+      
+          property :security_service, as: 'securityService'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SacRealmPairingKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :key, as: 'key'
         end
       end
       
