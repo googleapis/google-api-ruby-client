@@ -1261,6 +1261,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication_token_secret_version, as: 'authenticationTokenSecretVersion'
           property :default_branch, as: 'defaultBranch'
+          property :effective_default_branch, as: 'effectiveDefaultBranch'
           property :ssh_authentication_config, as: 'sshAuthenticationConfig', class: Google::Apis::DataformV1::SshAuthenticationConfig, decorator: Google::Apis::DataformV1::SshAuthenticationConfig::Representation
       
           property :token_status, as: 'tokenStatus'
