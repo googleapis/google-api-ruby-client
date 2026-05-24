@@ -418,6 +418,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1TransitAgency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1TransitIcon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1TransitLine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1TransitStation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1TransitStop
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleTypeDate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -862,6 +892,8 @@ module Google
           property :takeout, as: 'takeout'
           property :time_zone, as: 'timeZone', class: Google::Apis::PlacesV1::GoogleTypeTimeZone, decorator: Google::Apis::PlacesV1::GoogleTypeTimeZone::Representation
       
+          property :transit_station, as: 'transitStation', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStation, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStation::Representation
+      
           collection :types, as: 'types'
           property :user_rating_count, as: 'userRatingCount'
           property :utc_offset_minutes, as: 'utcOffsetMinutes'
@@ -1271,6 +1303,77 @@ module Google
           collection :routing_summaries, as: 'routingSummaries', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary::Representation
       
           property :search_uri, as: 'searchUri'
+        end
+      end
+      
+      class GoogleMapsPlacesV1TransitAgency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :fare_url, as: 'fareUrl'
+          property :icon, as: 'icon', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon::Representation
+      
+          collection :lines, as: 'lines', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitLine, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitLine::Representation
+      
+          property :url, as: 'url'
+        end
+      end
+      
+      class GoogleMapsPlacesV1TransitIcon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name_included, as: 'nameIncluded'
+          property :url, as: 'url'
+        end
+      end
+      
+      class GoogleMapsPlacesV1TransitLine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_color, as: 'backgroundColor'
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :icon, as: 'icon', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon::Representation
+      
+          property :id, as: 'id'
+          property :short_display_name, as: 'shortDisplayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :text_color, as: 'textColor'
+          property :url, as: 'url'
+          property :vehicle_icon, as: 'vehicleIcon', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon::Representation
+      
+          property :vehicle_type, as: 'vehicleType'
+        end
+      end
+      
+      class GoogleMapsPlacesV1TransitStation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agencies, as: 'agencies', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitAgency, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitAgency::Representation
+      
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          collection :stops, as: 'stops', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStop, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStop::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1TransitStop
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :id, as: 'id'
+          property :location, as: 'location', class: Google::Apis::PlacesV1::GoogleTypeLatLng, decorator: Google::Apis::PlacesV1::GoogleTypeLatLng::Representation
+      
+          property :platform_code, as: 'platformCode', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :signage_text, as: 'signageText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :stop_code, as: 'stopCode', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :wheelchair_accessible_entrance, as: 'wheelchairAccessibleEntrance'
         end
       end
       

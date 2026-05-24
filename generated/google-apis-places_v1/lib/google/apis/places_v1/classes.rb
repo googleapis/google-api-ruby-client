@@ -1592,6 +1592,11 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeTimeZone]
         attr_accessor :time_zone
       
+        # Represents transit-specific information for a place.
+        # Corresponds to the JSON property `transitStation`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStation]
+        attr_accessor :transit_station
+      
         # A set of type tags for this result. For example, "political" and "locality".
         # For the complete list of possible values, see Table A and Table B at https://
         # developers.google.com/maps/documentation/places/web-service/place-types
@@ -1716,6 +1721,7 @@ module Google
           @sub_destinations = args[:sub_destinations] if args.key?(:sub_destinations)
           @takeout = args[:takeout] if args.key?(:takeout)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @transit_station = args[:transit_station] if args.key?(:transit_station)
           @types = args[:types] if args.key?(:types)
           @user_rating_count = args[:user_rating_count] if args.key?(:user_rating_count)
           @utc_offset_minutes = args[:utc_offset_minutes] if args.key?(:utc_offset_minutes)
@@ -3358,6 +3364,245 @@ module Google
           @places = args[:places] if args.key?(:places)
           @routing_summaries = args[:routing_summaries] if args.key?(:routing_summaries)
           @search_uri = args[:search_uri] if args.key?(:search_uri)
+        end
+      end
+      
+      # Represents a transit agency.
+      class GoogleMapsPlacesV1TransitAgency
+        include Google::Apis::Core::Hashable
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # The URL of the agency's fare details page.
+        # Corresponds to the JSON property `fareUrl`
+        # @return [String]
+        attr_accessor :fare_url
+      
+        # Icon for a transit line, vehicle, or agency.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon]
+        attr_accessor :icon
+      
+        # The transit lines that are served by this agency.
+        # Corresponds to the JSON property `lines`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitLine>]
+        attr_accessor :lines
+      
+        # The URL of the agency's homepage.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @fare_url = args[:fare_url] if args.key?(:fare_url)
+          @icon = args[:icon] if args.key?(:icon)
+          @lines = args[:lines] if args.key?(:lines)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Icon for a transit line, vehicle, or agency.
+      class GoogleMapsPlacesV1TransitIcon
+        include Google::Apis::Core::Hashable
+      
+        # Whether the name is contained in the icon and there is no need to display it
+        # next to the icon.
+        # Corresponds to the JSON property `nameIncluded`
+        # @return [Boolean]
+        attr_accessor :name_included
+        alias_method :name_included?, :name_included
+      
+        # The URL of the icon.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name_included = args[:name_included] if args.key?(:name_included)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Represents a single transit line.
+      class GoogleMapsPlacesV1TransitLine
+        include Google::Apis::Core::Hashable
+      
+        # The background color of the labels for this transit line in #RRGGBB hex format,
+        # e.g. #909CE1. This color can also be used for drawing shapes for this transit
+        # line.
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [String]
+        attr_accessor :background_color
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # Icon for a transit line, vehicle, or agency.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon]
+        attr_accessor :icon
+      
+        # The id of the transit line that can be used to uniquely identify the line
+        # among other transit lines in the same transit station. This identifier is not
+        # guaranteed to be stable across different responses.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `shortDisplayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :short_display_name
+      
+        # The text color of labels for this transit line in #RRGGBB hex format, e.g. #
+        # 909CE1.
+        # Corresponds to the JSON property `textColor`
+        # @return [String]
+        attr_accessor :text_color
+      
+        # The URL of a webpage with details about this line.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # Icon for a transit line, vehicle, or agency.
+        # Corresponds to the JSON property `vehicleIcon`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon]
+        attr_accessor :vehicle_icon
+      
+        # The type of vehicle using this line.
+        # Corresponds to the JSON property `vehicleType`
+        # @return [String]
+        attr_accessor :vehicle_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @icon = args[:icon] if args.key?(:icon)
+          @id = args[:id] if args.key?(:id)
+          @short_display_name = args[:short_display_name] if args.key?(:short_display_name)
+          @text_color = args[:text_color] if args.key?(:text_color)
+          @url = args[:url] if args.key?(:url)
+          @vehicle_icon = args[:vehicle_icon] if args.key?(:vehicle_icon)
+          @vehicle_type = args[:vehicle_type] if args.key?(:vehicle_type)
+        end
+      end
+      
+      # Represents transit-specific information for a place.
+      class GoogleMapsPlacesV1TransitStation
+        include Google::Apis::Core::Hashable
+      
+        # The transit agencies that serve this station.
+        # Corresponds to the JSON property `agencies`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitAgency>]
+        attr_accessor :agencies
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # Transit stops at this station.
+        # Corresponds to the JSON property `stops`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStop>]
+        attr_accessor :stops
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agencies = args[:agencies] if args.key?(:agencies)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @stops = args[:stops] if args.key?(:stops)
+        end
+      end
+      
+      # Represents a transit stop within a station. This is a specific location where
+      # passengers board and alight transit vehicles, such as a platform or bus bay.
+      # This is distinct from a `Departure`, which is an event of a vehicle leaving a
+      # stop at a specific time.
+      class GoogleMapsPlacesV1TransitStop
+        include Google::Apis::Core::Hashable
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # The id of the transit stop that can be used to uniquely identify the stop
+        # among other transit stops in the same transit station. This identifier is not
+        # guaranteed to be stable across different responses.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLatLng]
+        attr_accessor :location
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `platformCode`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :platform_code
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `signageText`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :signage_text
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `stopCode`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :stop_code
+      
+        # Wheelchair accessibility of this stop. This field indicates whether there is
+        # an accessible path from outside the station to the stop. It does not indicate
+        # whether it is possible to board a vehicle from the stop.
+        # Corresponds to the JSON property `wheelchairAccessibleEntrance`
+        # @return [Boolean]
+        attr_accessor :wheelchair_accessible_entrance
+        alias_method :wheelchair_accessible_entrance?, :wheelchair_accessible_entrance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @location = args[:location] if args.key?(:location)
+          @platform_code = args[:platform_code] if args.key?(:platform_code)
+          @signage_text = args[:signage_text] if args.key?(:signage_text)
+          @stop_code = args[:stop_code] if args.key?(:stop_code)
+          @wheelchair_accessible_entrance = args[:wheelchair_accessible_entrance] if args.key?(:wheelchair_accessible_entrance)
         end
       end
       
