@@ -1880,6 +1880,12 @@ module Google
         # @return [Google::Apis::CloudkmsV1::WrappingPublicKey]
         attr_accessor :public_key
       
+        # Output only. Specifies the WrappingPublicKey format provided by the customer
+        # in the KeyManagementService.GetImportJob request.
+        # Corresponds to the JSON property `publicKeyFormat`
+        # @return [String]
+        attr_accessor :public_key_format
+      
         # Output only. The current state of the ImportJob, indicating if it can be used.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1901,6 +1907,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @protection_level = args[:protection_level] if args.key?(:protection_level)
           @public_key = args[:public_key] if args.key?(:public_key)
+          @public_key_format = args[:public_key_format] if args.key?(:public_key_format)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -4126,10 +4133,21 @@ module Google
       class WrappingPublicKey
         include Google::Apis::Core::Hashable
       
+        # Output only. Contains the public key, formatted according to the PublicKey.
+        # PublicKeyFormat specified in the KeyManagementService.GetImportJob request.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
         # The public key, encoded in PEM format. For more information, see the [RFC 7468]
         # (https://tools.ietf.org/html/rfc7468) sections for [General Considerations](
         # https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of
         # Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13).
+        # This field gets populated by default for RSA-based import methods, if no
+        # public_key_format is specified in the request. If you want to retrieve the
+        # wrapping key of an ImportJob in some other format, use KeyManagementService.
+        # GetImportJob and set the public_key_format to the desired public key format.
         # Corresponds to the JSON property `pem`
         # @return [String]
         attr_accessor :pem
@@ -4140,6 +4158,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data = args[:data] if args.key?(:data)
           @pem = args[:pem] if args.key?(:pem)
         end
       end
