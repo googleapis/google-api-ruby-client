@@ -501,6 +501,7 @@ module Google
           property :reference_type, as: 'referenceType'
           property :sha1_hash, :base64 => true, as: 'sha1Hash'
           property :sha256_hash, :base64 => true, as: 'sha256Hash'
+          property :sha512_hash, :base64 => true, as: 'sha512Hash'
           property :timestamp, :numeric_string => true, as: 'timestamp'
           property :token, as: 'token'
         end
