@@ -4072,6 +4072,25 @@ module Google
         end
       end
       
+      # Additional context around subscriptions in IN_GRACE_PERIOD state.
+      class InGracePeriodStateContext
+        include Google::Apis::Core::Hashable
+      
+        # Context related to renewal declined scenario.
+        # Corresponds to the JSON property `renewalDeclined`
+        # @return [Google::Apis::AndroidpublisherV3::RenewalDeclinedContext]
+        attr_accessor :renewal_declined
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @renewal_declined = args[:renewal_declined] if args.key?(:renewal_declined)
+        end
+      end
+      
       # Request to delete multiple in-app products.
       class InappproductsBatchDeleteRequest
         include Google::Apis::Core::Hashable
@@ -5348,6 +5367,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # Additional context around subscriptions in ON_HOLD state.
+      class OnHoldStateContext
+        include Google::Apis::Core::Hashable
+      
+        # Context related to renewal declined scenario.
+        # Corresponds to the JSON property `renewalDeclined`
+        # @return [Google::Apis::AndroidpublisherV3::RenewalDeclinedContext]
+        attr_accessor :renewal_declined
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @renewal_declined = args[:renewal_declined] if args.key?(:renewal_declined)
         end
       end
       
@@ -7671,6 +7709,25 @@ module Google
         end
       end
       
+      # Context related to renewal declined scenario.
+      class RenewalDeclinedContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the pending or failed order causing the state.
+        # Corresponds to the JSON property `pendingOrderId`
+        # @return [String]
+        attr_accessor :pending_order_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pending_order_id = args[:pending_order_id] if args.key?(:pending_order_id)
+        end
+      end
+      
       # Offer details information related to a rental line item.
       class RentOfferDetails
         include Google::Apis::Core::Hashable
@@ -8399,8 +8456,8 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
-        # The pricing phase for the billing period funded by this order. Deprecated. Use
-        # offer_phase_details instead.
+        # Deprecated: Use offer_phase_details instead. The pricing phase for the billing
+        # period funded by this order.
         # Corresponds to the JSON property `offerPhase`
         # @return [String]
         attr_accessor :offer_phase
@@ -8706,8 +8763,8 @@ module Google
         end
       end
       
-      # A SubscriptionPurchase resource indicates the status of a user's subscription
-      # purchase.
+      # Deprecated: Use SubscriptionPurchaseV2 instead. A SubscriptionPurchase
+      # resource indicates the status of a user's subscription purchase.
       class SubscriptionPurchase
         include Google::Apis::Core::Hashable
       
@@ -9056,6 +9113,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers]
         attr_accessor :external_account_identifiers
       
+        # Additional context around subscriptions in IN_GRACE_PERIOD state.
+        # Corresponds to the JSON property `inGracePeriodStateContext`
+        # @return [Google::Apis::AndroidpublisherV3::InGracePeriodStateContext]
+        attr_accessor :in_grace_period_state_context
+      
         # This kind represents a SubscriptionPurchaseV2 object in the androidpublisher
         # service.
         # Corresponds to the JSON property `kind`
@@ -9086,6 +9148,11 @@ module Google
         # Corresponds to the JSON property `linkedPurchaseToken`
         # @return [String]
         attr_accessor :linked_purchase_token
+      
+        # Additional context around subscriptions in ON_HOLD state.
+        # Corresponds to the JSON property `onHoldStateContext`
+        # @return [Google::Apis::AndroidpublisherV3::OnHoldStateContext]
+        attr_accessor :on_hold_state_context
       
         # Information specific to an out of app purchase.
         # Corresponds to the JSON property `outOfAppPurchaseContext`
@@ -9134,10 +9201,12 @@ module Google
           @canceled_state_context = args[:canceled_state_context] if args.key?(:canceled_state_context)
           @etag = args[:etag] if args.key?(:etag)
           @external_account_identifiers = args[:external_account_identifiers] if args.key?(:external_account_identifiers)
+          @in_grace_period_state_context = args[:in_grace_period_state_context] if args.key?(:in_grace_period_state_context)
           @kind = args[:kind] if args.key?(:kind)
           @latest_order_id = args[:latest_order_id] if args.key?(:latest_order_id)
           @line_items = args[:line_items] if args.key?(:line_items)
           @linked_purchase_token = args[:linked_purchase_token] if args.key?(:linked_purchase_token)
+          @on_hold_state_context = args[:on_hold_state_context] if args.key?(:on_hold_state_context)
           @out_of_app_purchase_context = args[:out_of_app_purchase_context] if args.key?(:out_of_app_purchase_context)
           @paused_state_context = args[:paused_state_context] if args.key?(:paused_state_context)
           @region_code = args[:region_code] if args.key?(:region_code)

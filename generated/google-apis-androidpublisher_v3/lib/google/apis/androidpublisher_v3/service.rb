@@ -4670,9 +4670,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a user's subscription purchase. The subscription remains valid until
-        # its expiration time. Newer version is available at purchases.subscriptionsv2.
-        # cancel for better client library support.
+        # Deprecated: Use purchases.subscriptionsv2.cancel instead. Cancels a user's
+        # subscription purchase. The subscription remains valid until its expiration
+        # time. Newer version is available at purchases.subscriptionsv2.cancel for
+        # better client library support.
         # @param [String] package_name
         #   The package name of the application for which this subscription was purchased (
         #   for example, 'com.some.thing').
@@ -4709,7 +4710,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Defers a user's subscription purchase until a specified future expiration time.
+        # Deprecated: Use purchases.subscriptionsv2.defer instead. Defers a user's
+        # subscription purchase until a specified future expiration time.
         # @param [String] package_name
         #   The package name of the application for which this subscription was purchased (
         #   for example, 'com.some.thing').
