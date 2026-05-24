@@ -3253,8 +3253,8 @@ module Google
         #   orderBy="display_name"` * `orderBy="display_name desc"`
         # @param [Fixnum] page_size
         #   Optional. Maximum number of TeamFolders to return. The server may return fewer
-        #   items than requested. If unspecified, the server will pick an appropriate
-        #   default.
+        #   items than requested. If unspecified, the server will pick a default of
+        #   page_size = 50.
         # @param [String] page_token
         #   Optional. Page token received from a previous `SearchTeamFolders` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
