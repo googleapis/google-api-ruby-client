@@ -1258,6 +1258,11 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Optional. The details of each disk to create.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::VmmigrationV1::PersistentDiskDefaults>]
+        attr_accessor :disks
+      
         # Optional. Defines whether the instance has integrity monitoring enabled. This
         # can be set to true only if the VM boot option is EFI, and vTPM is enabled.
         # Corresponds to the JSON property `enableIntegrityMonitoring`
@@ -1368,6 +1373,7 @@ module Google
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
           @disk_replica_zones = args[:disk_replica_zones] if args.key?(:disk_replica_zones)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @disks = args[:disks] if args.key?(:disks)
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
           @encryption = args[:encryption] if args.key?(:encryption)
@@ -4146,12 +4152,12 @@ module Google
       class PersistentDisk
         include Google::Apis::Core::Hashable
       
-        # The URI of the Persistent Disk.
+        # Output only. The URI of the Persistent Disk.
         # Corresponds to the JSON property `diskUri`
         # @return [String]
         attr_accessor :disk_uri
       
-        # The ordinal number of the source VM disk.
+        # Output only. The ordinal number of the source VM disk.
         # Corresponds to the JSON property `sourceDiskNumber`
         # @return [Fixnum]
         attr_accessor :source_disk_number
