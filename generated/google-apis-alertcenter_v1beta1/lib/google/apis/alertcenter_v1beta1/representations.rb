@@ -1023,6 +1023,7 @@ module Google
       class RuleViolationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_type, as: 'agentType'
           property :data_source, as: 'dataSource'
           property :event_type, as: 'eventType'
           collection :match_info, as: 'matchInfo', class: Google::Apis::AlertcenterV1beta1::MatchInfo, decorator: Google::Apis::AlertcenterV1beta1::MatchInfo::Representation
