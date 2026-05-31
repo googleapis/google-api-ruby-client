@@ -1515,12 +1515,6 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
         attr_accessor :terminal_condition
       
-        # Optional. Duration the instance may be active before the system will shut it
-        # down.
-        # Corresponds to the JSON property `timeout`
-        # @return [String]
-        attr_accessor :timeout
-      
         # Output only. Server assigned unique identifier for the trigger. The value is a
         # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         # Corresponds to the JSON property `uid`
@@ -1587,7 +1581,6 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
-          @timeout = args[:timeout] if args.key?(:timeout)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @urls = args[:urls] if args.key?(:urls)

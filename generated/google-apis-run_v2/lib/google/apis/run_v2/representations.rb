@@ -1224,7 +1224,6 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
-          property :timeout, as: 'timeout'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           collection :urls, as: 'urls'
