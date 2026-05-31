@@ -6820,7 +6820,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The visitorId identifies the visitor.
+        # The visitor ID identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
