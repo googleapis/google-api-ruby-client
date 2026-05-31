@@ -747,6 +747,8 @@ module Google
                 property :noncurrent_time_before, as: 'noncurrentTimeBefore', type: Date
             
                 property :num_newer_versions, as: 'numNewerVersions'
+                property :size_above_bytes, :numeric_string => true, as: 'sizeAboveBytes'
+                property :size_below_bytes, :numeric_string => true, as: 'sizeBelowBytes'
               end
             end
           end
