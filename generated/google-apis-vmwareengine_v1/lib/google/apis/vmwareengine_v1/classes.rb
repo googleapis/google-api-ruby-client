@@ -2266,6 +2266,54 @@ module Google
         end
       end
       
+      # Request message for VmwareEngine.MigrateManagementVms
+      class MigrateManagementVmsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The user-provided identifier of the workload cluster to which the
+        # management VMs are to be migrated. The cluster must be in the same private
+        # cloud as the one specified in `name`, and must be a workload cluster. The
+        # eventual cluster name will be constructed from the private cloud name and this
+        # cluster ID.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # Optional. Checksum used to ensure that the user-provided value is up to date
+        # before the server processes the request. The server compares provided checksum
+        # with the current checksum of the resource. If the user-provided value is out
+        # of date, this request returns an `ABORTED` error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. A request ID to identify requests. Specify a unique request ID so
+        # that if you must retry your request, the server will know to ignore the
+        # request if it has already been completed. The server guarantees that a request
+        # doesn't result in creation of duplicate commitments for at least 60 minutes.
+        # For example, consider a situation where you make an initial request and the
+        # request times out. If you make the request again with the same request ID, the
+        # server can check if the original operation with the same request ID was
+        # received, and if so, will ignore the second request. This prevents clients
+        # from accidentally creating duplicate commitments. The request ID must be a
+        # valid UUID with the exception that zero UUID is not supported (00000000-0000-
+        # 0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @etag = args[:etag] if args.key?(:etag)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # Mount Datastore Request message
       class MountDatastoreRequest
         include Google::Apis::Core::Hashable
