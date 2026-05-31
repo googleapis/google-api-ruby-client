@@ -2315,12 +2315,14 @@ module Google
       class DirectoryUsersCreateGuestRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Immutable ID of the Google Workspace account.
+        # Optional. Immutable ID of the Google Workspace account. Only required when
+        # request is created by a service account. Defaults to the authenticated user's
+        # customer ID otherwise.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
       
-        # Immutable. External email of the guest user being created.
+        # Required. External email of the guest user being created.
         # Corresponds to the JSON property `primaryGuestEmail`
         # @return [String]
         attr_accessor :primary_guest_email

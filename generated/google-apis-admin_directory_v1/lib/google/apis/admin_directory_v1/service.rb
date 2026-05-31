@@ -4016,8 +4016,7 @@ module Google
         end
         
         # Create a guest user with access to a [subset of Workspace capabilities](https:/
-        # /support.google.com/a/answer/16558545). This feature is currently in Alpha.
-        # Please reach out to support if you are interested in trying this feature.
+        # /support.google.com/a/answer/16558545). This feature is currently in Open Beta.
         # @param [Google::Apis::AdminDirectoryV1::DirectoryUsersCreateGuestRequest] directory_users_create_guest_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
