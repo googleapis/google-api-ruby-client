@@ -1769,12 +1769,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :scan_ip_ids
       
-        # Output only. SCAN listener port - TCP
+        # Optional. SCAN listener port - TCP
         # Corresponds to the JSON property `scanListenerPortTcp`
         # @return [Fixnum]
         attr_accessor :scan_listener_port_tcp
       
-        # Output only. SCAN listener port - TLS
+        # Optional. SCAN listener port - TLS
         # Corresponds to the JSON property `scanListenerPortTcpSsl`
         # @return [Fixnum]
         attr_accessor :scan_listener_port_tcp_ssl
@@ -5519,8 +5519,8 @@ module Google
       class GoldengateGoogleBigQueryConnectionProperties
         include Google::Apis::Core::Hashable
       
-        # Optional. The service account key file Cloud Storage containing the
-        # credentials required to use Google BigQuery.
+        # Optional. The base64 encoded content of the service account key file
+        # containing the credentials required to use Google BigQuery.
         # Corresponds to the JSON property `serviceAccountKeyFile`
         # @return [String]
         attr_accessor :service_account_key_file
@@ -5545,8 +5545,8 @@ module Google
       class GoldengateGoogleCloudStorageConnectionProperties
         include Google::Apis::Core::Hashable
       
-        # Optional. The service account key Cloud Storage file containing the
-        # credentials required to use Google Cloud Storage.
+        # Optional. The base64 encoded content of the service account key file
+        # containing the credentials required to use Google Cloud Storage.
         # Corresponds to the JSON property `serviceAccountKeyFile`
         # @return [String]
         attr_accessor :service_account_key_file
@@ -5571,8 +5571,8 @@ module Google
       class GoldengateGooglePubsubConnectionProperties
         include Google::Apis::Core::Hashable
       
-        # Optional. The content of the service account key file containing the
-        # credentials required to use Google Pub/Sub.
+        # Optional. The base64 encoded content of the service account key file
+        # containing the credentials required to use Google Pub/Sub.
         # Corresponds to the JSON property `serviceAccountKeyFile`
         # @return [String]
         attr_accessor :service_account_key_file
@@ -5736,7 +5736,7 @@ module Google
         # @return [String]
         attr_accessor :jndi_security_principal
       
-        # Optional. The content of the KeyStore file.
+        # Optional. The base64 encoded content of the KeyStore file.
         # Corresponds to the JSON property `keyStoreFile`
         # @return [String]
         attr_accessor :key_store_file
@@ -5790,7 +5790,7 @@ module Google
         # @return [String]
         attr_accessor :technology_type
       
-        # Optional. The content of the TrustStore file.
+        # Optional. The base64 encoded content of the TrustStore file.
         # Corresponds to the JSON property `trustStoreFile`
         # @return [String]
         attr_accessor :trust_store_file
@@ -5869,12 +5869,12 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
-        # Optional. The content of the consumer.properties file.
+        # Optional. The base64 encoded content of the consumer.properties file.
         # Corresponds to the JSON property `consumerPropertiesFile`
         # @return [String]
         attr_accessor :consumer_properties_file
       
-        # Optional. The content of the KeyStore file.
+        # Optional. The base64 encoded content of the KeyStore file.
         # Corresponds to the JSON property `keyStoreFile`
         # @return [String]
         attr_accessor :key_store_file
@@ -5903,7 +5903,7 @@ module Google
         # @return [String]
         attr_accessor :password_secret_version
       
-        # Optional. The content of the producer.properties file.
+        # Optional. The base64 encoded content of the producer.properties file.
         # Corresponds to the JSON property `producerPropertiesFile`
         # @return [String]
         attr_accessor :producer_properties_file
@@ -5936,7 +5936,7 @@ module Google
         # @return [String]
         attr_accessor :technology_type
       
-        # Optional. The content of the TrustStore file.
+        # Optional. The base64 encoded content of the TrustStore file.
         # Corresponds to the JSON property `trustStoreFile`
         # @return [String]
         attr_accessor :trust_store_file
@@ -6003,7 +6003,7 @@ module Google
         # @return [String]
         attr_accessor :authentication_type
       
-        # Optional. The content of the KeyStore file.
+        # Optional. The base64 encoded content of the KeyStore file.
         # Corresponds to the JSON property `keyStoreFile`
         # @return [String]
         attr_accessor :key_store_file
@@ -6050,7 +6050,7 @@ module Google
         # @return [String]
         attr_accessor :technology_type
       
-        # Optional. The content of the TrustStore file.
+        # Optional. The base64 encoded content of the TrustStore file.
         # Corresponds to the JSON property `trustStoreFile`
         # @return [String]
         attr_accessor :trust_store_file
@@ -6276,8 +6276,8 @@ module Google
         attr_accessor :server_certificate_validation_required
         alias_method :server_certificate_validation_required?, :server_certificate_validation_required
       
-        # Optional. Database Certificate - The content of a .pem or .crt file containing
-        # the server public key (for 1-way SSL).
+        # Optional. Database Certificate - The base64 encoded content of a .pem or .crt
+        # file containing the server public key (for 1-way SSL).
         # Corresponds to the JSON property `sslCaFile`
         # @return [String]
         attr_accessor :ssl_ca_file
@@ -6351,14 +6351,14 @@ module Google
         # @return [String]
         attr_accessor :technology_type
       
-        # Optional. Database Certificate - The content of a .pem file, containing the
-        # server public key (for 1 and 2-way SSL).
+        # Optional. Database Certificate - The base64 encoded content of a .pem file,
+        # containing the server public key (for 1 and 2-way SSL).
         # Corresponds to the JSON property `tlsCaFile`
         # @return [String]
         attr_accessor :tls_ca_file
       
-        # Optional. Client Certificate - The content of a .pem file, containing the
-        # client public key (for 2-way SSL).
+        # Optional. Client Certificate - The base64 encoded content of a .pem file,
+        # containing the client public key (for 2-way SSL).
         # Corresponds to the JSON property `tlsCertificateKeyFile`
         # @return [String]
         attr_accessor :tls_certificate_key_file
@@ -6448,26 +6448,26 @@ module Google
         # @return [String]
         attr_accessor :security_protocol
       
-        # Optional. Database Certificate - The content of a .pem or .crt file containing
-        # the server public key (for 1 and 2-way SSL).
+        # Optional. Database Certificate - The base64 encoded content of a .pem or .crt
+        # file containing the server public key (for 1 and 2-way SSL).
         # Corresponds to the JSON property `sslCaFile`
         # @return [String]
         attr_accessor :ssl_ca_file
       
-        # Optional. Client Certificate - The content of a .pem or .crt file containing
-        # the client public key (for 2-way SSL).
+        # Optional. Client Certificate - The base64 encoded content of a .pem or .crt
+        # file containing the client public key (for 2-way SSL).
         # Corresponds to the JSON property `sslCertFile`
         # @return [String]
         attr_accessor :ssl_cert_file
       
-        # Optional. The list of certificates revoked by the trusted certificate
-        # authorities (Trusted CA).
+        # Optional. The base64 encoded list of certificates revoked by the trusted
+        # certificate authorities (Trusted CA).
         # Corresponds to the JSON property `sslCrlFile`
         # @return [String]
         attr_accessor :ssl_crl_file
       
-        # Optional. Client Key - The content of a .pem or .crt file containing the
-        # client private key (for 2-way SSL).
+        # Optional. Client Key - The base64 encoded content of a .pem or .crt file
+        # containing the client private key (for 2-way SSL).
         # Corresponds to the JSON property `sslKeyFile`
         # @return [String]
         attr_accessor :ssl_key_file
@@ -6774,7 +6774,7 @@ module Google
         attr_accessor :username
       
         # Optional. The wallet contents Oracle Goldengate uses to make connections to a
-        # database.
+        # database. This attribute is expected to be base64 encoded.
         # Corresponds to the JSON property `walletFile`
         # @return [String]
         attr_accessor :wallet_file
@@ -6934,24 +6934,24 @@ module Google
         # @return [String]
         attr_accessor :security_protocol
       
-        # Optional. The certificate of the trusted certificate authorities (Trusted CA)
-        # for PostgreSQL.
+        # Optional. The base64 encoded certificate of the trusted certificate
+        # authorities (Trusted CA) for PostgreSQL.
         # Corresponds to the JSON property `sslCaFile`
         # @return [String]
         attr_accessor :ssl_ca_file
       
-        # Optional. The certificate of the PostgreSQL server.
+        # Optional. The base64 encoded certificate of the PostgreSQL server.
         # Corresponds to the JSON property `sslCertFile`
         # @return [String]
         attr_accessor :ssl_cert_file
       
-        # Optional. The list of certificates revoked by the trusted certificate
-        # authorities (Trusted CA).
+        # Optional. The base64 encoded list of certificates revoked by the trusted
+        # certificate authorities (Trusted CA).
         # Corresponds to the JSON property `sslCrlFile`
         # @return [String]
         attr_accessor :ssl_crl_file
       
-        # Optional. The private key of the PostgreSQL server.
+        # Optional. The base64 encoded private key of the PostgreSQL server.
         # Corresponds to the JSON property `sslKeyFile`
         # @return [String]
         attr_accessor :ssl_key_file
@@ -7005,7 +7005,7 @@ module Google
         # @return [String]
         attr_accessor :authentication_type
       
-        # Optional. The content of the KeyStore file.
+        # Optional. The base64 encoded content of the KeyStore file.
         # Corresponds to the JSON property `keyStoreFile`
         # @return [String]
         attr_accessor :key_store_file
@@ -7057,7 +7057,7 @@ module Google
         # @return [String]
         attr_accessor :technology_type
       
-        # Optional. The content of the TrustStore file.
+        # Optional. The base64 encoded content of the TrustStore file.
         # Corresponds to the JSON property `trustStoreFile`
         # @return [String]
         attr_accessor :trust_store_file
@@ -7182,7 +7182,8 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # Optional. The service account key file of Google Cloud Storage.
+        # Optional. The base64 encoded content of the service account key file of Google
+        # Cloud Storage.
         # Corresponds to the JSON property `serviceAccountKeyFile`
         # @return [String]
         attr_accessor :service_account_key_file
@@ -9002,8 +9003,8 @@ module Google
       class RestIcebergCatalog
         include Google::Apis::Core::Hashable
       
-        # Optional. The content of the configuration file containing additional
-        # properties for the REST catalog.
+        # Optional. The base64 encoded content of the configuration file containing
+        # additional properties for the REST catalog.
         # Corresponds to the JSON property `properties`
         # @return [String]
         attr_accessor :properties
