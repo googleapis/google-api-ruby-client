@@ -359,6 +359,37 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a Cloud Run job.
+      class CloudRunJobInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of a Cloud Run job.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Location in which this job is deployed.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # URI of a Cloud Run job.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @location = args[:location] if args.key?(:location)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Wrapper for Cloud Run revision attributes.
       class CloudRunRevisionEndpoint
         include Google::Apis::Core::Hashable
@@ -3286,6 +3317,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo]
         attr_accessor :cloud_function
       
+        # For display only. Metadata associated with a Cloud Run job.
+        # Corresponds to the JSON property `cloudRunJob`
+        # @return [Google::Apis::NetworkmanagementV1beta1::CloudRunJobInfo]
+        attr_accessor :cloud_run_job
+      
         # For display only. Metadata associated with a Cloud Run revision.
         # Corresponds to the JSON property `cloudRunRevision`
         # @return [Google::Apis::NetworkmanagementV1beta1::CloudRunRevisionInfo]
@@ -3500,6 +3536,7 @@ module Google
           @app_engine_version = args[:app_engine_version] if args.key?(:app_engine_version)
           @causes_drop = args[:causes_drop] if args.key?(:causes_drop)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
+          @cloud_run_job = args[:cloud_run_job] if args.key?(:cloud_run_job)
           @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @datastream_private_connection = args[:datastream_private_connection] if args.key?(:datastream_private_connection)
