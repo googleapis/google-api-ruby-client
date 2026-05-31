@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudRunJobInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudRunRevisionEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -540,6 +546,15 @@ module Google
           property :location, as: 'location'
           property :uri, as: 'uri'
           property :version_id, :numeric_string => true, as: 'versionId'
+        end
+      end
+      
+      class CloudRunJobInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :location, as: 'location'
+          property :uri, as: 'uri'
         end
       end
       
@@ -1232,6 +1247,8 @@ module Google
       
           property :causes_drop, as: 'causesDrop'
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo::Representation
+      
+          property :cloud_run_job, as: 'cloudRunJob', class: Google::Apis::NetworkmanagementV1beta1::CloudRunJobInfo, decorator: Google::Apis::NetworkmanagementV1beta1::CloudRunJobInfo::Representation
       
           property :cloud_run_revision, as: 'cloudRunRevision', class: Google::Apis::NetworkmanagementV1beta1::CloudRunRevisionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::CloudRunRevisionInfo::Representation
       
