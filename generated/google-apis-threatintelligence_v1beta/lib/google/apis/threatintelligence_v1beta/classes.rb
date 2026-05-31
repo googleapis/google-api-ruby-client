@@ -360,6 +360,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # If included when updating a configuration, this should be set to the current
+        # etag of the configuration. If the etags do not match, the update will be
+        # rejected and an ABORTED error will be returned.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Identifier. Server generated name for the configuration. format is projects/`
         # project`/configurations/`configuration`
         # Corresponds to the JSON property `name`
@@ -391,6 +398,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @detail = args[:detail] if args.key?(:detail)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @provider = args[:provider] if args.key?(:provider)
           @state = args[:state] if args.key?(:state)

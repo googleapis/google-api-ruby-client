@@ -427,6 +427,7 @@ module Google
           property :detail, as: 'detail', class: Google::Apis::ThreatintelligenceV1beta::ConfigurationDetail, decorator: Google::Apis::ThreatintelligenceV1beta::ConfigurationDetail::Representation
       
           property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :provider, as: 'provider'
           property :state, as: 'state'
