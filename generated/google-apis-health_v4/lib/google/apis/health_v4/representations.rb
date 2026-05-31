@@ -22,6 +22,18 @@ module Google
   module Apis
     module HealthV4
       
+      class ActiveEnergyBurned
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActiveEnergyBurnedRollupValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActiveMinutes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlertWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Altitude
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +119,18 @@ module Google
       end
       
       class BatchDeleteDataPointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BloodGlucose
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BloodGlucoseRollupValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,7 +172,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CoreBodyTemperature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CoreBodyTemperatureRollupValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateSubscriberPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateSubscriptionPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,7 +304,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Electrocardiogram
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EndpointAuthorization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnergyQuantity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnergyQuantityRollup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,13 +370,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Food
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FoodMeasurementUnit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FoodServing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevicesandservicesHealthV4DataType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevicesandservicesHealthV4User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HeartBeat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,13 +490,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IrnProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IrregularRhythmNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDataPointsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPairedDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSubscribersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MedicalDeviceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -407,6 +539,30 @@ module Google
       end
       
       class MobilityMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NutrientQuantity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NutrientQuantityRollup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NutritionLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NutritionLogRollupValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -437,6 +593,12 @@ module Google
       end
       
       class OxygenSaturation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PairedDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -520,6 +682,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Serving
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SessionTimeInterval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +761,12 @@ module Google
       end
       
       class SubscriberConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Subscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -676,10 +850,38 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WeightQuantity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WeightQuantityRollup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WeightRollupValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActiveEnergyBurned
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval', class: Google::Apis::HealthV4::ObservationTimeInterval, decorator: Google::Apis::HealthV4::ObservationTimeInterval::Representation
+      
+          property :kcal, as: 'kcal'
+        end
+      end
+      
+      class ActiveEnergyBurnedRollupValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kcal_sum, as: 'kcalSum'
+        end
       end
       
       class ActiveMinutes
@@ -760,6 +962,23 @@ module Google
         end
       end
       
+      class AlertWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :civil_end_time, as: 'civilEndTime', class: Google::Apis::HealthV4::CivilDateTime, decorator: Google::Apis::HealthV4::CivilDateTime::Representation
+      
+          property :civil_start_time, as: 'civilStartTime', class: Google::Apis::HealthV4::CivilDateTime, decorator: Google::Apis::HealthV4::CivilDateTime::Representation
+      
+          property :end_time, as: 'endTime'
+          property :end_utc_offset, as: 'endUtcOffset'
+          collection :heart_beats, as: 'heartBeats', class: Google::Apis::HealthV4::HeartBeat, decorator: Google::Apis::HealthV4::HeartBeat::Representation
+      
+          property :positive, as: 'positive'
+          property :start_time, as: 'startTime'
+          property :start_utc_offset, as: 'startUtcOffset'
+        end
+      end
+      
       class Altitude
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -798,6 +1017,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :names, as: 'names'
+        end
+      end
+      
+      class BloodGlucose
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blood_glucose_milligrams_per_deciliter, as: 'bloodGlucoseMilligramsPerDeciliter'
+          property :meal_type, as: 'mealType'
+          property :measurement_source, as: 'measurementSource'
+          property :measurement_timing, as: 'measurementTiming'
+          property :notes, as: 'notes'
+          property :sample_time, as: 'sampleTime', class: Google::Apis::HealthV4::ObservationSampleTime, decorator: Google::Apis::HealthV4::ObservationSampleTime::Representation
+      
+          property :specimen, as: 'specimen'
+        end
+      end
+      
+      class BloodGlucoseRollupValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blood_glucose_milligrams_per_deciliter_avg, as: 'bloodGlucoseMilligramsPerDeciliterAvg'
         end
       end
       
@@ -853,6 +1093,26 @@ module Google
         end
       end
       
+      class CoreBodyTemperature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :measurement_location, as: 'measurementLocation'
+          property :sample_time, as: 'sampleTime', class: Google::Apis::HealthV4::ObservationSampleTime, decorator: Google::Apis::HealthV4::ObservationSampleTime::Representation
+      
+          property :temperature_celsius, as: 'temperatureCelsius'
+        end
+      end
+      
+      class CoreBodyTemperatureRollupValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :temperature_celsius_avg, as: 'temperatureCelsiusAvg'
+          property :temperature_celsius_max, as: 'temperatureCelsiusMax'
+          property :temperature_celsius_min, as: 'temperatureCelsiusMin'
+        end
+      end
+      
       class CreateSubscriberPayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -861,6 +1121,14 @@ module Google
           property :endpoint_uri, as: 'endpointUri'
           collection :subscriber_configs, as: 'subscriberConfigs', class: Google::Apis::HealthV4::SubscriberConfig, decorator: Google::Apis::HealthV4::SubscriberConfig::Representation
       
+        end
+      end
+      
+      class CreateSubscriptionPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_types, as: 'dataTypes'
+          property :user, as: 'user'
         end
       end
       
@@ -948,6 +1216,8 @@ module Google
       class DailyRollupDataPoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_energy_burned, as: 'activeEnergyBurned', class: Google::Apis::HealthV4::ActiveEnergyBurnedRollupValue, decorator: Google::Apis::HealthV4::ActiveEnergyBurnedRollupValue::Representation
+      
           property :active_minutes, as: 'activeMinutes', class: Google::Apis::HealthV4::ActiveMinutesRollupValue, decorator: Google::Apis::HealthV4::ActiveMinutesRollupValue::Representation
       
           property :active_zone_minutes, as: 'activeZoneMinutes', class: Google::Apis::HealthV4::ActiveZoneMinutesRollupValue, decorator: Google::Apis::HealthV4::ActiveZoneMinutesRollupValue::Representation
@@ -956,6 +1226,8 @@ module Google
       
           property :altitude, as: 'altitude', class: Google::Apis::HealthV4::AltitudeRollupValue, decorator: Google::Apis::HealthV4::AltitudeRollupValue::Representation
       
+          property :blood_glucose, as: 'bloodGlucose', class: Google::Apis::HealthV4::BloodGlucoseRollupValue, decorator: Google::Apis::HealthV4::BloodGlucoseRollupValue::Representation
+      
           property :body_fat, as: 'bodyFat', class: Google::Apis::HealthV4::BodyFatRollupValue, decorator: Google::Apis::HealthV4::BodyFatRollupValue::Representation
       
           property :calories_in_heart_rate_zone, as: 'caloriesInHeartRateZone', class: Google::Apis::HealthV4::CaloriesInHeartRateZoneRollupValue, decorator: Google::Apis::HealthV4::CaloriesInHeartRateZoneRollupValue::Representation
@@ -963,6 +1235,8 @@ module Google
           property :civil_end_time, as: 'civilEndTime', class: Google::Apis::HealthV4::CivilDateTime, decorator: Google::Apis::HealthV4::CivilDateTime::Representation
       
           property :civil_start_time, as: 'civilStartTime', class: Google::Apis::HealthV4::CivilDateTime, decorator: Google::Apis::HealthV4::CivilDateTime::Representation
+      
+          property :core_body_temperature, as: 'coreBodyTemperature', class: Google::Apis::HealthV4::CoreBodyTemperatureRollupValue, decorator: Google::Apis::HealthV4::CoreBodyTemperatureRollupValue::Representation
       
           property :distance, as: 'distance', class: Google::Apis::HealthV4::DistanceRollupValue, decorator: Google::Apis::HealthV4::DistanceRollupValue::Representation
       
@@ -973,6 +1247,8 @@ module Google
           property :heart_rate_variability_personal_range, as: 'heartRateVariabilityPersonalRange', class: Google::Apis::HealthV4::HeartRateVariabilityPersonalRangeRollupValue, decorator: Google::Apis::HealthV4::HeartRateVariabilityPersonalRangeRollupValue::Representation
       
           property :hydration_log, as: 'hydrationLog', class: Google::Apis::HealthV4::HydrationLogRollupValue, decorator: Google::Apis::HealthV4::HydrationLogRollupValue::Representation
+      
+          property :nutrition_log, as: 'nutritionLog', class: Google::Apis::HealthV4::NutritionLogRollupValue, decorator: Google::Apis::HealthV4::NutritionLogRollupValue::Representation
       
           property :resting_heart_rate_personal_range, as: 'restingHeartRatePersonalRange', class: Google::Apis::HealthV4::RestingHeartRatePersonalRangeRollupValue, decorator: Google::Apis::HealthV4::RestingHeartRatePersonalRangeRollupValue::Representation
       
@@ -1019,6 +1295,8 @@ module Google
       class DataPoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_energy_burned, as: 'activeEnergyBurned', class: Google::Apis::HealthV4::ActiveEnergyBurned, decorator: Google::Apis::HealthV4::ActiveEnergyBurned::Representation
+      
           property :active_minutes, as: 'activeMinutes', class: Google::Apis::HealthV4::ActiveMinutes, decorator: Google::Apis::HealthV4::ActiveMinutes::Representation
       
           property :active_zone_minutes, as: 'activeZoneMinutes', class: Google::Apis::HealthV4::ActiveZoneMinutes, decorator: Google::Apis::HealthV4::ActiveZoneMinutes::Representation
@@ -1029,7 +1307,11 @@ module Google
       
           property :basal_energy_burned, as: 'basalEnergyBurned', class: Google::Apis::HealthV4::BasalEnergyBurned, decorator: Google::Apis::HealthV4::BasalEnergyBurned::Representation
       
+          property :blood_glucose, as: 'bloodGlucose', class: Google::Apis::HealthV4::BloodGlucose, decorator: Google::Apis::HealthV4::BloodGlucose::Representation
+      
           property :body_fat, as: 'bodyFat', class: Google::Apis::HealthV4::BodyFat, decorator: Google::Apis::HealthV4::BodyFat::Representation
+      
+          property :core_body_temperature, as: 'coreBodyTemperature', class: Google::Apis::HealthV4::CoreBodyTemperature, decorator: Google::Apis::HealthV4::CoreBodyTemperature::Representation
       
           property :daily_heart_rate_variability, as: 'dailyHeartRateVariability', class: Google::Apis::HealthV4::DailyHeartRateVariability, decorator: Google::Apis::HealthV4::DailyHeartRateVariability::Representation
       
@@ -1049,9 +1331,15 @@ module Google
       
           property :distance, as: 'distance', class: Google::Apis::HealthV4::Distance, decorator: Google::Apis::HealthV4::Distance::Representation
       
+          property :electrocardiogram, as: 'electrocardiogram', class: Google::Apis::HealthV4::Electrocardiogram, decorator: Google::Apis::HealthV4::Electrocardiogram::Representation
+      
           property :exercise, as: 'exercise', class: Google::Apis::HealthV4::Exercise, decorator: Google::Apis::HealthV4::Exercise::Representation
       
           property :floors, as: 'floors', class: Google::Apis::HealthV4::Floors, decorator: Google::Apis::HealthV4::Floors::Representation
+      
+          property :food, as: 'food', class: Google::Apis::HealthV4::Food, decorator: Google::Apis::HealthV4::Food::Representation
+      
+          property :food_measurement_unit, as: 'foodMeasurementUnit', class: Google::Apis::HealthV4::FoodMeasurementUnit, decorator: Google::Apis::HealthV4::FoodMeasurementUnit::Representation
       
           property :heart_rate, as: 'heartRate', class: Google::Apis::HealthV4::HeartRate, decorator: Google::Apis::HealthV4::HeartRate::Representation
       
@@ -1061,7 +1349,11 @@ module Google
       
           property :hydration_log, as: 'hydrationLog', class: Google::Apis::HealthV4::HydrationLog, decorator: Google::Apis::HealthV4::HydrationLog::Representation
       
+          property :irregular_rhythm_notification, as: 'irregularRhythmNotification', class: Google::Apis::HealthV4::IrregularRhythmNotification, decorator: Google::Apis::HealthV4::IrregularRhythmNotification::Representation
+      
           property :name, as: 'name'
+          property :nutrition_log, as: 'nutritionLog', class: Google::Apis::HealthV4::NutritionLog, decorator: Google::Apis::HealthV4::NutritionLog::Representation
+      
           property :oxygen_saturation, as: 'oxygenSaturation', class: Google::Apis::HealthV4::OxygenSaturation, decorator: Google::Apis::HealthV4::OxygenSaturation::Representation
       
           property :respiratory_rate_sleep_summary, as: 'respiratoryRateSleepSummary', class: Google::Apis::HealthV4::RespiratoryRateSleepSummary, decorator: Google::Apis::HealthV4::RespiratoryRateSleepSummary::Representation
@@ -1147,11 +1439,49 @@ module Google
         end
       end
       
+      class Electrocardiogram
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :beats_per_minute_avg, :numeric_string => true, as: 'beatsPerMinuteAvg'
+          property :interval, as: 'interval', class: Google::Apis::HealthV4::SessionTimeInterval, decorator: Google::Apis::HealthV4::SessionTimeInterval::Representation
+      
+          property :lead_number, as: 'leadNumber'
+          property :medical_device_info, as: 'medicalDeviceInfo', class: Google::Apis::HealthV4::MedicalDeviceInfo, decorator: Google::Apis::HealthV4::MedicalDeviceInfo::Representation
+      
+          property :millivolts_scaling_factor, as: 'millivoltsScalingFactor'
+          property :result_classification, as: 'resultClassification'
+          property :sampling_frequency_hertz, as: 'samplingFrequencyHertz'
+          collection :waveform_samples, as: 'waveformSamples'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class EndpointAuthorization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :secret, as: 'secret'
           property :secret_set, as: 'secretSet'
+        end
+      end
+      
+      class EnergyQuantity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kcal, as: 'kcal'
+          property :user_provided_unit, as: 'userProvidedUnit'
+        end
+      end
+      
+      class EnergyQuantityRollup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kcal_sum, as: 'kcalSum'
+          property :user_provided_unit_last, as: 'userProvidedUnitLast'
         end
       end
       
@@ -1219,7 +1549,63 @@ module Google
         end
       end
       
+      class Food
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_level, as: 'accessLevel'
+          property :brand, as: 'brand'
+          property :default_serving, as: 'defaultServing', class: Google::Apis::HealthV4::FoodServing, decorator: Google::Apis::HealthV4::FoodServing::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :energy_avg, as: 'energyAvg', class: Google::Apis::HealthV4::EnergyQuantity, decorator: Google::Apis::HealthV4::EnergyQuantity::Representation
+      
+          property :energy_from_fat, as: 'energyFromFat', class: Google::Apis::HealthV4::EnergyQuantity, decorator: Google::Apis::HealthV4::EnergyQuantity::Representation
+      
+          property :energy_max, as: 'energyMax', class: Google::Apis::HealthV4::EnergyQuantity, decorator: Google::Apis::HealthV4::EnergyQuantity::Representation
+      
+          property :energy_min, as: 'energyMin', class: Google::Apis::HealthV4::EnergyQuantity, decorator: Google::Apis::HealthV4::EnergyQuantity::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :meal_type, as: 'mealType'
+          collection :nutrients, as: 'nutrients', class: Google::Apis::HealthV4::NutrientQuantity, decorator: Google::Apis::HealthV4::NutrientQuantity::Representation
+      
+          collection :servings, as: 'servings', class: Google::Apis::HealthV4::FoodServing, decorator: Google::Apis::HealthV4::FoodServing::Representation
+      
+          property :total_carbohydrate, as: 'totalCarbohydrate', class: Google::Apis::HealthV4::WeightQuantity, decorator: Google::Apis::HealthV4::WeightQuantity::Representation
+      
+          property :total_fat, as: 'totalFat', class: Google::Apis::HealthV4::WeightQuantity, decorator: Google::Apis::HealthV4::WeightQuantity::Representation
+      
+        end
+      end
+      
+      class FoodMeasurementUnit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :plural_display_name, as: 'pluralDisplayName'
+        end
+      end
+      
+      class FoodServing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount'
+          property :food_measurement_unit, as: 'foodMeasurementUnit'
+          property :food_measurement_unit_display_name, as: 'foodMeasurementUnitDisplayName'
+          property :food_measurement_unit_display_name_plural, as: 'foodMeasurementUnitDisplayNamePlural'
+          property :multiplier, as: 'multiplier'
+        end
+      end
+      
       class GoogleDevicesandservicesHealthV4DataType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleDevicesandservicesHealthV4User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
@@ -1231,6 +1617,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :http_response, as: 'httpResponse', class: Google::Apis::HealthV4::HttpResponse, decorator: Google::Apis::HealthV4::HttpResponse::Representation
       
+        end
+      end
+      
+      class HeartBeat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :beats_per_minute, as: 'beatsPerMinute'
+          property :civil_time, as: 'civilTime', class: Google::Apis::HealthV4::CivilDateTime, decorator: Google::Apis::HealthV4::CivilDateTime::Representation
+      
+          property :physical_time, as: 'physicalTime'
+          property :utc_offset, as: 'utcOffset'
         end
       end
       
@@ -1352,12 +1749,43 @@ module Google
         end
       end
       
+      class IrnProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enrollment_status, as: 'enrollmentStatus'
+          property :name, as: 'name'
+          property :onboarding_status, as: 'onboardingStatus'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class IrregularRhythmNotification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_windows, as: 'alertWindows', class: Google::Apis::HealthV4::AlertWindow, decorator: Google::Apis::HealthV4::AlertWindow::Representation
+      
+          property :interval, as: 'interval', class: Google::Apis::HealthV4::SessionTimeInterval, decorator: Google::Apis::HealthV4::SessionTimeInterval::Representation
+      
+          property :medical_device_info, as: 'medicalDeviceInfo', class: Google::Apis::HealthV4::MedicalDeviceInfo, decorator: Google::Apis::HealthV4::MedicalDeviceInfo::Representation
+      
+        end
+      end
+      
       class ListDataPointsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :data_points, as: 'dataPoints', class: Google::Apis::HealthV4::DataPoint, decorator: Google::Apis::HealthV4::DataPoint::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListPairedDevicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :paired_devices, as: 'pairedDevices', class: Google::Apis::HealthV4::PairedDevice, decorator: Google::Apis::HealthV4::PairedDevice::Representation
+      
         end
       end
       
@@ -1368,6 +1796,26 @@ module Google
           collection :subscribers, as: 'subscribers', class: Google::Apis::HealthV4::Subscriber, decorator: Google::Apis::HealthV4::Subscriber::Representation
       
           property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class ListSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subscriptions, as: 'subscriptions', class: Google::Apis::HealthV4::Subscription, decorator: Google::Apis::HealthV4::Subscription::Representation
+      
+        end
+      end
+      
+      class MedicalDeviceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :algorithm_version, as: 'algorithmVersion'
+          property :device_model, as: 'deviceModel'
+          property :feature_version, as: 'featureVersion'
+          property :firmware_version, as: 'firmwareVersion'
+          property :service_version, as: 'serviceVersion'
         end
       end
       
@@ -1399,6 +1847,63 @@ module Google
           property :avg_stride_length_millimeters, :numeric_string => true, as: 'avgStrideLengthMillimeters'
           property :avg_vertical_oscillation_millimeters, :numeric_string => true, as: 'avgVerticalOscillationMillimeters'
           property :avg_vertical_ratio, as: 'avgVerticalRatio'
+        end
+      end
+      
+      class NutrientQuantity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nutrient, as: 'nutrient'
+          property :quantity, as: 'quantity', class: Google::Apis::HealthV4::WeightQuantity, decorator: Google::Apis::HealthV4::WeightQuantity::Representation
+      
+        end
+      end
+      
+      class NutrientQuantityRollup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nutrient, as: 'nutrient'
+          property :quantity, as: 'quantity', class: Google::Apis::HealthV4::WeightQuantityRollup, decorator: Google::Apis::HealthV4::WeightQuantityRollup::Representation
+      
+        end
+      end
+      
+      class NutritionLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :energy, as: 'energy', class: Google::Apis::HealthV4::EnergyQuantity, decorator: Google::Apis::HealthV4::EnergyQuantity::Representation
+      
+          property :energy_from_fat, as: 'energyFromFat', class: Google::Apis::HealthV4::EnergyQuantity, decorator: Google::Apis::HealthV4::EnergyQuantity::Representation
+      
+          property :food, as: 'food'
+          property :food_display_name, as: 'foodDisplayName'
+          property :interval, as: 'interval', class: Google::Apis::HealthV4::SessionTimeInterval, decorator: Google::Apis::HealthV4::SessionTimeInterval::Representation
+      
+          property :meal_type, as: 'mealType'
+          collection :nutrients, as: 'nutrients', class: Google::Apis::HealthV4::NutrientQuantity, decorator: Google::Apis::HealthV4::NutrientQuantity::Representation
+      
+          property :serving, as: 'serving', class: Google::Apis::HealthV4::Serving, decorator: Google::Apis::HealthV4::Serving::Representation
+      
+          property :total_carbohydrate, as: 'totalCarbohydrate', class: Google::Apis::HealthV4::WeightQuantity, decorator: Google::Apis::HealthV4::WeightQuantity::Representation
+      
+          property :total_fat, as: 'totalFat', class: Google::Apis::HealthV4::WeightQuantity, decorator: Google::Apis::HealthV4::WeightQuantity::Representation
+      
+        end
+      end
+      
+      class NutritionLogRollupValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :energy, as: 'energy', class: Google::Apis::HealthV4::EnergyQuantityRollup, decorator: Google::Apis::HealthV4::EnergyQuantityRollup::Representation
+      
+          property :energy_from_fat, as: 'energyFromFat', class: Google::Apis::HealthV4::EnergyQuantityRollup, decorator: Google::Apis::HealthV4::EnergyQuantityRollup::Representation
+      
+          collection :nutrients, as: 'nutrients', class: Google::Apis::HealthV4::NutrientQuantityRollup, decorator: Google::Apis::HealthV4::NutrientQuantityRollup::Representation
+      
+          property :total_carbohydrate, as: 'totalCarbohydrate', class: Google::Apis::HealthV4::WeightQuantityRollup, decorator: Google::Apis::HealthV4::WeightQuantityRollup::Representation
+      
+          property :total_fat, as: 'totalFat', class: Google::Apis::HealthV4::WeightQuantityRollup, decorator: Google::Apis::HealthV4::WeightQuantityRollup::Representation
+      
         end
       end
       
@@ -1457,6 +1962,20 @@ module Google
         end
       end
       
+      class PairedDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :battery_level, as: 'batteryLevel'
+          property :battery_status, as: 'batteryStatus'
+          property :device_type, as: 'deviceType'
+          property :device_version, as: 'deviceVersion'
+          collection :features, as: 'features'
+          property :last_sync_time, as: 'lastSyncTime'
+          property :mac_address, as: 'macAddress'
+          property :name, as: 'name'
+        end
+      end
+      
       class Profile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1483,6 +2002,8 @@ module Google
       class ReconciledDataPoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_energy_burned, as: 'activeEnergyBurned', class: Google::Apis::HealthV4::ActiveEnergyBurned, decorator: Google::Apis::HealthV4::ActiveEnergyBurned::Representation
+      
           property :active_minutes, as: 'activeMinutes', class: Google::Apis::HealthV4::ActiveMinutes, decorator: Google::Apis::HealthV4::ActiveMinutes::Representation
       
           property :active_zone_minutes, as: 'activeZoneMinutes', class: Google::Apis::HealthV4::ActiveZoneMinutes, decorator: Google::Apis::HealthV4::ActiveZoneMinutes::Representation
@@ -1493,7 +2014,11 @@ module Google
       
           property :basal_energy_burned, as: 'basalEnergyBurned', class: Google::Apis::HealthV4::BasalEnergyBurned, decorator: Google::Apis::HealthV4::BasalEnergyBurned::Representation
       
+          property :blood_glucose, as: 'bloodGlucose', class: Google::Apis::HealthV4::BloodGlucose, decorator: Google::Apis::HealthV4::BloodGlucose::Representation
+      
           property :body_fat, as: 'bodyFat', class: Google::Apis::HealthV4::BodyFat, decorator: Google::Apis::HealthV4::BodyFat::Representation
+      
+          property :core_body_temperature, as: 'coreBodyTemperature', class: Google::Apis::HealthV4::CoreBodyTemperature, decorator: Google::Apis::HealthV4::CoreBodyTemperature::Representation
       
           property :daily_heart_rate_variability, as: 'dailyHeartRateVariability', class: Google::Apis::HealthV4::DailyHeartRateVariability, decorator: Google::Apis::HealthV4::DailyHeartRateVariability::Representation
       
@@ -1523,6 +2048,8 @@ module Google
           property :height, as: 'height', class: Google::Apis::HealthV4::Height, decorator: Google::Apis::HealthV4::Height::Representation
       
           property :hydration_log, as: 'hydrationLog', class: Google::Apis::HealthV4::HydrationLog, decorator: Google::Apis::HealthV4::HydrationLog::Representation
+      
+          property :nutrition_log, as: 'nutritionLog', class: Google::Apis::HealthV4::NutritionLog, decorator: Google::Apis::HealthV4::NutritionLog::Representation
       
           property :oxygen_saturation, as: 'oxygenSaturation', class: Google::Apis::HealthV4::OxygenSaturation, decorator: Google::Apis::HealthV4::OxygenSaturation::Representation
       
@@ -1604,6 +2131,8 @@ module Google
       class RollupDataPoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_energy_burned, as: 'activeEnergyBurned', class: Google::Apis::HealthV4::ActiveEnergyBurnedRollupValue, decorator: Google::Apis::HealthV4::ActiveEnergyBurnedRollupValue::Representation
+      
           property :active_minutes, as: 'activeMinutes', class: Google::Apis::HealthV4::ActiveMinutesRollupValue, decorator: Google::Apis::HealthV4::ActiveMinutesRollupValue::Representation
       
           property :active_zone_minutes, as: 'activeZoneMinutes', class: Google::Apis::HealthV4::ActiveZoneMinutesRollupValue, decorator: Google::Apis::HealthV4::ActiveZoneMinutesRollupValue::Representation
@@ -1612,9 +2141,13 @@ module Google
       
           property :altitude, as: 'altitude', class: Google::Apis::HealthV4::AltitudeRollupValue, decorator: Google::Apis::HealthV4::AltitudeRollupValue::Representation
       
+          property :blood_glucose, as: 'bloodGlucose', class: Google::Apis::HealthV4::BloodGlucoseRollupValue, decorator: Google::Apis::HealthV4::BloodGlucoseRollupValue::Representation
+      
           property :body_fat, as: 'bodyFat', class: Google::Apis::HealthV4::BodyFatRollupValue, decorator: Google::Apis::HealthV4::BodyFatRollupValue::Representation
       
           property :calories_in_heart_rate_zone, as: 'caloriesInHeartRateZone', class: Google::Apis::HealthV4::CaloriesInHeartRateZoneRollupValue, decorator: Google::Apis::HealthV4::CaloriesInHeartRateZoneRollupValue::Representation
+      
+          property :core_body_temperature, as: 'coreBodyTemperature', class: Google::Apis::HealthV4::CoreBodyTemperatureRollupValue, decorator: Google::Apis::HealthV4::CoreBodyTemperatureRollupValue::Representation
       
           property :distance, as: 'distance', class: Google::Apis::HealthV4::DistanceRollupValue, decorator: Google::Apis::HealthV4::DistanceRollupValue::Representation
       
@@ -1624,6 +2157,8 @@ module Google
           property :heart_rate, as: 'heartRate', class: Google::Apis::HealthV4::HeartRateRollupValue, decorator: Google::Apis::HealthV4::HeartRateRollupValue::Representation
       
           property :hydration_log, as: 'hydrationLog', class: Google::Apis::HealthV4::HydrationLogRollupValue, decorator: Google::Apis::HealthV4::HydrationLogRollupValue::Representation
+      
+          property :nutrition_log, as: 'nutritionLog', class: Google::Apis::HealthV4::NutritionLogRollupValue, decorator: Google::Apis::HealthV4::NutritionLogRollupValue::Representation
       
           property :run_vo2_max, as: 'runVo2Max', class: Google::Apis::HealthV4::RunVo2MaxRollupValue, decorator: Google::Apis::HealthV4::RunVo2MaxRollupValue::Representation
       
@@ -1676,6 +2211,15 @@ module Google
         end
       end
       
+      class Serving
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount'
+          property :food_measurement_unit, as: 'foodMeasurementUnit'
+          property :food_measurement_unit_display_name, as: 'foodMeasurementUnitDisplayName'
+        end
+      end
+      
       class SessionTimeInterval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1695,6 +2239,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_stride_enabled, as: 'autoStrideEnabled'
           property :distance_unit, as: 'distanceUnit'
+          property :food_language_code, as: 'foodLanguageCode'
           property :glucose_unit, as: 'glucoseUnit'
           property :height_unit, as: 'heightUnit'
           property :language_locale, as: 'languageLocale'
@@ -1837,6 +2382,15 @@ module Google
         end
       end
       
+      class Subscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_types, as: 'dataTypes'
+          property :name, as: 'name'
+          property :user, as: 'user'
+        end
+      end
+      
       class SwimLengthsData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1947,6 +2501,22 @@ module Google
           property :sample_time, as: 'sampleTime', class: Google::Apis::HealthV4::ObservationSampleTime, decorator: Google::Apis::HealthV4::ObservationSampleTime::Representation
       
           property :weight_grams, as: 'weightGrams'
+        end
+      end
+      
+      class WeightQuantity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :grams, as: 'grams'
+          property :user_provided_unit, as: 'userProvidedUnit'
+        end
+      end
+      
+      class WeightQuantityRollup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :grams_sum, as: 'gramsSum'
+          property :user_provided_unit_last, as: 'userProvidedUnitLast'
         end
       end
       
