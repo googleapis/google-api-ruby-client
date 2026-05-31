@@ -3017,7 +3017,7 @@ module Google
         #   resource properties that the API response will include. Set the parameter
         #   value to snippet.
         # @param [String] channel_id
-        #   Filter on resources belonging to this channelId.
+        #   Filter on resources belonging to this channelId. (Force TAP rebuild)
         # @param [String] channel_type
         #   Add a filter on the channel search.
         # @param [String] event_type
