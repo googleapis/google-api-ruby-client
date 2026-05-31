@@ -807,7 +807,7 @@ module Google
       class TraitData
         include Google::Apis::Core::Hashable
       
-        # Optional. The Home API trait payload.
+        # The Provider Home API trait payload.
         # Corresponds to the JSON property `trait`
         # @return [Hash<String,Object>]
         attr_accessor :trait
