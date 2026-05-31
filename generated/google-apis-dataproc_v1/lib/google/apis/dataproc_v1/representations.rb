@@ -4660,6 +4660,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_type, as: 'acceleratorType'
           property :milli_accelerator_seconds, :numeric_string => true, as: 'milliAcceleratorSeconds'
+          property :milli_accelerator_seconds_a10040, :numeric_string => true, as: 'milliAcceleratorSecondsA10040'
+          property :milli_accelerator_seconds_a10080, :numeric_string => true, as: 'milliAcceleratorSecondsA10080'
+          property :milli_accelerator_seconds_l4, :numeric_string => true, as: 'milliAcceleratorSecondsL4'
           property :milli_dcu_seconds, :numeric_string => true, as: 'milliDcuSeconds'
           property :shuffle_storage_gb_seconds, :numeric_string => true, as: 'shuffleStorageGbSeconds'
           property :update_time, as: 'updateTime'
@@ -4671,6 +4674,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_type, as: 'acceleratorType'
           property :milli_accelerator, :numeric_string => true, as: 'milliAccelerator'
+          property :milli_accelerator_a10040, :numeric_string => true, as: 'milliAcceleratorA10040'
+          property :milli_accelerator_a10080, :numeric_string => true, as: 'milliAcceleratorA10080'
+          property :milli_accelerator_l4, :numeric_string => true, as: 'milliAcceleratorL4'
           property :milli_dcu, :numeric_string => true, as: 'milliDcu'
           property :milli_dcu_premium, :numeric_string => true, as: 'milliDcuPremium'
           property :shuffle_storage_gb, :numeric_string => true, as: 'shuffleStorageGb'

@@ -11747,17 +11747,38 @@ module Google
       class UsageMetrics
         include Google::Apis::Core::Hashable
       
-        # Optional. DEPRECATED Accelerator type being used, if any
+        # Optional. Accelerator type being used, if any Deprecated: This field is only
+        # used in runtime versions below 3.0.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
       
-        # Optional. DEPRECATED Accelerator usage in (milliAccelerator x seconds) (see
-        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
-        # pricing)).
+        # Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc
+        # Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        # Deprecated: This field is only used in runtime versions below 3.0.
         # Corresponds to the JSON property `milliAcceleratorSeconds`
         # @return [Fixnum]
         attr_accessor :milli_accelerator_seconds
+      
+        # Optional. A100-40 accelerator usage in (milliAccelerator x seconds) (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing)).
+        # Corresponds to the JSON property `milliAcceleratorSecondsA10040`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_seconds_a10040
+      
+        # Optional. A100-80 accelerator usage in (milliAccelerator x seconds) (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing)).
+        # Corresponds to the JSON property `milliAcceleratorSecondsA10080`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_seconds_a10080
+      
+        # Optional. L4 accelerator usage in (milliAccelerator x seconds) (see Dataproc
+        # Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        # Corresponds to the JSON property `milliAcceleratorSecondsL4`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_seconds_l4
       
         # Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see
         # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
@@ -11785,6 +11806,9 @@ module Google
         def update!(**args)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @milli_accelerator_seconds = args[:milli_accelerator_seconds] if args.key?(:milli_accelerator_seconds)
+          @milli_accelerator_seconds_a10040 = args[:milli_accelerator_seconds_a10040] if args.key?(:milli_accelerator_seconds_a10040)
+          @milli_accelerator_seconds_a10080 = args[:milli_accelerator_seconds_a10080] if args.key?(:milli_accelerator_seconds_a10080)
+          @milli_accelerator_seconds_l4 = args[:milli_accelerator_seconds_l4] if args.key?(:milli_accelerator_seconds_l4)
           @milli_dcu_seconds = args[:milli_dcu_seconds] if args.key?(:milli_dcu_seconds)
           @shuffle_storage_gb_seconds = args[:shuffle_storage_gb_seconds] if args.key?(:shuffle_storage_gb_seconds)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -11796,16 +11820,39 @@ module Google
       class UsageSnapshot
         include Google::Apis::Core::Hashable
       
-        # Optional. Accelerator type being used, if any
+        # Optional. Accelerator type being used, if any Deprecated: This field is only
+        # used in runtime versions below 3.0.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
       
         # Optional. Milli (one-thousandth) accelerator. (see Dataproc Serverless pricing
-        # (https://cloud.google.com/dataproc-serverless/pricing))
+        # (https://cloud.google.com/dataproc-serverless/pricing)) Deprecated: This field
+        # is only used in runtime versions below 3.0.
         # Corresponds to the JSON property `milliAccelerator`
         # @return [Fixnum]
         attr_accessor :milli_accelerator
+      
+        # Optional. Milli (one-thousandth) accelerator for A100-40 accelerators. (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing))
+        # Corresponds to the JSON property `milliAcceleratorA10040`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_a10040
+      
+        # Optional. Milli (one-thousandth) accelerator for A100-80 accelerators. (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing))
+        # Corresponds to the JSON property `milliAcceleratorA10080`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_a10080
+      
+        # Optional. Milli (one-thousandth) accelerator for L4 accelerators. (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing))
+        # Corresponds to the JSON property `milliAcceleratorL4`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_l4
       
         # Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc
         # Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -11846,6 +11893,9 @@ module Google
         def update!(**args)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @milli_accelerator = args[:milli_accelerator] if args.key?(:milli_accelerator)
+          @milli_accelerator_a10040 = args[:milli_accelerator_a10040] if args.key?(:milli_accelerator_a10040)
+          @milli_accelerator_a10080 = args[:milli_accelerator_a10080] if args.key?(:milli_accelerator_a10080)
+          @milli_accelerator_l4 = args[:milli_accelerator_l4] if args.key?(:milli_accelerator_l4)
           @milli_dcu = args[:milli_dcu] if args.key?(:milli_dcu)
           @milli_dcu_premium = args[:milli_dcu_premium] if args.key?(:milli_dcu_premium)
           @shuffle_storage_gb = args[:shuffle_storage_gb] if args.key?(:shuffle_storage_gb)
