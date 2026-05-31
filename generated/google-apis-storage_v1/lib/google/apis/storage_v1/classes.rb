@@ -1089,6 +1089,16 @@ module Google
               # @return [Fixnum]
               attr_accessor :num_newer_versions
             
+              # Objects having a size greater than this value in bytes will be matched.
+              # Corresponds to the JSON property `sizeAboveBytes`
+              # @return [Fixnum]
+              attr_accessor :size_above_bytes
+            
+              # Objects having a size less than this value in bytes will be matched.
+              # Corresponds to the JSON property `sizeBelowBytes`
+              # @return [Fixnum]
+              attr_accessor :size_below_bytes
+            
               def initialize(**args)
                  update!(**args)
               end
@@ -1107,6 +1117,8 @@ module Google
                 @matches_suffix = args[:matches_suffix] if args.key?(:matches_suffix)
                 @noncurrent_time_before = args[:noncurrent_time_before] if args.key?(:noncurrent_time_before)
                 @num_newer_versions = args[:num_newer_versions] if args.key?(:num_newer_versions)
+                @size_above_bytes = args[:size_above_bytes] if args.key?(:size_above_bytes)
+                @size_below_bytes = args[:size_below_bytes] if args.key?(:size_below_bytes)
               end
             end
           end
