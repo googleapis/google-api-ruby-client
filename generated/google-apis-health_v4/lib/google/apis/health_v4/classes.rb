@@ -22,6 +22,50 @@ module Google
   module Apis
     module HealthV4
       
+      # Energy burned as part of an activity, excluding the basal energy burn.
+      class ActiveEnergyBurned
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time interval of an observed data point.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::HealthV4::ObservationTimeInterval]
+        attr_accessor :interval
+      
+        # Required. Energy burned during an activity, measured in kilocalories.
+        # Corresponds to the JSON property `kcal`
+        # @return [Float]
+        attr_accessor :kcal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @kcal = args[:kcal] if args.key?(:kcal)
+        end
+      end
+      
+      # Represents the result of the rollup of active energy burned.
+      class ActiveEnergyBurnedRollupValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Sum of the active energy burned in kilocalories.
+        # Corresponds to the JSON property `kcalSum`
+        # @return [Float]
+        attr_accessor :kcal_sum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kcal_sum = args[:kcal_sum] if args.key?(:kcal_sum)
+        end
+      end
+      
       # Record of active minutes in a given time interval.
       class ActiveMinutes
         include Google::Apis::Core::Hashable
@@ -252,6 +296,79 @@ module Google
         end
       end
       
+      # An analysis window evaluated for AFib. Note: The current version of the
+      # algorithm will only produce alerts if all windows are positive. So anything
+      # returned from the API will always have the positive bit set to true.
+      # Internally, windows can be negative, however. We never save "inconclusive"
+      # windows (they aren't produced by the algorithm).
+      class AlertWindow
+        include Google::Apis::Core::Hashable
+      
+        # Civil time representation similar to google.type.DateTime, but ensures that
+        # neither the timezone nor the UTC offset can be set to avoid confusion between
+        # civil and physical time queries.
+        # Corresponds to the JSON property `civilEndTime`
+        # @return [Google::Apis::HealthV4::CivilDateTime]
+        attr_accessor :civil_end_time
+      
+        # Civil time representation similar to google.type.DateTime, but ensures that
+        # neither the timezone nor the UTC offset can be set to avoid confusion between
+        # civil and physical time queries.
+        # Corresponds to the JSON property `civilStartTime`
+        # @return [Google::Apis::HealthV4::CivilDateTime]
+        attr_accessor :civil_start_time
+      
+        # Required. The end time of the analysis window.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. The UTC offset of the user's timezone when the analysis window ended.
+        # Corresponds to the JSON property `endUtcOffset`
+        # @return [String]
+        attr_accessor :end_utc_offset
+      
+        # Optional. All heart beats in the interval contained in this analysis window.
+        # Corresponds to the JSON property `heartBeats`
+        # @return [Array<Google::Apis::HealthV4::HeartBeat>]
+        attr_accessor :heart_beats
+      
+        # Optional. Flag indicating whether the window was positive for AFib or not. A `
+        # true` value indicates that AFib was detected in this window. A `false` value
+        # means AFib was not detected, but does not guarantee the absence of AFib.
+        # Corresponds to the JSON property `positive`
+        # @return [Boolean]
+        attr_accessor :positive
+        alias_method :positive?, :positive
+      
+        # Required. Observed interval. The start time of the analysis window.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Required. The UTC offset of the user's timezone when the analysis window
+        # started.
+        # Corresponds to the JSON property `startUtcOffset`
+        # @return [String]
+        attr_accessor :start_utc_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @civil_end_time = args[:civil_end_time] if args.key?(:civil_end_time)
+          @civil_start_time = args[:civil_start_time] if args.key?(:civil_start_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @end_utc_offset = args[:end_utc_offset] if args.key?(:end_utc_offset)
+          @heart_beats = args[:heart_beats] if args.key?(:heart_beats)
+          @positive = args[:positive] if args.key?(:positive)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @start_utc_offset = args[:start_utc_offset] if args.key?(:start_utc_offset)
+        end
+      end
+      
       # Captures the altitude gain (i.e. deltas), and not level above sea, for a user
       # in millimeters.
       class Altitude
@@ -384,6 +501,81 @@ module Google
         # Update properties of this object
         def update!(**args)
           @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # Represents a blood glucose level measurement. LINT: LEGACY_NAMES
+      class BloodGlucose
+        include Google::Apis::Core::Hashable
+      
+        # Required. Blood glucose level concentration in mg/dL.
+        # Corresponds to the JSON property `bloodGlucoseMilligramsPerDeciliter`
+        # @return [Float]
+        attr_accessor :blood_glucose_milligrams_per_deciliter
+      
+        # Optional. Meal type of the measurement.
+        # Corresponds to the JSON property `mealType`
+        # @return [String]
+        attr_accessor :meal_type
+      
+        # Optional. Source of the measurement.
+        # Corresponds to the JSON property `measurementSource`
+        # @return [String]
+        attr_accessor :measurement_source
+      
+        # Optional. Timing of the measurement.
+        # Corresponds to the JSON property `measurementTiming`
+        # @return [String]
+        attr_accessor :measurement_timing
+      
+        # Optional. Standard free-form notes captured at manual logging.
+        # Corresponds to the JSON property `notes`
+        # @return [String]
+        attr_accessor :notes
+      
+        # Represents a sample time of an observed data point.
+        # Corresponds to the JSON property `sampleTime`
+        # @return [Google::Apis::HealthV4::ObservationSampleTime]
+        attr_accessor :sample_time
+      
+        # Optional. Type of body fluid used to measure the blood glucose.
+        # Corresponds to the JSON property `specimen`
+        # @return [String]
+        attr_accessor :specimen
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blood_glucose_milligrams_per_deciliter = args[:blood_glucose_milligrams_per_deciliter] if args.key?(:blood_glucose_milligrams_per_deciliter)
+          @meal_type = args[:meal_type] if args.key?(:meal_type)
+          @measurement_source = args[:measurement_source] if args.key?(:measurement_source)
+          @measurement_timing = args[:measurement_timing] if args.key?(:measurement_timing)
+          @notes = args[:notes] if args.key?(:notes)
+          @sample_time = args[:sample_time] if args.key?(:sample_time)
+          @specimen = args[:specimen] if args.key?(:specimen)
+        end
+      end
+      
+      # Represents the result of the rollup of the blood glucose data type. LINT:
+      # LEGACY_NAMES
+      class BloodGlucoseRollupValue
+        include Google::Apis::Core::Hashable
+      
+        # Average blood glucose level in mg/dL.
+        # Corresponds to the JSON property `bloodGlucoseMilligramsPerDeciliterAvg`
+        # @return [Float]
+        attr_accessor :blood_glucose_milligrams_per_deciliter_avg
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blood_glucose_milligrams_per_deciliter_avg = args[:blood_glucose_milligrams_per_deciliter_avg] if args.key?(:blood_glucose_milligrams_per_deciliter_avg)
         end
       end
       
@@ -541,6 +733,75 @@ module Google
         end
       end
       
+      # Core body temperature measurement, distinct from peripheral body temperature,
+      # reflects the temperature of the body's internal organs.
+      class CoreBodyTemperature
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The unique identifier of the core body temperature measurement.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. The location of the core body temperature measurement.
+        # Corresponds to the JSON property `measurementLocation`
+        # @return [String]
+        attr_accessor :measurement_location
+      
+        # Represents a sample time of an observed data point.
+        # Corresponds to the JSON property `sampleTime`
+        # @return [Google::Apis::HealthV4::ObservationSampleTime]
+        attr_accessor :sample_time
+      
+        # Required. The core body temperature in Celsius.
+        # Corresponds to the JSON property `temperatureCelsius`
+        # @return [Float]
+        attr_accessor :temperature_celsius
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @measurement_location = args[:measurement_location] if args.key?(:measurement_location)
+          @sample_time = args[:sample_time] if args.key?(:sample_time)
+          @temperature_celsius = args[:temperature_celsius] if args.key?(:temperature_celsius)
+        end
+      end
+      
+      # Represents the result of the rollup of the core body temperature data type.
+      class CoreBodyTemperatureRollupValue
+        include Google::Apis::Core::Hashable
+      
+        # Average core body temperature in Celsius.
+        # Corresponds to the JSON property `temperatureCelsiusAvg`
+        # @return [Float]
+        attr_accessor :temperature_celsius_avg
+      
+        # Maximum core body temperature in Celsius.
+        # Corresponds to the JSON property `temperatureCelsiusMax`
+        # @return [Float]
+        attr_accessor :temperature_celsius_max
+      
+        # Minimum core body temperature in Celsius.
+        # Corresponds to the JSON property `temperatureCelsiusMin`
+        # @return [Float]
+        attr_accessor :temperature_celsius_min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @temperature_celsius_avg = args[:temperature_celsius_avg] if args.key?(:temperature_celsius_avg)
+          @temperature_celsius_max = args[:temperature_celsius_max] if args.key?(:temperature_celsius_max)
+          @temperature_celsius_min = args[:temperature_celsius_min] if args.key?(:temperature_celsius_min)
+        end
+      end
+      
       # Payload for creating a subscriber.
       class CreateSubscriberPayload
         include Google::Apis::Core::Hashable
@@ -577,6 +838,34 @@ module Google
           @endpoint_authorization = args[:endpoint_authorization] if args.key?(:endpoint_authorization)
           @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
           @subscriber_configs = args[:subscriber_configs] if args.key?(:subscriber_configs)
+        end
+      end
+      
+      # Payload for creating a subscription.
+      class CreateSubscriptionPayload
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Data types subscribed to.
+        # Corresponds to the JSON property `dataTypes`
+        # @return [Array<String>]
+        attr_accessor :data_types
+      
+        # Required. Immutable. The resource name of the user for whom this subscription
+        # is active. Format: `users/`user`` where ``user`` is the public `healthUserId`
+        # as returned by the `GetIdentity` action in the profile PAPI (see `google.
+        # devicesandservices.health.v4main.HealthProfileService.GetIdentity`).
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_types = args[:data_types] if args.key?(:data_types)
+          @user = args[:user] if args.key?(:user)
         end
       end
       
@@ -895,6 +1184,11 @@ module Google
       class DailyRollupDataPoint
         include Google::Apis::Core::Hashable
       
+        # Represents the result of the rollup of active energy burned.
+        # Corresponds to the JSON property `activeEnergyBurned`
+        # @return [Google::Apis::HealthV4::ActiveEnergyBurnedRollupValue]
+        attr_accessor :active_energy_burned
+      
         # Represents the result of the rollup of the active minutes data type.
         # Corresponds to the JSON property `activeMinutes`
         # @return [Google::Apis::HealthV4::ActiveMinutesRollupValue]
@@ -914,6 +1208,12 @@ module Google
         # Corresponds to the JSON property `altitude`
         # @return [Google::Apis::HealthV4::AltitudeRollupValue]
         attr_accessor :altitude
+      
+        # Represents the result of the rollup of the blood glucose data type. LINT:
+        # LEGACY_NAMES
+        # Corresponds to the JSON property `bloodGlucose`
+        # @return [Google::Apis::HealthV4::BloodGlucoseRollupValue]
+        attr_accessor :blood_glucose
       
         # Represents the result of the rollup of the body fat data type.
         # Corresponds to the JSON property `bodyFat`
@@ -940,6 +1240,11 @@ module Google
         # @return [Google::Apis::HealthV4::CivilDateTime]
         attr_accessor :civil_start_time
       
+        # Represents the result of the rollup of the core body temperature data type.
+        # Corresponds to the JSON property `coreBodyTemperature`
+        # @return [Google::Apis::HealthV4::CoreBodyTemperatureRollupValue]
+        attr_accessor :core_body_temperature
+      
         # Result of the rollup of the user's distance.
         # Corresponds to the JSON property `distance`
         # @return [Google::Apis::HealthV4::DistanceRollupValue]
@@ -965,6 +1270,11 @@ module Google
         # Corresponds to the JSON property `hydrationLog`
         # @return [Google::Apis::HealthV4::HydrationLogRollupValue]
         attr_accessor :hydration_log
+      
+        # Represents the result of the rollup of the nutrition log data type.
+        # Corresponds to the JSON property `nutritionLog`
+        # @return [Google::Apis::HealthV4::NutritionLogRollupValue]
+        attr_accessor :nutrition_log
       
         # Represents the rollup value for the daily resting heart rate data type.
         # Corresponds to the JSON property `restingHeartRatePersonalRange`
@@ -1013,19 +1323,23 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_energy_burned = args[:active_energy_burned] if args.key?(:active_energy_burned)
           @active_minutes = args[:active_minutes] if args.key?(:active_minutes)
           @active_zone_minutes = args[:active_zone_minutes] if args.key?(:active_zone_minutes)
           @activity_level = args[:activity_level] if args.key?(:activity_level)
           @altitude = args[:altitude] if args.key?(:altitude)
+          @blood_glucose = args[:blood_glucose] if args.key?(:blood_glucose)
           @body_fat = args[:body_fat] if args.key?(:body_fat)
           @calories_in_heart_rate_zone = args[:calories_in_heart_rate_zone] if args.key?(:calories_in_heart_rate_zone)
           @civil_end_time = args[:civil_end_time] if args.key?(:civil_end_time)
           @civil_start_time = args[:civil_start_time] if args.key?(:civil_start_time)
+          @core_body_temperature = args[:core_body_temperature] if args.key?(:core_body_temperature)
           @distance = args[:distance] if args.key?(:distance)
           @floors = args[:floors] if args.key?(:floors)
           @heart_rate = args[:heart_rate] if args.key?(:heart_rate)
           @heart_rate_variability_personal_range = args[:heart_rate_variability_personal_range] if args.key?(:heart_rate_variability_personal_range)
           @hydration_log = args[:hydration_log] if args.key?(:hydration_log)
+          @nutrition_log = args[:nutrition_log] if args.key?(:nutrition_log)
           @resting_heart_rate_personal_range = args[:resting_heart_rate_personal_range] if args.key?(:resting_heart_rate_personal_range)
           @run_vo2_max = args[:run_vo2_max] if args.key?(:run_vo2_max)
           @sedentary_period = args[:sedentary_period] if args.key?(:sedentary_period)
@@ -1143,6 +1457,11 @@ module Google
       class DataPoint
         include Google::Apis::Core::Hashable
       
+        # Energy burned as part of an activity, excluding the basal energy burn.
+        # Corresponds to the JSON property `activeEnergyBurned`
+        # @return [Google::Apis::HealthV4::ActiveEnergyBurned]
+        attr_accessor :active_energy_burned
+      
         # Record of active minutes in a given time interval.
         # Corresponds to the JSON property `activeMinutes`
         # @return [Google::Apis::HealthV4::ActiveMinutes]
@@ -1170,10 +1489,21 @@ module Google
         # @return [Google::Apis::HealthV4::BasalEnergyBurned]
         attr_accessor :basal_energy_burned
       
+        # Represents a blood glucose level measurement. LINT: LEGACY_NAMES
+        # Corresponds to the JSON property `bloodGlucose`
+        # @return [Google::Apis::HealthV4::BloodGlucose]
+        attr_accessor :blood_glucose
+      
         # Body fat measurement.
         # Corresponds to the JSON property `bodyFat`
         # @return [Google::Apis::HealthV4::BodyFat]
         attr_accessor :body_fat
+      
+        # Core body temperature measurement, distinct from peripheral body temperature,
+        # reflects the temperature of the body's internal organs.
+        # Corresponds to the JSON property `coreBodyTemperature`
+        # @return [Google::Apis::HealthV4::CoreBodyTemperature]
+        attr_accessor :core_body_temperature
       
         # Represents the daily heart rate variability data type. At least one of the
         # following fields must be set: - `average_heart_rate_variability_milliseconds` -
@@ -1232,6 +1562,12 @@ module Google
         # @return [Google::Apis::HealthV4::Distance]
         attr_accessor :distance
       
+        # Represents an Electrocardiogram (ECG) measurement session. This data type is
+        # based on SaMD feature and any changes to it may require additional review.
+        # Corresponds to the JSON property `electrocardiogram`
+        # @return [Google::Apis::HealthV4::Electrocardiogram]
+        attr_accessor :electrocardiogram
+      
         # An exercise that stores information about a physical activity.
         # Corresponds to the JSON property `exercise`
         # @return [Google::Apis::HealthV4::Exercise]
@@ -1241,6 +1577,16 @@ module Google
         # Corresponds to the JSON property `floors`
         # @return [Google::Apis::HealthV4::Floors]
         attr_accessor :floors
+      
+        # Represents a food item.
+        # Corresponds to the JSON property `food`
+        # @return [Google::Apis::HealthV4::Food]
+        attr_accessor :food
+      
+        # Represents a food measurement unit.
+        # Corresponds to the JSON property `foodMeasurementUnit`
+        # @return [Google::Apis::HealthV4::FoodMeasurementUnit]
+        attr_accessor :food_measurement_unit
       
         # A heart rate measurement.
         # Corresponds to the JSON property `heartRate`
@@ -1264,6 +1610,13 @@ module Google
         # @return [Google::Apis::HealthV4::HydrationLog]
         attr_accessor :hydration_log
       
+        # Represents an Irregular Rhythm Notification alert, indicating a potential sign
+        # of atrial fibrillation (AFib). This data type is based on SaMD feature and any
+        # changes to it may require additional review.
+        # Corresponds to the JSON property `irregularRhythmNotification`
+        # @return [Google::Apis::HealthV4::IrregularRhythmNotification]
+        attr_accessor :irregular_rhythm_notification
+      
         # Identifier. Data point name, only supported for the subset of identifiable
         # data types. For the majority of the data types, individual data points do not
         # need to be identified and this field would be empty. Format: `users/`user`/
@@ -1278,6 +1631,19 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Holds information about a user logged food. There are two ways of creating a
+        # nutrition log based on the food type: 1. Identified food: Using the food field,
+        # which is a reference to a Food resource. In this case fields `nutrients`, `
+        # energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
+        # food_display_name` will be populated based on the referenced food. 2.
+        # Anonymous food: Using the `food_display_name` field and setting the `nutrients`
+        # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields
+        # manually. The identified food is preferred over the anonymous food. Nutrition
+        # logs created from anonymous food are not be editable.
+        # Corresponds to the JSON property `nutritionLog`
+        # @return [Google::Apis::HealthV4::NutritionLog]
+        attr_accessor :nutrition_log
       
         # Captures the user's instantaneous oxygen saturation percentage (SpO2).
         # Corresponds to the JSON property `oxygenSaturation`
@@ -1339,12 +1705,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_energy_burned = args[:active_energy_burned] if args.key?(:active_energy_burned)
           @active_minutes = args[:active_minutes] if args.key?(:active_minutes)
           @active_zone_minutes = args[:active_zone_minutes] if args.key?(:active_zone_minutes)
           @activity_level = args[:activity_level] if args.key?(:activity_level)
           @altitude = args[:altitude] if args.key?(:altitude)
           @basal_energy_burned = args[:basal_energy_burned] if args.key?(:basal_energy_burned)
+          @blood_glucose = args[:blood_glucose] if args.key?(:blood_glucose)
           @body_fat = args[:body_fat] if args.key?(:body_fat)
+          @core_body_temperature = args[:core_body_temperature] if args.key?(:core_body_temperature)
           @daily_heart_rate_variability = args[:daily_heart_rate_variability] if args.key?(:daily_heart_rate_variability)
           @daily_heart_rate_zones = args[:daily_heart_rate_zones] if args.key?(:daily_heart_rate_zones)
           @daily_oxygen_saturation = args[:daily_oxygen_saturation] if args.key?(:daily_oxygen_saturation)
@@ -1354,13 +1723,18 @@ module Google
           @daily_vo2_max = args[:daily_vo2_max] if args.key?(:daily_vo2_max)
           @data_source = args[:data_source] if args.key?(:data_source)
           @distance = args[:distance] if args.key?(:distance)
+          @electrocardiogram = args[:electrocardiogram] if args.key?(:electrocardiogram)
           @exercise = args[:exercise] if args.key?(:exercise)
           @floors = args[:floors] if args.key?(:floors)
+          @food = args[:food] if args.key?(:food)
+          @food_measurement_unit = args[:food_measurement_unit] if args.key?(:food_measurement_unit)
           @heart_rate = args[:heart_rate] if args.key?(:heart_rate)
           @heart_rate_variability = args[:heart_rate_variability] if args.key?(:heart_rate_variability)
           @height = args[:height] if args.key?(:height)
           @hydration_log = args[:hydration_log] if args.key?(:hydration_log)
+          @irregular_rhythm_notification = args[:irregular_rhythm_notification] if args.key?(:irregular_rhythm_notification)
           @name = args[:name] if args.key?(:name)
+          @nutrition_log = args[:nutrition_log] if args.key?(:nutrition_log)
           @oxygen_saturation = args[:oxygen_saturation] if args.key?(:oxygen_saturation)
           @respiratory_rate_sleep_summary = args[:respiratory_rate_sleep_summary] if args.key?(:respiratory_rate_sleep_summary)
           @run_vo2_max = args[:run_vo2_max] if args.key?(:run_vo2_max)
@@ -1619,6 +1993,89 @@ module Google
         end
       end
       
+      # Represents an Electrocardiogram (ECG) measurement session. This data type is
+      # based on SaMD feature and any changes to it may require additional review.
+      class Electrocardiogram
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Average heart rate recorded during ECG reading in beats per minute.
+        # Corresponds to the JSON property `beatsPerMinuteAvg`
+        # @return [Fixnum]
+        attr_accessor :beats_per_minute_avg
+      
+        # Represents a time interval of session data point, which bundles multiple
+        # observed metrics together.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::HealthV4::SessionTimeInterval]
+        attr_accessor :interval
+      
+        # Optional. The number of leads used for ECG reading.
+        # Corresponds to the JSON property `leadNumber`
+        # @return [Fixnum]
+        attr_accessor :lead_number
+      
+        # Software as Medical Device (SaMD) metadata. Used to construct the Unique
+        # Device Identifier (UDI).
+        # Corresponds to the JSON property `medicalDeviceInfo`
+        # @return [Google::Apis::HealthV4::MedicalDeviceInfo]
+        attr_accessor :medical_device_info
+      
+        # Optional. The factor by which to divide waveform samples to get voltage in
+        # millivolts: millivolts = waveform_sample / millivolts_scaling_factor.
+        # Corresponds to the JSON property `millivoltsScalingFactor`
+        # @return [Fixnum]
+        attr_accessor :millivolts_scaling_factor
+      
+        # Optional. The result classification of the ECG reading.
+        # Corresponds to the JSON property `resultClassification`
+        # @return [String]
+        attr_accessor :result_classification
+      
+        # Optional. The sampling frequency of waveform samples in hertz.
+        # Corresponds to the JSON property `samplingFrequencyHertz`
+        # @return [Fixnum]
+        attr_accessor :sampling_frequency_hertz
+      
+        # Optional. An array of voltage values representing lead I ECG values. Each
+        # sample represents voltage difference in ECG graph. The first value in array
+        # corresponds to the start of the reading.
+        # Corresponds to the JSON property `waveformSamples`
+        # @return [Array<Fixnum>]
+        attr_accessor :waveform_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @beats_per_minute_avg = args[:beats_per_minute_avg] if args.key?(:beats_per_minute_avg)
+          @interval = args[:interval] if args.key?(:interval)
+          @lead_number = args[:lead_number] if args.key?(:lead_number)
+          @medical_device_info = args[:medical_device_info] if args.key?(:medical_device_info)
+          @millivolts_scaling_factor = args[:millivolts_scaling_factor] if args.key?(:millivolts_scaling_factor)
+          @result_classification = args[:result_classification] if args.key?(:result_classification)
+          @sampling_frequency_hertz = args[:sampling_frequency_hertz] if args.key?(:sampling_frequency_hertz)
+          @waveform_samples = args[:waveform_samples] if args.key?(:waveform_samples)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Authorization mechanism for a subscriber endpoint. For all requests sent by
       # the Webhooks service, the JSON payload is cryptographically signed. The
       # signature is delivered in the `X-HEALTHAPI-SIGNATURE` HTTP header. This is an
@@ -1653,6 +2110,56 @@ module Google
         def update!(**args)
           @secret = args[:secret] if args.key?(:secret)
           @secret_set = args[:secret_set] if args.key?(:secret_set)
+        end
+      end
+      
+      # Represents the energy quantity.
+      class EnergyQuantity
+        include Google::Apis::Core::Hashable
+      
+        # Required. Value representing the energy in kilocalories.
+        # Corresponds to the JSON property `kcal`
+        # @return [Float]
+        attr_accessor :kcal
+      
+        # Optional. Value representing the user provided unit.
+        # Corresponds to the JSON property `userProvidedUnit`
+        # @return [String]
+        attr_accessor :user_provided_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kcal = args[:kcal] if args.key?(:kcal)
+          @user_provided_unit = args[:user_provided_unit] if args.key?(:user_provided_unit)
+        end
+      end
+      
+      # Rollup for the energy quantity.
+      class EnergyQuantityRollup
+        include Google::Apis::Core::Hashable
+      
+        # Required. The sum of the energy in kilocalories.
+        # Corresponds to the JSON property `kcalSum`
+        # @return [Float]
+        attr_accessor :kcal_sum
+      
+        # Optional. The user provided unit on the last element.
+        # Corresponds to the JSON property `userProvidedUnitLast`
+        # @return [String]
+        attr_accessor :user_provided_unit_last
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kcal_sum = args[:kcal_sum] if args.key?(:kcal_sum)
+          @user_provided_unit_last = args[:user_provided_unit_last] if args.key?(:user_provided_unit_last)
         end
       end
       
@@ -1871,6 +2378,185 @@ module Google
         end
       end
       
+      # Represents a food item.
+      class Food
+        include Google::Apis::Core::Hashable
+      
+        # Required. The access level of the food.
+        # Corresponds to the JSON property `accessLevel`
+        # @return [String]
+        attr_accessor :access_level
+      
+        # Optional. The brand of the food.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # Represents different properties and information about the serving of a
+        # specific food.
+        # Corresponds to the JSON property `defaultServing`
+        # @return [Google::Apis::HealthV4::FoodServing]
+        attr_accessor :default_serving
+      
+        # Optional. The description of the food.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the food.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Represents the energy quantity.
+        # Corresponds to the JSON property `energyAvg`
+        # @return [Google::Apis::HealthV4::EnergyQuantity]
+        attr_accessor :energy_avg
+      
+        # Represents the energy quantity.
+        # Corresponds to the JSON property `energyFromFat`
+        # @return [Google::Apis::HealthV4::EnergyQuantity]
+        attr_accessor :energy_from_fat
+      
+        # Represents the energy quantity.
+        # Corresponds to the JSON property `energyMax`
+        # @return [Google::Apis::HealthV4::EnergyQuantity]
+        attr_accessor :energy_max
+      
+        # Represents the energy quantity.
+        # Corresponds to the JSON property `energyMin`
+        # @return [Google::Apis::HealthV4::EnergyQuantity]
+        attr_accessor :energy_min
+      
+        # Optional. The language code where the food is available in format xx-XX.
+        # Supported values are defined in Settings.food_language_code.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Optional. The meal type associated with this food.
+        # Corresponds to the JSON property `mealType`
+        # @return [String]
+        attr_accessor :meal_type
+      
+        # Optional. Value representing the nutrients of the food for the default serving.
+        # Corresponds to the JSON property `nutrients`
+        # @return [Array<Google::Apis::HealthV4::NutrientQuantity>]
+        attr_accessor :nutrients
+      
+        # Optional. The serving of the food.
+        # Corresponds to the JSON property `servings`
+        # @return [Array<Google::Apis::HealthV4::FoodServing>]
+        attr_accessor :servings
+      
+        # Represents the weight quantity.
+        # Corresponds to the JSON property `totalCarbohydrate`
+        # @return [Google::Apis::HealthV4::WeightQuantity]
+        attr_accessor :total_carbohydrate
+      
+        # Represents the weight quantity.
+        # Corresponds to the JSON property `totalFat`
+        # @return [Google::Apis::HealthV4::WeightQuantity]
+        attr_accessor :total_fat
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_level = args[:access_level] if args.key?(:access_level)
+          @brand = args[:brand] if args.key?(:brand)
+          @default_serving = args[:default_serving] if args.key?(:default_serving)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @energy_avg = args[:energy_avg] if args.key?(:energy_avg)
+          @energy_from_fat = args[:energy_from_fat] if args.key?(:energy_from_fat)
+          @energy_max = args[:energy_max] if args.key?(:energy_max)
+          @energy_min = args[:energy_min] if args.key?(:energy_min)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @meal_type = args[:meal_type] if args.key?(:meal_type)
+          @nutrients = args[:nutrients] if args.key?(:nutrients)
+          @servings = args[:servings] if args.key?(:servings)
+          @total_carbohydrate = args[:total_carbohydrate] if args.key?(:total_carbohydrate)
+          @total_fat = args[:total_fat] if args.key?(:total_fat)
+        end
+      end
+      
+      # Represents a food measurement unit.
+      class FoodMeasurementUnit
+        include Google::Apis::Core::Hashable
+      
+        # Required. The display name of the food measurement unit (e.g., "gram", "piece")
+        # .
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. The plural display name of the food measurement unit (e.g., "grams",
+        # "pieces").
+        # Corresponds to the JSON property `pluralDisplayName`
+        # @return [String]
+        attr_accessor :plural_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @plural_display_name = args[:plural_display_name] if args.key?(:plural_display_name)
+        end
+      end
+      
+      # Represents different properties and information about the serving of a
+      # specific food.
+      class FoodServing
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Amount of food consumed, fractional values are supported.
+        # Corresponds to the JSON property `amount`
+        # @return [Float]
+        attr_accessor :amount
+      
+        # Required. Food measurement unit
+        # Corresponds to the JSON property `foodMeasurementUnit`
+        # @return [String]
+        attr_accessor :food_measurement_unit
+      
+        # Output only. Legacy measurement unit for serving size in singular form (e.g. "
+        # piece", "gram").
+        # Corresponds to the JSON property `foodMeasurementUnitDisplayName`
+        # @return [String]
+        attr_accessor :food_measurement_unit_display_name
+      
+        # Output only. Legacy measurement unit for serving size in plural form (e.g. "
+        # pieces", "grams").
+        # Corresponds to the JSON property `foodMeasurementUnitDisplayNamePlural`
+        # @return [String]
+        attr_accessor :food_measurement_unit_display_name_plural
+      
+        # Optional. Value representing the multiplier used to compute the energy when
+        # using this serving instead of the default serving.
+        # Corresponds to the JSON property `multiplier`
+        # @return [Float]
+        attr_accessor :multiplier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @food_measurement_unit = args[:food_measurement_unit] if args.key?(:food_measurement_unit)
+          @food_measurement_unit_display_name = args[:food_measurement_unit_display_name] if args.key?(:food_measurement_unit_display_name)
+          @food_measurement_unit_display_name_plural = args[:food_measurement_unit_display_name_plural] if args.key?(:food_measurement_unit_display_name_plural)
+          @multiplier = args[:multiplier] if args.key?(:multiplier)
+        end
+      end
+      
       # Represents a type of health data a user can have data points recorded for. It
       # matches the parent resource of collection containing data points of the given
       # type. Clients currently do not need to interact with this resource directly.
@@ -1879,6 +2565,29 @@ module Google
       
         # Identifier. The resource name of the data type. Format: `users/`user`/
         # dataTypes/`data_type`` See DataPoint.name for examples and possible values.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents a user in the Google Health API. It matches the parent resource of
+      # collections owned by the user. Clients currently do not need to interact with
+      # this resource directly.
+      class GoogleDevicesandservicesHealthV4User
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the user. The ``user`` ID is a system-
+        # generated identifier, as described in Identity.health_user_id. Format: `users/`
+        # user``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1910,6 +2619,48 @@ module Google
         # Update properties of this object
         def update!(**args)
           @http_response = args[:http_response] if args.key?(:http_response)
+        end
+      end
+      
+      # A single heart beat measurement.
+      class HeartBeat
+        include Google::Apis::Core::Hashable
+      
+        # Required. The beats-per-minute value extrapolated from the time before the
+        # following heart beat. This is calculated as 60000 / rr, where rr is the gap
+        # between heart beats in milliseconds (IBI - Interbeat Interval).
+        # Corresponds to the JSON property `beatsPerMinute`
+        # @return [Fixnum]
+        attr_accessor :beats_per_minute
+      
+        # Civil time representation similar to google.type.DateTime, but ensures that
+        # neither the timezone nor the UTC offset can be set to avoid confusion between
+        # civil and physical time queries.
+        # Corresponds to the JSON property `civilTime`
+        # @return [Google::Apis::HealthV4::CivilDateTime]
+        attr_accessor :civil_time
+      
+        # Required. The time of the heart beat measurement.
+        # Corresponds to the JSON property `physicalTime`
+        # @return [String]
+        attr_accessor :physical_time
+      
+        # Required. The UTC offset of the user's timezone when the heart beat
+        # measurement occurred.
+        # Corresponds to the JSON property `utcOffset`
+        # @return [String]
+        attr_accessor :utc_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @beats_per_minute = args[:beats_per_minute] if args.key?(:beats_per_minute)
+          @civil_time = args[:civil_time] if args.key?(:civil_time)
+          @physical_time = args[:physical_time] if args.key?(:physical_time)
+          @utc_offset = args[:utc_offset] if args.key?(:utc_offset)
         end
       end
       
@@ -2297,6 +3048,93 @@ module Google
         end
       end
       
+      # Irregular Rhythm Notifications (IRN) Profile details. The Irregular Rhythm
+      # Notifications (IRN) feature checks for signs of atrial fibrillation (AFib).
+      # The IrnProfile details include information about the user's onboarding status,
+      # enrollment status, and the last update time of analyzable data for this
+      # feature.
+      class IrnProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Whether or not the user is currently enrolled in having their data
+        # processed for IRN alerts.
+        # Corresponds to the JSON property `enrollmentStatus`
+        # @return [Boolean]
+        attr_accessor :enrollment_status
+        alias_method :enrollment_status?, :enrollment_status
+      
+        # Identifier. The resource name of this IrnProfile resource. Format: `users/`
+        # user`/irnProfile` Example: `users/1234567890/irnProfile` or `users/me/
+        # irnProfile` The `user` ID is a system-generated Google Health API user ID, a
+        # string of 1-63 characters consisting of lowercase and uppercase letters,
+        # numbers, and hyphens. The literal `me` can also be used to refer to the
+        # authenticated user.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Whether or not the user has onboarded onto the IRN feature.
+        # Corresponds to the JSON property `onboardingStatus`
+        # @return [Boolean]
+        attr_accessor :onboarding_status
+        alias_method :onboarding_status?, :onboarding_status
+      
+        # Output only. The timestamp of the last piece of analyzable data synced by the
+        # user.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enrollment_status = args[:enrollment_status] if args.key?(:enrollment_status)
+          @name = args[:name] if args.key?(:name)
+          @onboarding_status = args[:onboarding_status] if args.key?(:onboarding_status)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents an Irregular Rhythm Notification alert, indicating a potential sign
+      # of atrial fibrillation (AFib). This data type is based on SaMD feature and any
+      # changes to it may require additional review.
+      class IrregularRhythmNotification
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The overlapping analysis windows that were used to evaluate rhythm
+        # for potential AFib, containing specific information about the user's heart
+        # rhythm.
+        # Corresponds to the JSON property `alertWindows`
+        # @return [Array<Google::Apis::HealthV4::AlertWindow>]
+        attr_accessor :alert_windows
+      
+        # Represents a time interval of session data point, which bundles multiple
+        # observed metrics together.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::HealthV4::SessionTimeInterval]
+        attr_accessor :interval
+      
+        # Software as Medical Device (SaMD) metadata. Used to construct the Unique
+        # Device Identifier (UDI).
+        # Corresponds to the JSON property `medicalDeviceInfo`
+        # @return [Google::Apis::HealthV4::MedicalDeviceInfo]
+        attr_accessor :medical_device_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_windows = args[:alert_windows] if args.key?(:alert_windows)
+          @interval = args[:interval] if args.key?(:interval)
+          @medical_device_info = args[:medical_device_info] if args.key?(:medical_device_info)
+        end
+      end
+      
       # Response containing raw data points matching the query
       class ListDataPointsResponse
         include Google::Apis::Core::Hashable
@@ -2319,6 +3157,32 @@ module Google
         def update!(**args)
           @data_points = args[:data_points] if args.key?(:data_points)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListPairedDevices.
+      class ListPairedDevicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The paired devices of the user.
+        # Corresponds to the JSON property `pairedDevices`
+        # @return [Array<Google::Apis::HealthV4::PairedDevice>]
+        attr_accessor :paired_devices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @paired_devices = args[:paired_devices] if args.key?(:paired_devices)
         end
       end
       
@@ -2351,6 +3215,78 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @subscribers = args[:subscribers] if args.key?(:subscribers)
           @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response message for ListSubscriptions.
+      class ListSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The subscriptions from the specified subscriber.
+        # Corresponds to the JSON property `subscriptions`
+        # @return [Array<Google::Apis::HealthV4::Subscription>]
+        attr_accessor :subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+        end
+      end
+      
+      # Software as Medical Device (SaMD) metadata. Used to construct the Unique
+      # Device Identifier (UDI).
+      class MedicalDeviceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The algorithm version used by the feature.
+        # Corresponds to the JSON property `algorithmVersion`
+        # @return [String]
+        attr_accessor :algorithm_version
+      
+        # Output only. The model name or device type of the compatible device used to
+        # collect the data.
+        # Corresponds to the JSON property `deviceModel`
+        # @return [String]
+        attr_accessor :device_model
+      
+        # Output only. The version of the feature/app running on the device.
+        # Corresponds to the JSON property `featureVersion`
+        # @return [String]
+        attr_accessor :feature_version
+      
+        # Output only. The firmware version running on the compatible device used to
+        # collect the data.
+        # Corresponds to the JSON property `firmwareVersion`
+        # @return [String]
+        attr_accessor :firmware_version
+      
+        # Output only. The service version used by the feature.
+        # Corresponds to the JSON property `serviceVersion`
+        # @return [String]
+        attr_accessor :service_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @algorithm_version = args[:algorithm_version] if args.key?(:algorithm_version)
+          @device_model = args[:device_model] if args.key?(:device_model)
+          @feature_version = args[:feature_version] if args.key?(:feature_version)
+          @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
+          @service_version = args[:service_version] if args.key?(:service_version)
         end
       end
       
@@ -2486,6 +3422,184 @@ module Google
           @avg_stride_length_millimeters = args[:avg_stride_length_millimeters] if args.key?(:avg_stride_length_millimeters)
           @avg_vertical_oscillation_millimeters = args[:avg_vertical_oscillation_millimeters] if args.key?(:avg_vertical_oscillation_millimeters)
           @avg_vertical_ratio = args[:avg_vertical_ratio] if args.key?(:avg_vertical_ratio)
+        end
+      end
+      
+      # Represents the quantity of a nutrient.
+      class NutrientQuantity
+        include Google::Apis::Core::Hashable
+      
+        # Required. Value representing the nutrient.
+        # Corresponds to the JSON property `nutrient`
+        # @return [String]
+        attr_accessor :nutrient
+      
+        # Represents the weight quantity.
+        # Corresponds to the JSON property `quantity`
+        # @return [Google::Apis::HealthV4::WeightQuantity]
+        attr_accessor :quantity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nutrient = args[:nutrient] if args.key?(:nutrient)
+          @quantity = args[:quantity] if args.key?(:quantity)
+        end
+      end
+      
+      # Nutrient quantity rollup.
+      class NutrientQuantityRollup
+        include Google::Apis::Core::Hashable
+      
+        # Required. Aggregated nutrient.
+        # Corresponds to the JSON property `nutrient`
+        # @return [String]
+        attr_accessor :nutrient
+      
+        # Rollup for the weight.
+        # Corresponds to the JSON property `quantity`
+        # @return [Google::Apis::HealthV4::WeightQuantityRollup]
+        attr_accessor :quantity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nutrient = args[:nutrient] if args.key?(:nutrient)
+          @quantity = args[:quantity] if args.key?(:quantity)
+        end
+      end
+      
+      # Holds information about a user logged food. There are two ways of creating a
+      # nutrition log based on the food type: 1. Identified food: Using the food field,
+      # which is a reference to a Food resource. In this case fields `nutrients`, `
+      # energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
+      # food_display_name` will be populated based on the referenced food. 2.
+      # Anonymous food: Using the `food_display_name` field and setting the `nutrients`
+      # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields
+      # manually. The identified food is preferred over the anonymous food. Nutrition
+      # logs created from anonymous food are not be editable.
+      class NutritionLog
+        include Google::Apis::Core::Hashable
+      
+        # Represents the energy quantity.
+        # Corresponds to the JSON property `energy`
+        # @return [Google::Apis::HealthV4::EnergyQuantity]
+        attr_accessor :energy
+      
+        # Represents the energy quantity.
+        # Corresponds to the JSON property `energyFromFat`
+        # @return [Google::Apis::HealthV4::EnergyQuantity]
+        attr_accessor :energy_from_fat
+      
+        # Required. Represents the food ID.
+        # Corresponds to the JSON property `food`
+        # @return [String]
+        attr_accessor :food
+      
+        # Value representing the display name of the food. For nutrition logs created
+        # from an identified food, this field will be populated based on the referenced
+        # food. For anonymous food, this field will be populated manually.
+        # Corresponds to the JSON property `foodDisplayName`
+        # @return [String]
+        attr_accessor :food_display_name
+      
+        # Represents a time interval of session data point, which bundles multiple
+        # observed metrics together.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::HealthV4::SessionTimeInterval]
+        attr_accessor :interval
+      
+        # Optional. Value representing the meal type of the nutrition log.
+        # Corresponds to the JSON property `mealType`
+        # @return [String]
+        attr_accessor :meal_type
+      
+        # Optional. Value representing the nutrients of the nutrition log.
+        # Corresponds to the JSON property `nutrients`
+        # @return [Array<Google::Apis::HealthV4::NutrientQuantity>]
+        attr_accessor :nutrients
+      
+        # Represents different properties and information about the serving of a
+        # specific food.
+        # Corresponds to the JSON property `serving`
+        # @return [Google::Apis::HealthV4::Serving]
+        attr_accessor :serving
+      
+        # Represents the weight quantity.
+        # Corresponds to the JSON property `totalCarbohydrate`
+        # @return [Google::Apis::HealthV4::WeightQuantity]
+        attr_accessor :total_carbohydrate
+      
+        # Represents the weight quantity.
+        # Corresponds to the JSON property `totalFat`
+        # @return [Google::Apis::HealthV4::WeightQuantity]
+        attr_accessor :total_fat
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @energy = args[:energy] if args.key?(:energy)
+          @energy_from_fat = args[:energy_from_fat] if args.key?(:energy_from_fat)
+          @food = args[:food] if args.key?(:food)
+          @food_display_name = args[:food_display_name] if args.key?(:food_display_name)
+          @interval = args[:interval] if args.key?(:interval)
+          @meal_type = args[:meal_type] if args.key?(:meal_type)
+          @nutrients = args[:nutrients] if args.key?(:nutrients)
+          @serving = args[:serving] if args.key?(:serving)
+          @total_carbohydrate = args[:total_carbohydrate] if args.key?(:total_carbohydrate)
+          @total_fat = args[:total_fat] if args.key?(:total_fat)
+        end
+      end
+      
+      # Represents the result of the rollup of the nutrition log data type.
+      class NutritionLogRollupValue
+        include Google::Apis::Core::Hashable
+      
+        # Rollup for the energy quantity.
+        # Corresponds to the JSON property `energy`
+        # @return [Google::Apis::HealthV4::EnergyQuantityRollup]
+        attr_accessor :energy
+      
+        # Rollup for the energy quantity.
+        # Corresponds to the JSON property `energyFromFat`
+        # @return [Google::Apis::HealthV4::EnergyQuantityRollup]
+        attr_accessor :energy_from_fat
+      
+        # List of the nutrient roll-ups by the nutrient type.
+        # Corresponds to the JSON property `nutrients`
+        # @return [Array<Google::Apis::HealthV4::NutrientQuantityRollup>]
+        attr_accessor :nutrients
+      
+        # Rollup for the weight.
+        # Corresponds to the JSON property `totalCarbohydrate`
+        # @return [Google::Apis::HealthV4::WeightQuantityRollup]
+        attr_accessor :total_carbohydrate
+      
+        # Rollup for the weight.
+        # Corresponds to the JSON property `totalFat`
+        # @return [Google::Apis::HealthV4::WeightQuantityRollup]
+        attr_accessor :total_fat
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @energy = args[:energy] if args.key?(:energy)
+          @energy_from_fat = args[:energy_from_fat] if args.key?(:energy_from_fat)
+          @nutrients = args[:nutrients] if args.key?(:nutrients)
+          @total_carbohydrate = args[:total_carbohydrate] if args.key?(:total_carbohydrate)
+          @total_fat = args[:total_fat] if args.key?(:total_fat)
         end
       end
       
@@ -2704,6 +3818,120 @@ module Google
         end
       end
       
+      # User's Paired 1P Device The PairedDevice details include information about the
+      # device type, battery status, battery level, last sync time, device version,
+      # mac address, and features.
+      class PairedDevice
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The battery level of the device.
+        # Corresponds to the JSON property `batteryLevel`
+        # @return [Fixnum]
+        attr_accessor :battery_level
+      
+        # Output only. The battery status of the device. Supported: High | Medium | Low |
+        # Empty
+        # Corresponds to the JSON property `batteryStatus`
+        # @return [String]
+        attr_accessor :battery_status
+      
+        # Output only. The device type. Supported: TRACKER | SCALE
+        # Corresponds to the JSON property `deviceType`
+        # @return [String]
+        attr_accessor :device_type
+      
+        # Output only. The product name of the device
+        # Corresponds to the JSON property `deviceVersion`
+        # @return [String]
+        attr_accessor :device_version
+      
+        # Output only. Lists of unique features supported by the device. Comprehensive
+        # list of supported features: **Fitness Tracking** - `ACTIVE_MINUTES`: Legacy
+        # active minutes. - `AUTOSTRIDE`: Automatic stride length calculation. - `
+        # BIKE_ONBOARDING`: Cycling UI support. - `CALORIES`: Daily burned calories. - `
+        # DISTANCE`: Daily distance tracking. - `ELEVATION`: Floors climbed. - `
+        # INACTIVITY_ALERTS`: Reminders to move. - `SEDENTARY_TIME`: Tracks inactive
+        # time. - `STEPS`: Daily steps. - `SWIM`: Swim tracking (laps/strokes). - `
+        # AUTORUN`: Automatic run detection. - `ACTIVE_ZONE_MINUTES`: Active Zone
+        # Minutes (AZM). **Heart Rate & Health** - `HEART_RATE`: Continuous heart rate (
+        # PPG). - `BAT_SIGNAL`: High/Low Heart Rate Alerts. **Advanced Sensors** - `SPO2`
+        # : Blood oxygen saturation. - `NIGHTTIME_OXYGEN_SATURATION`: Sleep SpO2. - `
+        # ESTIMATED_OXYGEN_VARIATION`: Estimated Oxygen Variation. - `EDA`:
+        # Electrodermal Activity (stress). - `SKIN_TEMPERATURE`: Skin temperature
+        # variation. - `INTERNAL_DEVICE_TEMPERATURE`: Internal device temperature. **
+        # Sleep & Wellness** - `SLEEP`: Basic sleep tracking. - `SMART_SLEEP`: Advanced
+        # sleep tracking (stages/score). - `BEDTIME_REMINDER`: Bedtime reminders. - `
+        # SOUNDSCAPE`: Snore and noise detection. **Advanced Workouts** - `WB`: Custom
+        # Workout Builder. - `AUTOCUES`: Auto Cues / Auto Lap. - `DWR_RUN`: Daily Run
+        # Recommendations. - `ADVANCED_RUNNING`: Advanced Running Dynamics (e.g., GCT,
+        # VO). **GPS & Location** - `GPS`: Built-in GPS. - `CONNECTED_GPS`: Connected
+        # GPS (uses phone). - `LOCATION_HINT`: Location helper. **Payments & NFC** - `
+        # PAYMENTS`: NFC payments (Fitbit Pay/Google Wallet). - `FELICA`: FeliCa support
+        # (Japan payments/transit). **Activity Detection** - `GROK`: SmartTrack
+        # automatic activity detection. - `RETRO_AR`: Retroactive Activity Recognition
+        # prompts. **Smart Features & UI** - `ALARMS`: Silent alarms. - `
+        # BLE_MUSIC_CONTROL`: BLE music control. - `MUSIC`: Direct music storage/control.
+        # - `YOUTUBE_MUSIC_SUPPORTED`: YouTube Music support. - `GALLERY`: App Gallery.
+        # - `TUTORIAL_SUPPORTED`: On-screen tutorials. - `SMILEY_EMOTE`: Legacy Zip face.
+        # - `MOBILE_TO_DEVICE_DEEPLINK`: Mobile to device settings deep link. - `
+        # HIDE_GALLERY`: Option to hide Gallery. - `HIDE_GOAL_SELECTION`: Option to hide
+        # goal selection. - `DIGITAL_WARRANTY_SUPPORTED`: Digital warranty display. - `
+        # DIRECT_DEVICE_SETTINGS_SUPPORTED`: Direct device settings management. **Gym HR
+        # Broadcasting** - `ASPEN_SUPPORTED`: Broadcast HR to gym equipment. - `
+        # ASPEN_REMOTE_UI_SUPPORTED`: Remote UI for HR sharing. **Privacy & Security** -
+        # `FINITE_IMPROBABILITY`: BLE Resolvable Private Address (RPA) privacy. - `
+        # DOMAIN_KEY_SYNC`: Domain key synchronization. **BLE Protocol** - `BONDING`:
+        # Secure BLE bonding. - `ADVERTISES_SERIAL`: Advertises serial number. - `
+        # STATUS_CHARACTERISTIC`: BLE Status Characteristic. - `
+        # TRACKER_CHANNEL_CHARACTERISTIC`: BLE Tracker Channel Characteristic. - `
+        # PING_CHARACTERISTIC`: BLE Ping Characteristic. **Cellular & Wi-Fi** - `
+        # MOBILE_DATA`: LTE cellular support. - `SINGLE_AP_WIFI`: Single AP Wi-Fi. - `
+        # MULTI_AP_WIFI`: Multi AP Wi-Fi. - `WIFI_FWUP`: Firmware updates over Wi-Fi. **
+        # Data Sync & Transfer** - `APP_SYNC`: Background app sync. - `LIVE_DATA`: Real-
+        # time data streaming. - `EVENT_BASED_SYNC_SUPPORTED`: Event-based sync. - `
+        # TIME_SERVICE`: Time synchronization service. - `REMOTE_FILE_PROVIDER`: Remote
+        # file transfer. - `DIRECT_COMMS_ALARMS`: Direct communication for alarms. - `
+        # DIRECT_COMMS_EXERCISE`: Direct communication for exercise. - `
+        # DIRECT_COMMS_BATTERY_ALERTS`: Direct communication for battery alerts. **
+        # Google Integrations** - `PARROT_TREE_SUPPORTED`: Find My Device support.
+        # Corresponds to the JSON property `features`
+        # @return [Array<String>]
+        attr_accessor :features
+      
+        # Output only. The time of last sync with the Fitbit mobile application.
+        # Corresponds to the JSON property `lastSyncTime`
+        # @return [String]
+        attr_accessor :last_sync_time
+      
+        # Output only. Mac ID number of the device.
+        # Corresponds to the JSON property `macAddress`
+        # @return [String]
+        attr_accessor :mac_address
+      
+        # Identifier. The resource name of this Device resource. Format: `users/`user`/
+        # pairedDevices/`paired_device`` Example: `users/1234567890/pairedDevices/123`
+        # or `users/me/pairedDevices/123`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @battery_level = args[:battery_level] if args.key?(:battery_level)
+          @battery_status = args[:battery_status] if args.key?(:battery_status)
+          @device_type = args[:device_type] if args.key?(:device_type)
+          @device_version = args[:device_version] if args.key?(:device_version)
+          @features = args[:features] if args.key?(:features)
+          @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
+          @mac_address = args[:mac_address] if args.key?(:mac_address)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Profile details.
       class Profile
         include Google::Apis::Core::Hashable
@@ -2814,6 +4042,11 @@ module Google
       class ReconciledDataPoint
         include Google::Apis::Core::Hashable
       
+        # Energy burned as part of an activity, excluding the basal energy burn.
+        # Corresponds to the JSON property `activeEnergyBurned`
+        # @return [Google::Apis::HealthV4::ActiveEnergyBurned]
+        attr_accessor :active_energy_burned
+      
         # Record of active minutes in a given time interval.
         # Corresponds to the JSON property `activeMinutes`
         # @return [Google::Apis::HealthV4::ActiveMinutes]
@@ -2841,10 +4074,21 @@ module Google
         # @return [Google::Apis::HealthV4::BasalEnergyBurned]
         attr_accessor :basal_energy_burned
       
+        # Represents a blood glucose level measurement. LINT: LEGACY_NAMES
+        # Corresponds to the JSON property `bloodGlucose`
+        # @return [Google::Apis::HealthV4::BloodGlucose]
+        attr_accessor :blood_glucose
+      
         # Body fat measurement.
         # Corresponds to the JSON property `bodyFat`
         # @return [Google::Apis::HealthV4::BodyFat]
         attr_accessor :body_fat
+      
+        # Core body temperature measurement, distinct from peripheral body temperature,
+        # reflects the temperature of the body's internal organs.
+        # Corresponds to the JSON property `coreBodyTemperature`
+        # @return [Google::Apis::HealthV4::CoreBodyTemperature]
+        attr_accessor :core_body_temperature
       
         # Represents the daily heart rate variability data type. At least one of the
         # following fields must be set: - `average_heart_rate_variability_milliseconds` -
@@ -2942,6 +4186,19 @@ module Google
         # @return [Google::Apis::HealthV4::HydrationLog]
         attr_accessor :hydration_log
       
+        # Holds information about a user logged food. There are two ways of creating a
+        # nutrition log based on the food type: 1. Identified food: Using the food field,
+        # which is a reference to a Food resource. In this case fields `nutrients`, `
+        # energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
+        # food_display_name` will be populated based on the referenced food. 2.
+        # Anonymous food: Using the `food_display_name` field and setting the `nutrients`
+        # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields
+        # manually. The identified food is preferred over the anonymous food. Nutrition
+        # logs created from anonymous food are not be editable.
+        # Corresponds to the JSON property `nutritionLog`
+        # @return [Google::Apis::HealthV4::NutritionLog]
+        attr_accessor :nutrition_log
+      
         # Captures the user's instantaneous oxygen saturation percentage (SpO2).
         # Corresponds to the JSON property `oxygenSaturation`
         # @return [Google::Apis::HealthV4::OxygenSaturation]
@@ -3002,12 +4259,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_energy_burned = args[:active_energy_burned] if args.key?(:active_energy_burned)
           @active_minutes = args[:active_minutes] if args.key?(:active_minutes)
           @active_zone_minutes = args[:active_zone_minutes] if args.key?(:active_zone_minutes)
           @activity_level = args[:activity_level] if args.key?(:activity_level)
           @altitude = args[:altitude] if args.key?(:altitude)
           @basal_energy_burned = args[:basal_energy_burned] if args.key?(:basal_energy_burned)
+          @blood_glucose = args[:blood_glucose] if args.key?(:blood_glucose)
           @body_fat = args[:body_fat] if args.key?(:body_fat)
+          @core_body_temperature = args[:core_body_temperature] if args.key?(:core_body_temperature)
           @daily_heart_rate_variability = args[:daily_heart_rate_variability] if args.key?(:daily_heart_rate_variability)
           @daily_heart_rate_zones = args[:daily_heart_rate_zones] if args.key?(:daily_heart_rate_zones)
           @daily_oxygen_saturation = args[:daily_oxygen_saturation] if args.key?(:daily_oxygen_saturation)
@@ -3023,6 +4283,7 @@ module Google
           @heart_rate_variability = args[:heart_rate_variability] if args.key?(:heart_rate_variability)
           @height = args[:height] if args.key?(:height)
           @hydration_log = args[:hydration_log] if args.key?(:hydration_log)
+          @nutrition_log = args[:nutrition_log] if args.key?(:nutrition_log)
           @oxygen_saturation = args[:oxygen_saturation] if args.key?(:oxygen_saturation)
           @respiratory_rate_sleep_summary = args[:respiratory_rate_sleep_summary] if args.key?(:respiratory_rate_sleep_summary)
           @run_vo2_max = args[:run_vo2_max] if args.key?(:run_vo2_max)
@@ -3225,6 +4486,11 @@ module Google
       class RollupDataPoint
         include Google::Apis::Core::Hashable
       
+        # Represents the result of the rollup of active energy burned.
+        # Corresponds to the JSON property `activeEnergyBurned`
+        # @return [Google::Apis::HealthV4::ActiveEnergyBurnedRollupValue]
+        attr_accessor :active_energy_burned
+      
         # Represents the result of the rollup of the active minutes data type.
         # Corresponds to the JSON property `activeMinutes`
         # @return [Google::Apis::HealthV4::ActiveMinutesRollupValue]
@@ -3245,6 +4511,12 @@ module Google
         # @return [Google::Apis::HealthV4::AltitudeRollupValue]
         attr_accessor :altitude
       
+        # Represents the result of the rollup of the blood glucose data type. LINT:
+        # LEGACY_NAMES
+        # Corresponds to the JSON property `bloodGlucose`
+        # @return [Google::Apis::HealthV4::BloodGlucoseRollupValue]
+        attr_accessor :blood_glucose
+      
         # Represents the result of the rollup of the body fat data type.
         # Corresponds to the JSON property `bodyFat`
         # @return [Google::Apis::HealthV4::BodyFatRollupValue]
@@ -3255,6 +4527,11 @@ module Google
         # Corresponds to the JSON property `caloriesInHeartRateZone`
         # @return [Google::Apis::HealthV4::CaloriesInHeartRateZoneRollupValue]
         attr_accessor :calories_in_heart_rate_zone
+      
+        # Represents the result of the rollup of the core body temperature data type.
+        # Corresponds to the JSON property `coreBodyTemperature`
+        # @return [Google::Apis::HealthV4::CoreBodyTemperatureRollupValue]
+        attr_accessor :core_body_temperature
       
         # Result of the rollup of the user's distance.
         # Corresponds to the JSON property `distance`
@@ -3280,6 +4557,11 @@ module Google
         # Corresponds to the JSON property `hydrationLog`
         # @return [Google::Apis::HealthV4::HydrationLogRollupValue]
         attr_accessor :hydration_log
+      
+        # Represents the result of the rollup of the nutrition log data type.
+        # Corresponds to the JSON property `nutritionLog`
+        # @return [Google::Apis::HealthV4::NutritionLogRollupValue]
+        attr_accessor :nutrition_log
       
         # Represents the result of the rollup of the user's daily heart rate variability
         # personal range.
@@ -3328,17 +4610,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_energy_burned = args[:active_energy_burned] if args.key?(:active_energy_burned)
           @active_minutes = args[:active_minutes] if args.key?(:active_minutes)
           @active_zone_minutes = args[:active_zone_minutes] if args.key?(:active_zone_minutes)
           @activity_level = args[:activity_level] if args.key?(:activity_level)
           @altitude = args[:altitude] if args.key?(:altitude)
+          @blood_glucose = args[:blood_glucose] if args.key?(:blood_glucose)
           @body_fat = args[:body_fat] if args.key?(:body_fat)
           @calories_in_heart_rate_zone = args[:calories_in_heart_rate_zone] if args.key?(:calories_in_heart_rate_zone)
+          @core_body_temperature = args[:core_body_temperature] if args.key?(:core_body_temperature)
           @distance = args[:distance] if args.key?(:distance)
           @end_time = args[:end_time] if args.key?(:end_time)
           @floors = args[:floors] if args.key?(:floors)
           @heart_rate = args[:heart_rate] if args.key?(:heart_rate)
           @hydration_log = args[:hydration_log] if args.key?(:hydration_log)
+          @nutrition_log = args[:nutrition_log] if args.key?(:nutrition_log)
           @run_vo2_max = args[:run_vo2_max] if args.key?(:run_vo2_max)
           @sedentary_period = args[:sedentary_period] if args.key?(:sedentary_period)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -3447,6 +4733,39 @@ module Google
         end
       end
       
+      # Represents different properties and information about the serving of a
+      # specific food.
+      class Serving
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Amount of food consumed, fractional values are supported.
+        # Corresponds to the JSON property `amount`
+        # @return [Float]
+        attr_accessor :amount
+      
+        # Required. Food measurement unit
+        # Corresponds to the JSON property `foodMeasurementUnit`
+        # @return [String]
+        attr_accessor :food_measurement_unit
+      
+        # Output only. Legacy measurement unit for serving size in singular form (e.g. "
+        # piece", "gram").
+        # Corresponds to the JSON property `foodMeasurementUnitDisplayName`
+        # @return [String]
+        attr_accessor :food_measurement_unit_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @food_measurement_unit = args[:food_measurement_unit] if args.key?(:food_measurement_unit)
+          @food_measurement_unit_display_name = args[:food_measurement_unit_display_name] if args.key?(:food_measurement_unit_display_name)
+        end
+      end
+      
       # Represents a time interval of session data point, which bundles multiple
       # observed metrics together.
       class SessionTimeInterval
@@ -3519,6 +4838,15 @@ module Google
         # Corresponds to the JSON property `distanceUnit`
         # @return [String]
         attr_accessor :distance_unit
+      
+        # Output only. The food language code derived from the user's food database.
+        # Possible values: `'en-US'`, `'en-GB'`, `'de-DE'`, `'es-ES'`, `'fr-FR'`, `'zh-
+        # CN'`, `'zh-TW'`, `'ja-JP'`, `'en-AU'`, `'en-CA'`, `'it-IT'`, `'ko-KR'`, `'es-
+        # MX'`, `'en-IN'`, `'en-SG'`, `'en-PH'`, `'en-IE'`, `'fr-CA'`. Updates to this
+        # field are currently not supported.
+        # Corresponds to the JSON property `foodLanguageCode`
+        # @return [String]
+        attr_accessor :food_language_code
       
         # Optional. The measurement unit defined in the user's account settings.
         # Corresponds to the JSON property `glucoseUnit`
@@ -3598,6 +4926,7 @@ module Google
         def update!(**args)
           @auto_stride_enabled = args[:auto_stride_enabled] if args.key?(:auto_stride_enabled)
           @distance_unit = args[:distance_unit] if args.key?(:distance_unit)
+          @food_language_code = args[:food_language_code] if args.key?(:food_language_code)
           @glucose_unit = args[:glucose_unit] if args.key?(:glucose_unit)
           @height_unit = args[:height_unit] if args.key?(:height_unit)
           @language_locale = args[:language_locale] if args.key?(:language_locale)
@@ -4102,6 +5431,52 @@ module Google
         end
       end
       
+      # A subscription to a data collection for a specific user, to be delivered to a
+      # subscriber.
+      class Subscription
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Data types subscribed to. A subscriber will only receive
+        # notifications for data types that are declared here. A subscription can only
+        # subscribe to the data types of the subscriber. The values should be in the
+        # format "users/`health_user_id`/dataTypes/`data_type`" where ``data_type`` is
+        # one of "altitude", "distance", "floors", "sleep", "steps", "weight".
+        # Corresponds to the JSON property `dataTypes`
+        # @return [Array<String>]
+        attr_accessor :data_types
+      
+        # Identifier. The resource name of the Subscription. Format: `projects/`project`/
+        # subscribers/`subscriber`/subscriptions/`subscription`` Example: `projects/my-
+        # project/subscribers/my-subscriber-123/subscriptions/my-subscription-456` The `
+        # project` ID is mandatory (6-30 characters, matching /a-z`6,30`/) The `
+        # subscriber` ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]`2,
+        # 34`[a-z0-9])/) if provided during creation, or system-generated otherwise. The
+        # `subscription` ID is user-settable (4-36 chars, matching /[a-z]([a-z0-9-]`2,34`
+        # [a-z0-9])/) or system-generated otherwise.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The resource name of the user for whom this subscription is active.
+        # Format: `users/`user`` where ``user`` is the public `healthUserId` as returned
+        # by the `GetIdentity` action in the profile PAPI (see `google.
+        # devicesandservices.health.v4main.HealthProfileService.GetIdentity`).
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_types = args[:data_types] if args.key?(:data_types)
+          @name = args[:name] if args.key?(:name)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
       # Swim lengths data over the time interval.
       class SwimLengthsData
         include Google::Apis::Core::Hashable
@@ -4461,6 +5836,56 @@ module Google
           @notes = args[:notes] if args.key?(:notes)
           @sample_time = args[:sample_time] if args.key?(:sample_time)
           @weight_grams = args[:weight_grams] if args.key?(:weight_grams)
+        end
+      end
+      
+      # Represents the weight quantity.
+      class WeightQuantity
+        include Google::Apis::Core::Hashable
+      
+        # Required. Value representing the weight in grams.
+        # Corresponds to the JSON property `grams`
+        # @return [Float]
+        attr_accessor :grams
+      
+        # Optional. Value representing the user provided unit.
+        # Corresponds to the JSON property `userProvidedUnit`
+        # @return [String]
+        attr_accessor :user_provided_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grams = args[:grams] if args.key?(:grams)
+          @user_provided_unit = args[:user_provided_unit] if args.key?(:user_provided_unit)
+        end
+      end
+      
+      # Rollup for the weight.
+      class WeightQuantityRollup
+        include Google::Apis::Core::Hashable
+      
+        # Required. The sum of the weight in grams.
+        # Corresponds to the JSON property `gramsSum`
+        # @return [Float]
+        attr_accessor :grams_sum
+      
+        # Optional. The user provided unit on the last element.
+        # Corresponds to the JSON property `userProvidedUnitLast`
+        # @return [String]
+        attr_accessor :user_provided_unit_last
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grams_sum = args[:grams_sum] if args.key?(:grams_sum)
+          @user_provided_unit_last = args[:user_provided_unit_last] if args.key?(:user_provided_unit_last)
         end
       end
       

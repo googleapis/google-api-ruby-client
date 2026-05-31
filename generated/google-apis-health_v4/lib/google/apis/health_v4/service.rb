@@ -245,6 +245,183 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a subscription for a specific user to a specific subscriber. This
+        # method requires the subscriber to have a `SubscriptionCreatePolicy` set to `
+        # MANUAL` for the given data types.
+        # @param [String] parent
+        #   Required. The parent subscriber. Format: projects/`project`/subscribers/`
+        #   subscriber` The `subscriber` ID is user-settable (4-36 characters, matching /[
+        #   a-z]([a-z0-9-]`2,34`[a-z0-9])/) if provided during creation, or system-
+        #   generated otherwise.
+        # @param [Google::Apis::HealthV4::CreateSubscriptionPayload] create_subscription_payload_object
+        # @param [String] subscription_id
+        #   Optional. The `subscription_id` is user-settable (4-36 chars, matching /[a-z]([
+        #   a-z0-9-]`2,34`[a-z0-9])/) or system-generated otherwise. If provided, the ID
+        #   must be unique within the parent subscriber.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthV4::Subscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthV4::Subscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_subscriber_subscription(parent, create_subscription_payload_object = nil, subscription_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v4/{+parent}/subscriptions', options)
+          command.request_representation = Google::Apis::HealthV4::CreateSubscriptionPayload::Representation
+          command.request_object = create_subscription_payload_object
+          command.response_representation = Google::Apis::HealthV4::Subscription::Representation
+          command.response_class = Google::Apis::HealthV4::Subscription
+          command.params['parent'] = parent unless parent.nil?
+          command.query['subscriptionId'] = subscription_id unless subscription_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a specific user subscription, stopping notifications for this user to
+        # this subscriber.
+        # @param [String] name
+        #   Required. The resource name of the subscription to delete. Format: `projects/`
+        #   project`/subscribers/`subscriber`/subscriptions/`subscription`` Example: `
+        #   projects/my-project/subscribers/my-subscriber-123/subscriptions/my-
+        #   subscription-456` The `subscriber` ID is user-settable (4-36 characters,
+        #   matching /[a-z]([a-z0-9-]`2,34`[a-z0-9])/) if provided during creation, or
+        #   system-generated otherwise. The `subscription` ID is user-settable (4-36
+        #   characters, matching /[a-z]([a-z0-9-]`2,34`[a-z0-9])/) or system-generated if
+        #   not provided during creation.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthV4::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthV4::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_subscriber_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v4/{+name}', options)
+          command.response_representation = Google::Apis::HealthV4::Empty::Representation
+          command.response_class = Google::Apis::HealthV4::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all active subscriptions for a given subscriber. This can be filtered,
+        # for example, by user or data type.
+        # @param [String] parent
+        #   Required. The parent subscriber. Format: projects/`project`/subscribers/`
+        #   subscriber` The `subscriber` ID is user-settable (4-36 characters, matching /[
+        #   a-z]([a-z0-9-]`2,34`[a-z0-9])/) if provided during creation, or system-
+        #   generated otherwise.
+        # @param [String] filter
+        #   Optional. A filter to apply to the list of subscriptions. The filter syntax is
+        #   described in https://google.aip.dev/160. The filter can be applied to the
+        #   following fields: - `user` - `data_type` The `user` identifier (e.g., `user1`
+        #   in `users/user1`) refers to the public `health_user_id` Example: user = "users/
+        #   user1" Example: user = "users/user1" OR user = "users/user2" Example: user = "
+        #   users/user1" AND (data_type = "sleep" OR data_type = "weight")
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of subscriptions to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 subscriptions will be
+        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListSubscriptions` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListSubscriptions` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthV4::ListSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthV4::ListSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_subscriber_subscriptions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/{+parent}/subscriptions', options)
+          command.response_representation = Google::Apis::HealthV4::ListSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::HealthV4::ListSubscriptionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the data types for an existing user subscription.
+        # @param [String] name
+        #   Identifier. The resource name of the Subscription. Format: `projects/`project`/
+        #   subscribers/`subscriber`/subscriptions/`subscription`` Example: `projects/my-
+        #   project/subscribers/my-subscriber-123/subscriptions/my-subscription-456` The `
+        #   project` ID is mandatory (6-30 characters, matching /a-z`6,30`/) The `
+        #   subscriber` ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]`2,
+        #   34`[a-z0-9])/) if provided during creation, or system-generated otherwise. The
+        #   `subscription` ID is user-settable (4-36 chars, matching /[a-z]([a-z0-9-]`2,34`
+        #   [a-z0-9])/) or system-generated otherwise.
+        # @param [Google::Apis::HealthV4::Subscription] subscription_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthV4::Subscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthV4::Subscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_subscriber_subscription(name, subscription_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v4/{+name}', options)
+          command.request_representation = Google::Apis::HealthV4::Subscription::Representation
+          command.request_object = subscription_object
+          command.response_representation = Google::Apis::HealthV4::Subscription::Representation
+          command.response_class = Google::Apis::HealthV4::Subscription
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the user's identity. It includes the legacy Fitbit user ID and the Google
         # user ID and it can be used by migrating clients to map identifiers between the
         # two systems.
@@ -271,6 +448,40 @@ module Google
           command = make_simple_command(:get, 'v4/{+name}', options)
           command.response_representation = Google::Apis::HealthV4::Identity::Representation
           command.response_class = Google::Apis::HealthV4::Identity
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns user's IRN Profile details.
+        # @param [String] name
+        #   Required. The resource name of the IRN Profile. Format: `users/`user`/
+        #   irnProfile` Example: `users/1234567890/irnProfile` or `users/me/irnProfile`
+        #   The `user` ID is a system-generated Google Health API user ID, a string of 1-
+        #   63 characters consisting of lowercase and uppercase letters, numbers, and
+        #   hyphens. The literal `me` can also be used to refer to the authenticated user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthV4::IrnProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthV4::IrnProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_irn_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/{+name}', options)
+          command.response_representation = Google::Apis::HealthV4::IrnProfile::Representation
+          command.response_class = Google::Apis::HealthV4::IrnProfile
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -646,29 +857,29 @@ module Google
         #   34:56"` - Daily summary date: - Pattern: ``daily_summary_data_type`.date` -
         #   Supported comparison operators: `>=`, `<` - Date literal expected in ISO 8601 `
         #   YYYY-MM-DD` format - Supported logical operators: `AND` - Example: - `
-        #   daily_heart_rate_variability.date < "2024-08-15"` - Session start time (**ECG
-        #   specific**): - Pattern: `electrocardiogram.interval.start_time` - Supported
-        #   comparison operators: `>=` - Timestamp literal expected in RFC-3339 format -
-        #   Example: - `electrocardiogram.interval.start_time >= "2024-08-14T12:34:56Z"` -
-        #   Note: Only filtering by start time is supported for ECG. Filtering by end time
-        #   (e.g., `electrocardiogram.interval.end_time`) is not supported. - Session
-        #   civil start time (**Excluding Sleep**): - Pattern: ``session_data_type`.
-        #   interval.civil_start_time` - Supported comparison operators: `>=`, `<` - Date
-        #   with optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format
-        #   - Supported logical operators: `AND` - Example: - `exercise.interval.
+        #   daily_heart_rate_variability.date < "2024-08-15"` - Session civil start time (*
+        #   *Excluding Sleep and ECG**): - Pattern: ``session_data_type`.interval.
+        #   civil_start_time` - Supported comparison operators: `>=`, `<` - Date with
+        #   optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format -
+        #   Supported logical operators: `AND` - Example: - `exercise.interval.
         #   civil_start_time >= "2023-11-24" AND exercise.interval.civil_start_time < "
         #   2023-11-25"` - `exercise.interval.civil_start_time >= "2024-08-14T12:34:56"` -
-        #   Session end time (**Sleep specific**): - Pattern: `sleep.interval.end_time` -
-        #   Supported comparison operators: `>=`, `<` - Timestamp literal expected in RFC-
-        #   3339 format - Supported logical operators: `AND`, `OR` - Example: - `sleep.
-        #   interval.end_time >= "2023-11-24T00:00:00Z" AND sleep.interval.end_time < "
-        #   2023-11-25T00:00:00Z"` - Session civil end time (**Sleep specific**): -
-        #   Pattern: `sleep.interval.civil_end_time` - Supported comparison operators: `>=`
-        #   , `<` - Date with optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:
-        #   mm:ss]` format - Supported logical operators: `AND`, `OR` - Example: - `sleep.
-        #   interval.civil_end_time >= "2023-11-24" AND sleep.interval.civil_end_time < "
-        #   2023-11-25"` Data points in the response will be ordered by the interval start
-        #   time in descending order.
+        #   Session start time (**ECG specific**): - Pattern: `electrocardiogram.interval.
+        #   start_time` - Supported comparison operators: `>=` - Timestamp literal
+        #   expected in RFC-3339 format - Example: - `electrocardiogram.interval.
+        #   start_time >= "2024-08-14T12:34:56Z"` - Note: Only filtering by start time is
+        #   supported for ECG. Filtering by end time (e.g., `electrocardiogram.interval.
+        #   end_time`) is not supported. - Session end time (**Sleep specific**): -
+        #   Pattern: `sleep.interval.end_time` - Supported comparison operators: `>=`, `<`
+        #   - Timestamp literal expected in RFC-3339 format - Supported logical operators:
+        #   `AND`, `OR` - Example: - `sleep.interval.end_time >= "2023-11-24T00:00:00Z"
+        #   AND sleep.interval.end_time < "2023-11-25T00:00:00Z"` - Session civil end time
+        #   (**Sleep specific**): - Pattern: `sleep.interval.civil_end_time` - Supported
+        #   comparison operators: `>=`, `<` - Date with optional time literal expected in
+        #   ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format - Supported logical operators: `AND`, `
+        #   OR` - Example: - `sleep.interval.civil_end_time >= "2023-11-24" AND sleep.
+        #   interval.civil_end_time < "2023-11-25"` Data points in the response will be
+        #   ordered by the interval start time in descending order.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of data points to return. If unspecified, at most
         #   1440 data points will be returned. The maximum page size is 10000; values
@@ -838,6 +1049,79 @@ module Google
           command.response_representation = Google::Apis::HealthV4::RollUpDataPointsResponse::Representation
           command.response_class = Google::Apis::HealthV4::RollUpDataPointsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns user's Device.
+        # @param [String] name
+        #   Required. The name of the device to retrieve. Format: users/`user`/devices/`
+        #   device`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthV4::PairedDevice] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthV4::PairedDevice]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_paired_device(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/{+name}', options)
+          command.response_representation = Google::Apis::HealthV4::PairedDevice::Representation
+          command.response_class = Google::Apis::HealthV4::PairedDevice
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the user's list of paired 1P trackers and smartwatches.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of devices. Format: users/`
+        #   user`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of devices to return. The service may return
+        #   fewer than this value. If unspecified, at most 5 devices will be returned. The
+        #   maximum value is 100. values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListPairedDevices` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListPairedDevices` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthV4::ListPairedDevicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthV4::ListPairedDevicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_user_paired_devices(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/{+parent}/pairedDevices', options)
+          command.response_representation = Google::Apis::HealthV4::ListPairedDevicesResponse::Representation
+          command.response_class = Google::Apis::HealthV4::ListPairedDevicesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

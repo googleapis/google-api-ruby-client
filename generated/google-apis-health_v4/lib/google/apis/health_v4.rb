@@ -36,8 +36,14 @@ module Google
       # See your Google Health activity and fitness data
       AUTH_GOOGLEHEALTH_ACTIVITY_AND_FITNESS_READONLY = 'https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly'
 
+      # See your Google Health ECG data
+      AUTH_GOOGLEHEALTH_ECG_READONLY = 'https://www.googleapis.com/auth/googlehealth.ecg.readonly'
+
       # See your Google Health health metrics and measurement data
       AUTH_GOOGLEHEALTH_HEALTH_METRICS_AND_MEASUREMENTS_READONLY = 'https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly'
+
+      # See your Google Health Irregular Rhythm Notifications data
+      AUTH_GOOGLEHEALTH_IRN_READONLY = 'https://www.googleapis.com/auth/googlehealth.irn.readonly'
 
       # See exercise GPS location data in Google Health
       AUTH_GOOGLEHEALTH_LOCATION_READONLY = 'https://www.googleapis.com/auth/googlehealth.location.readonly'
