@@ -724,15 +724,11 @@ module Google
         end
       end
       
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details. Content that is
-      # contextual to the place query.
+      # Content that is contextual to the place query.
       class GoogleMapsPlacesV1ContextualContent
         include Google::Apis::Core::Hashable
       
-        # Experimental: See https://developers.google.com/maps/documentation/places/web-
-        # service/experimental/places-generative for more details. Justifications for
-        # the place.
+        # Justifications for the place.
         # Corresponds to the JSON property `justifications`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustification>]
         attr_accessor :justifications
@@ -760,26 +756,21 @@ module Google
         end
       end
       
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details. Justifications for
-      # the place. Justifications answers the question of why a place could interest
-      # an end user.
+      # Justifications for the place. Justifications answers the question of why a
+      # place could interest an end user.
       class GoogleMapsPlacesV1ContextualContentJustification
         include Google::Apis::Core::Hashable
       
-        # Experimental: See https://developers.google.com/maps/documentation/places/web-
-        # service/experimental/places-generative for more details.
         # BusinessAvailabilityAttributes justifications. This shows some attributes a
         # business has that could interest an end user.
         # Corresponds to the JSON property `businessAvailabilityAttributesJustification`
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification]
         attr_accessor :business_availability_attributes_justification
       
-        # Experimental: See https://developers.google.com/maps/documentation/places/web-
-        # service/experimental/places-generative for more details. User review
-        # justifications. This highlights a section of the user review that would
-        # interest an end user. For instance, if the search query is "firewood pizza",
-        # the review justification highlights the text relevant to the search query.
+        # User review justifications. This highlights a section of the user review that
+        # would interest an end user. For instance, if the search query is "firewood
+        # pizza", the review justification highlights the text relevant to the search
+        # query.
         # Corresponds to the JSON property `reviewJustification`
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustificationReviewJustification]
         attr_accessor :review_justification
@@ -795,8 +786,6 @@ module Google
         end
       end
       
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details.
       # BusinessAvailabilityAttributes justifications. This shows some attributes a
       # business has that could interest an end user.
       class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification
@@ -832,11 +821,10 @@ module Google
         end
       end
       
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details. User review
-      # justifications. This highlights a section of the user review that would
-      # interest an end user. For instance, if the search query is "firewood pizza",
-      # the review justification highlights the text relevant to the search query.
+      # User review justifications. This highlights a section of the user review that
+      # would interest an end user. For instance, if the search query is "firewood
+      # pizza", the review justification highlights the text relevant to the search
+      # query.
       class GoogleMapsPlacesV1ContextualContentJustificationReviewJustification
         include Google::Apis::Core::Hashable
       
