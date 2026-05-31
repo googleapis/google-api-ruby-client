@@ -3653,6 +3653,13 @@ module Google
         # @return [String]
         attr_accessor :truncation_granularity
       
+        # A virtual field is a field that is not physically present in the underlying
+        # data schema, but is created through specific operations within the query
+        # builder model based on other fields in the schema.
+        # Corresponds to the JSON property `virtualField`
+        # @return [Google::Apis::LoggingV2::VirtualField]
+        attr_accessor :virtual_field
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3666,6 +3673,7 @@ module Google
           @regex_extraction = args[:regex_extraction] if args.key?(:regex_extraction)
           @sql_aggregation_function = args[:sql_aggregation_function] if args.key?(:sql_aggregation_function)
           @truncation_granularity = args[:truncation_granularity] if args.key?(:truncation_granularity)
+          @virtual_field = args[:virtual_field] if args.key?(:virtual_field)
         end
       end
       
@@ -4564,6 +4572,41 @@ module Google
           @bucket = args[:bucket] if args.key?(:bucket)
           @name = args[:name] if args.key?(:name)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # A virtual field is a field that is not physically present in the underlying
+      # data schema, but is created through specific operations within the query
+      # builder model based on other fields in the schema.
+      class VirtualField
+        include Google::Apis::Core::Hashable
+      
+        # The field sources that will be used to create the virtual field, based on the
+        # semantics of the virtual field type.The field sources must follow these rules,
+        # based on the virtual field type: - For VIRTUAL_FIELD_TYPE_UNSPECIFIED, this
+        # field must be empty. - For COALESCE, this field must be non-empty and include
+        # a minimum of two field sources. The underlying field sources must be actual
+        # projected fields that represent actual schema fields and that must not be
+        # transformed and aggregated in any way, except for casting. The type of all the
+        # underlying field sources must be equivalent so that picking one of them would
+        # result in the same value type.
+        # Corresponds to the JSON property `underlyingFieldSources`
+        # @return [Array<Google::Apis::LoggingV2::FieldSource>]
+        attr_accessor :underlying_field_sources
+      
+        # Required. The type of the virtual field.
+        # Corresponds to the JSON property `virtualFieldType`
+        # @return [String]
+        attr_accessor :virtual_field_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @underlying_field_sources = args[:underlying_field_sources] if args.key?(:underlying_field_sources)
+          @virtual_field_type = args[:virtual_field_type] if args.key?(:virtual_field_type)
         end
       end
       
