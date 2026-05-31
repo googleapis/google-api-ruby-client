@@ -920,7 +920,8 @@ module Google
         # f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #
         # fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #
         # b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #
-        # 094228, #42d692, #16a765
+        # 094228, #42d692, #16a765, #757575, #1e53b8, \#007286, #7858c3, #c2185b, #
+        # d93025, #54240e, #633e04, #521d28, #202124, \#083018
         # Corresponds to the JSON property `backgroundColor`
         # @return [String]
         attr_accessor :background_color
@@ -940,7 +941,8 @@ module Google
         # ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #
         # b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #
         # f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #
-        # 16a765
+        # 16a765, #757575, #1e53b8, \#007286, #7858c3, #c2185b, #d93025, #54240e, #
+        # 633e04, #521d28, #202124, \#083018
         # Corresponds to the JSON property `textColor`
         # @return [String]
         attr_accessor :text_color
@@ -1337,7 +1339,8 @@ module Google
       
         # The entire email message in an RFC 2822 formatted and base64url encoded string.
         # Returned in `messages.get` and `drafts.get` responses when the `format=RAW`
-        # parameter is supplied.
+        # parameter is supplied. @required gmail.users.drafts.create gmail.users.drafts.
+        # update
         # Corresponds to the JSON property `raw`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
