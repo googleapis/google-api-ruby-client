@@ -1369,6 +1369,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attack_complexity, as: 'attackComplexity'
+          property :attack_requirements, as: 'attackRequirements'
           property :attack_vector, as: 'attackVector'
           property :authentication, as: 'authentication'
           property :availability_impact, as: 'availabilityImpact'
@@ -1379,7 +1380,13 @@ module Google
           property :integrity_impact, as: 'integrityImpact'
           property :privileges_required, as: 'privilegesRequired'
           property :scope, as: 'scope'
+          property :subsequent_system_availability_impact, as: 'subsequentSystemAvailabilityImpact'
+          property :subsequent_system_confidentiality_impact, as: 'subsequentSystemConfidentialityImpact'
+          property :subsequent_system_integrity_impact, as: 'subsequentSystemIntegrityImpact'
           property :user_interaction, as: 'userInteraction'
+          property :vulnerable_system_availability_impact, as: 'vulnerableSystemAvailabilityImpact'
+          property :vulnerable_system_confidentiality_impact, as: 'vulnerableSystemConfidentialityImpact'
+          property :vulnerable_system_integrity_impact, as: 'vulnerableSystemIntegrityImpact'
         end
       end
       
