@@ -82,12 +82,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LocationData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PostalAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,8 +209,6 @@ module Google
       class GenerateInstantVerificationTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :location_data, as: 'locationData', class: Google::Apis::MybusinessverificationsV1::LocationData, decorator: Google::Apis::MybusinessverificationsV1::LocationData::Representation
-      
           property :location_id, as: 'locationId'
         end
       end
@@ -235,15 +227,6 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :verifications, as: 'verifications', class: Google::Apis::MybusinessverificationsV1::Verification, decorator: Google::Apis::MybusinessverificationsV1::Verification::Representation
       
-        end
-      end
-      
-      class LocationData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :address, as: 'address', class: Google::Apis::MybusinessverificationsV1::PostalAddress, decorator: Google::Apis::MybusinessverificationsV1::PostalAddress::Representation
-      
-          property :name, as: 'name'
         end
       end
       
