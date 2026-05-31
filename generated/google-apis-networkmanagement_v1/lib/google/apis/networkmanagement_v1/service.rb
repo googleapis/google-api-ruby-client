@@ -1189,6 +1189,10 @@ module Google
         # @param [String] name
         #   Required. Name of the resource. Format: projects/`project`/locations/`location`
         #   /networkMonitoringProviders/`network_monitoring_provider`
+        # @param [Boolean] private_connectivity_enabled
+        #   Optional. For Google Cloud MPs, this field indicates whether the Monitoring
+        #   Point is deployed in a Private Service Connect deployment. Not used for non-
+        #   Google Cloud MPs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1206,11 +1210,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_project_location_network_monitoring_provider_monitoring_point_config(name, fields: nil, quota_user: nil, options: nil, &block)
+        def generate_project_location_network_monitoring_provider_monitoring_point_config(name, private_connectivity_enabled: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:generateMonitoringPointConfig', options)
           command.response_representation = Google::Apis::NetworkmanagementV1::GenerateMonitoringPointConfigResponse::Representation
           command.response_class = Google::Apis::NetworkmanagementV1::GenerateMonitoringPointConfigResponse
           command.params['name'] = name unless name.nil?
+          command.query['privateConnectivityEnabled'] = private_connectivity_enabled unless private_connectivity_enabled.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1345,6 +1350,10 @@ module Google
         #   can be an IP address or FQDN.
         # @param [String] ntp_server_secondary_address
         #   Optional. Second NTP server.
+        # @param [Boolean] private_connectivity_enabled
+        #   Optional. For Google Cloud MPs, this field indicates whether the Monitoring
+        #   Point is deployed in a Private Service Connect deployment. Not used for non-
+        #   Google Cloud MPs.
         # @param [String] static_ip_address_dns_server_address
         #   Required. DNS server.
         # @param [String] static_ip_address_dns_server_secondary_address
@@ -1382,7 +1391,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def download_project_location_network_monitoring_provider_monitoring_point_install_script(parent, _password: nil, hostname: nil, monitoring_point_type: nil, ntp_server_address: nil, ntp_server_secondary_address: nil, static_ip_address_dns_server_address: nil, static_ip_address_dns_server_secondary_address: nil, static_ip_address_domain: nil, static_ip_address_gateway_address: nil, static_ip_address_ip_address: nil, static_ip_address_netmask: nil, time_zone_id: nil, time_zone_version: nil, use_dhcp: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def download_project_location_network_monitoring_provider_monitoring_point_install_script(parent, _password: nil, hostname: nil, monitoring_point_type: nil, ntp_server_address: nil, ntp_server_secondary_address: nil, private_connectivity_enabled: nil, static_ip_address_dns_server_address: nil, static_ip_address_dns_server_secondary_address: nil, static_ip_address_domain: nil, static_ip_address_gateway_address: nil, static_ip_address_ip_address: nil, static_ip_address_netmask: nil, time_zone_id: nil, time_zone_version: nil, use_dhcp: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/monitoringPoints:downloadInstallScript', options)
           command.response_representation = Google::Apis::NetworkmanagementV1::HttpBody::Representation
           command.response_class = Google::Apis::NetworkmanagementV1::HttpBody
@@ -1392,6 +1401,7 @@ module Google
           command.query['monitoringPointType'] = monitoring_point_type unless monitoring_point_type.nil?
           command.query['ntpServerAddress'] = ntp_server_address unless ntp_server_address.nil?
           command.query['ntpServerSecondaryAddress'] = ntp_server_secondary_address unless ntp_server_secondary_address.nil?
+          command.query['privateConnectivityEnabled'] = private_connectivity_enabled unless private_connectivity_enabled.nil?
           command.query['staticIpAddress.dnsServerAddress'] = static_ip_address_dns_server_address unless static_ip_address_dns_server_address.nil?
           command.query['staticIpAddress.dnsServerSecondaryAddress'] = static_ip_address_dns_server_secondary_address unless static_ip_address_dns_server_secondary_address.nil?
           command.query['staticIpAddress.domain'] = static_ip_address_domain unless static_ip_address_domain.nil?
