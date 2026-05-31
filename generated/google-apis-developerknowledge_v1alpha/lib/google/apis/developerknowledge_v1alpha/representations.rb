@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnswerCitation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnswerQueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -40,7 +46,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnswerReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchGetDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CitationSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DocumentReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchDocumentChunksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -68,6 +92,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :answer_text, as: 'answerText'
+          collection :citations, as: 'citations', class: Google::Apis::DeveloperknowledgeV1alpha::AnswerCitation, decorator: Google::Apis::DeveloperknowledgeV1alpha::AnswerCitation::Representation
+      
+          collection :references, as: 'references', class: Google::Apis::DeveloperknowledgeV1alpha::AnswerReference, decorator: Google::Apis::DeveloperknowledgeV1alpha::AnswerReference::Representation
+      
+        end
+      end
+      
+      class AnswerCitation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_index, as: 'endIndex'
+          collection :sources, as: 'sources', class: Google::Apis::DeveloperknowledgeV1alpha::CitationSource, decorator: Google::Apis::DeveloperknowledgeV1alpha::CitationSource::Representation
+      
+          property :start_index, as: 'startIndex'
         end
       end
       
@@ -86,11 +124,26 @@ module Google
         end
       end
       
+      class AnswerReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_reference, as: 'documentReference', class: Google::Apis::DeveloperknowledgeV1alpha::DocumentReference, decorator: Google::Apis::DeveloperknowledgeV1alpha::DocumentReference::Representation
+      
+        end
+      end
+      
       class BatchGetDocumentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :documents, as: 'documents', class: Google::Apis::DeveloperknowledgeV1alpha::Document, decorator: Google::Apis::DeveloperknowledgeV1alpha::Document::Representation
       
+        end
+      end
+      
+      class CitationSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference_index, as: 'referenceIndex'
         end
       end
       
@@ -116,6 +169,14 @@ module Google
       
           property :id, as: 'id'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class DocumentReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_chunk, as: 'documentChunk', class: Google::Apis::DeveloperknowledgeV1alpha::DocumentChunk, decorator: Google::Apis::DeveloperknowledgeV1alpha::DocumentChunk::Representation
+      
         end
       end
       

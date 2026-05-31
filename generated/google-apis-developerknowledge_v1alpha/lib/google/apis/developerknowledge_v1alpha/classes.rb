@@ -31,6 +31,16 @@ module Google
         # @return [String]
         attr_accessor :answer_text
       
+        # Output only. Contains citations for the answer.
+        # Corresponds to the JSON property `citations`
+        # @return [Array<Google::Apis::DeveloperknowledgeV1alpha::AnswerCitation>]
+        attr_accessor :citations
+      
+        # Output only. Contains references for the answer.
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::DeveloperknowledgeV1alpha::AnswerReference>]
+        attr_accessor :references
+      
         def initialize(**args)
            update!(**args)
         end
@@ -38,6 +48,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @answer_text = args[:answer_text] if args.key?(:answer_text)
+          @citations = args[:citations] if args.key?(:citations)
+          @references = args[:references] if args.key?(:references)
+        end
+      end
+      
+      # Citation info for a segment.
+      class AnswerCitation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates the end of the segment, measured in bytes (UTF-8
+        # unicode), exclusive. If there are multi-byte characters, such as non-ASCII
+        # characters, the index measurement is longer than the string length.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # Output only. Contains citation sources for the attributed segment.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::DeveloperknowledgeV1alpha::CitationSource>]
+        attr_accessor :sources
+      
+        # Output only. Indicates the start of the segment, measured in bytes (UTF-8
+        # unicode), inclusive. If there are multi-byte characters, such as non-ASCII
+        # characters, the index measurement is longer than the string length.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @sources = args[:sources] if args.key?(:sources)
+          @start_index = args[:start_index] if args.key?(:start_index)
         end
       end
       
@@ -79,6 +126,25 @@ module Google
         end
       end
       
+      # Represents a reference to a source.
+      class AnswerReference
+        include Google::Apis::Core::Hashable
+      
+        # Represents a reference to a document.
+        # Corresponds to the JSON property `documentReference`
+        # @return [Google::Apis::DeveloperknowledgeV1alpha::DocumentReference]
+        attr_accessor :document_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_reference = args[:document_reference] if args.key?(:document_reference)
+        end
+      end
+      
       # Response message for DeveloperKnowledge.BatchGetDocuments.
       class BatchGetDocumentsResponse
         include Google::Apis::Core::Hashable
@@ -95,6 +161,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @documents = args[:documents] if args.key?(:documents)
+        end
+      end
+      
+      # Citation source.
+      class CitationSource
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Contains the index of the Answer.AnswerReference in the `
+        # references` repeated field.
+        # Corresponds to the JSON property `referenceIndex`
+        # @return [Fixnum]
+        attr_accessor :reference_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference_index = args[:reference_index] if args.key?(:reference_index)
         end
       end
       
@@ -205,6 +291,28 @@ module Google
           @document = args[:document] if args.key?(:document)
           @id = args[:id] if args.key?(:id)
           @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Represents a reference to a document.
+      class DocumentReference
+        include Google::Apis::Core::Hashable
+      
+        # A DocumentChunk represents a piece of content from a Document in the
+        # DeveloperKnowledge corpus. To fetch the entire document content, pass the `
+        # parent` to DeveloperKnowledge.GetDocument or DeveloperKnowledge.
+        # BatchGetDocuments.
+        # Corresponds to the JSON property `documentChunk`
+        # @return [Google::Apis::DeveloperknowledgeV1alpha::DocumentChunk]
+        attr_accessor :document_chunk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_chunk = args[:document_chunk] if args.key?(:document_chunk)
         end
       end
       
