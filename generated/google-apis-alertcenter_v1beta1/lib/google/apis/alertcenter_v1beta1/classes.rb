@@ -1959,6 +1959,11 @@ module Google
       class RuleViolationInfo
         include Google::Apis::Core::Hashable
       
+        # Optional. Agent type that triggered the rule.
+        # Corresponds to the JSON property `agentType`
+        # @return [String]
+        attr_accessor :agent_type
+      
         # Source of the data.
         # Corresponds to the JSON property `dataSource`
         # @return [String]
@@ -2025,6 +2030,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_type = args[:agent_type] if args.key?(:agent_type)
           @data_source = args[:data_source] if args.key?(:data_source)
           @event_type = args[:event_type] if args.key?(:event_type)
           @match_info = args[:match_info] if args.key?(:match_info)
