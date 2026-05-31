@@ -346,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MigrateManagementVmsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MountDatastoreRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1153,6 +1159,15 @@ module Google
           property :update_time, as: 'updateTime'
           property :vmware_engine_network, as: 'vmwareEngineNetwork'
           property :vpc_network, as: 'vpcNetwork'
+        end
+      end
+      
+      class MigrateManagementVmsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :etag, as: 'etag'
+          property :request_id, as: 'requestId'
         end
       end
       
