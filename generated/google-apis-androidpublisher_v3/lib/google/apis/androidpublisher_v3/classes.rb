@@ -3499,7 +3499,7 @@ module Google
       end
       
       # Download metadata for split, standalone and universal APKs, as well as asset
-      # pack slices, signed with a given key. Next ID: 10
+      # pack slices, signed with a given key.
       class GeneratedApksPerSigningKey
         include Google::Apis::Core::Hashable
       
