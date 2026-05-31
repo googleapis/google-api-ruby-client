@@ -568,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VirtualField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WriteLogEntriesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1370,6 +1376,8 @@ module Google
           property :sql_aggregation_function, as: 'sqlAggregationFunction', class: Google::Apis::LoggingV2::FunctionApplication, decorator: Google::Apis::LoggingV2::FunctionApplication::Representation
       
           property :truncation_granularity, as: 'truncationGranularity'
+          property :virtual_field, as: 'virtualField', class: Google::Apis::LoggingV2::VirtualField, decorator: Google::Apis::LoggingV2::VirtualField::Representation
+      
         end
       end
       
@@ -1577,6 +1585,15 @@ module Google
       
           property :name, as: 'name'
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class VirtualField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :underlying_field_sources, as: 'underlyingFieldSources', class: Google::Apis::LoggingV2::FieldSource, decorator: Google::Apis::LoggingV2::FieldSource::Representation
+      
+          property :virtual_field_type, as: 'virtualFieldType'
         end
       end
       
