@@ -5075,7 +5075,11 @@ module Google
         # @param [String] app_id
         #   Optional. The CES App ID to filter diagnostics by.
         # @param [String] app_version
-        #   Optional. The CES App version to filter diagnostics by.
+        #   Optional. The CES App version to filter diagnostics by. Setting to "-" filters
+        #   to diagnostics created using "-" (the latest draft version). Note that reports
+        #   created at different times may correspond to different draft instructions.
+        #   Setting to "" (empty) retrieves all diagnostics for the app_id regardless of
+        #   version.
         # @param [String] filter
         #   Optional. A filter to apply to the list (e.g. `create_time > "2023-01-01T00:00:
         #   00Z"`).
