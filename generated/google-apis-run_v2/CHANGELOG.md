@@ -1,5 +1,9 @@
 # Release history for google-apis-run_v2
 
+### v0.115.0 (2026-05-31)
+
+* Regenerated from discovery document revision 20260522
+
 ### v0.114.0 (2026-05-17)
 
 * Regenerated from discovery document revision 20260512
