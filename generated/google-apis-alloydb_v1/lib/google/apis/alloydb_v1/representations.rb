@@ -598,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainIpAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1763,6 +1769,7 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_metadata, as: 'additionalMetadata'
           property :availability_configuration, as: 'availabilityConfiguration', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration::Representation
       
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupConfiguration, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupConfiguration::Representation
@@ -1784,6 +1791,9 @@ module Google
           property :id, as: 'id', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :instance_type, as: 'instanceType'
+          hash :internal_additional_metadata, as: 'internalAdditionalMetadata'
+          property :ip_address, as: 'ipAddress', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainIpAddress, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainIpAddress::Representation
+      
           property :is_deletion_protection_enabled, as: 'isDeletionProtectionEnabled'
           property :location, as: 'location'
           property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainMachineConfiguration, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainMachineConfiguration::Representation
@@ -1870,6 +1880,14 @@ module Google
           property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainIpAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_ip, as: 'privateIp'
+          property :public_ip, as: 'publicIp'
         end
       end
       
