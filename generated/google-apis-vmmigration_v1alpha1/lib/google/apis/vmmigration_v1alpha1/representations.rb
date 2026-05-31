@@ -1176,6 +1176,8 @@ module Google
       
           collection :disk_replica_zones, as: 'diskReplicaZones'
           property :disk_type, as: 'diskType'
+          collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1alpha1::PersistentDiskDefaults, decorator: Google::Apis::VmmigrationV1alpha1::PersistentDiskDefaults::Representation
+      
           property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_vtpm, as: 'enableVtpm'
           property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
