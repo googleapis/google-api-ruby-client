@@ -4381,6 +4381,12 @@ module Google
       class GoogleCloudContactcenterinsightsV1DiagnoseConversationsMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. The list of conversation IDs that were selected for this
+        # diagnosis.
+        # Corresponds to the JSON property `conversationIds`
+        # @return [Array<String>]
+        attr_accessor :conversation_ids
+      
         # Output only. The time the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -4439,6 +4445,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @conversation_ids = args[:conversation_ids] if args.key?(:conversation_ids)
           @create_time = args[:create_time] if args.key?(:create_time)
           @diagnostic_report = args[:diagnostic_report] if args.key?(:diagnostic_report)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -4472,9 +4479,10 @@ module Google
         # @return [String]
         attr_accessor :app_id
       
-        # Optional. Optional but highly recommended. ces app version. If provided,
-        # specific version of agent instruction will be retrieved. If empty or set to '-'
-        # , will use the latest draft version of instruction.
+        # Required. The CES App version of the agent. Setting to "-" uses the latest
+        # draft version. Note that the agent active during the conversation history may
+        # have different instructions or tool definitions compared with the latest draft
+        # version.
         # Corresponds to the JSON property `appVersion`
         # @return [String]
         attr_accessor :app_version
@@ -13724,6 +13732,12 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1DiagnoseConversationsMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. The list of conversation IDs that were selected for this
+        # diagnosis.
+        # Corresponds to the JSON property `conversationIds`
+        # @return [Array<String>]
+        attr_accessor :conversation_ids
+      
         # Output only. The time the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -13782,6 +13796,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @conversation_ids = args[:conversation_ids] if args.key?(:conversation_ids)
           @create_time = args[:create_time] if args.key?(:create_time)
           @diagnostic_report = args[:diagnostic_report] if args.key?(:diagnostic_report)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -13815,9 +13830,10 @@ module Google
         # @return [String]
         attr_accessor :app_id
       
-        # Optional. Optional but highly recommended. ces app version. If provided,
-        # specific version of agent instruction will be retrieved. If empty or set to '-'
-        # , will use the latest draft version of instruction.
+        # Required. The CES App version of the agent. Setting to "-" uses the latest
+        # draft version. Note that the agent active during the conversation history may
+        # have different instructions or tool definitions compared with the latest draft
+        # version.
         # Corresponds to the JSON property `appVersion`
         # @return [String]
         attr_accessor :app_version
@@ -20927,6 +20943,12 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainDiagnoseConversationsMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. The list of conversation IDs that were selected for this
+        # diagnosis.
+        # Corresponds to the JSON property `conversationIds`
+        # @return [Array<String>]
+        attr_accessor :conversation_ids
+      
         # Output only. The time the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -20985,6 +21007,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @conversation_ids = args[:conversation_ids] if args.key?(:conversation_ids)
           @create_time = args[:create_time] if args.key?(:create_time)
           @diagnostic_report = args[:diagnostic_report] if args.key?(:diagnostic_report)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -21018,9 +21041,10 @@ module Google
         # @return [String]
         attr_accessor :app_id
       
-        # Optional. Optional but highly recommended. ces app version. If provided,
-        # specific version of agent instruction will be retrieved. If empty or set to '-'
-        # , will use the latest draft version of instruction.
+        # Required. The CES App version of the agent. Setting to "-" uses the latest
+        # draft version. Note that the agent active during the conversation history may
+        # have different instructions or tool definitions compared with the latest draft
+        # version.
         # Corresponds to the JSON property `appVersion`
         # @return [String]
         attr_accessor :app_version

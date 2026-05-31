@@ -5424,6 +5424,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1DiagnoseConversationsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_ids, as: 'conversationIds'
           property :create_time, as: 'createTime'
           property :diagnostic_report, as: 'diagnosticReport', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReport, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DiagnosticReport::Representation
       
@@ -8110,6 +8111,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1DiagnoseConversationsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_ids, as: 'conversationIds'
           property :create_time, as: 'createTime'
           property :diagnostic_report, as: 'diagnosticReport', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DiagnosticReport, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DiagnosticReport::Representation
       
@@ -10149,6 +10151,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainDiagnoseConversationsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_ids, as: 'conversationIds'
           property :create_time, as: 'createTime'
           property :diagnostic_report, as: 'diagnosticReport', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDiagnosticReport, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDiagnosticReport::Representation
       
