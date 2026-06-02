@@ -204,6 +204,14 @@ RSpec.describe Google::Apis::Core::BaseService do
       expect(command.options.header['Accept-Encoding']).to eq('gzip')
     end
 
+    ['ACCEPT-ENCODING', 'Accept-Encoding', 'accept-encoding', :'ACCEPT-ENCODING', :'Accept-Encoding', :'accept-encoding'].each do |header_key|
+      it "should respect alternative capitalization/type of Accept-Encoding for #{header_key}" do
+        cmd = service.send(:make_storage_download_command, :get, 'zoo/animals', header: { header_key => 'identity' })
+        expect(cmd.options.header[header_key]).to eq('identity')
+        expect(cmd.options.header.keys.count { |k| k.to_s.casecmp('accept-encoding') == 0 }).to eq(1)
+      end
+    end
+
     include_examples 'with options'
   end
 
@@ -240,6 +248,14 @@ RSpec.describe Google::Apis::Core::BaseService do
 
     it 'should include Accept-Encoding header' do
       expect(command.options.header['Accept-Encoding']).to eq('gzip')
+    end
+
+    ['ACCEPT-ENCODING', 'Accept-Encoding', 'accept-encoding', :'ACCEPT-ENCODING', :'Accept-Encoding', :'accept-encoding'].each do |header_key|
+      it "should respect alternative capitalization/type of Accept-Encoding for #{header_key}" do
+        cmd = service.send(:make_storage_upload_command, :post, 'zoo/animals', header: { header_key => 'identity' })
+        expect(cmd.options.header[header_key]).to eq('identity')
+        expect(cmd.options.header.keys.count { |k| k.to_s.casecmp('accept-encoding') == 0 }).to eq(1)
+      end
     end
 
     include_examples 'with options'
