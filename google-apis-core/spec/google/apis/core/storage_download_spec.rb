@@ -42,6 +42,12 @@ RSpec.describe Google::Apis::Core::StorageDownloadCommand do
               ).to have_been_made
       end
 
+      it 'should include an Accept-Encoding header for media downloads' do
+        command.execute(client)
+        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['Accept-Encoding'].include?('gzip') }).to have_been_made
+      end
+
       it 'should receive content' do
         expect(received).to eql 'Hello world'
       end
