@@ -1956,12 +1956,22 @@ module Google
       class UpgradeInstanceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The Compute Engine image family resource name to upgrade to. Format:
+        # `projects/`project_id`/global/images/family/`image_family`` If specified, the
+        # instance will be upgraded to the latest image in the specified image family,
+        # allowing upgrades across image families. If not specified, the instance will
+        # be upgraded to the latest image in its current image family.
+        # Corresponds to the JSON property `imageFamily`
+        # @return [String]
+        attr_accessor :image_family
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @image_family = args[:image_family] if args.key?(:image_family)
         end
       end
       
