@@ -1,5 +1,11 @@
 # Release History
 
+### 0.19.0 (2026-06-04)
+
+#### Features
+
+* ruby 3.2 minimum ([#26608](https://github.com/googleapis/google-api-ruby-client/issues/26608)) 
+
 ### 0.18.0 (2025-05-22)
 
 #### Features
