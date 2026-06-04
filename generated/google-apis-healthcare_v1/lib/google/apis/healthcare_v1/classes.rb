@@ -2806,6 +2806,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :structured_storage_size_bytes
       
+        # The total amount of versioned storage used by versioned FHIR resources of this
+        # resource type in the store.
+        # Corresponds to the JSON property `versionedStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :versioned_storage_size_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2815,6 +2821,7 @@ module Google
           @count = args[:count] if args.key?(:count)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @structured_storage_size_bytes = args[:structured_storage_size_bytes] if args.key?(:structured_storage_size_bytes)
+          @versioned_storage_size_bytes = args[:versioned_storage_size_bytes] if args.key?(:versioned_storage_size_bytes)
         end
       end
       
