@@ -56,13 +56,6 @@ def run
     dirs.each { |dir| puts "  #{dir}" }
   end
 
-  if dirs.include? 'google-apis-core'
-    puts 'Installing local google-apis-core changes...'
-    Dir.chdir 'google-apis-core' do
-      exec ['toys', 'install', '--yes']
-    end
-  end
-
   dirs.each { |dir| run_in_dir dir }
 end
 
