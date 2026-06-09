@@ -20,7 +20,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.required_ruby_version = '>= 3.2'
-  gem.add_runtime_dependency 'addressable', '~> 2.8', '>= 2.8.7'
+  gem.add_runtime_dependency 'addressable', '~> 2.9'
   gem.add_runtime_dependency 'faraday', '~> 2.13'
   gem.add_runtime_dependency 'faraday-follow_redirects', '~> 0.3'
   gem.add_runtime_dependency 'googleauth', '~> 1.14'
