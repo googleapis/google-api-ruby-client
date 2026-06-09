@@ -1,5 +1,11 @@
 # Release History
 
+### 1.2.1 (2026-06-09)
+
+#### Bug Fixes
+
+* Add missing multi_json runtime dependency for representable ([#26612](https://github.com/googleapis/google-api-ruby-client/issues/26612)) ([16afc11](https://github.com/googleapis/google-api-ruby-client/commit/16afc118f58d64a1394f33b76133d69ce4632575)), closes [#26611](https://github.com/googleapis/google-api-ruby-client/issues/26611) [#26613](https://github.com/googleapis/google-api-ruby-client/issues/26613)
+
 ### 1.2.0 (2026-06-04)
 
 #### Features
