@@ -11,6 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# Avoid thread-safety issues with autoloading digest/sha2 in Bundler 4
+require "digest/sha2"
 
 expand :clean, paths: :gitignore
 
