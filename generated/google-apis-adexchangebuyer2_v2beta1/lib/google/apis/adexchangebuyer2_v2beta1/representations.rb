@@ -828,6 +828,7 @@ module Google
       class CompleteSetupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :external_deal_ids, as: 'externalDealIds'
         end
       end
       
