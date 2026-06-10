@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccurateTimeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdditionalIpRangesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,12 @@ module Google
       end
       
       class AdvancedMachineFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentSandboxConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ControlPlaneEgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ControlPlaneEndpointsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +352,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomImageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomNodeInit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DnsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +383,18 @@ module Google
       end
       
       class DatabaseEncryption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataplaneV2Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -443,6 +491,12 @@ module Google
       end
       
       class EvictionSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExclusionUntilEndOfSupport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -604,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InitScript
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IntraNodeVisibilityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -707,6 +767,12 @@ module Google
       end
       
       class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedMachineLearningDiagnosticsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -826,6 +892,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeCreationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeDrainConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -892,7 +964,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodePoolMaintenancePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodePoolUpgradeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeReadinessConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -970,6 +1054,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PodSnapshotConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1031,6 +1121,12 @@ module Google
       end
       
       class RayOperatorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RecurringMaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1114,6 +1210,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScheduleUpgradeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecondaryBootDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1127,6 +1229,12 @@ module Google
       end
       
       class SecretManagerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretSyncConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1246,6 +1354,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SlurmOperatorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SoleTenantConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1283,6 +1397,24 @@ module Google
       end
       
       class SwapConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SyncRotationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaintConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeOfDay
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1427,6 +1559,13 @@ module Google
         end
       end
       
+      class AccurateTimeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_ptp_kvm_time_sync, as: 'enablePtpKvmTimeSync'
+        end
+      end
+      
       class AdditionalIpRangesConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1467,6 +1606,8 @@ module Google
       class AddonsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_sandbox_config, as: 'agentSandboxConfig', class: Google::Apis::ContainerV1::AgentSandboxConfig, decorator: Google::Apis::ContainerV1::AgentSandboxConfig::Representation
+      
           property :cloud_run_config, as: 'cloudRunConfig', class: Google::Apis::ContainerV1::CloudRunConfig, decorator: Google::Apis::ContainerV1::CloudRunConfig::Representation
       
           property :config_connector_config, as: 'configConnectorConfig', class: Google::Apis::ContainerV1::ConfigConnectorConfig, decorator: Google::Apis::ContainerV1::ConfigConnectorConfig::Representation
@@ -1493,11 +1634,17 @@ module Google
       
           property :network_policy_config, as: 'networkPolicyConfig', class: Google::Apis::ContainerV1::NetworkPolicyConfig, decorator: Google::Apis::ContainerV1::NetworkPolicyConfig::Representation
       
+          property :node_readiness_config, as: 'nodeReadinessConfig', class: Google::Apis::ContainerV1::NodeReadinessConfig, decorator: Google::Apis::ContainerV1::NodeReadinessConfig::Representation
+      
           property :parallelstore_csi_driver_config, as: 'parallelstoreCsiDriverConfig', class: Google::Apis::ContainerV1::ParallelstoreCsiDriverConfig, decorator: Google::Apis::ContainerV1::ParallelstoreCsiDriverConfig::Representation
+      
+          property :pod_snapshot_config, as: 'podSnapshotConfig', class: Google::Apis::ContainerV1::PodSnapshotConfig, decorator: Google::Apis::ContainerV1::PodSnapshotConfig::Representation
       
           property :ray_operator_config, as: 'rayOperatorConfig', class: Google::Apis::ContainerV1::RayOperatorConfig, decorator: Google::Apis::ContainerV1::RayOperatorConfig::Representation
       
           property :slice_controller_config, as: 'sliceControllerConfig', class: Google::Apis::ContainerV1::SliceControllerConfig, decorator: Google::Apis::ContainerV1::SliceControllerConfig::Representation
+      
+          property :slurm_operator_config, as: 'slurmOperatorConfig', class: Google::Apis::ContainerV1::SlurmOperatorConfig, decorator: Google::Apis::ContainerV1::SlurmOperatorConfig::Representation
       
           property :stateful_ha_config, as: 'statefulHaConfig', class: Google::Apis::ContainerV1::StatefulHaConfig, decorator: Google::Apis::ContainerV1::StatefulHaConfig::Representation
       
@@ -1519,6 +1666,13 @@ module Google
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :performance_monitoring_unit, as: 'performanceMonitoringUnit'
           property :threads_per_core, :numeric_string => true, as: 'threadsPerCore'
+        end
+      end
+      
+      class AgentSandboxConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -1562,6 +1716,8 @@ module Google
       class Autopilot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_policy_config, as: 'clusterPolicyConfig', class: Google::Apis::ContainerV1::ClusterPolicyConfig, decorator: Google::Apis::ContainerV1::ClusterPolicyConfig::Representation
+      
           property :enabled, as: 'enabled'
           property :privileged_admission_config, as: 'privilegedAdmissionConfig', class: Google::Apis::ContainerV1::PrivilegedAdmissionConfig, decorator: Google::Apis::ContainerV1::PrivilegedAdmissionConfig::Representation
       
@@ -1770,6 +1926,8 @@ module Google
       
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
       
+          property :control_plane_egress, as: 'controlPlaneEgress', class: Google::Apis::ContainerV1::ControlPlaneEgress, decorator: Google::Apis::ContainerV1::ControlPlaneEgress::Representation
+      
           property :control_plane_endpoints_config, as: 'controlPlaneEndpointsConfig', class: Google::Apis::ContainerV1::ControlPlaneEndpointsConfig, decorator: Google::Apis::ContainerV1::ControlPlaneEndpointsConfig::Representation
       
           property :cost_management_config, as: 'costManagementConfig', class: Google::Apis::ContainerV1::CostManagementConfig, decorator: Google::Apis::ContainerV1::CostManagementConfig::Representation
@@ -1814,6 +1972,8 @@ module Google
           property :logging_service, as: 'loggingService'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1::MaintenancePolicy, decorator: Google::Apis::ContainerV1::MaintenancePolicy::Representation
       
+          property :managed_machine_learning_diagnostics_config, as: 'managedMachineLearningDiagnosticsConfig', class: Google::Apis::ContainerV1::ManagedMachineLearningDiagnosticsConfig, decorator: Google::Apis::ContainerV1::ManagedMachineLearningDiagnosticsConfig::Representation
+      
           property :managed_opentelemetry_config, as: 'managedOpentelemetryConfig', class: Google::Apis::ContainerV1::ManagedOpenTelemetryConfig, decorator: Google::Apis::ContainerV1::ManagedOpenTelemetryConfig::Representation
       
           property :master_auth, as: 'masterAuth', class: Google::Apis::ContainerV1::MasterAuth, decorator: Google::Apis::ContainerV1::MasterAuth::Representation
@@ -1832,6 +1992,8 @@ module Google
           property :network_policy, as: 'networkPolicy', class: Google::Apis::ContainerV1::NetworkPolicy, decorator: Google::Apis::ContainerV1::NetworkPolicy::Representation
       
           property :node_config, as: 'nodeConfig', class: Google::Apis::ContainerV1::NodeConfig, decorator: Google::Apis::ContainerV1::NodeConfig::Representation
+      
+          property :node_creation_config, as: 'nodeCreationConfig', class: Google::Apis::ContainerV1::NodeCreationConfig, decorator: Google::Apis::ContainerV1::NodeCreationConfig::Representation
       
           property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
           property :node_pool_auto_config, as: 'nodePoolAutoConfig', class: Google::Apis::ContainerV1::NodePoolAutoConfig, decorator: Google::Apis::ContainerV1::NodePoolAutoConfig::Representation
@@ -1857,7 +2019,11 @@ module Google
       
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :schedule_upgrade_config, as: 'scheduleUpgradeConfig', class: Google::Apis::ContainerV1::ScheduleUpgradeConfig, decorator: Google::Apis::ContainerV1::ScheduleUpgradeConfig::Representation
+      
           property :secret_manager_config, as: 'secretManagerConfig', class: Google::Apis::ContainerV1::SecretManagerConfig, decorator: Google::Apis::ContainerV1::SecretManagerConfig::Representation
+      
+          property :secret_sync_config, as: 'secretSyncConfig', class: Google::Apis::ContainerV1::SecretSyncConfig, decorator: Google::Apis::ContainerV1::SecretSyncConfig::Representation
       
           property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::ContainerV1::SecurityPostureConfig, decorator: Google::Apis::ContainerV1::SecurityPostureConfig::Representation
       
@@ -1902,6 +2068,16 @@ module Google
         end
       end
       
+      class ClusterPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_standard_node_pools, as: 'noStandardNodePools'
+          property :no_system_impersonation, as: 'noSystemImpersonation'
+          property :no_system_mutation, as: 'noSystemMutation'
+          property :no_unsafe_webhooks, as: 'noUnsafeWebhooks'
+        end
+      end
+      
       class ClusterUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1917,6 +2093,8 @@ module Google
       
           property :desired_auto_ipam_config, as: 'desiredAutoIpamConfig', class: Google::Apis::ContainerV1::AutoIpamConfig, decorator: Google::Apis::ContainerV1::AutoIpamConfig::Representation
       
+          property :desired_autopilot_cluster_policy_config, as: 'desiredAutopilotClusterPolicyConfig', class: Google::Apis::ContainerV1::ClusterPolicyConfig, decorator: Google::Apis::ContainerV1::ClusterPolicyConfig::Representation
+      
           property :desired_autopilot_workload_policy_config, as: 'desiredAutopilotWorkloadPolicyConfig', class: Google::Apis::ContainerV1::WorkloadPolicyConfig, decorator: Google::Apis::ContainerV1::WorkloadPolicyConfig::Representation
       
           property :desired_binary_authorization, as: 'desiredBinaryAuthorization', class: Google::Apis::ContainerV1::BinaryAuthorization, decorator: Google::Apis::ContainerV1::BinaryAuthorization::Representation
@@ -1926,6 +2104,8 @@ module Google
           property :desired_compliance_posture_config, as: 'desiredCompliancePostureConfig', class: Google::Apis::ContainerV1::CompliancePostureConfig, decorator: Google::Apis::ContainerV1::CompliancePostureConfig::Representation
       
           property :desired_containerd_config, as: 'desiredContainerdConfig', class: Google::Apis::ContainerV1::ContainerdConfig, decorator: Google::Apis::ContainerV1::ContainerdConfig::Representation
+      
+          property :desired_control_plane_egress, as: 'desiredControlPlaneEgress', class: Google::Apis::ContainerV1::ControlPlaneEgress, decorator: Google::Apis::ContainerV1::ControlPlaneEgress::Representation
       
           property :desired_control_plane_endpoints_config, as: 'desiredControlPlaneEndpointsConfig', class: Google::Apis::ContainerV1::ControlPlaneEndpointsConfig, decorator: Google::Apis::ContainerV1::ControlPlaneEndpointsConfig::Representation
       
@@ -1954,6 +2134,8 @@ module Google
       
           property :desired_identity_service_config, as: 'desiredIdentityServiceConfig', class: Google::Apis::ContainerV1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1::IdentityServiceConfig::Representation
       
+          property :desired_image, as: 'desiredImage'
+          property :desired_image_project, as: 'desiredImageProject'
           property :desired_image_type, as: 'desiredImageType'
           property :desired_in_transit_encryption_config, as: 'desiredInTransitEncryptionConfig'
           property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1::IntraNodeVisibilityConfig::Representation
@@ -1966,6 +2148,8 @@ module Google
           property :desired_logging_config, as: 'desiredLoggingConfig', class: Google::Apis::ContainerV1::LoggingConfig, decorator: Google::Apis::ContainerV1::LoggingConfig::Representation
       
           property :desired_logging_service, as: 'desiredLoggingService'
+          property :desired_managed_machine_learning_diagnostics_config, as: 'desiredManagedMachineLearningDiagnosticsConfig', class: Google::Apis::ContainerV1::ManagedMachineLearningDiagnosticsConfig, decorator: Google::Apis::ContainerV1::ManagedMachineLearningDiagnosticsConfig::Representation
+      
           property :desired_managed_opentelemetry_config, as: 'desiredManagedOpentelemetryConfig', class: Google::Apis::ContainerV1::ManagedOpenTelemetryConfig, decorator: Google::Apis::ContainerV1::ManagedOpenTelemetryConfig::Representation
       
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig::Representation
@@ -1979,6 +2163,8 @@ module Google
           property :desired_network_performance_config, as: 'desiredNetworkPerformanceConfig', class: Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig, decorator: Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig::Representation
       
           property :desired_network_tier_config, as: 'desiredNetworkTierConfig', class: Google::Apis::ContainerV1::NetworkTierConfig, decorator: Google::Apis::ContainerV1::NetworkTierConfig::Representation
+      
+          property :desired_node_creation_config, as: 'desiredNodeCreationConfig', class: Google::Apis::ContainerV1::NodeCreationConfig, decorator: Google::Apis::ContainerV1::NodeCreationConfig::Representation
       
           property :desired_node_kubelet_config, as: 'desiredNodeKubeletConfig', class: Google::Apis::ContainerV1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1::NodeKubeletConfig::Representation
       
@@ -2014,6 +2200,8 @@ module Google
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
       
           property :desired_secret_manager_config, as: 'desiredSecretManagerConfig', class: Google::Apis::ContainerV1::SecretManagerConfig, decorator: Google::Apis::ContainerV1::SecretManagerConfig::Representation
+      
+          property :desired_secret_sync_config, as: 'desiredSecretSyncConfig', class: Google::Apis::ContainerV1::SecretSyncConfig, decorator: Google::Apis::ContainerV1::SecretSyncConfig::Representation
       
           property :desired_security_posture_config, as: 'desiredSecurityPostureConfig', class: Google::Apis::ContainerV1::SecurityPostureConfig, decorator: Google::Apis::ContainerV1::SecurityPostureConfig::Representation
       
@@ -2120,6 +2308,13 @@ module Google
         end
       end
       
+      class ControlPlaneEgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+        end
+      end
+      
       class ControlPlaneEndpointsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2167,6 +2362,23 @@ module Google
         end
       end
       
+      class CustomImageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image'
+          property :image_family, as: 'imageFamily'
+          property :image_project, as: 'imageProject'
+        end
+      end
+      
+      class CustomNodeInit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :init_script, as: 'initScript', class: Google::Apis::ContainerV1::InitScript, decorator: Google::Apis::ContainerV1::InitScript::Representation
+      
+        end
+      end
+      
       class DnsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2204,6 +2416,22 @@ module Google
           collection :last_operation_errors, as: 'lastOperationErrors', class: Google::Apis::ContainerV1::OperationError, decorator: Google::Apis::ContainerV1::OperationError::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class DataplaneV2Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scalability_mode, as: 'scalabilityMode'
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
@@ -2341,6 +2569,15 @@ module Google
           property :nodefs_available, as: 'nodefsAvailable'
           property :nodefs_inodes_free, as: 'nodefsInodesFree'
           property :pid_available, as: 'pidAvailable'
+        end
+      end
+      
+      class ExclusionUntilEndOfSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -2587,6 +2824,16 @@ module Google
         end
       end
       
+      class InitScript
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          property :gcp_secret_manager_secret_uri, as: 'gcpSecretManagerSecretUri'
+          property :gcs_generation, :numeric_string => true, as: 'gcsGeneration'
+          property :gcs_uri, as: 'gcsUri'
+        end
+      end
+      
       class IntraNodeVisibilityConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2633,7 +2880,11 @@ module Google
       class LinuxNodeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accurate_time_config, as: 'accurateTimeConfig', class: Google::Apis::ContainerV1::AccurateTimeConfig, decorator: Google::Apis::ContainerV1::AccurateTimeConfig::Representation
+      
           property :cgroup_mode, as: 'cgroupMode'
+          property :custom_node_init, as: 'customNodeInit', class: Google::Apis::ContainerV1::CustomNodeInit, decorator: Google::Apis::ContainerV1::CustomNodeInit::Representation
+      
           property :hugepages, as: 'hugepages', class: Google::Apis::ContainerV1::HugepagesConfig, decorator: Google::Apis::ContainerV1::HugepagesConfig::Representation
       
           property :node_kernel_module_loading, as: 'nodeKernelModuleLoading', class: Google::Apis::ContainerV1::NodeKernelModuleLoading, decorator: Google::Apis::ContainerV1::NodeKernelModuleLoading::Representation
@@ -2713,6 +2964,7 @@ module Google
       class LustreCsiDriverConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_multi_nic, as: 'disableMultiNic'
           property :enable_legacy_lustre_port, as: 'enableLegacyLustrePort'
           property :enabled, as: 'enabled'
         end
@@ -2744,8 +2996,17 @@ module Google
       
           hash :maintenance_exclusions, as: 'maintenanceExclusions', class: Google::Apis::ContainerV1::TimeWindow, decorator: Google::Apis::ContainerV1::TimeWindow::Representation
       
+          property :recurring_maintenance_window, as: 'recurringMaintenanceWindow', class: Google::Apis::ContainerV1::RecurringMaintenanceWindow, decorator: Google::Apis::ContainerV1::RecurringMaintenanceWindow::Representation
+      
           property :recurring_window, as: 'recurringWindow', class: Google::Apis::ContainerV1::RecurringTimeWindow, decorator: Google::Apis::ContainerV1::RecurringTimeWindow::Representation
       
+        end
+      end
+      
+      class ManagedMachineLearningDiagnosticsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -2843,6 +3104,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datapath_provider, as: 'datapathProvider'
+          property :dataplane_v2_config, as: 'dataplaneV2Config', class: Google::Apis::ContainerV1::DataplaneV2Config, decorator: Google::Apis::ContainerV1::DataplaneV2Config::Representation
+      
           property :default_enable_private_nodes, as: 'defaultEnablePrivateNodes'
           property :default_snat_status, as: 'defaultSnatStatus', class: Google::Apis::ContainerV1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1::DefaultSnatStatus::Representation
       
@@ -2959,6 +3222,8 @@ module Google
           hash :metadata, as: 'metadata'
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :node_group, as: 'nodeGroup'
+          property :node_image_config, as: 'nodeImageConfig', class: Google::Apis::ContainerV1::CustomImageConfig, decorator: Google::Apis::ContainerV1::CustomImageConfig::Representation
+      
           collection :oauth_scopes, as: 'oauthScopes'
           property :preemptible, as: 'preemptible'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ContainerV1::ReservationAffinity, decorator: Google::Apis::ContainerV1::ReservationAffinity::Representation
@@ -2980,6 +3245,8 @@ module Google
           property :spot, as: 'spot'
           collection :storage_pools, as: 'storagePools'
           collection :tags, as: 'tags'
+          property :taint_config, as: 'taintConfig', class: Google::Apis::ContainerV1::TaintConfig, decorator: Google::Apis::ContainerV1::TaintConfig::Representation
+      
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaint, decorator: Google::Apis::ContainerV1::NodeTaint::Representation
       
           property :windows_node_config, as: 'windowsNodeConfig', class: Google::Apis::ContainerV1::WindowsNodeConfig, decorator: Google::Apis::ContainerV1::WindowsNodeConfig::Representation
@@ -3003,9 +3270,18 @@ module Google
         end
       end
       
+      class NodeCreationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_creation_mode, as: 'nodeCreationMode'
+        end
+      end
+      
       class NodeDrainConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :grace_termination_duration, as: 'graceTerminationDuration'
+          property :pdb_timeout_duration, as: 'pdbTimeoutDuration'
           property :respect_pdb_during_node_pool_deletion, as: 'respectPdbDuringNodePoolDeletion'
         end
       end
@@ -3072,12 +3348,14 @@ module Google
       class NodeNetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_network_profile, as: 'acceleratorNetworkProfile'
           collection :additional_node_network_configs, as: 'additionalNodeNetworkConfigs', class: Google::Apis::ContainerV1::AdditionalNodeNetworkConfig, decorator: Google::Apis::ContainerV1::AdditionalNodeNetworkConfig::Representation
       
           collection :additional_pod_network_configs, as: 'additionalPodNetworkConfigs', class: Google::Apis::ContainerV1::AdditionalPodNetworkConfig, decorator: Google::Apis::ContainerV1::AdditionalPodNetworkConfig::Representation
       
           property :create_pod_range, as: 'createPodRange'
           property :enable_private_nodes, as: 'enablePrivateNodes'
+          property :network, as: 'network'
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1::NetworkPerformanceConfig, decorator: Google::Apis::ContainerV1::NetworkPerformanceConfig::Representation
       
           property :network_tier_config, as: 'networkTierConfig', class: Google::Apis::ContainerV1::NetworkTierConfig, decorator: Google::Apis::ContainerV1::NetworkTierConfig::Representation
@@ -3108,6 +3386,8 @@ module Google
           property :initial_node_count, as: 'initialNodeCount'
           collection :instance_group_urls, as: 'instanceGroupUrls'
           collection :locations, as: 'locations'
+          property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1::NodePoolMaintenancePolicy, decorator: Google::Apis::ContainerV1::NodePoolMaintenancePolicy::Representation
+      
           property :management, as: 'management', class: Google::Apis::ContainerV1::NodeManagement, decorator: Google::Apis::ContainerV1::NodeManagement::Representation
       
           property :max_pods_constraint, as: 'maxPodsConstraint', class: Google::Apis::ContainerV1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1::MaxPodsConstraint::Representation
@@ -3176,6 +3456,14 @@ module Google
         end
       end
       
+      class NodePoolMaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclusion_until_end_of_support, as: 'exclusionUntilEndOfSupport', class: Google::Apis::ContainerV1::ExclusionUntilEndOfSupport, decorator: Google::Apis::ContainerV1::ExclusionUntilEndOfSupport::Representation
+      
+        end
+      end
+      
       class NodePoolUpgradeInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3187,6 +3475,13 @@ module Google
           collection :paused_reason, as: 'pausedReason'
           collection :upgrade_details, as: 'upgradeDetails', class: Google::Apis::ContainerV1::UpgradeDetails, decorator: Google::Apis::ContainerV1::UpgradeDetails::Representation
       
+        end
+      end
+      
+      class NodeReadinessConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -3307,6 +3602,13 @@ module Google
         end
       end
       
+      class PodSnapshotConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class PrivateClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3399,6 +3701,18 @@ module Google
           property :ray_cluster_logging_config, as: 'rayClusterLoggingConfig', class: Google::Apis::ContainerV1::RayClusterLoggingConfig, decorator: Google::Apis::ContainerV1::RayClusterLoggingConfig::Representation
       
           property :ray_cluster_monitoring_config, as: 'rayClusterMonitoringConfig', class: Google::Apis::ContainerV1::RayClusterMonitoringConfig, decorator: Google::Apis::ContainerV1::RayClusterMonitoringConfig::Representation
+      
+        end
+      end
+      
+      class RecurringMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delay_until, as: 'delayUntil', class: Google::Apis::ContainerV1::Date, decorator: Google::Apis::ContainerV1::Date::Representation
+      
+          property :recurrence, as: 'recurrence'
+          property :window_duration, as: 'windowDuration'
+          property :window_start_time, as: 'windowStartTime', class: Google::Apis::ContainerV1::TimeOfDay, decorator: Google::Apis::ContainerV1::TimeOfDay::Representation
       
         end
       end
@@ -3516,6 +3830,13 @@ module Google
         end
       end
       
+      class ScheduleUpgradeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class SecondaryBootDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3535,6 +3856,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :rotation_config, as: 'rotationConfig', class: Google::Apis::ContainerV1::RotationConfig, decorator: Google::Apis::ContainerV1::RotationConfig::Representation
+      
+        end
+      end
+      
+      class SecretSyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :rotation_config, as: 'rotationConfig', class: Google::Apis::ContainerV1::SyncRotationConfig, decorator: Google::Apis::ContainerV1::SyncRotationConfig::Representation
       
         end
       end
@@ -3749,6 +4079,13 @@ module Google
         end
       end
       
+      class SlurmOperatorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class SoleTenantConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3815,6 +4152,31 @@ module Google
       
           property :ephemeral_local_ssd_profile, as: 'ephemeralLocalSsdProfile', class: Google::Apis::ContainerV1::EphemeralLocalSsdProfile, decorator: Google::Apis::ContainerV1::EphemeralLocalSsdProfile::Representation
       
+        end
+      end
+      
+      class SyncRotationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :rotation_interval, as: 'rotationInterval'
+        end
+      end
+      
+      class TaintConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture_taint_behavior, as: 'architectureTaintBehavior'
+        end
+      end
+      
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
         end
       end
       
@@ -3890,6 +4252,8 @@ module Google
       
           property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1::VirtualNic, decorator: Google::Apis::ContainerV1::VirtualNic::Representation
       
+          property :image, as: 'image'
+          property :image_project, as: 'imageProject'
           property :image_type, as: 'imageType'
           property :kubelet_config, as: 'kubeletConfig', class: Google::Apis::ContainerV1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1::NodeKubeletConfig::Representation
       
@@ -3918,6 +4282,8 @@ module Google
       
           collection :storage_pools, as: 'storagePools'
           property :tags, as: 'tags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
+      
+          property :taint_config, as: 'taintConfig', class: Google::Apis::ContainerV1::TaintConfig, decorator: Google::Apis::ContainerV1::TaintConfig::Representation
       
           property :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaints, decorator: Google::Apis::ContainerV1::NodeTaints::Representation
       
