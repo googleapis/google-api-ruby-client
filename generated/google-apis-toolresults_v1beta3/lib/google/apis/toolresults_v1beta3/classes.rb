@@ -948,12 +948,12 @@ module Google
       class FileReference
         include Google::Apis::Core::Hashable
       
-        # The URI of a file stored in Google Cloud Storage. For example: http://storage.
-        # googleapis.com/mybucket/path/to/test.xml or in gsutil format: gs://mybucket/
-        # path/to/test.xml with version-specific info, gs://mybucket/path/to/test.xml#
-        # 1360383693690000 An INVALID_ARGUMENT error will be returned if the URI format
-        # is not supported. - In response: always set - In create/update request: always
-        # set
+        # The URI of a file stored in Google Cloud Storage. For example: `http://storage.
+        # googleapis.com/mybucket/path/to/test.xml` or in Cloud Storage URI format: `gs:/
+        # /mybucket/path/to/test.xml` with version-specific info, `gs://mybucket/path/to/
+        # test.xml#1360383693690000` An INVALID_ARGUMENT error will be returned if the
+        # URI format is not supported. - In response: always set - In create/update
+        # request: always set
         # Corresponds to the JSON property `fileUri`
         # @return [String]
         attr_accessor :file_uri
@@ -1438,6 +1438,19 @@ module Google
       
       # Failed to find the launcher activity of an app.
       class LauncherActivityNotFound
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Licensing protection termination (Pairip) was detected.
+      class LicensingProtectionTermination
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2630,6 +2643,13 @@ module Google
         attr_accessor :incompatible_device
         alias_method :incompatible_device?, :incompatible_device
       
+        # Indicates that the test could not be scheduled in the requested time because
+        # no suitable device was available.
+        # Corresponds to the JSON property `pendingTimeout`
+        # @return [Boolean]
+        attr_accessor :pending_timeout
+        alias_method :pending_timeout?, :pending_timeout
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2639,6 +2659,7 @@ module Google
           @incompatible_app_version = args[:incompatible_app_version] if args.key?(:incompatible_app_version)
           @incompatible_architecture = args[:incompatible_architecture] if args.key?(:incompatible_architecture)
           @incompatible_device = args[:incompatible_device] if args.key?(:incompatible_device)
+          @pending_timeout = args[:pending_timeout] if args.key?(:pending_timeout)
         end
       end
       

@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LicensingProtectionTermination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEnvironmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1095,6 +1101,12 @@ module Google
         end
       end
       
+      class LicensingProtectionTermination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ListEnvironmentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1468,6 +1480,7 @@ module Google
           property :incompatible_app_version, as: 'incompatibleAppVersion'
           property :incompatible_architecture, as: 'incompatibleArchitecture'
           property :incompatible_device, as: 'incompatibleDevice'
+          property :pending_timeout, as: 'pendingTimeout'
         end
       end
       
