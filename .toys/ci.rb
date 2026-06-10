@@ -68,6 +68,9 @@ end
 
 def run_in_dir dir
   Dir.chdir dir do
+    puts "\nRunning bundle install in #{dir}...", :bold
+    exec ["bundle", "install"]
+
     if include_spec
       puts
       puts "Running spec in #{dir}...", :bold
