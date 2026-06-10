@@ -29,5 +29,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.required_ruby_version = '>= 3.1'
-  gem.add_runtime_dependency "google-apis-core", ">= 1.2.3.dev", "< 2.a"
+  gem.add_runtime_dependency "google-apis-core", ">= 0.15.0", "< 2.a"
 end
