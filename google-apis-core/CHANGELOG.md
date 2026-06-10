@@ -1,5 +1,11 @@
 # Release History
 
+### 1.2.2 (2026-06-10)
+
+#### Bug Fixes
+
+* Relax retriable dependency constraint ([#26621](https://github.com/googleapis/google-api-ruby-client/issues/26621)) ([1511d44](https://github.com/googleapis/google-api-ruby-client/commit/1511d44e3945caebf41160e47cc42f7bdfdb5fe2)), closes [#26620](https://github.com/googleapis/google-api-ruby-client/issues/26620)
+
 ### 1.2.1 (2026-06-09)
 
 #### Bug Fixes
