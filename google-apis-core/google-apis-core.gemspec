@@ -27,5 +27,5 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'mini_mime', '~> 1.1'
   gem.add_runtime_dependency 'multi_json', '~> 1.11'
   gem.add_runtime_dependency 'representable', '~> 3.0'
-  gem.add_runtime_dependency 'retriable', '~> 3.1'
+  gem.add_runtime_dependency 'retriable', '>= 3.1', '< 5.0'
 end
