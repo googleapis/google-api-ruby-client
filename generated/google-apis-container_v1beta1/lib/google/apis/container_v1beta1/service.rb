@@ -1046,9 +1046,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch upgrade information of a specific nodepool.
+        # Fetch upgrade information of a specific node pool.
         # @param [String] name
-        #   Required. The name (project, location, cluster, nodepool) of the nodepool to
+        #   Required. The name (project, location, cluster, node pool) of the node pool to
         #   get. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`
         #   or `projects/*/zones/*/clusters/*/nodePools/*`.
         # @param [String] version
@@ -2514,9 +2514,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch upgrade information of a specific nodepool.
+        # Fetch upgrade information of a specific node pool.
         # @param [String] name
-        #   Required. The name (project, location, cluster, nodepool) of the nodepool to
+        #   Required. The name (project, location, cluster, node pool) of the node pool to
         #   get. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`
         #   or `projects/*/zones/*/clusters/*/nodePools/*`.
         # @param [String] version
