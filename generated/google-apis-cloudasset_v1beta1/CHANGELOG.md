@@ -1,5 +1,10 @@
 # Release history for google-apis-cloudasset_v1beta1
 
+### v0.48.0 (2026-06-10)
+
+* Regenerated from discovery document revision 20260427
+* Regenerated using generator version 0.19.0
+
 ### v0.47.0 (2026-02-08)
 
 * Regenerated using generator version 0.18.0
