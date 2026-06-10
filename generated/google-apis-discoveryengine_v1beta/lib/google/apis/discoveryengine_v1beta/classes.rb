@@ -795,6 +795,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :action_params
       
+        # Optional. Whether to create a BAP connection for the connector.
+        # Corresponds to the JSON property `createBapConnection`
+        # @return [Boolean]
+        attr_accessor :create_bap_connection
+        alias_method :create_bap_connection?, :create_bap_connection
+      
         # Output only. The connector contains the necessary parameters and is configured
         # to support actions.
         # Corresponds to the JSON property `isActionConfigured`
@@ -835,6 +841,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action_params = args[:action_params] if args.key?(:action_params)
+          @create_bap_connection = args[:create_bap_connection] if args.key?(:create_bap_connection)
           @is_action_configured = args[:is_action_configured] if args.key?(:is_action_configured)
           @json_action_params = args[:json_action_params] if args.key?(:json_action_params)
           @service_name = args[:service_name] if args.key?(:service_name)
@@ -1065,6 +1072,11 @@ module Google
       class GoogleCloudDiscoveryengineV1Assistant
         include Google::Apis::Core::Hashable
       
+        # Output only. Represents the time when this Assistant was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Customer-defined policy for the assistant.
         # Corresponds to the JSON property `customerPolicy`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy]
@@ -1120,6 +1132,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Represents the time when this Assistant was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # Optional. The type of web grounding to use.
         # Corresponds to the JSON property `webGroundingType`
         # @return [String]
@@ -1131,6 +1148,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @customer_policy = args[:customer_policy] if args.key?(:customer_policy)
           @default_web_grounding_toggle_off = args[:default_web_grounding_toggle_off] if args.key?(:default_web_grounding_toggle_off)
           @description = args[:description] if args.key?(:description)
@@ -1138,6 +1156,7 @@ module Google
           @enabled_tools = args[:enabled_tools] if args.key?(:enabled_tools)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @web_grounding_type = args[:web_grounding_type] if args.key?(:web_grounding_type)
         end
       end
@@ -1360,6 +1379,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_connector_modes
       
+        # Customer-facing view of the admin-curated toolspec for a BAP connection. Holds
+        # the (simplified) per-tool definitions surfaced to and editable by the admin in
+        # the Discovery Engine UI. Mirrors the shape of the backend `google.cloud.
+        # connectorexecution.v1.ToolspecOverride` message, but is intentionally kept as
+        # a separate public type so the Discovery Engine API surface can evolve
+        # independently of the fed-API surface (AIP-215). Handlers convert between the
+        # two via helpers in //cloud/ml/discoveryengine/external_service/v1main/
+        # data_connector_service/lib:bap_custom_tool_util.
+        # Corresponds to the JSON property `toolspecOverride`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1BapConfigToolspecOverride]
+        attr_accessor :toolspec_override
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1368,6 +1399,45 @@ module Google
         def update!(**args)
           @enabled_actions = args[:enabled_actions] if args.key?(:enabled_actions)
           @supported_connector_modes = args[:supported_connector_modes] if args.key?(:supported_connector_modes)
+          @toolspec_override = args[:toolspec_override] if args.key?(:toolspec_override)
+        end
+      end
+      
+      # Customer-facing view of the admin-curated toolspec for a BAP connection. Holds
+      # the (simplified) per-tool definitions surfaced to and editable by the admin in
+      # the Discovery Engine UI. Mirrors the shape of the backend `google.cloud.
+      # connectorexecution.v1.ToolspecOverride` message, but is intentionally kept as
+      # a separate public type so the Discovery Engine API surface can evolve
+      # independently of the fed-API surface (AIP-215). Handlers convert between the
+      # two via helpers in //cloud/ml/discoveryengine/external_service/v1main/
+      # data_connector_service/lib:bap_custom_tool_util.
+      class GoogleCloudDiscoveryengineV1BapConfigToolspecOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. Base toolspec version against which `tools` were authored. On Update,
+        # MUST match the server's current stable toolspec version for the connection;
+        # mismatch is rejected with a user-facing error directing the admin to re-
+        # download the latest tools first.
+        # Corresponds to the JSON property `baseVersion`
+        # @return [String]
+        attr_accessor :base_version
+      
+        # Required. Tool definitions (one Struct per tool) that the admin has customised
+        # on top of the base toolspec returned by the fed API. REQUIRED because it is
+        # the only user-editable field in the modify API; the request must carry at
+        # least one tool.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :tools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_version = args[:base_version] if args.key?(:base_version)
+          @tools = args[:tools] if args.key?(:tools)
         end
       end
       
@@ -1480,6 +1550,25 @@ module Google
         def update!(**args)
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
+        end
+      end
+      
+      # The configuration for the CLI execution based connectors.
+      class GoogleCloudDiscoveryengineV1CliConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The actions enabled on the associated CLI connection.
+        # Corresponds to the JSON property `enabledActions`
+        # @return [Array<String>]
+        attr_accessor :enabled_actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled_actions = args[:enabled_actions] if args.key?(:enabled_actions)
         end
       end
       
@@ -2186,11 +2275,22 @@ module Google
         # @return [Array<String>]
         attr_accessor :blocking_reasons
       
+        # The configuration for the CLI execution based connectors.
+        # Corresponds to the JSON property `cliConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1CliConfig]
+        attr_accessor :cli_config
+      
         # Optional. The modes enabled for this connector. Default state is
         # CONNECTOR_MODE_UNSPECIFIED.
         # Corresponds to the JSON property `connectorModes`
         # @return [Array<String>]
         attr_accessor :connector_modes
+      
+        # Optional. If set, this value instead of `data_source` is used to fetch the
+        # corresponding connector source.
+        # Corresponds to the JSON property `connectorSourceId`
+        # @return [String]
+        attr_accessor :connector_source_id
       
         # Output only. The type of connector. Each source can only map to one type. For
         # example, salesforce, confluence and jira have THIRD_PARTY connector type. It
@@ -2232,11 +2332,14 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DestinationConfig>]
         attr_accessor :destination_configs
       
+        # Output only. The dynamic tools fetched for this connector.
+        # Corresponds to the JSON property `dynamicTools`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DynamicTool>]
+        attr_accessor :dynamic_tools
+      
         # Output only. The list of FQDNs of the data connector can egress to. This
         # includes both FQDN derived from the customer provided instance URL and default
-        # per connector type FQDNs. Note: This field is derived from both the
-        # DataConnector.params, and connector source spec. It should only be used for
-        # CAIS and Org Policy evaluation purposes.
+        # per connector type FQDNs.
         # Corresponds to the JSON property `egressFqdns`
         # @return [Array<String>]
         attr_accessor :egress_fqdns
@@ -2330,7 +2433,7 @@ module Google
         # @return [String]
         attr_accessor :latest_pause_time
       
-        # Output only. The full resource name of the Data Connector. Format: `projects/*/
+        # Identifier. The full resource name of the Data Connector. Format: `projects/*/
         # locations/*/collections/*/dataConnector`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2420,8 +2523,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. Whether the connector is created with VPC-SC enabled. This is
-        # only used for CuOP evaluation purpose.
+        # Output only. Whether the connector is created with VPC-SC enabled.
         # Corresponds to the JSON property `vpcscEnabled`
         # @return [Boolean]
         attr_accessor :vpcsc_enabled
@@ -2440,12 +2542,15 @@ module Google
           @auto_run_disabled = args[:auto_run_disabled] if args.key?(:auto_run_disabled)
           @bap_config = args[:bap_config] if args.key?(:bap_config)
           @blocking_reasons = args[:blocking_reasons] if args.key?(:blocking_reasons)
+          @cli_config = args[:cli_config] if args.key?(:cli_config)
           @connector_modes = args[:connector_modes] if args.key?(:connector_modes)
+          @connector_source_id = args[:connector_source_id] if args.key?(:connector_source_id)
           @connector_type = args[:connector_type] if args.key?(:connector_type)
           @create_eua_saas = args[:create_eua_saas] if args.key?(:create_eua_saas)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
+          @dynamic_tools = args[:dynamic_tools] if args.key?(:dynamic_tools)
           @egress_fqdns = args[:egress_fqdns] if args.key?(:egress_fqdns)
           @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
           @entities = args[:entities] if args.key?(:entities)
@@ -3672,6 +3777,44 @@ module Google
         end
       end
       
+      # Configuration for dynamic tools.
+      class GoogleCloudDiscoveryengineV1DynamicTool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The description of the tool.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The display name of the tool.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether the tool is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Required. The name of the tool.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Metadata related to the progress of the SiteSearchEngineService.
       # EnableAdvancedSiteSearch operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -3797,9 +3940,12 @@ module Google
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
         # personalization-memory` * `personalization-suggested-highlights` * `disable-
-        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
-        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
-        # upload` * `disable-welcome-emails`
+        # mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
+        # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
+        # canvas` * `disable-canvas-workspace` * `disable-skills` * `enable-end-user-
+        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
+        # orchestration` * `cross-product-intelligence`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -4733,8 +4879,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :success_count
       
-        # Operation last update time. If the operation is done, this is also the finish
-        # time.
+        # Output only. Operation last update time. If the operation is done, this is
+        # also the finish time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -4965,7 +5111,9 @@ module Google
         # and reflect the thresholds actively being used for billing purposes at the
         # time of the GetProject call. This includes the start_time of the subscription
         # and may differ from the values in `customer_provided_config` due to billing
-        # rules (e.g., scale-downs taking effect only at the start of a new month).
+        # rules (e.g., scale-downs taking effect only at the start of a new month). We
+        # also include the update type to indicate the type of update performed on the
+        # configurable billing configuration in the UpdateProject operation.
         # Corresponds to the JSON property `configurableBillingStatus`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus]
         attr_accessor :configurable_billing_status
@@ -5018,7 +5166,9 @@ module Google
       # and reflect the thresholds actively being used for billing purposes at the
       # time of the GetProject call. This includes the start_time of the subscription
       # and may differ from the values in `customer_provided_config` due to billing
-      # rules (e.g., scale-downs taking effect only at the start of a new month).
+      # rules (e.g., scale-downs taking effect only at the start of a new month). We
+      # also include the update type to indicate the type of update performed on the
+      # configurable billing configuration in the UpdateProject operation.
       class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus
         include Google::Apis::Core::Hashable
       
@@ -5063,6 +5213,12 @@ module Google
         # @return [String]
         attr_accessor :terminate_time
       
+        # Output only. The type of update performed in this operation. This field is
+        # populated in the response of UpdateProject.
+        # Corresponds to the JSON property `updateType`
+        # @return [String]
+        attr_accessor :update_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5075,6 +5231,7 @@ module Google
           @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
+          @update_type = args[:update_type] if args.key?(:update_type)
         end
       end
       
@@ -6681,7 +6838,9 @@ module Google
       class GoogleCloudDiscoveryengineV1WorkspaceConfig
         include Google::Apis::Core::Hashable
       
-        # Obfuscated Dasher customer ID.
+        # Output only. Obfuscated Dasher customer ID. Derived by the server from the
+        # project's GCP organization at data store creation time; any value supplied in
+        # the request payload is ignored.
         # Corresponds to the JSON property `dasherCustomerId`
         # @return [String]
         attr_accessor :dasher_customer_id
@@ -6754,6 +6913,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :action_params
       
+        # Optional. Whether to create a BAP connection for the connector.
+        # Corresponds to the JSON property `createBapConnection`
+        # @return [Boolean]
+        attr_accessor :create_bap_connection
+        alias_method :create_bap_connection?, :create_bap_connection
+      
         # Output only. The connector contains the necessary parameters and is configured
         # to support actions.
         # Corresponds to the JSON property `isActionConfigured`
@@ -6794,6 +6959,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action_params = args[:action_params] if args.key?(:action_params)
+          @create_bap_connection = args[:create_bap_connection] if args.key?(:create_bap_connection)
           @is_action_configured = args[:is_action_configured] if args.key?(:is_action_configured)
           @json_action_params = args[:json_action_params] if args.key?(:json_action_params)
           @service_name = args[:service_name] if args.key?(:service_name)
@@ -7072,7 +7238,7 @@ module Google
         # @return [String]
         attr_accessor :answer_text
       
-        # List of blob attachments in the answer.
+        # Output only. List of blob attachments in the answer.
         # Corresponds to the JSON property `blobAttachments`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment>]
         attr_accessor :blob_attachments
@@ -7372,11 +7538,6 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo]
         attr_accessor :chunk_info
       
-        # Output only. The search queries that produced this reference.
-        # Corresponds to the JSON property `queries`
-        # @return [Array<String>]
-        attr_accessor :queries
-      
         # Structured search information.
         # Corresponds to the JSON property `structuredDocumentInfo`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo]
@@ -7394,7 +7555,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunk_info = args[:chunk_info] if args.key?(:chunk_info)
-          @queries = args[:queries] if args.key?(:queries)
           @structured_document_info = args[:structured_document_info] if args.key?(:structured_document_info)
           @unstructured_document_info = args[:unstructured_document_info] if args.key?(:unstructured_document_info)
         end
@@ -7976,6 +8136,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaAssistAnswerReply
         include Google::Apis::Core::Hashable
       
+        # The time when the reply was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # A piece of content and possibly its grounding information. Not all content
         # needs grounding. Phrases like "Of course, I will gladly search it for you." do
         # not need grounding.
@@ -7998,6 +8163,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @grounded_content = args[:grounded_content] if args.key?(:grounded_content)
           @reply_id = args[:reply_id] if args.key?(:reply_id)
         end
@@ -8202,6 +8368,11 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataSegment>]
         attr_accessor :segments
       
+        # Grounding information for parts of the visual content.
+        # Corresponds to the JSON property `visualSegments`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataVisualSegment>]
+        attr_accessor :visual_segments
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8210,12 +8381,18 @@ module Google
         def update!(**args)
           @references = args[:references] if args.key?(:references)
           @segments = args[:segments] if args.key?(:segments)
+          @visual_segments = args[:visual_segments] if args.key?(:visual_segments)
         end
       end
       
       # Referenced content and related document metadata.
       class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference
         include Google::Apis::Core::Hashable
+      
+        # Chunk of code snippet from the referenced document.
+        # Corresponds to the JSON property `codeSnippet`
+        # @return [String]
+        attr_accessor :code_snippet
       
         # Referenced text content.
         # Corresponds to the JSON property `content`
@@ -8233,6 +8410,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @code_snippet = args[:code_snippet] if args.key?(:code_snippet)
           @content = args[:content] if args.key?(:content)
           @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
         end
@@ -8253,6 +8431,11 @@ module Google
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
+      
+        # 
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
       
         # The mime type of the document. https://www.iana.org/assignments/media-types/
         # media-types.xhtml.
@@ -8284,6 +8467,7 @@ module Google
         def update!(**args)
           @document = args[:document] if args.key?(:document)
           @domain = args[:domain] if args.key?(:domain)
+          @language = args[:language] if args.key?(:language)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @page_identifier = args[:page_identifier] if args.key?(:page_identifier)
           @title = args[:title] if args.key?(:title)
@@ -8336,6 +8520,33 @@ module Google
         end
       end
       
+      # Grounding information for a visual segment.
+      class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataVisualSegment
+        include Google::Apis::Core::Hashable
+      
+        # The content id of the visual segment. In order to display the citation of the
+        # visual element, this content_id needs to match with the `grounded_content.
+        # content_metadata.content_id` field.
+        # Corresponds to the JSON property `contentId`
+        # @return [String]
+        attr_accessor :content_id
+      
+        # References for the visual segment.
+        # Corresponds to the JSON property `referenceIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :reference_indices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_id = args[:content_id] if args.key?(:content_id)
+          @reference_indices = args[:reference_indices] if args.key?(:reference_indices)
+        end
+      end
+      
       # The configuration for the BAP connector.
       class GoogleCloudDiscoveryengineV1alphaBapConfig
         include Google::Apis::Core::Hashable
@@ -8350,6 +8561,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_connector_modes
       
+        # Customer-facing view of the admin-curated toolspec for a BAP connection. Holds
+        # the (simplified) per-tool definitions surfaced to and editable by the admin in
+        # the Discovery Engine UI. Mirrors the shape of the backend `google.cloud.
+        # connectorexecution.v1.ToolspecOverride` message, but is intentionally kept as
+        # a separate public type so the Discovery Engine API surface can evolve
+        # independently of the fed-API surface (AIP-215). Handlers convert between the
+        # two via helpers in //cloud/ml/discoveryengine/external_service/v1main/
+        # data_connector_service/lib:bap_custom_tool_util.
+        # Corresponds to the JSON property `toolspecOverride`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaBapConfigToolspecOverride]
+        attr_accessor :toolspec_override
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8358,6 +8581,45 @@ module Google
         def update!(**args)
           @enabled_actions = args[:enabled_actions] if args.key?(:enabled_actions)
           @supported_connector_modes = args[:supported_connector_modes] if args.key?(:supported_connector_modes)
+          @toolspec_override = args[:toolspec_override] if args.key?(:toolspec_override)
+        end
+      end
+      
+      # Customer-facing view of the admin-curated toolspec for a BAP connection. Holds
+      # the (simplified) per-tool definitions surfaced to and editable by the admin in
+      # the Discovery Engine UI. Mirrors the shape of the backend `google.cloud.
+      # connectorexecution.v1.ToolspecOverride` message, but is intentionally kept as
+      # a separate public type so the Discovery Engine API surface can evolve
+      # independently of the fed-API surface (AIP-215). Handlers convert between the
+      # two via helpers in //cloud/ml/discoveryengine/external_service/v1main/
+      # data_connector_service/lib:bap_custom_tool_util.
+      class GoogleCloudDiscoveryengineV1alphaBapConfigToolspecOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. Base toolspec version against which `tools` were authored. On Update,
+        # MUST match the server's current stable toolspec version for the connection;
+        # mismatch is rejected with a user-facing error directing the admin to re-
+        # download the latest tools first.
+        # Corresponds to the JSON property `baseVersion`
+        # @return [String]
+        attr_accessor :base_version
+      
+        # Required. Tool definitions (one Struct per tool) that the admin has customised
+        # on top of the base toolspec returned by the fed API. REQUIRED because it is
+        # the only user-editable field in the modify API; the request must carry at
+        # least one tool.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :tools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_version = args[:base_version] if args.key?(:base_version)
+          @tools = args[:tools] if args.key?(:tools)
         end
       end
       
@@ -8545,6 +8807,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @citations = args[:citations] if args.key?(:citations)
+        end
+      end
+      
+      # The configuration for the CLI execution based connectors.
+      class GoogleCloudDiscoveryengineV1alphaCliConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The actions enabled on the associated CLI connection.
+        # Corresponds to the JSON property `enabledActions`
+        # @return [Array<String>]
+        attr_accessor :enabled_actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled_actions = args[:enabled_actions] if args.key?(:enabled_actions)
         end
       end
       
@@ -9539,11 +9820,22 @@ module Google
         # @return [Array<String>]
         attr_accessor :blocking_reasons
       
+        # The configuration for the CLI execution based connectors.
+        # Corresponds to the JSON property `cliConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCliConfig]
+        attr_accessor :cli_config
+      
         # Optional. The modes enabled for this connector. Default state is
         # CONNECTOR_MODE_UNSPECIFIED.
         # Corresponds to the JSON property `connectorModes`
         # @return [Array<String>]
         attr_accessor :connector_modes
+      
+        # Optional. If set, this value instead of `data_source` is used to fetch the
+        # corresponding connector source.
+        # Corresponds to the JSON property `connectorSourceId`
+        # @return [String]
+        attr_accessor :connector_source_id
       
         # Output only. The type of connector. Each source can only map to one type. For
         # example, salesforce, confluence and jira have THIRD_PARTY connector type. It
@@ -9590,11 +9882,14 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDestinationConfig>]
         attr_accessor :destination_configs
       
+        # Output only. The dynamic tools fetched for this connector.
+        # Corresponds to the JSON property `dynamicTools`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDynamicTool>]
+        attr_accessor :dynamic_tools
+      
         # Output only. The list of FQDNs of the data connector can egress to. This
         # includes both FQDN derived from the customer provided instance URL and default
-        # per connector type FQDNs. Note: This field is derived from both the
-        # DataConnector.params, and connector source spec. It should only be used for
-        # CAIS and Org Policy evaluation purposes.
+        # per connector type FQDNs.
         # Corresponds to the JSON property `egressFqdns`
         # @return [Array<String>]
         attr_accessor :egress_fqdns
@@ -9688,7 +9983,7 @@ module Google
         # @return [String]
         attr_accessor :latest_pause_time
       
-        # Output only. The full resource name of the Data Connector. Format: `projects/*/
+        # Identifier. The full resource name of the Data Connector. Format: `projects/*/
         # locations/*/collections/*/dataConnector`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -9778,8 +10073,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. Whether the connector is created with VPC-SC enabled. This is
-        # only used for CuOP evaluation purpose.
+        # Output only. Whether the connector is created with VPC-SC enabled.
         # Corresponds to the JSON property `vpcscEnabled`
         # @return [Boolean]
         attr_accessor :vpcsc_enabled
@@ -9798,13 +10092,16 @@ module Google
           @auto_run_disabled = args[:auto_run_disabled] if args.key?(:auto_run_disabled)
           @bap_config = args[:bap_config] if args.key?(:bap_config)
           @blocking_reasons = args[:blocking_reasons] if args.key?(:blocking_reasons)
+          @cli_config = args[:cli_config] if args.key?(:cli_config)
           @connector_modes = args[:connector_modes] if args.key?(:connector_modes)
+          @connector_source_id = args[:connector_source_id] if args.key?(:connector_source_id)
           @connector_type = args[:connector_type] if args.key?(:connector_type)
           @create_eua_saas = args[:create_eua_saas] if args.key?(:create_eua_saas)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_protection_policy = args[:data_protection_policy] if args.key?(:data_protection_policy)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
+          @dynamic_tools = args[:dynamic_tools] if args.key?(:dynamic_tools)
           @egress_fqdns = args[:egress_fqdns] if args.key?(:egress_fqdns)
           @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
           @entities = args[:entities] if args.key?(:entities)
@@ -10132,6 +10429,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Contains the data protection policy config for a DataStore or a connector.
+        # Corresponds to the JSON property `dataProtectionPolicy`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy]
+        attr_accessor :data_protection_policy
+      
         # Output only. The id of the default Schema associated to this data store.
         # Corresponds to the JSON property `defaultSchemaId`
         # @return [String]
@@ -10248,6 +10550,7 @@ module Google
           @configurable_billing_approach_update_time = args[:configurable_billing_approach_update_time] if args.key?(:configurable_billing_approach_update_time)
           @content_config = args[:content_config] if args.key?(:content_config)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_protection_policy = args[:data_protection_policy] if args.key?(:data_protection_policy)
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
@@ -11225,6 +11528,44 @@ module Google
         end
       end
       
+      # Configuration for dynamic tools.
+      class GoogleCloudDiscoveryengineV1alphaDynamicTool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The description of the tool.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The display name of the tool.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether the tool is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Required. The name of the tool.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Metadata related to the progress of the SiteSearchEngineService.
       # EnableAdvancedSiteSearch operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -11350,9 +11691,12 @@ module Google
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
         # personalization-memory` * `personalization-suggested-highlights` * `disable-
-        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
-        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
-        # upload` * `disable-welcome-emails`
+        # mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
+        # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
+        # canvas` * `disable-canvas-workspace` * `disable-skills` * `enable-end-user-
+        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
+        # orchestration` * `cross-product-intelligence`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -12270,6 +12614,8 @@ module Google
         # SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this
         # field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `
         # SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`.
+        # For more information, see [Weight searchable fields](https://cloud.google.com/
+        # generative-ai-app-builder/docs/configure-field-settings#weight-search).
         # Corresponds to the JSON property `searchableFieldImportance`
         # @return [String]
         attr_accessor :searchable_field_importance
@@ -12848,8 +13194,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :success_count
       
-        # Operation last update time. If the operation is done, this is also the finish
-        # time.
+        # Output only. Operation last update time. If the operation is done, this is
+        # also the finish time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -13125,9 +13471,9 @@ module Google
       
         # A comma-separated list of fields to order by, sorted in ascending order. Use "
         # desc" after a field name for descending. Supported fields: * `update_time` * `
-        # create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `
-        # create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned
-        # first, then by update_time.
+        # create_time` * `session_name` * `is_pinned` * `display_name` Example: * `
+        # update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list
+        # sessions by is_pinned first, then by update_time.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -13363,7 +13709,9 @@ module Google
         # and reflect the thresholds actively being used for billing purposes at the
         # time of the GetProject call. This includes the start_time of the subscription
         # and may differ from the values in `customer_provided_config` due to billing
-        # rules (e.g., scale-downs taking effect only at the start of a new month).
+        # rules (e.g., scale-downs taking effect only at the start of a new month). We
+        # also include the update type to indicate the type of update performed on the
+        # configurable billing configuration in the UpdateProject operation.
         # Corresponds to the JSON property `configurableBillingStatus`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus]
         attr_accessor :configurable_billing_status
@@ -13416,7 +13764,9 @@ module Google
       # and reflect the thresholds actively being used for billing purposes at the
       # time of the GetProject call. This includes the start_time of the subscription
       # and may differ from the values in `customer_provided_config` due to billing
-      # rules (e.g., scale-downs taking effect only at the start of a new month).
+      # rules (e.g., scale-downs taking effect only at the start of a new month). We
+      # also include the update type to indicate the type of update performed on the
+      # configurable billing configuration in the UpdateProject operation.
       class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus
         include Google::Apis::Core::Hashable
       
@@ -13461,6 +13811,12 @@ module Google
         # @return [String]
         attr_accessor :terminate_time
       
+        # Output only. The type of update performed in this operation. This field is
+        # populated in the response of UpdateProject.
+        # Corresponds to the JSON property `updateType`
+        # @return [String]
+        attr_accessor :update_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13473,6 +13829,7 @@ module Google
           @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
+          @update_type = args[:update_type] if args.key?(:update_type)
         end
       end
       
@@ -13992,6 +14349,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaQuery
         include Google::Apis::Core::Hashable
       
+        # Output only. The time at which the server accepted this query.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Query content parts.
         # Corresponds to the JSON property `parts`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaQueryPart>]
@@ -14013,6 +14375,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @parts = args[:parts] if args.key?(:parts)
           @query_id = args[:query_id] if args.key?(:query_id)
           @text = args[:text] if args.key?(:text)
@@ -14738,6 +15101,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec]
         attr_accessor :custom_fine_tuning_spec
       
+        # Configuration parameters for the Custom Ranking feature.
+        # Corresponds to the JSON property `customRankingParams`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingParams]
+        attr_accessor :custom_ranking_params
+      
         # Specifications that define the specific DataStores to be searched, along with
         # configurations for those data stores. This is only considered for Engines with
         # multiple data stores. For engines with a single data store, the specs directly
@@ -14756,6 +15124,14 @@ module Google
         # Corresponds to the JSON property `embeddingSpec`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec]
         attr_accessor :embedding_spec
+      
+        # Optional. The entity for customers that may run multiple different entities,
+        # domains, sites or regions, for example, "Google US", "Google Ads", "Waymo", "
+        # google.com", "youtube.com", etc. If this is set, it should be exactly matched
+        # with UserEvent.entity to get search results boosted by entity.
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
       
         # Facet specifications for faceted search. If empty, no facets are returned. A
         # maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is
@@ -14940,7 +15316,14 @@ module Google
         # since the document was last updated, a floating-point number (e.g., 0.25 means
         # 15 minutes). * `topicality_rank`: topicality adjustment as a rank. Uses
         # proprietary Google model to determine the keyword-based overlap between the
-        # query and the document. * `base_rank`: the default rank of the result
+        # query and the document. * `base_rank`: the default rank of the result * `
+        # media_actor_match`: whether the media actor matches the query * `
+        # media_director_match`: whether the media director matches the query * `
+        # media_genre_match`: whether the media genre matches the query * `
+        # media_language_match`: whether the media language matches the query * `
+        # media_title_match`: whether the media title matches the query * `
+        # media_prefix_similarity_rank`: prefix similarity rank for media results * `
+        # media_semantic_similarity_rank`: semantic similarity rank for media results
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression
@@ -15083,9 +15466,11 @@ module Google
           @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
           @crowding_specs = args[:crowding_specs] if args.key?(:crowding_specs)
           @custom_fine_tuning_spec = args[:custom_fine_tuning_spec] if args.key?(:custom_fine_tuning_spec)
+          @custom_ranking_params = args[:custom_ranking_params] if args.key?(:custom_ranking_params)
           @data_store_specs = args[:data_store_specs] if args.key?(:data_store_specs)
           @display_spec = args[:display_spec] if args.key?(:display_spec)
           @embedding_spec = args[:embedding_spec] if args.key?(:embedding_spec)
+          @entity = args[:entity] if args.key?(:entity)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
           @image_query = args[:image_query] if args.key?(:image_query)
@@ -15676,6 +16061,27 @@ module Google
         end
       end
       
+      # Configuration parameters for the Custom Ranking feature.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of ranking expressions (see `ranking_expression` for the
+        # syntax documentation) to evaluate. The evaluation results will be returned in `
+        # SearchResponse.SearchResult.rank_signals.precomputed_expression_values` field.
+        # Corresponds to the JSON property `expressionsToPrecompute`
+        # @return [Array<String>]
+        attr_accessor :expressions_to_precompute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expressions_to_precompute = args[:expressions_to_precompute] if args.key?(:expressions_to_precompute)
+        end
+      end
+      
       # A struct to define data stores to filter on in a search call and
       # configurations for those data stores. Otherwise, an `INVALID_ARGUMENT` error
       # is returned.
@@ -16000,9 +16406,7 @@ module Google
       
         # Field names used for location-based filtering, where geolocation filters are
         # detected in natural language search queries. Only valid when the
-        # FilterExtractionCondition is set to `ENABLED`. If this field is set, it
-        # overrides the field names set in ServingConfig.
-        # geo_search_query_detection_field_names.
+        # FilterExtractionCondition is set to `ENABLED`.
         # Corresponds to the JSON property `geoSearchQueryDetectionFieldNames`
         # @return [Array<String>]
         attr_accessor :geo_search_query_detection_field_names
@@ -16291,6 +16695,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Full resource name of an in-progress AsyncAssist operation for
+        # this session, e.g. `projects/*/locations/*/collections/*/engines/*/sessions/*/
+        # operations/*`. Set when the operation starts and cleared when it finishes.
+        # Corresponds to the JSON property `pendingAsyncAssistOperationId`
+        # @return [String]
+        attr_accessor :pending_async_assist_operation_id
+      
         # Output only. The time the session started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -16322,6 +16733,7 @@ module Google
           @is_pinned = args[:is_pinned] if args.key?(:is_pinned)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @pending_async_assist_operation_id = args[:pending_async_assist_operation_id] if args.key?(:pending_async_assist_operation_id)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @turns = args[:turns] if args.key?(:turns)
@@ -16349,6 +16761,12 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAssistAnswer]
         attr_accessor :detailed_assist_answer
       
+        # Optional. Indicates whether this turn is a live turn.
+        # Corresponds to the JSON property `live`
+        # @return [Boolean]
+        attr_accessor :live
+        alias_method :live?, :live
+      
         # Defines a user inputed query.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaQuery]
@@ -16370,6 +16788,7 @@ module Google
           @answer = args[:answer] if args.key?(:answer)
           @detailed_answer = args[:detailed_answer] if args.key?(:detailed_answer)
           @detailed_assist_answer = args[:detailed_assist_answer] if args.key?(:detailed_assist_answer)
+          @live = args[:live] if args.key?(:live)
           @query = args[:query] if args.key?(:query)
           @query_config = args[:query_config] if args.key?(:query_config)
         end
@@ -16978,6 +17397,12 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaUserInfo
         include Google::Apis::Core::Hashable
       
+        # Precise location info with multiple representation options. Currently only
+        # latitude and longitude point is supported.
+        # Corresponds to the JSON property `preciseLocation`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation]
+        attr_accessor :precise_location
+      
         # Optional. IANA time zone, e.g. Europe/Budapest.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
@@ -17011,9 +17436,40 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @precise_location = args[:precise_location] if args.key?(:precise_location)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Precise location info with multiple representation options. Currently only
+      # latitude and longitude point is supported.
+      class GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Location represented by a natural language address. Will later be
+        # geocoded and converted to either a point or a polygon.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `point`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleTypeLatLng]
+        attr_accessor :point
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @point = args[:point] if args.key?(:point)
         end
       end
       
@@ -17084,7 +17540,9 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaWorkspaceConfig
         include Google::Apis::Core::Hashable
       
-        # Obfuscated Dasher customer ID.
+        # Output only. Obfuscated Dasher customer ID. Derived by the server from the
+        # project's GCP organization at data store creation time; any value supplied in
+        # the request payload is ignored.
         # Corresponds to the JSON property `dasherCustomerId`
         # @return [String]
         attr_accessor :dasher_customer_id
@@ -17694,7 +18152,7 @@ module Google
         # @return [String]
         attr_accessor :answer_text
       
-        # List of blob attachments in the answer.
+        # Output only. List of blob attachments in the answer.
         # Corresponds to the JSON property `blobAttachments`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerBlobAttachment>]
         attr_accessor :blob_attachments
@@ -19000,11 +19458,6 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo]
         attr_accessor :chunk_info
       
-        # Output only. The search queries that produced this reference.
-        # Corresponds to the JSON property `queries`
-        # @return [Array<String>]
-        attr_accessor :queries
-      
         # Structured search information.
         # Corresponds to the JSON property `structuredDocumentInfo`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceStructuredDocumentInfo]
@@ -19022,7 +19475,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunk_info = args[:chunk_info] if args.key?(:chunk_info)
-          @queries = args[:queries] if args.key?(:queries)
           @structured_document_info = args[:structured_document_info] if args.key?(:structured_document_info)
           @unstructured_document_info = args[:unstructured_document_info] if args.key?(:unstructured_document_info)
         end
@@ -19604,6 +20056,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAssistAnswerReply
         include Google::Apis::Core::Hashable
       
+        # The time when the reply was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # A piece of content and possibly its grounding information. Not all content
         # needs grounding. Phrases like "Of course, I will gladly search it for you." do
         # not need grounding.
@@ -19617,6 +20074,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @grounded_content = args[:grounded_content] if args.key?(:grounded_content)
         end
       end
@@ -19651,6 +20109,11 @@ module Google
       # Discovery Engine Assistant resource.
       class GoogleCloudDiscoveryengineV1betaAssistant
         include Google::Apis::Core::Hashable
+      
+        # Output only. Represents the time when this Assistant was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
       
         # Customer-defined policy for the assistant.
         # Corresponds to the JSON property `customerPolicy`
@@ -19707,6 +20170,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Represents the time when this Assistant was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # Optional. The type of web grounding to use.
         # Corresponds to the JSON property `webGroundingType`
         # @return [String]
@@ -19718,6 +20186,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @customer_policy = args[:customer_policy] if args.key?(:customer_policy)
           @default_web_grounding_toggle_off = args[:default_web_grounding_toggle_off] if args.key?(:default_web_grounding_toggle_off)
           @description = args[:description] if args.key?(:description)
@@ -19725,6 +20194,7 @@ module Google
           @enabled_tools = args[:enabled_tools] if args.key?(:enabled_tools)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @web_grounding_type = args[:web_grounding_type] if args.key?(:web_grounding_type)
         end
       end
@@ -20086,6 +20556,11 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegment>]
         attr_accessor :segments
       
+        # Grounding information for parts of the visual content.
+        # Corresponds to the JSON property `visualSegments`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegment>]
+        attr_accessor :visual_segments
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20094,12 +20569,18 @@ module Google
         def update!(**args)
           @references = args[:references] if args.key?(:references)
           @segments = args[:segments] if args.key?(:segments)
+          @visual_segments = args[:visual_segments] if args.key?(:visual_segments)
         end
       end
       
       # Referenced content and related document metadata.
       class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference
         include Google::Apis::Core::Hashable
+      
+        # Chunk of code snippet from the referenced document.
+        # Corresponds to the JSON property `codeSnippet`
+        # @return [String]
+        attr_accessor :code_snippet
       
         # Referenced text content.
         # Corresponds to the JSON property `content`
@@ -20117,6 +20598,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @code_snippet = args[:code_snippet] if args.key?(:code_snippet)
           @content = args[:content] if args.key?(:content)
           @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
         end
@@ -20137,6 +20619,11 @@ module Google
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
+      
+        # 
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
       
         # The mime type of the document. https://www.iana.org/assignments/media-types/
         # media-types.xhtml.
@@ -20168,6 +20655,7 @@ module Google
         def update!(**args)
           @document = args[:document] if args.key?(:document)
           @domain = args[:domain] if args.key?(:domain)
+          @language = args[:language] if args.key?(:language)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @page_identifier = args[:page_identifier] if args.key?(:page_identifier)
           @title = args[:title] if args.key?(:title)
@@ -20217,6 +20705,33 @@ module Google
           @reference_indices = args[:reference_indices] if args.key?(:reference_indices)
           @start_index = args[:start_index] if args.key?(:start_index)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Grounding information for a visual segment.
+      class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegment
+        include Google::Apis::Core::Hashable
+      
+        # The content id of the visual segment. In order to display the citation of the
+        # visual element, this content_id needs to match with the `grounded_content.
+        # content_metadata.content_id` field.
+        # Corresponds to the JSON property `contentId`
+        # @return [String]
+        attr_accessor :content_id
+      
+        # References for the visual segment.
+        # Corresponds to the JSON property `referenceIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :reference_indices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_id = args[:content_id] if args.key?(:content_id)
+          @reference_indices = args[:reference_indices] if args.key?(:reference_indices)
         end
       end
       
@@ -23199,6 +23714,64 @@ module Google
         end
       end
       
+      # Request message for LicenseConfigService.DistributeLicenseConfig method.
+      class GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Distribute seats to this license config instead of creating a new
+        # one. If not specified, a new license config will be created from the billing
+        # account license config.
+        # Corresponds to the JSON property `licenseConfigId`
+        # @return [String]
+        attr_accessor :license_config_id
+      
+        # Required. The number of licenses to distribute.
+        # Corresponds to the JSON property `licenseCount`
+        # @return [Fixnum]
+        attr_accessor :license_count
+      
+        # Required. The target GCP project region to distribute the license config to.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Required. The target GCP project number to distribute the license config to.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [Fixnum]
+        attr_accessor :project_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config_id = args[:license_config_id] if args.key?(:license_config_id)
+          @license_count = args[:license_count] if args.key?(:license_count)
+          @location = args[:location] if args.key?(:location)
+          @project_number = args[:project_number] if args.key?(:project_number)
+        end
+      end
+      
+      # Response message for LicenseConfigService.DistributeLicenseConfig method.
+      class GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Information about users' licenses.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaLicenseConfig]
+        attr_accessor :license_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config = args[:license_config] if args.key?(:license_config)
+        end
+      end
+      
       # Document captures all raw metadata information of items to be recommended or
       # searched.
       class GoogleCloudDiscoveryengineV1betaDocument
@@ -23232,9 +23805,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentIndexStatus]
         attr_accessor :index_status
       
-        # Output only. The last time the document was indexed. If this field is set, the
-        # document could be returned in search results. This field is OUTPUT_ONLY. If
-        # this field is not populated, it means the document has never been indexed.
+        # Output only. The time when the document was last indexed. If this field is
+        # populated, it means the document has been indexed. While documents typically
+        # become searchable within seconds of indexing, it can sometimes take up to a
+        # few hours. If this field is not populated, it means the document has never
+        # been indexed.
         # Corresponds to the JSON property `indexTime`
         # @return [String]
         attr_accessor :index_time
@@ -23404,7 +23979,8 @@ module Google
         attr_accessor :error_samples
       
         # The time when the document was indexed. If this field is populated, it means
-        # the document has been indexed.
+        # the document has been indexed. While documents typically become searchable
+        # within seconds of indexing, it can sometimes take up to a few hours.
         # Corresponds to the JSON property `indexTime`
         # @return [String]
         attr_accessor :index_time
@@ -23905,9 +24481,12 @@ module Google
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
         # personalization-memory` * `personalization-suggested-highlights` * `disable-
-        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
-        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
-        # upload` * `disable-welcome-emails`
+        # mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
+        # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
+        # canvas` * `disable-canvas-workspace` * `disable-skills` * `enable-end-user-
+        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
+        # orchestration` * `cross-product-intelligence`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -24594,6 +25173,115 @@ module Google
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Information about the user feedback. This information will be used for logging
+      # and metrics purpose.
+      class GoogleCloudDiscoveryengineV1betaFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The additional user comment of the feedback if user gives a thumb
+        # down.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Optional. The version of the component that this report is being sent from.
+        # Corresponds to the JSON property `componentVersion`
+        # @return [String]
+        attr_accessor :component_version
+      
+        # The conversation information such as the question index and session name.
+        # Corresponds to the JSON property `conversationInfo`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo]
+        attr_accessor :conversation_info
+      
+        # Optional. Whether the customer accepted data use terms.
+        # Corresponds to the JSON property `dataTermsAccepted`
+        # @return [Boolean]
+        attr_accessor :data_terms_accepted
+        alias_method :data_terms_accepted?, :data_terms_accepted
+      
+        # Optional. The UI component the user feedback comes from, which could be
+        # GOOGLE_CONSOLE, GOOGLE_WIDGET, GOOGLE_WEBAPP.
+        # Corresponds to the JSON property `feedbackSource`
+        # @return [String]
+        attr_accessor :feedback_source
+      
+        # Required. Indicate whether the user gives a positive or negative feedback. If
+        # the user gives a negative feedback, there might be more feedback details.
+        # Corresponds to the JSON property `feedbackType`
+        # @return [String]
+        attr_accessor :feedback_type
+      
+        # The version of the LLM model that was used to generate the response.
+        # Corresponds to the JSON property `llmModelVersion`
+        # @return [String]
+        attr_accessor :llm_model_version
+      
+        # Optional. The reason if user gives a thumb down.
+        # Corresponds to the JSON property `reasons`
+        # @return [Array<String>]
+        attr_accessor :reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
+          @component_version = args[:component_version] if args.key?(:component_version)
+          @conversation_info = args[:conversation_info] if args.key?(:conversation_info)
+          @data_terms_accepted = args[:data_terms_accepted] if args.key?(:data_terms_accepted)
+          @feedback_source = args[:feedback_source] if args.key?(:feedback_source)
+          @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
+          @llm_model_version = args[:llm_model_version] if args.key?(:llm_model_version)
+          @reasons = args[:reasons] if args.key?(:reasons)
+        end
+      end
+      
+      # The conversation information such as the question index and session name.
+      class GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The token which could be used to fetch the answer log.
+        # Corresponds to the JSON property `answerQueryToken`
+        # @return [String]
+        attr_accessor :answer_query_token
+      
+        # Optional. The token which could be used to fetch the assistant log.
+        # Corresponds to the JSON property `assistToken`
+        # @return [String]
+        attr_accessor :assist_token
+      
+        # Defines a user inputed query.
+        # Corresponds to the JSON property `query`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery]
+        attr_accessor :query
+      
+        # The index of the user input within the conversation messages.
+        # Corresponds to the JSON property `questionIndex`
+        # @return [Fixnum]
+        attr_accessor :question_index
+      
+        # Name of the newly generated or continued session.
+        # Corresponds to the JSON property `session`
+        # @return [String]
+        attr_accessor :session
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_query_token = args[:answer_query_token] if args.key?(:answer_query_token)
+          @assist_token = args[:assist_token] if args.key?(:assist_token)
+          @query = args[:query] if args.key?(:query)
+          @question_index = args[:question_index] if args.key?(:question_index)
+          @session = args[:session] if args.key?(:session)
         end
       end
       
@@ -25703,8 +26391,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :success_count
       
-        # Operation last update time. If the operation is done, this is also the finish
-        # time.
+        # Output only. Operation last update time. If the operation is done, this is
+        # also the finish time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -26357,6 +27045,31 @@ module Google
         end
       end
       
+      # Response message for LicenseConfigService.ListLicenseConfigs method.
+      class GoogleCloudDiscoveryengineV1betaListLicenseConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the customer's LicenseConfigs.
+        # Corresponds to the JSON property `licenseConfigs`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaLicenseConfig>]
+        attr_accessor :license_configs
+      
+        # Not supported.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_configs = args[:license_configs] if args.key?(:license_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for UserLicenseService.ListLicenseConfigsUsageStats method.
       class GoogleCloudDiscoveryengineV1betaListLicenseConfigsUsageStatsResponse
         include Google::Apis::Core::Hashable
@@ -26901,7 +27614,9 @@ module Google
         # and reflect the thresholds actively being used for billing purposes at the
         # time of the GetProject call. This includes the start_time of the subscription
         # and may differ from the values in `customer_provided_config` due to billing
-        # rules (e.g., scale-downs taking effect only at the start of a new month).
+        # rules (e.g., scale-downs taking effect only at the start of a new month). We
+        # also include the update type to indicate the type of update performed on the
+        # configurable billing configuration in the UpdateProject operation.
         # Corresponds to the JSON property `configurableBillingStatus`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus]
         attr_accessor :configurable_billing_status
@@ -26954,7 +27669,9 @@ module Google
       # and reflect the thresholds actively being used for billing purposes at the
       # time of the GetProject call. This includes the start_time of the subscription
       # and may differ from the values in `customer_provided_config` due to billing
-      # rules (e.g., scale-downs taking effect only at the start of a new month).
+      # rules (e.g., scale-downs taking effect only at the start of a new month). We
+      # also include the update type to indicate the type of update performed on the
+      # configurable billing configuration in the UpdateProject operation.
       class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus
         include Google::Apis::Core::Hashable
       
@@ -26999,6 +27716,12 @@ module Google
         # @return [String]
         attr_accessor :terminate_time
       
+        # Output only. The type of update performed in this operation. This field is
+        # populated in the response of UpdateProject.
+        # Corresponds to the JSON property `updateType`
+        # @return [String]
+        attr_accessor :update_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -27011,6 +27734,7 @@ module Google
           @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
+          @update_type = args[:update_type] if args.key?(:update_type)
         end
       end
       
@@ -27822,8 +28546,8 @@ module Google
         attr_accessor :id
       
         # The score of this record based on the given query and selected model. The
-        # score will be rounded to 2 decimal places. If the score is close to 0, it will
-        # be rounded to 0.0001 to avoid returning unset.
+        # score will be rounded to 4 decimal places. If the score is close to 0, it will
+        # be rounded to 0.00001 to avoid returning unset.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -28272,6 +28996,60 @@ module Google
         end
       end
       
+      # Request message for LicenseConfigService.RetractLicenseConfig method.
+      class GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, retract the entire license config. Otherwise,
+        # retract the specified license count.
+        # Corresponds to the JSON property `fullRetract`
+        # @return [Boolean]
+        attr_accessor :full_retract
+        alias_method :full_retract?, :full_retract
+      
+        # Required. Full resource name of LicenseConfig. Format: `projects/`project`/
+        # locations/`location`/licenseConfigs/`license_config_id``.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [String]
+        attr_accessor :license_config
+      
+        # Optional. The number of licenses to retract. Only used when full_retract is
+        # false.
+        # Corresponds to the JSON property `licenseCount`
+        # @return [Fixnum]
+        attr_accessor :license_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_retract = args[:full_retract] if args.key?(:full_retract)
+          @license_config = args[:license_config] if args.key?(:license_config)
+          @license_count = args[:license_count] if args.key?(:license_count)
+        end
+      end
+      
+      # Response message for LicenseConfigService.RetractLicenseConfig method.
+      class GoogleCloudDiscoveryengineV1betaRetractLicenseConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Information about users' licenses.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaLicenseConfig]
+        attr_accessor :license_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config = args[:license_config] if args.key?(:license_config)
+        end
+      end
+      
       # Safety rating corresponding to the generated content.
       class GoogleCloudDiscoveryengineV1betaSafetyRating
         include Google::Apis::Core::Hashable
@@ -28637,6 +29415,11 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec>]
         attr_accessor :crowding_specs
       
+        # Configuration parameters for the Custom Ranking feature.
+        # Corresponds to the JSON property `customRankingParams`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams]
+        attr_accessor :custom_ranking_params
+      
         # Specifications that define the specific DataStores to be searched, along with
         # configurations for those data stores. This is only considered for Engines with
         # multiple data stores. For engines with a single data store, the specs directly
@@ -28655,6 +29438,14 @@ module Google
         # Corresponds to the JSON property `embeddingSpec`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec]
         attr_accessor :embedding_spec
+      
+        # Optional. The entity for customers that may run multiple different entities,
+        # domains, sites or regions, for example, "Google US", "Google Ads", "Waymo", "
+        # google.com", "youtube.com", etc. If this is set, it should be exactly matched
+        # with UserEvent.entity to get search results boosted by entity.
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
       
         # Facet specifications for faceted search. If empty, no facets are returned. A
         # maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is
@@ -28839,7 +29630,14 @@ module Google
         # since the document was last updated, a floating-point number (e.g., 0.25 means
         # 15 minutes). * `topicality_rank`: topicality adjustment as a rank. Uses
         # proprietary Google model to determine the keyword-based overlap between the
-        # query and the document. * `base_rank`: the default rank of the result
+        # query and the document. * `base_rank`: the default rank of the result * `
+        # media_actor_match`: whether the media actor matches the query * `
+        # media_director_match`: whether the media director matches the query * `
+        # media_genre_match`: whether the media genre matches the query * `
+        # media_language_match`: whether the media language matches the query * `
+        # media_title_match`: whether the media title matches the query * `
+        # media_prefix_similarity_rank`: prefix similarity rank for media results * `
+        # media_semantic_similarity_rank`: semantic similarity rank for media results
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression
@@ -28972,9 +29770,11 @@ module Google
           @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
           @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
           @crowding_specs = args[:crowding_specs] if args.key?(:crowding_specs)
+          @custom_ranking_params = args[:custom_ranking_params] if args.key?(:custom_ranking_params)
           @data_store_specs = args[:data_store_specs] if args.key?(:data_store_specs)
           @display_spec = args[:display_spec] if args.key?(:display_spec)
           @embedding_spec = args[:embedding_spec] if args.key?(:embedding_spec)
+          @entity = args[:entity] if args.key?(:entity)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
           @image_query = args[:image_query] if args.key?(:image_query)
@@ -29564,6 +30364,27 @@ module Google
         end
       end
       
+      # Configuration parameters for the Custom Ranking feature.
+      class GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of ranking expressions (see `ranking_expression` for the
+        # syntax documentation) to evaluate. The evaluation results will be returned in `
+        # SearchResponse.SearchResult.rank_signals.precomputed_expression_values` field.
+        # Corresponds to the JSON property `expressionsToPrecompute`
+        # @return [Array<String>]
+        attr_accessor :expressions_to_precompute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expressions_to_precompute = args[:expressions_to_precompute] if args.key?(:expressions_to_precompute)
+        end
+      end
+      
       # A struct to define data stores to filter on in a search call and
       # configurations for those data stores. Otherwise, an `INVALID_ARGUMENT` error
       # is returned.
@@ -29888,9 +30709,7 @@ module Google
       
         # Field names used for location-based filtering, where geolocation filters are
         # detected in natural language search queries. Only valid when the
-        # FilterExtractionCondition is set to `ENABLED`. If this field is set, it
-        # overrides the field names set in ServingConfig.
-        # geo_search_query_detection_field_names.
+        # FilterExtractionCondition is set to `ENABLED`.
         # Corresponds to the JSON property `geoSearchQueryDetectionFieldNames`
         # @return [Array<String>]
         attr_accessor :geo_search_query_detection_field_names
@@ -30815,6 +31634,13 @@ module Google
         # @return [Float]
         attr_accessor :pctr_rank
       
+        # Optional. A list of precomputed expression results for a given document, in
+        # the same order as requested in `SearchRequest.custom_ranking_params.
+        # expressions_to_precompute`.
+        # Corresponds to the JSON property `precomputedExpressionValues`
+        # @return [Array<Float>]
+        attr_accessor :precomputed_expression_values
+      
         # Optional. Semantic relevance adjustment.
         # Corresponds to the JSON property `relevanceScore`
         # @return [Float]
@@ -30842,6 +31668,7 @@ module Google
           @document_age = args[:document_age] if args.key?(:document_age)
           @keyword_similarity_score = args[:keyword_similarity_score] if args.key?(:keyword_similarity_score)
           @pctr_rank = args[:pctr_rank] if args.key?(:pctr_rank)
+          @precomputed_expression_values = args[:precomputed_expression_values] if args.key?(:precomputed_expression_values)
           @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
           @semantic_similarity_score = args[:semantic_similarity_score] if args.key?(:semantic_similarity_score)
           @topicality_rank = args[:topicality_rank] if args.key?(:topicality_rank)
@@ -31512,6 +32339,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Full resource name of an in-progress AsyncAssist operation for
+        # this session, e.g. `projects/*/locations/*/collections/*/engines/*/sessions/*/
+        # operations/*`. Set when the operation starts and cleared when it finishes.
+        # Corresponds to the JSON property `pendingAsyncAssistOperationId`
+        # @return [String]
+        attr_accessor :pending_async_assist_operation_id
+      
         # Output only. The time the session started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -31543,6 +32377,7 @@ module Google
           @is_pinned = args[:is_pinned] if args.key?(:is_pinned)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @pending_async_assist_operation_id = args[:pending_async_assist_operation_id] if args.key?(:pending_async_assist_operation_id)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @turns = args[:turns] if args.key?(:turns)
@@ -31570,6 +32405,12 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistAnswer]
         attr_accessor :detailed_assist_answer
       
+        # Optional. Indicates whether this turn is a live turn.
+        # Corresponds to the JSON property `live`
+        # @return [Boolean]
+        attr_accessor :live
+        alias_method :live?, :live
+      
         # Defines a user inputed query.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery]
@@ -31591,6 +32432,7 @@ module Google
           @answer = args[:answer] if args.key?(:answer)
           @detailed_answer = args[:detailed_answer] if args.key?(:detailed_answer)
           @detailed_assist_answer = args[:detailed_assist_answer] if args.key?(:detailed_assist_answer)
+          @live = args[:live] if args.key?(:live)
           @query = args[:query] if args.key?(:query)
           @query_config = args[:query_config] if args.key?(:query_config)
         end
@@ -32053,6 +32895,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :invocation_tools
       
+        # The skills executed during the turn.
+        # Corresponds to the JSON property `invokedSkills`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill>]
+        attr_accessor :invoked_skills
+      
         # Information about the session.
         # Corresponds to the JSON property `sessionInfo`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo]
@@ -32067,7 +32914,33 @@ module Google
           @answer = args[:answer] if args.key?(:answer)
           @assist_token = args[:assist_token] if args.key?(:assist_token)
           @invocation_tools = args[:invocation_tools] if args.key?(:invocation_tools)
+          @invoked_skills = args[:invoked_skills] if args.key?(:invoked_skills)
           @session_info = args[:session_info] if args.key?(:session_info)
+        end
+      end
+      
+      # Represents a skill used during the assist call.
+      class GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the skill.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the skill.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -32716,6 +33589,12 @@ module Google
         # @return [String]
         attr_accessor :event_type
       
+        # Information about the user feedback. This information will be used for logging
+        # and metrics purpose.
+        # Corresponds to the JSON property `feedback`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFeedback]
+        attr_accessor :feedback
+      
         # Optional. The filter syntax consists of an expression language for
         # constructing a predicate from one or more fields of the documents being
         # filtered. One example is for `search` events, the associated SearchRequest may
@@ -32819,6 +33698,7 @@ module Google
           @entity = args[:entity] if args.key?(:entity)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
+          @feedback = args[:feedback] if args.key?(:feedback)
           @filter = args[:filter] if args.key?(:filter)
           @media_info = args[:media_info] if args.key?(:media_info)
           @page_info = args[:page_info] if args.key?(:page_info)
@@ -32837,6 +33717,12 @@ module Google
       # Information of an end user.
       class GoogleCloudDiscoveryengineV1betaUserInfo
         include Google::Apis::Core::Hashable
+      
+        # Precise location info with multiple representation options. Currently only
+        # latitude and longitude point is supported.
+        # Corresponds to the JSON property `preciseLocation`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation]
+        attr_accessor :precise_location
       
         # Optional. IANA time zone, e.g. Europe/Budapest.
         # Corresponds to the JSON property `timeZone`
@@ -32871,9 +33757,40 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @precise_location = args[:precise_location] if args.key?(:precise_location)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Precise location info with multiple representation options. Currently only
+      # latitude and longitude point is supported.
+      class GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Location represented by a natural language address. Will later be
+        # geocoded and converted to either a point or a polygon.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `point`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleTypeLatLng]
+        attr_accessor :point
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @point = args[:point] if args.key?(:point)
         end
       end
       
@@ -33000,7 +33917,9 @@ module Google
       class GoogleCloudDiscoveryengineV1betaWorkspaceConfig
         include Google::Apis::Core::Hashable
       
-        # Obfuscated Dasher customer ID.
+        # Output only. Obfuscated Dasher customer ID. Derived by the server from the
+        # project's GCP organization at data store creation time; any value supplied in
+        # the request payload is ignored.
         # Corresponds to the JSON property `dasherCustomerId`
         # @return [String]
         attr_accessor :dasher_customer_id
@@ -33825,6 +34744,34 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # An object that represents a latitude/longitude pair. This is expressed as a
+      # pair of doubles to represent degrees latitude and degrees longitude. Unless
+      # specified otherwise, this object must conform to the WGS84 standard. Values
+      # must be within normalized ranges.
+      class GoogleTypeLatLng
+        include Google::Apis::Core::Hashable
+      
+        # The latitude in degrees. It must be in the range [-90.0, +90.0].
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
+      
+        # The longitude in degrees. It must be in the range [-180.0, +180.0].
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
         end
       end
       
