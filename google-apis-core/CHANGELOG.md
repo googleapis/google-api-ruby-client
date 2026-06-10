@@ -1,5 +1,11 @@
 # Release History
 
+### 1.2.3 (2026-06-10)
+
+#### Bug Fixes
+
+* upgrade addressable dependency to ~&gt; 2.9 ([#26622](https://github.com/googleapis/google-api-ruby-client/issues/26622)) 
+
 ### 1.2.2 (2026-06-10)
 
 #### Bug Fixes
