@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -384,6 +396,21 @@ module Google
       
           property :asset, as: 'asset'
           property :asset_type, as: 'assetType'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledge_type, as: 'acknowledgeType'
+          property :comment, as: 'comment'
+          collection :names, as: 'names'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
