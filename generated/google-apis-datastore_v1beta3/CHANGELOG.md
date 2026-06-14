@@ -1,5 +1,10 @@
 # Release history for google-apis-datastore_v1beta3
 
+### v0.37.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260323
+* Regenerated using generator version 0.19.0
+
 ### v0.36.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0
