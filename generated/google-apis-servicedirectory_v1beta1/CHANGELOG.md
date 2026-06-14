@@ -1,5 +1,10 @@
 # Release history for google-apis-servicedirectory_v1beta1
 
+### v0.48.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260526
+* Regenerated using generator version 0.19.0
+
 ### v0.47.0 (2026-04-19)
 
 * Regenerated from discovery document revision 20260327
