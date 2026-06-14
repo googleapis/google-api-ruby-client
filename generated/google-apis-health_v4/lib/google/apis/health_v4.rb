@@ -36,11 +36,17 @@ module Google
       # See your Google Health activity and fitness data
       AUTH_GOOGLEHEALTH_ACTIVITY_AND_FITNESS_READONLY = 'https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly'
 
+      # Add activity and fitness data to Google Health, and edit or delete the data it adds.
+      AUTH_GOOGLEHEALTH_ACTIVITY_AND_FITNESS_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.activity_and_fitness.writeonly'
+
       # See your Google Health ECG data
       AUTH_GOOGLEHEALTH_ECG_READONLY = 'https://www.googleapis.com/auth/googlehealth.ecg.readonly'
 
       # See your Google Health health metrics and measurement data
       AUTH_GOOGLEHEALTH_HEALTH_METRICS_AND_MEASUREMENTS_READONLY = 'https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly'
+
+      # Add health metric and measurements data to Google Health, and edit or delete the data it adds.
+      AUTH_GOOGLEHEALTH_HEALTH_METRICS_AND_MEASUREMENTS_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.writeonly'
 
       # See your Google Health Irregular Rhythm Notifications data
       AUTH_GOOGLEHEALTH_IRN_READONLY = 'https://www.googleapis.com/auth/googlehealth.irn.readonly'
@@ -48,14 +54,29 @@ module Google
       # See exercise GPS location data in Google Health
       AUTH_GOOGLEHEALTH_LOCATION_READONLY = 'https://www.googleapis.com/auth/googlehealth.location.readonly'
 
+      # Add exercise GPS location data to Google Health, and edit or delete the data it adds.
+      AUTH_GOOGLEHEALTH_LOCATION_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.location.writeonly'
+
+      # Add nutrition data to Google Health, and edit or delete the data it adds.
+      AUTH_GOOGLEHEALTH_NUTRITION_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.nutrition.writeonly'
+
       # See your Google Health profile data
       AUTH_GOOGLEHEALTH_PROFILE_READONLY = 'https://www.googleapis.com/auth/googlehealth.profile.readonly'
+
+      # Add profile data to Google Health, and edit or delete the data it adds.
+      AUTH_GOOGLEHEALTH_PROFILE_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.profile.writeonly'
 
       # See your Google Health settings
       AUTH_GOOGLEHEALTH_SETTINGS_READONLY = 'https://www.googleapis.com/auth/googlehealth.settings.readonly'
 
+      # Add settings data to Google Health, and edit or delete the data it adds.
+      AUTH_GOOGLEHEALTH_SETTINGS_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.settings.writeonly'
+
       # See your Google Health sleep data
       AUTH_GOOGLEHEALTH_SLEEP_READONLY = 'https://www.googleapis.com/auth/googlehealth.sleep.readonly'
+
+      # Add sleep data to Google Health, and edit or delete the data it adds.
+      AUTH_GOOGLEHEALTH_SLEEP_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.sleep.writeonly'
     end
   end
 end
