@@ -4954,6 +4954,13 @@ module Google
       class Membership
         include Google::Apis::Core::Hashable
       
+        # Output only. A user's relationship to the Workspace organization that owns the
+        # space. In spaces owned by consumer accounts, the affiliation of all members is
+        # `EXTERNAL`.
+        # Corresponds to the JSON property `affiliation`
+        # @return [String]
+        attr_accessor :affiliation
+      
         # Optional. Immutable. The creation time of the membership, such as when a
         # member joined or was invited to join a space. This field is output only,
         # except when used to import historical memberships in import mode spaces.
@@ -5005,6 +5012,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @affiliation = args[:affiliation] if args.key?(:affiliation)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @group_member = args[:group_member] if args.key?(:group_member)
@@ -5324,13 +5332,10 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :private_message_viewer
       
-        # Information about a message that another message quotes. When you create a
-        # message, you can quote messages within the same thread, or quote a root
-        # message to create a new root message. However, you can't quote a message reply
-        # from a different thread. When you update a message, you can't add or replace
-        # the `quotedMessageMetadata` field, but you can remove it. For example usage,
-        # see [Quote another message](https://developers.google.com/workspace/chat/
-        # create-messages#quote-a-message).
+        # Information about a message that another message quotes. When you update a
+        # message, you can't add or replace the `quotedMessageMetadata` field, but you
+        # can remove it. For example usage, see [Quote another message](https://
+        # developers.google.com/workspace/chat/create-messages#quote-a-message).
         # Corresponds to the JSON property `quotedMessageMetadata`
         # @return [Google::Apis::ChatV1::QuotedMessageMetadata]
         attr_accessor :quoted_message_metadata
@@ -5788,13 +5793,10 @@ module Google
         end
       end
       
-      # Information about a message that another message quotes. When you create a
-      # message, you can quote messages within the same thread, or quote a root
-      # message to create a new root message. However, you can't quote a message reply
-      # from a different thread. When you update a message, you can't add or replace
-      # the `quotedMessageMetadata` field, but you can remove it. For example usage,
-      # see [Quote another message](https://developers.google.com/workspace/chat/
-      # create-messages#quote-a-message).
+      # Information about a message that another message quotes. When you update a
+      # message, you can't add or replace the `quotedMessageMetadata` field, but you
+      # can remove it. For example usage, see [Quote another message](https://
+      # developers.google.com/workspace/chat/create-messages#quote-a-message).
       class QuotedMessageMetadata
         include Google::Apis::Core::Hashable
       
@@ -6070,7 +6072,9 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A page of the requested spaces.
+        # Deprecated: Please use the new `results` field instead. A page of the
+        # requested spaces. This field will be populated only when `useAdminAccess` is
+        # set to `true` and deprecated in favor of the new `results` field.
         # Corresponds to the JSON property `spaces`
         # @return [Array<Google::Apis::ChatV1::Space>]
         attr_accessor :spaces

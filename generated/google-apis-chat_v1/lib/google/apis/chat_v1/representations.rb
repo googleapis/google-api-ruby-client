@@ -2219,6 +2219,7 @@ module Google
       class Membership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :affiliation, as: 'affiliation'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :group_member, as: 'groupMember', class: Google::Apis::ChatV1::Group, decorator: Google::Apis::ChatV1::Group::Representation
