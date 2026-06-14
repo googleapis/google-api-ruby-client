@@ -112,7 +112,8 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::CycleOptions]
         attr_accessor :cycle_options
       
-        # Required. The parent resource name, which is the identifier of the partner.
+        # Optional. Deprecated: Use the `parent` field in `GenerateUserSessionRequest`
+        # instead. The parent resource name, which is the identifier of the partner.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
