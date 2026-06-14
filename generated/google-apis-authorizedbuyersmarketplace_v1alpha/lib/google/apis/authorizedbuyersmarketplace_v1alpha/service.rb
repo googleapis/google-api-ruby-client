@@ -2105,9 +2105,9 @@ module Google
         #   media planners will be returned. The maximum value is 500; values above 500
         #   will be coerced to 500.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return. This value is
-        #   received from a previous `ListMediaPlanners` call in ListMediaPlannersResponse.
-        #   nextPageToken.
+        #   Optional. A token identifying a page of results the server should return. This
+        #   value is received from a previous `ListMediaPlanners` call in
+        #   ListMediaPlannersResponse.nextPageToken.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
