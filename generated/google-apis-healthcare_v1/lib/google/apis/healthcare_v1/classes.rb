@@ -709,6 +709,57 @@ module Google
         end
       end
       
+      # Request to bulk delete FHIR resources.
+      class BulkDeleteResourcesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for exporting to Cloud Storage.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirGcsDestination]
+        attr_accessor :gcs_destination
+      
+        # Optional. String of comma-delimited FHIR resource types. If provided, only
+        # resources of the specified resource type(s) will be deleted.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Optional. If provided, only resources updated before or atthis time are
+        # deleted. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `
+        # 2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be
+        # specified to the second and include a time zone.
+        # Corresponds to the JSON property `until`
+        # @return [String]
+        attr_accessor :until
+      
+        # Optional. If set to true, the request will only perform a dry run. By default (
+        # once the behavior change is fully rolled out), this will default to true.
+        # During the transition period, the default depends on the Mendel flag status
+        # for the project.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        # Optional. Specifies which version of the resources to delete.
+        # Corresponds to the JSON property `versionConfig`
+        # @return [String]
+        attr_accessor :version_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @type = args[:type] if args.key?(:type)
+          @until = args[:until] if args.key?(:until)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+          @version_config = args[:version_config] if args.key?(:version_config)
+        end
+      end
+      
       # The configuration for exporting to Cloud Storage using the bulk export API.
       class BulkExportGcsDestination
         include Google::Apis::Core::Hashable
@@ -1503,13 +1554,13 @@ module Google
         # @return [Google::Apis::HealthcareV1::DeidentifyConfig]
         attr_accessor :config
       
-        # Required. The name of the DICOM store to create and write the redacted data to.
-        # For example, `projects/`project_id`/locations/`location_id`/datasets/`
-        # dataset_id`/dicomStores/`dicom_store_id``. * The destination dataset must
+        # Required. The name of the DICOM store to write the redacted data to. For
+        # example, `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # dicomStores/`dicom_store_id``. * The destination dataset and DICOM store must
         # exist. * The source dataset and destination dataset must both reside in the
         # same location. De-identifying data across multiple locations is not supported.
-        # * The destination DICOM store must not exist. * The caller must have the
-        # necessary permissions to create the destination DICOM store.
+        # * The caller must have the healthcare.dicomStores.dicomWebWrite permission to
+        # write to the destination DICOM store.
         # Corresponds to the JSON property `destinationStore`
         # @return [String]
         attr_accessor :destination_store
@@ -1553,13 +1604,13 @@ module Google
         # @return [Google::Apis::HealthcareV1::DeidentifyConfig]
         attr_accessor :config
       
-        # Required. The name of the FHIR store to create and write the redacted data to.
-        # For example, `projects/`project_id`/locations/`location_id`/datasets/`
-        # dataset_id`/fhirStores/`fhir_store_id``. * The destination dataset must exist.
-        # * The source dataset and destination dataset must both reside in the same
-        # location. De-identifying data across multiple locations is not supported. *
-        # The destination FHIR store must exist. * The caller must have the healthcare.
-        # fhirResources.update permission to write to the destination FHIR store.
+        # Required. The name of the FHIR store to write the redacted data to. For
+        # example, `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # fhirStores/`fhir_store_id``. * The destination dataset and FHIR store must
+        # exist. * The source dataset and destination dataset must both reside in the
+        # same location. De-identifying data across multiple locations is not supported.
+        # * The caller must have the healthcare.fhirResources.update permission to write
+        # to the destination FHIR store.
         # Corresponds to the JSON property `destinationStore`
         # @return [String]
         attr_accessor :destination_store
@@ -3098,6 +3149,39 @@ module Google
         attr_accessor :force
         alias_method :force?, :force
       
+        # Optional. If true, the source store name will be included as a column in the
+        # BigQuery schema.
+        # Corresponds to the JSON property `includeSourceStore`
+        # @return [Boolean]
+        attr_accessor :include_source_store
+        alias_method :include_source_store?, :include_source_store
+      
+        # Using this field will flatten the DICOM instances into a BigQuery table. The
+        # table will have one column for each DICOM tag. The column name will be the
+        # DICOM tag's textual representation.
+        # Corresponds to the JSON property `schemaFlattened`
+        # @return [Google::Apis::HealthcareV1::SchemaFlattened]
+        attr_accessor :schema_flattened
+      
+        # Using this field will set the schema such that all DICOM tags will be included
+        # in the BigQuery table as a single JSON type column. The BigQuery table schema
+        # will include the following columns: * `StudyInstanceUID` (Type: STRING): DICOM
+        # Tag 0020000D. * `SeriesInstanceUID` (Type: STRING): DICOM Tag 0020000E. * `
+        # SOPInstanceUID` (Type: STRING): DICOM Tag 00080018. * `SourceDicomStore` (Type:
+        # STRING): The name of the source DICOM store. This field is only included if
+        # the `include_source_store` option is set to true. * `Metadata` (Type: JSON):
+        # All DICOM tags for the instance, stored in a single JSON object. * `
+        # StructuredStorageSize` (Type: INTEGER): Size of the structured storage in
+        # bytes. * `DroppedTags` (Type: STRING, Repeated: Yes): List of tags that were
+        # dropped during the conversion. * `StorageClass` (Type: STRING): The storage
+        # class of the instance. * `LastUpdated` (Type: TIMESTAMP): Timestamp of the
+        # last update to the instance. * `BlobStorageSize` (Type: INTEGER): Size of the
+        # blob storage in bytes. * `Type` (Type: STRING): Indicates the type of
+        # operation (e.g., INSERT, DELETE).
+        # Corresponds to the JSON property `schemaJson`
+        # @return [Google::Apis::HealthcareV1::SchemaJson]
+        attr_accessor :schema_json
+      
         # Optional. BigQuery URI to a table, up to 2000 characters long, in the format `
         # bq://projectId.bqDatasetId.tableId`
         # Corresponds to the JSON property `tableUri`
@@ -3118,6 +3202,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @force = args[:force] if args.key?(:force)
+          @include_source_store = args[:include_source_store] if args.key?(:include_source_store)
+          @schema_flattened = args[:schema_flattened] if args.key?(:schema_flattened)
+          @schema_json = args[:schema_json] if args.key?(:schema_json)
           @table_uri = args[:table_uri] if args.key?(:table_uri)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
@@ -3134,13 +3221,34 @@ module Google
         # MIME types are consistent with supported formats in DICOMweb: https://cloud.
         # google.com/healthcare/docs/dicom#retrieve_transaction. Specifically, the
         # following are supported: - application/dicom; transfer-syntax=1.2.840.10008.1.
-        # 2.1 (uncompressed DICOM) - application/dicom; transfer-syntax=1.2.840.10008.1.
-        # 2.4.50 (DICOM with embedded JPEG Baseline) - application/dicom; transfer-
-        # syntax=1.2.840.10008.1.2.4.90 (DICOM with embedded JPEG 2000 Lossless Only) -
-        # application/dicom; transfer-syntax=1.2.840.10008.1.2.4.91 (DICOM with embedded
-        # JPEG 2000) - application/dicom; transfer-syntax=* (DICOM with no transcoding) -
-        # application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1 (raw
-        # uncompressed PixelData) - application/octet-stream; transfer-syntax=* (raw
+        # 2 (DICOM Implicit VR Little Endian) - application/dicom; transfer-syntax=1.2.
+        # 840.10008.1.2.1 (DICOM Explicit VR Little Endian) - application/dicom;
+        # transfer-syntax=1.2.840.10008.1.2.1.99 (DICOM Deflated Explicit VR Little
+        # Endian) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.50 (DICOM
+        # with embedded JPEG Baseline) - application/dicom; transfer-syntax=1.2.840.
+        # 10008.1.2.4.51 (DICOM with embedded JPEG Extended) - application/dicom;
+        # transfer-syntax=1.2.840.10008.1.2.4.57 (DICOM with embedded JPEG Lossless) -
+        # application/dicom; transfer-syntax=1.2.840.10008.1.2.4.70 (DICOM with embedded
+        # JPEG Lossless First-Order Prediction) - application/dicom; transfer-syntax=1.2.
+        # 840.10008.1.2.4.80 (DICOM with embedded JPEG-LS Lossless) - application/dicom;
+        # transfer-syntax=1.2.840.10008.1.2.4.81 (DICOM with embedded JPEG-LS Lossy (
+        # Near-Lossless)) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.90 (
+        # DICOM with embedded JPEG 2000 Lossless Only) - application/dicom; transfer-
+        # syntax=1.2.840.10008.1.2.4.91 (DICOM with embedded JPEG 2000) - application/
+        # dicom; transfer-syntax=1.2.840.10008.1.2.4.110 (DICOM with embedded JPEG XL
+        # Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.111 (DICOM
+        # with embedded JPEG XL JPEG Recompression) - application/dicom; transfer-syntax=
+        # 1.2.840.10008.1.2.4.112 (DICOM with embedded JPEG XL) - application/dicom;
+        # transfer-syntax=1.2.840.10008.1.2.4.201 (DICOM with embedded High-Throughput
+        # JPEG 2000 Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.
+        # 202 (DICOM with embedded High-Throughput JPEG 2000 with RPCL Options Lossless)
+        # - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.203 (DICOM with
+        # embedded High-Throughput JPEG 2000) - application/dicom; transfer-syntax=1.2.
+        # 840.10008.1.2.5 (DICOM with embedded RLE Lossless) - application/dicom;
+        # transfer-syntax=1.2.840.10008.1.2.8.1 (DICOM with embedded Deflated Image
+        # Frame Compression) - application/dicom; transfer-syntax=* (DICOM with no
+        # transcoding) - application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1 (
+        # raw uncompressed PixelData) - application/octet-stream; transfer-syntax=* (raw
         # PixelData in whatever format it was uploaded in) - image/jpeg; transfer-syntax=
         # 1.2.840.10008.1.2.4.50 (Consumer JPEG) - image/png The following extensions
         # are used for output files: - application/dicom -> .dcm - image/jpeg -> .jpg -
@@ -4278,8 +4386,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -4829,6 +4938,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :pending
       
+        # The number of secondary units that failed in the operation.
+        # Corresponds to the JSON property `secondaryFailure`
+        # @return [Fixnum]
+        attr_accessor :secondary_failure
+      
+        # The number of secondary units that succeeded in the operation.
+        # Corresponds to the JSON property `secondarySuccess`
+        # @return [Fixnum]
+        attr_accessor :secondary_success
+      
         # The number of units that succeeded in the operation.
         # Corresponds to the JSON property `success`
         # @return [Fixnum]
@@ -4842,6 +4961,8 @@ module Google
         def update!(**args)
           @failure = args[:failure] if args.key?(:failure)
           @pending = args[:pending] if args.key?(:pending)
+          @secondary_failure = args[:secondary_failure] if args.key?(:secondary_failure)
+          @secondary_success = args[:secondary_success] if args.key?(:secondary_success)
           @success = args[:success] if args.key?(:success)
         end
       end
@@ -5314,6 +5435,21 @@ module Google
         end
       end
       
+      # Using this field will flatten the DICOM instances into a BigQuery table. The
+      # table will have one column for each DICOM tag. The column name will be the
+      # DICOM tag's textual representation.
+      class SchemaFlattened
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An HL7v2 logical group construct.
       class SchemaGroup
         include Google::Apis::Core::Hashable
@@ -5357,6 +5493,33 @@ module Google
           @members = args[:members] if args.key?(:members)
           @min_occurs = args[:min_occurs] if args.key?(:min_occurs)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Using this field will set the schema such that all DICOM tags will be included
+      # in the BigQuery table as a single JSON type column. The BigQuery table schema
+      # will include the following columns: * `StudyInstanceUID` (Type: STRING): DICOM
+      # Tag 0020000D. * `SeriesInstanceUID` (Type: STRING): DICOM Tag 0020000E. * `
+      # SOPInstanceUID` (Type: STRING): DICOM Tag 00080018. * `SourceDicomStore` (Type:
+      # STRING): The name of the source DICOM store. This field is only included if
+      # the `include_source_store` option is set to true. * `Metadata` (Type: JSON):
+      # All DICOM tags for the instance, stored in a single JSON object. * `
+      # StructuredStorageSize` (Type: INTEGER): Size of the structured storage in
+      # bytes. * `DroppedTags` (Type: STRING, Repeated: Yes): List of tags that were
+      # dropped during the conversion. * `StorageClass` (Type: STRING): The storage
+      # class of the instance. * `LastUpdated` (Type: TIMESTAMP): Timestamp of the
+      # last update to the instance. * `BlobStorageSize` (Type: INTEGER): Size of the
+      # blob storage in bytes. * `Type` (Type: STRING): Indicates the type of
+      # operation (e.g., INSERT, DELETE).
+      class SchemaJson
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5468,29 +5631,6 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @error = args[:error] if args.key?(:error)
-        end
-      end
-      
-      # Request to search the resources in the specified FHIR store.
-      class SearchResourcesRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The FHIR resource type to search, such as Patient or Observation.
-        # For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
-        # DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-        # [R4](https://hl7.org/fhir/R4/resourcelist.html)), [R5](https://hl7.org/fhir/R5/
-        # resourcelist.html)).
-        # Corresponds to the JSON property `resourceType`
-        # @return [String]
-        attr_accessor :resource_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
       end
       
@@ -6186,6 +6326,15 @@ module Google
         attr_accessor :disable_required_field_validation
         alias_method :disable_required_field_validation?, :disable_required_field_validation
       
+        # Optional. Whether to enable FHIRPath validation for incoming resource types
+        # that have profiles configured for them in the `enabled_implementation_guides`
+        # list. Set this to true to enable checking incoming resources for conformance
+        # against FHIRPath requirements defined in the configured profiles.
+        # Corresponds to the JSON property `enableFhirpathProfileValidation`
+        # @return [Boolean]
+        attr_accessor :enable_fhirpath_profile_validation
+        alias_method :enable_fhirpath_profile_validation?, :enable_fhirpath_profile_validation
+      
         # Optional. A list of implementation guide URLs in this FHIR store that are used
         # to configure the profiles to use for validation. For example, to use the US
         # Core profiles for validation, set `enabled_implementation_guides` to `["http://
@@ -6197,7 +6346,8 @@ module Google
         # enforce all of the rules in a StructureDefinition. The following rules are
         # supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] -
         # pattern[x] on simple types - slicing, when using "value" as the discriminator
-        # type When a URL cannot be resolved (for example, in a type assertion), the
+        # type - FHIRPath constraints (only when `enable_fhirpath_profile_validation` is
+        # true) When a URL cannot be resolved (for example, in a type assertion), the
         # server does not return an error.
         # Corresponds to the JSON property `enabledImplementationGuides`
         # @return [Array<String>]
@@ -6213,6 +6363,7 @@ module Google
           @disable_profile_validation = args[:disable_profile_validation] if args.key?(:disable_profile_validation)
           @disable_reference_type_validation = args[:disable_reference_type_validation] if args.key?(:disable_reference_type_validation)
           @disable_required_field_validation = args[:disable_required_field_validation] if args.key?(:disable_required_field_validation)
+          @enable_fhirpath_profile_validation = args[:enable_fhirpath_profile_validation] if args.key?(:enable_fhirpath_profile_validation)
           @enabled_implementation_guides = args[:enabled_implementation_guides] if args.key?(:enabled_implementation_guides)
         end
       end

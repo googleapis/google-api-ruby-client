@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkDeleteResourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkExportGcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -910,7 +916,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchemaFlattened
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchemaGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaJson
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -929,12 +947,6 @@ module Google
       end
       
       class SchematizedData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SearchResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1237,6 +1249,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blob_storage_class, as: 'blobStorageClass'
+        end
+      end
+      
+      class BulkDeleteResourcesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirGcsDestination, decorator: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirGcsDestination::Representation
+      
+          property :type, as: 'type'
+          property :until, as: 'until'
+          property :validate_only, as: 'validateOnly'
+          property :version_config, as: 'versionConfig'
         end
       end
       
@@ -1851,6 +1875,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :force, as: 'force'
+          property :include_source_store, as: 'includeSourceStore'
+          property :schema_flattened, as: 'schemaFlattened', class: Google::Apis::HealthcareV1::SchemaFlattened, decorator: Google::Apis::HealthcareV1::SchemaFlattened::Representation
+      
+          property :schema_json, as: 'schemaJson', class: Google::Apis::HealthcareV1::SchemaJson, decorator: Google::Apis::HealthcareV1::SchemaJson::Representation
+      
           property :table_uri, as: 'tableUri'
           property :write_disposition, as: 'writeDisposition'
         end
@@ -2323,6 +2352,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failure, :numeric_string => true, as: 'failure'
           property :pending, :numeric_string => true, as: 'pending'
+          property :secondary_failure, :numeric_string => true, as: 'secondaryFailure'
+          property :secondary_success, :numeric_string => true, as: 'secondarySuccess'
           property :success, :numeric_string => true, as: 'success'
         end
       end
@@ -2462,6 +2493,12 @@ module Google
         end
       end
       
+      class SchemaFlattened
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SchemaGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2471,6 +2508,12 @@ module Google
       
           property :min_occurs, as: 'minOccurs'
           property :name, as: 'name'
+        end
+      end
+      
+      class SchemaJson
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2501,13 +2544,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, as: 'data'
           property :error, as: 'error'
-        end
-      end
-      
-      class SearchResourcesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource_type, as: 'resourceType'
         end
       end
       
@@ -2701,6 +2737,7 @@ module Google
           property :disable_profile_validation, as: 'disableProfileValidation'
           property :disable_reference_type_validation, as: 'disableReferenceTypeValidation'
           property :disable_required_field_validation, as: 'disableRequiredFieldValidation'
+          property :enable_fhirpath_profile_validation, as: 'enableFhirpathProfileValidation'
           collection :enabled_implementation_guides, as: 'enabledImplementationGuides'
         end
       end
