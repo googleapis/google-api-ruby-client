@@ -1037,6 +1037,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
+          property :details, as: 'details'
           property :location, as: 'location', class: Google::Apis::OndemandscanningV1beta1::FindingLocation, decorator: Google::Apis::OndemandscanningV1beta1::FindingLocation::Representation
       
           property :scanner, as: 'scanner'
@@ -1831,6 +1832,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
           property :cvss_v2, as: 'cvssV2', class: Google::Apis::OndemandscanningV1beta1::Cvss, decorator: Google::Apis::OndemandscanningV1beta1::Cvss::Representation
+      
+          property :cvss_v4, as: 'cvssV4', class: Google::Apis::OndemandscanningV1beta1::Cvss, decorator: Google::Apis::OndemandscanningV1beta1::Cvss::Representation
       
           property :cvss_version, as: 'cvssVersion'
           property :cvssv3, as: 'cvssv3', class: Google::Apis::OndemandscanningV1beta1::Cvss, decorator: Google::Apis::OndemandscanningV1beta1::Cvss::Representation
