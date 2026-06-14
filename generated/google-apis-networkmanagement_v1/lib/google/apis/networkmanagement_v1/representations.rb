@@ -779,6 +779,7 @@ module Google
       
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1::CloudFunctionEndpoint, decorator: Google::Apis::NetworkmanagementV1::CloudFunctionEndpoint::Representation
       
+          property :cloud_run_job, as: 'cloudRunJob'
           property :cloud_run_revision, as: 'cloudRunRevision', class: Google::Apis::NetworkmanagementV1::CloudRunRevisionEndpoint, decorator: Google::Apis::NetworkmanagementV1::CloudRunRevisionEndpoint::Representation
       
           property :cloud_sql_instance, as: 'cloudSqlInstance'

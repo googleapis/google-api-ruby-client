@@ -16,13 +16,13 @@ module Google
   module Apis
     module NetworkmanagementV1
       # Version of the google-apis-networkmanagement_v1 gem
-      GEM_VERSION = "0.84.0"
+      GEM_VERSION = "0.85.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.18.0"
+      GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260520"
+      REVISION = "20260603"
     end
   end
 end
