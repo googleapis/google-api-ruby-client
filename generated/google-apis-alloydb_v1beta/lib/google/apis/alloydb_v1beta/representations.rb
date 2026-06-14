@@ -640,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainIpAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1027,6 +1033,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :name, as: 'name'
           collection :pem_certificate_chain, as: 'pemCertificateChain'
+          property :psc_auto_dns_name, as: 'pscAutoDnsName'
           property :psc_dns_name, as: 'pscDnsName'
           property :public_ip_address, as: 'publicIpAddress'
         end
@@ -1909,6 +1916,7 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_metadata, as: 'additionalMetadata'
           property :availability_configuration, as: 'availabilityConfiguration', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration::Representation
       
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration::Representation
@@ -1930,6 +1938,9 @@ module Google
           property :id, as: 'id', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :instance_type, as: 'instanceType'
+          hash :internal_additional_metadata, as: 'internalAdditionalMetadata'
+          property :ip_address, as: 'ipAddress', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainIpAddress, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainIpAddress::Representation
+      
           property :is_deletion_protection_enabled, as: 'isDeletionProtectionEnabled'
           property :location, as: 'location'
           property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainMachineConfiguration, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainMachineConfiguration::Representation
@@ -2019,6 +2030,14 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainIpAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_ip, as: 'privateIp'
+          property :public_ip, as: 'publicIp'
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2084,6 +2103,7 @@ module Google
       
           property :maintenance_state, as: 'maintenanceState'
           property :maintenance_version, as: 'maintenanceVersion'
+          collection :next_available_maintenance_versions, as: 'nextAvailableMaintenanceVersions'
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance::Representation
       
         end
