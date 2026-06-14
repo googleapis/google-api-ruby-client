@@ -615,6 +615,13 @@ module Google
         # @return [Google::Apis::RunV1::ResourceRequirements]
         attr_accessor :resources
       
+        # Optional. Indicates that this container can act as a sandbox supervisor and
+        # launch sandboxes.
+        # Corresponds to the JSON property `sandboxLauncher`
+        # @return [Boolean]
+        attr_accessor :sandbox_launcher
+        alias_method :sandbox_launcher?, :sandbox_launcher
+      
         # Not supported by Cloud Run. SecurityContext holds security configuration that
         # will be applied to a container. Some fields are present in both
         # SecurityContext and PodSecurityContext. When both are set, the values in
@@ -678,6 +685,7 @@ module Google
           @ports = args[:ports] if args.key?(:ports)
           @readiness_probe = args[:readiness_probe] if args.key?(:readiness_probe)
           @resources = args[:resources] if args.key?(:resources)
+          @sandbox_launcher = args[:sandbox_launcher] if args.key?(:sandbox_launcher)
           @security_context = args[:security_context] if args.key?(:security_context)
           @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
           @termination_message_path = args[:termination_message_path] if args.key?(:termination_message_path)
@@ -3988,6 +3996,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :node_selector
       
+        # Optional. Restart policy for the Instance. Allowable values are 'Always', '
+        # OnFailure', or 'Never'.
+        # Corresponds to the JSON property `restartPolicy`
+        # @return [String]
+        attr_accessor :restart_policy
+      
         # Optional. Email address of the IAM service account associated with the
         # Instance. The service account represents the identity of the running container,
         # and determines what permissions the Instance has. If not provided, the
@@ -4010,6 +4024,7 @@ module Google
         def update!(**args)
           @containers = args[:containers] if args.key?(:containers)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
+          @restart_policy = args[:restart_policy] if args.key?(:restart_policy)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @volumes = args[:volumes] if args.key?(:volumes)
         end
@@ -5454,6 +5469,11 @@ module Google
         # @return [String]
         attr_accessor :runtime_class_name
       
+        # Optional. Container templates that can be launched through the `sandbox` CLI.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Array<Google::Apis::RunV1::Container>]
+        attr_accessor :sandboxes
+      
         # Email address of the IAM service account associated with the revision of the
         # service. The service account represents the identity of the running revision,
         # and determines what permissions the revision has. If not provided, the
@@ -5486,6 +5506,7 @@ module Google
           @image_pull_secrets = args[:image_pull_secrets] if args.key?(:image_pull_secrets)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @runtime_class_name = args[:runtime_class_name] if args.key?(:runtime_class_name)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
           @volumes = args[:volumes] if args.key?(:volumes)
