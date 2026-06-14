@@ -591,6 +591,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :tag, as: 'tag'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
