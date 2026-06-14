@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelRolloutRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAuditLoggingFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -898,6 +904,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PauseRolloutRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1019,6 +1031,12 @@ module Google
       end
       
       class ResourceOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumeRolloutRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1342,6 +1360,12 @@ module Google
       end
       
       class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelRolloutRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -2791,6 +2815,12 @@ module Google
         end
       end
       
+      class PauseRolloutRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2994,6 +3024,14 @@ module Google
           property :k8s_git_version, as: 'k8sGitVersion'
           property :k8s_version, as: 'k8sVersion'
           property :v1beta1_crd, as: 'v1beta1Crd'
+        end
+      end
+      
+      class ResumeRolloutRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schedule_offset, as: 'scheduleOffset'
+          property :validate_only, as: 'validateOnly'
         end
       end
       

@@ -373,6 +373,19 @@ module Google
         end
       end
       
+      # Request message for cancelling a rollout.
+      class CancelRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
       class CloudAuditLoggingFeatureSpec
         include Google::Apis::Core::Hashable
@@ -5397,6 +5410,19 @@ module Google
         end
       end
       
+      # Request message for pausing a rollout.
+      class PauseRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -6142,6 +6168,32 @@ module Google
           @k8s_git_version = args[:k8s_git_version] if args.key?(:k8s_git_version)
           @k8s_version = args[:k8s_version] if args.key?(:k8s_version)
           @v1beta1_crd = args[:v1beta1_crd] if args.key?(:v1beta1_crd)
+        end
+      end
+      
+      # Request message for resuming a rollout.
+      class ResumeRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The duration to offset the Rollout schedule by.
+        # Corresponds to the JSON property `scheduleOffset`
+        # @return [String]
+        attr_accessor :schedule_offset
+      
+        # Optional. If set, resume rollout will be executed in dry-run mode.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schedule_offset = args[:schedule_offset] if args.key?(:schedule_offset)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
       
