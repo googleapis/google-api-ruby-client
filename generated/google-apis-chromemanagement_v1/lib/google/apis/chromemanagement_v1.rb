@@ -43,6 +43,12 @@ module Google
       # See reports about devices and Chrome browsers managed within your organization
       AUTH_CHROME_MANAGEMENT_REPORTS_READONLY = 'https://www.googleapis.com/auth/chrome.management.reports.readonly'
 
+      # Turn Chrome Security Insights on and off and view the data it generates
+      AUTH_CHROME_MANAGEMENT_SECURITYINSIGHTS = 'https://www.googleapis.com/auth/chrome.management.securityinsights'
+
+      # See Chrome Security Insights reports
+      AUTH_CHROME_MANAGEMENT_SECURITYINSIGHTS_READONLY = 'https://www.googleapis.com/auth/chrome.management.securityinsights.readonly'
+
       # See basic device and telemetry information collected from ChromeOS devices or users managed within your organization
       AUTH_CHROME_MANAGEMENT_TELEMETRY_READONLY = 'https://www.googleapis.com/auth/chrome.management.telemetry.readonly'
     end

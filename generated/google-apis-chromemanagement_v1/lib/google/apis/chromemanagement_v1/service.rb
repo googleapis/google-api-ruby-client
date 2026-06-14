@@ -788,6 +788,216 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a high-level summary of content transfers for a given customer.
+        # @param [String] customer
+        #   Required. The customer ID in the format "customers/`customer_id`".
+        # @param [String] filter
+        #   Optional. The filter to apply to the request. For syntax, see AIP-160. Data is
+        #   not available for events older than 180 days, and may be unavailable or
+        #   inaccurate for time ranges less than 4 hours. If `event_time` is not specified,
+        #   results will be returned for the last 30 days. Supported fields for filtering:
+        #   - `event_time` Supported operators: - `>=` and `<=` for `event_time`
+        #   Supported conjunctions: - `AND` Example: `event_time >= "2024-01-01T00:00:00Z"
+        #   AND event_time <= "2024-01-02T00:00:00Z"`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_customer_enterprise_security_insight_content_transfers(customer, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/enterprise/securityInsights:queryContentTransfers', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns summaries of content transfers for a given metric and breakdown
+        # dimension.
+        # @param [String] customer
+        #   Required. The customer ID in the format "customers/`customer_id`".
+        # @param [String] breakdown
+        #   Optional. The dimension to break down the content transfers by. Defaults to
+        #   USER.
+        # @param [String] filter
+        #   Optional. The filter to apply to the request. For syntax, see AIP-160. Data is
+        #   not available for events older than 180 days or more recent than 48 hours ago.
+        #   If `event_time` is not specified, results will end 48 hours ago. Supported
+        #   fields for filtering: - `user` - `event_domain` - `content_category` - `
+        #   event_time` Filtering by `user` or `event_domain` requires the `breakdown`
+        #   dimension to be set to the corresponding value (e.g., you must set `breakdown =
+        #   USER` to filter by `user`). Supported operators: - `=` for `user`, `
+        #   event_domain`, and `content_category`. - `<=` for `event_time`. Supported
+        #   conjunctions: - `AND` Example: `user = "testuser" AND event_time <= "2024-01-
+        #   02T00:00:00Z"`
+        # @param [String] fixed_time_range
+        #   Optional. The fixed time range to return the breakdowns for. Defaults to
+        #   FIXED_TIME_RANGE_FOUR_WEEKS. Fixed time ranges are used to allow for
+        #   precomputation and optimize response times.
+        # @param [String] metric
+        #   Optional. The metric to return the breakdowns for. Defaults to
+        #   CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of breakdowns to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 breakdowns will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   QueryContentTransfersBreakdowns` call. Provide this to retrieve the subsequent
+        #   page. When paginating, all other parameters provided to `
+        #   QueryContentTransfersBreakdowns` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_customer_enterprise_security_insight_content_transfers_breakdowns(customer, breakdown: nil, filter: nil, fixed_time_range: nil, metric: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/enterprise/securityInsights:queryContentTransfersBreakdowns', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['breakdown'] = breakdown unless breakdown.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fixedTimeRange'] = fixed_time_range unless fixed_time_range.nil?
+          command.query['metric'] = metric unless metric.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a high-level summary of URL visits for a given customer.
+        # @param [String] customer
+        #   Required. The customer ID in the format "customers/`customer_id`".
+        # @param [String] filter
+        #   Optional. The filter to apply to the request. For syntax, see AIP-160. Data is
+        #   not available for events older than 180 days, and may be unavailable or
+        #   inaccurate for time ranges less than 4 hours. If `event_time` is not specified,
+        #   results will be returned for the last 30 days. Supported fields for filtering:
+        #   - `event_time` Supported operators: - `>=` and `<=` for `event_time`
+        #   Supported conjunctions: - `AND` Example: `event_time >= "2024-01-01T00:00:00Z"
+        #   AND event_time <= "2024-01-02T00:00:00Z"`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_customer_enterprise_security_insight_url_visits(customer, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/enterprise/securityInsights:queryUrlVisits', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns summaries of URL visits for a given metric and breakdown dimension.
+        # @param [String] customer
+        #   Required. The customer ID in the format "customers/`customer_id`".
+        # @param [String] breakdown
+        #   Optional. The dimension to break down the URL visits by. Defaults to USER.
+        # @param [String] filter
+        #   Optional. The filter to apply to the request. For syntax, see AIP-160. Data is
+        #   not available for events older than 180 days or more recent than 48 hours ago.
+        #   If `event_time` is not specified, results will end 48 hours ago. Supported
+        #   fields for filtering: - `user` - `event_domain` - `event_time` Filtering by `
+        #   user` or `event_domain` requires the `breakdown` dimension to be set to the
+        #   corresponding value (e.g., you must set `breakdown = USER` to filter by `user`)
+        #   . Supported operators: - `=` for `user` and `event_domain`. - `<=` for `
+        #   event_time`. Supported conjunctions: - `AND` Example: `user = "testuser" AND
+        #   event_time <= "2024-01-02T00:00:00Z"`
+        # @param [String] fixed_time_range
+        #   Optional. The fixed time range to return the breakdowns for. Defaults to
+        #   FIXED_TIME_RANGE_FOUR_WEEKS. Fixed time ranges are used to allow for
+        #   precomputation and optimize response times.
+        # @param [String] metric
+        #   Optional. The metric to return the breakdowns for. Defaults to
+        #   URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of breakdowns to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 breakdowns will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `QueryUrlVisitsBreakdowns`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `QueryUrlVisitsBreakdowns` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_customer_enterprise_security_insight_url_visits_breakdowns(customer, breakdown: nil, filter: nil, fixed_time_range: nil, metric: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/enterprise/securityInsights:queryUrlVisitsBreakdowns', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['breakdown'] = breakdown unless breakdown.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fixedTimeRange'] = fixed_time_range unless fixed_time_range.nil?
+          command.query['metric'] = metric unless metric.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the data collected from a Chrome browser profile.
         # @param [String] name
         #   Required. Format: customers/`customer_id`/profiles/`profile_permanent_id`
@@ -1261,6 +1471,51 @@ module Google
           command.params['customer'] = customer unless customer.nil?
           command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
           command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate report of installed Chrome versions on managed profiles.
+        # @param [String] customer
+        #   Required. Customer id or "my_customer" to use the customer associated to the
+        #   account making the request.
+        # @param [String] filter
+        #   Optional. Query string to filter results, AND-separated fields in EBNF syntax.
+        #   Note: OR operations are not supported in this filter. Supported filter fields:
+        #   * last_active_date
+        # @param [String] org_unit_id
+        #   The ID of the organizational unit. If omitted, all data will be returned.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return. Maximum and default are 100.
+        # @param [String] page_token
+        #   Optional. Token to specify the page of the request to be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeProfileVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeProfileVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_chrome_profile_versions(customer, filter: nil, org_unit_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countChromeProfileVersions', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeProfileVersionsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeProfileVersionsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

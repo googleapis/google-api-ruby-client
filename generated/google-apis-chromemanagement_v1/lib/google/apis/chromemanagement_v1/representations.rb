@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1CountChromeProfileVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1CountChromeVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -712,6 +718,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1ContentTransfersBreakdown
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ContentTransfersSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1CrowdStrikeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -838,6 +856,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1QueryContentTransfersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1QueryUrlVisitsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1ReportingData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -941,6 +983,18 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1UploadCertificateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1UrlVisitsBreakdown
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1UrlVisitsSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1254,6 +1308,16 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1CountChromeProfileVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :profile_browser_versions, as: 'profileBrowserVersions', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BrowserVersion, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BrowserVersion::Representation
+      
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
       class GoogleChromeManagementV1CountChromeVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1549,6 +1613,7 @@ module Google
           property :homepage_uri, as: 'homepageUri'
           property :os_user_count, :numeric_string => true, as: 'osUserCount'
           collection :permissions, as: 'permissions'
+          property :profile_count, :numeric_string => true, as: 'profileCount'
           property :risk_assessment, as: 'riskAssessment', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessmentData, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessmentData::Representation
       
         end
@@ -2324,6 +2389,25 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1ContentTransfersBreakdown
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_category, as: 'contentCategory'
+          property :event_domain, as: 'eventDomain'
+          property :summary, as: 'summary', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersSummary, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersSummary::Representation
+      
+          property :user, as: 'user'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ContentTransfersSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :metric, as: 'metric'
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1CrowdStrikeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2505,6 +2589,40 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :content_transfers_breakdowns, as: 'contentTransfersBreakdowns', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersBreakdown, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersBreakdown::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1QueryContentTransfersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :summaries, as: 'summaries', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersSummary, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersSummary::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :url_visits_breakdowns, as: 'urlVisitsBreakdowns', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsBreakdown, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsBreakdown::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1QueryUrlVisitsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :summaries, as: 'summaries', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsSummary, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsSummary::Representation
+      
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1ReportingData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2673,6 +2791,24 @@ module Google
       class GoogleChromeManagementVersionsV1UploadCertificateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1UrlVisitsBreakdown
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_domain, as: 'eventDomain'
+          property :summary, as: 'summary', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsSummary, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsSummary::Representation
+      
+          property :user, as: 'user'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1UrlVisitsSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :metric, as: 'metric'
         end
       end
       
