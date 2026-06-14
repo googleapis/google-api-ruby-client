@@ -15651,6 +15651,25 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `suggestedQuery`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery]
+        attr_accessor :suggested_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggested_query = args[:suggested_query] if args.key?(:suggested_query)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer
         include Google::Apis::Core::Hashable
       
@@ -15802,6 +15821,11 @@ module Google
         # @return [String]
         attr_accessor :query_text
       
+        # 
+        # Corresponds to the JSON property `searchContexts`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext>]
+        attr_accessor :search_contexts
+      
         def initialize(**args)
            update!(**args)
         end
@@ -15809,6 +15833,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query_text = args[:query_text] if args.key?(:query_text)
+          @search_contexts = args[:search_contexts] if args.key?(:search_contexts)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -16685,6 +16735,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `additionalSuggestedQueryResults`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult>]
+        attr_accessor :additional_suggested_query_results
+      
+        # 
         # Corresponds to the JSON property `contextSize`
         # @return [Fixnum]
         attr_accessor :context_size
@@ -16705,6 +16760,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_suggested_query_results = args[:additional_suggested_query_results] if args.key?(:additional_suggested_query_results)
           @context_size = args[:context_size] if args.key?(:context_size)
           @knowledge_assist_answer = args[:knowledge_assist_answer] if args.key?(:knowledge_assist_answer)
           @latest_message = args[:latest_message] if args.key?(:latest_message)
@@ -19878,6 +19934,25 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `suggestedQuery`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery]
+        attr_accessor :suggested_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggested_query = args[:suggested_query] if args.key?(:suggested_query)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer
         include Google::Apis::Core::Hashable
       
@@ -20029,6 +20104,11 @@ module Google
         # @return [String]
         attr_accessor :query_text
       
+        # 
+        # Corresponds to the JSON property `searchContexts`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext>]
+        attr_accessor :search_contexts
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20036,6 +20116,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query_text = args[:query_text] if args.key?(:query_text)
+          @search_contexts = args[:search_contexts] if args.key?(:search_contexts)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -21125,6 +21231,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `additionalSuggestedQueryResults`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult>]
+        attr_accessor :additional_suggested_query_results
+      
+        # 
         # Corresponds to the JSON property `contextSize`
         # @return [Fixnum]
         attr_accessor :context_size
@@ -21145,6 +21256,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_suggested_query_results = args[:additional_suggested_query_results] if args.key?(:additional_suggested_query_results)
           @context_size = args[:context_size] if args.key?(:context_size)
           @knowledge_assist_answer = args[:knowledge_assist_answer] if args.key?(:knowledge_assist_answer)
           @latest_message = args[:latest_message] if args.key?(:latest_message)
