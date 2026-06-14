@@ -1554,6 +1554,13 @@ module Google
         # @return [String]
         attr_accessor :effective_default_branch
       
+        # Optional. Resource name for the GitRepositoryLink used for machine credentials.
+        # Must be in the format `projects/*/locations/*/connections/*/
+        # gitRepositoryLinks/*`
+        # Corresponds to the JSON property `gitRepositoryLink`
+        # @return [String]
+        attr_accessor :git_repository_link
+      
         # Configures fields for performing SSH authentication.
         # Corresponds to the JSON property `sshAuthenticationConfig`
         # @return [Google::Apis::DataformV1::SshAuthenticationConfig]
@@ -1579,6 +1586,7 @@ module Google
           @authentication_token_secret_version = args[:authentication_token_secret_version] if args.key?(:authentication_token_secret_version)
           @default_branch = args[:default_branch] if args.key?(:default_branch)
           @effective_default_branch = args[:effective_default_branch] if args.key?(:effective_default_branch)
+          @git_repository_link = args[:git_repository_link] if args.key?(:git_repository_link)
           @ssh_authentication_config = args[:ssh_authentication_config] if args.key?(:ssh_authentication_config)
           @token_status = args[:token_status] if args.key?(:token_status)
           @url = args[:url] if args.key?(:url)
