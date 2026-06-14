@@ -871,7 +871,10 @@ module Google
         attr_accessor :create_time
       
         # Optional. Indicate if a customer is attesting about the correctness of
-        # provided information. Only required if creating a GCP Entitlement.
+        # provided information. Only required if creating a GCP Entitlement. NOTE: This
+        # field will be mandatory for all new GCP customers starting Aug 31st, 2026 and
+        # this field will also be required for all existing customers purchasing new GCP
+        # Entitlements.
         # Corresponds to the JSON property `customerAttestationState`
         # @return [String]
         attr_accessor :customer_attestation_state
