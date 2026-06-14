@@ -38,11 +38,10 @@ module Google
         # google.com/compute/docs/reference/v1/acceleratorTypes).Examples: https://www.
         # googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/acceleratorTypes/
         # nvidia-tesla-t4 projects/[project_id]/zones/[zone]/acceleratorTypes/nvidia-
-        # tesla-t4 nvidia-tesla-t4Auto Zone Exception: If you are using the Dataproc
-        # Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/
-        # configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must
-        # use the short name of the accelerator type resource, for example, nvidia-tesla-
-        # t4.
+        # tesla-t4 nvidia-tesla-t4Auto Zone Exception: If you are using Auto Zone
+        # Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-
+        # clusters/auto-zone#using_auto_zone_placement), you must use the short name of
+        # the accelerator type resource, for example, nvidia-tesla-t4.
         # Corresponds to the JSON property `acceleratorTypeUri`
         # @return [String]
         attr_accessor :accelerator_type_uri
@@ -742,7 +741,7 @@ module Google
         # googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/
         # autoscalingPolicies/[policy_id] projects/[project_id]/locations/[
         # dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be
-        # in the same project and Dataproc region.
+        # in the same project and region.
         # Corresponds to the JSON property `policyUri`
         # @return [String]
         attr_accessor :policy_uri
@@ -851,8 +850,8 @@ module Google
       class AuxiliaryNodeGroup
         include Google::Apis::Core::Hashable
       
-        # Dataproc Node Group. The Dataproc NodeGroup resource is not related to the
-        # Dataproc NodeGroupAffinity resource.
+        # Node Group. The NodeGroup resource is not related to the NodeGroupAffinity
+        # resource.
         # Corresponds to the JSON property `nodeGroup`
         # @return [Google::Apis::DataprocV1::NodeGroup]
         attr_accessor :node_group
@@ -1330,8 +1329,7 @@ module Google
         end
       end
       
-      # Describes the identifying information, config, and status of a Dataproc
-      # cluster
+      # Describes the identifying information, config, and status of a cluster
       class Cluster
         include Google::Apis::Core::Hashable
       
@@ -1343,8 +1341,8 @@ module Google
         # @return [String]
         attr_accessor :cluster_name
       
-        # Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates
-        # this value when it creates the cluster.
+        # Output only. A cluster UUID (Unique Universal Identifier). The service
+        # generates this value when it creates the cluster.
         # Corresponds to the JSON property `clusterUuid`
         # @return [String]
         attr_accessor :cluster_uuid
@@ -1385,9 +1383,9 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::ClusterStatus>]
         attr_accessor :status_history
       
-        # The Dataproc cluster config for a cluster that does not directly control the
-        # underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.
-        # google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
+        # The cluster config for a cluster that does not directly control the underlying
+        # compute resources, such as a GKE cluster (https://cloud.google.com/dataproc/
+        # docs/guides/dpgke/dataproc-gke-overview).
         # Corresponds to the JSON property `virtualClusterConfig`
         # @return [Google::Apis::DataprocV1::VirtualClusterConfig]
         attr_accessor :virtual_cluster_config
@@ -1435,28 +1433,29 @@ module Google
         attr_accessor :cluster_type
       
         # Optional. A Cloud Storage bucket used to stage job dependencies, config files,
-        # and job driver console output. If you do not specify a staging bucket,
-        # Dataproc determines a Cloud Storage location (US, ASIA, or EU) for the cluster
-        # staging bucket according to the Compute Engine zone where the cluster is
-        # deployed, and then creates and manages this project-level, per-location bucket
-        # (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/
-        # concepts/configuring-clusters/staging-bucket)). This field requires a Cloud
-        # Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        # and job driver console output. If you do not specify a staging bucket, the
+        # service will determine a Cloud Storage location (US, ASIA, or EU) for your
+        # cluster's staging bucket according to the Compute Engine zone where your
+        # cluster is deployed, and then create and manage this project-level, per-
+        # location bucket (see staging and temp buckets (https://cloud.google.com/
+        # dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
+        # requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage
+        # bucket.
         # Corresponds to the JSON property `configBucket`
         # @return [String]
         attr_accessor :config_bucket
       
-        # Dataproc metric config.
+        # Metric config.
         # Corresponds to the JSON property `dataprocMetricConfig`
         # @return [Google::Apis::DataprocV1::DataprocMetricConfig]
         attr_accessor :dataproc_metric_config
       
         # Optional. A Cloud Storage bucket used to collect checkpoint diagnostic data (
         # https://cloud.google.com/dataproc/docs/support/diagnose-clusters#
-        # checkpoint_diagnostic_data). If you do not specify a diagnostic bucket, Cloud
-        # Dataproc will use the Dataproc temp bucket to collect the checkpoint
-        # diagnostic data. This field requires a Cloud Storage bucket name, not a gs://..
-        # . URI to a Cloud Storage bucket.
+        # checkpoint_diagnostic_data). If you do not specify a diagnostic bucket, The
+        # service will use the temp bucket to collect the checkpoint diagnostic data.
+        # This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud
+        # Storage bucket.
         # Corresponds to the JSON property `diagnosticBucket`
         # @return [String]
         attr_accessor :diagnostic_bucket
@@ -1532,13 +1531,13 @@ module Google
       
         # Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data,
         # such as Spark and MapReduce history files. If you do not specify a temp
-        # bucket, Dataproc determines a Cloud Storage location (US, ASIA, or EU) for the
-        # cluster temp bucket according to the Compute Engine zone where the cluster is
-        # deployed, and then creates and manages this project-level, per-location bucket.
-        # The default bucket has a TTL of 90 days, but you can use any TTL (or none) if
-        # you specify a bucket (see Dataproc staging and temp buckets (https://cloud.
-        # google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This
-        # field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud
+        # bucket, the service will determine a Cloud Storage location (US, ASIA, or EU)
+        # for your cluster's temp bucket according to the Compute Engine zone where your
+        # cluster is deployed, and then create and manage this project-level, per-
+        # location bucket. The default bucket has a TTL of 90 days, but you can use any
+        # TTL (or none) if you specify a bucket (see staging and temp buckets (https://
+        # cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        # This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud
         # Storage bucket.
         # Corresponds to the JSON property `tempBucket`
         # @return [String]
@@ -1990,7 +1989,7 @@ module Google
         end
       end
       
-      # Dataproc metric config.
+      # Metric config.
       class DataprocMetricConfig
         include Google::Apis::Core::Hashable
       
@@ -3063,8 +3062,8 @@ module Google
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. An optional list of Compute Engine zones where the Dataproc cluster
-        # will not be located when Auto Zone is enabled. Only one of zone_uri or
+        # Optional. An optional list of Compute Engine zones where the cluster will not
+        # be located when Auto Zone is enabled. Only one of zone_uri or
         # auto_zone_exclude_zone_uris can be set. If both are omitted, the service will
         # pick a zone in the cluster Compute Engine region. If
         # auto_zone_exclude_zone_uris is set and there is more than one non-excluded
@@ -3085,8 +3084,8 @@ module Google
         # Optional. This setting applies to subnetwork-enabled networks. It is set to
         # true by default in clusters created with image versions 2.2.x.When set to true:
         # All cluster VMs have internal IP addresses. Google Private Access (https://
-        # cloud.google.com/vpc/docs/private-google-access) must be enabled to access
-        # Dataproc and other Google Cloud APIs. Off-cluster dependencies must be
+        # cloud.google.com/vpc/docs/private-google-access) must be enabled to access the
+        # Dataproc API and other Google Cloud APIs. Off-cluster dependencies must be
         # configured to be accessible without external IP addresses.When set to false:
         # Cluster VMs are not restricted to internal IP addresses. Ephemeral external IP
         # addresses are assigned to each cluster VM.
@@ -3114,8 +3113,8 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
-        # Node Group Affinity for clusters using sole-tenant node groups. The Dataproc
-        # NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
+        # Node Group Affinity for clusters using sole-tenant node groups. The
+        # NodeGroupAffinity resource is not related to the NodeGroup resource.
         # Corresponds to the JSON property `nodeGroupAffinity`
         # @return [Google::Apis::DataprocV1::NodeGroupAffinity]
         attr_accessor :node_group_affinity
@@ -3132,20 +3131,18 @@ module Google
       
         # Optional. Resource manager tags (https://cloud.google.com/resource-manager/
         # docs/tags/tags-creating-and-managing) to add to all instances (see Use secure
-        # tags in Dataproc (https://cloud.google.com/dataproc/docs/guides/use-secure-
-        # tags)).
+        # tags (https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Hash<String,String>]
         attr_accessor :resource_manager_tags
       
-        # Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/
+        # Optional. The VM service account (https://cloud.google.com/dataproc/docs/
         # concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (
         # also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/
         # concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used
-        # by Dataproc cluster VM instances to access Google Cloud Platform services.If
-        # not specified, the Compute Engine default service account (https://cloud.
-        # google.com/compute/docs/access/service-accounts#default_service_account) is
-        # used.
+        # by cluster VM instances to access Google Cloud Platform services.If not
+        # specified, the Compute Engine default service account (https://cloud.google.
+        # com/compute/docs/access/service-accounts#default_service_account) is used.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -3183,11 +3180,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
-        # Optional. The Compute Engine zone where the Dataproc cluster will be located.
-        # If omitted, the service will pick a zone in the cluster's Compute Engine
-        # region. On a get request, zone will always be present.A full URL, partial URI,
-        # or short name are valid. Examples: https://www.googleapis.com/compute/v1/
-        # projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone]
+        # Optional. The Compute Engine zone where the cluster will be located. If
+        # omitted, the service will pick a zone in the cluster's Compute Engine region.
+        # On a get request, zone will always be present.A full URL, partial URI, or
+        # short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/
+        # [project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone]
         # Corresponds to the JSON property `zoneUri`
         # @return [String]
         attr_accessor :zone_uri
@@ -3811,7 +3808,7 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::InstanceSelectionResult>]
         attr_accessor :instance_selection_results
       
-        # Defines how Dataproc should create VMs with a mixture of provisioning models.
+        # Defines how to create VMs with a mixture of provisioning models.
         # Corresponds to the JSON property `provisioningModelMix`
         # @return [Google::Apis::DataprocV1::ProvisioningModelMix]
         attr_accessor :provisioning_model_mix
@@ -3899,9 +3896,9 @@ module Google
         # Optional. The Compute Engine image resource used for cluster instances.The URI
         # can represent an image or image family.Image examples: https://www.googleapis.
         # com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[
-        # project_id]/global/images/[image-id] image-idImage family examples. Dataproc
-        # will use the most recent image from the family: https://www.googleapis.com/
-        # compute/v1/projects/[project_id]/global/images/family/[custom-image-family-
+        # project_id]/global/images/[image-id] image-idImage family examples. The
+        # service will use the most recent image from the family: https://www.googleapis.
+        # com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-
         # name] projects/[project_id]/global/images/family/[custom-image-family-name]If
         # the URI is unspecified, it will be inferred from SoftwareConfig.image_version
         # or the system default.
@@ -3915,8 +3912,8 @@ module Google
         # @return [Google::Apis::DataprocV1::InstanceFlexibilityPolicy]
         attr_accessor :instance_flexibility_policy
       
-        # Output only. The list of instance names. Dataproc derives the names from
-        # cluster_name, num_instances, and the instance group.
+        # Output only. The list of instance names, derived from cluster_name,
+        # num_instances, and the instance group.
         # Corresponds to the JSON property `instanceNames`
         # @return [Array<String>]
         attr_accessor :instance_names
@@ -3936,10 +3933,10 @@ module Google
         # URL, partial URI, or short name are valid. Examples: https://www.googleapis.
         # com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2
         # projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-
-        # 2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https:
-        # //cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#
-        # using_auto_zone_placement) feature, you must use the short name of the machine
-        # type resource, for example, n1-standard-2.
+        # 2Auto Zone Exception: If you are using Auto Zone Placement (https://cloud.
+        # google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#
+        # using_auto_zone_placement), you must use the short name of the machine type
+        # resource, for example, n1-standard-2.
         # Corresponds to the JSON property `machineTypeUri`
         # @return [String]
         attr_accessor :machine_type_uri
@@ -3950,8 +3947,8 @@ module Google
         attr_accessor :managed_group_config
       
         # Optional. Specifies the minimum cpu platform for the Instance Group. See
-        # Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/
-        # concepts/compute/dataproc-min-cpu).
+        # Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/
+        # dataproc-min-cpu).
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -4058,9 +4055,10 @@ module Google
         attr_accessor :machine_types
       
         # Optional. Preference of this instance selection. Lower number means higher
-        # preference. Dataproc will first try to create a VM based on the machine-type
-        # with priority rank and fallback to next rank based on availability. Machine
-        # types and instance selections with the same priority have the same preference.
+        # preference. The service will first try to create a VM based on the machine-
+        # type with priority rank and fallback to next rank based on availability.
+        # Machine types and instance selections with the same priority have the same
+        # preference.
         # Corresponds to the JSON property `rank`
         # @return [Fixnum]
         attr_accessor :rank
@@ -4754,8 +4752,8 @@ module Google
         # @return [String]
         attr_accessor :cross_realm_trust_kdc
       
-        # Optional. The remote realm the Dataproc on-cluster KDC will trust, should the
-        # user enable cross realm trust.
+        # Optional. The remote realm the on-cluster KDC will trust, should the user
+        # enable cross realm trust.
         # Corresponds to the JSON property `crossRealmTrustRealm`
         # @return [String]
         attr_accessor :cross_realm_trust_realm
@@ -4782,20 +4780,20 @@ module Google
       
         # Optional. The Cloud Storage URI of a KMS encrypted file containing the
         # password to the user provided key. For the self-signed certificate, this
-        # password is generated by Dataproc.
+        # password is generated by the service.
         # Corresponds to the JSON property `keyPasswordUri`
         # @return [String]
         attr_accessor :key_password_uri
       
         # Optional. The Cloud Storage URI of a KMS encrypted file containing the
         # password to the user provided keystore. For the self-signed certificate, this
-        # password is generated by Dataproc.
+        # password is generated by the service.
         # Corresponds to the JSON property `keystorePasswordUri`
         # @return [String]
         attr_accessor :keystore_password_uri
       
         # Optional. The Cloud Storage URI of the keystore file used for SSL encryption.
-        # If not provided, Dataproc will provide a self-signed certificate.
+        # If not provided, the service will provide a self-signed certificate.
         # Corresponds to the JSON property `keystoreUri`
         # @return [String]
         attr_accessor :keystore_uri
@@ -4825,13 +4823,13 @@ module Google
       
         # Optional. The Cloud Storage URI of a KMS encrypted file containing the
         # password to the user provided truststore. For the self-signed certificate,
-        # this password is generated by Dataproc.
+        # this password is generated by the service.
         # Corresponds to the JSON property `truststorePasswordUri`
         # @return [String]
         attr_accessor :truststore_password_uri
       
         # Optional. The Cloud Storage URI of the truststore file used for SSL encryption.
-        # If not provided, Dataproc will provide a self-signed certificate.
+        # If not provided, the service will provide a self-signed certificate.
         # Corresponds to the JSON property `truststoreUri`
         # @return [String]
         attr_accessor :truststore_uri
@@ -5374,8 +5372,8 @@ module Google
       class MetastoreConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Resource name of an existing Dataproc Metastore service.Example:
-        # projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+        # Required. Resource name of an existing Metastore service.Example: projects/[
+        # project_id]/locations/[dataproc_region]/services/[service-name]
         # Corresponds to the JSON property `dataprocMetastoreService`
         # @return [String]
         attr_accessor :dataproc_metastore_service
@@ -5390,7 +5388,7 @@ module Google
         end
       end
       
-      # A Dataproc custom metric.
+      # A custom metric.
       class Metric
         include Google::Apis::Core::Hashable
       
@@ -5531,8 +5529,8 @@ module Google
         end
       end
       
-      # Dataproc Node Group. The Dataproc NodeGroup resource is not related to the
-      # Dataproc NodeGroupAffinity resource.
+      # Node Group. The NodeGroup resource is not related to the NodeGroupAffinity
+      # resource.
       class NodeGroup
         include Google::Apis::Core::Hashable
       
@@ -5574,8 +5572,8 @@ module Google
         end
       end
       
-      # Node Group Affinity for clusters using sole-tenant node groups. The Dataproc
-      # NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
+      # Node Group Affinity for clusters using sole-tenant node groups. The
+      # NodeGroupAffinity resource is not related to the NodeGroup resource.
       class NodeGroupAffinity
         include Google::Apis::Core::Hashable
       
@@ -6328,17 +6326,17 @@ module Google
         end
       end
       
-      # Defines how Dataproc should create VMs with a mixture of provisioning models.
+      # Defines how to create VMs with a mixture of provisioning models.
       class ProvisioningModelMix
         include Google::Apis::Core::Hashable
       
         # Optional. The base capacity that will always use Standard VMs to avoid risk of
-        # more preemption than the minimum capacity you need. Dataproc will create only
-        # standard VMs until it reaches standard_capacity_base, then it will start using
-        # standard_capacity_percent_above_base to mix Spot with Standard VMs. eg. If 15
-        # instances are requested and standard_capacity_base is 5, Dataproc will create
-        # 5 standard VMs and then start mixing spot and standard VMs for remaining 10
-        # instances.
+        # more preemption than the minimum capacity you need. The service will create
+        # only standard VMs until it reaches standard_capacity_base, then it will start
+        # using standard_capacity_percent_above_base to mix Spot with Standard VMs. eg.
+        # If 15 instances are requested and standard_capacity_base is 5, the service
+        # will create 5 standard VMs and thenstart mixing spot and standard VMs for
+        # remaining 10 instances.
         # Corresponds to the JSON property `standardCapacityBase`
         # @return [Fixnum]
         attr_accessor :standard_capacity_base
@@ -6347,7 +6345,7 @@ module Google
         # remaining percentage will use Spot VMs. The percentage applies only to the
         # capacity above standard_capacity_base. eg. If 15 instances are requested and
         # standard_capacity_base is 5 and standard_capacity_percent_above_base is 30,
-        # Dataproc will create 5 standard VMs and then start mixing spot and standard
+        # the service will create 5 standard VMs and then start mixing spot and standard
         # VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
         # Corresponds to the JSON property `standardCapacityPercentAboveBase`
         # @return [Fixnum]
@@ -7008,10 +7006,10 @@ module Google
         # @return [String]
         attr_accessor :cluster_uuid
       
-        # Optional. Whether the request is submitted by Dataproc super user. If true,
-        # IAM will check 'dataproc.clusters.repair' permission instead of 'dataproc.
-        # clusters.update' permission. This is to give Dataproc superuser the ability to
-        # repair clusters without granting the overly broad update permission.
+        # Optional. Whether the request is submitted by a super user. If true, IAM will
+        # check 'dataproc.clusters.repair' permission instead of 'dataproc.clusters.
+        # update' permission. This is to give Dataproc superuser the ability to repair
+        # clusters without granting the overly broad update permission.
         # Corresponds to the JSON property `dataprocSuperUser`
         # @return [Boolean]
         attr_accessor :dataproc_super_user
@@ -7023,7 +7021,7 @@ module Google
         # forcefully removing nodes. The default timeout is 0 for forceful
         # decommissioning, and the maximum timeout period is 1 day. (see JSON Mapping—
         # Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        # graceful_decommission_timeout is supported in Dataproc image versions 1.2+.
+        # graceful_decommission_timeout is supported in image versions 1.2+.
         # Corresponds to the JSON property `gracefulDecommissionTimeout`
         # @return [String]
         attr_accessor :graceful_decommission_timeout
@@ -8604,7 +8602,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The version of software inside the cluster. It must be one of the
-        # supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/
+        # supported Image Versions (https://cloud.google.com/dataproc/docs/concepts/
         # versioning/dataproc-versions#supported-dataproc-image-versions), such as "1.2"
         # (including a subminor version, such as "1.2.29"), or the "preview" version (
         # https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#
@@ -11954,9 +11952,9 @@ module Google
         end
       end
       
-      # The Dataproc cluster config for a cluster that does not directly control the
-      # underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.
-      # google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
+      # The cluster config for a cluster that does not directly control the underlying
+      # compute resources, such as a GKE cluster (https://cloud.google.com/dataproc/
+      # docs/guides/dpgke/dataproc-gke-overview).
       class VirtualClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -11971,12 +11969,12 @@ module Google
         attr_accessor :kubernetes_cluster_config
       
         # Optional. A Cloud Storage bucket used to stage job dependencies, config files,
-        # and job driver console output. If you do not specify a staging bucket,
-        # Dataproc determines a Cloud Storage location (US, ASIA, or EU) for your
+        # and job driver console output. If you do not specify a staging bucket, the
+        # service will determine a Cloud Storage location (US, ASIA, or EU) for your
         # cluster's staging bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
-        # location bucket (see Dataproc staging and temp buckets (https://cloud.google.
-        # com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
+        # location bucket (see staging and temp buckets (https://cloud.google.com/
+        # dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
         # requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage
         # bucket.
         # Corresponds to the JSON property `stagingBucket`
