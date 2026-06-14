@@ -208,6 +208,15 @@ module Google
         # @return [String]
         attr_accessor :app_engine_instance
       
+        # Optional. The Cloud Run resource to sign the SSH public key for. Expected
+        # formats: - `projects/`project`/locations/`location`/services/`service`` - `
+        # projects/`project`/locations/`location`/workerPools/`worker_pool`` - `projects/
+        # `project`/locations/`location`/jobs/`job`` - `projects/`project`/locations/`
+        # location`/instances/`instance``
+        # Corresponds to the JSON property `cloudRunResource`
+        # @return [String]
+        attr_accessor :cloud_run_resource
+      
         # The Compute instance to sign the SSH public key for. Expected format: projects/
         # `project`/zones/`zone`/instances/`numeric_instance_id`
         # Corresponds to the JSON property `computeInstance`
@@ -234,6 +243,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_engine_instance = args[:app_engine_instance] if args.key?(:app_engine_instance)
+          @cloud_run_resource = args[:cloud_run_resource] if args.key?(:cloud_run_resource)
           @compute_instance = args[:compute_instance] if args.key?(:compute_instance)
           @service_account = args[:service_account] if args.key?(:service_account)
           @ssh_public_key = args[:ssh_public_key] if args.key?(:ssh_public_key)
