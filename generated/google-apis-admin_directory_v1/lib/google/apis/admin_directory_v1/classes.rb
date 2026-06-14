@@ -4591,6 +4591,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :aliases
       
+        # Output only. User's account archival time. (Read-only)
+        # Corresponds to the JSON property `archivalTime`
+        # @return [String]
+        attr_accessor :archival_time
+      
         # Indicates if user is archived.
         # Corresponds to the JSON property `archived`
         # @return [Boolean]
@@ -4869,6 +4874,11 @@ module Google
         # @return [String]
         attr_accessor :suspension_reason
       
+        # Output only. User's account suspension time. (Read-only)
+        # Corresponds to the JSON property `suspensionTime`
+        # @return [String]
+        attr_accessor :suspension_time
+      
         # Output only. ETag of the user's photo (Read-only)
         # Corresponds to the JSON property `thumbnailPhotoEtag`
         # @return [String]
@@ -4894,6 +4904,7 @@ module Google
           @addresses = args[:addresses] if args.key?(:addresses)
           @agreed_to_terms = args[:agreed_to_terms] if args.key?(:agreed_to_terms)
           @aliases = args[:aliases] if args.key?(:aliases)
+          @archival_time = args[:archival_time] if args.key?(:archival_time)
           @archived = args[:archived] if args.key?(:archived)
           @change_password_at_next_login = args[:change_password_at_next_login] if args.key?(:change_password_at_next_login)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
@@ -4936,6 +4947,7 @@ module Google
           @ssh_public_keys = args[:ssh_public_keys] if args.key?(:ssh_public_keys)
           @suspended = args[:suspended] if args.key?(:suspended)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
+          @suspension_time = args[:suspension_time] if args.key?(:suspension_time)
           @thumbnail_photo_etag = args[:thumbnail_photo_etag] if args.key?(:thumbnail_photo_etag)
           @thumbnail_photo_url = args[:thumbnail_photo_url] if args.key?(:thumbnail_photo_url)
           @websites = args[:websites] if args.key?(:websites)

@@ -1940,6 +1940,7 @@ module Google
           property :addresses, as: 'addresses'
           property :agreed_to_terms, as: 'agreedToTerms'
           collection :aliases, as: 'aliases'
+          property :archival_time, as: 'archivalTime'
           property :archived, as: 'archived'
           property :change_password_at_next_login, as: 'changePasswordAtNextLogin'
           property :creation_time, as: 'creationTime', type: DateTime
@@ -1987,6 +1988,7 @@ module Google
           property :ssh_public_keys, as: 'sshPublicKeys'
           property :suspended, as: 'suspended'
           property :suspension_reason, as: 'suspensionReason'
+          property :suspension_time, as: 'suspensionTime'
           property :thumbnail_photo_etag, as: 'thumbnailPhotoEtag'
           property :thumbnail_photo_url, as: 'thumbnailPhotoUrl'
           property :websites, as: 'websites'
