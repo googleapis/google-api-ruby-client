@@ -110,6 +110,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_engine_instance, as: 'appEngineInstance'
+          property :cloud_run_resource, as: 'cloudRunResource'
           property :compute_instance, as: 'computeInstance'
           property :service_account, as: 'serviceAccount'
           property :ssh_public_key, as: 'sshPublicKey'
