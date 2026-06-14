@@ -1047,6 +1047,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :name, as: 'name'
           collection :pem_certificate_chain, as: 'pemCertificateChain'
+          property :psc_auto_dns_name, as: 'pscAutoDnsName'
           property :psc_dns_name, as: 'pscDnsName'
           property :public_ip_address, as: 'publicIpAddress'
         end
@@ -2117,6 +2118,7 @@ module Google
       
           property :maintenance_state, as: 'maintenanceState'
           property :maintenance_version, as: 'maintenanceVersion'
+          collection :next_available_maintenance_versions, as: 'nextAvailableMaintenanceVersions'
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance::Representation
       
         end
