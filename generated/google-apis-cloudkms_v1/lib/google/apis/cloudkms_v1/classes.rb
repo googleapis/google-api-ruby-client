@@ -410,7 +410,8 @@ module Google
         attr_accessor :key_project_resolution_mode
       
         # Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        # autokeyConfig` or `projects/`PROJECT_NUMBER`/autokeyConfig`.
+        # autokeyConfig`, `projects/`PROJECT_NUMBER`/autokeyConfig`, or `projects/`
+        # PROJECT_ID`/autokeyConfig`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
