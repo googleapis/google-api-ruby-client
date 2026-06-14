@@ -77,17 +77,22 @@ module Google
       class AdGroup
         include Google::Apis::Core::Hashable
       
-        # The format of the ads in the ad group.
+        # Required. Immutable. The format of the ads in the ad group.
         # Corresponds to the JSON property `adGroupFormat`
         # @return [String]
         attr_accessor :ad_group_format
       
-        # The unique ID of the ad group. Assigned by the system.
+        # Output only. The unique ID of the ad group. Assigned by the system.
         # Corresponds to the JSON property `adGroupId`
         # @return [Fixnum]
         attr_accessor :ad_group_id
       
-        # The unique ID of the advertiser the ad group belongs to.
+        # The inventory control of the ad group.
+        # Corresponds to the JSON property `adGroupInventoryControl`
+        # @return [Google::Apis::DisplayvideoV3::AdGroupInventoryControl]
+        attr_accessor :ad_group_inventory_control
+      
+        # Output only. The unique ID of the advertiser the ad group belongs to.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
         attr_accessor :advertiser_id
@@ -97,25 +102,26 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::BiddingStrategy]
         attr_accessor :bid_strategy
       
-        # The display name of the ad group. Must be UTF-8 encoded with a maximum size of
-        # 255 bytes.
+        # Required. The display name of the ad group. Must be UTF-8 encoded with a
+        # maximum size of 255 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Controls whether or not the ad group can spend its budget and bid on inventory.
-        # If the ad group's parent line item is not active, the ad group can't spend
-        # its budget even if its own status is `ENTITY_STATUS_ACTIVE`.
+        # Required. Controls whether or not the ad group can spend its budget and bid on
+        # inventory. If the ad group's parent line item is not active, the ad group can'
+        # t spend its budget even if its own status is `ENTITY_STATUS_ACTIVE`.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
       
-        # The unique ID of the line item that the ad group belongs to.
+        # Required. Immutable. The unique ID of the line item that the ad group belongs
+        # to.
         # Corresponds to the JSON property `lineItemId`
         # @return [Fixnum]
         attr_accessor :line_item_id
       
-        # The resource name of the ad group.
+        # Output only. Identifier. The resource name of the ad group.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -139,6 +145,7 @@ module Google
         def update!(**args)
           @ad_group_format = args[:ad_group_format] if args.key?(:ad_group_format)
           @ad_group_id = args[:ad_group_id] if args.key?(:ad_group_id)
+          @ad_group_inventory_control = args[:ad_group_inventory_control] if args.key?(:ad_group_inventory_control)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @bid_strategy = args[:bid_strategy] if args.key?(:bid_strategy)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -159,7 +166,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :ad_group_ad_id
       
-        # Required. The unique ID of the ad group that the ad belongs to.
+        # Required. Immutable. The unique ID of the ad group that the ad belongs to.
         # Corresponds to the JSON property `adGroupId`
         # @return [Fixnum]
         attr_accessor :ad_group_id
@@ -169,12 +176,12 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::AdPolicy]
         attr_accessor :ad_policy
       
-        # List of URLs used by the ad.
+        # Output only. List of URLs used by the ad.
         # Corresponds to the JSON property `adUrls`
         # @return [Array<Google::Apis::DisplayvideoV3::AdUrl>]
         attr_accessor :ad_urls
       
-        # Required. The unique ID of the advertiser the ad belongs to.
+        # Output only. The unique ID of the advertiser the ad belongs to.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
         attr_accessor :advertiser_id
@@ -188,6 +195,31 @@ module Google
         # Corresponds to the JSON property `bumperAd`
         # @return [Google::Apis::DisplayvideoV3::BumperAd]
         attr_accessor :bumper_ad
+      
+        # Details on the DCM tracking.
+        # Corresponds to the JSON property `dcmTrackingInfo`
+        # @return [Google::Apis::DisplayvideoV3::DcmTrackingInfo]
+        attr_accessor :dcm_tracking_info
+      
+        # Details for a Demand Gen carousel ad.
+        # Corresponds to the JSON property `demandGenCarouselAd`
+        # @return [Google::Apis::DisplayvideoV3::DemandGenCarouselAd]
+        attr_accessor :demand_gen_carousel_ad
+      
+        # Details for a Demand Gen image ad.
+        # Corresponds to the JSON property `demandGenImageAd`
+        # @return [Google::Apis::DisplayvideoV3::DemandGenImageAd]
+        attr_accessor :demand_gen_image_ad
+      
+        # Details for a Demand Gen product ad.
+        # Corresponds to the JSON property `demandGenProductAd`
+        # @return [Google::Apis::DisplayvideoV3::DemandGenProductAd]
+        attr_accessor :demand_gen_product_ad
+      
+        # Details for a Demand Gen video ad.
+        # Corresponds to the JSON property `demandGenVideoAd`
+        # @return [Google::Apis::DisplayvideoV3::DemandGenVideoAd]
+        attr_accessor :demand_gen_video_ad
       
         # Required. The display name of the ad. Must be UTF-8 encoded with a maximum
         # size of 255 bytes.
@@ -248,6 +280,11 @@ module Google
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @audio_ad = args[:audio_ad] if args.key?(:audio_ad)
           @bumper_ad = args[:bumper_ad] if args.key?(:bumper_ad)
+          @dcm_tracking_info = args[:dcm_tracking_info] if args.key?(:dcm_tracking_info)
+          @demand_gen_carousel_ad = args[:demand_gen_carousel_ad] if args.key?(:demand_gen_carousel_ad)
+          @demand_gen_image_ad = args[:demand_gen_image_ad] if args.key?(:demand_gen_image_ad)
+          @demand_gen_product_ad = args[:demand_gen_product_ad] if args.key?(:demand_gen_product_ad)
+          @demand_gen_video_ad = args[:demand_gen_video_ad] if args.key?(:demand_gen_video_ad)
           @display_name = args[:display_name] if args.key?(:display_name)
           @display_video_source_ad = args[:display_video_source_ad] if args.key?(:display_video_source_ad)
           @entity_status = args[:entity_status] if args.key?(:entity_status)
@@ -284,6 +321,31 @@ module Google
         def update!(**args)
           @ad_group_id = args[:ad_group_id] if args.key?(:ad_group_id)
           @assigned_targeting_option = args[:assigned_targeting_option] if args.key?(:assigned_targeting_option)
+        end
+      end
+      
+      # The inventory control of the ad group.
+      class AdGroupInventoryControl
+        include Google::Apis::Core::Hashable
+      
+        # The inventory strategy.
+        # Corresponds to the JSON property `adGroupInventoryStrategy`
+        # @return [String]
+        attr_accessor :ad_group_inventory_strategy
+      
+        # The inventory control of the ad group.
+        # Corresponds to the JSON property `selectedInventories`
+        # @return [Google::Apis::DisplayvideoV3::SelectedInventories]
+        attr_accessor :selected_inventories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group_inventory_strategy = args[:ad_group_inventory_strategy] if args.key?(:ad_group_inventory_strategy)
+          @selected_inventories = args[:selected_inventories] if args.key?(:selected_inventories)
         end
       end
       
@@ -2452,6 +2514,13 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::YoutubeChannelAssignedTargetingOptionDetails]
         attr_accessor :youtube_channel_details
       
+        # Details for YouTube channel pack assigned targeting option. This will be
+        # populated in the youtube_channel_pack_details field when targeting_type is `
+        # TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+        # Corresponds to the JSON property `youtubeChannelPackDetails`
+        # @return [Google::Apis::DisplayvideoV3::YoutubeChannelPackAssignedTargetingOptionDetails]
+        attr_accessor :youtube_channel_pack_details
+      
         # Details for YouTube video assigned targeting option. This will be populated in
         # the youtube_video_details field when targeting_type is `
         # TARGETING_TYPE_YOUTUBE_VIDEO`.
@@ -2518,6 +2587,7 @@ module Google
           @video_player_size_details = args[:video_player_size_details] if args.key?(:video_player_size_details)
           @viewability_details = args[:viewability_details] if args.key?(:viewability_details)
           @youtube_channel_details = args[:youtube_channel_details] if args.key?(:youtube_channel_details)
+          @youtube_channel_pack_details = args[:youtube_channel_pack_details] if args.key?(:youtube_channel_pack_details)
           @youtube_video_details = args[:youtube_video_details] if args.key?(:youtube_video_details)
         end
       end
@@ -2867,6 +2937,11 @@ module Google
       class BiddingStrategy
         include Google::Apis::Core::Hashable
       
+        # Settings that control the bid strategy for Demand Gen resources.
+        # Corresponds to the JSON property `demandGenBid`
+        # @return [Google::Apis::DisplayvideoV3::DemandGenBiddingStrategy]
+        attr_accessor :demand_gen_bid
+      
         # A strategy that uses a fixed bidding price.
         # Corresponds to the JSON property `fixedBid`
         # @return [Google::Apis::DisplayvideoV3::FixedBidStrategy]
@@ -2895,6 +2970,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @demand_gen_bid = args[:demand_gen_bid] if args.key?(:demand_gen_bid)
           @fixed_bid = args[:fixed_bid] if args.key?(:fixed_bid)
           @maximize_spend_auto_bid = args[:maximize_spend_auto_bid] if args.key?(:maximize_spend_auto_bid)
           @performance_goal_auto_bid = args[:performance_goal_auto_bid] if args.key?(:performance_goal_auto_bid)
@@ -3009,6 +3085,85 @@ module Google
         end
       end
       
+      # Request message for BulkEditAdGroupAssignedTargetingOptions.
+      class BulkEditAdGroupAssignedTargetingOptionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The IDs of the ad groups the assigned targeting options will belong
+        # to. A maximum of 25 ad group IDs can be specified.
+        # Corresponds to the JSON property `adGroupIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :ad_group_ids
+      
+        # Optional. The assigned targeting options to create in batch, specified as a
+        # list of `CreateAssignedTargetingOptionRequest`. Supported targeting types: * `
+        # TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `
+        # TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `
+        # TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `
+        # TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `
+        # TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_URL` * `
+        # TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+        # Corresponds to the JSON property `createRequests`
+        # @return [Array<Google::Apis::DisplayvideoV3::CreateAssignedTargetingOptionsRequest>]
+        attr_accessor :create_requests
+      
+        # Optional. The assigned targeting options to delete in batch, specified as a
+        # list of `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `
+        # TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `
+        # TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `
+        # TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `
+        # TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `
+        # TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_URL` * `
+        # TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+        # Corresponds to the JSON property `deleteRequests`
+        # @return [Array<Google::Apis::DisplayvideoV3::DeleteAssignedTargetingOptionsRequest>]
+        attr_accessor :delete_requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group_ids = args[:ad_group_ids] if args.key?(:ad_group_ids)
+          @create_requests = args[:create_requests] if args.key?(:create_requests)
+          @delete_requests = args[:delete_requests] if args.key?(:delete_requests)
+        end
+      end
+      
+      # Response message for BulkEditAssignedTargetingOptions.
+      class BulkEditAdGroupAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The error information for each ad group that failed to update.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DisplayvideoV3::Status>]
+        attr_accessor :errors
+      
+        # Output only. The IDs of the ad groups which failed to update.
+        # Corresponds to the JSON property `failedAdGroupIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :failed_ad_group_ids
+      
+        # Output only. The IDs of the ad groups which were successfully updated.
+        # Corresponds to the JSON property `updatedAdGroupIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :updated_ad_group_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @failed_ad_group_ids = args[:failed_ad_group_ids] if args.key?(:failed_ad_group_ids)
+          @updated_ad_group_ids = args[:updated_ad_group_ids] if args.key?(:updated_ad_group_ids)
+        end
+      end
+      
       # Request message for BulkEditAdvertiserAssignedTargetingOptions.
       class BulkEditAdvertiserAssignedTargetingOptionsRequest
         include Google::Apis::Core::Hashable
@@ -3017,7 +3172,7 @@ module Google
         # CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
+        # TARGETING_TYPE_KEYWORD`
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV3::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
@@ -3026,7 +3181,7 @@ module Google
         # DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
+        # TARGETING_TYPE_KEYWORD`
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV3::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -3981,6 +4136,64 @@ module Google
         end
       end
       
+      # Details for a Demand Gen carousel card.
+      class CarouselCard
+        include Google::Apis::Core::Hashable
+      
+        # Required. The text on the call-to-action button shown on the card. Must use 10
+        # characters or less.
+        # Corresponds to the JSON property `callToAction`
+        # @return [String]
+        attr_accessor :call_to_action
+      
+        # Optional. The URL address of the webpage that people reach after they click
+        # the card on a mobile device.
+        # Corresponds to the JSON property `finalMobileUrl`
+        # @return [String]
+        attr_accessor :final_mobile_url
+      
+        # Required. The URL address of the webpage that people reach after they click
+        # the card.
+        # Corresponds to the JSON property `finalUrl`
+        # @return [String]
+        attr_accessor :final_url
+      
+        # Required. The headline of the card.
+        # Corresponds to the JSON property `headline`
+        # @return [String]
+        attr_accessor :headline
+      
+        # Meta data of an image asset.
+        # Corresponds to the JSON property `marketingImage`
+        # @return [Google::Apis::DisplayvideoV3::ImageAsset]
+        attr_accessor :marketing_image
+      
+        # Meta data of an image asset.
+        # Corresponds to the JSON property `portraitMarketingImage`
+        # @return [Google::Apis::DisplayvideoV3::ImageAsset]
+        attr_accessor :portrait_marketing_image
+      
+        # Meta data of an image asset.
+        # Corresponds to the JSON property `squareMarketingImage`
+        # @return [Google::Apis::DisplayvideoV3::ImageAsset]
+        attr_accessor :square_marketing_image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @call_to_action = args[:call_to_action] if args.key?(:call_to_action)
+          @final_mobile_url = args[:final_mobile_url] if args.key?(:final_mobile_url)
+          @final_url = args[:final_url] if args.key?(:final_url)
+          @headline = args[:headline] if args.key?(:headline)
+          @marketing_image = args[:marketing_image] if args.key?(:marketing_image)
+          @portrait_marketing_image = args[:portrait_marketing_image] if args.key?(:portrait_marketing_image)
+          @square_marketing_image = args[:square_marketing_image] if args.key?(:square_marketing_image)
+        end
+      end
+      
       # Details for assigned carrier and ISP targeting option. This will be populated
       # in the details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_CARRIER_AND_ISP`.
@@ -4873,6 +5086,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :post_view_count_percentage_millis
       
+        # Optional. The attribution model to use for conversion measurement. This
+        # attribution model will determine how conversions are counted. The Primary
+        # model can be set by you for a floodlight config or group. More details [here](
+        # https://support.google.com/displayvideo/answer/7409983). Only applicable to
+        # Demand Gen line items. Retrieval and management of Demand Gen resources is
+        # currently in beta. This field will begin rolling out to all partners on *June
+        # 10, 2026* and be available to all partners on *June 24, 2026*.
+        # Corresponds to the JSON property `primaryAttributionModelId`
+        # @return [Fixnum]
+        attr_accessor :primary_attribution_model_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4881,6 +5105,7 @@ module Google
         def update!(**args)
           @floodlight_activity_configs = args[:floodlight_activity_configs] if args.key?(:floodlight_activity_configs)
           @post_view_count_percentage_millis = args[:post_view_count_percentage_millis] if args.key?(:post_view_count_percentage_millis)
+          @primary_attribution_model_id = args[:primary_attribution_model_id] if args.key?(:primary_attribution_model_id)
         end
       end
       
@@ -5442,39 +5667,6 @@ module Google
         end
       end
       
-      # Creative requirements configuration for the inventory source.
-      class CreativeConfig
-        include Google::Apis::Core::Hashable
-      
-        # The type of creative that can be assigned to the inventory source. Only the
-        # following types are supported: * `CREATIVE_TYPE_STANDARD` * `
-        # CREATIVE_TYPE_VIDEO`
-        # Corresponds to the JSON property `creativeType`
-        # @return [String]
-        attr_accessor :creative_type
-      
-        # The configuration for display creatives.
-        # Corresponds to the JSON property `displayCreativeConfig`
-        # @return [Google::Apis::DisplayvideoV3::InventorySourceDisplayCreativeConfig]
-        attr_accessor :display_creative_config
-      
-        # The configuration for video creatives.
-        # Corresponds to the JSON property `videoCreativeConfig`
-        # @return [Google::Apis::DisplayvideoV3::InventorySourceVideoCreativeConfig]
-        attr_accessor :video_creative_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @creative_type = args[:creative_type] if args.key?(:creative_type)
-          @display_creative_config = args[:display_creative_config] if args.key?(:display_creative_config)
-          @video_creative_config = args[:video_creative_config] if args.key?(:video_creative_config)
-        end
-      end
-      
       # A single custom bidding algorithm.
       class CustomBiddingAlgorithm
         include Google::Apis::Core::Hashable
@@ -6015,7 +6207,8 @@ module Google
         attr_accessor :start_hour
       
         # Required. The mechanism used to determine which timezone to use for this day
-        # and time targeting setting.
+        # and time targeting setting. For Demand Gen line items, this field is always `
+        # TIME_ZONE_RESOLUTION_ADVERTISER`.
         # Corresponds to the JSON property `timeZoneResolution`
         # @return [String]
         attr_accessor :time_zone_resolution
@@ -6030,6 +6223,37 @@ module Google
           @end_hour = args[:end_hour] if args.key?(:end_hour)
           @start_hour = args[:start_hour] if args.key?(:start_hour)
           @time_zone_resolution = args[:time_zone_resolution] if args.key?(:time_zone_resolution)
+        end
+      end
+      
+      # Details on the DCM tracking.
+      class DcmTrackingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. The DCM creative id.
+        # Corresponds to the JSON property `creativeId`
+        # @return [Fixnum]
+        attr_accessor :creative_id
+      
+        # Required. The DCM placement id.
+        # Corresponds to the JSON property `placementId`
+        # @return [Fixnum]
+        attr_accessor :placement_id
+      
+        # Required. The DCM tracking ad id.
+        # Corresponds to the JSON property `trackingAdId`
+        # @return [Fixnum]
+        attr_accessor :tracking_ad_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creative_id = args[:creative_id] if args.key?(:creative_id)
+          @placement_id = args[:placement_id] if args.key?(:placement_id)
+          @tracking_ad_id = args[:tracking_ad_id] if args.key?(:tracking_ad_id)
         end
       end
       
@@ -6056,6 +6280,471 @@ module Google
         def update!(**args)
           @assigned_targeting_option_ids = args[:assigned_targeting_option_ids] if args.key?(:assigned_targeting_option_ids)
           @targeting_type = args[:targeting_type] if args.key?(:targeting_type)
+        end
+      end
+      
+      # Settings that control the bid strategy for Demand Gen resources.
+      class DemandGenBiddingStrategy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The value effectively used by the bidding strategy. This field
+        # will be the same as value if set. If value is not set and the strategy is
+        # assigned to an ad group, this field will be inherited from the line item's
+        # bidding strategy. If type is not `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA`
+        # or `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS`, this field will be 0.
+        # Corresponds to the JSON property `effectiveBiddingValue`
+        # @return [Fixnum]
+        attr_accessor :effective_bidding_value
+      
+        # Output only. Source of the effective bidding value.
+        # Corresponds to the JSON property `effectiveBiddingValueSource`
+        # @return [String]
+        attr_accessor :effective_bidding_value_source
+      
+        # Optional. The type of the bidding strategy. This can only be set when assigned
+        # to a line item. Ad groups will inherit this value from their line item.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Optional. The value used by the bidding strategy. This can be set when
+        # assigned to line items or ad groups. This field is only applicable for the
+        # following strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `
+        # DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC` * `
+        # DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros
+        # of the advertiser's currency or ROAS value. For example, 1000000 represents 1.
+        # 0 standard units of the currency or 100% ROAS value. If not using an
+        # applicable strategy, the value of this field will be 0.
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_bidding_value = args[:effective_bidding_value] if args.key?(:effective_bidding_value)
+          @effective_bidding_value_source = args[:effective_bidding_value_source] if args.key?(:effective_bidding_value_source)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Details for a Demand Gen carousel ad.
+      class DemandGenCarouselAd
+        include Google::Apis::Core::Hashable
+      
+        # Required. The business name shown on the ad.
+        # Corresponds to the JSON property `businessName`
+        # @return [String]
+        attr_accessor :business_name
+      
+        # Required. The list of cards shown on the ad.
+        # Corresponds to the JSON property `cards`
+        # @return [Array<Google::Apis::DisplayvideoV3::CarouselCard>]
+        attr_accessor :cards
+      
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
+        # Corresponds to the JSON property `customParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_parameters
+      
+        # Required. The description of the ad.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The URL address of the webpage that people reach after they click
+        # the ad.
+        # Corresponds to the JSON property `finalUrl`
+        # @return [String]
+        attr_accessor :final_url
+      
+        # Optional. The suffix to append to landing page URLs.
+        # Corresponds to the JSON property `finalUrlSuffix`
+        # @return [String]
+        attr_accessor :final_url_suffix
+      
+        # Required. The headline of the ad.
+        # Corresponds to the JSON property `headline`
+        # @return [String]
+        attr_accessor :headline
+      
+        # Meta data of an image asset.
+        # Corresponds to the JSON property `logo`
+        # @return [Google::Apis::DisplayvideoV3::ImageAsset]
+        attr_accessor :logo
+      
+        # Output only. The URL address loaded in the background for tracking purposes.
+        # Corresponds to the JSON property `trackingUrl`
+        # @return [String]
+        attr_accessor :tracking_url
+      
+        # Optional. The tracking URL specified by the user manually.
+        # Corresponds to the JSON property `userSpecifiedTrackingUrl`
+        # @return [String]
+        attr_accessor :user_specified_tracking_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_name = args[:business_name] if args.key?(:business_name)
+          @cards = args[:cards] if args.key?(:cards)
+          @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
+          @description = args[:description] if args.key?(:description)
+          @final_url = args[:final_url] if args.key?(:final_url)
+          @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
+          @headline = args[:headline] if args.key?(:headline)
+          @logo = args[:logo] if args.key?(:logo)
+          @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @user_specified_tracking_url = args[:user_specified_tracking_url] if args.key?(:user_specified_tracking_url)
+        end
+      end
+      
+      # Details for a Demand Gen image ad.
+      class DemandGenImageAd
+        include Google::Apis::Core::Hashable
+      
+        # Required. The business name shown on the ad.
+        # Corresponds to the JSON property `businessName`
+        # @return [String]
+        attr_accessor :business_name
+      
+        # Required. The call-to-action button shown on the ad.
+        # Corresponds to the JSON property `callToAction`
+        # @return [String]
+        attr_accessor :call_to_action
+      
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
+        # Corresponds to the JSON property `customParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_parameters
+      
+        # Required. The list of descriptions shown on the ad.
+        # Corresponds to the JSON property `descriptions`
+        # @return [Array<String>]
+        attr_accessor :descriptions
+      
+        # Optional. The URL address of the webpage that people reach after they click
+        # the ad on a mobile device.
+        # Corresponds to the JSON property `finalMobileUrl`
+        # @return [String]
+        attr_accessor :final_mobile_url
+      
+        # Required. The URL address of the webpage that people reach after they click
+        # the ad.
+        # Corresponds to the JSON property `finalUrl`
+        # @return [String]
+        attr_accessor :final_url
+      
+        # Optional. The suffix to append to landing page URLs.
+        # Corresponds to the JSON property `finalUrlSuffix`
+        # @return [String]
+        attr_accessor :final_url_suffix
+      
+        # Required. The list of headlines shown on the ad.
+        # Corresponds to the JSON property `headlines`
+        # @return [Array<String>]
+        attr_accessor :headlines
+      
+        # The list of logo images shown on the ad.
+        # Corresponds to the JSON property `logoImages`
+        # @return [Array<Google::Apis::DisplayvideoV3::ImageAsset>]
+        attr_accessor :logo_images
+      
+        # The list of marketing images shown on the ad.
+        # Corresponds to the JSON property `marketingImages`
+        # @return [Array<Google::Apis::DisplayvideoV3::ImageAsset>]
+        attr_accessor :marketing_images
+      
+        # The list of portrait marketing images shown on the ad.
+        # Corresponds to the JSON property `portraitMarketingImages`
+        # @return [Array<Google::Apis::DisplayvideoV3::ImageAsset>]
+        attr_accessor :portrait_marketing_images
+      
+        # The list of square marketing images shown on the ad.
+        # Corresponds to the JSON property `squareMarketingImages`
+        # @return [Array<Google::Apis::DisplayvideoV3::ImageAsset>]
+        attr_accessor :square_marketing_images
+      
+        # Output only. The URL address loaded in the background for tracking purposes.
+        # Corresponds to the JSON property `trackingUrl`
+        # @return [String]
+        attr_accessor :tracking_url
+      
+        # Optional. The tracking URL specified by the user manually.
+        # Corresponds to the JSON property `userSpecifiedTrackingUrl`
+        # @return [String]
+        attr_accessor :user_specified_tracking_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_name = args[:business_name] if args.key?(:business_name)
+          @call_to_action = args[:call_to_action] if args.key?(:call_to_action)
+          @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
+          @descriptions = args[:descriptions] if args.key?(:descriptions)
+          @final_mobile_url = args[:final_mobile_url] if args.key?(:final_mobile_url)
+          @final_url = args[:final_url] if args.key?(:final_url)
+          @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
+          @headlines = args[:headlines] if args.key?(:headlines)
+          @logo_images = args[:logo_images] if args.key?(:logo_images)
+          @marketing_images = args[:marketing_images] if args.key?(:marketing_images)
+          @portrait_marketing_images = args[:portrait_marketing_images] if args.key?(:portrait_marketing_images)
+          @square_marketing_images = args[:square_marketing_images] if args.key?(:square_marketing_images)
+          @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @user_specified_tracking_url = args[:user_specified_tracking_url] if args.key?(:user_specified_tracking_url)
+        end
+      end
+      
+      # Details for a Demand Gen product ad.
+      class DemandGenProductAd
+        include Google::Apis::Core::Hashable
+      
+        # Required. The business name shown on the ad.
+        # Corresponds to the JSON property `businessName`
+        # @return [String]
+        attr_accessor :business_name
+      
+        # Required. The call-to-action button shown on the ad. The supported values are:
+        # * `AUTOMATED` * `APPLY_NOW` * `BOOK_NOW` * `CONTACT_US` * `DOWNLOAD` * `
+        # GET_QUOTE` * `LEARN_MORE` * `SHOP_NOW` * `SIGN_UP` * `SUBSCRIBE`
+        # Corresponds to the JSON property `callToAction`
+        # @return [String]
+        attr_accessor :call_to_action
+      
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
+        # Corresponds to the JSON property `customParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_parameters
+      
+        # Required. The description of the ad.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The first piece after the domain in the display URL.
+        # Corresponds to the JSON property `displayUrlBreadcrumb1`
+        # @return [String]
+        attr_accessor :display_url_breadcrumb1
+      
+        # Optional. The second piece after the domain in the display URL.
+        # Corresponds to the JSON property `displayUrlBreadcrumb2`
+        # @return [String]
+        attr_accessor :display_url_breadcrumb2
+      
+        # Required. The URL address of the webpage that people reach after they click
+        # the ad.
+        # Corresponds to the JSON property `finalUrl`
+        # @return [String]
+        attr_accessor :final_url
+      
+        # Optional. The suffix to append to landing page URLs.
+        # Corresponds to the JSON property `finalUrlSuffix`
+        # @return [String]
+        attr_accessor :final_url_suffix
+      
+        # Required. The headline of the ad.
+        # Corresponds to the JSON property `headline`
+        # @return [String]
+        attr_accessor :headline
+      
+        # Meta data of an image asset.
+        # Corresponds to the JSON property `logo`
+        # @return [Google::Apis::DisplayvideoV3::ImageAsset]
+        attr_accessor :logo
+      
+        # Output only. The URL address loaded in the background for tracking purposes.
+        # Corresponds to the JSON property `trackingUrl`
+        # @return [String]
+        attr_accessor :tracking_url
+      
+        # Optional. The tracking URL specified by the user manually.
+        # Corresponds to the JSON property `userSpecifiedTrackingUrl`
+        # @return [String]
+        attr_accessor :user_specified_tracking_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_name = args[:business_name] if args.key?(:business_name)
+          @call_to_action = args[:call_to_action] if args.key?(:call_to_action)
+          @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
+          @description = args[:description] if args.key?(:description)
+          @display_url_breadcrumb1 = args[:display_url_breadcrumb1] if args.key?(:display_url_breadcrumb1)
+          @display_url_breadcrumb2 = args[:display_url_breadcrumb2] if args.key?(:display_url_breadcrumb2)
+          @final_url = args[:final_url] if args.key?(:final_url)
+          @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
+          @headline = args[:headline] if args.key?(:headline)
+          @logo = args[:logo] if args.key?(:logo)
+          @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @user_specified_tracking_url = args[:user_specified_tracking_url] if args.key?(:user_specified_tracking_url)
+        end
+      end
+      
+      # Settings for Demand Gen line items.
+      class DemandGenSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. Whether location and language targeting can be set at the
+        # line item level. Otherwise, relevant targeting types must be assigned directly
+        # to ad groups.
+        # Corresponds to the JSON property `geoLanguageTargetingEnabled`
+        # @return [Boolean]
+        attr_accessor :geo_language_targeting_enabled
+        alias_method :geo_language_targeting_enabled?, :geo_language_targeting_enabled
+      
+        # Optional. The ID of the Merchant Center account used to provide a product feed.
+        # This Merchant Center account must already be linked to the advertiser.
+        # Corresponds to the JSON property `linkedMerchantId`
+        # @return [Fixnum]
+        attr_accessor :linked_merchant_id
+      
+        # Settings that control what third-party vendors are measuring specific line
+        # item metrics.
+        # Corresponds to the JSON property `thirdPartyMeasurementConfigs`
+        # @return [Google::Apis::DisplayvideoV3::ThirdPartyMeasurementConfigs]
+        attr_accessor :third_party_measurement_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @geo_language_targeting_enabled = args[:geo_language_targeting_enabled] if args.key?(:geo_language_targeting_enabled)
+          @linked_merchant_id = args[:linked_merchant_id] if args.key?(:linked_merchant_id)
+          @third_party_measurement_configs = args[:third_party_measurement_configs] if args.key?(:third_party_measurement_configs)
+        end
+      end
+      
+      # Details for a Demand Gen video ad.
+      class DemandGenVideoAd
+        include Google::Apis::Core::Hashable
+      
+        # Required. The business name shown on the ad.
+        # Corresponds to the JSON property `businessName`
+        # @return [String]
+        attr_accessor :business_name
+      
+        # Required. The call-to-action button shown on the ad. The supported values are:
+        # * `AUTOMATED` * `LEARN_MORE` * `GET_QUOTE` * `APPLY_NOW` * `SIGN_UP` * `
+        # CONTACT_US` * `SUBSCRIBE` * `DOWNLOAD` * `BOOK_NOW` * `SHOP_NOW` * `BUY_NOW` *
+        # `DONATE_NOW` * `ORDER_NOW` * `PLAY_NOW` * `SEE_MORE` * `START_NOW` * `
+        # VISIT_SITE` * `WATCH_NOW`
+        # Corresponds to the JSON property `callToAction`
+        # @return [String]
+        attr_accessor :call_to_action
+      
+        # Meta data of an image asset.
+        # Corresponds to the JSON property `companionBanner`
+        # @return [Google::Apis::DisplayvideoV3::ImageAsset]
+        attr_accessor :companion_banner
+      
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
+        # Corresponds to the JSON property `customParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_parameters
+      
+        # Required. The list of descriptions shown on the ad.
+        # Corresponds to the JSON property `descriptions`
+        # @return [Array<String>]
+        attr_accessor :descriptions
+      
+        # Optional. The first piece after the domain in the display URL.
+        # Corresponds to the JSON property `displayUrlBreadcrumb1`
+        # @return [String]
+        attr_accessor :display_url_breadcrumb1
+      
+        # Optional. The second piece after the domain in the display URL.
+        # Corresponds to the JSON property `displayUrlBreadcrumb2`
+        # @return [String]
+        attr_accessor :display_url_breadcrumb2
+      
+        # Optional. The URL address of the webpage that people reach after they click
+        # the ad on a mobile device.
+        # Corresponds to the JSON property `finalMobileUrl`
+        # @return [String]
+        attr_accessor :final_mobile_url
+      
+        # Required. The URL address of the webpage that people reach after they click
+        # the ad.
+        # Corresponds to the JSON property `finalUrl`
+        # @return [String]
+        attr_accessor :final_url
+      
+        # Optional. The suffix to append to landing page URLs.
+        # Corresponds to the JSON property `finalUrlSuffix`
+        # @return [String]
+        attr_accessor :final_url_suffix
+      
+        # Required. The list of headlines shown on the ad.
+        # Corresponds to the JSON property `headlines`
+        # @return [Array<String>]
+        attr_accessor :headlines
+      
+        # Meta data of an image asset.
+        # Corresponds to the JSON property `logo`
+        # @return [Google::Apis::DisplayvideoV3::ImageAsset]
+        attr_accessor :logo
+      
+        # Required. The list of long headlines shown on the ad.
+        # Corresponds to the JSON property `longHeadlines`
+        # @return [Array<String>]
+        attr_accessor :long_headlines
+      
+        # Output only. The URL address loaded in the background for tracking purposes.
+        # Corresponds to the JSON property `trackingUrl`
+        # @return [String]
+        attr_accessor :tracking_url
+      
+        # Optional. The tracking URL specified by the user manually.
+        # Corresponds to the JSON property `userSpecifiedTrackingUrl`
+        # @return [String]
+        attr_accessor :user_specified_tracking_url
+      
+        # Required. The list of YouTube video assets used by this ad.
+        # Corresponds to the JSON property `videos`
+        # @return [Array<Google::Apis::DisplayvideoV3::YoutubeVideoDetails>]
+        attr_accessor :videos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_name = args[:business_name] if args.key?(:business_name)
+          @call_to_action = args[:call_to_action] if args.key?(:call_to_action)
+          @companion_banner = args[:companion_banner] if args.key?(:companion_banner)
+          @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
+          @descriptions = args[:descriptions] if args.key?(:descriptions)
+          @display_url_breadcrumb1 = args[:display_url_breadcrumb1] if args.key?(:display_url_breadcrumb1)
+          @display_url_breadcrumb2 = args[:display_url_breadcrumb2] if args.key?(:display_url_breadcrumb2)
+          @final_mobile_url = args[:final_mobile_url] if args.key?(:final_mobile_url)
+          @final_url = args[:final_url] if args.key?(:final_url)
+          @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
+          @headlines = args[:headlines] if args.key?(:headlines)
+          @logo = args[:logo] if args.key?(:logo)
+          @long_headlines = args[:long_headlines] if args.key?(:long_headlines)
+          @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @user_specified_tracking_url = args[:user_specified_tracking_url] if args.key?(:user_specified_tracking_url)
+          @videos = args[:videos] if args.key?(:videos)
         end
       end
       
@@ -6636,67 +7325,6 @@ module Google
         def update!(**args)
           @read_access_inherited = args[:read_access_inherited] if args.key?(:read_access_inherited)
           @read_advertiser_ids = args[:read_advertiser_ids] if args.key?(:read_advertiser_ids)
-        end
-      end
-      
-      # Request message for InventorySourceService.
-      # EditInventorySourceReadWriteAccessors.
-      class EditInventorySourceReadWriteAccessorsRequest
-        include Google::Apis::Core::Hashable
-      
-        # Update to the list of advertisers with read/write access to the inventory
-        # source.
-        # Corresponds to the JSON property `advertisersUpdate`
-        # @return [Google::Apis::DisplayvideoV3::EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate]
-        attr_accessor :advertisers_update
-      
-        # Set the partner context as read/write accessor of the inventory source. This
-        # will remove all other current read/write advertiser accessors.
-        # Corresponds to the JSON property `assignPartner`
-        # @return [Boolean]
-        attr_accessor :assign_partner
-        alias_method :assign_partner?, :assign_partner
-      
-        # Required. The partner context by which the accessors change is being made.
-        # Corresponds to the JSON property `partnerId`
-        # @return [Fixnum]
-        attr_accessor :partner_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @advertisers_update = args[:advertisers_update] if args.key?(:advertisers_update)
-          @assign_partner = args[:assign_partner] if args.key?(:assign_partner)
-          @partner_id = args[:partner_id] if args.key?(:partner_id)
-        end
-      end
-      
-      # Update to the list of advertisers with read/write access to the inventory
-      # source.
-      class EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate
-        include Google::Apis::Core::Hashable
-      
-        # The advertisers to add.
-        # Corresponds to the JSON property `addedAdvertisers`
-        # @return [Array<Fixnum>]
-        attr_accessor :added_advertisers
-      
-        # The advertisers to remove.
-        # Corresponds to the JSON property `removedAdvertisers`
-        # @return [Array<Fixnum>]
-        attr_accessor :removed_advertisers
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @added_advertisers = args[:added_advertisers] if args.key?(:added_advertisers)
-          @removed_advertisers = args[:removed_advertisers] if args.key?(:removed_advertisers)
         end
       end
       
@@ -7843,7 +8471,12 @@ module Google
       class ImageAsset
         include Google::Apis::Core::Hashable
       
-        # File size of the image asset in bytes.
+        # Required. The unique ID of the asset.
+        # Corresponds to the JSON property `assetId`
+        # @return [Fixnum]
+        attr_accessor :asset_id
+      
+        # Output only. File size of the image asset in bytes.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
         attr_accessor :file_size
@@ -7853,7 +8486,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::Dimensions]
         attr_accessor :full_size
       
-        # MIME type of the image asset.
+        # Output only. MIME type of the image asset.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -7864,6 +8497,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @asset_id = args[:asset_id] if args.key?(:asset_id)
           @file_size = args[:file_size] if args.key?(:file_size)
           @full_size = args[:full_size] if args.key?(:full_size)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
@@ -7879,7 +8513,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::CommonInStreamAttribute]
         attr_accessor :common_in_stream_attribute
       
-        # The custom parameters to pass custom values to tracking URL template.
+        # The custom parameters and accompanying values to add to the tracking URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -8235,211 +8869,6 @@ module Google
         end
       end
       
-      # An inventory source. Next ID: 22
-      class InventorySource
-        include Google::Apis::Core::Hashable
-      
-        # Whether the inventory source has a guaranteed or non-guaranteed delivery.
-        # Corresponds to the JSON property `commitment`
-        # @return [String]
-        attr_accessor :commitment
-      
-        # The creative requirements of the inventory source. Not applicable for auction
-        # packages.
-        # Corresponds to the JSON property `creativeConfigs`
-        # @return [Array<Google::Apis::DisplayvideoV3::CreativeConfig>]
-        attr_accessor :creative_configs
-      
-        # The ID in the exchange space that uniquely identifies the inventory source.
-        # Must be unique across buyers within each exchange but not necessarily unique
-        # across exchanges.
-        # Corresponds to the JSON property `dealId`
-        # @return [String]
-        attr_accessor :deal_id
-      
-        # The delivery method of the inventory source. * For non-guaranteed inventory
-        # sources, the only acceptable value is `
-        # INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`. * For guaranteed inventory
-        # sources, acceptable values are `INVENTORY_SOURCE_DELIVERY_METHOD_TAG` and `
-        # INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`.
-        # Corresponds to the JSON property `deliveryMethod`
-        # @return [String]
-        attr_accessor :delivery_method
-      
-        # The display name of the inventory source. Must be UTF-8 encoded with a maximum
-        # size of 240 bytes.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # The exchange to which the inventory source belongs.
-        # Corresponds to the JSON property `exchange`
-        # @return [String]
-        attr_accessor :exchange
-      
-        # Immutable. The ID of the guaranteed order that this inventory source belongs
-        # to. Only applicable when commitment is `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`
-        # .
-        # Corresponds to the JSON property `guaranteedOrderId`
-        # @return [String]
-        attr_accessor :guaranteed_order_id
-      
-        # Output only. The unique ID of the inventory source. Assigned by the system.
-        # Corresponds to the JSON property `inventorySourceId`
-        # @return [Fixnum]
-        attr_accessor :inventory_source_id
-      
-        # Output only. The product type of the inventory source, denoting the way
-        # through which it sells inventory.
-        # Corresponds to the JSON property `inventorySourceProductType`
-        # @return [String]
-        attr_accessor :inventory_source_product_type
-      
-        # Denotes the type of the inventory source.
-        # Corresponds to the JSON property `inventorySourceType`
-        # @return [String]
-        attr_accessor :inventory_source_type
-      
-        # Output only. The resource name of the inventory source.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The publisher/seller name of the inventory source.
-        # Corresponds to the JSON property `publisherName`
-        # @return [String]
-        attr_accessor :publisher_name
-      
-        # The rate related settings of the inventory source.
-        # Corresponds to the JSON property `rateDetails`
-        # @return [Google::Apis::DisplayvideoV3::RateDetails]
-        attr_accessor :rate_details
-      
-        # Output only. The IDs of advertisers with read-only access to the inventory
-        # source.
-        # Corresponds to the JSON property `readAdvertiserIds`
-        # @return [Array<Fixnum>]
-        attr_accessor :read_advertiser_ids
-      
-        # Output only. The IDs of partners with read-only access to the inventory source.
-        # All advertisers of partners in this field inherit read-only access to the
-        # inventory source.
-        # Corresponds to the JSON property `readPartnerIds`
-        # @return [Array<Fixnum>]
-        attr_accessor :read_partner_ids
-      
-        # The partner or advertisers with access to the inventory source.
-        # Corresponds to the JSON property `readWriteAccessors`
-        # @return [Google::Apis::DisplayvideoV3::InventorySourceAccessors]
-        attr_accessor :read_write_accessors
-      
-        # The status related settings of the inventory source.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::DisplayvideoV3::InventorySourceStatus]
-        attr_accessor :status
-      
-        # A time range.
-        # Corresponds to the JSON property `timeRange`
-        # @return [Google::Apis::DisplayvideoV3::TimeRange]
-        attr_accessor :time_range
-      
-        # Output only. The timestamp when the inventory source was last updated.
-        # Assigned by the system.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @commitment = args[:commitment] if args.key?(:commitment)
-          @creative_configs = args[:creative_configs] if args.key?(:creative_configs)
-          @deal_id = args[:deal_id] if args.key?(:deal_id)
-          @delivery_method = args[:delivery_method] if args.key?(:delivery_method)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @exchange = args[:exchange] if args.key?(:exchange)
-          @guaranteed_order_id = args[:guaranteed_order_id] if args.key?(:guaranteed_order_id)
-          @inventory_source_id = args[:inventory_source_id] if args.key?(:inventory_source_id)
-          @inventory_source_product_type = args[:inventory_source_product_type] if args.key?(:inventory_source_product_type)
-          @inventory_source_type = args[:inventory_source_type] if args.key?(:inventory_source_type)
-          @name = args[:name] if args.key?(:name)
-          @publisher_name = args[:publisher_name] if args.key?(:publisher_name)
-          @rate_details = args[:rate_details] if args.key?(:rate_details)
-          @read_advertiser_ids = args[:read_advertiser_ids] if args.key?(:read_advertiser_ids)
-          @read_partner_ids = args[:read_partner_ids] if args.key?(:read_partner_ids)
-          @read_write_accessors = args[:read_write_accessors] if args.key?(:read_write_accessors)
-          @status = args[:status] if args.key?(:status)
-          @time_range = args[:time_range] if args.key?(:time_range)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # The partner or advertisers with access to the inventory source.
-      class InventorySourceAccessors
-        include Google::Apis::Core::Hashable
-      
-        # The advertisers with access to the inventory source.
-        # Corresponds to the JSON property `advertisers`
-        # @return [Google::Apis::DisplayvideoV3::InventorySourceAccessorsAdvertiserAccessors]
-        attr_accessor :advertisers
-      
-        # The partner with access to the inventory source.
-        # Corresponds to the JSON property `partner`
-        # @return [Google::Apis::DisplayvideoV3::InventorySourceAccessorsPartnerAccessor]
-        attr_accessor :partner
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @advertisers = args[:advertisers] if args.key?(:advertisers)
-          @partner = args[:partner] if args.key?(:partner)
-        end
-      end
-      
-      # The advertisers with access to the inventory source.
-      class InventorySourceAccessorsAdvertiserAccessors
-        include Google::Apis::Core::Hashable
-      
-        # The IDs of the advertisers.
-        # Corresponds to the JSON property `advertiserIds`
-        # @return [Array<Fixnum>]
-        attr_accessor :advertiser_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @advertiser_ids = args[:advertiser_ids] if args.key?(:advertiser_ids)
-        end
-      end
-      
-      # The partner with access to the inventory source.
-      class InventorySourceAccessorsPartnerAccessor
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the partner.
-        # Corresponds to the JSON property `partnerId`
-        # @return [Fixnum]
-        attr_accessor :partner_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @partner_id = args[:partner_id] if args.key?(:partner_id)
-        end
-      end
-      
       # Targeting details for inventory source. This will be populated in the details
       # field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_INVENTORY_SOURCE`.
@@ -8459,25 +8888,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @inventory_source_id = args[:inventory_source_id] if args.key?(:inventory_source_id)
-        end
-      end
-      
-      # The configuration for display creatives.
-      class InventorySourceDisplayCreativeConfig
-        include Google::Apis::Core::Hashable
-      
-        # Dimensions.
-        # Corresponds to the JSON property `creativeSize`
-        # @return [Google::Apis::DisplayvideoV3::Dimensions]
-        attr_accessor :creative_size
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @creative_size = args[:creative_size] if args.key?(:creative_size)
         end
       end
       
@@ -8554,82 +8964,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @inventory_source_group_id = args[:inventory_source_group_id] if args.key?(:inventory_source_group_id)
-        end
-      end
-      
-      # The status related settings of the inventory source.
-      class InventorySourceStatus
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The configuration status of the inventory source. Only applicable
-        # for guaranteed inventory sources. Acceptable values are `
-        # INVENTORY_SOURCE_CONFIG_STATUS_PENDING` and `
-        # INVENTORY_SOURCE_CONFIG_STATUS_COMPLETED`. An inventory source must be
-        # configured (fill in the required fields, choose creatives, and select a
-        # default campaign) before it can serve.
-        # Corresponds to the JSON property `configStatus`
-        # @return [String]
-        attr_accessor :config_status
-      
-        # The user-provided reason for pausing this inventory source. Must not exceed
-        # 100 characters. Only applicable when entity_status is set to `
-        # ENTITY_STATUS_PAUSED`.
-        # Corresponds to the JSON property `entityPauseReason`
-        # @return [String]
-        attr_accessor :entity_pause_reason
-      
-        # Whether or not the inventory source is servable. Acceptable values are `
-        # ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`.
-        # Default value is `ENTITY_STATUS_ACTIVE`.
-        # Corresponds to the JSON property `entityStatus`
-        # @return [String]
-        attr_accessor :entity_status
-      
-        # Output only. The seller-provided reason for pausing this inventory source.
-        # Only applicable for inventory sources synced directly from the publishers and
-        # when seller_status is set to `ENTITY_STATUS_PAUSED`.
-        # Corresponds to the JSON property `sellerPauseReason`
-        # @return [String]
-        attr_accessor :seller_pause_reason
-      
-        # Output only. The status set by the seller for the inventory source. Only
-        # applicable for inventory sources synced directly from the publishers.
-        # Acceptable values are `ENTITY_STATUS_ACTIVE` and `ENTITY_STATUS_PAUSED`.
-        # Corresponds to the JSON property `sellerStatus`
-        # @return [String]
-        attr_accessor :seller_status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @config_status = args[:config_status] if args.key?(:config_status)
-          @entity_pause_reason = args[:entity_pause_reason] if args.key?(:entity_pause_reason)
-          @entity_status = args[:entity_status] if args.key?(:entity_status)
-          @seller_pause_reason = args[:seller_pause_reason] if args.key?(:seller_pause_reason)
-          @seller_status = args[:seller_status] if args.key?(:seller_status)
-        end
-      end
-      
-      # The configuration for video creatives.
-      class InventorySourceVideoCreativeConfig
-        include Google::Apis::Core::Hashable
-      
-        # The duration requirements for the video creatives that can be assigned to the
-        # inventory source.
-        # Corresponds to the JSON property `duration`
-        # @return [String]
-        attr_accessor :duration
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @duration = args[:duration] if args.key?(:duration)
         end
       end
       
@@ -8809,6 +9143,17 @@ module Google
       class KeywordAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
+        # Optional. The policy names to exempt the keyword from. When attempting to
+        # target a keyword that violates a policy, the error returned will include the
+        # name of the relevant policy. Use that name in this field to exempt the
+        # targeted keyword from the policy. This field is only applicable for positively-
+        # targeted keywords assigned to Demand Gen resources. Retrieval and management
+        # of Demand Gen resources is currently in beta. This field is only available to
+        # allowlisted users.
+        # Corresponds to the JSON property `exemptedPolicyNames`
+        # @return [Array<String>]
+        attr_accessor :exempted_policy_names
+      
         # Required. The keyword, for example `car insurance`. Positive keyword cannot be
         # offensive word. Must be UTF-8 encoded with a maximum size of 255 bytes.
         # Maximum number of characters is 80. Maximum number of words is 10.
@@ -8828,6 +9173,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exempted_policy_names = args[:exempted_policy_names] if args.key?(:exempted_policy_names)
           @keyword = args[:keyword] if args.key?(:keyword)
           @negative = args[:negative] if args.key?(:negative)
         end
@@ -8990,6 +9336,11 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :creative_ids
       
+        # Settings for Demand Gen line items.
+        # Corresponds to the JSON property `demandGenSettings`
+        # @return [Google::Apis::DisplayvideoV3::DemandGenSettings]
+        attr_accessor :demand_gen_settings
+      
         # Required. The display name of the line item. Must be UTF-8 encoded with a
         # maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
@@ -9056,6 +9407,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Whether to enable DV360's bid optimization for fixed bid line items.
+        # By default, DV360 optimizes your fixed bid by automatically lowering bids for
+        # impressions that are less likely to perform well. This optimization is enabled
+        # by default (value is true). When this field is set to `false`, this
+        # optimization is disabled, and the bid will not be lowered for any reason. This
+        # setting only applies to line items with a `bidding_strategy` of type `
+        # FIXED_BID`.
+        # Corresponds to the JSON property `optimizeFixedBidding`
+        # @return [Boolean]
+        attr_accessor :optimize_fixed_bidding
+        alias_method :optimize_fixed_bidding?, :optimize_fixed_bidding
+      
         # Settings that control the rate at which a budget is spent.
         # Corresponds to the JSON property `pacing`
         # @return [Google::Apis::DisplayvideoV3::Pacing]
@@ -9115,6 +9478,7 @@ module Google
           @contains_eu_political_ads = args[:contains_eu_political_ads] if args.key?(:contains_eu_political_ads)
           @conversion_counting = args[:conversion_counting] if args.key?(:conversion_counting)
           @creative_ids = args[:creative_ids] if args.key?(:creative_ids)
+          @demand_gen_settings = args[:demand_gen_settings] if args.key?(:demand_gen_settings)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_status = args[:entity_status] if args.key?(:entity_status)
           @exclude_new_exchanges = args[:exclude_new_exchanges] if args.key?(:exclude_new_exchanges)
@@ -9126,6 +9490,7 @@ module Google
           @line_item_type = args[:line_item_type] if args.key?(:line_item_type)
           @mobile_app = args[:mobile_app] if args.key?(:mobile_app)
           @name = args[:name] if args.key?(:name)
+          @optimize_fixed_bidding = args[:optimize_fixed_bidding] if args.key?(:optimize_fixed_bidding)
           @pacing = args[:pacing] if args.key?(:pacing)
           @partner_costs = args[:partner_costs] if args.key?(:partner_costs)
           @partner_revenue_model = args[:partner_revenue_model] if args.key?(:partner_revenue_model)
@@ -9170,7 +9535,8 @@ module Google
       
         # Required. The type of the budget allocation. `
         # LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when automatic
-        # budget allocation is enabled for the parent insertion order.
+        # budget allocation is enabled for the parent insertion order. This field must
+        # be set to `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED` for Demand Gen line items.
         # Corresponds to the JSON property `budgetAllocationType`
         # @return [String]
         attr_accessor :budget_allocation_type
@@ -9809,33 +10175,6 @@ module Google
       end
       
       # 
-      class ListInventorySourcesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of inventory sources. This list will be absent if empty.
-        # Corresponds to the JSON property `inventorySources`
-        # @return [Array<Google::Apis::DisplayvideoV3::InventorySource>]
-        attr_accessor :inventory_sources
-      
-        # A token to retrieve the next page of results. Pass this value in the
-        # page_token field in the subsequent call to `ListInventorySources` method to
-        # retrieve the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @inventory_sources = args[:inventory_sources] if args.key?(:inventory_sources)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # 
       class ListInvoicesResponse
         include Google::Apis::Core::Hashable
       
@@ -10453,42 +10792,6 @@ module Google
         end
       end
       
-      # Represents an amount of money with its currency type.
-      class Money
-        include Google::Apis::Core::Hashable
-      
-        # The three-letter currency code defined in ISO 4217.
-        # Corresponds to the JSON property `currencyCode`
-        # @return [String]
-        attr_accessor :currency_code
-      
-        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
-        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
-        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
-        # negative. If `units` is negative, `nanos` must be negative or zero. For
-        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
-        # Corresponds to the JSON property `nanos`
-        # @return [Fixnum]
-        attr_accessor :nanos
-      
-        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
-        # 1 unit is one US dollar.
-        # Corresponds to the JSON property `units`
-        # @return [Fixnum]
-        attr_accessor :units
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @currency_code = args[:currency_code] if args.key?(:currency_code)
-          @nanos = args[:nanos] if args.key?(:nanos)
-          @units = args[:units] if args.key?(:units)
-        end
-      end
-      
       # Details for native content position assigned targeting option. This will be
       # populated in the native_content_position_details field when targeting_type is `
       # TARGETING_TYPE_NATIVE_CONTENT_POSITION`. Explicitly targeting all options is
@@ -10641,7 +10944,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::CommonInStreamAttribute]
         attr_accessor :common_in_stream_attribute
       
-        # The custom parameters to pass custom values to tracking URL template.
+        # The custom parameters and accompanying values to add to the tracking URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -11301,7 +11604,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :markup_amount
       
-        # Required. The markup type of the partner revenue model.
+        # Required. The markup type of the partner revenue model. This field must be set
+        # to `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP` for Demand Gen
+        # line items.
         # Corresponds to the JSON property `markupType`
         # @return [String]
         attr_accessor :markup_type
@@ -11736,45 +12041,6 @@ module Google
         end
       end
       
-      # The rate related settings of the inventory source.
-      class RateDetails
-        include Google::Apis::Core::Hashable
-      
-        # The rate type. Acceptable values are `INVENTORY_SOURCE_RATE_TYPE_CPM_FIXED`, `
-        # INVENTORY_SOURCE_RATE_TYPE_CPM_FLOOR`, and `INVENTORY_SOURCE_RATE_TYPE_CPD`.
-        # Corresponds to the JSON property `inventorySourceRateType`
-        # @return [String]
-        attr_accessor :inventory_source_rate_type
-      
-        # Represents an amount of money with its currency type.
-        # Corresponds to the JSON property `minimumSpend`
-        # @return [Google::Apis::DisplayvideoV3::Money]
-        attr_accessor :minimum_spend
-      
-        # Represents an amount of money with its currency type.
-        # Corresponds to the JSON property `rate`
-        # @return [Google::Apis::DisplayvideoV3::Money]
-        attr_accessor :rate
-      
-        # Required for guaranteed inventory sources. The number of impressions
-        # guaranteed by the seller.
-        # Corresponds to the JSON property `unitsPurchased`
-        # @return [Fixnum]
-        attr_accessor :units_purchased
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @inventory_source_rate_type = args[:inventory_source_rate_type] if args.key?(:inventory_source_rate_type)
-          @minimum_spend = args[:minimum_spend] if args.key?(:minimum_spend)
-          @rate = args[:rate] if args.key?(:rate)
-          @units_purchased = args[:units_purchased] if args.key?(:units_purchased)
-        end
-      end
-      
       # Targeting details for regional location list. This will be populated in the
       # details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
@@ -12167,6 +12433,61 @@ module Google
         end
       end
       
+      # The inventory control of the ad group.
+      class SelectedInventories
+        include Google::Apis::Core::Hashable
+      
+        # Whether the ad group is opted-in to Discover inventory.
+        # Corresponds to the JSON property `allowDiscover`
+        # @return [Boolean]
+        attr_accessor :allow_discover
+        alias_method :allow_discover?, :allow_discover
+      
+        # Whether the ad group is opted-in to Gmail inventory.
+        # Corresponds to the JSON property `allowGmail`
+        # @return [Boolean]
+        attr_accessor :allow_gmail
+        alias_method :allow_gmail?, :allow_gmail
+      
+        # Whether the ad group is opted-in to Google Display Network inventory.
+        # Corresponds to the JSON property `allowGoogleDisplayNetwork`
+        # @return [Boolean]
+        attr_accessor :allow_google_display_network
+        alias_method :allow_google_display_network?, :allow_google_display_network
+      
+        # Whether the ad group is opted-in to YouTube in-feed inventory.
+        # Corresponds to the JSON property `allowYoutubeFeed`
+        # @return [Boolean]
+        attr_accessor :allow_youtube_feed
+        alias_method :allow_youtube_feed?, :allow_youtube_feed
+      
+        # Whether the ad group is opted-in to YouTube shorts inventory.
+        # Corresponds to the JSON property `allowYoutubeShorts`
+        # @return [Boolean]
+        attr_accessor :allow_youtube_shorts
+        alias_method :allow_youtube_shorts?, :allow_youtube_shorts
+      
+        # Whether the ad group is opted-in to YouTube in-stream inventory.
+        # Corresponds to the JSON property `allowYoutubeStream`
+        # @return [Boolean]
+        attr_accessor :allow_youtube_stream
+        alias_method :allow_youtube_stream?, :allow_youtube_stream
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_discover = args[:allow_discover] if args.key?(:allow_discover)
+          @allow_gmail = args[:allow_gmail] if args.key?(:allow_gmail)
+          @allow_google_display_network = args[:allow_google_display_network] if args.key?(:allow_google_display_network)
+          @allow_youtube_feed = args[:allow_youtube_feed] if args.key?(:allow_youtube_feed)
+          @allow_youtube_shorts = args[:allow_youtube_shorts] if args.key?(:allow_youtube_shorts)
+          @allow_youtube_stream = args[:allow_youtube_stream] if args.key?(:allow_youtube_stream)
+        end
+      end
+      
       # Targeting details for sensitive category. This will be populated in the
       # details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
@@ -12402,11 +12723,26 @@ module Google
         # maximize_auto_spend_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` * `
         # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` * `
         # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` performance_goal_auto_bid: *
-        # `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`
+        # `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` This also applies if the
+        # line item inherits one of the above bid strategies from the parent insertion
+        # order. Bid strategies set at the insertion order-level will be inherited by
+        # their line items if the `InsertionOrder` budget field automationType is set to
+        # `INSERTION_ORDER_AUTOMATION_TYPE_BUDGET` or `
+        # INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET`.
         # Corresponds to the JSON property `enableOptimizedTargeting`
         # @return [Boolean]
         attr_accessor :enable_optimized_targeting
         alias_method :enable_optimized_targeting?, :enable_optimized_targeting
+      
+        # Optional. Whether to exclude demographic expansion for Optimized Targeting.
+        # This field can only be set for Demand Gen ad groups. Retrieval and management
+        # of Demand Gen resources is currently in beta. This field will begin rolling
+        # out to all partners on *June 10, 2026* and be available to all partners on *
+        # June 24, 2026*.
+        # Corresponds to the JSON property `excludeDemographicExpansion`
+        # @return [Boolean]
+        attr_accessor :exclude_demographic_expansion
+        alias_method :exclude_demographic_expansion?, :exclude_demographic_expansion
       
         def initialize(**args)
            update!(**args)
@@ -12417,6 +12753,7 @@ module Google
           @audience_expansion_level = args[:audience_expansion_level] if args.key?(:audience_expansion_level)
           @audience_expansion_seed_list_excluded = args[:audience_expansion_seed_list_excluded] if args.key?(:audience_expansion_seed_list_excluded)
           @enable_optimized_targeting = args[:enable_optimized_targeting] if args.key?(:enable_optimized_targeting)
+          @exclude_demographic_expansion = args[:exclude_demographic_expansion] if args.key?(:exclude_demographic_expansion)
         end
       end
       
@@ -12729,17 +13066,15 @@ module Google
       
         # Optional. The third-party vendors measuring brand lift. The following third-
         # party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `
-        # THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` * `
-        # THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_INTAGE` * `
+        # THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `
         # THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
         # Corresponds to the JSON property `brandLiftVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV3::ThirdPartyVendorConfig>]
         attr_accessor :brand_lift_vendor_configs
       
         # Optional. The third-party vendors measuring brand safety. The following third-
-        # party vendors are applicable: * `THIRD_PARTY_VENDOR_ZERF` * `
-        # THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
-        # `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_ZEFR`
+        # party vendors are applicable: * `THIRD_PARTY_VENDOR_ZEFR` * `
+        # THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE`
         # Corresponds to the JSON property `brandSafetyVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV3::ThirdPartyVendorConfig>]
         attr_accessor :brand_safety_vendor_configs
@@ -12747,10 +13082,9 @@ module Google
         # Optional. The third-party vendors measuring reach. The following third-party
         # vendors are applicable: * `THIRD_PARTY_VENDOR_NIELSEN` * `
         # THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` * `
-        # THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `
-        # THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` * `THIRD_PARTY_VENDOR_VIDEO_RESEARCH`
-        # * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` * `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `
-        # THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV`
+        # THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` * `
+        # THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `
+        # THIRD_PARTY_VENDOR_ISPOT_TV` * `THIRD_PARTY_VENDOR_GEMIUS`
         # Corresponds to the JSON property `reachVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV3::ThirdPartyVendorConfig>]
         attr_accessor :reach_vendor_configs
@@ -12759,7 +13093,7 @@ module Google
         # party vendors are applicable: * `THIRD_PARTY_VENDOR_MOAT` * `
         # THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
         # `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `
-        # THIRD_PARTY_VENDOR_MEETRICS` * `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL`
+        # THIRD_PARTY_VENDOR_MEETRICS`
         # Corresponds to the JSON property `viewabilityVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV3::ThirdPartyVendorConfig>]
         attr_accessor :viewability_vendor_configs
@@ -12882,31 +13216,6 @@ module Google
           @adloox = args[:adloox] if args.key?(:adloox)
           @double_verify = args[:double_verify] if args.key?(:double_verify)
           @integral_ad_science = args[:integral_ad_science] if args.key?(:integral_ad_science)
-        end
-      end
-      
-      # A time range.
-      class TimeRange
-        include Google::Apis::Core::Hashable
-      
-        # Required. The upper bound of a time range, inclusive.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Required. The lower bound of a time range, inclusive.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -13212,6 +13521,12 @@ module Google
         attr_accessor :allow_in_stream
         alias_method :allow_in_stream?, :allow_in_stream
       
+        # Optional. Indicates whether ads can serve as non-skippable in-stream format.
+        # Corresponds to the JSON property `allowNonSkippableInStream`
+        # @return [Boolean]
+        attr_accessor :allow_non_skippable_in_stream
+        alias_method :allow_non_skippable_in_stream?, :allow_non_skippable_in_stream
+      
         # Optional. Whether ads can serve as shorts format.
         # Corresponds to the JSON property `allowShorts`
         # @return [Boolean]
@@ -13226,6 +13541,7 @@ module Google
         def update!(**args)
           @allow_in_feed = args[:allow_in_feed] if args.key?(:allow_in_feed)
           @allow_in_stream = args[:allow_in_stream] if args.key?(:allow_in_stream)
+          @allow_non_skippable_in_stream = args[:allow_non_skippable_in_stream] if args.key?(:allow_non_skippable_in_stream)
           @allow_shorts = args[:allow_shorts] if args.key?(:allow_shorts)
         end
       end
@@ -13350,7 +13666,7 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV3::ImageAsset>]
         attr_accessor :companion_banners
       
-        # The custom parameters to pass custom values to tracking URL template.
+        # The custom parameters and accompanying values to add to the tracking URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -13385,7 +13701,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :headlines
       
-        # The list of lone headlines shown on the call-to-action banner.
+        # The list of long headlines shown on the call-to-action banner.
         # Corresponds to the JSON property `longHeadlines`
         # @return [Array<String>]
         attr_accessor :long_headlines
@@ -13530,10 +13846,9 @@ module Google
         # The value used by the bidding strategy. When the bidding strategy is assigned
         # at the line item level, this field is only applicable for the following
         # strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `
-        # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` * `
-        # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_SHARE_OF_VOICE` When the
-        # bidding strategy is assigned at the ad group level, this field is only
-        # applicable for the following strategy types: * `
+        # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding
+        # strategy is assigned at the ad group level, this field is only applicable for
+        # the following strategy types: * `
         # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` * `
         # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` * `
         # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `
@@ -13625,8 +13940,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :lead_form_id
       
-        # Optional. The ID of the merchant which is linked to the line item for product
-        # feed.
+        # Optional. The ID of the Merchant Center account used to provide a product feed.
+        # This Merchant Center account must already be linked to the advertiser.
         # Corresponds to the JSON property `linkedMerchantId`
         # @return [Fixnum]
         attr_accessor :linked_merchant_id
@@ -13713,6 +14028,34 @@ module Google
         end
       end
       
+      # Details for YouTube channel pack assigned targeting option. This will be
+      # populated in the youtube_channel_pack_details field when targeting_type is `
+      # TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+      class YoutubeChannelPackAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the YouTube channel pack.
+        # Corresponds to the JSON property `channelPackId`
+        # @return [Fixnum]
+        attr_accessor :channel_pack_id
+      
+        # Optional. Indicates if this option is being negatively targeted.
+        # Corresponds to the JSON property `negative`
+        # @return [Boolean]
+        attr_accessor :negative
+        alias_method :negative?, :negative
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_pack_id = args[:channel_pack_id] if args.key?(:channel_pack_id)
+          @negative = args[:negative] if args.key?(:negative)
+        end
+      end
+      
       # Details for YouTube video assigned targeting option. This will be populated in
       # the youtube_video_details field when targeting_type is `
       # TARGETING_TYPE_YOUTUBE_VIDEO`.
@@ -13745,7 +14088,7 @@ module Google
       class YoutubeVideoDetails
         include Google::Apis::Core::Hashable
       
-        # The YouTube video ID which can be searched on YouTube webpage.
+        # Output only. The YouTube video ID which can be searched on YouTube webpage.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -13755,6 +14098,12 @@ module Google
         # @return [String]
         attr_accessor :unavailable_reason
       
+        # Required. The YouTube video asset id. This is the adAssetId of an AdAsset
+        # resource.
+        # Corresponds to the JSON property `videoAssetId`
+        # @return [Fixnum]
+        attr_accessor :video_asset_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13763,6 +14112,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @unavailable_reason = args[:unavailable_reason] if args.key?(:unavailable_reason)
+          @video_asset_id = args[:video_asset_id] if args.key?(:video_asset_id)
         end
       end
     end
