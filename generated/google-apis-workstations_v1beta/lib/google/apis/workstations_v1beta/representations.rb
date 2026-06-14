@@ -328,12 +328,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class WorkstationGceRegionalPersistentDisk
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class WorkstationPersistentDirectory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -911,19 +905,9 @@ module Google
         end
       end
       
-      class WorkstationGceRegionalPersistentDisk
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :size_gb, as: 'sizeGb'
-        end
-      end
-      
       class WorkstationPersistentDirectory
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :gce_pd, as: 'gcePd', class: Google::Apis::WorkstationsV1beta::WorkstationGceRegionalPersistentDisk, decorator: Google::Apis::WorkstationsV1beta::WorkstationGceRegionalPersistentDisk::Representation
-      
           property :mount_path, as: 'mountPath'
           property :size_gb, as: 'sizeGb'
         end
