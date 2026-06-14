@@ -27,7 +27,8 @@ module Google
       class BootDisk
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. Size of the disk in gigabytes. Must be at least 40GB.
+        # Required. Immutable. The size of the disk in gigabytes (GB), which must be at
+        # least 40 GB.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -119,7 +120,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. User-provided description of the cluster. Maximum of 2048 characters.
+        # Optional. A description for your cluster. You can use up to 2,048 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1132,7 +1133,7 @@ module Google
         attr_accessor :file_shares
       
         # Required. Immutable. Name of the Filestore instance to create, in the format `
-        # projects/`project`/locations/`location`/instances/`instance``
+        # projects/`project`/locations/`location`/instances/`instance``.
         # Corresponds to the JSON property `filestore`
         # @return [String]
         attr_accessor :filestore
@@ -1790,7 +1791,7 @@ module Google
       class SlurmNodeSet
         include Google::Apis::Core::Hashable
       
-        # Required. ID of the compute resource on which this nodeset will run. Must
+        # Required. The ID of the compute resource on which this nodeset runs. Must
         # match a key in the cluster's compute_resources.
         # Corresponds to the JSON property `computeId`
         # @return [String]
@@ -2002,8 +2003,8 @@ module Google
         end
       end
       
-      # A resource representing a form of persistent storage that can be mounted onto
-      # compute resources in the cluster.
+      # Represents a form of persistent storage that you can mount onto compute
+      # resources in the cluster.
       class StorageResource
         include Google::Apis::Core::Hashable
       
