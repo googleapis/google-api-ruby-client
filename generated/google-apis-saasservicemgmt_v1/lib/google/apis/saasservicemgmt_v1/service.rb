@@ -1084,6 +1084,162 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new saas release.
+        # @param [String] parent
+        #   Required. The parent of the saas release.
+        # @param [Google::Apis::SaasservicemgmtV1::SaasRelease] saas_release_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests.
+        # @param [String] saas_release_id
+        #   Required. The ID value for the new saas release.
+        # @param [Boolean] validate_only
+        #   If "validate_only" is set to true, the service will try to validate that this
+        #   request would succeed, but will not actually make changes.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::SaasRelease] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::SaasRelease]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_saas_release(parent, saas_release_object = nil, request_id: nil, saas_release_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/saasReleases', options)
+          command.request_representation = Google::Apis::SaasservicemgmtV1::SaasRelease::Representation
+          command.request_object = saas_release_object
+          command.response_representation = Google::Apis::SaasservicemgmtV1::SaasRelease::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::SaasRelease
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['saasReleaseId'] = saas_release_id unless saas_release_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a single saas release.
+        # @param [String] name
+        #   Required. The resource name of the resource within a service.
+        # @param [String] etag
+        #   The etag known to the client for the expected state of the saas release.
+        # @param [String] request_id
+        #   An optional request ID to identify requests.
+        # @param [Boolean] validate_only
+        #   If "validate_only" is set to true, the service will try to validate that this
+        #   request would succeed, but will not actually make changes.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_saas_release(name, etag: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SaasservicemgmtV1::Empty::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a single saas release.
+        # @param [String] name
+        #   Required. The resource name of the resource within a service.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::SaasRelease] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::SaasRelease]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_saas_release(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SaasservicemgmtV1::SaasRelease::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::SaasRelease
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a collection of saas releases.
+        # @param [String] parent
+        #   Required. The parent of the saas releases.
+        # @param [String] filter
+        #   Filter the list as specified in https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Order results as specified in https://google.aip.dev/132.
+        # @param [Fixnum] page_size
+        #   The maximum number of saas releases to send per page.
+        # @param [String] page_token
+        #   The page token: If the next_page_token from a previous response is provided,
+        #   this request will send the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::ListSaasReleasesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::ListSaasReleasesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_saas_releases(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/saasReleases', options)
+          command.response_representation = Google::Apis::SaasservicemgmtV1::ListSaasReleasesResponse::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::ListSaasReleasesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a new tenant.
         # @param [String] parent
         #   Required. The parent of the tenant.
@@ -1316,6 +1472,342 @@ module Google
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a new unit group operation.
+        # @param [String] parent
+        #   Required. The parent of the unit group operation.
+        # @param [Google::Apis::SaasservicemgmtV1::UnitGroupOperation] unit_group_operation_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] unit_group_operation_id
+        #   Required. The ID value for the new unit group operation.
+        # @param [Boolean] validate_only
+        #   Optional. If "validate_only" is set to true, the service will try to validate
+        #   that this request would succeed, but will not actually make changes.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::UnitGroupOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::UnitGroupOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_unit_group_operation(parent, unit_group_operation_object = nil, request_id: nil, unit_group_operation_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/unitGroupOperations', options)
+          command.request_representation = Google::Apis::SaasservicemgmtV1::UnitGroupOperation::Representation
+          command.request_object = unit_group_operation_object
+          command.response_representation = Google::Apis::SaasservicemgmtV1::UnitGroupOperation::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::UnitGroupOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['unitGroupOperationId'] = unit_group_operation_id unless unit_group_operation_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a single unit group operation.
+        # @param [String] name
+        #   Required. The resource name of the resource within a service.
+        # @param [String] etag
+        #   Optional. The etag known to the client for the expected state of the unit
+        #   group operation. This is used with state-changing methods to prevent
+        #   accidental overwrites when multiple user agents might be acting in parallel on
+        #   the same resource. An etag wildcard provide optimistic concurrency based on
+        #   the expected existence of the unit group operation. The Any wildcard (`*`)
+        #   requires that the resource must already exists, and the Not Any wildcard (`!*`)
+        #   requires that it must not.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If "validate_only" is set to true, the service will try to validate
+        #   that this request would succeed, but will not actually make changes.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_unit_group_operation(name, etag: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SaasservicemgmtV1::Empty::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a single unit group operation.
+        # @param [String] name
+        #   Required. The resource name of the resource within a service.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::UnitGroupOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::UnitGroupOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_unit_group_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SaasservicemgmtV1::UnitGroupOperation::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::UnitGroupOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a collection of unit group operations.
+        # @param [String] parent
+        #   Required. The parent of the unit group operation.
+        # @param [String] filter
+        #   Filter the list as specified in https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Order results as specified in https://google.aip.dev/132.
+        # @param [Fixnum] page_size
+        #   The maximum number of unit group operations to send per page.
+        # @param [String] page_token
+        #   The page token: If the next_page_token from a previous response is provided,
+        #   this request will send the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::ListUnitGroupOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::ListUnitGroupOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_unit_group_operations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/unitGroupOperations', options)
+          command.response_representation = Google::Apis::SaasservicemgmtV1::ListUnitGroupOperationsResponse::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::ListUnitGroupOperationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a new unit group.
+        # @param [String] parent
+        #   Required. The parent of the unit group.
+        # @param [Google::Apis::SaasservicemgmtV1::UnitGroup] unit_group_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests.
+        # @param [String] unit_group_id
+        #   Required. The ID value for the new unit group.
+        # @param [Boolean] validate_only
+        #   If "validate_only" is set to true, the service will try to validate that this
+        #   request would succeed, but will not actually make changes.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::UnitGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::UnitGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_unit_group(parent, unit_group_object = nil, request_id: nil, unit_group_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/unitGroups', options)
+          command.request_representation = Google::Apis::SaasservicemgmtV1::UnitGroup::Representation
+          command.request_object = unit_group_object
+          command.response_representation = Google::Apis::SaasservicemgmtV1::UnitGroup::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::UnitGroup
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['unitGroupId'] = unit_group_id unless unit_group_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a single unit group.
+        # @param [String] name
+        #   Required. The resource name of the resource within a service.
+        # @param [String] etag
+        #   The etag known to the client for the expected state of the unit group.
+        # @param [String] request_id
+        #   An optional request ID to identify requests.
+        # @param [Boolean] validate_only
+        #   If "validate_only" is set to true, the service will try to validate that this
+        #   request would succeed, but will not actually make changes.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_unit_group(name, etag: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SaasservicemgmtV1::Empty::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a single unit group.
+        # @param [String] name
+        #   Required. The resource name of the resource within a service.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::UnitGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::UnitGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_unit_group(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SaasservicemgmtV1::UnitGroup::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::UnitGroup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a collection of unit groups.
+        # @param [String] parent
+        #   Required. The parent of the unit group.
+        # @param [String] filter
+        #   Filter the list as specified in https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Order results as specified in https://google.aip.dev/132.
+        # @param [Fixnum] page_size
+        #   The maximum number of unit groups to send per page.
+        # @param [String] page_token
+        #   The page token: If the next_page_token from a previous response is provided,
+        #   this request will send the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SaasservicemgmtV1::ListUnitGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SaasservicemgmtV1::ListUnitGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_unit_groups(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/unitGroups', options)
+          command.response_representation = Google::Apis::SaasservicemgmtV1::ListUnitGroupsResponse::Representation
+          command.response_class = Google::Apis::SaasservicemgmtV1::ListUnitGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
