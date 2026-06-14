@@ -899,7 +899,8 @@ module Google
         # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits]
         attr_accessor :limits
       
-        # Required. The locations to search in.
+        # Required. The locations to search in. This list should contain the location
+        # from the `parent` field.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
