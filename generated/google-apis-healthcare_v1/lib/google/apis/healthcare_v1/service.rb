@@ -81,12 +81,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
-        #   field which is primarily intended for internal usage.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -3741,8 +3750,8 @@ module Google
         #   Optional. String of comma-delimited FHIR resource types. If provided, only
         #   resources of the specified resource type(s) are exported.
         # @param [String] organize_output_by
-        #   Optional. Required. The FHIR resource type used to organize exported resources.
-        #   Only supports "Patient". When organized by Patient resource, output files are
+        #   Required. The FHIR resource type used to organize exported resources. Only
+        #   supports "Patient". When organized by Patient resource, output files are
         #   grouped as follows: * Patient file(s) containing the Patient resources. Each
         #   Patient is sequentially followed by all resources the Patient references, and
         #   all resources that reference the Patient (equivalent to a GetPatientEverything
@@ -3781,6 +3790,44 @@ module Google
           command.query['_type'] = _type unless _type.nil?
           command.query['organizeOutputBy'] = organize_output_by unless organize_output_by.nil?
           command.query['outputFormat'] = output_format unless output_format.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Bulk deletes the FHIR resources from the given FHIR store. This method returns
+        # an Operation that can be used to track the progress of the deletion by calling
+        # GetOperation. The success and secondary_success counters correspond to the
+        # deleted current version and historical versions, respectively.
+        # @param [String] name
+        #   Required. The name of the FHIR store to bulk delete resources from, in the
+        #   format of `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   fhirStores/`fhir_store_id``.
+        # @param [Google::Apis::HealthcareV1::BulkDeleteResourcesRequest] bulk_delete_resources_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_fhir_store_delete_resources(name, bulk_delete_resources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:bulkDelete', options)
+          command.request_representation = Google::Apis::HealthcareV1::BulkDeleteResourcesRequest::Representation
+          command.request_object = bulk_delete_resources_request_object
+          command.response_representation = Google::Apis::HealthcareV1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4858,7 +4905,7 @@ module Google
         
         # Bulk exports all resources from the FHIR store to the specified destination.
         # Implements the FHIR implementation guide [system level $export](https://build.
-        # fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export. The
+        # fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export). The
         # following headers must be set in the request: * `Accept`: specifies the format
         # of the `OperationOutcome` response. Only `application/fhir+json` is supported.
         # * `Prefer`: specifies whether the response is immediate or asynchronous. Must
@@ -5525,7 +5572,13 @@ module Google
         # //cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Required. Name of the FHIR store to retrieve resources from.
-        # @param [Google::Apis::HealthcareV1::SearchResourcesRequest] search_resources_request_object
+        # @param [Google::Apis::HealthcareV1::HttpBody] http_body_object
+        # @param [String] resource_type
+        #   Optional. The FHIR resource type to search, such as Patient or Observation.
+        #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
+        #   DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
+        #   [R4](https://hl7.org/fhir/R4/resourcelist.html)), [R5](https://hl7.org/fhir/R5/
+        #   resourcelist.html)).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5543,13 +5596,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_fhir_resources(parent, search_resources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_fhir_resources(parent, http_body_object = nil, resource_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/fhir/_search', options)
-          command.request_representation = Google::Apis::HealthcareV1::SearchResourcesRequest::Representation
-          command.request_object = search_resources_request_object
+          command.request_representation = Google::Apis::HealthcareV1::HttpBody::Representation
+          command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1::HttpBody
           command.params['parent'] = parent unless parent.nil?
+          command.query['resourceType'] = resource_type unless resource_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5623,7 +5677,7 @@ module Google
         #   DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
         #   [R4](https://hl7.org/fhir/R4/resourcelist.html)), [R5](https://hl7.org/fhir/R5/
         #   resourcelist.html)).
-        # @param [Google::Apis::HealthcareV1::SearchResourcesRequest] search_resources_request_object
+        # @param [Google::Apis::HealthcareV1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5641,10 +5695,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_dataset_fhir_store_fhir_type(parent, resource_type, search_resources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_dataset_fhir_store_fhir_type(parent, resource_type, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/fhir/{resourceType}/_search', options)
-          command.request_representation = Google::Apis::HealthcareV1::SearchResourcesRequest::Representation
-          command.request_object = search_resources_request_object
+          command.request_representation = Google::Apis::HealthcareV1::HttpBody::Representation
+          command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -6678,11 +6732,12 @@ module Google
         #   The standard list page token.
         # @param [Boolean] return_partial_success
         #   When set to `true`, operations that are reachable are returned as normal, and
-        #   those that are unreachable are returned in the [ListOperationsResponse.
-        #   unreachable] field. This can only be `true` when reading across collections e.
-        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
-        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
-        #   explicitly documented otherwise in service or product specific documentation.
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
