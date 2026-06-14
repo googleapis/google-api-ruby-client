@@ -139,10 +139,11 @@ module Google
         
         # Creates a new CustomRange in a given project and location.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The parent resource name where the CustomRange will be created.
         # @param [Google::Apis::CloudnumberregistryV1alpha::CustomRange] custom_range_object
         # @param [String] custom_range_id
-        #   Required. Id of the requesting object.
+        #   Required. The ID to use for the CustomRange, which will become the final
+        #   segment of the resource name.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -187,7 +188,7 @@ module Google
         
         # Deletes a single CustomRange.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the CustomRange to delete.
         # @param [Boolean] force
         #   Optional. If set to true, all associated resources will be deleted.
         # @param [String] request_id
@@ -232,7 +233,7 @@ module Google
         
         # Finds free IP ranges in a single CustomRange.
         # @param [String] name
-        #   Required. Name of the CustomRange.
+        #   Required. The resource name of the CustomRange to search within.
         # @param [Fixnum] cidr_prefix_length
         #   Required. The prefix length of the free IP ranges to find.
         # @param [Fixnum] range_count
@@ -280,7 +281,7 @@ module Google
         
         # Gets details of a single CustomRange.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the CustomRange to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -310,9 +311,9 @@ module Google
         
         # Lists CustomRanges in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListCustomRangesRequest
+        #   Required. The parent resource name, for example `projects/*/locations/*`.
         # @param [String] filter
-        #   Optional. Filtering results.
+        #   Optional. Filter expression to filter the results.
         # @param [String] order_by
         #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
@@ -353,7 +354,8 @@ module Google
         
         # Updates the parameters of a single CustomRange.
         # @param [String] name
-        #   Required. Identifier. name of resource
+        #   Required. Identifier. The resource name of the CustomRange, in the format `
+        #   projects/`project`/locations/`location`/customRanges/`custom_range``.
         # @param [Google::Apis::CloudnumberregistryV1alpha::CustomRange] custom_range_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -405,7 +407,7 @@ module Google
         
         # Gets the details of a single CustomRange and its utilization.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the CustomRange.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -435,7 +437,7 @@ module Google
         
         # Finds free IP ranges in a single DiscoveredRange.
         # @param [String] name
-        #   Required. Name of the DiscoveredRange.
+        #   Required. The resource name of the DiscoveredRange to search within.
         # @param [Fixnum] cidr_prefix_length
         #   Required. The prefix length of the free IP ranges to find.
         # @param [Fixnum] range_count
@@ -483,7 +485,7 @@ module Google
         
         # Gets details of a single DiscoveredRange.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the DiscoveredRange to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -513,9 +515,9 @@ module Google
         
         # Lists DiscoveredRanges in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListDiscoveredRangesRequest
+        #   Required. The parent resource name, for example `projects/*/locations/*`.
         # @param [String] filter
-        #   Optional. Filtering results.
+        #   Optional. Filter expression to filter the results.
         # @param [String] order_by
         #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
@@ -556,7 +558,7 @@ module Google
         
         # Gets the details of a single DiscoveredRange and its utilization.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the DiscoveredRange.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -584,11 +586,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Checks the availability of IPAM admin scopes in a given project and location.
+        # Checks the availability of IpamAdminScopes in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for the IpamAdminScopes.
+        #   Required. The parent resource name, for example `projects/*/locations/*`.
         # @param [Array<String>, String] scopes
-        #   Required. The scopes of the IpamAdminScopes to look for.
+        #   Required. The administrative scopes to check for availability.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -619,7 +621,7 @@ module Google
         
         # Cleans up a single IpamAdminScope.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the IpamAdminScope to clean up.
         # @param [Google::Apis::CloudnumberregistryV1alpha::CleanupIpamAdminScopeRequest] cleanup_ipam_admin_scope_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -652,10 +654,11 @@ module Google
         
         # Creates a new IpamAdminScope in a given project and location.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The parent resource name where the IpamAdminScope will be created.
         # @param [Google::Apis::CloudnumberregistryV1alpha::IpamAdminScope] ipam_admin_scope_object
         # @param [String] ipam_admin_scope_id
-        #   Required. Id of the requesting object.
+        #   Required. The ID to use for the IpamAdminScope, which will become the final
+        #   segment of the resource name.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -700,7 +703,7 @@ module Google
         
         # Deletes a single IpamAdminScope.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the IpamAdminScope to delete.
         # @param [Boolean] force
         #   Optional. If set to true, all associated resources will be deleted.
         # @param [String] request_id
@@ -745,7 +748,7 @@ module Google
         
         # Disables a single IpamAdminScope.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the IpamAdminScope to disable.
         # @param [Google::Apis::CloudnumberregistryV1alpha::DisableIpamAdminScopeRequest] disable_ipam_admin_scope_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -778,7 +781,7 @@ module Google
         
         # Gets details of a single IpamAdminScope.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the IpamAdminScope to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -806,13 +809,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all IPAM admin scopes in a given project and location.
+        # Lists IpamAdminScopes in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListIpamAdminScopesRequest
+        #   Required. The parent resource name, for example `projects/*/locations/*`.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filter expression to filter the results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -851,7 +854,7 @@ module Google
         
         # Updates the parameters of a single IpamAdminScope.
         # @param [String] name
-        #   Required. Identifier. name of resource
+        #   Required. Identifier. The resource name of the IpamAdminScope.
         # @param [Google::Apis::CloudnumberregistryV1alpha::IpamAdminScope] ipam_admin_scope_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -1056,10 +1059,11 @@ module Google
         
         # Creates a new Realm in a given project and location.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The parent resource name where the Realm will be created.
         # @param [Google::Apis::CloudnumberregistryV1alpha::Realm] realm_object
         # @param [String] realm_id
-        #   Required. Id of the requesting object.
+        #   Required. The ID to use for the Realm, which will become the final segment of
+        #   the resource name.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -1098,7 +1102,7 @@ module Google
         
         # Deletes a single Realm.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the Realm to delete.
         # @param [Boolean] force
         #   Optional. If set to true, all associated resources will be deleted.
         # @param [String] request_id
@@ -1137,9 +1141,9 @@ module Google
         
         # Gets details of a single Realm.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the Realm to retrieve.
         # @param [String] view
-        #   Optional. The view of the Realm.
+        #   Optional. The view of the Realm to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1170,18 +1174,18 @@ module Google
         
         # Lists Realms in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListRealmsRequest
+        #   Required. The parent resource name, for example `projects/*/locations/*`.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filter expression to filter the results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
         # @param [String] view
-        #   Optional. The view of the Realm.
+        #   Optional. The view of the Realm to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1216,7 +1220,7 @@ module Google
         
         # Updates the parameters of a single Realm.
         # @param [String] name
-        #   Required. Identifier. Unique name/ID of the realm
+        #   Required. Identifier. The resource name of the Realm.
         # @param [Google::Apis::CloudnumberregistryV1alpha::Realm] realm_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -1259,10 +1263,11 @@ module Google
         
         # Creates a new RegistryBook in a given project and location.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The parent resource name where the RegistryBook will be created.
         # @param [Google::Apis::CloudnumberregistryV1alpha::RegistryBook] registry_book_object
         # @param [String] registry_book_id
-        #   Required. Id of the requesting object.
+        #   Required. The ID to use for the RegistryBook, which will become the final
+        #   segment of the resource name.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -1307,7 +1312,7 @@ module Google
         
         # Deletes a single RegistryBook.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the RegistryBook to delete.
         # @param [Boolean] force
         #   Optional. If set to true, all associated resources will be deleted.
         # @param [String] request_id
@@ -1352,9 +1357,9 @@ module Google
         
         # Gets details of a single RegistryBook.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the RegistryBook to retrieve.
         # @param [String] view
-        #   Optional. The view of the RegistryBook.
+        #   Optional. The view of the RegistryBook to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1385,18 +1390,18 @@ module Google
         
         # Lists RegistryBooks in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListRegistryBooksRequest
+        #   Required. The parent resource name, for example `projects/*/locations/*`.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filter expression to filter the results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
         # @param [String] view
-        #   Optional. The view of the RegistryBook.
+        #   Optional. The view of the RegistryBook to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1431,7 +1436,7 @@ module Google
         
         # Updates the parameters of a single RegistryBook.
         # @param [String] name
-        #   Required. Identifier. name of resource
+        #   Required. Identifier. The resource name of the RegistryBook.
         # @param [Google::Apis::CloudnumberregistryV1alpha::RegistryBook] registry_book_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -1483,7 +1488,7 @@ module Google
         
         # Searches IP resources in a given RegistryBook.
         # @param [String] name
-        #   Required. The name of the RegistryBook to search in.
+        #   Required. The resource name of the RegistryBook to search in.
         # @param [Google::Apis::CloudnumberregistryV1alpha::SearchIpResourcesRequest] search_ip_resources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -26,22 +26,22 @@ module Google
       class AggregatedData
         include Google::Apis::Core::Hashable
       
-        # Output only. Number of custom ranges in the RegistryBook.
+        # Output only. Number of CustomRanges in the RegistryBook.
         # Corresponds to the JSON property `customRangesCount`
         # @return [Fixnum]
         attr_accessor :custom_ranges_count
       
-        # Output only. Number of custom realms in the RegistryBook.
+        # Output only. Number of custom Realms in the RegistryBook.
         # Corresponds to the JSON property `customRealmsCount`
         # @return [Fixnum]
         attr_accessor :custom_realms_count
       
-        # Output only. Number of discovered ranges in the RegistryBook.
+        # Output only. Number of DiscoveredRanges in the RegistryBook.
         # Corresponds to the JSON property `discoveredRangesCount`
         # @return [Fixnum]
         attr_accessor :discovered_ranges_count
       
-        # Output only. Number of discovered realms in the RegistryBook.
+        # Output only. Number of discovered Realms in the RegistryBook.
         # Corresponds to the JSON property `discoveredRealmsCount`
         # @return [Fixnum]
         attr_accessor :discovered_realms_count
@@ -65,16 +65,16 @@ module Google
         end
       end
       
-      # Message describing Attribute object
+      # A key-value pair representing a custom attribute associated with a resource.
       class Attribute
         include Google::Apis::Core::Hashable
       
-        # Required. Key of attribute
+        # Required. The key of the attribute.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # Required. Value of attribute
+        # Required. The value of the attribute.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -103,7 +103,8 @@ module Google
         end
       end
       
-      # Message for response to checking the availability of IpamAdminScopes
+      # Response message for the CloudNumberRegistry.CheckAvailabilityIpamAdminScopes
+      # method.
       class CheckAvailabilityIpamAdminScopesResponse
         include Google::Apis::Core::Hashable
       
@@ -122,7 +123,7 @@ module Google
         end
       end
       
-      # Message for cleaning up a IpamAdminScope
+      # Request message for the CloudNumberRegistry.CleanupIpamAdminScope method.
       class CleanupIpamAdminScopeRequest
         include Google::Apis::Core::Hashable
       
@@ -150,7 +151,7 @@ module Google
         end
       end
       
-      # Message describing CustomRange object
+      # A CustomRange represents a user-defined IP address range.
       class CustomRange
         include Google::Apis::Core::Hashable
       
@@ -159,7 +160,7 @@ module Google
         # @return [Array<Google::Apis::CloudnumberregistryV1alpha::Attribute>]
         attr_accessor :attributes
       
-        # Optional. Description of the CustomRange.
+        # Optional. The description of the CustomRange.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -174,33 +175,37 @@ module Google
         # @return [String]
         attr_accessor :ipv6_cidr_range
       
-        # Optional. Labels as key value pairs
+        # Optional. User-defined labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Identifier. name of resource
+        # Required. Identifier. The resource name of the CustomRange, in the format `
+        # projects/`project`/locations/`location`/customRanges/`custom_range``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Optional. The parent range of the CustomRange. Do not allow setting parent
-        # range if realm is specified. Format must follow this pattern: projects/`
-        # project`/locations/`location`/customRanges/`custom_range`
+        # Optional. The resource name of the parent CustomRange, in the format `projects/
+        # `project`/locations/`location`/customRanges/`custom_range``. If specified, the
+        # parent CustomRange must be in the same RegistryBook. This field is mutually
+        # exclusive with the `realm` field, as the Realm is inherited from the parent
+        # CustomRange.
         # Corresponds to the JSON property `parentRange`
         # @return [String]
         attr_accessor :parent_range
       
-        # Optional. The realm of the CustomRange. The realm must be in the same project
-        # as the custom range. Do not allow setting realm if parent range is specified,
-        # since the realm should be inherited from the parent range. Format must follow
-        # this pattern: projects/`project`/locations/`location`/realms/`realm`
+        # Optional. The resource name of the Realm associated with the CustomRange, in
+        # the format `projects/`project`/locations/`location`/realms/`realm``. The Realm
+        # must be in the same project as the CustomRange. This field must not be set if
+        # the `parent_range` field is set, as the Realm will be inherited from the
+        # parent CustomRange.
         # Corresponds to the JSON property `realm`
         # @return [String]
         attr_accessor :realm
       
-        # Output only. The registry book of the CustomRange. This field is inherited
-        # from the realm or parent range depending on which one is specified.
+        # Output only. The RegistryBook of the CustomRange. This field is inherited from
+        # the Realm or parent CustomRange depending on which one is specified.
         # Corresponds to the JSON property `registryBook`
         # @return [String]
         attr_accessor :registry_book
@@ -223,7 +228,7 @@ module Google
         end
       end
       
-      # Message for disabling a IpamAdminScope
+      # Request message for the CloudNumberRegistry.DisableIpamAdminScope method.
       class DisableIpamAdminScopeRequest
         include Google::Apis::Core::Hashable
       
@@ -251,7 +256,8 @@ module Google
         end
       end
       
-      # Message describing DiscoveredRange object
+      # A DiscoveredRange represents an IP address range automatically detected by the
+      # discovery pipeline.
       class DiscoveredRange
         include Google::Apis::Core::Hashable
       
@@ -260,14 +266,14 @@ module Google
         # @return [Array<Google::Apis::CloudnumberregistryV1alpha::Attribute>]
         attr_accessor :attributes
       
-        # Output only. If true, allow child ranges of this range to overlap with each
-        # other.
+        # Output only. If true, allows child DiscoveredRanges of this DiscoveredRange to
+        # overlap with each other.
         # Corresponds to the JSON property `childCidrOverlapAllowed`
         # @return [Boolean]
         attr_accessor :child_cidr_overlap_allowed
         alias_method :child_cidr_overlap_allowed?, :child_cidr_overlap_allowed
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The time at which the DiscoveredRange was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -277,7 +283,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Discovery metadata of the discovered resource.
+        # Metadata about a discovered resource, tracking event times, state, and source
+        # information.
         # Corresponds to the JSON property `discoveryMetadata`
         # @return [Google::Apis::CloudnumberregistryV1alpha::DiscoveryMetadata]
         attr_accessor :discovery_metadata
@@ -292,32 +299,34 @@ module Google
         # @return [String]
         attr_accessor :ipv6_cidr_range
       
-        # Optional. Labels as key value pairs
+        # Optional. User-defined labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Identifier. Name of the DiscoveredRange.
+        # Required. Identifier. The resource name of the DiscoveredRange, in the format `
+        # projects/`project`/locations/`location`/discoveredRanges/`discovered_range``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Optional. The parent range of the DiscoveredRange.
+        # Optional. The resource name of the parent DiscoveredRange, in the format `
+        # projects/`project`/locations/`location`/discoveredRanges/`discovered_range``.
         # Corresponds to the JSON property `parentRange`
         # @return [String]
         attr_accessor :parent_range
       
-        # Optional. The realm of the DiscoveredRange.
+        # Optional. The Realm of the DiscoveredRange.
         # Corresponds to the JSON property `realm`
         # @return [String]
         attr_accessor :realm
       
-        # Output only. The registry book of the DiscoveredRange.
+        # Output only. The RegistryBook of the DiscoveredRange.
         # Corresponds to the JSON property `registryBook`
         # @return [String]
         attr_accessor :registry_book
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The time at which the DiscoveredRange was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -344,7 +353,8 @@ module Google
         end
       end
       
-      # Discovery metadata of the discovered resource.
+      # Metadata about a discovered resource, tracking event times, state, and source
+      # information.
       class DiscoveryMetadata
         include Google::Apis::Core::Hashable
       
@@ -377,7 +387,7 @@ module Google
         # Output only. A single source resource can be the source of multiple CNR
         # resources. This sub_id is used to distinguish between the different CNR
         # resources derived from the same upstream resource. For example, a single
-        # subnetwork can be the source of multiple ranges, one for each protocol. In
+        # subnetwork can be the source of multiple Ranges, one for each protocol. In
         # this case, the sub_id could be "private-ipv4" or "private-ipv6".
         # Corresponds to the JSON property `sourceSubId`
         # @return [String]
@@ -426,11 +436,12 @@ module Google
         end
       end
       
-      # Message for the response to finding free IP ranges.
+      # Response message for the CloudNumberRegistry.FindCustomRangeFreeIpRanges
+      # method.
       class FindCustomRangeFreeIpRangesResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. Free IP CIDR ranges found in the CustomRange.
+        # Output only. The free IP CIDR ranges found.
         # Corresponds to the JSON property `freeIpCidrRanges`
         # @return [Array<String>]
         attr_accessor :free_ip_cidr_ranges
@@ -445,11 +456,12 @@ module Google
         end
       end
       
-      # Message for the response to finding free IP ranges.
+      # Response message for the CloudNumberRegistry.FindDiscoveredRangeFreeIpRanges
+      # method.
       class FindDiscoveredRangeFreeIpRangesResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. Free IP CIDR ranges found in the DiscoveredRange.
+        # Output only. The free IP CIDR ranges found.
         # Corresponds to the JSON property `freeIpCidrRanges`
         # @return [Array<String>]
         attr_accessor :free_ip_cidr_ranges
@@ -464,27 +476,29 @@ module Google
         end
       end
       
-      # Message describing IpamAdminScope object
+      # An IpamAdminScope defines the administrative boundary for IP address discovery
+      # and management. It configures which platforms and organizational scopes are
+      # enabled for IP tracking.
       class IpamAdminScope
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The time at which the IpamAdminScope was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Required. Addon platforms that are enabled for this IPAM admin scope. Cloud
+        # Required. Add-on platforms that are enabled for this IpamAdminScope. Cloud
         # Number Registry only discovers the IP addresses from the enabled platforms.
         # Corresponds to the JSON property `enabledAddonPlatforms`
         # @return [Array<String>]
         attr_accessor :enabled_addon_platforms
       
-        # Optional. Labels as key value pairs
+        # Optional. User-defined labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Identifier. name of resource
+        # Required. Identifier. The resource name of the IpamAdminScope.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -501,7 +515,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The time at which the IpamAdminScope was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -522,7 +536,7 @@ module Google
         end
       end
       
-      # Message for the availability of an IpamAdminScope
+      # Availability details for a specific IpamAdminScope.
       class IpamAdminScopeAvailability
         include Google::Apis::Core::Hashable
       
@@ -553,16 +567,17 @@ module Google
         end
       end
       
-      # Message for response to listing CustomRanges
+      # Response message for the CloudNumberRegistry.ListCustomRanges method.
       class ListCustomRangesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of CustomRange
+        # The list of CustomRanges.
         # Corresponds to the JSON property `customRanges`
         # @return [Array<Google::Apis::CloudnumberregistryV1alpha::CustomRange>]
         attr_accessor :custom_ranges
       
-        # A token identifying a page of results the server should return.
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -584,16 +599,17 @@ module Google
         end
       end
       
-      # Message for response to listing DiscoveredRanges
+      # Response message for the CloudNumberRegistry.ListDiscoveredRanges method.
       class ListDiscoveredRangesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of DiscoveredRange
+        # The list of DiscoveredRanges.
         # Corresponds to the JSON property `discoveredRanges`
         # @return [Array<Google::Apis::CloudnumberregistryV1alpha::DiscoveredRange>]
         attr_accessor :discovered_ranges
       
-        # A token identifying a page of results the server should return.
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -615,16 +631,17 @@ module Google
         end
       end
       
-      # Message for response to listing ipamAdminScopes
+      # Response message for the CloudNumberRegistry.ListIpamAdminScopes method.
       class ListIpamAdminScopesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of IpamAdminScope
+        # The list of IpamAdminScopes.
         # Corresponds to the JSON property `ipamAdminScopes`
         # @return [Array<Google::Apis::CloudnumberregistryV1alpha::IpamAdminScope>]
         attr_accessor :ipam_admin_scopes
       
-        # A token identifying a page of results the server should return.
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -705,7 +722,7 @@ module Google
         end
       end
       
-      # Message for response to listing Realms
+      # Response message for the CloudNumberRegistry.ListRealms method.
       class ListRealmsResponse
         include Google::Apis::Core::Hashable
       
@@ -714,7 +731,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of Realm
+        # The list of Realms.
         # Corresponds to the JSON property `realms`
         # @return [Array<Google::Apis::CloudnumberregistryV1alpha::Realm>]
         attr_accessor :realms
@@ -736,7 +753,7 @@ module Google
         end
       end
       
-      # Message for response to listing RegistryBooks
+      # Response message for the CloudNumberRegistry.ListRegistryBooks method.
       class ListRegistryBooksResponse
         include Google::Apis::Core::Hashable
       
@@ -935,21 +952,23 @@ module Google
         end
       end
       
-      # Message describing either a CustomRange or a DiscoveredRange.
+      # Represents either a CustomRange or a DiscoveredRange.
       class Range
         include Google::Apis::Core::Hashable
       
-        # Message describing CustomRange object
+        # A CustomRange represents a user-defined IP address range.
         # Corresponds to the JSON property `customRange`
         # @return [Google::Apis::CloudnumberregistryV1alpha::CustomRange]
         attr_accessor :custom_range
       
-        # Message describing DiscoveredRange object
+        # A DiscoveredRange represents an IP address range automatically detected by the
+        # discovery pipeline.
         # Corresponds to the JSON property `discoveredRange`
         # @return [Google::Apis::CloudnumberregistryV1alpha::DiscoveredRange]
         attr_accessor :discovered_range
       
-        # Message for the utilization of an IP range
+        # Utilization metrics for an IP Range, including consumed and produced address
+        # counts.
         # Corresponds to the JSON property `utilization`
         # @return [Google::Apis::CloudnumberregistryV1alpha::RangeUtilization]
         attr_accessor :utilization
@@ -966,21 +985,22 @@ module Google
         end
       end
       
-      # Message for the utilization of an IP range
+      # Utilization metrics for an IP Range, including consumed and produced address
+      # counts.
       class RangeUtilization
         include Google::Apis::Core::Hashable
       
-        # Output only. The total number of IP addresses consumed in the range.
+        # Output only. The total number of IP addresses consumed in the Range.
         # Corresponds to the JSON property `totalConsumed`
         # @return [String]
         attr_accessor :total_consumed
       
-        # Output only. The total number of IP addresses produced in the range.
+        # Output only. The total number of IP addresses produced in the Range.
         # Corresponds to the JSON property `totalProduced`
         # @return [String]
         attr_accessor :total_produced
       
-        # Output only. The usage of the range as a percentage. This is marked as
+        # Output only. The usage of the Range as a percentage. This is marked as
         # optional so that we have presence tracking and API responses show 0.0 instead
         # of NULL.
         # Corresponds to the JSON property `usage`
@@ -999,7 +1019,9 @@ module Google
         end
       end
       
-      # Message describing Realm object
+      # A Realm represents a distinct network domain or security zone. It groups
+      # Ranges that share the same traffic and management characteristics. All the
+      # ranges in a Realm are routable to each other, meaning that they cannot overlap.
       class Realm
         include Google::Apis::Core::Hashable
       
@@ -1008,47 +1030,48 @@ module Google
         # @return [Google::Apis::CloudnumberregistryV1alpha::RealmAggregatedData]
         attr_accessor :aggregated_data
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The time at which the Realm was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Discovery metadata of the discovered resource.
+        # Metadata about a discovered resource, tracking event times, state, and source
+        # information.
         # Corresponds to the JSON property `discoveryMetadata`
         # @return [Google::Apis::CloudnumberregistryV1alpha::DiscoveryMetadata]
         attr_accessor :discovery_metadata
       
-        # Optional. IP version of the realm.
+        # Optional. IP version of the Realm.
         # Corresponds to the JSON property `ipVersion`
         # @return [String]
         attr_accessor :ip_version
       
-        # Optional. Labels as key value pairs
+        # Optional. User-defined labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Management type of realm.
+        # Required. Management type of the Realm.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
       
-        # Required. Identifier. Unique name/ID of the realm
+        # Required. Identifier. The resource name of the Realm.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. URI of the registry book that claims the realm.
+        # Required. Name of the RegistryBook that claims the Realm.
         # Corresponds to the JSON property `registryBook`
         # @return [String]
         attr_accessor :registry_book
       
-        # Required. Traffic type of realm.
+        # Required. Traffic type of the Realm.
         # Corresponds to the JSON property `trafficType`
         # @return [String]
         attr_accessor :traffic_type
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The time at which the Realm was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1076,12 +1099,12 @@ module Google
       class RealmAggregatedData
         include Google::Apis::Core::Hashable
       
-        # Output only. Number of custom ranges in the Realm.
+        # Output only. Number of CustomRanges in the Realm.
         # Corresponds to the JSON property `customRangesCount`
         # @return [Fixnum]
         attr_accessor :custom_ranges_count
       
-        # Output only. Number of discovered ranges in the Realm.
+        # Output only. Number of DiscoveredRanges in the Realm.
         # Corresponds to the JSON property `discoveredRangesCount`
         # @return [Fixnum]
         attr_accessor :discovered_ranges_count
@@ -1097,7 +1120,8 @@ module Google
         end
       end
       
-      # Message describing RegistryBook object
+      # A RegistryBook organizes and manages IP address space. It claims specific
+      # scopes (such as projects) and groups related Realms and Ranges.
       class RegistryBook
         include Google::Apis::Core::Hashable
       
@@ -1113,7 +1137,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :claimed_scopes
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The time at which the RegistryBook was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1124,17 +1148,17 @@ module Google
         attr_accessor :is_default
         alias_method :is_default?, :is_default
       
-        # Optional. Labels as key value pairs
+        # Optional. User-defined labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Identifier. name of resource
+        # Required. Identifier. The resource name of the RegistryBook.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The time at which the RegistryBook was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1155,11 +1179,16 @@ module Google
         end
       end
       
-      # Message for searching IP resources
+      # Request message for the CloudNumberRegistry.SearchIpResources method.
       class SearchIpResourcesRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Hint for how to order the results
+        # Optional. Hint for how to order the results. Supported sort fields are: - `
+        # name`: Sort alphabetically by the resource name. - `create_time`: Sort by the
+        # creation timestamp of the resource. - `update_time`: Sort by the last update
+        # timestamp of the resource. Supported directions are `asc` (ascending) and `
+        # desc` (descending). If unspecified, direction defaults to `asc`. Only sorting
+        # by a single field is supported.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -1178,30 +1207,31 @@ module Google
         # Optional. Search query. This string filters resources in an AIP-160-like
         # format. It has some limitations. You can only specify top level conjunctions
         # or attribute level negations. Each restriction can only be used once except
-        # the attribute restriction. The available restrictions for ranges are: - `realm`
-        # : The realm name to search in. - `ip_address`: The IP address to search for
-        # within ranges. - `ip_version`: The IP version to filter by (e.g., "IPV4", "
-        # IPV6"). - `parent_range`: The parent range of the range to search for. - `
-        # attribute_text`: The attribute text to search for within ranges. - `attribute`:
+        # the attribute restriction. The available restrictions for Ranges are: - `realm`
+        # : The Realm name to search in. - `ip_address`: The IP address to search for
+        # within Ranges. - `ip_version`: The IP version to filter by (e.g., "IPV4", "
+        # IPV6"). - `parent_range`: The parent Range of the Range to search for. - `
+        # attribute_text`: The attribute text to search for within Ranges. - `attribute`:
         # The attribute key and value to filter by. The available restrictions for
-        # realms are: - `ip_version`: The IP version to search for. Only one of
+        # Realms are: - `ip_version`: The IP version to search for. - `management_type`:
+        # The management type of the Realm (e.g., "CNR", "USER"). Only one of
         # attribute_text or multiple attribute filters can be specified. Examples: - `
         # realm=test-realm` - `realm=test-realm AND ip_address=10.0.0.0` - `realm=test-
         # realm AND ip_version=IPV6` - `realm=test-realm AND attribute_text=test` - `
         # ip_address=10.0.0.0 AND attribute:(key1=value1) AND attribute:(key2=value2)` -
         # `attribute_text=test AND parent_range=projects/123/locations/global/
-        # discoveredRanges/test-parent-range`
+        # discoveredRanges/test-parent-range` - `management_type=CNR`
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
       
         # Optional. The type of resources to search for. If not specified, the server
-        # will return ranges.
+        # will return Ranges.
         # Corresponds to the JSON property `searchResourceTypes`
         # @return [Array<String>]
         attr_accessor :search_resource_types
       
-        # Optional. Whether to show the utilization of the ranges in the response.
+        # Optional. Whether to show the utilization of the Ranges in the response.
         # Corresponds to the JSON property `showUtilization`
         # @return [Boolean]
         attr_accessor :show_utilization
@@ -1222,7 +1252,7 @@ module Google
         end
       end
       
-      # Message for response to searching IP resources
+      # Response message for the CloudNumberRegistry.SearchIpResources method.
       class SearchIpResourcesResponse
         include Google::Apis::Core::Hashable
       
@@ -1231,7 +1261,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Deprecated: Use results field instead. The list of ranges matching the search
+        # Deprecated: Use results field instead. The list of Ranges matching the search
         # query.
         # Corresponds to the JSON property `ranges`
         # @return [Array<Google::Apis::CloudnumberregistryV1alpha::Range>]
@@ -1260,16 +1290,18 @@ module Google
         end
       end
       
-      # A result matching the search query, which can be either a range or a realm.
+      # A result matching the search query, which can be either a Range or a Realm.
       class SearchIpResourcesResult
         include Google::Apis::Core::Hashable
       
-        # Message describing either a CustomRange or a DiscoveredRange.
+        # Represents either a CustomRange or a DiscoveredRange.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::CloudnumberregistryV1alpha::Range]
         attr_accessor :range
       
-        # Message describing Realm object
+        # A Realm represents a distinct network domain or security zone. It groups
+        # Ranges that share the same traffic and management characteristics. All the
+        # ranges in a Realm are routable to each other, meaning that they cannot overlap.
         # Corresponds to the JSON property `realm`
         # @return [Google::Apis::CloudnumberregistryV1alpha::Realm]
         attr_accessor :realm
@@ -1285,16 +1317,17 @@ module Google
         end
       end
       
-      # Message for the response to getting the utilization of a CustomRange
+      # Response message for the CloudNumberRegistry.ShowCustomRangeUtilization method.
       class ShowCustomRangeUtilizationResponse
         include Google::Apis::Core::Hashable
       
-        # Message describing CustomRange object
+        # A CustomRange represents a user-defined IP address range.
         # Corresponds to the JSON property `customRange`
         # @return [Google::Apis::CloudnumberregistryV1alpha::CustomRange]
         attr_accessor :custom_range
       
-        # Message for the utilization of an IP range
+        # Utilization metrics for an IP Range, including consumed and produced address
+        # counts.
         # Corresponds to the JSON property `rangeUtilization`
         # @return [Google::Apis::CloudnumberregistryV1alpha::RangeUtilization]
         attr_accessor :range_utilization
@@ -1310,16 +1343,19 @@ module Google
         end
       end
       
-      # Message for the response to getting the utilization of a DiscoveredRange
+      # Response message for the CloudNumberRegistry.ShowDiscoveredRangeUtilization
+      # method.
       class ShowDiscoveredRangeUtilizationResponse
         include Google::Apis::Core::Hashable
       
-        # Message describing DiscoveredRange object
+        # A DiscoveredRange represents an IP address range automatically detected by the
+        # discovery pipeline.
         # Corresponds to the JSON property `discoveredRange`
         # @return [Google::Apis::CloudnumberregistryV1alpha::DiscoveredRange]
         attr_accessor :discovered_range
       
-        # Message for the utilization of an IP range
+        # Utilization metrics for an IP Range, including consumed and produced address
+        # counts.
         # Corresponds to the JSON property `rangeUtilization`
         # @return [Google::Apis::CloudnumberregistryV1alpha::RangeUtilization]
         attr_accessor :range_utilization
