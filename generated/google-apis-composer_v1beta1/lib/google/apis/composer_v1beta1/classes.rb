@@ -2370,6 +2370,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The "type" field of Kubernetes Secret. For details see: https://
+        # kubernetes.io/docs/concepts/configuration/secret/#secret-types
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2378,6 +2384,7 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
