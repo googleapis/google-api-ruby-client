@@ -22,6 +22,33 @@ module Google
   module Apis
     module StoragebatchoperationsV1
       
+      # Represents updates to existing access-control entries on an object.
+      class AccessControlsUpdates
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Grants to add or update. If a grant for same entity exists, its role
+        # is updated.
+        # Corresponds to the JSON property `grants`
+        # @return [Array<Google::Apis::StoragebatchoperationsV1::ObjectAccessControl>]
+        attr_accessor :grants
+      
+        # Optional. Entities for which all grants should be removed. An entity can't be
+        # in both `grants` and `remove_entities`.
+        # Corresponds to the JSON property `removeEntities`
+        # @return [Array<String>]
+        attr_accessor :remove_entities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grants = args[:grants] if args.key?(:grants)
+          @remove_entities = args[:remove_entities] if args.key?(:remove_entities)
+        end
+      end
+      
       # Describes configuration of a single bucket and its objects to be transformed.
       class Bucket
         include Google::Apis::Core::Hashable
@@ -57,9 +84,8 @@ module Google
       class BucketList
         include Google::Apis::Core::Hashable
       
-        # Required. List of buckets and their objects to be transformed. Currently, only
-        # one bucket configuration is supported. If multiple buckets are specified, an
-        # error will be returned.
+        # Required. List of buckets and their objects to be transformed. You can specify
+        # only one bucket per job. If multiple buckets are specified, an error occurs.
         # Corresponds to the JSON property `buckets`
         # @return [Array<Google::Apis::StoragebatchoperationsV1::Bucket>]
         attr_accessor :buckets
@@ -114,8 +140,8 @@ module Google
         attr_accessor :manifest
       
         # Identifier. The resource name of the BucketOperation. This is defined by the
-        # service. Format: projects/`project`/locations/global/jobs/`job_id`/
-        # bucketOperations/`bucket_operation`.
+        # service. Format: `projects/`project_id`/locations/global/jobs/`job_id`/
+        # bucketOperations/`bucket_operation``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -124,6 +150,12 @@ module Google
         # Corresponds to the JSON property `prefixList`
         # @return [Google::Apis::StoragebatchoperationsV1::PrefixList]
         attr_accessor :prefix_list
+      
+        # Describes the project source where the objects satisfying the filters will be
+        # transformed.
+        # Corresponds to the JSON property `projectSource`
+        # @return [Google::Apis::StoragebatchoperationsV1::ProjectSource]
+        attr_accessor :project_source
       
         # Describes options for object metadata update.
         # Corresponds to the JSON property `putMetadata`
@@ -139,6 +171,11 @@ module Google
         # Corresponds to the JSON property `rewriteObject`
         # @return [Google::Apis::StoragebatchoperationsV1::RewriteObject]
         attr_accessor :rewrite_object
+      
+        # Describes options for setting object ACLs.
+        # Corresponds to the JSON property `setObjectAcls`
+        # @return [Google::Apis::StoragebatchoperationsV1::SetObjectAcls]
+        attr_accessor :set_object_acls
       
         # Output only. The time that the BucketOperation was started.
         # Corresponds to the JSON property `startTime`
@@ -170,9 +207,11 @@ module Google
           @manifest = args[:manifest] if args.key?(:manifest)
           @name = args[:name] if args.key?(:name)
           @prefix_list = args[:prefix_list] if args.key?(:prefix_list)
+          @project_source = args[:project_source] if args.key?(:project_source)
           @put_metadata = args[:put_metadata] if args.key?(:put_metadata)
           @put_object_hold = args[:put_object_hold] if args.key?(:put_object_hold)
           @rewrite_object = args[:rewrite_object] if args.key?(:rewrite_object)
+          @set_object_acls = args[:set_object_acls] if args.key?(:set_object_acls)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @update_object_custom_context = args[:update_object_custom_context] if args.key?(:update_object_custom_context)
@@ -185,8 +224,8 @@ module Google
       
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID in case you need to retry your request. Requests with same `
-        # request_id` will be ignored for at least 60 minutes since the first request.
-        # The request ID must be a valid UUID with the exception that zero UUID is not
+        # request_id` are ignored for at least 60 minutes since the first request. The
+        # request ID must be a valid UUID with the exception that zero UUID isn't
         # supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
@@ -303,7 +342,7 @@ module Google
       class CustomContextUpdates
         include Google::Apis::Core::Hashable
       
-        # Optional. Custom contexts to clear by key. A key cannot be present in both `
+        # Optional. Custom contexts to clear by key. A key can't be present in both `
         # updates` and `keys_to_clear`.
         # Corresponds to the JSON property `keysToClear`
         # @return [Array<String>]
@@ -330,14 +369,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Controls deletion behavior when versioning is enabled for the object'
-        # s bucket. If true both live and noncurrent objects will be permanently deleted.
-        # Otherwise live objects in versioned buckets will become noncurrent and
-        # objects that were already noncurrent will be skipped. This setting doesn't
+        # s bucket. If true, both live and noncurrent objects will be permanently
+        # deleted. Otherwise live objects in versioned buckets will become noncurrent
+        # and objects that were already noncurrent will be skipped. This setting doesn't
         # have any impact on the Soft Delete feature. All objects deleted by this
         # service can be be restored for the duration of the Soft Delete retention
         # duration if enabled. If enabled and the manifest doesn't specify an object's
-        # generation, a GetObjectMetadata call (a Class B operation) will be made to
-        # determine the live object generation.
+        # generation, a `GetObjectMetadata` call is made to determine the live object
+        # generation.
         # Corresponds to the JSON property `permanentObjectDeletionEnabled`
         # @return [Boolean]
         attr_accessor :permanent_object_deletion_enabled
@@ -426,7 +465,61 @@ module Google
         end
       end
       
-      # The Storage Batch Operations Job description.
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in Common Expression Language syntax.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # The storage batch operations job description.
       class Job
         include Google::Apis::Core::Hashable
       
@@ -455,15 +548,15 @@ module Google
         # @return [Google::Apis::StoragebatchoperationsV1::DeleteObject]
         attr_accessor :delete_object
       
-        # Optional. A description provided by the user for the job. Its max length is
-        # 1024 bytes when Unicode-encoded.
+        # Optional. A user-provided description for the job. Maximum length: 1024 bytes
+        # when unicode-encoded.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. If true, the job will run in dry run mode, returning the total
-        # object count and, if the object configuration is a prefix list, the bytes
-        # found from source. No transformations will be performed.
+        # Optional. If true, the job runs in dry run mode, returning the total object
+        # count and, if the object configuration is a prefix list, the bytes found from
+        # source. No transformations are performed.
         # Corresponds to the JSON property `dryRun`
         # @return [Boolean]
         attr_accessor :dry_run
@@ -474,7 +567,7 @@ module Google
         # @return [Array<Google::Apis::StoragebatchoperationsV1::ErrorSummary>]
         attr_accessor :error_summaries
       
-        # Output only. If true, this Job operates on multiple buckets. Multibucket jobs
+        # Output only. If true, this job operates on multiple buckets. Multi-bucket jobs
         # are subject to different quota limits than single-bucket jobs.
         # Corresponds to the JSON property `isMultiBucketJob`
         # @return [Boolean]
@@ -486,13 +579,18 @@ module Google
         # @return [Google::Apis::StoragebatchoperationsV1::LoggingConfig]
         attr_accessor :logging_config
       
-        # Identifier. The resource name of the Job. job_id is unique within the project,
-        # that is either set by the customer or defined by the service. Format: projects/
-        # `project`/locations/global/jobs/`job_id` . For example: "projects/123456/
-        # locations/global/jobs/job01".
+        # Identifier. The resource name of the job. Format: `projects/`project_id`/
+        # locations/global/jobs/`job_id``. For example: `projects/123456/locations/
+        # global/jobs/job01`. `job_id` is unique in a given project.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Describes the project source where the objects satisfying the filters will be
+        # transformed.
+        # Corresponds to the JSON property `projectSource`
+        # @return [Google::Apis::StoragebatchoperationsV1::ProjectSource]
+        attr_accessor :project_source
       
         # Describes options for object metadata update.
         # Corresponds to the JSON property `putMetadata`
@@ -513,6 +611,11 @@ module Google
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
+      
+        # Describes options for setting object ACLs.
+        # Corresponds to the JSON property `setObjectAcls`
+        # @return [Google::Apis::StoragebatchoperationsV1::SetObjectAcls]
+        attr_accessor :set_object_acls
       
         # Output only. State of the job.
         # Corresponds to the JSON property `state`
@@ -541,10 +644,12 @@ module Google
           @is_multi_bucket_job = args[:is_multi_bucket_job] if args.key?(:is_multi_bucket_job)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @name = args[:name] if args.key?(:name)
+          @project_source = args[:project_source] if args.key?(:project_source)
           @put_metadata = args[:put_metadata] if args.key?(:put_metadata)
           @put_object_hold = args[:put_object_hold] if args.key?(:put_object_hold)
           @rewrite_object = args[:rewrite_object] if args.key?(:rewrite_object)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
+          @set_object_acls = args[:set_object_acls] if args.key?(:set_object_acls)
           @state = args[:state] if args.key?(:state)
           @update_object_custom_context = args[:update_object_custom_context] if args.key?(:update_object_custom_context)
         end
@@ -747,15 +852,23 @@ module Google
       class Manifest
         include Google::Apis::Core::Hashable
       
-        # Required. `manifest_location` must contain the manifest source file that is a
-        # CSV file in a Google Cloud Storage bucket. Each row in the file must include
-        # the object details i.e. BucketId and Name. Generation may optionally be
-        # specified. When it is not specified the live object is acted upon. `
-        # manifest_location` should either be 1) An absolute path to the object in the
-        # format of `gs://bucket_name/path/file_name.csv`. 2) An absolute path with a
-        # single wildcard character in the file name, for example `gs://bucket_name/path/
-        # file_name*.csv`. If manifest location is specified with a wildcard, objects in
-        # all manifest files matching the pattern will be acted upon.
+        # Required. Specify the manifest file location. The format of manifest location
+        # can be an absolute path to the object in the format of `gs://bucket_name/path/
+        # object_name`. For example, `gs://bucket_name/path/object_name.csv`.
+        # Alternatively, you can specify an absolute path with a single wildcard
+        # character in the file name, for example `gs://bucket_name/path/file_name*.csv`.
+        # If the manifest location is specified with a wildcard, objects in all
+        # manifest files matching the pattern will be acted upon. The manifest is a CSV
+        # file, uploaded to Cloud Storage, that contains one object or a list of objects
+        # that you want to process. Each row in the manifest must include the `bucket`
+        # and `name` of the object. You can optionally specify the `generation` of the
+        # object. If you don't specify the `generation`, the current version of the
+        # object is used. You can optionally include a header row with the following
+        # format: `bucket,name,generation`. For example, bucket,name,generation bucket_1,
+        # object_1,generation_1 bucket_1,object_2,generation_2 bucket_1,object_3,
+        # generation_3 Note: The manifest file must specify only objects within the
+        # bucket provided to the job. Rows referencing objects in other buckets are
+        # ignored.
         # Corresponds to the JSON property `manifestLocation`
         # @return [String]
         attr_accessor :manifest_location
@@ -770,14 +883,41 @@ module Google
         end
       end
       
-      # Describes the payload of a user defined object custom context.
+      # Represents an access control entry on an object.
+      class ObjectAccessControl
+        include Google::Apis::Core::Hashable
+      
+        # Required. The entity holding the permission, in one of the following forms: * `
+        # allUsers` * `allAuthenticatedUsers`
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
+      
+        # Required. The role to grant. Acceptable values are: * `READER` - gives read
+        # access to the object. * `OWNER` - gives owner access to the object.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity = args[:entity] if args.key?(:entity)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Describes the payload of a user-defined object custom context.
       class ObjectCustomContextPayload
         include Google::Apis::Core::Hashable
       
-        # The value of the object custom context. If set, `value` must NOT be an empty
-        # string since it is a required field in custom context. If unset, `value` will
-        # be ignored and no changes will be made to the `value` field of the custom
-        # context payload.
+        # The value of the object custom context. If set, `value` can't be an empty
+        # string because it is a required field in custom context. If unset, `value` is
+        # ignored and no changes are made to the `value` field of the custom context
+        # payload.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -796,14 +936,18 @@ module Google
       class ObjectRetention
         include Google::Apis::Core::Hashable
       
-        # Required. The time when the object will be retained until. UNSET will clear
-        # the retention. Must be specified in RFC 3339 format e.g. YYYY-MM-DD'T'HH:MM:SS.
-        # SS'Z' or YYYY-MM-DD'T'HH:MM:SS'Z'.
+        # Required. The object's retention expiration time, during which, the object is
+        # protected from being deleted or overwritten. The time must be specified in RFC
+        # 3339 format, for example `YYYY-MM-DD'T'HH:MM:SS'Z'` or `YYYY-MM-DD'T'HH:MM:SS.
+        # SS'Z'`. To clear an object's retention, both `retentionMode` and `
+        # retainUntilTime` must be left unset (omitted). Setting `retentionMode` to `
+        # RETENTION_MODE_UNSPECIFIED` is treated as a no-op. Unlike an unset field, it
+        # doesn't modify or clear the retention settings.
         # Corresponds to the JSON property `retainUntilTime`
         # @return [String]
         attr_accessor :retain_until_time
       
-        # Required. The retention mode of the object.
+        # Required. The retention mode.
         # Corresponds to the JSON property `retentionMode`
         # @return [String]
         attr_accessor :retention_mode
@@ -900,12 +1044,12 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # The Storage Batch Operations Job description.
+        # The storage batch operations job description.
         # Corresponds to the JSON property `job`
         # @return [Google::Apis::StoragebatchoperationsV1::Job]
         attr_accessor :job
       
-        # Output only. The unique operation resource name. Format: projects/`project`/
+        # Output only. The unique operation resource name. Format: projects/`project_id`/
         # locations/global/operations/`operation`.
         # Corresponds to the JSON property `operation`
         # @return [String]
@@ -939,9 +1083,10 @@ module Google
       class PrefixList
         include Google::Apis::Core::Hashable
       
-        # Optional. Include prefixes of the objects to be transformed. * Supports full
-        # object name * Supports prefix of the object name * Wildcards are not supported
-        # * Supports empty string for all objects in a bucket.
+        # Optional. Specify one or more object prefixes. For example: * To match one
+        # object, use a single prefix, `prefix1`. * To match multiple objects, use comma-
+        # separated prefixes, `prefix1, prefix2`. * To match all objects, use an empty
+        # prefix, `''`
         # Corresponds to the JSON property `includedObjectPrefixes`
         # @return [Array<String>]
         attr_accessor :included_object_prefixes
@@ -956,61 +1101,159 @@ module Google
         end
       end
       
+      # Describes the project source where the objects satisfying the filters will be
+      # transformed.
+      class ProjectSource
+        include Google::Apis::Core::Hashable
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `bucketFilters`
+        # @return [Google::Apis::StoragebatchoperationsV1::Expr]
+        attr_accessor :bucket_filters
+      
+        # Optional. The unique identifier of a dry run job to use as the baseline for
+        # the current job. Specifying this ID ensures the job is executed against the
+        # same set of objects validated during the dry run. The value corresponds to the
+        # `job_id` segment of the resource name: `projects/`project_id`/locations/`
+        # location`/jobs/`job_id``.
+        # Corresponds to the JSON property `dryRunJobId`
+        # @return [String]
+        attr_accessor :dry_run_job_id
+      
+        # Required. The resource identifier of the Storage Insights dataset
+        # configuration. Storage batch operations uses the latest snapshot from this
+        # dataset as the source to list and filter target objects. Format: `projects/`
+        # project_id`/locations/`location`/datasetConfigs/`dataset_config``.
+        # Corresponds to the JSON property `insightsDatasetConfig`
+        # @return [String]
+        attr_accessor :insights_dataset_config
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `objectFilters`
+        # @return [Google::Apis::StoragebatchoperationsV1::Expr]
+        attr_accessor :object_filters
+      
+        # Required. Project name of the objects to be transformed. e.g. projects/my-
+        # project or projects/123456.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # Output only. The snapshot time used by the job to read the Storage Insights
+        # dataset for bucket and object discovery. This field is populated by the
+        # service and reflects the exact timestamp of the dataset snapshot used.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
+        # Describes the Cloud Storage locations to include in a ProjectSource job.
+        # Corresponds to the JSON property `targetLocations`
+        # @return [Google::Apis::StoragebatchoperationsV1::TargetLocations]
+        attr_accessor :target_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_filters = args[:bucket_filters] if args.key?(:bucket_filters)
+          @dry_run_job_id = args[:dry_run_job_id] if args.key?(:dry_run_job_id)
+          @insights_dataset_config = args[:insights_dataset_config] if args.key?(:insights_dataset_config)
+          @object_filters = args[:object_filters] if args.key?(:object_filters)
+          @project = args[:project] if args.key?(:project)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
+          @target_locations = args[:target_locations] if args.key?(:target_locations)
+        end
+      end
+      
       # Describes options for object metadata update.
       class PutMetadata
         include Google::Apis::Core::Hashable
       
-        # Optional. Updates objects Cache-Control fixed metadata. Unset values will be
-        # ignored. Set empty values to clear the metadata. Additionally, the value for
-        # Custom-Time cannot decrease. Refer to documentation in https://cloud.google.
-        # com/storage/docs/metadata#caching_data.
+        # Optional. Updates the objects `Cache-Control` fixed metadata. Unset values in
+        # the request are ignored. To clear the metadata, set an empty value.
+        # Additionally, the value for `Custom-Time` can't decrease. For details, see [
+        # Cache-Control](https://cloud.google.com/storage/docs/metadata#caching_data).
         # Corresponds to the JSON property `cacheControl`
         # @return [String]
         attr_accessor :cache_control
       
-        # Optional. Updates objects Content-Disposition fixed metadata. Unset values
-        # will be ignored. Set empty values to clear the metadata. Refer https://cloud.
-        # google.com/storage/docs/metadata#content-disposition for additional
-        # documentation.
+        # Optional. Updates objects `Content-Disposition` fixed metadata. Unset values
+        # in the request are ignored. To clear the metadata, set an empty value. For
+        # details, see [Content-Disposition](https://cloud.google.com/storage/docs/
+        # metadata#content-disposition).
         # Corresponds to the JSON property `contentDisposition`
         # @return [String]
         attr_accessor :content_disposition
       
-        # Optional. Updates objects Content-Encoding fixed metadata. Unset values will
-        # be ignored. Set empty values to clear the metadata. Refer to documentation in
-        # https://cloud.google.com/storage/docs/metadata#content-encoding.
+        # Optional. Updates the objects `Content-Encoding` fixed metadata. Unset values
+        # in the request are ignored. To clear the metadata, set an empty value. For
+        # details, see [Content-Encoding](https://cloud.google.com/storage/docs/metadata#
+        # content-encoding).
         # Corresponds to the JSON property `contentEncoding`
         # @return [String]
         attr_accessor :content_encoding
       
-        # Optional. Updates objects Content-Language fixed metadata. Refer to ISO 639-1
-        # language codes for typical values of this metadata. Max length 100 characters.
-        # Unset values will be ignored. Set empty values to clear the metadata. Refer to
-        # documentation in https://cloud.google.com/storage/docs/metadata#content-
-        # language.
+        # Optional. Updates the objects `Content-Language` fixed metadata. Metadata
+        # values must use ISO 639-1 language codes. The maximum length for metadata
+        # values is 100 characters. Unset values in the request are ignored. To clear
+        # the metadata, set an empty value. For details, see [Content-Language](https://
+        # cloud.google.com/storage/docs/metadata#content-language).
         # Corresponds to the JSON property `contentLanguage`
         # @return [String]
         attr_accessor :content_language
       
-        # Optional. Updates objects Content-Type fixed metadata. Unset values will be
-        # ignored. Set empty values to clear the metadata. Refer to documentation in
-        # https://cloud.google.com/storage/docs/metadata#content-type
+        # Optional. Updates objects `Content-Type` fixed metadata. Unset values in the
+        # request are ignored. To clear the metadata, set an empty value. For details,
+        # see [Content-Type](https://cloud.google.com/storage/docs/metadata#content-type)
+        # .
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
       
-        # Optional. Updates objects custom metadata. Adds or sets individual custom
-        # metadata key value pairs on objects. Keys that are set with empty custom
-        # metadata values will have its value cleared. Existing custom metadata not
-        # specified with this flag is not changed. Refer to documentation in https://
-        # cloud.google.com/storage/docs/metadata#custom-metadata
+        # Optional. Updates the object's custom metadata. This operation adds or sets
+        # individual custom metadata key-value pairs. Keys specified with empty values
+        # have their values cleared. Existing custom metadata keys not included in the
+        # request remain unchanged. For details, see [Custom metadata](https://cloud.
+        # google.com/storage/docs/metadata#custom-metadata).
         # Corresponds to the JSON property `customMetadata`
         # @return [Hash<String,String>]
         attr_accessor :custom_metadata
       
-        # Optional. Updates objects Custom-Time fixed metadata. Unset values will be
-        # ignored. Set empty values to clear the metadata. Refer to documentation in
-        # https://cloud.google.com/storage/docs/metadata#custom-time.
+        # Optional. Updates the objects `Custom-Time` fixed metadata. Unset values in
+        # the request are ignored. To clear the metadata, set an empty value. The time
+        # must be specified in RFC 3339 format, for example `YYYY-MM-DD'T'HH:MM:SS'Z'`
+        # or `YYYY-MM-DD'T'HH:MM:SS.SS'Z'`. For details, see [Custom-Time](https://cloud.
+        # google.com/storage/docs/metadata#custom-time).
         # Corresponds to the JSON property `customTime`
         # @return [String]
         attr_accessor :custom_time
@@ -1042,14 +1285,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Updates object event based holds state. When object event based hold
-        # is set, object cannot be deleted or replaced. Resets object's time in the
+        # is set, object can't be deleted or replaced. Resets object's time in the
         # bucket for the purposes of the retention period.
         # Corresponds to the JSON property `eventBasedHold`
         # @return [String]
         attr_accessor :event_based_hold
       
         # Required. Updates object temporary holds state. When object temporary hold is
-        # set, object cannot be deleted or replaced.
+        # set, object can't be deleted or replaced.
         # Corresponds to the JSON property `temporaryHold`
         # @return [String]
         attr_accessor :temporary_hold
@@ -1069,16 +1312,24 @@ module Google
       class RewriteObject
         include Google::Apis::Core::Hashable
       
-        # Required. Resource name of the Cloud KMS key that will be used to encrypt the
-        # object. The Cloud KMS key must be located in same location as the object.
-        # Refer to https://cloud.google.com/storage/docs/encryption/using-customer-
-        # managed-keys#add-object-key for additional documentation. Format: projects/`
-        # project`/locations/`location`/keyRings/`keyring`/cryptoKeys/`key` For example:
-        # "projects/123456/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key".
-        # The object will be rewritten and set with the specified KMS key.
+        # Optional. Resource name of the Cloud KMS key that is used to encrypt the
+        # object. The Cloud KMS key must be located in same location as the object. For
+        # details, see https://cloud.google.com/storage/docs/encryption/using-customer-
+        # managed-keys#add-object-key Format: `projects/`project_id`/locations/`location`
+        # /keyRings/`keyring`/cryptoKeys/`key`` For example: `projects/123456/locations/
+        # us-central1/keyRings/my-keyring/cryptoKeys/my-key`. The object will be
+        # rewritten and set with the specified KMS key.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
+      
+        # Optional. Rewrites the object to the specified storage class. Setting this
+        # field will perform a full byte copy of the object if the storage class is
+        # different from the object's current storage class. If Autoclass is enabled on
+        # the bucket, storage class changes are ignored by Cloud Storage.
+        # Corresponds to the JSON property `storageClass`
+        # @return [String]
+        attr_accessor :storage_class
       
         def initialize(**args)
            update!(**args)
@@ -1087,6 +1338,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @storage_class = args[:storage_class] if args.key?(:storage_class)
+        end
+      end
+      
+      # Describes options for setting object ACLs.
+      class SetObjectAcls
+        include Google::Apis::Core::Hashable
+      
+        # Represents updates to existing access-control entries on an object.
+        # Corresponds to the JSON property `accessControlsUpdates`
+        # @return [Google::Apis::StoragebatchoperationsV1::AccessControlsUpdates]
+        attr_accessor :access_controls_updates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_controls_updates = args[:access_controls_updates] if args.key?(:access_controls_updates)
         end
       end
       
@@ -1129,11 +1400,46 @@ module Google
         end
       end
       
+      # Describes the Cloud Storage locations to include in a ProjectSource job.
+      class TargetLocations
+        include Google::Apis::Core::Hashable
+      
+        # Required. REQUIRED. A list of Cloud Storage locations (e.g., `us-central1`) to
+        # include in the job. If `snapshot_time` is omitted, the job automatically
+        # defaults to the most recent snapshot timestamp that is successfully populated
+        # in BOTH the `object_attributes_view` and `bucket_attributes_view` across ALL
+        # specified locations. For details on Storage Insights dataset snapshots and
+        # views, see: https://docs.cloud.google.com/storage/docs/insights/dataset-tables-
+        # and-schemas#schema
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
+        # Optional. OPTIONAL. The exact Storage Insights snapshot timestamp to use for
+        # the job compatible with the RFC 3339 format (e.g., `2024-01-02T03:04:05Z`). If
+        # specified, this exact snapshot must exist in BOTH the `object_attributes_view`
+        # and `bucket_attributes_view` for every location listed in `locations`. If the
+        # snapshot is missing from either view in any of the locations, the job fails.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
+        end
+      end
+      
       # Describes options to update object custom contexts.
       class UpdateObjectCustomContext
         include Google::Apis::Core::Hashable
       
-        # If set, must be set to true and all existing object custom contexts will be
+        # If set, must be set to true and all existing object custom contexts are
         # deleted.
         # Corresponds to the JSON property `clearAll`
         # @return [Boolean]
