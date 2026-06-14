@@ -250,6 +250,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallEndpointWildfireSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GatewaySecurityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -556,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWildfireVerdictChangeRequestsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -755,6 +773,78 @@ module Google
       end
       
       class ValidationCa
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireAnalysisProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireInlineCloudAnalysisRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireInlineCloudAnalysisRuleCustomFileTypes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireInlineMlFileException
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireInlineMlOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireInlineMlSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireInlineMlSettingsInlineMlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireSubmissionRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireSubmissionRuleCustomFileTypes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireThreatOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WildfireVerdictChangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1121,6 +1211,8 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+          property :wildfire_settings, as: 'wildfireSettings', class: Google::Apis::NetworksecurityV1beta1::FirewallEndpointWildfireSettings, decorator: Google::Apis::NetworksecurityV1beta1::FirewallEndpointWildfireSettings::Representation
+      
         end
       end
       
@@ -1151,7 +1243,30 @@ module Google
       class FirewallEndpointEndpointSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_cloud_region, as: 'contentCloudRegion'
+          property :http_partial_response_blocked, as: 'httpPartialResponseBlocked'
           property :jumbo_frames_enabled, as: 'jumboFramesEnabled'
+        end
+      end
+      
+      class FirewallEndpointWildfireSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :wildfire_inline_cloud_analysis_settings, as: 'wildfireInlineCloudAnalysisSettings', class: Google::Apis::NetworksecurityV1beta1::FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings, decorator: Google::Apis::NetworksecurityV1beta1::FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings::Representation
+      
+          property :wildfire_realtime_lookup_duration, as: 'wildfireRealtimeLookupDuration'
+          property :wildfire_realtime_lookup_timeout_action, as: 'wildfireRealtimeLookupTimeoutAction'
+          property :wildfire_region, as: 'wildfireRegion'
+        end
+      end
+      
+      class FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_analysis_duration, as: 'maxAnalysisDuration'
+          property :submission_timeout_logging_disabled, as: 'submissionTimeoutLoggingDisabled'
+          property :timeout_action, as: 'timeoutAction'
         end
       end
       
@@ -1667,6 +1782,16 @@ module Google
         end
       end
       
+      class ListWildfireVerdictChangeRequestsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :wildfire_verdict_change_requests, as: 'wildfireVerdictChangeRequests', class: Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest, decorator: Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1928,6 +2053,8 @@ module Google
           property :update_time, as: 'updateTime'
           property :url_filtering_profile, as: 'urlFilteringProfile', class: Google::Apis::NetworksecurityV1beta1::UrlFilteringProfile, decorator: Google::Apis::NetworksecurityV1beta1::UrlFilteringProfile::Representation
       
+          property :wildfire_analysis_profile, as: 'wildfireAnalysisProfile', class: Google::Apis::NetworksecurityV1beta1::WildfireAnalysisProfile, decorator: Google::Apis::NetworksecurityV1beta1::WildfireAnalysisProfile::Representation
+      
         end
       end
       
@@ -1945,6 +2072,7 @@ module Google
           property :threat_prevention_profile, as: 'threatPreventionProfile'
           property :update_time, as: 'updateTime'
           property :url_filtering_profile, as: 'urlFilteringProfile'
+          property :wildfire_analysis_profile, as: 'wildfireAnalysisProfile'
         end
       end
       
@@ -2061,6 +2189,132 @@ module Google
       
           property :grpc_endpoint, as: 'grpcEndpoint', class: Google::Apis::NetworksecurityV1beta1::GoogleCloudNetworksecurityV1beta1GrpcEndpoint, decorator: Google::Apis::NetworksecurityV1beta1::GoogleCloudNetworksecurityV1beta1GrpcEndpoint::Representation
       
+        end
+      end
+      
+      class WildfireAnalysisProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :wildfire_inline_cloud_analysis_rules, as: 'wildfireInlineCloudAnalysisRules', class: Google::Apis::NetworksecurityV1beta1::WildfireInlineCloudAnalysisRule, decorator: Google::Apis::NetworksecurityV1beta1::WildfireInlineCloudAnalysisRule::Representation
+      
+          collection :wildfire_inline_ml_overrides, as: 'wildfireInlineMlOverrides', class: Google::Apis::NetworksecurityV1beta1::WildfireInlineMlOverride, decorator: Google::Apis::NetworksecurityV1beta1::WildfireInlineMlOverride::Representation
+      
+          property :wildfire_inline_ml_setting, as: 'wildfireInlineMlSetting', class: Google::Apis::NetworksecurityV1beta1::WildfireInlineMlSettings, decorator: Google::Apis::NetworksecurityV1beta1::WildfireInlineMlSettings::Representation
+      
+          collection :wildfire_inline_ml_settings, as: 'wildfireInlineMlSettings', class: Google::Apis::NetworksecurityV1beta1::WildfireInlineMlSettings, decorator: Google::Apis::NetworksecurityV1beta1::WildfireInlineMlSettings::Representation
+      
+          collection :wildfire_overrides, as: 'wildfireOverrides', class: Google::Apis::NetworksecurityV1beta1::WildfireOverride, decorator: Google::Apis::NetworksecurityV1beta1::WildfireOverride::Representation
+      
+          property :wildfire_realtime_lookup, as: 'wildfireRealtimeLookup'
+          collection :wildfire_submission_rules, as: 'wildfireSubmissionRules', class: Google::Apis::NetworksecurityV1beta1::WildfireSubmissionRule, decorator: Google::Apis::NetworksecurityV1beta1::WildfireSubmissionRule::Representation
+      
+          collection :wildfire_threat_overrides, as: 'wildfireThreatOverrides', class: Google::Apis::NetworksecurityV1beta1::WildfireThreatOverride, decorator: Google::Apis::NetworksecurityV1beta1::WildfireThreatOverride::Representation
+      
+        end
+      end
+      
+      class WildfireInlineCloudAnalysisRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :custom_file_types, as: 'customFileTypes', class: Google::Apis::NetworksecurityV1beta1::WildfireInlineCloudAnalysisRuleCustomFileTypes, decorator: Google::Apis::NetworksecurityV1beta1::WildfireInlineCloudAnalysisRuleCustomFileTypes::Representation
+      
+          property :direction, as: 'direction'
+          property :file_selection_mode, as: 'fileSelectionMode'
+        end
+      end
+      
+      class WildfireInlineCloudAnalysisRuleCustomFileTypes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_types, as: 'fileTypes'
+        end
+      end
+      
+      class WildfireInlineMlFileException
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filename, as: 'filename'
+          property :partial_hash, as: 'partialHash'
+        end
+      end
+      
+      class WildfireInlineMlOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :protocol, as: 'protocol'
+        end
+      end
+      
+      class WildfireInlineMlSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_exceptions, as: 'fileExceptions', class: Google::Apis::NetworksecurityV1beta1::WildfireInlineMlFileException, decorator: Google::Apis::NetworksecurityV1beta1::WildfireInlineMlFileException::Representation
+      
+          collection :inline_ml_configs, as: 'inlineMlConfigs', class: Google::Apis::NetworksecurityV1beta1::WildfireInlineMlSettingsInlineMlConfig, decorator: Google::Apis::NetworksecurityV1beta1::WildfireInlineMlSettingsInlineMlConfig::Representation
+      
+        end
+      end
+      
+      class WildfireInlineMlSettingsInlineMlConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :file_type, as: 'fileType'
+        end
+      end
+      
+      class WildfireOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :protocol, as: 'protocol'
+        end
+      end
+      
+      class WildfireSubmissionRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_file_types, as: 'customFileTypes', class: Google::Apis::NetworksecurityV1beta1::WildfireSubmissionRuleCustomFileTypes, decorator: Google::Apis::NetworksecurityV1beta1::WildfireSubmissionRuleCustomFileTypes::Representation
+      
+          property :direction, as: 'direction'
+          property :file_selection_mode, as: 'fileSelectionMode'
+        end
+      end
+      
+      class WildfireSubmissionRuleCustomFileTypes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_types, as: 'fileTypes'
+        end
+      end
+      
+      class WildfireThreatOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :threat_id, as: 'threatId'
+        end
+      end
+      
+      class WildfireVerdictChangeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment'
+          property :create_time, as: 'createTime'
+          property :file_name, as: 'fileName'
+          property :file_type, as: 'fileType'
+          property :final_verdict, as: 'finalVerdict'
+          property :name, as: 'name'
+          property :new_verdict, as: 'newVerdict'
+          property :old_verdict, as: 'oldVerdict'
+          property :resolution_time, as: 'resolutionTime'
+          property :sha256, as: 'sha256'
+          property :source_region, as: 'sourceRegion'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+          property :wildfire_verdict_change_request_id, as: 'wildfireVerdictChangeRequestId'
         end
       end
     end
