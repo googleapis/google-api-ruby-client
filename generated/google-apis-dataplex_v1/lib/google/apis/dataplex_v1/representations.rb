@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1ApproveChangeRequestRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1Aspect
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +202,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1CancelDataScanJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1CancelDataScanJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1CancelJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,25 +226,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDataplexV1Content
+      class GoogleCloudDataplexV1ChangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDataplexV1ContentNotebook
+      class GoogleCloudDataplexV1CreateEntryLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDataplexV1ContentSqlScript
+      class GoogleCloudDataplexV1CreateEntryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1CreateGlossaryCategoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1CreateGlossaryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1CreateGlossaryTermRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class GoogleCloudDataplexV1DataAccessSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataAssetAccessGroupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,7 +346,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataDocumentationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultDatasetResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -322,6 +382,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataDocumentationResultTableResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +401,36 @@ module Google
       end
       
       class GoogleCloudDataplexV1DataDocumentationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProductAccessApprovalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProductAccessGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProductAccessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProductPrincipal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -466,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataQualityRuleDebugQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataQualityRuleNonNullExpectation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -490,7 +598,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRuleSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -515,6 +659,36 @@ module Google
       end
       
       class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTemplateReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTemplateSql
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -664,6 +838,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DeleteEntryLinkRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DeleteEntryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DeleteGlossaryCategoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DeleteGlossaryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DeleteGlossaryTermRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DiscoveryEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -790,43 +994,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDataplexV1Environment
+      class GoogleCloudDataplexV1ExecutionIdentity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDataplexV1EnvironmentEndpoints
+      class GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDataplexV1EnvironmentInfrastructureSpec
+      class GoogleCloudDataplexV1ExecutionIdentityServiceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDataplexV1EnvironmentSessionSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDataplexV1EnvironmentSessionStatus
+      class GoogleCloudDataplexV1ExecutionIdentityUserCredential
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -869,6 +1055,60 @@ module Google
       end
       
       class GoogleCloudDataplexV1GovernanceEventEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GraphProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileEdgeType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileFieldExtractionHints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileNodeType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -928,7 +1168,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDataplexV1ListContentResponse
+      class GoogleCloudDataplexV1ListChangeRequestsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ListDataAssetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -941,6 +1187,12 @@ module Google
       end
       
       class GoogleCloudDataplexV1ListDataAttributesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ListDataProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -994,12 +1246,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDataplexV1ListEnvironmentsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDataplexV1ListGlossariesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1030,6 +1276,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1ListMetadataFeedsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1ListMetadataJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1042,12 +1294,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDataplexV1ListSessionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDataplexV1ListTasksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1055,6 +1301,42 @@ module Google
       end
       
       class GoogleCloudDataplexV1ListZonesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1LookupContextRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1LookupContextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1LookupEntryLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataFeed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataFeedFilters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataFeedScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1108,6 +1390,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1ModifyEntryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1115,6 +1403,24 @@ module Google
       end
       
       class GoogleCloudDataplexV1Partition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1RejectChangeRequestRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1RequestDataProductAccessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1RequestDataProductAccessResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1193,12 +1499,6 @@ module Google
       end
       
       class GoogleCloudDataplexV1SearchEntriesResultSnippets
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDataplexV1Session
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1318,7 +1618,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1TriggerOneTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1TriggerSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1UnstructuredDataProfileResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1UnstructuredDataProfileSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1UpdateEntryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1UpdateGlossaryCategoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1UpdateGlossaryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1UpdateGlossaryTermRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1529,6 +1871,13 @@ module Google
       class GoogleCloudDataplexV1ActionUnauthorizedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1ApproveChangeRequestRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
         end
       end
       
@@ -1757,6 +2106,18 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1CancelDataScanJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1CancelDataScanJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDataplexV1CancelJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1769,35 +2130,103 @@ module Google
         end
       end
       
-      class GoogleCloudDataplexV1Content
+      class GoogleCloudDataplexV1ChangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :approver, as: 'approver'
+          property :author, as: 'author'
+          property :change_type, as: 'changeType'
+          property :create_entry, as: 'createEntry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateEntryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateEntryRequest::Representation
+      
+          property :create_entry_link, as: 'createEntryLink', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateEntryLinkRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateEntryLinkRequest::Representation
+      
+          property :create_glossary, as: 'createGlossary', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateGlossaryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateGlossaryRequest::Representation
+      
+          property :create_glossary_category, as: 'createGlossaryCategory', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateGlossaryCategoryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateGlossaryCategoryRequest::Representation
+      
+          property :create_glossary_term, as: 'createGlossaryTerm', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateGlossaryTermRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateGlossaryTermRequest::Representation
+      
           property :create_time, as: 'createTime'
-          property :data_text, as: 'dataText'
-          property :description, as: 'description'
+          property :data_product_access_request, as: 'dataProductAccessRequest', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProductAccessRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProductAccessRequest::Representation
+      
+          property :delete_entry, as: 'deleteEntry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteEntryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteEntryRequest::Representation
+      
+          property :delete_entry_link, as: 'deleteEntryLink', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteEntryLinkRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteEntryLinkRequest::Representation
+      
+          property :delete_glossary, as: 'deleteGlossary', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteGlossaryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteGlossaryRequest::Representation
+      
+          property :delete_glossary_category, as: 'deleteGlossaryCategory', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteGlossaryCategoryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteGlossaryCategoryRequest::Representation
+      
+          property :delete_glossary_term, as: 'deleteGlossaryTerm', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteGlossaryTermRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteGlossaryTermRequest::Representation
+      
+          property :etag, as: 'etag'
+          property :justification, as: 'justification'
           hash :labels, as: 'labels'
           property :name, as: 'name'
-          property :notebook, as: 'notebook', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ContentNotebook, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ContentNotebook::Representation
-      
-          property :path, as: 'path'
-          property :sql_script, as: 'sqlScript', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ContentSqlScript, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ContentSqlScript::Representation
-      
+          property :rejection_comment, as: 'rejectionComment'
+          property :resource, as: 'resource'
+          property :state, as: 'state'
           property :uid, as: 'uid'
+          property :update_entry, as: 'updateEntry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateEntryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateEntryRequest::Representation
+      
+          property :update_glossary, as: 'updateGlossary', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateGlossaryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateGlossaryRequest::Representation
+      
+          property :update_glossary_category, as: 'updateGlossaryCategory', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateGlossaryCategoryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateGlossaryCategoryRequest::Representation
+      
+          property :update_glossary_term, as: 'updateGlossaryTerm', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateGlossaryTermRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateGlossaryTermRequest::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
       
-      class GoogleCloudDataplexV1ContentNotebook
+      class GoogleCloudDataplexV1CreateEntryLinkRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kernel_type, as: 'kernelType'
+          property :entry_link, as: 'entryLink', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink::Representation
+      
+          property :entry_link_id, as: 'entryLinkId'
+          property :parent, as: 'parent'
         end
       end
       
-      class GoogleCloudDataplexV1ContentSqlScript
+      class GoogleCloudDataplexV1CreateEntryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :engine, as: 'engine'
+          property :entry, as: 'entry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+      
+          property :entry_id, as: 'entryId'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudDataplexV1CreateGlossaryCategoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory::Representation
+      
+          property :category_id, as: 'categoryId'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudDataplexV1CreateGlossaryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :glossary, as: 'glossary', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary::Representation
+      
+          property :glossary_id, as: 'glossaryId'
+          property :parent, as: 'parent'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleCloudDataplexV1CreateGlossaryTermRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          property :term, as: 'term', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm::Representation
+      
+          property :term_id, as: 'termId'
         end
       end
       
@@ -1805,6 +2234,28 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :readers, as: 'readers'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :access_group_configs, as: 'accessGroupConfigs', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAssetAccessGroupConfig, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAssetAccessGroupConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :resource, as: 'resource'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataAssetAccessGroupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :iam_roles, as: 'iamRoles'
         end
       end
       
@@ -1916,6 +2367,8 @@ module Google
           collection :include_patterns, as: 'includePatterns'
           property :json_options, as: 'jsonOptions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions::Representation
       
+          property :unstructured_data_options, as: 'unstructuredDataOptions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions::Representation
+      
         end
       end
       
@@ -1938,10 +2391,30 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :semantic_inference_enabled, as: 'semanticInferenceEnabled'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataDocumentationResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_result, as: 'datasetResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDatasetResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDatasetResult::Representation
+      
           property :table_result, as: 'tableResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultTableResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultTableResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultDatasetResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :overview, as: 'overview'
+          collection :queries, as: 'queries', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultQuery, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultQuery::Representation
+      
+          collection :schema_relationships, as: 'schemaRelationships', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship::Representation
       
         end
       end
@@ -1972,6 +2445,26 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :left_schema_paths, as: 'leftSchemaPaths', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths::Representation
+      
+          property :right_schema_paths, as: 'rightSchemaPaths', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths::Representation
+      
+          collection :sources, as: 'sources'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :paths, as: 'paths'
+          property :table_fqn, as: 'tableFqn'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataDocumentationResultTableResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1987,12 +2480,73 @@ module Google
       class GoogleCloudDataplexV1DataDocumentationSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_publishing_enabled, as: 'catalogPublishingEnabled'
+          collection :generation_scopes, as: 'generationScopes'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProduct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_approval_config, as: 'accessApprovalConfig', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProductAccessApprovalConfig, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProductAccessApprovalConfig::Representation
+      
+          hash :access_groups, as: 'accessGroups', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProductAccessGroup, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProductAccessGroup::Representation
+      
+          property :asset_count, as: 'assetCount'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :icon, :base64 => true, as: 'icon'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :owner_emails, as: 'ownerEmails'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProductAccessApprovalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :approver_emails, as: 'approverEmails'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProductAccessGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+          property :principal, as: 'principal', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProductPrincipal, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProductPrincipal::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProductAccessRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_group_display_name, as: 'accessGroupDisplayName'
+          property :access_group_id, as: 'accessGroupId'
+          property :parent, as: 'parent'
+          property :requested_principal, as: 'requestedPrincipal'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProductPrincipal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_group, as: 'googleGroup'
+          property :service_account, as: 'serviceAccount'
         end
       end
       
       class GoogleCloudDataplexV1DataProfileResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_publishing_status, as: 'catalogPublishingStatus', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus::Representation
+      
           property :post_scan_actions_result, as: 'postScanActionsResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultPostScanActionsResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultPostScanActionsResult::Representation
       
           property :profile, as: 'profile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfile, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfile::Representation
@@ -2097,10 +2651,12 @@ module Google
       class GoogleCloudDataplexV1DataProfileSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_publishing_enabled, as: 'catalogPublishingEnabled'
           property :exclude_fields, as: 'excludeFields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields::Representation
       
           property :include_fields, as: 'includeFields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields::Representation
       
+          property :mode, as: 'mode'
           property :post_scan_actions, as: 'postScanActions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecPostScanActions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecPostScanActions::Representation
       
           property :row_filter, as: 'rowFilter'
@@ -2210,7 +2766,10 @@ module Google
       class GoogleCloudDataplexV1DataQualityRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes'
           property :column, as: 'column'
+          collection :debug_queries, as: 'debugQueries', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleDebugQuery, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleDebugQuery::Representation
+      
           property :description, as: 'description'
           property :dimension, as: 'dimension'
           property :ignore_null, as: 'ignoreNull'
@@ -2223,6 +2782,8 @@ module Google
       
           property :row_condition_expectation, as: 'rowConditionExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation::Representation
       
+          property :rule_source, as: 'ruleSource', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRuleSource, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRuleSource::Representation
+      
           property :set_expectation, as: 'setExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSetExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSetExpectation::Representation
       
           property :sql_assertion, as: 'sqlAssertion', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSqlAssertion, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSqlAssertion::Representation
@@ -2232,9 +2793,19 @@ module Google
           property :suspended, as: 'suspended'
           property :table_condition_expectation, as: 'tableConditionExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation::Representation
       
+          property :template_reference, as: 'templateReference', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTemplateReference, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTemplateReference::Representation
+      
           property :threshold, as: 'threshold'
           property :uniqueness_expectation, as: 'uniquenessExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation::Representation
       
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleDebugQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :sql_statement, as: 'sqlStatement'
         end
       end
       
@@ -2265,6 +2836,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assertion_row_count, :numeric_string => true, as: 'assertionRowCount'
+          collection :debug_queries_result_sets, as: 'debugQueriesResultSets', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet::Representation
+      
           property :evaluated_count, :numeric_string => true, as: 'evaluatedCount'
           property :failing_rows_query, as: 'failingRowsQuery'
           property :null_count, :numeric_string => true, as: 'nullCount'
@@ -2276,10 +2849,62 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :results, as: 'results', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult::Representation
+      
+        end
+      end
+      
       class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sql_expression, as: 'sqlExpression'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRuleSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rule_path_elements, as: 'rulePathElements', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entry_link_source, as: 'entryLinkSource', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource::Representation
+      
+          property :entry_source, as: 'entrySource', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entry_link, as: 'entryLink'
+          property :entry_link_type, as: 'entryLinkType'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :entry, as: 'entry'
+          property :entry_type, as: 'entryType'
         end
       end
       
@@ -2315,6 +2940,53 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataQualityRuleTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :capabilities, as: 'capabilities'
+          property :dimension, as: 'dimension'
+          hash :input_parameters, as: 'inputParameters', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription::Representation
+      
+          property :name, as: 'name'
+          collection :sql_collection, as: 'sqlCollection', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTemplateSql, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTemplateSql::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_value, as: 'defaultValue'
+          property :description, as: 'description'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTemplateReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :resolved_sql, as: 'resolvedSql'
+          property :rule_template, as: 'ruleTemplate', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTemplate, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTemplate::Representation
+      
+          hash :values, as: 'values', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTemplateSql
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query, as: 'query'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2344,6 +3016,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :catalog_publishing_enabled, as: 'catalogPublishingEnabled'
+          property :enable_catalog_based_rules, as: 'enableCatalogBasedRules'
+          property :filter, as: 'filter'
           property :post_scan_actions, as: 'postScanActions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActions::Representation
       
           property :row_filter, as: 'rowFilter'
@@ -2434,6 +3108,8 @@ module Google
       
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :execution_identity, as: 'executionIdentity', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ExecutionIdentity, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ExecutionIdentity::Representation
+      
           property :execution_spec, as: 'executionSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionSpec::Representation
       
           property :execution_status, as: 'executionStatus', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionStatus::Representation
@@ -2443,6 +3119,10 @@ module Google
           property :state, as: 'state'
           property :type, as: 'type'
           property :uid, as: 'uid'
+          property :unstructured_data_profile_result, as: 'unstructuredDataProfileResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileResult::Representation
+      
+          property :unstructured_data_profile_spec, as: 'unstructuredDataProfileSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileSpec::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -2576,10 +3256,15 @@ module Google
           property :end_time, as: 'endTime'
           property :message, as: 'message'
           property :name, as: 'name'
+          property :partial_failure_message, as: 'partialFailureMessage'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :type, as: 'type'
           property :uid, as: 'uid'
+          property :unstructured_data_profile_result, as: 'unstructuredDataProfileResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileResult::Representation
+      
+          property :unstructured_data_profile_spec, as: 'unstructuredDataProfileSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileSpec::Representation
+      
         end
       end
       
@@ -2604,6 +3289,42 @@ module Google
           property :name, as: 'name'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DeleteEntryLinkRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DeleteEntryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DeleteGlossaryCategoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DeleteGlossaryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DeleteGlossaryTermRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -2774,6 +3495,8 @@ module Google
       class GoogleCloudDataplexV1EntryLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :aspects, as: 'aspects', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Aspect, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Aspect::Representation
+      
           property :create_time, as: 'createTime'
           property :entry_link_type, as: 'entryLinkType'
           collection :entry_references, as: 'entryReferences', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLinkEntryReference, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLinkEntryReference::Representation
@@ -2861,77 +3584,34 @@ module Google
         end
       end
       
-      class GoogleCloudDataplexV1Environment
+      class GoogleCloudDataplexV1ExecutionIdentity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          property :endpoints, as: 'endpoints', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentEndpoints, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentEndpoints::Representation
+          property :dataplex_service_agent, as: 'dataplexServiceAgent', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent::Representation
       
-          property :infrastructure_spec, as: 'infrastructureSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentInfrastructureSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentInfrastructureSpec::Representation
+          property :service_account, as: 'serviceAccount', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ExecutionIdentityServiceAccount, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ExecutionIdentityServiceAccount::Representation
       
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :session_spec, as: 'sessionSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentSessionSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentSessionSpec::Representation
-      
-          property :session_status, as: 'sessionStatus', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentSessionStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentSessionStatus::Representation
-      
-          property :state, as: 'state'
-          property :uid, as: 'uid'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudDataplexV1EnvironmentEndpoints
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :notebooks, as: 'notebooks'
-          property :sql, as: 'sql'
-        end
-      end
-      
-      class GoogleCloudDataplexV1EnvironmentInfrastructureSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :compute, as: 'compute', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources::Representation
-      
-          property :os_image, as: 'osImage', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime::Representation
+          property :user_credential, as: 'userCredential', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ExecutionIdentityUserCredential, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ExecutionIdentityUserCredential::Representation
       
         end
       end
       
-      class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources
+      class GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :disk_size_gb, as: 'diskSizeGb'
-          property :max_node_count, as: 'maxNodeCount'
-          property :node_count, as: 'nodeCount'
         end
       end
       
-      class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime
+      class GoogleCloudDataplexV1ExecutionIdentityServiceAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :image_version, as: 'imageVersion'
-          collection :java_libraries, as: 'javaLibraries'
-          hash :properties, as: 'properties'
-          collection :python_packages, as: 'pythonPackages'
+          property :email, as: 'email'
         end
       end
       
-      class GoogleCloudDataplexV1EnvironmentSessionSpec
+      class GoogleCloudDataplexV1ExecutionIdentityUserCredential
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable_fast_startup, as: 'enableFastStartup'
-          property :max_idle_duration, as: 'maxIdleDuration'
-        end
-      end
-      
-      class GoogleCloudDataplexV1EnvironmentSessionStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :active, as: 'active'
         end
       end
       
@@ -3008,6 +3688,101 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entity, as: 'entity'
           property :entity_type, as: 'entityType'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GraphProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edge_types, as: 'edgeTypes', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeType, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeType::Representation
+      
+          collection :node_types, as: 'nodeTypes', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileNodeType, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileNodeType::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileEdgeType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :extraction_hints, as: 'extractionHints', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints::Representation
+      
+          collection :fields, as: 'fields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileField, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileField::Representation
+      
+          collection :foreign_keys, as: 'foreignKeys', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey::Representation
+      
+          property :name, as: 'name'
+          property :source_node_type, as: 'sourceNodeType'
+          property :target_node_type, as: 'targetNodeType'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cardinality, as: 'cardinality'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :field_mappings, as: 'fieldMappings', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping::Representation
+      
+          property :name, as: 'name'
+          property :referenced_node_type, as: 'referencedNodeType'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :referenced_field, as: 'referencedField'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_type, as: 'dataType'
+          property :description, as: 'description'
+          property :extraction_hints, as: 'extractionHints', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileFieldExtractionHints, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileFieldExtractionHints::Representation
+      
+          collection :fields, as: 'fields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileField, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileField::Representation
+      
+          property :metadata_type, as: 'metadataType'
+          property :mode, as: 'mode'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileFieldExtractionHints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :normalization, as: 'normalization'
+          property :synthesis, as: 'synthesis'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileNodeType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :extraction_hints, as: 'extractionHints', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints::Representation
+      
+          collection :fields, as: 'fields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileField, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileField::Representation
+      
+          property :name, as: 'name'
+          collection :primary_keys, as: 'primaryKeys'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cardinality, as: 'cardinality'
         end
       end
       
@@ -3124,10 +3899,20 @@ module Google
         end
       end
       
-      class GoogleCloudDataplexV1ListContentResponse
+      class GoogleCloudDataplexV1ListChangeRequestsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :content, as: 'content', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Content, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Content::Representation
+          collection :change_requests, as: 'changeRequests', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ChangeRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ChangeRequest::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ListDataAssetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_assets, as: 'dataAssets', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAsset, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAsset::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -3150,6 +3935,16 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable_locations, as: 'unreachableLocations'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ListDataProductsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_products, as: 'dataProducts', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProduct, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProduct::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -3230,15 +4025,6 @@ module Google
         end
       end
       
-      class GoogleCloudDataplexV1ListEnvironmentsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :environments, as: 'environments', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Environment, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Environment::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class GoogleCloudDataplexV1ListGlossariesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3288,6 +4074,16 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1ListMetadataFeedsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metadata_feeds, as: 'metadataFeeds', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataFeed, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataFeed::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class GoogleCloudDataplexV1ListMetadataJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3303,15 +4099,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :partitions, as: 'partitions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Partition, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Partition::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDataplexV1ListSessionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :sessions, as: 'sessions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Session, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Session::Representation
       
         end
       end
@@ -3332,6 +4119,65 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :zones, as: 'zones', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Zone, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Zone::Representation
       
+        end
+      end
+      
+      class GoogleCloudDataplexV1LookupContextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          hash :options, as: 'options'
+          collection :resources, as: 'resources'
+        end
+      end
+      
+      class GoogleCloudDataplexV1LookupContextResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+        end
+      end
+      
+      class GoogleCloudDataplexV1LookupEntryLinksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entry_links, as: 'entryLinks', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataFeed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :filters, as: 'filters', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataFeedFilters, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataFeedFilters::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :pubsub_topic, as: 'pubsubTopic'
+          property :scope, as: 'scope', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataFeedScope, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataFeedScope::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataFeedFilters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aspect_types, as: 'aspectTypes'
+          collection :change_types, as: 'changeTypes'
+          collection :entry_types, as: 'entryTypes'
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataFeedScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entry_groups, as: 'entryGroups'
+          property :organization_level, as: 'organizationLevel'
+          collection :projects, as: 'projects'
         end
       end
       
@@ -3435,6 +4281,17 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1ModifyEntryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aspect_keys, as: 'aspectKeys'
+          property :delete_missing_aspects, as: 'deleteMissingAspects'
+          property :entry, as: 'entry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
       class GoogleCloudDataplexV1OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3455,6 +4312,30 @@ module Google
           property :location, as: 'location'
           property :name, as: 'name'
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudDataplexV1RejectChangeRequestRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment'
+          property :etag, as: 'etag'
+        end
+      end
+      
+      class GoogleCloudDataplexV1RequestDataProductAccessRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_request, as: 'changeRequest', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ChangeRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ChangeRequest::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleCloudDataplexV1RequestDataProductAccessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_request_name, as: 'changeRequestName'
         end
       end
       
@@ -3573,16 +4454,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataplex_entry, as: 'dataplexEntry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
       
-        end
-      end
-      
-      class GoogleCloudDataplexV1Session
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :name, as: 'name'
-          property :state, as: 'state'
-          property :user_id, as: 'userId'
         end
       end
       
@@ -3784,6 +4655,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :on_demand, as: 'onDemand', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerOnDemand, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerOnDemand::Representation
       
+          property :one_time, as: 'oneTime', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerOneTime, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerOneTime::Representation
+      
           property :schedule, as: 'schedule', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerSchedule, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerSchedule::Representation
       
         end
@@ -3795,10 +4668,76 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1TriggerOneTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ttl_after_scan_completion, as: 'ttlAfterScanCompletion'
+        end
+      end
+      
       class GoogleCloudDataplexV1TriggerSchedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cron, as: 'cron'
+        end
+      end
+      
+      class GoogleCloudDataplexV1UnstructuredDataProfileResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :graph_profile, as: 'graphProfile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfile, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfile::Representation
+      
+          property :partial_failure_message, as: 'partialFailureMessage'
+        end
+      end
+      
+      class GoogleCloudDataplexV1UnstructuredDataProfileSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customized_prompt, as: 'customizedPrompt'
+          property :global_endpoint_enabled, as: 'globalEndpointEnabled'
+          property :graph_profile_publishing_enabled, as: 'graphProfilePublishingEnabled'
+        end
+      end
+      
+      class GoogleCloudDataplexV1UpdateEntryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          collection :aspect_keys, as: 'aspectKeys'
+          property :delete_missing_aspects, as: 'deleteMissingAspects'
+          property :entry, as: 'entry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Entry::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleCloudDataplexV1UpdateGlossaryCategoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryCategory::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleCloudDataplexV1UpdateGlossaryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :glossary, as: 'glossary', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Glossary::Representation
+      
+          property :update_mask, as: 'updateMask'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleCloudDataplexV1UpdateGlossaryTermRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :term, as: 'term', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GlossaryTerm::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
