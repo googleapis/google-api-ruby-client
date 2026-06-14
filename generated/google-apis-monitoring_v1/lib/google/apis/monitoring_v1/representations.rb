@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TraceQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Treemap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -660,6 +666,8 @@ module Google
           property :sort_column, as: 'sortColumn'
           property :sort_order, as: 'sortOrder'
           property :time_bin_size, as: 'timeBinSize'
+          property :x_max, as: 'xMax'
+          property :x_min, as: 'xMin'
         end
       end
       
@@ -1185,6 +1193,8 @@ module Google
           property :time_series_filter_ratio, as: 'timeSeriesFilterRatio', class: Google::Apis::MonitoringV1::TimeSeriesFilterRatio, decorator: Google::Apis::MonitoringV1::TimeSeriesFilterRatio::Representation
       
           property :time_series_query_language, as: 'timeSeriesQueryLanguage'
+          property :trace_query, as: 'traceQuery', class: Google::Apis::MonitoringV1::TraceQuery, decorator: Google::Apis::MonitoringV1::TraceQuery::Representation
+      
           property :unit_override, as: 'unitOverride'
         end
       end
@@ -1197,6 +1207,12 @@ module Google
           collection :data_sets, as: 'dataSets', class: Google::Apis::MonitoringV1::TableDataSet, decorator: Google::Apis::MonitoringV1::TableDataSet::Representation
       
           property :metric_visualization, as: 'metricVisualization'
+        end
+      end
+      
+      class TraceQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
