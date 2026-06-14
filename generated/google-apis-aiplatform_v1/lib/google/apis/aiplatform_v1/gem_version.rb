@@ -16,13 +16,13 @@ module Google
   module Apis
     module AiplatformV1
       # Version of the google-apis-aiplatform_v1 gem
-      GEM_VERSION = "0.87.0"
+      GEM_VERSION = "0.88.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.18.0"
+      GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260509"
+      REVISION = "20260605"
     end
   end
 end

@@ -26,6 +26,13 @@ module Google
       class CloudAiLargeModelsVisionGenerateVideoExperiments
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, anchors the last frame in video generation by generating a
+        # custom border mask.
+        # Corresponds to the JSON property `anchorLastFrame`
+        # @return [Boolean]
+        attr_accessor :anchor_last_frame
+        alias_method :anchor_last_frame?, :anchor_last_frame
+      
         # Optional. Video codec to use for output.
         # Corresponds to the JSON property `codec`
         # @return [String]
@@ -36,6 +43,12 @@ module Google
         # Corresponds to the JSON property `conditioningFrames`
         # @return [Array<Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame>]
         attr_accessor :conditioning_frames
+      
+        # Generic key-value pairs for experimental parameters. This allows adding new
+        # parameters without changing the dataplane binary.
+        # Corresponds to the JSON property `customParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_parameters
       
         # Human pose parameters for Pose Control
         # Corresponds to the JSON property `humanPose`
@@ -52,6 +65,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_diffusion_steps
       
+        # The original REST API request JSON sent by the user, in the instances/
+        # parameters format. Preserved for saving alongside output artifacts so users
+        # can reproduce their requests. This field is populated by the API handler and
+        # is not user-settable.
+        # Corresponds to the JSON property `originalRequestJson`
+        # @return [String]
+        attr_accessor :original_request_json
+      
         # "Direct" prompting for Experimental Video Generation. These will be sent
         # directly to the LDM without being rewritten.
         # Corresponds to the JSON property `promptInputs`
@@ -65,6 +86,17 @@ module Google
         # Corresponds to the JSON property `requestOriginTag`
         # @return [String]
         attr_accessor :request_origin_tag
+      
+        # Scheduling configuration for Veo Experimental.
+        # Corresponds to the JSON property `schedulingConfig`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsVeSchedulingConfig]
+        attr_accessor :scheduling_config
+      
+        # Parameters for seamless (edge-continuous) video generation, enabling temporal
+        # looping and/or spatial tessellation.
+        # Corresponds to the JSON property `seamless`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionSeamless]
+        attr_accessor :seamless
       
         # If true (default), truncate input videos that exceed the model's maximum frame
         # count by applying a frame_selection_config to __video_file__ inputs. Set to
@@ -91,13 +123,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @anchor_last_frame = args[:anchor_last_frame] if args.key?(:anchor_last_frame)
           @codec = args[:codec] if args.key?(:codec)
           @conditioning_frames = args[:conditioning_frames] if args.key?(:conditioning_frames)
+          @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
           @human_pose = args[:human_pose] if args.key?(:human_pose)
           @model_name = args[:model_name] if args.key?(:model_name)
           @num_diffusion_steps = args[:num_diffusion_steps] if args.key?(:num_diffusion_steps)
+          @original_request_json = args[:original_request_json] if args.key?(:original_request_json)
           @prompt_inputs = args[:prompt_inputs] if args.key?(:prompt_inputs)
           @request_origin_tag = args[:request_origin_tag] if args.key?(:request_origin_tag)
+          @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
+          @seamless = args[:seamless] if args.key?(:seamless)
           @truncate_input_video = args[:truncate_input_video] if args.key?(:truncate_input_video)
           @video_transform_mask_gcs_uri = args[:video_transform_mask_gcs_uri] if args.key?(:video_transform_mask_gcs_uri)
           @video_transform_strength = args[:video_transform_strength] if args.key?(:video_transform_strength)
@@ -126,6 +163,26 @@ module Google
         def update!(**args)
           @frame_num = args[:frame_num] if args.key?(:frame_num)
           @image = args[:image] if args.key?(:image)
+        end
+      end
+      
+      # Scheduling configuration for Veo Experimental.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsVeSchedulingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, enable retries on transient errors with default backoff.
+        # Corresponds to the JSON property `enableRetry`
+        # @return [Boolean]
+        attr_accessor :enable_retry
+        alias_method :enable_retry?, :enable_retry
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_retry = args[:enable_retry] if args.key?(:enable_retry)
         end
       end
       
@@ -666,6 +723,41 @@ module Google
           @iou_score = args[:iou_score] if args.key?(:iou_score)
           @mid = args[:mid] if args.key?(:mid)
           @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # 
+      class CloudAiLargeModelsVisionSeamless
+        include Google::Apis::Core::Hashable
+      
+        # If true, the generated video will be loopable (seamless time looping).
+        # Corresponds to the JSON property `loop`
+        # @return [Boolean]
+        attr_accessor :loop
+        alias_method :loop?, :loop
+      
+        # If true, the generated video will be tessellatable as a horizontal
+        # tessellation.
+        # Corresponds to the JSON property `tessellateHorizontal`
+        # @return [Boolean]
+        attr_accessor :tessellate_horizontal
+        alias_method :tessellate_horizontal?, :tessellate_horizontal
+      
+        # If true, the generated video will be tessellatable as a vertical tessellation.
+        # Corresponds to the JSON property `tessellateVertical`
+        # @return [Boolean]
+        attr_accessor :tessellate_vertical
+        alias_method :tessellate_vertical?, :tessellate_vertical
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @loop = args[:loop] if args.key?(:loop)
+          @tessellate_horizontal = args[:tessellate_horizontal] if args.key?(:tessellate_horizontal)
+          @tessellate_vertical = args[:tessellate_vertical] if args.key?(:tessellate_vertical)
         end
       end
       
@@ -1897,9 +1989,9 @@ module Google
         end
       end
       
-      # A description of resources that to large degree are decided by Vertex AI, and
-      # require only a modest additional configuration. Each Model supporting these
-      # resources documents its specific guidelines.
+      # A description of resources that to large degree are decided by Agent Platform,
+      # and require only a modest additional configuration. Each Model supporting
+      # these resources documents its specific guidelines.
       class GoogleCloudAiplatformV1AutomaticResources
         include Google::Apis::Core::Hashable
       
@@ -1909,8 +2001,8 @@ module Google
         # that many replicas is guaranteed (barring service outages). If traffic
         # increases beyond what its replicas at maximum may handle, a portion of the
         # traffic will be dropped. If this value is not provided, a no upper bound for
-        # scaling under heavy traffic will be assume, though Vertex AI may be unable to
-        # scale beyond certain replica number.
+        # scaling under heavy traffic will be assume, though Agent Platform may be
+        # unable to scale beyond certain replica number.
         # Corresponds to the JSON property `maxReplicaCount`
         # @return [Fixnum]
         attr_accessor :max_replica_count
@@ -2219,8 +2311,8 @@ module Google
         attr_accessor :max_replica_count
       
         # Immutable. The number of machine replicas used at the start of the batch
-        # operation. If not set, Vertex AI decides starting number, not greater than
-        # max_replica_count
+        # operation. If not set, Agent Platform decides starting number, not greater
+        # than max_replica_count
         # Corresponds to the JSON property `startingReplicaCount`
         # @return [Fixnum]
         attr_accessor :starting_replica_count
@@ -5546,6 +5638,25 @@ module Google
         end
       end
       
+      # Runtime operation metadata for ServingProfileService.CreateServingProfile.
+      class GoogleCloudAiplatformV1CreateServingProfileOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
       # Runtime operation information for SpecialistPoolService.CreateSpecialistPool.
       class GoogleCloudAiplatformV1CreateSpecialistPoolOperationMetadata
         include Google::Apis::Core::Hashable
@@ -6699,9 +6810,10 @@ module Google
         # increases beyond what its replicas at maximum may handle, a portion of the
         # traffic will be dropped. If this value is not provided, will use
         # min_replica_count as the default value. The value of this field impacts the
-        # charge against Vertex CPU and GPU quotas. Specifically, you will be charged
-        # for (max_replica_count * number of cores in the selected machine type) and (
-        # max_replica_count * number of GPUs per replica in the selected machine type).
+        # charge against Agent Platform CPU and GPU quotas. Specifically, you will be
+        # charged for (max_replica_count * number of cores in the selected machine type)
+        # and (max_replica_count * number of GPUs per replica in the selected machine
+        # type).
         # Corresponds to the JSON property `maxReplicaCount`
         # @return [Fixnum]
         attr_accessor :max_replica_count
@@ -7429,9 +7541,9 @@ module Google
       class GoogleCloudAiplatformV1DeployedIndex
         include Google::Apis::Core::Hashable
       
-        # A description of resources that to large degree are decided by Vertex AI, and
-        # require only a modest additional configuration. Each Model supporting these
-        # resources documents its specific guidelines.
+        # A description of resources that to large degree are decided by Agent Platform,
+        # and require only a modest additional configuration. Each Model supporting
+        # these resources documents its specific guidelines.
         # Corresponds to the JSON property `automaticResources`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutomaticResources]
         attr_accessor :automatic_resources
@@ -7661,9 +7773,9 @@ module Google
       class GoogleCloudAiplatformV1DeployedModel
         include Google::Apis::Core::Hashable
       
-        # A description of resources that to large degree are decided by Vertex AI, and
-        # require only a modest additional configuration. Each Model supporting these
-        # resources documents its specific guidelines.
+        # A description of resources that to large degree are decided by Agent Platform,
+        # and require only a modest additional configuration. Each Model supporting
+        # these resources documents its specific guidelines.
         # Corresponds to the JSON property `automaticResources`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutomaticResources]
         attr_accessor :automatic_resources
@@ -14416,9 +14528,9 @@ module Google
       class GoogleCloudAiplatformV1FeatureViewOptimizedConfig
         include Google::Apis::Core::Hashable
       
-        # A description of resources that to large degree are decided by Vertex AI, and
-        # require only a modest additional configuration. Each Model supporting these
-        # resources documents its specific guidelines.
+        # A description of resources that to large degree are decided by Agent Platform,
+        # and require only a modest additional configuration. Each Model supporting
+        # these resources documents its specific guidelines.
         # Corresponds to the JSON property `automaticResources`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutomaticResources]
         attr_accessor :automatic_resources
@@ -21302,15 +21414,15 @@ module Google
       class GoogleCloudAiplatformV1MachineSpec
         include Google::Apis::Core::Hashable
       
-        # The number of accelerators to attach to the machine. For accelerator optimized
-        # machine types (https://cloud.google.com/compute/docs/accelerator-optimized-
-        # machines), One may set the accelerator_count from 1 to N for machine with N
-        # GPUs. If accelerator_count is less than or equal to N / 2, Vertex will co-
-        # schedule the replicas of the model into the same VM to save cost. For example,
-        # if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set
-        # accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Vertex
-        # will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save
-        # cost. When co-scheduling, CPU, memory and storage on the VM will be
+        # The number of accelerators to attach to the machine. For [accelerator
+        # optimized machine types](https://cloud.google.com/compute/docs/accelerator-
+        # optimized-machines), One may set the accelerator_count from 1 to N for machine
+        # with N GPUs. If accelerator_count is less than or equal to N / 2, Agent
+        # Platform co-schedules the replicas of the model into the same VM to save cost.
+        # For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one
+        # can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4,
+        # Agent Platform co-schedules 8, 4, 2, or 2 replicas of the model into the same
+        # VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be
         # distributed to replicas on the VM. For example, one can expect a co-scheduled
         # replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU,
         # memory and storage of the VM. Note that the feature is not compatible with
@@ -21340,12 +21452,13 @@ module Google
         attr_accessor :gpu_partition_size
       
         # Immutable. The type of the machine. See the [list of machine types supported
-        # for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-
-        # compute#machine-types) See the [list of machine types supported for custom
-        # training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#
-        # machine-types). For DeployedModel this field is optional, and the default
-        # value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec
-        # this field is required.
+        # for prediction](https://cloud.google.com/gemini-enterprise-agent-platform/
+        # machine-learning/predictions/configure-compute#machine-types) See the [list of
+        # machine types supported for custom training](https://cloud.google.com/gemini-
+        # enterprise-agent-platform/machine-learning/training/configure-compute#machine-
+        # types). For DeployedModel this field is optional, and the default value is `n1-
+        # standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is
+        # required.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -26106,7 +26219,7 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NetworkSpec]
         attr_accessor :network_spec
       
-        # Represents the spec of persistent disk options.
+        # Represents the spec of persistent disk and hyperdisk options.
         # Corresponds to the JSON property `persistentDiskSpec`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PersistentDiskSpec]
         attr_accessor :persistent_disk_spec
@@ -26288,7 +26401,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Represents the spec of persistent disk options.
+        # Represents the spec of persistent disk and hyperdisk options.
         # Corresponds to the JSON property `dataPersistentDiskSpec`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PersistentDiskSpec]
         attr_accessor :data_persistent_disk_spec
@@ -26502,7 +26615,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Represents the spec of persistent disk options.
+        # Represents the spec of persistent disk and hyperdisk options.
         # Corresponds to the JSON property `dataPersistentDiskSpec`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PersistentDiskSpec]
         attr_accessor :data_persistent_disk_spec
@@ -27412,7 +27525,7 @@ module Google
         end
       end
       
-      # Represents the spec of persistent disk options.
+      # Represents the spec of persistent disk and hyperdisk options.
       class GoogleCloudAiplatformV1PersistentDiskSpec
         include Google::Apis::Core::Hashable
       
@@ -27424,7 +27537,10 @@ module Google
         # Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (
         # Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk
         # Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme
-        # Persistent Disk)
+        # Persistent Disk) "hyperdisk-balanced" (Hyperdisk Balanced) "hyperdisk-extreme"
+        # (Hyperdisk Extreme) "hyperdisk-balanced-high-availability" (Hyperdisk Balanced
+        # High Availability) "hyperdisk-ml" (Hyperdisk ML) "hyperdisk-throughput" (
+        # Hyperdisk Throughput)
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -29405,9 +29521,9 @@ module Google
         # @return [String]
         attr_accessor :artifact_uri
       
-        # A description of resources that to large degree are decided by Vertex AI, and
-        # require only a modest additional configuration. Each Model supporting these
-        # resources documents its specific guidelines.
+        # A description of resources that to large degree are decided by Agent Platform,
+        # and require only a modest additional configuration. Each Model supporting
+        # these resources documents its specific guidelines.
         # Corresponds to the JSON property `automaticResources`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutomaticResources]
         attr_accessor :automatic_resources
@@ -34722,6 +34838,12 @@ module Google
         # @return [String]
         attr_accessor :default_container_category
       
+        # Message to define resource requests and limits (mirroring Kubernetes) for each
+        # sandbox instance created from this template.
+        # Corresponds to the JSON property `resources`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentTemplateResourceRequirements]
+        attr_accessor :resources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -34729,6 +34851,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @default_container_category = args[:default_container_category] if args.key?(:default_container_category)
+          @resources = args[:resources] if args.key?(:resources)
         end
       end
       
@@ -45784,6 +45907,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnterpriseWebSearch]
         attr_accessor :enterprise_web_search
       
+        # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding.
+        # Corresponds to the JSON property `exaAiSearch`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolExaAiSearch]
+        attr_accessor :exa_ai_search
+      
         # Optional. Function tool type. One or more function declarations to be passed
         # to the model along with the current user query. Model may decide to call a
         # subset of these functions by populating FunctionCall in the response. User
@@ -45835,6 +45963,7 @@ module Google
           @code_execution = args[:code_execution] if args.key?(:code_execution)
           @computer_use = args[:computer_use] if args.key?(:computer_use)
           @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
+          @exa_ai_search = args[:exa_ai_search] if args.key?(:exa_ai_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
           @google_maps = args[:google_maps] if args.key?(:google_maps)
           @google_search = args[:google_search] if args.key?(:google_search)
@@ -46038,6 +46167,32 @@ module Google
         def update!(**args)
           @function_calling_config = args[:function_calling_config] if args.key?(:function_calling_config)
           @retrieval_config = args[:retrieval_config] if args.key?(:retrieval_config)
+        end
+      end
+      
+      # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding.
+      class GoogleCloudAiplatformV1ToolExaAiSearch
+        include Google::Apis::Core::Hashable
+      
+        # Required. The API key for ExaAiSearch.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # Optional. This field can be used to pass any parameter from the Exa.ai Search
+        # API.
+        # Corresponds to the JSON property `customConfigs`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @custom_configs = args[:custom_configs] if args.key?(:custom_configs)
         end
       end
       

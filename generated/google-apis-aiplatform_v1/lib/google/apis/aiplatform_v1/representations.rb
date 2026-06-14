@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsVeSchedulingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoRequestImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,12 @@ module Google
       end
       
       class CloudAiLargeModelsVisionRaiInfoDetectedLabelsEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionSeamless
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1061,6 +1073,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1CreateRegistryFeatureOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1CreateServingProfileOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7504,6 +7522,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ToolExaAiSearch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1ToolGoogleSearch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8311,16 +8335,23 @@ module Google
       class CloudAiLargeModelsVisionGenerateVideoExperiments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :anchor_last_frame, as: 'anchorLastFrame'
           property :codec, as: 'codec'
           collection :conditioning_frames, as: 'conditioningFrames', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame::Representation
       
+          hash :custom_parameters, as: 'customParameters'
           property :human_pose, as: 'humanPose', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionHumanPose, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionHumanPose::Representation
       
           property :model_name, as: 'modelName'
           property :num_diffusion_steps, as: 'numDiffusionSteps'
+          property :original_request_json, as: 'originalRequestJson'
           property :prompt_inputs, as: 'promptInputs', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionPromptInputs, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionPromptInputs::Representation
       
           property :request_origin_tag, as: 'requestOriginTag'
+          property :scheduling_config, as: 'schedulingConfig', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsVeSchedulingConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsVeSchedulingConfig::Representation
+      
+          property :seamless, as: 'seamless', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionSeamless, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionSeamless::Representation
+      
           property :truncate_input_video, as: 'truncateInputVideo'
           property :video_transform_mask_gcs_uri, as: 'videoTransformMaskGcsUri'
           property :video_transform_strength, as: 'videoTransformStrength'
@@ -8333,6 +8364,13 @@ module Google
           property :frame_num, as: 'frameNum'
           property :image, as: 'image', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestImage, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestImage::Representation
       
+        end
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsVeSchedulingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_retry, as: 'enableRetry'
         end
       end
       
@@ -8487,6 +8525,15 @@ module Google
           property :iou_score, as: 'iouScore'
           property :mid, as: 'mid'
           property :score, as: 'score'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionSeamless
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :loop, as: 'loop'
+          property :tessellate_horizontal, as: 'tessellateHorizontal'
+          property :tessellate_vertical, as: 'tessellateVertical'
         end
       end
       
@@ -9961,6 +10008,14 @@ module Google
       end
       
       class GoogleCloudAiplatformV1CreateRegistryFeatureOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CreateServingProfileOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :generic_metadata, as: 'genericMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata::Representation
@@ -18180,6 +18235,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_container_category, as: 'defaultContainerCategory'
+          property :resources, as: 'resources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentTemplateResourceRequirements, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentTemplateResourceRequirements::Representation
+      
         end
       end
       
@@ -21145,6 +21202,8 @@ module Google
       
           property :enterprise_web_search, as: 'enterpriseWebSearch', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnterpriseWebSearch, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnterpriseWebSearch::Representation
       
+          property :exa_ai_search, as: 'exaAiSearch', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolExaAiSearch, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolExaAiSearch::Representation
+      
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration::Representation
       
           property :google_maps, as: 'googleMaps', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleMaps, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleMaps::Representation
@@ -21230,6 +21289,14 @@ module Google
       
           property :retrieval_config, as: 'retrievalConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolExaAiSearch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key, as: 'apiKey'
+          hash :custom_configs, as: 'customConfigs'
         end
       end
       
