@@ -1380,7 +1380,7 @@ module Google
         # @return [Google::Apis::RedisV1beta1::DatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 32
+        # Common model for database resource instance metadata. Next ID: 35
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::RedisV1beta1::DatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -1578,9 +1578,14 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 32
+      # Common model for database resource instance metadata. Next ID: 35
       class DatabaseResourceMetadata
         include Google::Apis::Core::Hashable
+      
+        # Field to ingest additional metadata whichd does not support proto format.
+        # Corresponds to the JSON property `additionalMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_metadata
       
         # Configuration for availability of database instance
         # Corresponds to the JSON property `availabilityConfiguration`
@@ -1654,6 +1659,16 @@ module Google
         # Corresponds to the JSON property `instanceType`
         # @return [String]
         attr_accessor :instance_type
+      
+        # Field to ingest additional metadata which support proto format.
+        # Corresponds to the JSON property `internalAdditionalMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :internal_additional_metadata
+      
+        # Used to send IP address information for a database resource.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [Google::Apis::RedisV1beta1::IpAddress]
+        attr_accessor :ip_address
       
         # Optional. Whether deletion protection is enabled for this resource.
         # Corresponds to the JSON property `isDeletionProtectionEnabled`
@@ -1755,6 +1770,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_metadata = args[:additional_metadata] if args.key?(:additional_metadata)
           @availability_configuration = args[:availability_configuration] if args.key?(:availability_configuration)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
           @backup_run = args[:backup_run] if args.key?(:backup_run)
@@ -1768,6 +1784,8 @@ module Google
           @gcbdr_configuration = args[:gcbdr_configuration] if args.key?(:gcbdr_configuration)
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @internal_additional_metadata = args[:internal_additional_metadata] if args.key?(:internal_additional_metadata)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
           @is_deletion_protection_enabled = args[:is_deletion_protection_enabled] if args.key?(:is_deletion_protection_enabled)
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
@@ -2752,6 +2770,34 @@ module Google
           @product = args[:product] if args.key?(:product)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Used to send IP address information for a database resource.
+      class IpAddress
+        include Google::Apis::Core::Hashable
+      
+        # The private IP address assigned to the resource within a Virtual Private Cloud
+        # (VPC). This IP is only reachable from within the same VPC network. Stored in
+        # standard string format (e.g., "10.0.0.2").
+        # Corresponds to the JSON property `privateIp`
+        # @return [String]
+        attr_accessor :private_ip
+      
+        # The public IP address assigned to the resource. This IP is reachable from the
+        # internet. Stored in standard string format (e.g., "34.72.1.1").
+        # Corresponds to the JSON property `publicIp`
+        # @return [String]
+        attr_accessor :public_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_ip = args[:private_ip] if args.key?(:private_ip)
+          @public_ip = args[:public_ip] if args.key?(:public_ip)
         end
       end
       
@@ -4135,6 +4181,11 @@ module Google
         # @return [String]
         attr_accessor :maintenance_version
       
+        # Optional. List of next available maintenance versions.
+        # Corresponds to the JSON property `nextAvailableMaintenanceVersions`
+        # @return [Array<String>]
+        attr_accessor :next_available_maintenance_versions
+      
         # Upcoming maintenance for the database resource. This is generated by SLM once
         # the upcoming maintenance schedule is published.
         # Corresponds to the JSON property `upcomingMaintenance`
@@ -4153,6 +4204,7 @@ module Google
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @maintenance_state = args[:maintenance_state] if args.key?(:maintenance_state)
           @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
+          @next_available_maintenance_versions = args[:next_available_maintenance_versions] if args.key?(:next_available_maintenance_versions)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end

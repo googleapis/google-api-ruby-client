@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IpAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAclPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1100,6 +1106,7 @@ module Google
       class DatabaseResourceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_metadata, as: 'additionalMetadata'
           property :availability_configuration, as: 'availabilityConfiguration', class: Google::Apis::RedisV1beta1::AvailabilityConfiguration, decorator: Google::Apis::RedisV1beta1::AvailabilityConfiguration::Representation
       
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::RedisV1beta1::BackupConfiguration, decorator: Google::Apis::RedisV1beta1::BackupConfiguration::Representation
@@ -1121,6 +1128,9 @@ module Google
           property :id, as: 'id', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
       
           property :instance_type, as: 'instanceType'
+          hash :internal_additional_metadata, as: 'internalAdditionalMetadata'
+          property :ip_address, as: 'ipAddress', class: Google::Apis::RedisV1beta1::IpAddress, decorator: Google::Apis::RedisV1beta1::IpAddress::Representation
+      
           property :is_deletion_protection_enabled, as: 'isDeletionProtectionEnabled'
           property :location, as: 'location'
           property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::RedisV1beta1::MachineConfiguration, decorator: Google::Apis::RedisV1beta1::MachineConfiguration::Representation
@@ -1392,6 +1402,14 @@ module Google
           property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
       
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class IpAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_ip, as: 'privateIp'
+          property :public_ip, as: 'publicIp'
         end
       end
       
@@ -1766,6 +1784,7 @@ module Google
       
           property :maintenance_state, as: 'maintenanceState'
           property :maintenance_version, as: 'maintenanceVersion'
+          collection :next_available_maintenance_versions, as: 'nextAvailableMaintenanceVersions'
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::RedisV1beta1::UpcomingMaintenance, decorator: Google::Apis::RedisV1beta1::UpcomingMaintenance::Representation
       
         end
