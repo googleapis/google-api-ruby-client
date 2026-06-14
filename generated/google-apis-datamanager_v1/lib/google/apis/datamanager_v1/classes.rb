@@ -22,10 +22,238 @@ module Google
   module Apis
     module DatamanagerV1
       
+      # An ad event.
+      class AdEvent
+        include Google::Apis::Core::Hashable
+      
+        # Enum value for ad format.
+        # Corresponds to the JSON property `adFormat`
+        # @return [String]
+        attr_accessor :ad_format
+      
+        # String value for ad format.
+        # Corresponds to the JSON property `adFormatString`
+        # @return [String]
+        attr_accessor :ad_format_string
+      
+        # Optional. The ID of the associated ad group.
+        # Corresponds to the JSON property `adGroupId`
+        # @return [String]
+        attr_accessor :ad_group_id
+      
+        # Optional. The height of the ad in pixels.
+        # Corresponds to the JSON property `adHeight`
+        # @return [Fixnum]
+        attr_accessor :ad_height
+      
+        # Optional. The ID of the associated ad within the group.
+        # Corresponds to the JSON property `adId`
+        # @return [String]
+        attr_accessor :ad_id
+      
+        # Enum value for ad placement.
+        # Corresponds to the JSON property `adPlacement`
+        # @return [String]
+        attr_accessor :ad_placement
+      
+        # String value for ad placement.
+        # Corresponds to the JSON property `adPlacementString`
+        # @return [String]
+        attr_accessor :ad_placement_string
+      
+        # Enum value for ad type.
+        # Corresponds to the JSON property `adType`
+        # @return [String]
+        attr_accessor :ad_type
+      
+        # String value for ad type.
+        # Corresponds to the JSON property `adTypeString`
+        # @return [String]
+        attr_accessor :ad_type_string
+      
+        # Optional. The width of the ad in pixels.
+        # Corresponds to the JSON property `adWidth`
+        # @return [Fixnum]
+        attr_accessor :ad_width
+      
+        # Required. The ID of the advertiser for the ad event. This must match the ID
+        # sent in the linking flow.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [String]
+        attr_accessor :advertiser_id
+      
+        # Optional. The partner-assumed attribution status for this ad event. This acts
+        # only as a signal for how the partner assumed attribution played out, and does
+        # not force an end result in final reports.
+        # Corresponds to the JSON property `attributionHint`
+        # @return [String]
+        attr_accessor :attribution_hint
+      
+        # Required. The ID of the associated campaign.
+        # Corresponds to the JSON property `campaignId`
+        # @return [String]
+        attr_accessor :campaign_id
+      
+        # Required. The name of the associated campaign.
+        # Corresponds to the JSON property `campaignName`
+        # @return [String]
+        attr_accessor :campaign_name
+      
+        # Information about the device being used (if any) when the event happened.
+        # Corresponds to the JSON property `deviceInfo`
+        # @return [Google::Apis::DatamanagerV1::DeviceInfo]
+        attr_accessor :device_info
+      
+        # Optional. An ID created and managed by the caller that uniquely identifies
+        # this event. Required if you want to deduplicate ad events that are included in
+        # multiple requests. Otherwise, this field is optional.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Enum value for event subtype.
+        # Corresponds to the JSON property `eventSubtype`
+        # @return [String]
+        attr_accessor :event_subtype
+      
+        # String value for event subtype.
+        # Corresponds to the JSON property `eventSubtypeString`
+        # @return [String]
+        attr_accessor :event_subtype_string
+      
+        # Required. The type of the event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Optional. Represents if the row is allowed to be used for measurement purposes,
+        # as governed by applicable privacy laws within regional jurisdiction.
+        # Corresponds to the JSON property `measurementAllowed`
+        # @return [Boolean]
+        attr_accessor :measurement_allowed
+        alias_method :measurement_allowed?, :measurement_allowed
+      
+        # Required. The medium of the ad, akin to the Google Analytics medium.
+        # Corresponds to the JSON property `medium`
+        # @return [String]
+        attr_accessor :medium
+      
+        # Optional. The device ID of the device that the ad was served to.
+        # Corresponds to the JSON property `mobileDeviceId`
+        # @return [String]
+        attr_accessor :mobile_device_id
+      
+        # Enum value for platform.
+        # Corresponds to the JSON property `platform`
+        # @return [String]
+        attr_accessor :platform
+      
+        # String value for platform.
+        # Corresponds to the JSON property `platformString`
+        # @return [String]
+        attr_accessor :platform_string
+      
+        # Enum value for platform type.
+        # Corresponds to the JSON property `platformType`
+        # @return [String]
+        attr_accessor :platform_type
+      
+        # String value for platform type.
+        # Corresponds to the JSON property `platformTypeString`
+        # @return [String]
+        attr_accessor :platform_type_string
+      
+        # Required. The ISO 3166-2 country plus subdivision.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Required. The platform source of the ad, akin to the Google Analytics source.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Enum value for targeting type.
+        # Corresponds to the JSON property `targetingType`
+        # @return [String]
+        attr_accessor :targeting_type
+      
+        # String value for targeting type.
+        # Corresponds to the JSON property `targetingTypeString`
+        # @return [String]
+        attr_accessor :targeting_type_string
+      
+        # Required. The time the event occurred.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # Data that identifies the user. At least one identifier is required.
+        # Corresponds to the JSON property `userData`
+        # @return [Google::Apis::DatamanagerV1::UserData]
+        attr_accessor :user_data
+      
+        # Details of the viewability of the ad served.
+        # Corresponds to the JSON property `viewabilityInfo`
+        # @return [Google::Apis::DatamanagerV1::ViewabilityInfo]
+        attr_accessor :viewability_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_format = args[:ad_format] if args.key?(:ad_format)
+          @ad_format_string = args[:ad_format_string] if args.key?(:ad_format_string)
+          @ad_group_id = args[:ad_group_id] if args.key?(:ad_group_id)
+          @ad_height = args[:ad_height] if args.key?(:ad_height)
+          @ad_id = args[:ad_id] if args.key?(:ad_id)
+          @ad_placement = args[:ad_placement] if args.key?(:ad_placement)
+          @ad_placement_string = args[:ad_placement_string] if args.key?(:ad_placement_string)
+          @ad_type = args[:ad_type] if args.key?(:ad_type)
+          @ad_type_string = args[:ad_type_string] if args.key?(:ad_type_string)
+          @ad_width = args[:ad_width] if args.key?(:ad_width)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @attribution_hint = args[:attribution_hint] if args.key?(:attribution_hint)
+          @campaign_id = args[:campaign_id] if args.key?(:campaign_id)
+          @campaign_name = args[:campaign_name] if args.key?(:campaign_name)
+          @device_info = args[:device_info] if args.key?(:device_info)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_subtype = args[:event_subtype] if args.key?(:event_subtype)
+          @event_subtype_string = args[:event_subtype_string] if args.key?(:event_subtype_string)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @measurement_allowed = args[:measurement_allowed] if args.key?(:measurement_allowed)
+          @medium = args[:medium] if args.key?(:medium)
+          @mobile_device_id = args[:mobile_device_id] if args.key?(:mobile_device_id)
+          @platform = args[:platform] if args.key?(:platform)
+          @platform_string = args[:platform_string] if args.key?(:platform_string)
+          @platform_type = args[:platform_type] if args.key?(:platform_type)
+          @platform_type_string = args[:platform_type_string] if args.key?(:platform_type_string)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @source = args[:source] if args.key?(:source)
+          @targeting_type = args[:targeting_type] if args.key?(:targeting_type)
+          @targeting_type_string = args[:targeting_type_string] if args.key?(:targeting_type_string)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @user_data = args[:user_data] if args.key?(:user_data)
+          @viewability_info = args[:viewability_info] if args.key?(:viewability_info)
+        end
+      end
+      
       # Identifiers and other information used to match the conversion event with
       # other online activity (such as ad clicks).
       class AdIdentifiers
         include Google::Apis::Core::Hashable
+      
+        # Optional. The display click ID associated with this event.
+        # Corresponds to the JSON property `dclid`
+        # @return [String]
+        attr_accessor :dclid
+      
+        # Optional. Any number of encrypted user IDs.
+        # Corresponds to the JSON property `encryptedUserIds`
+        # @return [Array<Google::Apis::DatamanagerV1::EncryptedUserId>]
+        attr_accessor :encrypted_user_ids
       
         # Optional. The click identifier for clicks associated with app events and
         # originating from iOS devices starting with iOS14.
@@ -38,10 +266,20 @@ module Google
         # @return [String]
         attr_accessor :gclid
       
+        # Optional. The impression ID associated with this event.
+        # Corresponds to the JSON property `impressionId`
+        # @return [String]
+        attr_accessor :impression_id
+      
         # Information about the device being used (if any) when the event happened.
         # Corresponds to the JSON property `landingPageDeviceInfo`
         # @return [Google::Apis::DatamanagerV1::DeviceInfo]
         attr_accessor :landing_page_device_info
+      
+        # Optional. The match ID field used to join this event with a previous event.
+        # Corresponds to the JSON property `matchId`
+        # @return [String]
+        attr_accessor :match_id
       
         # Optional. The mobile identifier for advertisers. This would be IDFA on iOS,
         # AdID on Android, or other platforms’ identifiers for advertisers.
@@ -66,9 +304,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dclid = args[:dclid] if args.key?(:dclid)
+          @encrypted_user_ids = args[:encrypted_user_ids] if args.key?(:encrypted_user_ids)
           @gbraid = args[:gbraid] if args.key?(:gbraid)
           @gclid = args[:gclid] if args.key?(:gclid)
+          @impression_id = args[:impression_id] if args.key?(:impression_id)
           @landing_page_device_info = args[:landing_page_device_info] if args.key?(:landing_page_device_info)
+          @match_id = args[:match_id] if args.key?(:match_id)
           @mobile_device_id = args[:mobile_device_id] if args.key?(:mobile_device_id)
           @session_attributes = args[:session_attributes] if args.key?(:session_attributes)
           @wbraid = args[:wbraid] if args.key?(:wbraid)
@@ -118,6 +360,12 @@ module Google
       class AudienceMember
         include Google::Apis::Core::Hashable
       
+        # Composite data holding identifiers and associated data for a user. At least
+        # one of `user_data` or `ip_data` is required.
+        # Corresponds to the JSON property `compositeData`
+        # @return [Google::Apis::DatamanagerV1::CompositeData]
+        attr_accessor :composite_data
+      
         # [Digital Markets Act (DMA)](//digital-markets-act.ec.europa.eu/index_en)
         # consent settings for the user.
         # Corresponds to the JSON property `consent`
@@ -163,6 +411,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @composite_data = args[:composite_data] if args.key?(:composite_data)
           @consent = args[:consent] if args.key?(:consent)
           @destination_references = args[:destination_references] if args.key?(:destination_references)
           @mobile_data = args[:mobile_data] if args.key?(:mobile_data)
@@ -295,6 +544,33 @@ module Google
         end
       end
       
+      # Composite data holding identifiers and associated data for a user. At least
+      # one of `user_data` or `ip_data` is required.
+      class CompositeData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. IP address data representing customer interaction used to build the
+        # audience.
+        # Corresponds to the JSON property `ipData`
+        # @return [Array<Google::Apis::DatamanagerV1::IpData>]
+        attr_accessor :ip_data
+      
+        # Data that identifies the user. At least one identifier is required.
+        # Corresponds to the JSON property `userData`
+        # @return [Google::Apis::DatamanagerV1::UserData]
+        attr_accessor :user_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_data = args[:ip_data] if args.key?(:ip_data)
+          @user_data = args[:user_data] if args.key?(:user_data)
+        end
+      end
+      
       # [Digital Markets Act (DMA)](//digital-markets-act.ec.europa.eu/index_en)
       # consent settings for the user.
       class Consent
@@ -346,6 +622,25 @@ module Google
         end
       end
       
+      # Information about the coordinator key.
+      class CoordinatorKeyInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the chosen coordinator key.
+        # Corresponds to the JSON property `keyId`
+        # @return [String]
+        attr_accessor :key_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_id = args[:key_id] if args.key?(:key_id)
+        end
+      end
+      
       # Custom variable for ads conversions.
       class CustomVariable
         include Google::Apis::Core::Hashable
@@ -377,6 +672,31 @@ module Google
           @destination_references = args[:destination_references] if args.key?(:destination_references)
           @value = args[:value] if args.key?(:value)
           @variable = args[:variable] if args.key?(:variable)
+        end
+      end
+      
+      # The count for a specific data type.
+      class DataTypeCount
+        include Google::Apis::Core::Hashable
+      
+        # The count for this data type.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The type of data.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -537,6 +857,47 @@ module Google
         end
       end
       
+      # A user identifier issued to be used for attribution. All fields are required
+      # if this is used.
+      class EncryptedUserId
+        include Google::Apis::Core::Hashable
+      
+        # Required. The alphanumeric encrypted id.
+        # Corresponds to the JSON property `encryptedId`
+        # @return [String]
+        attr_accessor :encrypted_id
+      
+        # Required. The encryption entity ID. This should match the encryption
+        # configuration for ad serving or Data Transfer.
+        # Corresponds to the JSON property `entityId`
+        # @return [Fixnum]
+        attr_accessor :entity_id
+      
+        # Required. The encryption entity type. This should match the encryption
+        # configuration for ad serving or Data Transfer.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Required. Describes whether the encrypted cookie was received from ad serving (
+        # the %m macro) or from Data Transfer.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encrypted_id = args[:encrypted_id] if args.key?(:encrypted_id)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
       # Encryption information for the data being ingested.
       class EncryptionInfo
         include Google::Apis::Core::Hashable
@@ -545,6 +906,11 @@ module Google
         # Corresponds to the JSON property `awsWrappedKeyInfo`
         # @return [Google::Apis::DatamanagerV1::AwsWrappedKeyInfo]
         attr_accessor :aws_wrapped_key_info
+      
+        # Information about the coordinator key.
+        # Corresponds to the JSON property `coordinatorKeyInfo`
+        # @return [Google::Apis::DatamanagerV1::CoordinatorKeyInfo]
+        attr_accessor :coordinator_key_info
       
         # Information about the Google Cloud Platform wrapped key.
         # Corresponds to the JSON property `gcpWrappedKeyInfo`
@@ -558,6 +924,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aws_wrapped_key_info = args[:aws_wrapped_key_info] if args.key?(:aws_wrapped_key_info)
+          @coordinator_key_info = args[:coordinator_key_info] if args.key?(:coordinator_key_info)
           @gcp_wrapped_key_info = args[:gcp_wrapped_key_info] if args.key?(:gcp_wrapped_key_info)
         end
       end
@@ -646,6 +1013,12 @@ module Google
         # Corresponds to the JSON property `consent`
         # @return [Google::Apis::DatamanagerV1::Consent]
         attr_accessor :consent
+      
+        # Optional. The conversion quantity associated with the event, for counting-
+        # based conversions.
+        # Corresponds to the JSON property `conversionCount`
+        # @return [Float]
+        attr_accessor :conversion_count
       
         # Optional. The conversion value associated with the event, for value-based
         # conversions.
@@ -747,6 +1120,7 @@ module Google
           @cart_data = args[:cart_data] if args.key?(:cart_data)
           @client_id = args[:client_id] if args.key?(:client_id)
           @consent = args[:consent] if args.key?(:consent)
+          @conversion_count = args[:conversion_count] if args.key?(:conversion_count)
           @conversion_value = args[:conversion_value] if args.key?(:conversion_value)
           @currency = args[:currency] if args.key?(:currency)
           @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
@@ -908,6 +1282,51 @@ module Google
         end
       end
       
+      # Request to upload ad events.
+      class IngestAdEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Required (at least 1). A list of ad events.
+        # Corresponds to the JSON property `adEvents`
+        # @return [Array<Google::Apis::DatamanagerV1::AdEvent>]
+        attr_accessor :ad_events
+      
+        # Encryption information for the data being ingested.
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Google::Apis::DatamanagerV1::EncryptionInfo]
+        attr_accessor :encryption_info
+      
+        # Optional. If true, the request is validated, but not executed.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_events = args[:ad_events] if args.key?(:ad_events)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response from an ad event ingestion operation.
+      class IngestAdEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request to upload audience members to the provided destinations. Returns an
       # IngestAudienceMembersResponse.
       class IngestAudienceMembersRequest
@@ -997,6 +1416,12 @@ module Google
       class IngestAudienceMembersStatus
         include Google::Apis::Core::Hashable
       
+        # The status of the composite data ingestion to the destination containing stats
+        # related to the ingestion.
+        # Corresponds to the JSON property `compositeDataIngestionStatus`
+        # @return [Google::Apis::DatamanagerV1::IngestCompositeDataStatus]
+        attr_accessor :composite_data_ingestion_status
+      
         # The status of the mobile data ingestion to the destination containing stats
         # related to the ingestion.
         # Corresponds to the JSON property `mobileDataIngestionStatus`
@@ -1033,11 +1458,48 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @composite_data_ingestion_status = args[:composite_data_ingestion_status] if args.key?(:composite_data_ingestion_status)
           @mobile_data_ingestion_status = args[:mobile_data_ingestion_status] if args.key?(:mobile_data_ingestion_status)
           @pair_data_ingestion_status = args[:pair_data_ingestion_status] if args.key?(:pair_data_ingestion_status)
           @ppid_data_ingestion_status = args[:ppid_data_ingestion_status] if args.key?(:ppid_data_ingestion_status)
           @user_data_ingestion_status = args[:user_data_ingestion_status] if args.key?(:user_data_ingestion_status)
           @user_id_data_ingestion_status = args[:user_id_data_ingestion_status] if args.key?(:user_id_data_ingestion_status)
+        end
+      end
+      
+      # The status of the composite data ingestion to the destination containing stats
+      # related to the ingestion.
+      class IngestCompositeDataStatus
+        include Google::Apis::Core::Hashable
+      
+        # The total count of data types sent in the upload request for the destination,
+        # broken down by data type. Includes all data types in the request, regardless
+        # of whether they were successfully ingested or not.
+        # Corresponds to the JSON property `dataTypeCounts`
+        # @return [Array<Google::Apis::DatamanagerV1::DataTypeCount>]
+        attr_accessor :data_type_counts
+      
+        # The total count of audience members sent in the upload request for the
+        # destination. Includes all audience members in the request, regardless of
+        # whether they were successfully ingested or not.
+        # Corresponds to the JSON property `recordCount`
+        # @return [Fixnum]
+        attr_accessor :record_count
+      
+        # The match rate range of the upload.
+        # Corresponds to the JSON property `uploadMatchRateRange`
+        # @return [String]
+        attr_accessor :upload_match_rate_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_type_counts = args[:data_type_counts] if args.key?(:data_type_counts)
+          @record_count = args[:record_count] if args.key?(:record_count)
+          @upload_match_rate_range = args[:upload_match_rate_range] if args.key?(:upload_match_rate_range)
         end
       end
       
@@ -1350,6 +1812,39 @@ module Google
           @pseudonymous_id_info = args[:pseudonymous_id_info] if args.key?(:pseudonymous_id_info)
           @upload_key_types = args[:upload_key_types] if args.key?(:upload_key_types)
           @user_id_info = args[:user_id_info] if args.key?(:user_id_info)
+        end
+      end
+      
+      # IP address information for a user. We recommend including observe_start_time
+      # and observe_end_time to help improve Customer Match match rates.
+      class IpData
+        include Google::Apis::Core::Hashable
+      
+        # Required. IP address captured at the time of customer interaction. Accepts
+        # standard string formats for both IPv4 and IPv6.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Optional. Last recorded interaction time from this IP address in a session.
+        # Corresponds to the JSON property `observeEndTime`
+        # @return [String]
+        attr_accessor :observe_end_time
+      
+        # Optional. First recorded interaction time from this IP address in a session.
+        # Corresponds to the JSON property `observeStartTime`
+        # @return [String]
+        attr_accessor :observe_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @observe_end_time = args[:observe_end_time] if args.key?(:observe_end_time)
+          @observe_start_time = args[:observe_start_time] if args.key?(:observe_start_time)
         end
       end
       
@@ -1844,9 +2339,48 @@ module Google
         end
       end
       
+      # Represents a customer account in the partner's system.
+      class PartnerCustomerAccount
+        include Google::Apis::Core::Hashable
+      
+        # Required. The identifier of the customer account in the partner's ID space.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # Optional. The name of the account.
+        # Corresponds to the JSON property `accountName`
+        # @return [String]
+        attr_accessor :account_name
+      
+        # Optional. The type of the account. Can be used to distinguish between
+        # advertiser accounts and business level accounts, for example.
+        # Corresponds to the JSON property `accountType`
+        # @return [String]
+        attr_accessor :account_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @account_name = args[:account_name] if args.key?(:account_name)
+          @account_type = args[:account_type] if args.key?(:account_type)
+        end
+      end
+      
       # A partner link between an owning account and a partner account.
       class PartnerLink
         include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. The set of features supported for the partner link. If
+        # not specified, the system behavior defaults to
+        # FEATURE_SET_AUDIENCE_AND_EVENT_MANAGEMENT.
+        # Corresponds to the JSON property `featureSet`
+        # @return [String]
+        attr_accessor :feature_set
       
         # Identifier. The name of the partner link. Format: accountTypes/`account_type`/
         # accounts/`account`/partnerLinks/`partner_link`
@@ -1864,10 +2398,20 @@ module Google
         # @return [Google::Apis::DatamanagerV1::ProductAccount]
         attr_accessor :partner_account
       
+        # Represents a customer account in the partner's system.
+        # Corresponds to the JSON property `partnerCustomerAccount`
+        # @return [Google::Apis::DatamanagerV1::PartnerCustomerAccount]
+        attr_accessor :partner_customer_account
+      
         # Output only. The partner link ID.
         # Corresponds to the JSON property `partnerLinkId`
         # @return [String]
         attr_accessor :partner_link_id
+      
+        # Represents metadata associated with a partner link.
+        # Corresponds to the JSON property `partnerLinkMetadata`
+        # @return [Google::Apis::DatamanagerV1::PartnerLinkMetadata]
+        attr_accessor :partner_link_metadata
       
         def initialize(**args)
            update!(**args)
@@ -1875,10 +2419,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @feature_set = args[:feature_set] if args.key?(:feature_set)
           @name = args[:name] if args.key?(:name)
           @owning_account = args[:owning_account] if args.key?(:owning_account)
           @partner_account = args[:partner_account] if args.key?(:partner_account)
+          @partner_customer_account = args[:partner_customer_account] if args.key?(:partner_customer_account)
           @partner_link_id = args[:partner_link_id] if args.key?(:partner_link_id)
+          @partner_link_metadata = args[:partner_link_metadata] if args.key?(:partner_link_metadata)
+        end
+      end
+      
+      # Represents metadata associated with a partner link.
+      class PartnerLinkMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of implicit accounts.
+        # Corresponds to the JSON property `implicitAccounts`
+        # @return [Array<Google::Apis::DatamanagerV1::PartnerCustomerAccount>]
+        attr_accessor :implicit_accounts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @implicit_accounts = args[:implicit_accounts] if args.key?(:implicit_accounts)
         end
       end
       
@@ -1911,7 +2477,7 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # Optional. The type of the account. For example, `GOOGLE_ADS`. Either `
+        # Required. The type of the account. For example, `GOOGLE_ADS`. Either `
         # account_type` or the deprecated `product` is required. If both are set, the
         # values must match.
         # Corresponds to the JSON property `accountType`
@@ -2031,6 +2597,11 @@ module Google
       class RemoveAudienceMembersStatus
         include Google::Apis::Core::Hashable
       
+        # The status of the composite data removal from the destination.
+        # Corresponds to the JSON property `compositeDataRemovalStatus`
+        # @return [Google::Apis::DatamanagerV1::RemoveCompositeDataStatus]
+        attr_accessor :composite_data_removal_status
+      
         # The status of the mobile data removal from the destination.
         # Corresponds to the JSON property `mobileDataRemovalStatus`
         # @return [Google::Apis::DatamanagerV1::RemoveMobileDataStatus]
@@ -2062,11 +2633,41 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @composite_data_removal_status = args[:composite_data_removal_status] if args.key?(:composite_data_removal_status)
           @mobile_data_removal_status = args[:mobile_data_removal_status] if args.key?(:mobile_data_removal_status)
           @pair_data_removal_status = args[:pair_data_removal_status] if args.key?(:pair_data_removal_status)
           @ppid_data_removal_status = args[:ppid_data_removal_status] if args.key?(:ppid_data_removal_status)
           @user_data_removal_status = args[:user_data_removal_status] if args.key?(:user_data_removal_status)
           @user_id_data_removal_status = args[:user_id_data_removal_status] if args.key?(:user_id_data_removal_status)
+        end
+      end
+      
+      # The status of the composite data removal from the destination.
+      class RemoveCompositeDataStatus
+        include Google::Apis::Core::Hashable
+      
+        # The total count of data types sent in the removal request, broken down by data
+        # type. Includes all data types in the request, regardless of whether they were
+        # successfully removed or not.
+        # Corresponds to the JSON property `dataTypeCounts`
+        # @return [Array<Google::Apis::DatamanagerV1::DataTypeCount>]
+        attr_accessor :data_type_counts
+      
+        # The total count of audience members sent in the removal request. Includes all
+        # audience members in the request, regardless of whether they were successfully
+        # removed or not.
+        # Corresponds to the JSON property `recordCount`
+        # @return [Fixnum]
+        attr_accessor :record_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_type_counts = args[:data_type_counts] if args.key?(:data_type_counts)
+          @record_count = args[:record_count] if args.key?(:record_count)
         end
       end
       
@@ -3090,6 +3691,69 @@ module Google
         def update!(**args)
           @property_name = args[:property_name] if args.key?(:property_name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Details of the viewability of the ad served.
+      class ViewabilityInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The duration of the ad media.
+        # Corresponds to the JSON property `mediaDuration`
+        # @return [String]
+        attr_accessor :media_duration
+      
+        # Optional. The amount of the media that was played as discrete quartiles.
+        # Corresponds to the JSON property `mediaQuartile`
+        # @return [String]
+        attr_accessor :media_quartile
+      
+        # Optional. Whether the ad media was skippable or not.
+        # Corresponds to the JSON property `mediaSkippable`
+        # @return [Boolean]
+        attr_accessor :media_skippable
+        alias_method :media_skippable?, :media_skippable
+      
+        # Optional. The numerical percent (0-100) of the volume of the media playback.
+        # Corresponds to the JSON property `mediaVolumePercent`
+        # @return [Fixnum]
+        attr_accessor :media_volume_percent
+      
+        # Optional. The duration of playback of the ad media, regardless of whether it
+        # was viewable or not.
+        # Corresponds to the JSON property `playbackDuration`
+        # @return [String]
+        attr_accessor :playback_duration
+      
+        # Required. The type of the event.
+        # Corresponds to the JSON property `viewType`
+        # @return [String]
+        attr_accessor :view_type
+      
+        # Optional. The amount of time the ad was viewable for.
+        # Corresponds to the JSON property `viewableDuration`
+        # @return [String]
+        attr_accessor :viewable_duration
+      
+        # Optional. The numerical percent (0-100) of the pixels that were viewable.
+        # Corresponds to the JSON property `viewablePercent`
+        # @return [Fixnum]
+        attr_accessor :viewable_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @media_duration = args[:media_duration] if args.key?(:media_duration)
+          @media_quartile = args[:media_quartile] if args.key?(:media_quartile)
+          @media_skippable = args[:media_skippable] if args.key?(:media_skippable)
+          @media_volume_percent = args[:media_volume_percent] if args.key?(:media_volume_percent)
+          @playback_duration = args[:playback_duration] if args.key?(:playback_duration)
+          @view_type = args[:view_type] if args.key?(:view_type)
+          @viewable_duration = args[:viewable_duration] if args.key?(:viewable_duration)
+          @viewable_percent = args[:viewable_percent] if args.key?(:viewable_percent)
         end
       end
       

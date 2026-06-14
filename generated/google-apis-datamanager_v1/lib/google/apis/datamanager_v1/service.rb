@@ -833,6 +833,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads a list of AdEvent resources to Google Analytics. This feature is only
+        # available to accounts on an allowlist.
+        # @param [Google::Apis::DatamanagerV1::IngestAdEventsRequest] ingest_ad_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamanagerV1::IngestAdEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamanagerV1::IngestAdEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def ingest_ad_events(ingest_ad_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/adEvents:ingest', options)
+          command.request_representation = Google::Apis::DatamanagerV1::IngestAdEventsRequest::Representation
+          command.request_object = ingest_ad_events_request_object
+          command.response_representation = Google::Apis::DatamanagerV1::IngestAdEventsResponse::Representation
+          command.response_class = Google::Apis::DatamanagerV1::IngestAdEventsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Uploads a list of AudienceMember resources to the provided Destination.
         # @param [Google::Apis::DatamanagerV1::IngestAudienceMembersRequest] ingest_audience_members_request_object
         # @param [String] fields

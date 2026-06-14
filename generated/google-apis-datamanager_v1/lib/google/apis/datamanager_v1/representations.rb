@@ -22,6 +22,12 @@ module Google
   module Apis
     module DatamanagerV1
       
+      class AdEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdIdentifiers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CompositeData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Consent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,7 +82,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CoordinatorKeyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataTypeCount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -89,6 +113,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptedUserId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +172,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IngestAdEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestAdEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IngestAudienceMembersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +197,12 @@ module Google
       end
       
       class IngestAudienceMembersStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestCompositeDataStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -209,6 +257,12 @@ module Google
       end
       
       class IngestedUserListInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IpData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,7 +358,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartnerCustomerAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartnerLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartnerLinkMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +407,12 @@ module Google
       end
       
       class RemoveAudienceMembersStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveCompositeDataStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -502,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ViewabilityInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WarningCount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -514,13 +592,60 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_format, as: 'adFormat'
+          property :ad_format_string, as: 'adFormatString'
+          property :ad_group_id, as: 'adGroupId'
+          property :ad_height, as: 'adHeight'
+          property :ad_id, as: 'adId'
+          property :ad_placement, as: 'adPlacement'
+          property :ad_placement_string, as: 'adPlacementString'
+          property :ad_type, as: 'adType'
+          property :ad_type_string, as: 'adTypeString'
+          property :ad_width, as: 'adWidth'
+          property :advertiser_id, as: 'advertiserId'
+          property :attribution_hint, as: 'attributionHint'
+          property :campaign_id, as: 'campaignId'
+          property :campaign_name, as: 'campaignName'
+          property :device_info, as: 'deviceInfo', class: Google::Apis::DatamanagerV1::DeviceInfo, decorator: Google::Apis::DatamanagerV1::DeviceInfo::Representation
+      
+          property :event_id, as: 'eventId'
+          property :event_subtype, as: 'eventSubtype'
+          property :event_subtype_string, as: 'eventSubtypeString'
+          property :event_type, as: 'eventType'
+          property :measurement_allowed, as: 'measurementAllowed'
+          property :medium, as: 'medium'
+          property :mobile_device_id, as: 'mobileDeviceId'
+          property :platform, as: 'platform'
+          property :platform_string, as: 'platformString'
+          property :platform_type, as: 'platformType'
+          property :platform_type_string, as: 'platformTypeString'
+          property :region_code, as: 'regionCode'
+          property :source, as: 'source'
+          property :targeting_type, as: 'targetingType'
+          property :targeting_type_string, as: 'targetingTypeString'
+          property :timestamp, as: 'timestamp'
+          property :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
+      
+          property :viewability_info, as: 'viewabilityInfo', class: Google::Apis::DatamanagerV1::ViewabilityInfo, decorator: Google::Apis::DatamanagerV1::ViewabilityInfo::Representation
+      
+        end
+      end
+      
       class AdIdentifiers
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dclid, as: 'dclid'
+          collection :encrypted_user_ids, as: 'encryptedUserIds', class: Google::Apis::DatamanagerV1::EncryptedUserId, decorator: Google::Apis::DatamanagerV1::EncryptedUserId::Representation
+      
           property :gbraid, as: 'gbraid'
           property :gclid, as: 'gclid'
+          property :impression_id, as: 'impressionId'
           property :landing_page_device_info, as: 'landingPageDeviceInfo', class: Google::Apis::DatamanagerV1::DeviceInfo, decorator: Google::Apis::DatamanagerV1::DeviceInfo::Representation
       
+          property :match_id, as: 'matchId'
           property :mobile_device_id, as: 'mobileDeviceId'
           property :session_attributes, as: 'sessionAttributes'
           property :wbraid, as: 'wbraid'
@@ -540,6 +665,8 @@ module Google
       class AudienceMember
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :composite_data, as: 'compositeData', class: Google::Apis::DatamanagerV1::CompositeData, decorator: Google::Apis::DatamanagerV1::CompositeData::Representation
+      
           property :consent, as: 'consent', class: Google::Apis::DatamanagerV1::Consent, decorator: Google::Apis::DatamanagerV1::Consent::Representation
       
           collection :destination_references, as: 'destinationReferences'
@@ -588,6 +715,16 @@ module Google
         end
       end
       
+      class CompositeData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_data, as: 'ipData', class: Google::Apis::DatamanagerV1::IpData, decorator: Google::Apis::DatamanagerV1::IpData::Representation
+      
+          property :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
+      
+        end
+      end
+      
       class Consent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -604,12 +741,27 @@ module Google
         end
       end
       
+      class CoordinatorKeyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_id, as: 'keyId'
+        end
+      end
+      
       class CustomVariable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destination_references, as: 'destinationReferences'
           property :value, as: 'value'
           property :variable, as: 'variable'
+        end
+      end
+      
+      class DataTypeCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :type, as: 'type'
         end
       end
       
@@ -651,10 +803,22 @@ module Google
         end
       end
       
+      class EncryptedUserId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encrypted_id, as: 'encryptedId'
+          property :entity_id, :numeric_string => true, as: 'entityId'
+          property :entity_type, as: 'entityType'
+          property :source, as: 'source'
+        end
+      end
+      
       class EncryptionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws_wrapped_key_info, as: 'awsWrappedKeyInfo', class: Google::Apis::DatamanagerV1::AwsWrappedKeyInfo, decorator: Google::Apis::DatamanagerV1::AwsWrappedKeyInfo::Representation
+      
+          property :coordinator_key_info, as: 'coordinatorKeyInfo', class: Google::Apis::DatamanagerV1::CoordinatorKeyInfo, decorator: Google::Apis::DatamanagerV1::CoordinatorKeyInfo::Representation
       
           property :gcp_wrapped_key_info, as: 'gcpWrappedKeyInfo', class: Google::Apis::DatamanagerV1::GcpWrappedKeyInfo, decorator: Google::Apis::DatamanagerV1::GcpWrappedKeyInfo::Representation
       
@@ -690,6 +854,7 @@ module Google
           property :client_id, as: 'clientId'
           property :consent, as: 'consent', class: Google::Apis::DatamanagerV1::Consent, decorator: Google::Apis::DatamanagerV1::Consent::Representation
       
+          property :conversion_count, as: 'conversionCount'
           property :conversion_value, as: 'conversionValue'
           property :currency, as: 'currency'
           collection :custom_variables, as: 'customVariables', class: Google::Apis::DatamanagerV1::CustomVariable, decorator: Google::Apis::DatamanagerV1::CustomVariable::Representation
@@ -754,6 +919,23 @@ module Google
         end
       end
       
+      class IngestAdEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_events, as: 'adEvents', class: Google::Apis::DatamanagerV1::AdEvent, decorator: Google::Apis::DatamanagerV1::AdEvent::Representation
+      
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::DatamanagerV1::EncryptionInfo, decorator: Google::Apis::DatamanagerV1::EncryptionInfo::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class IngestAdEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class IngestAudienceMembersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -782,6 +964,8 @@ module Google
       class IngestAudienceMembersStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :composite_data_ingestion_status, as: 'compositeDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestCompositeDataStatus, decorator: Google::Apis::DatamanagerV1::IngestCompositeDataStatus::Representation
+      
           property :mobile_data_ingestion_status, as: 'mobileDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestMobileDataStatus, decorator: Google::Apis::DatamanagerV1::IngestMobileDataStatus::Representation
       
           property :pair_data_ingestion_status, as: 'pairDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestPairDataStatus, decorator: Google::Apis::DatamanagerV1::IngestPairDataStatus::Representation
@@ -792,6 +976,16 @@ module Google
       
           property :user_id_data_ingestion_status, as: 'userIdDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestUserIdDataStatus, decorator: Google::Apis::DatamanagerV1::IngestUserIdDataStatus::Representation
       
+        end
+      end
+      
+      class IngestCompositeDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_type_counts, as: 'dataTypeCounts', class: Google::Apis::DatamanagerV1::DataTypeCount, decorator: Google::Apis::DatamanagerV1::DataTypeCount::Representation
+      
+          property :record_count, :numeric_string => true, as: 'recordCount'
+          property :upload_match_rate_range, as: 'uploadMatchRateRange'
         end
       end
       
@@ -882,6 +1076,15 @@ module Google
           collection :upload_key_types, as: 'uploadKeyTypes'
           property :user_id_info, as: 'userIdInfo', class: Google::Apis::DatamanagerV1::UserIdInfo, decorator: Google::Apis::DatamanagerV1::UserIdInfo::Representation
       
+        end
+      end
+      
+      class IpData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :observe_end_time, as: 'observeEndTime'
+          property :observe_start_time, as: 'observeStartTime'
         end
       end
       
@@ -1024,15 +1227,37 @@ module Google
         end
       end
       
+      class PartnerCustomerAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :account_name, as: 'accountName'
+          property :account_type, as: 'accountType'
+        end
+      end
+      
       class PartnerLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :feature_set, as: 'featureSet'
           property :name, as: 'name'
           property :owning_account, as: 'owningAccount', class: Google::Apis::DatamanagerV1::ProductAccount, decorator: Google::Apis::DatamanagerV1::ProductAccount::Representation
       
           property :partner_account, as: 'partnerAccount', class: Google::Apis::DatamanagerV1::ProductAccount, decorator: Google::Apis::DatamanagerV1::ProductAccount::Representation
       
+          property :partner_customer_account, as: 'partnerCustomerAccount', class: Google::Apis::DatamanagerV1::PartnerCustomerAccount, decorator: Google::Apis::DatamanagerV1::PartnerCustomerAccount::Representation
+      
           property :partner_link_id, as: 'partnerLinkId'
+          property :partner_link_metadata, as: 'partnerLinkMetadata', class: Google::Apis::DatamanagerV1::PartnerLinkMetadata, decorator: Google::Apis::DatamanagerV1::PartnerLinkMetadata::Representation
+      
+        end
+      end
+      
+      class PartnerLinkMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :implicit_accounts, as: 'implicitAccounts', class: Google::Apis::DatamanagerV1::PartnerCustomerAccount, decorator: Google::Apis::DatamanagerV1::PartnerCustomerAccount::Representation
+      
         end
       end
       
@@ -1084,6 +1309,8 @@ module Google
       class RemoveAudienceMembersStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :composite_data_removal_status, as: 'compositeDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveCompositeDataStatus, decorator: Google::Apis::DatamanagerV1::RemoveCompositeDataStatus::Representation
+      
           property :mobile_data_removal_status, as: 'mobileDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveMobileDataStatus, decorator: Google::Apis::DatamanagerV1::RemoveMobileDataStatus::Representation
       
           property :pair_data_removal_status, as: 'pairDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemovePairDataStatus, decorator: Google::Apis::DatamanagerV1::RemovePairDataStatus::Representation
@@ -1094,6 +1321,15 @@ module Google
       
           property :user_id_data_removal_status, as: 'userIdDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveUserIdDataStatus, decorator: Google::Apis::DatamanagerV1::RemoveUserIdDataStatus::Representation
       
+        end
+      end
+      
+      class RemoveCompositeDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_type_counts, as: 'dataTypeCounts', class: Google::Apis::DatamanagerV1::DataTypeCount, decorator: Google::Apis::DatamanagerV1::DataTypeCount::Representation
+      
+          property :record_count, :numeric_string => true, as: 'recordCount'
         end
       end
       
@@ -1376,6 +1612,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :property_name, as: 'propertyName'
           property :value, as: 'value'
+        end
+      end
+      
+      class ViewabilityInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :media_duration, as: 'mediaDuration'
+          property :media_quartile, as: 'mediaQuartile'
+          property :media_skippable, as: 'mediaSkippable'
+          property :media_volume_percent, as: 'mediaVolumePercent'
+          property :playback_duration, as: 'playbackDuration'
+          property :view_type, as: 'viewType'
+          property :viewable_duration, as: 'viewableDuration'
+          property :viewable_percent, as: 'viewablePercent'
         end
       end
       
