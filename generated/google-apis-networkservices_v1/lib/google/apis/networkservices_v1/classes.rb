@@ -22,6 +22,250 @@ module Google
   module Apis
     module NetworkservicesV1
       
+      # AgentGateway represents the agent gateway resource.
+      class AgentGateway
+        include Google::Apis::Core::Hashable
+      
+        # AgentGatewayOutputCard contains informational output-only fields
+        # Corresponds to the JSON property `agentGatewayCard`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayAgentGatewayOutputCard]
+        attr_accessor :agent_gateway_card
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Etag of the resource. If this is provided, it must match the server'
+        # s etag. If the provided etag does not match the server's etag, the request
+        # will fail with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Configuration for Google Managed deployment mode. Proxy is orchestrated and
+        # managed by GoogleCloud in a tenant project.
+        # Corresponds to the JSON property `googleManaged`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayGoogleManaged]
+        attr_accessor :google_managed
+      
+        # Optional. Set of label tags associated with the AgentGateway resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Name of the AgentGateway resource. It matches pattern `projects/*/
+        # locations/*/agentGateways/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # NetworkConfig contains network configurations for the AgentGateway.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfig]
+        attr_accessor :network_config
+      
+        # Optional. Deprecated.
+        # Corresponds to the JSON property `protocols`
+        # @return [Array<String>]
+        attr_accessor :protocols
+      
+        # Optional. A list of Agent registries containing the agents, MCP servers and
+        # tools governed by the Agent Gateway. Note: Currently limited to project-scoped
+        # registries Must be of format `//agentregistry.googleapis.com/projects/`project`
+        # /locations/`location`/
+        # Corresponds to the JSON property `registries`
+        # @return [Array<String>]
+        attr_accessor :registries
+      
+        # Configuration for Self Managed deployment mode. Attach to existing Application
+        # Load Balancers or Secure Web Proxies.
+        # Corresponds to the JSON property `selfManaged`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewaySelfManaged]
+        attr_accessor :self_managed
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_gateway_card = args[:agent_gateway_card] if args.key?(:agent_gateway_card)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @google_managed = args[:google_managed] if args.key?(:google_managed)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network_config = args[:network_config] if args.key?(:network_config)
+          @protocols = args[:protocols] if args.key?(:protocols)
+          @registries = args[:registries] if args.key?(:registries)
+          @self_managed = args[:self_managed] if args.key?(:self_managed)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # AgentGatewayOutputCard contains informational output-only fields
+      class AgentGatewayAgentGatewayOutputCard
+        include Google::Apis::Core::Hashable
+      
+        # Output only. mTLS Endpoint associated with this AgentGateway
+        # Corresponds to the JSON property `mtlsEndpoint`
+        # @return [String]
+        attr_accessor :mtls_endpoint
+      
+        # Output only. Root Certificates for Agents to validate this AgentGateway
+        # Corresponds to the JSON property `rootCertificates`
+        # @return [Array<String>]
+        attr_accessor :root_certificates
+      
+        # Output only. Service Account used by Service Extensions to operate.
+        # Corresponds to the JSON property `serviceExtensionsServiceAccount`
+        # @return [String]
+        attr_accessor :service_extensions_service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mtls_endpoint = args[:mtls_endpoint] if args.key?(:mtls_endpoint)
+          @root_certificates = args[:root_certificates] if args.key?(:root_certificates)
+          @service_extensions_service_account = args[:service_extensions_service_account] if args.key?(:service_extensions_service_account)
+        end
+      end
+      
+      # Configuration for Google Managed deployment mode. Proxy is orchestrated and
+      # managed by GoogleCloud in a tenant project.
+      class AgentGatewayGoogleManaged
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Operating Mode of Agent Gateway.
+        # Corresponds to the JSON property `governedAccessPath`
+        # @return [String]
+        attr_accessor :governed_access_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @governed_access_path = args[:governed_access_path] if args.key?(:governed_access_path)
+        end
+      end
+      
+      # NetworkConfig contains network configurations for the AgentGateway.
+      class AgentGatewayNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # DNS peering config for the user VPC network.
+        # Corresponds to the JSON property `dnsPeeringConfig`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfigDnsPeeringConfig]
+        attr_accessor :dns_peering_config
+      
+        # Configuration for Egress
+        # Corresponds to the JSON property `egress`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfigEgress]
+        attr_accessor :egress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_peering_config = args[:dns_peering_config] if args.key?(:dns_peering_config)
+          @egress = args[:egress] if args.key?(:egress)
+        end
+      end
+      
+      # DNS peering config for the user VPC network.
+      class AgentGatewayNetworkConfigDnsPeeringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Domain names for which DNS queries should be forwarded to the target
+        # network.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
+      
+        # Required. Target network in 'target project' to which DNS queries should be
+        # forwarded to. Must be in format of `projects/`project`/global/networks/`
+        # network``.
+        # Corresponds to the JSON property `targetNetwork`
+        # @return [String]
+        attr_accessor :target_network
+      
+        # Required. Target project ID to which DNS queries should be forwarded to. This
+        # can be the same project that contains the AgentGateway or a different project.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domains = args[:domains] if args.key?(:domains)
+          @target_network = args[:target_network] if args.key?(:target_network)
+          @target_project = args[:target_project] if args.key?(:target_project)
+        end
+      end
+      
+      # Configuration for Egress
+      class AgentGatewayNetworkConfigEgress
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The URI of the Network Attachment resource.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+        end
+      end
+      
+      # Configuration for Self Managed deployment mode. Attach to existing Application
+      # Load Balancers or Secure Web Proxies.
+      class AgentGatewaySelfManaged
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A supported Google Cloud networking proxy in the Project and
+        # Location
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -2687,6 +2931,41 @@ module Google
         end
       end
       
+      # Response returned by the ListAgentGateways method.
+      class ListAgentGatewaysResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of AgentGateway resources.
+        # Corresponds to the JSON property `agentGateways`
+        # @return [Array<Google::Apis::NetworkservicesV1::AgentGateway>]
+        attr_accessor :agent_gateways
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable resources. Populated when the request attempts to list all
+        # resources across all supported locations, while some locations are temporarily
+        # unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_gateways = args[:agent_gateways] if args.key?(:agent_gateways)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Message for response to listing `AuthzExtension` resources.
       class ListAuthzExtensionsResponse
         include Google::Apis::Core::Hashable
@@ -3072,6 +3351,68 @@ module Google
         # Update properties of this object
         def update!(**args)
           @meshes = args[:meshes] if args.key?(:meshes)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListMulticastConsumerAssociations.
+      class ListMulticastConsumerAssociationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of multicast consumer associations.
+        # Corresponds to the JSON property `multicastConsumerAssociations`
+        # @return [Array<Google::Apis::NetworkservicesV1::MulticastConsumerAssociation>]
+        attr_accessor :multicast_consumer_associations
+      
+        # A page token from an earlier query, as returned in `next_page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multicast_consumer_associations = args[:multicast_consumer_associations] if args.key?(:multicast_consumer_associations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListMulticastGroupConsumerActivations.
+      class ListMulticastGroupConsumerActivationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of multicast group consumer activations.
+        # Corresponds to the JSON property `multicastGroupConsumerActivations`
+        # @return [Array<Google::Apis::NetworkservicesV1::MulticastGroupConsumerActivation>]
+        attr_accessor :multicast_group_consumer_activations
+      
+        # A page token from an earlier query, as returned in `next_page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multicast_group_consumer_activations = args[:multicast_group_consumer_activations] if args.key?(:multicast_group_consumer_activations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -3502,6 +3843,239 @@ module Google
           @route_location = args[:route_location] if args.key?(:route_location)
           @route_project_number = args[:route_project_number] if args.key?(:route_project_number)
           @route_type = args[:route_type] if args.key?(:route_type)
+        end
+      end
+      
+      # Multicast consumer association resource.
+      class MulticastConsumerAssociation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] The timestamp when the multicast consumer
+        # association was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional text description of the multicast consumer association.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Labels as key-value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. The resource name of the multicast domain activation that is in the
+        # same zone as this multicast consumer association. Use the following format: `
+        # projects/*/locations/*/multicastDomainActivations/*`.
+        # Corresponds to the JSON property `multicastDomainActivation`
+        # @return [String]
+        attr_accessor :multicast_domain_activation
+      
+        # Identifier. The resource name of the multicast consumer association. Use the
+        # following format: `projects/*/locations/*/multicastConsumerAssociations/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The resource name of the multicast consumer VPC network. Use
+        # following format: `projects/`project`/locations/global/networks/`network``.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. [Output only] A Compute Engine (placement policy)[https://cloud.
+        # google.com/compute/docs/instances/placement-policies-overview] that can be
+        # used to place virtual machine (VM) instances as multicast consumers close to
+        # the multicast infrastructure created for this domain, on a best effort basis.
+        # Corresponds to the JSON property `placementPolicy`
+        # @return [String]
+        attr_accessor :placement_policy
+      
+        # Output only. [Deprecated] The resource state of the multicast consumer
+        # association. Use the state field instead.
+        # Corresponds to the JSON property `resourceState`
+        # @return [String]
+        attr_accessor :resource_state
+      
+        # The multicast resource's state.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::NetworkservicesV1::MulticastResourceState]
+        attr_accessor :state
+      
+        # Output only. [Output only] The Google-generated UUID for the resource. This
+        # value is unique across all multicast consumer association resources. If a
+        # consumer association is deleted and another with the same name is created, the
+        # new consumer association is assigned a different unique_id.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        # Output only. [Output only] The timestamp when the Multicast Consumer
+        # Association was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @multicast_domain_activation = args[:multicast_domain_activation] if args.key?(:multicast_domain_activation)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @placement_policy = args[:placement_policy] if args.key?(:placement_policy)
+          @resource_state = args[:resource_state] if args.key?(:resource_state)
+          @state = args[:state] if args.key?(:state)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Multicast group consumer activation resource.
+      class MulticastGroupConsumerActivation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] The timestamp when the multicast group consumer
+        # activation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional text description of the multicast group consumer
+        # activation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Labels as key-value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The logging configuration.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::NetworkservicesV1::MulticastLogConfig]
+        attr_accessor :log_config
+      
+        # Required. The resource name of the multicast consumer association that is in
+        # the same zone as this multicast group consumer activation. Use the following
+        # format: `projects/*/locations/*/multicastConsumerAssociations/*`.
+        # Corresponds to the JSON property `multicastConsumerAssociation`
+        # @return [String]
+        attr_accessor :multicast_consumer_association
+      
+        # Optional. The resource name of the multicast group created by the admin in the
+        # same zone as this multicast group consumer activation. Use the following
+        # format: // `projects/*/locations/*/multicastGroups/*`. This field is
+        # deprecated. Use multicast_group_range_activation instead.
+        # Corresponds to the JSON property `multicastGroup`
+        # @return [String]
+        attr_accessor :multicast_group
+      
+        # Required. The resource name of the multicast group range activation created by
+        # the admin in the same zone as this multicast group consumer activation. Use
+        # the following format: // `projects/*/locations/*/
+        # multicastGroupRangeActivations/*`.
+        # Corresponds to the JSON property `multicastGroupRangeActivation`
+        # @return [String]
+        attr_accessor :multicast_group_range_activation
+      
+        # Identifier. The resource name of the multicast group consumer activation. Use
+        # the following format: `projects/*/locations/*/
+        # multicastGroupConsumerActivations/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. [Deprecated] The resource state of the multicast group consumer
+        # activation. Use the state field instead.
+        # Corresponds to the JSON property `resourceState`
+        # @return [String]
+        attr_accessor :resource_state
+      
+        # The multicast resource's state.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::NetworkservicesV1::MulticastResourceState]
+        attr_accessor :state
+      
+        # Output only. [Output only] The Google-generated UUID for the resource. This
+        # value is unique across all multicast group consumer activation resources. If a
+        # group consumer activation is deleted and another with the same name is created,
+        # the new group consumer activation is assigned a different unique_id.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        # Output only. [Output only] The timestamp when the multicast group consumer
+        # activation was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @log_config = args[:log_config] if args.key?(:log_config)
+          @multicast_consumer_association = args[:multicast_consumer_association] if args.key?(:multicast_consumer_association)
+          @multicast_group = args[:multicast_group] if args.key?(:multicast_group)
+          @multicast_group_range_activation = args[:multicast_group_range_activation] if args.key?(:multicast_group_range_activation)
+          @name = args[:name] if args.key?(:name)
+          @resource_state = args[:resource_state] if args.key?(:resource_state)
+          @state = args[:state] if args.key?(:state)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The logging configuration.
+      class MulticastLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to enable logging or not.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # The multicast resource's state.
+      class MulticastResourceState
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The state of the multicast resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
