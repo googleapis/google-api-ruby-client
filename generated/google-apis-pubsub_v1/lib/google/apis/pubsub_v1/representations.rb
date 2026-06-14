@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Compression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfluentCloud
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -588,6 +594,14 @@ module Google
         end
       end
       
+      class Compression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compression_algorithm, as: 'compressionAlgorithm'
+          property :compression_mode, as: 'compressionMode'
+        end
+      end
+      
       class ConfluentCloud
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -745,6 +759,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ai_inference, as: 'aiInference', class: Google::Apis::PubsubV1::AiInference, decorator: Google::Apis::PubsubV1::AiInference::Representation
+      
+          property :compression, as: 'compression', class: Google::Apis::PubsubV1::Compression, decorator: Google::Apis::PubsubV1::Compression::Representation
       
           property :disabled, as: 'disabled'
           property :enabled, as: 'enabled'
