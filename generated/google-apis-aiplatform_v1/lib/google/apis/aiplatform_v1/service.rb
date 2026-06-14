@@ -26927,8 +26927,8 @@ module Google
         #   memory``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Memory] google_cloud_aiplatform_v1_memory_object
         # @param [String] update_mask
-        #   Optional. Mask specifying which fields to update. Supported fields: * `
-        #   display_name` * `description` * `fact`
+        #   Optional. Mask specifying which fields to update. The following fields are
+        #   immutable: * `scope` * `memory_type`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
