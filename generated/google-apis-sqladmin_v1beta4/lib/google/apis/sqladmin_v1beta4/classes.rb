@@ -752,7 +752,7 @@ module Google
         attr_accessor :destination_instance_name
       
         # Optional. The fully qualified URI of the VPC network to which the cloned
-        # instance will be connected via Private Services Access for private IP. For
+        # instance will be connected via private services access for private IP. For
         # example:`projects/my-network-project/global/networks/my-network`. This field
         # is only required for cross-project cloning.
         # Corresponds to the JSON property `destinationNetwork`
@@ -4719,6 +4719,19 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # Output only. The service connection policy created automatically for the
+        # consumer network when `psc_auto_connection_policy_enabled` is true. It is in
+        # the format of: `projects/`project`/regions/`region`/serviceConnectionPolicies/`
+        # policy_id`` The `policy_id` is in format of `$NETWORK-$RANDOM`.
+        # Corresponds to the JSON property `serviceConnectionPolicy`
+        # @return [String]
+        attr_accessor :service_connection_policy
+      
+        # Output only. The status of service connection policy creation.
+        # Corresponds to the JSON property `serviceConnectionPolicyCreationResult`
+        # @return [String]
+        attr_accessor :service_connection_policy_creation_result
+      
         # The connection status of the consumer endpoint.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -4734,6 +4747,8 @@ module Google
           @consumer_network_status = args[:consumer_network_status] if args.key?(:consumer_network_status)
           @consumer_project = args[:consumer_project] if args.key?(:consumer_project)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @service_connection_policy = args[:service_connection_policy] if args.key?(:service_connection_policy)
+          @service_connection_policy_creation_result = args[:service_connection_policy_creation_result] if args.key?(:service_connection_policy_creation_result)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -4757,16 +4772,23 @@ module Google
         # @return [String]
         attr_accessor :network_attachment_uri
       
+        # Optional. Whether to set up the PSC service connection policy automatically.
+        # Corresponds to the JSON property `pscAutoConnectionPolicyEnabled`
+        # @return [Boolean]
+        attr_accessor :psc_auto_connection_policy_enabled
+        alias_method :psc_auto_connection_policy_enabled?, :psc_auto_connection_policy_enabled
+      
         # Optional. The list of settings for requested Private Service Connect consumer
         # endpoints that can be used to connect to this Cloud SQL instance.
         # Corresponds to the JSON property `pscAutoConnections`
         # @return [Array<Google::Apis::SqladminV1beta4::PscAutoConnectionConfig>]
         attr_accessor :psc_auto_connections
       
-        # Optional. Indicates whether PSC DNS automation is enabled for this instance.
-        # When enabled, Cloud SQL provisions a universal DNS record across all networks
-        # configured with Private Service Connect (PSC) auto-connections. This will
-        # default to true for new instances when Private Service Connect is enabled.
+        # Optional. Indicates whether Private Service Connect DNS automation is enabled
+        # for this instance. When enabled, Cloud SQL provisions a universal DNS record
+        # across all networks configured with Private Service Connect auto-connections.
+        # This will default to true for new instances when Private Service Connect is
+        # enabled.
         # Corresponds to the JSON property `pscAutoDnsEnabled`
         # @return [Boolean]
         attr_accessor :psc_auto_dns_enabled
@@ -4778,12 +4800,13 @@ module Google
         attr_accessor :psc_enabled
         alias_method :psc_enabled?, :psc_enabled
       
-        # Optional. Indicates whether PSC write endpoint DNS automation is enabled for
-        # this instance. When enabled, Cloud SQL provisions a universal global DNS
-        # record across all networks configured with Private Service Connect (PSC) auto-
-        # connections that always points to the cluster primary instance. This feature
-        # is only supported for Enterprise Plus edition. This will default to true for
-        # new enterprise plus instances when `psc_auto_dns_enabled` is enabled.
+        # Optional. Indicates whether Private Service Connect write endpoint DNS
+        # automation is enabled for this instance. When enabled, Cloud SQL provisions a
+        # universal global DNS record across all networks configured with Private
+        # Service Connect auto-connections that points to the cluster primary instance.
+        # This feature is only supported for Enterprise Plus edition. This will default
+        # to true for new enterprise plus instances when `psc_auto_dns_enabled` is
+        # enabled.
         # Corresponds to the JSON property `pscWriteEndpointDnsEnabled`
         # @return [Boolean]
         attr_accessor :psc_write_endpoint_dns_enabled
@@ -4797,6 +4820,7 @@ module Google
         def update!(**args)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
           @network_attachment_uri = args[:network_attachment_uri] if args.key?(:network_attachment_uri)
+          @psc_auto_connection_policy_enabled = args[:psc_auto_connection_policy_enabled] if args.key?(:psc_auto_connection_policy_enabled)
           @psc_auto_connections = args[:psc_auto_connections] if args.key?(:psc_auto_connections)
           @psc_auto_dns_enabled = args[:psc_auto_dns_enabled] if args.key?(:psc_auto_dns_enabled)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
