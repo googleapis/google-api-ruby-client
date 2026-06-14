@@ -239,6 +239,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Output only. The URIs of the source code, if available. For Cloud Run source
+        # deploy for example: `gs://my-bucket/my-folder/1234567890.abcde-fdbe.zip#
+        # 1234567890`
+        # Corresponds to the JSON property `sourceCodeUris`
+        # @return [Array<String>]
+        attr_accessor :source_code_uris
+      
         # Output only. The source commits at which this artifact was built. Extracted
         # from provenance.
         # Corresponds to the JSON property `sourceCommitUris`
@@ -262,6 +269,7 @@ module Google
           @container_status_summary = args[:container_status_summary] if args.key?(:container_status_summary)
           @deploy_time = args[:deploy_time] if args.key?(:deploy_time)
           @id = args[:id] if args.key?(:id)
+          @source_code_uris = args[:source_code_uris] if args.key?(:source_code_uris)
           @source_commit_uris = args[:source_commit_uris] if args.key?(:source_commit_uris)
           @undeploy_time = args[:undeploy_time] if args.key?(:undeploy_time)
         end

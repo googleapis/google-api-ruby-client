@@ -505,6 +505,7 @@ module Google
           property :container_status_summary, as: 'containerStatusSummary'
           property :deploy_time, as: 'deployTime'
           property :id, as: 'id'
+          collection :source_code_uris, as: 'sourceCodeUris'
           collection :source_commit_uris, as: 'sourceCommitUris'
           property :undeploy_time, as: 'undeployTime'
         end
