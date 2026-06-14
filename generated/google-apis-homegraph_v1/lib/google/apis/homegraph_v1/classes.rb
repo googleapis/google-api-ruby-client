@@ -66,6 +66,46 @@ module Google
         end
       end
       
+      # Component of a provider device.
+      class Component
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Child components.
+        # Corresponds to the JSON property `childComponents`
+        # @return [Array<Google::Apis::HomegraphV1::Component>]
+        attr_accessor :child_components
+      
+        # Required. List of Device types associated with this component. Supported
+        # device types are defined in cs//depot/google3/home/homeservicelayer/uddm/types/
+        # uddm_device_types.proto and the type string is the enum name, for example:
+        # ON_OFF_LIGHT => "ON_OFF_LIGHT".
+        # Corresponds to the JSON property `deviceTypes`
+        # @return [Array<String>]
+        attr_accessor :device_types
+      
+        # Required. ID of the component from the device provider.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required. List of trait data associated with the component.
+        # Corresponds to the JSON property `traitData`
+        # @return [Array<Google::Apis::HomegraphV1::TraitData>]
+        attr_accessor :trait_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_components = args[:child_components] if args.key?(:child_components)
+          @device_types = args[:device_types] if args.key?(:device_types)
+          @id = args[:id] if args.key?(:id)
+          @trait_data = args[:trait_data] if args.key?(:trait_data)
+        end
+      end
+      
       # Contains the set of updates for a component.
       class ComponentTraitUpdates
         include Google::Apis::Core::Hashable
@@ -382,6 +422,25 @@ module Google
         end
       end
       
+      # Container for UDDM trait data associated with a device.
+      class HomeTraitPayload
+        include Google::Apis::Core::Hashable
+      
+        # Component of a provider device.
+        # Corresponds to the JSON property `rootComponent`
+        # @return [Google::Apis::HomegraphV1::Component]
+        attr_accessor :root_component
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @root_component = args[:root_component] if args.key?(:root_component)
+        end
+      end
+      
       # Contains the set of updates for a device.
       class HomeTraitUpdates
         include Google::Apis::Core::Hashable
@@ -417,6 +476,14 @@ module Google
         # @return [String]
         attr_accessor :agent_user_id
       
+        # Optional. Specifies the type of device data to be returned in the response.
+        # This allows callers to request traditional Smart Home traits, Unified Device
+        # Data Model (UDDM) traits, or both. If unspecified, defaults to
+        # SMART_HOME_TRAIT_ONLY.
+        # Corresponds to the JSON property `deviceView`
+        # @return [String]
+        attr_accessor :device_view
+      
         # Optional. If true, the response will include device metadata in the
         # device_metadata field.
         # Corresponds to the JSON property `includeDeviceMetadata`
@@ -442,6 +509,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_user_id = args[:agent_user_id] if args.key?(:agent_user_id)
+          @device_view = args[:device_view] if args.key?(:device_view)
           @include_device_metadata = args[:include_device_metadata] if args.key?(:include_device_metadata)
           @inputs = args[:inputs] if args.key?(:inputs)
           @request_id = args[:request_id] if args.key?(:request_id)
@@ -533,6 +601,13 @@ module Google
         # @return [Hash<String,Hash<String,Object>>]
         attr_accessor :devices
       
+        # Map of device IDs to their Unified Device Data Model (UDDM) trait payloads.
+        # This field is populated when `device_view` is set to HOME_TRAIT_ONLY or
+        # HOME_TRAIT_AND_SMART_HOME_TRAIT.
+        # Corresponds to the JSON property `homeTraitPayload`
+        # @return [Hash<String,Google::Apis::HomegraphV1::HomeTraitPayload>]
+        attr_accessor :home_trait_payload
+      
         def initialize(**args)
            update!(**args)
         end
@@ -541,6 +616,7 @@ module Google
         def update!(**args)
           @device_metadata = args[:device_metadata] if args.key?(:device_metadata)
           @devices = args[:devices] if args.key?(:devices)
+          @home_trait_payload = args[:home_trait_payload] if args.key?(:home_trait_payload)
         end
       end
       
@@ -587,11 +663,20 @@ module Google
       
       # Request type for the [`ReportStateAndNotification`](#google.home.graph.v1.
       # HomeGraphApiService.ReportStateAndNotification) call. It may include states,
-      # notifications, or both. States and notifications are defined per `device_id` (
-      # for example, "123" and "456" in the following example). Example: ```json ` "
-      # requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "
-      # payload": ` "devices": ` "states": ` "123": ` "on": true `, "456": ` "on":
-      # true, "brightness": 10 `, `, ` ` ` ```
+      # notifications, home_traits, home_events, or any combination thereof. Smart
+      # Home Device Traits (SHDT) `states` and `notifications` are defined per `
+      # device_id` (for example, "123" and "456" in the following example). Google
+      # Home Traits `home_traits` and `home_events` are lists of updates or events,
+      # each associated with a `device_id` (for example, "789" in the following
+      # example). Example: ```json ` "requestId": "ff36a3cc-ec34-11e6-b1a0-
+      # 64510650abcf", "agentUserId": "1234", "payload": ` "devices": ` "states": ` "
+      # 123": ` "on": true `, "456": ` "on": true, "brightness": 10 `, `, "homeTraits":
+      # [ ` "deviceId": "789", "components": [ ` "componentId": "main", "traitData": [
+      # ` "trait": ` "@type": "type.googleapis.com/home.graph.v1.OnOffTrait", "onOff":
+      # true ` ` ] ` ] ` ], "homeEvents": [ ` "deviceId": "789", "events": [ ` "
+      # componentId": "main", "events": [ ` "eventId": "event-123", "eventTime": "2026-
+      # 01-01T00:00:00Z", "event": ` "@type": "type.googleapis.com/home.graph.v1.
+      # DoorbellPressTrait.DoorbellPressedEvent" ` ` ] ` ] ` ] ` ` ` ```
       class ReportStateAndNotificationRequest
         include Google::Apis::Core::Hashable
       
