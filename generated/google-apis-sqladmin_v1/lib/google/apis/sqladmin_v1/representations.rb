@@ -2115,6 +2115,8 @@ module Google
           property :consumer_network_status, as: 'consumerNetworkStatus'
           property :consumer_project, as: 'consumerProject'
           property :ip_address, as: 'ipAddress'
+          property :service_connection_policy, as: 'serviceConnectionPolicy'
+          property :service_connection_policy_creation_result, as: 'serviceConnectionPolicyCreationResult'
           property :status, as: 'status'
         end
       end
@@ -2124,6 +2126,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
           property :network_attachment_uri, as: 'networkAttachmentUri'
+          property :psc_auto_connection_policy_enabled, as: 'pscAutoConnectionPolicyEnabled'
           collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::SqladminV1::PscAutoConnectionConfig, decorator: Google::Apis::SqladminV1::PscAutoConnectionConfig::Representation
       
           property :psc_auto_dns_enabled, as: 'pscAutoDnsEnabled'

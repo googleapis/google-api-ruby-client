@@ -22,7 +22,7 @@ module Google
     module SqladminV1
       # Cloud SQL Admin API
       #
-      # API for Cloud SQL database instance management
+      # Cloud SQL Admin API
       #
       # @example
       #    require 'google/apis/sqladmin_v1'
@@ -456,6 +456,40 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['readTime'] = read_time unless read_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves connect settings about a Cloud SQL instance using the instance DNS
+        # name.
+        # @param [String] dns_name
+        #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Required. The region of the instance.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::ConnectSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::ConnectSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resolve_connect(dns_name, location, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/dns/{dnsName}/locations/{location}:resolveConnectSettings', options)
+          command.response_representation = Google::Apis::SqladminV1::ConnectSettings::Representation
+          command.response_class = Google::Apis::SqladminV1::ConnectSettings
+          command.params['dnsName'] = dns_name unless dns_name.nil?
+          command.params['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
