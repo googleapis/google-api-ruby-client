@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Decimal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Dependency
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSaasReleasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSaasResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +227,18 @@ module Google
       end
       
       class ListTenantsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUnitGroupOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUnitGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SaasRelease
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +388,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnitGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnitGroupOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UnitKind
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +413,12 @@ module Google
       end
       
       class UnitOperationCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnitUpdatePacing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -464,6 +512,13 @@ module Google
         end
       end
       
+      class Decimal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
       class Dependency
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -509,9 +564,7 @@ module Google
           collection :allocations, as: 'allocations', class: Google::Apis::SaasservicemgmtV1beta1::Allocation, decorator: Google::Apis::SaasservicemgmtV1beta1::Allocation::Representation
       
           collection :attributes, as: 'attributes'
-          property :default_allocation, as: 'defaultAllocation'
           property :default_target, as: 'defaultTarget'
-          property :default_variant, as: 'defaultVariant'
           collection :rules, as: 'rules', class: Google::Apis::SaasservicemgmtV1beta1::EvaluationRule, decorator: Google::Apis::SaasservicemgmtV1beta1::EvaluationRule::Representation
       
           collection :variants, as: 'variants', class: Google::Apis::SaasservicemgmtV1beta1::Variant, decorator: Google::Apis::SaasservicemgmtV1beta1::Variant::Representation
@@ -733,6 +786,16 @@ module Google
         end
       end
       
+      class ListSaasReleasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :saas_releases, as: 'saasReleases', class: Google::Apis::SaasservicemgmtV1beta1::SaasRelease, decorator: Google::Apis::SaasservicemgmtV1beta1::SaasRelease::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListSaasResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -748,6 +811,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :tenants, as: 'tenants', class: Google::Apis::SaasservicemgmtV1beta1::Tenant, decorator: Google::Apis::SaasservicemgmtV1beta1::Tenant::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListUnitGroupOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unit_group_operations, as: 'unitGroupOperations', class: Google::Apis::SaasservicemgmtV1beta1::UnitGroupOperation, decorator: Google::Apis::SaasservicemgmtV1beta1::UnitGroupOperation::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListUnitGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unit_groups, as: 'unitGroups', class: Google::Apis::SaasservicemgmtV1beta1::UnitGroup, decorator: Google::Apis::SaasservicemgmtV1beta1::UnitGroup::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -893,6 +976,8 @@ module Google
           property :uid, as: 'uid'
           property :unit_filter, as: 'unitFilter'
           property :unit_kind, as: 'unitKind'
+          property :unit_update_pacing, as: 'unitUpdatePacing', class: Google::Apis::SaasservicemgmtV1beta1::UnitUpdatePacing, decorator: Google::Apis::SaasservicemgmtV1beta1::UnitUpdatePacing::Representation
+      
           property :update_time, as: 'updateTime'
           property :update_unit_kind_strategy, as: 'updateUnitKindStrategy'
         end
@@ -945,6 +1030,19 @@ module Google
           property :reason, as: 'reason'
           property :status, as: 'status'
           property :type, as: 'type'
+        end
+      end
+      
+      class SaasRelease
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1030,6 +1128,7 @@ module Google
           property :system_managed_state, as: 'systemManagedState'
           property :tenant, as: 'tenant'
           property :uid, as: 'uid'
+          property :unit_group, as: 'unitGroup'
           property :unit_kind, as: 'unitKind'
           property :update_time, as: 'updateTime'
         end
@@ -1054,6 +1153,32 @@ module Google
         end
       end
       
+      class UnitGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class UnitGroupOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class UnitKind
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1062,6 +1187,7 @@ module Google
       
           property :application_template_component, as: 'applicationTemplateComponent', class: Google::Apis::SaasservicemgmtV1beta1::ComponentRef, decorator: Google::Apis::SaasservicemgmtV1beta1::ComponentRef::Representation
       
+          property :boundary_type, as: 'boundaryType'
           property :create_time, as: 'createTime'
           collection :default_flag_revisions, as: 'defaultFlagRevisions'
           property :default_release, as: 'defaultRelease'
@@ -1121,6 +1247,15 @@ module Google
           property :reason, as: 'reason'
           property :status, as: 'status'
           property :type, as: 'type'
+        end
+      end
+      
+      class UnitUpdatePacing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_concurrent_operations_count, as: 'maxConcurrentOperationsCount'
+          property :max_concurrent_operations_percent, as: 'maxConcurrentOperationsPercent', class: Google::Apis::SaasservicemgmtV1beta1::Decimal, decorator: Google::Apis::SaasservicemgmtV1beta1::Decimal::Representation
+      
         end
       end
       
