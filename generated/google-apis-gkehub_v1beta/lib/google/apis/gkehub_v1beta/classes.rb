@@ -214,6 +214,25 @@ module Google
         end
       end
       
+      # Configuration for automatic upgrades.
+      class AutoUpgradeConfig
+        include Google::Apis::Core::Hashable
+      
+        # The scope for automatic rollout creation.
+        # Corresponds to the JSON property `rolloutCreationScope`
+        # @return [Google::Apis::GkehubV1beta::RolloutCreationScope]
+        attr_accessor :rollout_creation_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout_creation_scope = args[:rollout_creation_scope] if args.key?(:rollout_creation_scope)
+        end
+      end
+      
       # BinaryAuthorizationConfig defines the fleet level configuration of binary
       # authorization feature.
       class BinaryAuthorizationConfig
@@ -351,6 +370,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for cancelling a rollout.
+      class CancelRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Selector for clusters.
+      class ClusterSelector
+        include Google::Apis::Core::Hashable
+      
+        # Required. A valid CEL (Common Expression Language) expression which evaluates `
+        # resource.labels`.
+        # Corresponds to the JSON property `labelSelector`
+        # @return [String]
+        attr_accessor :label_selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_selector = args[:label_selector] if args.key?(:label_selector)
         end
       end
       
@@ -741,6 +793,11 @@ module Google
         # @return [Google::Apis::GkehubV1beta::RbacRoleBindingActuationFeatureSpec]
         attr_accessor :rbacrolebindingactuation
       
+        # **WorkloadIdentity**: Global feature specification.
+        # Corresponds to the JSON property `workloadidentity`
+        # @return [Google::Apis::GkehubV1beta::WorkloadIdentityFeatureSpec]
+        attr_accessor :workloadidentity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -753,6 +810,7 @@ module Google
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
           @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
+          @workloadidentity = args[:workloadidentity] if args.key?(:workloadidentity)
         end
       end
       
@@ -788,6 +846,11 @@ module Google
         # @return [Google::Apis::GkehubV1beta::FeatureState]
         attr_accessor :state
       
+        # **WorkloadIdentity**: Global feature state.
+        # Corresponds to the JSON property `workloadidentity`
+        # @return [Google::Apis::GkehubV1beta::WorkloadIdentityFeatureState]
+        attr_accessor :workloadidentity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -799,6 +862,7 @@ module Google
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
           @state = args[:state] if args.key?(:state)
+          @workloadidentity = args[:workloadidentity] if args.key?(:workloadidentity)
         end
       end
       
@@ -842,8 +906,10 @@ module Google
         end
       end
       
-      # CompliancePostureConfig defines the settings needed to enable/disable features
-      # for the Compliance Posture.
+      # Deprecated: Compliance Posture is no longer supported. For more details, see
+      # https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+      # management-deprecation. CompliancePostureConfig defines the settings needed to
+      # enable/disable features for the Compliance Posture.
       class CompliancePostureConfig
         include Google::Apis::Core::Hashable
       
@@ -955,16 +1021,21 @@ module Google
       class ConfigManagementConfigSync
         include Google::Apis::Core::Hashable
       
-        # Optional. Configuration for deployment overrides.
+        # Optional. Configuration for deployment overrides. Applies only to Config Sync
+        # deployments with containers that are not a root or namespace reconciler: `
+        # reconciler-manager`, `otel-collector`, `resource-group-controller-manager`, `
+        # admission-webhook`. To override a root or namespace reconciler, use the
+        # rootsync or reposync fields at https://docs.cloud.google.com/kubernetes-engine/
+        # config-sync/docs/reference/rootsync-reposync-fields#override-resources instead.
         # Corresponds to the JSON property `deploymentOverrides`
         # @return [Array<Google::Apis::GkehubV1beta::ConfigManagementDeploymentOverride>]
         attr_accessor :deployment_overrides
       
-        # Optional. Enables the installation of ConfigSync. If set to true, ConfigSync
-        # resources will be created and the other ConfigSync fields will be applied if
-        # exist. If set to false, all other ConfigSync fields will be ignored,
-        # ConfigSync resources will be deleted. If omitted, ConfigSync resources will be
-        # managed depends on the presence of the git or oci field.
+        # Optional. Enables the installation of Config Sync. If set to true, the Feature
+        # will manage Config Sync resources, and apply the other ConfigSync fields if
+        # they exist. If set to false, the Feature will ignore all other ConfigSync
+        # fields and delete the Config Sync resources. If omitted, ConfigSync is
+        # considered enabled if the git or oci field is present.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -994,15 +1065,18 @@ module Google
         attr_accessor :oci
       
         # Optional. Set to true to enable the Config Sync admission webhook to prevent
-        # drifts. If set to `false`, disables the Config Sync admission webhook and does
-        # not prevent drifts.
+        # drifts. If set to false, disables the Config Sync admission webhook and does
+        # not prevent drifts. Defaults to false. See https://docs.cloud.google.com/
+        # kubernetes-engine/config-sync/docs/how-to/prevent-config-drift for details.
         # Corresponds to the JSON property `preventDrift`
         # @return [Boolean]
         attr_accessor :prevent_drift
         alias_method :prevent_drift?, :prevent_drift
       
-        # Optional. Specifies whether the Config Sync Repo is in "hierarchical" or "
-        # unstructured" mode.
+        # Optional. Specifies whether the Config Sync repo is in `hierarchical` or `
+        # unstructured` mode. Defaults to `hierarchical`. See https://docs.cloud.google.
+        # com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs for
+        # an explanation.
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
         attr_accessor :source_format
@@ -1262,22 +1336,30 @@ module Google
         # @return [String]
         attr_accessor :container_name
       
-        # Optional. The cpu limit of the container.
+        # Optional. The cpu limit of the container. Use the following CPU resource units:
+        # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        # #meaning-of-cpu.
         # Corresponds to the JSON property `cpuLimit`
         # @return [String]
         attr_accessor :cpu_limit
       
-        # Optional. The cpu request of the container.
+        # Optional. The cpu request of the container. Use the following CPU resource
+        # units: https://kubernetes.io/docs/concepts/configuration/manage-resources-
+        # containers/#meaning-of-cpu.
         # Corresponds to the JSON property `cpuRequest`
         # @return [String]
         attr_accessor :cpu_request
       
-        # Optional. The memory limit of the container.
+        # Optional. The memory limit of the container. Use the following memory resource
+        # units: https://kubernetes.io/docs/concepts/configuration/manage-resources-
+        # containers/#meaning-of-memory.
         # Corresponds to the JSON property `memoryLimit`
         # @return [String]
         attr_accessor :memory_limit
       
-        # Optional. The memory request of the container.
+        # Optional. The memory request of the container. Use the following memory
+        # resource units: https://kubernetes.io/docs/concepts/configuration/manage-
+        # resources-containers/#meaning-of-memory.
         # Corresponds to the JSON property `memoryRequest`
         # @return [String]
         attr_accessor :memory_request
@@ -1400,13 +1482,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The Google Cloud Service Account Email used for auth when
-        # secret_type is gcpServiceAccount.
+        # secret_type is `gcpserviceaccount`.
         # Corresponds to the JSON property `gcpServiceAccountEmail`
         # @return [String]
         attr_accessor :gcp_service_account_email
       
         # Optional. URL for the HTTPS proxy to be used when communicating with the Git
-        # repo.
+        # repo. Only specify when secret_type is `cookiefile`, `token`, or `none`.
         # Corresponds to the JSON property `httpsProxy`
         # @return [String]
         attr_accessor :https_proxy
@@ -1418,8 +1500,8 @@ module Google
         attr_accessor :policy_dir
       
         # Required. Type of secret configured for access to the Git repo. Must be one of
-        # ssh, cookiefile, gcenode, token, gcpserviceaccount, githubapp or none. The
-        # validation of this is case-sensitive.
+        # `ssh`, `cookiefile`, `gcenode`, `token`, `gcpserviceaccount`, `githubapp` or `
+        # none`. The validation of this is case-sensitive.
         # Corresponds to the JSON property `secretType`
         # @return [String]
         attr_accessor :secret_type
@@ -1630,12 +1712,13 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementBinauthzConfig]
         attr_accessor :binauthz
       
-        # Optional. The user-specified cluster name used by Config Sync cluster-name-
-        # selector annotation or ClusterSelector, for applying configs to only a subset
-        # of clusters. Omit this field if the cluster's fleet membership name is used by
-        # Config Sync cluster-name-selector annotation or ClusterSelector. Set this
+        # Optional. User-specified cluster name used by the Config Sync cluster-name-
+        # selector annotation or ClusterSelector object, for applying configs to only a
+        # subset of clusters. Read more about the cluster-name-selector annotation and
+        # ClusterSelector object at https://docs.cloud.google.com/kubernetes-engine/
+        # config-sync/docs/how-to/cluster-scoped-objects#limiting-configs. Only set this
         # field if a name different from the cluster's fleet membership name is used by
-        # Config Sync cluster-name-selector annotation or ClusterSelector.
+        # the Config Sync cluster-name-selector annotation or ClusterSelector.
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
@@ -1650,7 +1733,8 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementHierarchyControllerConfig]
         attr_accessor :hierarchy_controller
       
-        # Optional. Enables automatic Feature management.
+        # Optional. Deprecated: From version 1.21.0, automatic Feature management is
+        # unavailable, and Config Sync only supports manual upgrades.
         # Corresponds to the JSON property `management`
         # @return [String]
         attr_accessor :management
@@ -1660,7 +1744,10 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementPolicyController]
         attr_accessor :policy_controller
       
-        # Optional. Version of ACM installed.
+        # Optional. Version of Config Sync to install. Defaults to the latest supported
+        # Config Sync version if the config_sync field is enabled. See supported
+        # versions at https://cloud.google.com/kubernetes-engine/config-sync/docs/get-
+        # support-config-sync#version_support_policy.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -1750,7 +1837,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The Google Cloud Service Account Email used for auth when
-        # secret_type is gcpServiceAccount.
+        # secret_type is `gcpserviceaccount`.
         # Corresponds to the JSON property `gcpServiceAccountEmail`
         # @return [String]
         attr_accessor :gcp_service_account_email
@@ -1762,8 +1849,8 @@ module Google
         attr_accessor :policy_dir
       
         # Required. Type of secret configured for access to the OCI repo. Must be one of
-        # gcenode, gcpserviceaccount, k8sserviceaccount or none. The validation of this
-        # is case-sensitive.
+        # `gcenode`, `gcpserviceaccount`, `k8sserviceaccount` or `none`. The validation
+        # of this is case-sensitive.
         # Corresponds to the JSON property `secretType`
         # @return [String]
         attr_accessor :secret_type
@@ -2149,8 +2236,10 @@ module Google
         # @return [Google::Apis::GkehubV1beta::BinaryAuthorizationConfig]
         attr_accessor :binary_authorization_config
       
-        # CompliancePostureConfig defines the settings needed to enable/disable features
-        # for the Compliance Posture.
+        # Deprecated: Compliance Posture is no longer supported. For more details, see
+        # https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+        # management-deprecation. CompliancePostureConfig defines the settings needed to
+        # enable/disable features for the Compliance Posture.
         # Corresponds to the JSON property `compliancePostureConfig`
         # @return [Google::Apis::GkehubV1beta::CompliancePostureConfig]
         attr_accessor :compliance_posture_config
@@ -2750,6 +2839,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # Request message for force-completing a rollout stage.
+      class ForceCompleteRolloutStageRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The stage number to force-complete.
+        # Corresponds to the JSON property `stageNumber`
+        # @return [Fixnum]
+        attr_accessor :stage_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage_number = args[:stage_number] if args.key?(:stage_number)
         end
       end
       
@@ -3526,7 +3634,7 @@ module Google
       
         # Output only. Node providerID as reported by the first node in the list of
         # nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-
-        # node clusters (like GKE-on-GCP), the node_count will be zero and the
+        # node clusters (like GKE on Google Cloud), the node_count will be zero and the
         # node_provider_id will be empty.
         # Corresponds to the JSON property `nodeProviderId`
         # @return [String]
@@ -3839,8 +3947,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -3881,6 +3990,58 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
+      # Response message for listing rollout sequences.
+      class ListRolloutSequencesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The rollout sequences from the specified parent resource.
+        # Corresponds to the JSON property `rolloutSequences`
+        # @return [Array<Google::Apis::GkehubV1beta::RolloutSequence>]
+        attr_accessor :rollout_sequences
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rollout_sequences = args[:rollout_sequences] if args.key?(:rollout_sequences)
+        end
+      end
+      
+      # Response message for listing rollouts.
+      class ListRolloutsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The rollouts from the specified parent resource.
+        # Corresponds to the JSON property `rollouts`
+        # @return [Array<Google::Apis::GkehubV1beta::Rollout>]
+        attr_accessor :rollouts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rollouts = args[:rollouts] if args.key?(:rollouts)
         end
       end
       
@@ -4400,6 +4561,12 @@ module Google
         # @return [Google::Apis::GkehubV1beta::FeatureState]
         attr_accessor :state
       
+        # **WorkloadIdentity**: The membership-specific state for WorkloadIdentity
+        # feature.
+        # Corresponds to the JSON property `workloadidentity`
+        # @return [Google::Apis::GkehubV1beta::WorkloadIdentityMembershipState]
+        attr_accessor :workloadidentity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4415,6 +4582,7 @@ module Google
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
+          @workloadidentity = args[:workloadidentity] if args.key?(:workloadidentity)
         end
       end
       
@@ -4858,6 +5026,38 @@ module Google
         end
       end
       
+      # Operational state of the Rollout Sequence.
+      class OperationalState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Reasons for the Rollout Sequence state.
+        # Corresponds to the JSON property `reasons`
+        # @return [Array<String>]
+        attr_accessor :reasons
+      
+        # Output only. State of the Rollout Sequence.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The timestamp at which the operational state was last changed.
+        # Used to track how long it has been in the current state.
+        # Corresponds to the JSON property `stateChangeTime`
+        # @return [String]
+        attr_accessor :state_change_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reasons = args[:reasons] if args.key?(:reasons)
+          @state = args[:state] if args.key?(:state)
+          @state_change_time = args[:state_change_time] if args.key?(:state_change_time)
+        end
+      end
+      
       # Origin defines where this MembershipFeatureSpec originated from.
       class Origin
         include Google::Apis::Core::Hashable
@@ -4874,6 +5074,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Request message for pausing a rollout.
+      class PauseRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5625,6 +5838,32 @@ module Google
         end
       end
       
+      # Request message for resuming a rollout.
+      class ResumeRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The duration to offset the Rollout schedule by.
+        # Corresponds to the JSON property `scheduleOffset`
+        # @return [String]
+        attr_accessor :schedule_offset
+      
+        # Optional. If set, resume rollout will be executed in dry-run mode.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schedule_offset = args[:schedule_offset] if args.key?(:schedule_offset)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Role is the type for Kubernetes roles
       class Role
         include Google::Apis::Core::Hashable
@@ -5647,6 +5886,362 @@ module Google
         def update!(**args)
           @custom_role = args[:custom_role] if args.key?(:custom_role)
           @predefined_role = args[:predefined_role] if args.key?(:predefined_role)
+        end
+      end
+      
+      # Rollout contains the Rollout metadata and configuration. Next ID: 28
+      class Rollout
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp at which the Rollout was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Output only. The timestamp at which the Rollout was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The timestamp at the Rollout was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. Human readable display name of the Rollout.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. etag of the Rollout Ex. abc1234
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Labels for this Rollout.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. States of upgrading control plane or node pool targets of a
+        # single cluster (GKE Hub membership) that's part of this Rollout. The key is
+        # the membership name of the cluster. The value is the state of the cluster.
+        # Corresponds to the JSON property `membershipStates`
+        # @return [Hash<String,Google::Apis::GkehubV1beta::RolloutMembershipState>]
+        attr_accessor :membership_states
+      
+        # Identifier. The full, unique resource name of this Rollout in the format of `
+        # projects/`project`/locations/global/rollouts/`rollout``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Immutable. The full, unique resource name of the rollout sequence
+        # that initiatied this Rollout. In the format of `projects/`project`/locations/
+        # global/rolloutSequences/`rollout_sequence``.
+        # Corresponds to the JSON property `rolloutSequence`
+        # @return [String]
+        attr_accessor :rollout_sequence
+      
+        # Output only. The stages of the Rollout.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::GkehubV1beta::RolloutStage>]
+        attr_accessor :stages
+      
+        # Output only. State specifies various states of the Rollout.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A human-readable description explaining the reason for the
+        # current state.
+        # Corresponds to the JSON property `stateReason`
+        # @return [String]
+        attr_accessor :state_reason
+      
+        # Output only. StateReasonType specifies the reason type of the Rollout state.
+        # Corresponds to the JSON property `stateReasonType`
+        # @return [String]
+        attr_accessor :state_reason_type
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all Rollout resources. If a Rollout resource is deleted and another resource
+        # with the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp at which the Rollout was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Config for version upgrade of clusters.
+        # Corresponds to the JSON property `versionUpgrade`
+        # @return [Google::Apis::GkehubV1beta::VersionUpgrade]
+        attr_accessor :version_upgrade
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @membership_states = args[:membership_states] if args.key?(:membership_states)
+          @name = args[:name] if args.key?(:name)
+          @rollout_sequence = args[:rollout_sequence] if args.key?(:rollout_sequence)
+          @stages = args[:stages] if args.key?(:stages)
+          @state = args[:state] if args.key?(:state)
+          @state_reason = args[:state_reason] if args.key?(:state_reason)
+          @state_reason_type = args[:state_reason_type] if args.key?(:state_reason_type)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version_upgrade = args[:version_upgrade] if args.key?(:version_upgrade)
+        end
+      end
+      
+      # The scope for automatic rollout creation.
+      class RolloutCreationScope
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of enabled upgrade types.
+        # Corresponds to the JSON property `upgradeTypes`
+        # @return [Array<String>]
+        attr_accessor :upgrade_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upgrade_types = args[:upgrade_types] if args.key?(:upgrade_types)
+        end
+      end
+      
+      # Metadata about single cluster (GKE Hub membership) that's part of this Rollout.
+      class RolloutMembershipState
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. The time this status and any related Rollout-specific
+        # details for the membership were updated.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # Output only. The stage assignment of this cluster in this rollout.
+        # Corresponds to the JSON property `stageAssignment`
+        # @return [Fixnum]
+        attr_accessor :stage_assignment
+      
+        # Output only. The targets of the rollout - clusters or node pools that are
+        # being upgraded. All targets belongs to the same cluster, identified by the
+        # membership name (key of membership_states map).
+        # Corresponds to the JSON property `targets`
+        # @return [Array<Google::Apis::GkehubV1beta::RolloutTarget>]
+        attr_accessor :targets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @stage_assignment = args[:stage_assignment] if args.key?(:stage_assignment)
+          @targets = args[:targets] if args.key?(:targets)
+        end
+      end
+      
+      # RolloutSequence defines the desired order of upgrades. Next ID: 20
+      class RolloutSequence
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for automatic upgrades.
+        # Corresponds to the JSON property `autoUpgradeConfig`
+        # @return [Google::Apis::GkehubV1beta::AutoUpgradeConfig]
+        attr_accessor :auto_upgrade_config
+      
+        # Output only. The timestamp at which the Rollout Sequence was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The timestamp at the Rollout Sequence was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. Human readable display name of the Rollout Sequence.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Configuration for automatic upgrades.
+        # Corresponds to the JSON property `effectiveAutoUpgradeConfig`
+        # @return [Google::Apis::GkehubV1beta::AutoUpgradeConfig]
+        attr_accessor :effective_auto_upgrade_config
+      
+        # Output only. etag of the Rollout Sequence Ex. abc1234
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Selector for clusters.
+        # Corresponds to the JSON property `ignoredClustersSelector`
+        # @return [Google::Apis::GkehubV1beta::ClusterSelector]
+        attr_accessor :ignored_clusters_selector
+      
+        # Optional. Labels for this Rollout Sequence.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Name of the rollout sequence in the format of: projects/`
+        # PROJECT_ID`/locations/global/rolloutSequences/`NAME`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Operational state of the Rollout Sequence.
+        # Corresponds to the JSON property `operationalState`
+        # @return [Google::Apis::GkehubV1beta::OperationalState]
+        attr_accessor :operational_state
+      
+        # Required. Ordered list of stages that constitutes this Rollout.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::GkehubV1beta::Stage>]
+        attr_accessor :stages
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all Rollout Sequence resources. If a Rollout Sequence resource is deleted and
+        # another resource with the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp at which the Rollout Sequence was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_upgrade_config = args[:auto_upgrade_config] if args.key?(:auto_upgrade_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @effective_auto_upgrade_config = args[:effective_auto_upgrade_config] if args.key?(:effective_auto_upgrade_config)
+          @etag = args[:etag] if args.key?(:etag)
+          @ignored_clusters_selector = args[:ignored_clusters_selector] if args.key?(:ignored_clusters_selector)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @operational_state = args[:operational_state] if args.key?(:operational_state)
+          @stages = args[:stages] if args.key?(:stages)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Stage represents a single stage in the Rollout.
+      class RolloutStage
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. The time at which the stage ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Duration to soak after this stage before starting the next stage.
+        # Corresponds to the JSON property `soakDuration`
+        # @return [String]
+        attr_accessor :soak_duration
+      
+        # Output only. The stage number to which this status applies.
+        # Corresponds to the JSON property `stageNumber`
+        # @return [Fixnum]
+        attr_accessor :stage_number
+      
+        # Optional. Output only. The time at which the stage started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The state of the stage.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @soak_duration = args[:soak_duration] if args.key?(:soak_duration)
+          @stage_number = args[:stage_number] if args.key?(:stage_number)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Metadata about the status of targets (clusters or node pools) involved in the
+      # Rollout.
+      class RolloutTarget
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. The resource link of the Cluster resource upgraded in
+        # this Rollout. It is formatted as: `//`api_service`/projects/`project_number`/
+        # locations/`location`/clusters/`cluster_name``. .
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Optional. Output only. The resource link of the NodePool resource upgraded in
+        # this Rollout. It is formatted as: `//`api_service`/projects/`project_number`/
+        # locations/`location`/clusters/`cluster_name`/nodePools/`node_pool_name``.
+        # Corresponds to the JSON property `nodePool`
+        # @return [String]
+        attr_accessor :node_pool
+      
+        # Optional. Output only. The operation resource name performing the mutation.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # Optional. Output only. A human-readable description of the current status.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Output only. The high-level, machine-readable status of this Rollout for the
+        # target.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @node_pool = args[:node_pool] if args.key?(:node_pool)
+          @operation = args[:operation] if args.key?(:operation)
+          @reason = args[:reason] if args.key?(:reason)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -6034,6 +6629,38 @@ module Google
         end
       end
       
+      # Rollout stage.
+      class Stage
+        include Google::Apis::Core::Hashable
+      
+        # Selector for clusters.
+        # Corresponds to the JSON property `clusterSelector`
+        # @return [Google::Apis::GkehubV1beta::ClusterSelector]
+        attr_accessor :cluster_selector
+      
+        # Required. List of Fleet projects to select the clusters from. Expected format:
+        # projects/`project`
+        # Corresponds to the JSON property `fleetProjects`
+        # @return [Array<String>]
+        attr_accessor :fleet_projects
+      
+        # Optional. Soak time after upgrading all the clusters in the stage.
+        # Corresponds to the JSON property `soakDuration`
+        # @return [String]
+        attr_accessor :soak_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_selector = args[:cluster_selector] if args.key?(:cluster_selector)
+          @fleet_projects = args[:fleet_projects] if args.key?(:fleet_projects)
+          @soak_duration = args[:soak_duration] if args.key?(:soak_duration)
+        end
+      end
+      
       # Status specifies state for the subcomponent.
       class Status
         include Google::Apis::Core::Hashable
@@ -6122,6 +6749,199 @@ module Google
         def update!(**args)
           @api_version = args[:api_version] if args.key?(:api_version)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Config for version upgrade of clusters.
+      class VersionUpgrade
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Desired version of the component.
+        # Corresponds to the JSON property `desiredVersion`
+        # @return [String]
+        attr_accessor :desired_version
+      
+        # Optional. Type of version upgrade specifies which component should be upgraded.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @desired_version = args[:desired_version] if args.key?(:desired_version)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # **WorkloadIdentity**: Global feature specification.
+      class WorkloadIdentityFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # Pool to be used for Workload Identity. This pool in trust-domain mode is used
+        # with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/
+        # locations/global/workloadidentitypools/custompool
+        # Corresponds to the JSON property `scopeTenancyPool`
+        # @return [String]
+        attr_accessor :scope_tenancy_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope_tenancy_pool = args[:scope_tenancy_pool] if args.key?(:scope_tenancy_pool)
+        end
+      end
+      
+      # **WorkloadIdentity**: Global feature state.
+      class WorkloadIdentityFeatureState
+        include Google::Apis::Core::Hashable
+      
+        # The state of the IAM namespaces for the fleet.
+        # Corresponds to the JSON property `namespaceStateDetails`
+        # @return [Hash<String,Google::Apis::GkehubV1beta::WorkloadIdentityNamespaceStateDetail>]
+        attr_accessor :namespace_state_details
+      
+        # Deprecated, this field will be erased after code is changed to use the new
+        # field.
+        # Corresponds to the JSON property `namespaceStates`
+        # @return [Hash<String,String>]
+        attr_accessor :namespace_states
+      
+        # The full name of the scope-tenancy pool for the fleet.
+        # Corresponds to the JSON property `scopeTenancyWorkloadIdentityPool`
+        # @return [String]
+        attr_accessor :scope_tenancy_workload_identity_pool
+      
+        # The full name of the svc.id.goog pool for the fleet.
+        # Corresponds to the JSON property `workloadIdentityPool`
+        # @return [String]
+        attr_accessor :workload_identity_pool
+      
+        # The state of the Workload Identity Pools for the fleet.
+        # Corresponds to the JSON property `workloadIdentityPoolStateDetails`
+        # @return [Hash<String,Google::Apis::GkehubV1beta::WorkloadIdentityWorkloadIdentityPoolStateDetail>]
+        attr_accessor :workload_identity_pool_state_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespace_state_details = args[:namespace_state_details] if args.key?(:namespace_state_details)
+          @namespace_states = args[:namespace_states] if args.key?(:namespace_states)
+          @scope_tenancy_workload_identity_pool = args[:scope_tenancy_workload_identity_pool] if args.key?(:scope_tenancy_workload_identity_pool)
+          @workload_identity_pool = args[:workload_identity_pool] if args.key?(:workload_identity_pool)
+          @workload_identity_pool_state_details = args[:workload_identity_pool_state_details] if args.key?(:workload_identity_pool_state_details)
+        end
+      end
+      
+      # IdentityProviderStateDetail represents the state of an Identity Provider.
+      class WorkloadIdentityIdentityProviderStateDetail
+        include Google::Apis::Core::Hashable
+      
+        # The state of the Identity Provider.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A human-readable description of the current state or returned error.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # **WorkloadIdentity**: The membership-specific state for WorkloadIdentity
+      # feature.
+      class WorkloadIdentityMembershipState
+        include Google::Apis::Core::Hashable
+      
+        # Deprecated, this field will be erased after code is changed to use the new
+        # field.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The state of the Identity Providers corresponding to the membership.
+        # Corresponds to the JSON property `identityProviderStateDetails`
+        # @return [Hash<String,Google::Apis::GkehubV1beta::WorkloadIdentityIdentityProviderStateDetail>]
+        attr_accessor :identity_provider_state_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @identity_provider_state_details = args[:identity_provider_state_details] if args.key?(:identity_provider_state_details)
+        end
+      end
+      
+      # NamespaceStateDetail represents the state of a IAM namespace.
+      class WorkloadIdentityNamespaceStateDetail
+        include Google::Apis::Core::Hashable
+      
+        # The state of the IAM namespace.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A human-readable description of the current state or returned error.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # WorkloadIdentityPoolStateDetail represents the state of the Workload Identity
+      # Pools for the fleet.
+      class WorkloadIdentityWorkloadIdentityPoolStateDetail
+        include Google::Apis::Core::Hashable
+      
+        # The state of the Workload Identity Pool.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A human-readable description of the current state or returned error.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
         end
       end
     end
