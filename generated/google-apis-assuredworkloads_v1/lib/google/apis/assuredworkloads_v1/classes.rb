@@ -269,6 +269,53 @@ module Google
         end
       end
       
+      # Request for acknowledging the violations in a batch
+      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Acknowledge type of specified violations.
+        # Corresponds to the JSON property `acknowledgeType`
+        # @return [String]
+        attr_accessor :acknowledge_type
+      
+        # Required. Business justification explaining the need for violations
+        # acknowledgement
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Required. The resource names of the Violations to acknowledge. Format for each
+        # name: organizations/`organization`/locations/`location`/workloads/`workload`/
+        # violations/`violation`
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledge_type = args[:acknowledge_type] if args.key?(:acknowledge_type)
+          @comment = args[:comment] if args.key?(:comment)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # Response for batch violation acknowledgement
+      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Operation metadata to give request details of CreateWorkload.
       class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
         include Google::Apis::Core::Hashable
