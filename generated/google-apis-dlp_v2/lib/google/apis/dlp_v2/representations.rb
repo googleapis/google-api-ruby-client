@@ -142,6 +142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2BatchContentItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2BatchContentLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2BigQueryDiscoveryTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1870,6 +1882,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2StringValueBatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2SummaryResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2365,6 +2383,21 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2BatchContentItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :string_value_batch, as: 'stringValueBatch', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StringValueBatch, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StringValueBatch::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2BatchContentLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :item_index, as: 'itemIndex'
+        end
+      end
+      
       class GooglePrivacyDlpV2BigQueryDiscoveryTarget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2733,6 +2766,8 @@ module Google
       class GooglePrivacyDlpV2ContentItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_content_item, as: 'batchContentItem', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BatchContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BatchContentItem::Representation
+      
           property :byte_item, as: 'byteItem', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ByteContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ByteContentItem::Representation
       
           property :content_metadata, as: 'contentMetadata', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentMetadata, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentMetadata::Representation
@@ -2748,6 +2783,8 @@ module Google
       class GooglePrivacyDlpV2ContentLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_content_location, as: 'batchContentLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BatchContentLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BatchContentLocation::Representation
+      
           property :container_name, as: 'containerName'
           property :container_timestamp, as: 'containerTimestamp'
           property :container_version, as: 'containerVersion'
@@ -5327,6 +5364,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :name, as: 'name'
+        end
+      end
+      
+      class GooglePrivacyDlpV2StringValueBatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
         end
       end
       

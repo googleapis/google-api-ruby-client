@@ -613,6 +613,44 @@ module Google
         end
       end
       
+      # Represents a batch of content to inspect or redact.
+      class GooglePrivacyDlpV2BatchContentItem
+        include Google::Apis::Core::Hashable
+      
+        # Represents a batch of string values to inspect or redact.
+        # Corresponds to the JSON property `stringValueBatch`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StringValueBatch]
+        attr_accessor :string_value_batch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @string_value_batch = args[:string_value_batch] if args.key?(:string_value_batch)
+        end
+      end
+      
+      # Location within a batch of content.
+      class GooglePrivacyDlpV2BatchContentLocation
+        include Google::Apis::Core::Hashable
+      
+        # Matches an index of a batch item in the batch provided in the request.
+        # Corresponds to the JSON property `itemIndex`
+        # @return [Fixnum]
+        attr_accessor :item_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @item_index = args[:item_index] if args.key?(:item_index)
+        end
+      end
+      
       # Target used to match against for discovery with BigQuery tables
       class GooglePrivacyDlpV2BigQueryDiscoveryTarget
         include Google::Apis::Core::Hashable
@@ -1953,6 +1991,11 @@ module Google
       class GooglePrivacyDlpV2ContentItem
         include Google::Apis::Core::Hashable
       
+        # Represents a batch of content to inspect or redact.
+        # Corresponds to the JSON property `batchContentItem`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BatchContentItem]
+        attr_accessor :batch_content_item
+      
         # Container for bytes to inspect or redact.
         # Corresponds to the JSON property `byteItem`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ByteContentItem]
@@ -1987,6 +2030,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @batch_content_item = args[:batch_content_item] if args.key?(:batch_content_item)
           @byte_item = args[:byte_item] if args.key?(:byte_item)
           @content_metadata = args[:content_metadata] if args.key?(:content_metadata)
           @conversation = args[:conversation] if args.key?(:conversation)
@@ -1999,6 +2043,11 @@ module Google
       # container.
       class GooglePrivacyDlpV2ContentLocation
         include Google::Apis::Core::Hashable
+      
+        # Location within a batch of content.
+        # Corresponds to the JSON property `batchContentLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BatchContentLocation]
+        attr_accessor :batch_content_location
       
         # Name of the container where the finding is located. The top level name is the
         # source file name or table name. Names of some common storage containers are
@@ -2054,6 +2103,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @batch_content_location = args[:batch_content_location] if args.key?(:batch_content_location)
           @container_name = args[:container_name] if args.key?(:container_name)
           @container_timestamp = args[:container_timestamp] if args.key?(:container_timestamp)
           @container_version = args[:container_version] if args.key?(:container_version)
@@ -2145,7 +2195,7 @@ module Google
         # @return [String]
         attr_accessor :message_type
       
-        # Optional. The identifier of the participant. For example 'test-user' or '
+        # Optional. The identifier of the participant, for example 'test-user' or '
         # gemini'. The participant ID can contain lowercase letters, numbers, and
         # hyphens; that is, it must match the regular expression: `^[a-z]([a-z0-9-]`0,61`
         # [a-z0-9])?$`. The maximum length is 63 characters.
@@ -10461,6 +10511,25 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents a batch of string values to inspect or redact.
+      class GooglePrivacyDlpV2StringValueBatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Represents string data to inspect or redact.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
