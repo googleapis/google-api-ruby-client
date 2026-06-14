@@ -70,7 +70,7 @@ module Google
         # @return [Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfig]
         attr_accessor :network_config
       
-        # Required. List of protocols supported by an Agent Gateway
+        # Optional. Deprecated.
         # Corresponds to the JSON property `protocols`
         # @return [Array<String>]
         attr_accessor :protocols
