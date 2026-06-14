@@ -2022,6 +2022,13 @@ module Google
       class GoogleAnalyticsAdminV1betaPropertySummary
         include Google::Apis::Core::Hashable
       
+        # If true, then the user has a Google Analytics role that permits them to edit
+        # the property.
+        # Corresponds to the JSON property `canEdit`
+        # @return [Boolean]
+        attr_accessor :can_edit
+        alias_method :can_edit?, :can_edit
+      
         # Display name for the property referred to in this property summary.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -2051,6 +2058,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @can_edit = args[:can_edit] if args.key?(:can_edit)
           @display_name = args[:display_name] if args.key?(:display_name)
           @parent = args[:parent] if args.key?(:parent)
           @property = args[:property] if args.key?(:property)
