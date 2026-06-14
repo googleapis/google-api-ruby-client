@@ -590,7 +590,8 @@ module Google
         
         # Creates an ad group ad. This method is only supported for Demand Gen ads.
         # Retrieval and management of Demand Gen resources is currently in beta. This
-        # method is only available to allowlisted users.
+        # method will begin rolling out to all partners on *June 10, 2026* and be
+        # available to all partners on *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad belongs to.
         # @param [Google::Apis::DisplayvideoV4::AdGroupAd] ad_group_ad_object
@@ -625,7 +626,8 @@ module Google
         
         # Deletes an ad group ad. This method is only supported for Demand Gen ads.
         # Retrieval and management of Demand Gen resources is currently in beta. This
-        # method is only available to allowlisted users.
+        # method will begin rolling out to all partners on *June 10, 2026* and be
+        # available to all partners on *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad belongs to.
         # @param [Fixnum] ad_group_ad_id
@@ -754,7 +756,8 @@ module Google
         
         # Updates an ad group ad. This method is only supported for Demand Gen ads.
         # Retrieval and management of Demand Gen resources is currently in beta. This
-        # method is only available to allowlisted users.
+        # method will begin rolling out to all partners on *June 10, 2026* and be
+        # available to all partners on *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad belongs to.
         # @param [Fixnum] ad_group_ad_id
@@ -800,8 +803,9 @@ module Google
         # group, and then create the assigned targeting options provided in
         # BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is
         # only supported for Demand Gen ad groups. Retrieval and management of Demand
-        # Gen resources is currently in beta. This method is only available to
-        # allowlisted users.
+        # Gen resources is currently in beta. This method will begin rolling out to all
+        # partners on *June 10, 2026* and be available to all partners on *June 24, 2026*
+        # .
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad groups belong to.
         # @param [Google::Apis::DisplayvideoV4::BulkEditAdGroupAssignedTargetingOptionsRequest] bulk_edit_ad_group_assigned_targeting_options_request_object
@@ -900,8 +904,9 @@ module Google
         
         # Creates a new ad group. Returns the newly created ad group if successful. This
         # method is only supported for Demand Gen ad groups. Retrieval and management of
-        # Demand Gen resources is currently in beta. This method is only available to
-        # allowlisted users.
+        # Demand Gen resources is currently in beta. This method will begin rolling out
+        # to all partners on *June 10, 2026* and be available to all partners on *June
+        # 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad group belongs to.
         # @param [Google::Apis::DisplayvideoV4::AdGroup] ad_group_object
@@ -936,8 +941,9 @@ module Google
         
         # Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not
         # exist. This method is only supported for Demand Gen ad groups. Retrieval and
-        # management of Demand Gen resources is currently in beta. This method is only
-        # available to allowlisted users.
+        # management of Demand Gen resources is currently in beta. This method will
+        # begin rolling out to all partners on *June 10, 2026* and be available to all
+        # partners on *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1067,8 +1073,9 @@ module Google
         
         # Updates an existing ad group. Returns the updated ad group if successful. This
         # method is only supported for Demand Gen ad groups. Retrieval and management of
-        # Demand Gen resources is currently in beta. This method is only available to
-        # allowlisted users.
+        # Demand Gen resources is currently in beta. This method will begin rolling out
+        # to all partners on *June 10, 2026* and be available to all partners on *June
+        # 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1110,7 +1117,8 @@ module Google
         # Assigns a targeting option to an ad group. Returns the assigned targeting
         # option if successful. This method is only supported for Demand Gen ad groups.
         # Retrieval and management of Demand Gen resources is currently in beta. This
-        # method is only available to allowlisted users.
+        # method will begin rolling out to all partners on *June 10, 2026* and be
+        # available to all partners on *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1159,7 +1167,8 @@ module Google
         # Deletes an assigned targeting option from an ad group. This method is only
         # supported for Demand Gen ad groups with the AdGroupFormat `
         # AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of Demand Gen resources
-        # is currently in beta. This method is only available to allowlisted users.
+        # is currently in beta. This method will begin rolling out to all partners on *
+        # June 10, 2026* and be available to all partners on *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
