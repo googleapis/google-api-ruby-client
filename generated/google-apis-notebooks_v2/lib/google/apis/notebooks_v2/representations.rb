@@ -555,6 +555,8 @@ module Google
       class ImageRelease
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :image_family, as: 'imageFamily'
           property :image_name, as: 'imageName'
           property :release_name, as: 'releaseName'
         end
