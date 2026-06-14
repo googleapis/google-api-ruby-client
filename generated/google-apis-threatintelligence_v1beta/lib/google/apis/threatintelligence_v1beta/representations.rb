@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Association
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Audit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +316,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductFix
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicExploit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RelevanceAnalysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -334,7 +352,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetTechnologyAlertDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetTechnologyFindingDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TechnologyWatchListAlertThreshold
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TechnologyWatchListConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpsertConfigurationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VulnerabilityMatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -377,6 +425,8 @@ module Google
       
           property :insider_threat, as: 'insiderThreat', class: Google::Apis::ThreatintelligenceV1beta::InsiderThreatAlertDetail, decorator: Google::Apis::ThreatintelligenceV1beta::InsiderThreatAlertDetail::Representation
       
+          property :target_technology, as: 'targetTechnology', class: Google::Apis::ThreatintelligenceV1beta::TargetTechnologyAlertDetail, decorator: Google::Apis::ThreatintelligenceV1beta::TargetTechnologyAlertDetail::Representation
+      
         end
       end
       
@@ -405,6 +455,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :translated_content, as: 'translatedContent'
           property :translated_title, as: 'translatedTitle'
+        end
+      end
+      
+      class Association
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :type, as: 'type'
         end
       end
       
@@ -441,6 +499,8 @@ module Google
           property :customer_profile, as: 'customerProfile', class: Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig, decorator: Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig::Representation
       
           property :detail_type, as: 'detailType'
+          property :technology_watchlist, as: 'technologyWatchlist', class: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig, decorator: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig::Representation
+      
         end
       end
       
@@ -690,6 +750,8 @@ module Google
       
           property :insider_threat, as: 'insiderThreat', class: Google::Apis::ThreatintelligenceV1beta::InsiderThreatFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::InsiderThreatFindingDetail::Representation
       
+          property :target_technology, as: 'targetTechnology', class: Google::Apis::ThreatintelligenceV1beta::TargetTechnologyFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::TargetTechnologyFindingDetail::Representation
+      
         end
       end
       
@@ -847,6 +909,28 @@ module Google
         end
       end
       
+      class ProductFix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :publish_time, as: 'publishTime'
+          property :source_id, as: 'sourceId'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class PublicExploit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exploit_grade, as: 'exploitGrade'
+          property :exploit_name, as: 'exploitName'
+          property :exploit_reliability, as: 'exploitReliability'
+          property :release_time, as: 'releaseTime'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class RelevanceAnalysis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -886,10 +970,72 @@ module Google
         end
       end
       
+      class TargetTechnologyAlertDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vulnerability_match, as: 'vulnerabilityMatch', class: Google::Apis::ThreatintelligenceV1beta::VulnerabilityMatch, decorator: Google::Apis::ThreatintelligenceV1beta::VulnerabilityMatch::Representation
+      
+        end
+      end
+      
+      class TargetTechnologyFindingDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vulnerability_match, as: 'vulnerabilityMatch', class: Google::Apis::ThreatintelligenceV1beta::VulnerabilityMatch, decorator: Google::Apis::ThreatintelligenceV1beta::VulnerabilityMatch::Representation
+      
+        end
+      end
+      
+      class TechnologyWatchListAlertThreshold
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cvss_score_minimum, as: 'cvssScoreMinimum'
+          property :epss_score_minimum, as: 'epssScoreMinimum'
+          collection :exploitation_states, as: 'exploitationStates'
+          property :priority_minimum, as: 'priorityMinimum'
+          property :risk_rating_minimum, as: 'riskRatingMinimum'
+        end
+      end
+      
+      class TechnologyWatchListConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_threshold, as: 'alertThreshold', class: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListAlertThreshold, decorator: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListAlertThreshold::Representation
+      
+          collection :technologies, as: 'technologies'
+        end
+      end
+      
       class UpsertConfigurationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :configuration, as: 'configuration'
+        end
+      end
+      
+      class VulnerabilityMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::ThreatintelligenceV1beta::Association, decorator: Google::Apis::ThreatintelligenceV1beta::Association::Representation
+      
+          property :collection_id, as: 'collectionId'
+          property :cve_id, as: 'cveId'
+          property :cvss3_score, as: 'cvss3Score'
+          property :description, as: 'description'
+          property :disclosure_time, as: 'disclosureTime'
+          property :epss_score, as: 'epssScore'
+          collection :exploitation_consequences, as: 'exploitationConsequences'
+          property :exploitation_state, as: 'exploitationState'
+          collection :exploitation_vectors, as: 'exploitationVectors'
+          collection :matched_technologies, as: 'matchedTechnologies'
+          property :priority, as: 'priority'
+          collection :product_fixes, as: 'productFixes', class: Google::Apis::ThreatintelligenceV1beta::ProductFix, decorator: Google::Apis::ThreatintelligenceV1beta::ProductFix::Representation
+      
+          collection :public_exploits, as: 'publicExploits', class: Google::Apis::ThreatintelligenceV1beta::PublicExploit, decorator: Google::Apis::ThreatintelligenceV1beta::PublicExploit::Representation
+      
+          property :publicly_available_exploit, as: 'publiclyAvailableExploit'
+          property :risk_rating, as: 'riskRating'
+          collection :technologies, as: 'technologies'
         end
       end
     end

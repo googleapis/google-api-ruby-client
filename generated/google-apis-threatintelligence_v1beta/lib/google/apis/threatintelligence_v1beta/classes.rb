@@ -165,6 +165,11 @@ module Google
         # @return [Google::Apis::ThreatintelligenceV1beta::InsiderThreatAlertDetail]
         attr_accessor :insider_threat
       
+        # Contains details for a technology watchlist alert.
+        # Corresponds to the JSON property `targetTechnology`
+        # @return [Google::Apis::ThreatintelligenceV1beta::TargetTechnologyAlertDetail]
+        attr_accessor :target_technology
+      
         def initialize(**args)
            update!(**args)
         end
@@ -175,6 +180,7 @@ module Google
           @detail_type = args[:detail_type] if args.key?(:detail_type)
           @initial_access_broker = args[:initial_access_broker] if args.key?(:initial_access_broker)
           @insider_threat = args[:insider_threat] if args.key?(:insider_threat)
+          @target_technology = args[:target_technology] if args.key?(:target_technology)
         end
       end
       
@@ -293,6 +299,31 @@ module Google
         def update!(**args)
           @translated_content = args[:translated_content] if args.key?(:translated_content)
           @translated_title = args[:translated_title] if args.key?(:translated_title)
+        end
+      end
+      
+      # Represents an association with a vulnerability.
+      class Association
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the association.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required. The type of the association.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -422,6 +453,11 @@ module Google
         # @return [String]
         attr_accessor :detail_type
       
+        # TechnologyWatchListConfig is the configuration for the technology watchlist.
+        # Corresponds to the JSON property `technologyWatchlist`
+        # @return [Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig]
+        attr_accessor :technology_watchlist
+      
         def initialize(**args)
            update!(**args)
         end
@@ -430,6 +466,7 @@ module Google
         def update!(**args)
           @customer_profile = args[:customer_profile] if args.key?(:customer_profile)
           @detail_type = args[:detail_type] if args.key?(:detail_type)
+          @technology_watchlist = args[:technology_watchlist] if args.key?(:technology_watchlist)
         end
       end
       
@@ -1268,6 +1305,11 @@ module Google
         # @return [Google::Apis::ThreatintelligenceV1beta::InsiderThreatFindingDetail]
         attr_accessor :insider_threat
       
+        # Contains details for a technology watchlist finding.
+        # Corresponds to the JSON property `targetTechnology`
+        # @return [Google::Apis::ThreatintelligenceV1beta::TargetTechnologyFindingDetail]
+        attr_accessor :target_technology
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1278,6 +1320,7 @@ module Google
           @detail_type = args[:detail_type] if args.key?(:detail_type)
           @initial_access_broker = args[:initial_access_broker] if args.key?(:initial_access_broker)
           @insider_threat = args[:insider_threat] if args.key?(:insider_threat)
+          @target_technology = args[:target_technology] if args.key?(:target_technology)
         end
       end
       
@@ -1750,6 +1793,92 @@ module Google
         end
       end
       
+      # Contains details about a product fix.
+      class ProductFix
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the fix. Ex: "Magento".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. The published time of the fix.
+        # Corresponds to the JSON property `publishTime`
+        # @return [String]
+        attr_accessor :publish_time
+      
+        # Required. The source ID of the fix. Ex: "APPSEC-1420".
+        # Corresponds to the JSON property `sourceId`
+        # @return [String]
+        attr_accessor :source_id
+      
+        # Optional. The URI of the fix.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @publish_time = args[:publish_time] if args.key?(:publish_time)
+          @source_id = args[:source_id] if args.key?(:source_id)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Contains details about a public exploit.
+      class PublicExploit
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The grade of the exploit. Ex: "non-weaponized".
+        # Corresponds to the JSON property `exploitGrade`
+        # @return [String]
+        attr_accessor :exploit_grade
+      
+        # Required. The name of the exploit. Ex: "Magentounauth.php.txt".
+        # Corresponds to the JSON property `exploitName`
+        # @return [String]
+        attr_accessor :exploit_name
+      
+        # Optional. The reliability of the exploit. Ex: "Unreviewed".
+        # Corresponds to the JSON property `exploitReliability`
+        # @return [String]
+        attr_accessor :exploit_reliability
+      
+        # Optional. The release time of the exploit.
+        # Corresponds to the JSON property `releaseTime`
+        # @return [String]
+        attr_accessor :release_time
+      
+        # Optional. The size of the exploit.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        # Optional. The URI of the exploit.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exploit_grade = args[:exploit_grade] if args.key?(:exploit_grade)
+          @exploit_name = args[:exploit_name] if args.key?(:exploit_name)
+          @exploit_reliability = args[:exploit_reliability] if args.key?(:exploit_reliability)
+          @release_time = args[:release_time] if args.key?(:release_time)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Structured relevance analysis for a threat.
       class RelevanceAnalysis
         include Google::Apis::Core::Hashable
@@ -1891,6 +2020,115 @@ module Google
         end
       end
       
+      # Contains details for a technology watchlist alert.
+      class TargetTechnologyAlertDetail
+        include Google::Apis::Core::Hashable
+      
+        # Contains details about a vulnerability match.
+        # Corresponds to the JSON property `vulnerabilityMatch`
+        # @return [Google::Apis::ThreatintelligenceV1beta::VulnerabilityMatch]
+        attr_accessor :vulnerability_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vulnerability_match = args[:vulnerability_match] if args.key?(:vulnerability_match)
+        end
+      end
+      
+      # Contains details for a technology watchlist finding.
+      class TargetTechnologyFindingDetail
+        include Google::Apis::Core::Hashable
+      
+        # Contains details about a vulnerability match.
+        # Corresponds to the JSON property `vulnerabilityMatch`
+        # @return [Google::Apis::ThreatintelligenceV1beta::VulnerabilityMatch]
+        attr_accessor :vulnerability_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vulnerability_match = args[:vulnerability_match] if args.key?(:vulnerability_match)
+        end
+      end
+      
+      # TechnologyWatchListAlertThreshold contains the thresholds for alerting.
+      class TechnologyWatchListAlertThreshold
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The minimum CVSS score for the alert. Evaluates to CVSS v3 when
+        # available with a fallback to v2 and v4. Ex: 7.0. Valid range is [0.0, 10.0].
+        # Corresponds to the JSON property `cvssScoreMinimum`
+        # @return [Float]
+        attr_accessor :cvss_score_minimum
+      
+        # Optional. The minimum epss score for the alert. Ex: 0.8. Valid range is [0.0,
+        # 1.0].
+        # Corresponds to the JSON property `epssScoreMinimum`
+        # @return [Float]
+        attr_accessor :epss_score_minimum
+      
+        # Optional. The exploitation states of the alert.
+        # Corresponds to the JSON property `exploitationStates`
+        # @return [Array<String>]
+        attr_accessor :exploitation_states
+      
+        # Optional. The minimum priority for the alert.
+        # Corresponds to the JSON property `priorityMinimum`
+        # @return [String]
+        attr_accessor :priority_minimum
+      
+        # Optional. The minimum risk rating for the alert.
+        # Corresponds to the JSON property `riskRatingMinimum`
+        # @return [String]
+        attr_accessor :risk_rating_minimum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cvss_score_minimum = args[:cvss_score_minimum] if args.key?(:cvss_score_minimum)
+          @epss_score_minimum = args[:epss_score_minimum] if args.key?(:epss_score_minimum)
+          @exploitation_states = args[:exploitation_states] if args.key?(:exploitation_states)
+          @priority_minimum = args[:priority_minimum] if args.key?(:priority_minimum)
+          @risk_rating_minimum = args[:risk_rating_minimum] if args.key?(:risk_rating_minimum)
+        end
+      end
+      
+      # TechnologyWatchListConfig is the configuration for the technology watchlist.
+      class TechnologyWatchListConfig
+        include Google::Apis::Core::Hashable
+      
+        # TechnologyWatchListAlertThreshold contains the thresholds for alerting.
+        # Corresponds to the JSON property `alertThreshold`
+        # @return [Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListAlertThreshold]
+        attr_accessor :alert_threshold
+      
+        # Optional. List of vendor, technology or cpe fingerprint. example: Microsoft
+        # office 360 Apache Server 3.5 cpe:2.3:a:microsoft:outlook:*:*:*:*:*:*:*:*
+        # Corresponds to the JSON property `technologies`
+        # @return [Array<String>]
+        attr_accessor :technologies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_threshold = args[:alert_threshold] if args.key?(:alert_threshold)
+          @technologies = args[:technologies] if args.key?(:technologies)
+        end
+      end
+      
       # Response message for UpsertConfiguration.
       class UpsertConfigurationResponse
         include Google::Apis::Core::Hashable
@@ -1907,6 +2145,129 @@ module Google
         # Update properties of this object
         def update!(**args)
           @configuration = args[:configuration] if args.key?(:configuration)
+        end
+      end
+      
+      # Contains details about a vulnerability match.
+      class VulnerabilityMatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Associated threat actors, malware, etc. This is embedded as a
+        # snapshot because the details of the association at the time of the
+        # vulnerability match are important for context and reporting.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::Association>]
+        attr_accessor :associations
+      
+        # Required. The collection ID of the vulnerability. Ex: "vulnerability--cve-2025-
+        # 9876".
+        # Corresponds to the JSON property `collectionId`
+        # @return [String]
+        attr_accessor :collection_id
+      
+        # Required. The CVE ID of the vulnerability. Ex: "CVE-2025-9876". See https://
+        # www.cve.org/ for more information.
+        # Corresponds to the JSON property `cveId`
+        # @return [String]
+        attr_accessor :cve_id
+      
+        # Required. The CVSS score of the vulnerability. Evaluates to CVSS v3 when
+        # available with a fallback to v2 and v4. Example: 6.4.
+        # Corresponds to the JSON property `cvss3Score`
+        # @return [Float]
+        attr_accessor :cvss3_score
+      
+        # Required. A description of the vulnerability.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The disclosure time of the vulnerability.
+        # Corresponds to the JSON property `disclosureTime`
+        # @return [String]
+        attr_accessor :disclosure_time
+      
+        # Optional. The EPSS score, representing the probability of exploitation.
+        # Example: 0.87.
+        # Corresponds to the JSON property `epssScore`
+        # @return [Float]
+        attr_accessor :epss_score
+      
+        # Optional. List of exploitation consequences for the vulnerability.
+        # Corresponds to the JSON property `exploitationConsequences`
+        # @return [Array<String>]
+        attr_accessor :exploitation_consequences
+      
+        # Required. The exploitation state of the vulnerability.
+        # Corresponds to the JSON property `exploitationState`
+        # @return [String]
+        attr_accessor :exploitation_state
+      
+        # Optional. List of exploitation vectors for the vulnerability.
+        # Corresponds to the JSON property `exploitationVectors`
+        # @return [Array<String>]
+        attr_accessor :exploitation_vectors
+      
+        # Optional. The specific technologies from the configured watchlist that
+        # triggered the match. Ex: "Apache Struts".
+        # Corresponds to the JSON property `matchedTechnologies`
+        # @return [Array<String>]
+        attr_accessor :matched_technologies
+      
+        # Optional. The priority level of the vulnerability data. Ex: "P1".
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
+        # Optional. List of product fixes for the vulnerability.
+        # Corresponds to the JSON property `productFixes`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::ProductFix>]
+        attr_accessor :product_fixes
+      
+        # Optional. List of public exploits.
+        # Corresponds to the JSON property `publicExploits`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::PublicExploit>]
+        attr_accessor :public_exploits
+      
+        # Output only. Whether a publicly available exploit exists.
+        # Corresponds to the JSON property `publiclyAvailableExploit`
+        # @return [Boolean]
+        attr_accessor :publicly_available_exploit
+        alias_method :publicly_available_exploit?, :publicly_available_exploit
+      
+        # Required. The risk rating of the vulnerability.
+        # Corresponds to the JSON property `riskRating`
+        # @return [String]
+        attr_accessor :risk_rating
+      
+        # Required. All technologies affected by the vulnerability. Ex: "Apache Struts".
+        # Corresponds to the JSON property `technologies`
+        # @return [Array<String>]
+        attr_accessor :technologies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associations = args[:associations] if args.key?(:associations)
+          @collection_id = args[:collection_id] if args.key?(:collection_id)
+          @cve_id = args[:cve_id] if args.key?(:cve_id)
+          @cvss3_score = args[:cvss3_score] if args.key?(:cvss3_score)
+          @description = args[:description] if args.key?(:description)
+          @disclosure_time = args[:disclosure_time] if args.key?(:disclosure_time)
+          @epss_score = args[:epss_score] if args.key?(:epss_score)
+          @exploitation_consequences = args[:exploitation_consequences] if args.key?(:exploitation_consequences)
+          @exploitation_state = args[:exploitation_state] if args.key?(:exploitation_state)
+          @exploitation_vectors = args[:exploitation_vectors] if args.key?(:exploitation_vectors)
+          @matched_technologies = args[:matched_technologies] if args.key?(:matched_technologies)
+          @priority = args[:priority] if args.key?(:priority)
+          @product_fixes = args[:product_fixes] if args.key?(:product_fixes)
+          @public_exploits = args[:public_exploits] if args.key?(:public_exploits)
+          @publicly_available_exploit = args[:publicly_available_exploit] if args.key?(:publicly_available_exploit)
+          @risk_rating = args[:risk_rating] if args.key?(:risk_rating)
+          @technologies = args[:technologies] if args.key?(:technologies)
         end
       end
     end
