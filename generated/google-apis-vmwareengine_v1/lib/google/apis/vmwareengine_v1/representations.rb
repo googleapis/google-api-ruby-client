@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -776,6 +782,14 @@ module Google
         end
       end
       
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crypto_key_name, as: 'cryptoKeyName'
+          property :type, as: 'type'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1364,6 +1378,8 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::VmwareengineV1::EncryptionConfig, decorator: Google::Apis::VmwareengineV1::EncryptionConfig::Representation
+      
           property :expire_time, as: 'expireTime'
           property :hcx, as: 'hcx', class: Google::Apis::VmwareengineV1::Hcx, decorator: Google::Apis::VmwareengineV1::Hcx::Representation
       

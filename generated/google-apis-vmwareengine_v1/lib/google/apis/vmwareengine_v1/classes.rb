@@ -843,6 +843,36 @@ module Google
         end
       end
       
+      # Encryption configuration for a private cloud.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The resource name of the Cloud KMS key to be used for CMEK
+        # encryption. The format of this field is `projects/`project`/locations/`
+        # location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``. The key must be in the
+        # same region as the private cloud. This key is used for wrapping the key-
+        # encrypting key of vSAN clusters. This field must be provided when `type` is `
+        # CMEK` or `LEGACY_CMEK`, and must not be set when `type` is `OTHER`.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
+        # Required. The encryption type of the private cloud.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -3247,6 +3277,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Encryption configuration for a private cloud.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::VmwareengineV1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Output only. Time when the resource will be irreversibly deleted.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
@@ -3316,6 +3351,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @hcx = args[:hcx] if args.key?(:hcx)
           @management_cluster = args[:management_cluster] if args.key?(:management_cluster)
