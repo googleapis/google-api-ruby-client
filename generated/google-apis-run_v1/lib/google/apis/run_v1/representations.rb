@@ -1088,6 +1088,7 @@ module Google
       
           property :resources, as: 'resources', class: Google::Apis::RunV1::ResourceRequirements, decorator: Google::Apis::RunV1::ResourceRequirements::Representation
       
+          property :sandbox_launcher, as: 'sandboxLauncher'
           property :security_context, as: 'securityContext', class: Google::Apis::RunV1::SecurityContext, decorator: Google::Apis::RunV1::SecurityContext::Representation
       
           property :startup_probe, as: 'startupProbe', class: Google::Apis::RunV1::Probe, decorator: Google::Apis::RunV1::Probe::Representation
@@ -1963,6 +1964,7 @@ module Google
           collection :containers, as: 'containers', class: Google::Apis::RunV1::Container, decorator: Google::Apis::RunV1::Container::Representation
       
           hash :node_selector, as: 'nodeSelector'
+          property :restart_policy, as: 'restartPolicy'
           property :service_account_name, as: 'serviceAccountName'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
       
@@ -2335,6 +2337,8 @@ module Google
       
           hash :node_selector, as: 'nodeSelector'
           property :runtime_class_name, as: 'runtimeClassName'
+          collection :sandboxes, as: 'sandboxes', class: Google::Apis::RunV1::Container, decorator: Google::Apis::RunV1::Container::Representation
+      
           property :service_account_name, as: 'serviceAccountName'
           property :timeout_seconds, as: 'timeoutSeconds'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
