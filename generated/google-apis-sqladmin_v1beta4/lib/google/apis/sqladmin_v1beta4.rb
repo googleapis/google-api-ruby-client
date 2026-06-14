@@ -21,7 +21,7 @@ module Google
   module Apis
     # Cloud SQL Admin API
     #
-    # API for Cloud SQL database instance management
+    # Cloud SQL Admin API
     #
     # @see https://cloud.google.com/sql/docs
     module SqladminV1beta4
