@@ -501,6 +501,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Optional. Rules of the Configuration.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ServicenetworkingV1::AspectRule>]
+        attr_accessor :rules
+      
         # Content of the configuration. The underlying schema should be defined by
         # Aspect owners as protobuf message under `google/api/configaspects/proto`.
         # Corresponds to the JSON property `spec`
@@ -514,7 +519,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @rules = args[:rules] if args.key?(:rules)
           @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # Rule-based configuration for an aspect.
+      class AspectRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. Rules of the configuration. The underlying schema should be defined
+        # by Aspect owners as protobuf message under `google/api/configaspects/proto`.
+        # Corresponds to the JSON property `config`
+        # @return [Hash<String,Object>]
+        attr_accessor :config
+      
+        # Required. Selects the RPC methods to which this rule applies. Refer to
+        # selector for syntax details.
+        # Corresponds to the JSON property `selector`
+        # @return [String]
+        attr_accessor :selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @selector = args[:selector] if args.key?(:selector)
         end
       end
       
@@ -799,7 +832,9 @@ module Google
         # @return [Hash<String,Google::Apis::ServicenetworkingV1::BackendRule>]
         attr_accessor :overrides_by_request_protocol
       
-        # no-lint
+        # Path translation specifies how to combine the backend address with the request
+        # path in order to produce the appropriate forwarding URL for the request. See
+        # PathTranslation for more details.
         # Corresponds to the JSON property `pathTranslation`
         # @return [String]
         attr_accessor :path_translation
@@ -1198,7 +1233,8 @@ module Google
         attr_accessor :reference_docs_uri
       
         # This message is used to configure the generation of a subset of the RPCs in a
-        # service for client libraries.
+        # service for client libraries. Note: This feature should not be used in most
+        # cases.
         # Corresponds to the JSON property `selectiveGapicGeneration`
         # @return [Google::Apis::ServicenetworkingV1::SelectiveGapicGeneration]
         attr_accessor :selective_gapic_generation
@@ -1301,6 +1337,12 @@ module Google
         attr_accessor :consumer_import_subnet_routes_with_public_ip
         alias_method :consumer_import_subnet_routes_with_public_ip?, :consumer_import_subnet_routes_with_public_ip
       
+        # Output only. If this is true, consumer peering is active.
+        # Corresponds to the JSON property `consumerPeeringActive`
+        # @return [Boolean]
+        attr_accessor :consumer_peering_active
+        alias_method :consumer_peering_active?, :consumer_peering_active
+      
         # Export custom routes flag value for peering from producer to consumer.
         # Corresponds to the JSON property `producerExportCustomRoutes`
         # @return [Boolean]
@@ -1363,6 +1405,7 @@ module Google
           @consumer_export_subnet_routes_with_public_ip = args[:consumer_export_subnet_routes_with_public_ip] if args.key?(:consumer_export_subnet_routes_with_public_ip)
           @consumer_import_custom_routes = args[:consumer_import_custom_routes] if args.key?(:consumer_import_custom_routes)
           @consumer_import_subnet_routes_with_public_ip = args[:consumer_import_subnet_routes_with_public_ip] if args.key?(:consumer_import_subnet_routes_with_public_ip)
+          @consumer_peering_active = args[:consumer_peering_active] if args.key?(:consumer_peering_active)
           @producer_export_custom_routes = args[:producer_export_custom_routes] if args.key?(:producer_export_custom_routes)
           @producer_export_subnet_routes_with_public_ip = args[:producer_export_subnet_routes_with_public_ip] if args.key?(:producer_export_subnet_routes_with_public_ip)
           @producer_import_custom_routes = args[:producer_import_custom_routes] if args.key?(:producer_import_custom_routes)
@@ -2945,8 +2988,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -4650,7 +4694,8 @@ module Google
       end
       
       # This message is used to configure the generation of a subset of the RPCs in a
-      # service for client libraries.
+      # service for client libraries. Note: This feature should not be used in most
+      # cases.
       class SelectiveGapicGeneration
         include Google::Apis::Core::Hashable
       
@@ -4872,8 +4917,8 @@ module Google
         # @return [Array<Google::Apis::ServicenetworkingV1::MetricDescriptor>]
         attr_accessor :metrics
       
-        # Defines the monitored resources used by this service. This is required by the
-        # Service.monitoring and Service.logging configurations.
+        # Defines the monitored resources used by this service. This is required by the `
+        # Service.monitoring` and `Service.logging` configurations.
         # Corresponds to the JSON property `monitoredResources`
         # @return [Array<Google::Apis::ServicenetworkingV1::MonitoredResourceDescriptor>]
         attr_accessor :monitored_resources

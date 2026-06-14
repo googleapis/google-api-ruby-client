@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AspectRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -915,7 +921,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          collection :rules, as: 'rules', class: Google::Apis::ServicenetworkingV1::AspectRule, decorator: Google::Apis::ServicenetworkingV1::AspectRule::Representation
+      
           hash :spec, as: 'spec'
+        end
+      end
+      
+      class AspectRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config, as: 'config'
+          property :selector, as: 'selector'
         end
       end
       
@@ -1112,6 +1128,7 @@ module Google
           property :consumer_export_subnet_routes_with_public_ip, as: 'consumerExportSubnetRoutesWithPublicIp'
           property :consumer_import_custom_routes, as: 'consumerImportCustomRoutes'
           property :consumer_import_subnet_routes_with_public_ip, as: 'consumerImportSubnetRoutesWithPublicIp'
+          property :consumer_peering_active, as: 'consumerPeeringActive'
           property :producer_export_custom_routes, as: 'producerExportCustomRoutes'
           property :producer_export_subnet_routes_with_public_ip, as: 'producerExportSubnetRoutesWithPublicIp'
           property :producer_import_custom_routes, as: 'producerImportCustomRoutes'
