@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module FirebasedataconnectV1
-      # Firebase Data Connect API
+      # Firebase SQL Connect API
       #
       # Firebase SQL Connect is a relational database service for mobile and web apps
       #  that lets you build and scale using a fully-managed PostgreSQL database

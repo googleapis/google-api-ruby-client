@@ -19,7 +19,7 @@ require 'google/apis/firebasedataconnect_v1/gem_version.rb'
 
 module Google
   module Apis
-    # Firebase Data Connect API
+    # Firebase SQL Connect API
     #
     # Firebase SQL Connect is a relational database service for mobile and web apps
     # that lets you build and scale using a fully-managed PostgreSQL database
@@ -28,7 +28,7 @@ module Google
     #
     # @see https://firebase.google.com/docs/data-connect
     module FirebasedataconnectV1
-      # Version of the Firebase Data Connect API this client connects to.
+      # Version of the Firebase SQL Connect API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
 
