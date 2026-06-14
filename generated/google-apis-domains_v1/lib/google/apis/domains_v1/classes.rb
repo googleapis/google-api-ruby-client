@@ -948,6 +948,13 @@ module Google
         # @return [String]
         attr_accessor :tag
       
+        # Optional. If set, validates the request without actually initiating the
+        # transfer.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
         def initialize(**args)
            update!(**args)
         end
@@ -955,6 +962,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tag = args[:tag] if args.key?(:tag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
       
