@@ -83,12 +83,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -488,11 +497,12 @@ module Google
         #   The standard list page token.
         # @param [Boolean] return_partial_success
         #   When set to `true`, operations that are reachable are returned as normal, and
-        #   those that are unreachable are returned in the [ListOperationsResponse.
-        #   unreachable] field. This can only be `true` when reading across collections e.
-        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
-        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
-        #   explicitly documented otherwise in service or product specific documentation.
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
