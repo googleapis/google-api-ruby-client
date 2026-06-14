@@ -1002,6 +1002,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :data, as: 'data'
           property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
