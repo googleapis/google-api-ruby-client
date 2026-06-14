@@ -1,5 +1,9 @@
 # Release history for google-apis-parallelstore_v1
 
+### v0.13.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
 ### v0.12.0 (2025-11-02)
 
 * Regenerated from discovery document revision 20251022
