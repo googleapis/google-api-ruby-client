@@ -3912,11 +3912,12 @@ module Google
       
         # Optional. The categories associated with a category page. Must be set for
         # category navigation queries to achieve good search quality. The format should
-        # be the same as UserEvent.page_categories; To represent full path of category,
-        # use '>' sign to separate different hierarchies. If '>' is part of the category
-        # name, replace it with other character(s). Category pages include special pages
-        # such as sales or promotions. For instance, a special sale page may have the
-        # category hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"].
+        # be the same as UserEvent.page_categories; To represent the full path of
+        # category, use the '>' sign, with one space on each side, to separate different
+        # hierarchies. If '>' is part of the category name, replace it with other
+        # character(s). Category pages include special pages such as sales or promotions.
+        # For instance, a special sale page may have the category hierarchy: "
+        # pageCategories" : ["Sales > 2017 Black Friday Deals"].
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -4045,7 +4046,7 @@ module Google
         attr_accessor :filter
       
         # Optional. The sort string to specify the sorting of search results. The syntax
-        # of the sort string is the same as SearchRequest.sort.
+        # of the sort string is the same as SearchRequest.order_by.
         # Corresponds to the JSON property `sortBy`
         # @return [String]
         attr_accessor :sort_by
@@ -4565,7 +4566,7 @@ module Google
       class GoogleCloudRetailV2betaExportProductsRequest
         include Google::Apis::Core::Hashable
       
-        # This field is deprecated. Any filter provided will be ignored.
+        # Deprecated: This field is deprecated. Any filter provided will be ignored.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -4624,27 +4625,7 @@ module Google
       class GoogleCloudRetailV2betaExportUserEventsRequest
         include Google::Apis::Core::Hashable
       
-        # A filtering expression to specify restrictions on returned events. The
-        # expression is a sequence of terms. Each term applies a restriction to the
-        # returned user events. Use this expression to restrict results to a specific
-        # time range or to filter events by eventType. For example, `eventTime > "2012-
-        # 04-23T18:25:43.511Z" eventsMissingCatalogItems eventTime<"2012-04-23T18:25:43.
-        # 511Z" eventType=search` We expect only three types of fields: * `eventTime`:
-        # This can be specified twice, once with a less than operator and once with a
-        # greater than operator. The `eventTime` restriction should result in one,
-        # contiguous, valid, `eventTime` range. * `eventType`: Boolean operators `OR`
-        # and `NOT` are supported if the expression is enclosed in parentheses and the
-        # operators are separated from the tag values by a space. * `
-        # eventsMissingCatalogItems`: This restricts results to events for which catalog
-        # items were not found in the catalog. The default behavior is to return only
-        # those events for which catalog items were found. Some examples of valid
-        # filters expressions: * Example 1: `eventTime > "2012-04-23T18:25:43.511Z"
-        # eventTime < "2012-04-23T18:30:43.511Z"` * Example 2: `eventTime > "2012-04-
-        # 23T18:25:43.511Z" eventType = detail-page-view` * Example 3: `
-        # eventsMissingCatalogItems eventType = (NOT search) eventTime < "2018-04-23T18:
-        # 30:43.511Z"` * Example 4: `eventTime > "2012-04-23T18:25:43.511Z"` * Example 5:
-        # `eventType = (detail-page-view OR search)` * Example 6: `
-        # eventsMissingCatalogItems`
+        # Deprecated: This field is deprecated. Any filter provided will be ignored.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -6500,20 +6481,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :brands
       
-        # Product categories. This field is repeated for supporting one product
-        # belonging to several parallel categories. Strongly recommended using the full
-        # path for better search / recommendation quality. To represent full path of
-        # category, use '>' sign to separate different hierarchies. If '>' is part of
-        # the category name, replace it with other character(s). For example, if a shoes
-        # product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports &
-        # Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "
-        # categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic
-        # Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an
-        # INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product
-        # unless overridden through the Google Cloud console. Empty values are not
-        # allowed. Each value must be a UTF-8 encoded string with a length limit of 5,
-        # 000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-        # Corresponding properties: Google Merchant Center property
+        # Optional. Product categories. This field is repeated for supporting one
+        # product belonging to several parallel categories. Strongly recommended using
+        # the full path for better search / recommendation quality. To represent the
+        # full path of category, use the '>' sign, with one space on each side, to
+        # separate different hierarchies. If '>' is part of the category name, replace
+        # it with other character(s). For example, if a shoes product belongs to both ["
+        # Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing"
+        # -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories
+        # > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for
+        # Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most
+        # 250 values are allowed per Product unless overridden through the Google Cloud
+        # console. Empty values are not allowed. Each value must be a UTF-8 encoded
+        # string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned. Corresponding properties: Google Merchant Center property
         # google_product_category. Schema.org property [Product.category] (https://
         # schema.org/category). [mc_google_product_category]: https://support.google.com/
         # merchants/answer/6324436
@@ -7551,9 +7532,9 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttribute]
         attr_accessor :catalog_attribute
       
-        # Indicates which fields in the provided CatalogAttribute to update. The
-        # following are NOT supported: * CatalogAttribute.key If not set, all supported
-        # fields are updated.
+        # Optional. Indicates which fields in the provided CatalogAttribute to update.
+        # The following are NOT supported: * CatalogAttribute.key If not set, all
+        # supported fields are updated.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -8215,13 +8196,14 @@ module Google
         # @return [String]
         attr_accessor :order_by
       
-        # The categories associated with a category page. Must be set for category
-        # navigation queries to achieve good search quality. The format should be the
-        # same as UserEvent.page_categories; To represent full path of category, use '>'
-        # sign to separate different hierarchies. If '>' is part of the category name,
-        # replace it with other character(s). Category pages include special pages such
-        # as sales or promotions. For instance, a special sale page may have the
-        # category hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"].
+        # Optional. The categories associated with a category page. Must be set for
+        # category navigation queries to achieve good search quality. The format should
+        # be the same as UserEvent.page_categories; To represent the full path of
+        # category, use '>' sign, with one space on each side, to separate different
+        # hierarchies. If '>' is part of the category name, replace it with other
+        # character(s). Category pages include special pages such as sales or promotions.
+        # For instance, a special sale page may have the category hierarchy: "
+        # pageCategories" : ["Sales > 2017 Black Friday Deals"].
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -8249,7 +8231,8 @@ module Google
       
         # Optional. An id corresponding to a place, such as a store id or region id.
         # When specified, we use the price from the local inventory with the matching
-        # product's LocalInventory.place_id for revenue optimization.
+        # product's LocalInventory.place_id for revenue optimization. Note, the currency
+        # of the local inventory's price must match the currency of the product's price.
         # Corresponds to the JSON property `placeId`
         # @return [String]
         attr_accessor :place_id
@@ -8456,8 +8439,8 @@ module Google
       
         # This field specifies the conversation id, which maintains the state of the
         # conversation between client side and server side. Use the value from the
-        # previous ConversationalSearchResult.conversation_id. For the initial request,
-        # this should be empty.
+        # previous SearchResponse.ConversationalSearchResult.conversation_id. For the
+        # initial request, this should be empty.
         # Corresponds to the JSON property `conversationId`
         # @return [String]
         attr_accessor :conversation_id
@@ -8878,9 +8861,10 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResult]
         attr_accessor :conversational_search_result
       
-        # Contains the spell corrected query, if found. If the spell correction type is
-        # AUTOMATIC, then the search results are based on corrected_query. Otherwise the
-        # original query is used for search.
+        # Contains the spell corrected query, if found. The search results are based on
+        # corrected_query by default. However, if SearchRequest.SpellCorrectionSpec.mode
+        # is set to SearchRequest.SpellCorrectionSpec.Mode.SUGGESTION_ONLY, the original
+        # query is used for search.
         # Corresponds to the JSON property `correctedQuery`
         # @return [String]
         attr_accessor :corrected_query
@@ -9823,15 +9807,15 @@ module Google
         # @return [String]
         attr_accessor :order_by
       
-        # The categories associated with a category page. To represent full path of
-        # category, use '>' sign to separate different hierarchies. If '>' is part of
-        # the category name, replace it with other character(s). Category pages include
-        # special pages such as sales or promotions. For instance, a special sale page
-        # may have the category hierarchy: "pageCategories" : ["Sales > 2017 Black
-        # Friday Deals"]. Required for `category-page-view` events. At least one of
-        # search_query or page_categories is required for `search` events. Other event
-        # types should not set this field. Otherwise, an INVALID_ARGUMENT error is
-        # returned.
+        # Optional. The categories associated with a category page. To represent the
+        # full path of category, use the '>' sign, with one space on each side, to
+        # separate different hierarchies. If '>' is part of the category name, replace
+        # it with other character(s). Category pages include special pages such as sales
+        # or promotions. For instance, a special sale page may have the category
+        # hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"]. Required
+        # for `category-page-view` events. At least one of search_query or
+        # page_categories is required for `search` events. Other event types should not
+        # set this field. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -10101,8 +10085,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
