@@ -16,13 +16,13 @@ module Google
   module Apis
     module ChromewebstoreV2
       # Version of the google-apis-chromewebstore_v2 gem
-      GEM_VERSION = "0.3.0"
+      GEM_VERSION = "0.4.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.18.0"
+      GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260517"
+      REVISION = "20260601"
     end
   end
 end
