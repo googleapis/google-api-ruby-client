@@ -1087,6 +1087,37 @@ module Google
         end
       end
       
+      # Response containing requested managed profile versions details and counts.
+      class GoogleChromeManagementV1CountChromeProfileVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to specify the next page of the request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of all browser versions reported for profiles and their install counts.
+        # Corresponds to the JSON property `profileBrowserVersions`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BrowserVersion>]
+        attr_accessor :profile_browser_versions
+      
+        # Total number browser versions matching request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @profile_browser_versions = args[:profile_browser_versions] if args.key?(:profile_browser_versions)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # Response containing requested browser versions details and counts.
       class GoogleChromeManagementV1CountChromeVersionsResponse
         include Google::Apis::Core::Hashable
@@ -2214,6 +2245,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :permissions
       
+        # Output only. Count of Chrome Profiles with this app installed.
+        # Corresponds to the JSON property `profileCount`
+        # @return [Fixnum]
+        attr_accessor :profile_count
+      
         # Risk assessment data about an extension/app.
         # Corresponds to the JSON property `riskAssessment`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessmentData]
@@ -2236,6 +2272,7 @@ module Google
           @homepage_uri = args[:homepage_uri] if args.key?(:homepage_uri)
           @os_user_count = args[:os_user_count] if args.key?(:os_user_count)
           @permissions = args[:permissions] if args.key?(:permissions)
+          @profile_count = args[:profile_count] if args.key?(:profile_count)
           @risk_assessment = args[:risk_assessment] if args.key?(:risk_assessment)
         end
       end
@@ -5149,6 +5186,68 @@ module Google
         end
       end
       
+      # A content transfers summary for a given breakdown dimension.
+      class GoogleChromeManagementVersionsV1ContentTransfersBreakdown
+        include Google::Apis::Core::Hashable
+      
+        # The content category of the content transfers.
+        # Corresponds to the JSON property `contentCategory`
+        # @return [String]
+        attr_accessor :content_category
+      
+        # The event domain of the content transfers.
+        # Corresponds to the JSON property `eventDomain`
+        # @return [String]
+        attr_accessor :event_domain
+      
+        # Summary of content transfers for a given metric.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersSummary]
+        attr_accessor :summary
+      
+        # The user that transferred the content.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_category = args[:content_category] if args.key?(:content_category)
+          @event_domain = args[:event_domain] if args.key?(:event_domain)
+          @summary = args[:summary] if args.key?(:summary)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Summary of content transfers for a given metric.
+      class GoogleChromeManagementVersionsV1ContentTransfersSummary
+        include Google::Apis::Core::Hashable
+      
+        # The count of the content transfers metric.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The type of content transfers metric.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @metric = args[:metric] if args.key?(:metric)
+        end
+      end
+      
       # CrowdStrike connector config.
       class GoogleChromeManagementVersionsV1CrowdStrikeConfig
         include Google::Apis::Core::Hashable
@@ -5708,6 +5807,96 @@ module Google
         def update!(**args)
           @topic_full_path = args[:topic_full_path] if args.key?(:topic_full_path)
           @xdr_settings = args[:xdr_settings] if args.key?(:xdr_settings)
+        end
+      end
+      
+      # Response message for QueryContentTransfersBreakdowns.
+      class GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The content transfer breakdowns from the specified insight.
+        # Corresponds to the JSON property `contentTransfersBreakdowns`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersBreakdown>]
+        attr_accessor :content_transfers_breakdowns
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_transfers_breakdowns = args[:content_transfers_breakdowns] if args.key?(:content_transfers_breakdowns)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for QueryContentTransfers.
+      class GoogleChromeManagementVersionsV1QueryContentTransfersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A collection of summaries for various content transfers metrics.
+        # Corresponds to the JSON property `summaries`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersSummary>]
+        attr_accessor :summaries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summaries = args[:summaries] if args.key?(:summaries)
+        end
+      end
+      
+      # Response message for QueryUrlVisitsBreakdowns.
+      class GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The URL visit breakdowns from the specified insight.
+        # Corresponds to the JSON property `urlVisitsBreakdowns`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsBreakdown>]
+        attr_accessor :url_visits_breakdowns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @url_visits_breakdowns = args[:url_visits_breakdowns] if args.key?(:url_visits_breakdowns)
+        end
+      end
+      
+      # Response message for QueryUrlVisits.
+      class GoogleChromeManagementVersionsV1QueryUrlVisitsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A collection of summaries for various URL visit metrics.
+        # Corresponds to the JSON property `summaries`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsSummary>]
+        attr_accessor :summaries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summaries = args[:summaries] if args.key?(:summaries)
         end
       end
       
@@ -6300,6 +6489,62 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A URL visits summary for a given breakdown dimension.
+      class GoogleChromeManagementVersionsV1UrlVisitsBreakdown
+        include Google::Apis::Core::Hashable
+      
+        # The event domain of the URL visits.
+        # Corresponds to the JSON property `eventDomain`
+        # @return [String]
+        attr_accessor :event_domain
+      
+        # Summary of URL visits for a given metric.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsSummary]
+        attr_accessor :summary
+      
+        # The user that visited the URL.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_domain = args[:event_domain] if args.key?(:event_domain)
+          @summary = args[:summary] if args.key?(:summary)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Summary of URL visits for a given metric.
+      class GoogleChromeManagementVersionsV1UrlVisitsSummary
+        include Google::Apis::Core::Hashable
+      
+        # The count of the URL visits metric.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The type of URL visits metric.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @metric = args[:metric] if args.key?(:metric)
         end
       end
       
