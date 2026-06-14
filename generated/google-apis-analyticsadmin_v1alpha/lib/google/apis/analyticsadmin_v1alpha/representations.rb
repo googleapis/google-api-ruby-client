@@ -2390,6 +2390,7 @@ module Google
       class GoogleAnalyticsAdminV1alphaPropertySummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_edit, as: 'canEdit'
           property :display_name, as: 'displayName'
           property :parent, as: 'parent'
           property :property, as: 'property'
