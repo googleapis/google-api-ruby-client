@@ -1,5 +1,10 @@
 # Release history for google-apis-merchantapi_reports_v1beta
 
+### v0.13.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260527
+* Regenerated using generator version 0.19.0
+
 ### v0.12.0 (2026-04-19)
 
 * Regenerated from discovery document revision 20260411
