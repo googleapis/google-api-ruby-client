@@ -1,5 +1,10 @@
 # Release history for google-apis-merchantapi_lfp_v1beta
 
+### v0.12.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260527
+* Regenerated using generator version 0.19.0
+
 ### v0.11.0 (2025-08-10)
 
 * Regenerated from discovery document revision 20250803
