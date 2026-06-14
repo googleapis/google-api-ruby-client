@@ -79,8 +79,8 @@ module Google
         attr_accessor :ad_types
       
         # The externally visible ID of the ad unit which can be used to integrate with
-        # the AdMob SDK. This is a read only property. Example: ca-app-pub-
-        # 9876543210987654/0123456789
+        # AdMob. This is a read only property. Example: ca-app-pub-9876543210987654/
+        # 0123456789
         # Corresponds to the JSON property `adUnitId`
         # @return [String]
         attr_accessor :ad_unit_id
@@ -300,9 +300,8 @@ module Google
         # @return [String]
         attr_accessor :app_approval_state
       
-        # The externally visible ID of the app which can be used to integrate with the
-        # AdMob SDK. This is a read only property. Example: ca-app-pub-9876543210987654~
-        # 0123456789
+        # The externally visible ID of the app which can be used to integrate with AdMob.
+        # This is a read only property. Example: ca-app-pub-9876543210987654~0123456789
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
