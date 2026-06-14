@@ -22,6 +22,48 @@ module Google
   module Apis
     module NetworkservicesV1
       
+      class AgentGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayAgentGatewayOutputCard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayGoogleManaged
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayNetworkConfigDnsPeeringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayNetworkConfigEgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewaySelfManaged
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAgentGatewaysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAuthzExtensionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,6 +442,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMulticastConsumerAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMulticastGroupConsumerActivationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +515,30 @@ module Google
       end
       
       class MeshRouteView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MulticastConsumerAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MulticastGroupConsumerActivation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MulticastLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MulticastResourceState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -632,6 +716,77 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_gateway_card, as: 'agentGatewayCard', class: Google::Apis::NetworkservicesV1::AgentGatewayAgentGatewayOutputCard, decorator: Google::Apis::NetworkservicesV1::AgentGatewayAgentGatewayOutputCard::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :google_managed, as: 'googleManaged', class: Google::Apis::NetworkservicesV1::AgentGatewayGoogleManaged, decorator: Google::Apis::NetworkservicesV1::AgentGatewayGoogleManaged::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network_config, as: 'networkConfig', class: Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfig, decorator: Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfig::Representation
+      
+          collection :protocols, as: 'protocols'
+          collection :registries, as: 'registries'
+          property :self_managed, as: 'selfManaged', class: Google::Apis::NetworkservicesV1::AgentGatewaySelfManaged, decorator: Google::Apis::NetworkservicesV1::AgentGatewaySelfManaged::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AgentGatewayAgentGatewayOutputCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mtls_endpoint, as: 'mtlsEndpoint'
+          collection :root_certificates, as: 'rootCertificates'
+          property :service_extensions_service_account, as: 'serviceExtensionsServiceAccount'
+        end
+      end
+      
+      class AgentGatewayGoogleManaged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :governed_access_path, as: 'governedAccessPath'
+        end
+      end
+      
+      class AgentGatewayNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_peering_config, as: 'dnsPeeringConfig', class: Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfigDnsPeeringConfig, decorator: Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfigDnsPeeringConfig::Representation
+      
+          property :egress, as: 'egress', class: Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfigEgress, decorator: Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfigEgress::Representation
+      
+        end
+      end
+      
+      class AgentGatewayNetworkConfigDnsPeeringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domains, as: 'domains'
+          property :target_network, as: 'targetNetwork'
+          property :target_project, as: 'targetProject'
+        end
+      end
+      
+      class AgentGatewayNetworkConfigEgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment, as: 'networkAttachment'
+        end
+      end
+      
+      class AgentGatewaySelfManaged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_uri, as: 'resourceUri'
+        end
       end
       
       class AuditConfig
@@ -1208,6 +1363,16 @@ module Google
         end
       end
       
+      class ListAgentGatewaysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_gateways, as: 'agentGateways', class: Google::Apis::NetworkservicesV1::AgentGateway, decorator: Google::Apis::NetworkservicesV1::AgentGateway::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListAuthzExtensionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1327,6 +1492,26 @@ module Google
         end
       end
       
+      class ListMulticastConsumerAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :multicast_consumer_associations, as: 'multicastConsumerAssociations', class: Google::Apis::NetworkservicesV1::MulticastConsumerAssociation, decorator: Google::Apis::NetworkservicesV1::MulticastConsumerAssociation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListMulticastGroupConsumerActivationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :multicast_group_consumer_activations, as: 'multicastGroupConsumerActivations', class: Google::Apis::NetworkservicesV1::MulticastGroupConsumerActivation, decorator: Google::Apis::NetworkservicesV1::MulticastGroupConsumerActivation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1437,6 +1622,58 @@ module Google
           property :route_location, as: 'routeLocation'
           property :route_project_number, :numeric_string => true, as: 'routeProjectNumber'
           property :route_type, as: 'routeType'
+        end
+      end
+      
+      class MulticastConsumerAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :multicast_domain_activation, as: 'multicastDomainActivation'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :placement_policy, as: 'placementPolicy'
+          property :resource_state, as: 'resourceState'
+          property :state, as: 'state', class: Google::Apis::NetworkservicesV1::MulticastResourceState, decorator: Google::Apis::NetworkservicesV1::MulticastResourceState::Representation
+      
+          property :unique_id, as: 'uniqueId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MulticastGroupConsumerActivation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :log_config, as: 'logConfig', class: Google::Apis::NetworkservicesV1::MulticastLogConfig, decorator: Google::Apis::NetworkservicesV1::MulticastLogConfig::Representation
+      
+          property :multicast_consumer_association, as: 'multicastConsumerAssociation'
+          property :multicast_group, as: 'multicastGroup'
+          property :multicast_group_range_activation, as: 'multicastGroupRangeActivation'
+          property :name, as: 'name'
+          property :resource_state, as: 'resourceState'
+          property :state, as: 'state', class: Google::Apis::NetworkservicesV1::MulticastResourceState, decorator: Google::Apis::NetworkservicesV1::MulticastResourceState::Representation
+      
+          property :unique_id, as: 'uniqueId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MulticastLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class MulticastResourceState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
