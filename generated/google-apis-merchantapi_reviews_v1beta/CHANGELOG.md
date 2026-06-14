@@ -1,5 +1,10 @@
 # Release history for google-apis-merchantapi_reviews_v1beta
 
+### v0.11.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260527
+* Regenerated using generator version 0.19.0
+
 ### v0.10.0 (2025-07-20)
 
 * Regenerated from discovery document revision 20250716
