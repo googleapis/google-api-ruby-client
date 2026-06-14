@@ -339,6 +339,60 @@ module Google
         end
       end
       
+      # The request for checking an artifact for streaming.
+      class CheckPrewarmedArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The location of the prewarmed artifact. multi-region is not
+        # supported for this field.
+        # Corresponds to the JSON property `streamLocation`
+        # @return [String]
+        attr_accessor :stream_location
+      
+        # Optional. The artifact tag Format:projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/tags/`tag`
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # Optional. The artifact version Format: projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/versions/`version`
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stream_location = args[:stream_location] if args.key?(:stream_location)
+          @tag = args[:tag] if args.key?(:tag)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The response for checking an artifact for streaming.
+      class CheckPrewarmedArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # PrewarmedArtifact represents a streamed artifact. This is not a request
+        # message, so field_behavior annotations are not required.
+        # Corresponds to the JSON property `prewarmedArtifact`
+        # @return [Google::Apis::ArtifactregistryV1::PrewarmedArtifact]
+        attr_accessor :prewarmed_artifact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prewarmed_artifact = args[:prewarmed_artifact] if args.key?(:prewarmed_artifact)
+        end
+      end
+      
       # Artifact policy configuration for repository cleanup policies.
       class CleanupPolicy
         include Google::Apis::Core::Hashable
@@ -1853,6 +1907,32 @@ module Google
         end
       end
       
+      # The response for listing artifacts for streaming.
+      class ListPrewarmedArtifactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token to retrieve the next page of prewarmed artifacts, or empty if there
+        # are no more streamings to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The prewarmed artifacts.
+        # Corresponds to the JSON property `prewarmedArtifacts`
+        # @return [Array<Google::Apis::ArtifactregistryV1::PrewarmedArtifact>]
+        attr_accessor :prewarmed_artifacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @prewarmed_artifacts = args[:prewarmed_artifacts] if args.key?(:prewarmed_artifacts)
+        end
+      end
+      
       # The response from listing python packages.
       class ListPythonPackagesResponse
         include Google::Apis::Core::Hashable
@@ -2458,6 +2538,142 @@ module Google
         end
       end
       
+      # The request for prewarming an artifact for streaming.
+      class PrewarmArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, old artifact will be evicted to make room for the new
+        # artifact.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # The platform (architecture and OS) of the image. This is a sub-message.
+        # Corresponds to the JSON property `platform`
+        # @return [Google::Apis::ArtifactregistryV1::PrewarmPlatform]
+        attr_accessor :platform
+      
+        # Optional. The retention days of the prewarmed artifact. If not specified, the
+        # artifact will be cached for 3 days.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        # Optional. The location to cache the artifact in. If not specified, the
+        # artifact will be cached in the same location as the artifact. multi-region is
+        # not supported for this field.
+        # Corresponds to the JSON property `streamLocation`
+        # @return [String]
+        attr_accessor :stream_location
+      
+        # Optional. The artifact tag Format:projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/tags/`tag`
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # Optional. The artifact version Format: projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/versions/`version`
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+          @platform = args[:platform] if args.key?(:platform)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+          @stream_location = args[:stream_location] if args.key?(:stream_location)
+          @tag = args[:tag] if args.key?(:tag)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The response for prewarming an artifact for streaming.
+      class PrewarmArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # PrewarmedArtifact represents a streamed artifact. This is not a request
+        # message, so field_behavior annotations are not required.
+        # Corresponds to the JSON property `prewarmedArtifact`
+        # @return [Google::Apis::ArtifactregistryV1::PrewarmedArtifact]
+        attr_accessor :prewarmed_artifact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prewarmed_artifact = args[:prewarmed_artifact] if args.key?(:prewarmed_artifact)
+        end
+      end
+      
+      # The platform (architecture and OS) of the image. This is a sub-message.
+      class PrewarmPlatform
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The architecture of the image or tag. For example, "arm64" or "amd64"
+        # .
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # Optional. The OS of the image or tag. For example, "linux" or "windows".
+        # Corresponds to the JSON property `os`
+        # @return [String]
+        attr_accessor :os
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @os = args[:os] if args.key?(:os)
+        end
+      end
+      
+      # PrewarmedArtifact represents a streamed artifact. This is not a request
+      # message, so field_behavior annotations are not required.
+      class PrewarmedArtifact
+        include Google::Apis::Core::Hashable
+      
+        # The expiration time of the prewarmed artifact.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        # The location of the prewarmed artifact.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # URL to access the image. Example: us-west4-docker.pkg.dev/test-project/test-
+        # repo/nginx@sha256:
+        # e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+          @location = args[:location] if args.key?(:location)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # The Artifact Registry logging configurations that apply to a Project.
       class ProjectConfig
         include Google::Apis::Core::Hashable
@@ -2670,6 +2886,60 @@ module Google
           @python_repository = args[:python_repository] if args.key?(:python_repository)
           @upstream_credentials = args[:upstream_credentials] if args.key?(:upstream_credentials)
           @yum_repository = args[:yum_repository] if args.key?(:yum_repository)
+        end
+      end
+      
+      # The request for removing an artifact from streaming.
+      class RemovePrewarmedArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The location of the prewarmed artifact. multi-region is not
+        # supported for this field.
+        # Corresponds to the JSON property `streamLocation`
+        # @return [String]
+        attr_accessor :stream_location
+      
+        # Optional. The artifact tag Format:projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/tags/`tag`
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # Optional. The artifact version Format: projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/versions/`version`
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stream_location = args[:stream_location] if args.key?(:stream_location)
+          @tag = args[:tag] if args.key?(:tag)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The response for removing an artifact from streaming.
+      class RemovePrewarmedArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # PrewarmedArtifact represents a streamed artifact. This is not a request
+        # message, so field_behavior annotations are not required.
+        # Corresponds to the JSON property `prewarmedArtifact`
+        # @return [Google::Apis::ArtifactregistryV1::PrewarmedArtifact]
+        attr_accessor :prewarmed_artifact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prewarmed_artifact = args[:prewarmed_artifact] if args.key?(:prewarmed_artifact)
         end
       end
       

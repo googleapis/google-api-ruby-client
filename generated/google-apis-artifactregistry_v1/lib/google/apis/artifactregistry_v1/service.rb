@@ -211,8 +211,8 @@ module Google
         end
         
         # Lists information about the supported locations for this service. This method
-        # lists locations based on the resource scope provided in the [
-        # ListLocationsRequest.name] field: * **Global locations**: If `name` is empty,
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
         # the method lists the public locations available to all projects. * **Project-
         # specific locations**: If `name` follows the format `projects/`project``, the
         # method lists locations visible to that specific project. This includes public,
@@ -223,8 +223,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -408,6 +408,41 @@ module Google
           command.response_representation = Google::Apis::ArtifactregistryV1::Operation::Representation
           command.response_class = Google::Apis::ArtifactregistryV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Checks an artifact streaming.
+        # @param [String] repository
+        #   Required. The name of the repository, for example: `projects/p1/locations/us-
+        #   central1/repositories/repo1`. If the package or version ID parts contain
+        #   slashes, the slashes are escaped.
+        # @param [Google::Apis::ArtifactregistryV1::CheckPrewarmedArtifactRequest] check_prewarmed_artifact_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::CheckPrewarmedArtifactResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::CheckPrewarmedArtifactResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_repository_prewarmed_artifact(repository, check_prewarmed_artifact_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+repository}:checkPrewarmedArtifact', options)
+          command.request_representation = Google::Apis::ArtifactregistryV1::CheckPrewarmedArtifactRequest::Representation
+          command.request_object = check_prewarmed_artifact_request_object
+          command.response_representation = Google::Apis::ArtifactregistryV1::CheckPrewarmedArtifactResponse::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::CheckPrewarmedArtifactResponse
+          command.params['repository'] = repository unless repository.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -676,6 +711,75 @@ module Google
           command.response_class = Google::Apis::ArtifactregistryV1::Repository
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Prewarms an artifact for streaming.
+        # @param [String] repository
+        #   Required. The repository name, for example: `projects/p1/locations/us-central1/
+        #   repositories/repo1`. If the package or version ID parts contain slashes, the
+        #   slashes are escaped.
+        # @param [Google::Apis::ArtifactregistryV1::PrewarmArtifactRequest] prewarm_artifact_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def prewarm_repository_artifact(repository, prewarm_artifact_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+repository}:prewarmArtifact', options)
+          command.request_representation = Google::Apis::ArtifactregistryV1::PrewarmArtifactRequest::Representation
+          command.request_object = prewarm_artifact_request_object
+          command.response_representation = Google::Apis::ArtifactregistryV1::Operation::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::Operation
+          command.params['repository'] = repository unless repository.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes an artifact from streaming.
+        # @param [String] repository
+        #   Required. The repository name, for example: `projects/p1/locations/us-central1/
+        #   repositories/repo1`.
+        # @param [Google::Apis::ArtifactregistryV1::RemovePrewarmedArtifactRequest] remove_prewarmed_artifact_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::RemovePrewarmedArtifactResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::RemovePrewarmedArtifactResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_repository_prewarmed_artifact(repository, remove_prewarmed_artifact_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+repository}:removePrewarmedArtifact', options)
+          command.request_representation = Google::Apis::ArtifactregistryV1::RemovePrewarmedArtifactRequest::Representation
+          command.request_object = remove_prewarmed_artifact_request_object
+          command.response_representation = Google::Apis::ArtifactregistryV1::RemovePrewarmedArtifactResponse::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::RemovePrewarmedArtifactResponse
+          command.params['repository'] = repository unless repository.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2210,6 +2314,49 @@ module Google
           command.response_class = Google::Apis::ArtifactregistryV1::Version
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all streamed artifacts in a repository.
+        # @param [String] parent
+        #   Required. The repository of the artifact to list. Format: projects/`project`/
+        #   locations/`location`/repositories/`repository`
+        # @param [String] filter
+        #   Optional. Filter should only support The location of the prewarmed artifacts.
+        #   multi-region is not supported for this field.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of prewarmed artifacts to return. Maximum page
+        #   size is 1,000. Default page size is 100.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request, if
+        #   any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::ListPrewarmedArtifactsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::ListPrewarmedArtifactsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_repository_prewarmed_artifacts(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/prewarmedArtifacts', options)
+          command.response_representation = Google::Apis::ArtifactregistryV1::ListPrewarmedArtifactsResponse::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::ListPrewarmedArtifactsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
