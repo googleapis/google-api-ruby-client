@@ -22,6 +22,12 @@ module Google
   module Apis
     module AgentregistryV1alpha
       
+      class A2ASkill
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Agent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,12 +208,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Skill
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +232,17 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class A2ASkill
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :examples, as: 'examples'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          collection :tags, as: 'tags'
+        end
+      end
+      
       class Agent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -246,7 +257,7 @@ module Google
           property :name, as: 'name'
           collection :protocols, as: 'protocols', class: Google::Apis::AgentregistryV1alpha::Protocol, decorator: Google::Apis::AgentregistryV1alpha::Protocol::Representation
       
-          collection :skills, as: 'skills', class: Google::Apis::AgentregistryV1alpha::Skill, decorator: Google::Apis::AgentregistryV1alpha::Skill::Representation
+          collection :skills, as: 'skills', class: Google::Apis::AgentregistryV1alpha::A2ASkill, decorator: Google::Apis::AgentregistryV1alpha::A2ASkill::Representation
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -547,17 +558,6 @@ module Google
           property :name, as: 'name'
           property :registry_resource, as: 'registryResource'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class Skill
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          collection :examples, as: 'examples'
-          property :id, as: 'id'
-          property :name, as: 'name'
-          collection :tags, as: 'tags'
         end
       end
       

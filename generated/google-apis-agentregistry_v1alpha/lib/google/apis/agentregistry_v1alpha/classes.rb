@@ -22,6 +22,49 @@ module Google
   module Apis
     module AgentregistryV1alpha
       
+      # Represents the skills of an Agent.
+      class A2ASkill
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A more detailed description of the skill.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Example prompts or scenarios this skill can handle.
+        # Corresponds to the JSON property `examples`
+        # @return [Array<String>]
+        attr_accessor :examples
+      
+        # Output only. A unique identifier for the agent's skill.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. A human-readable name for the agent's skill.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Keywords describing the skill.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @examples = args[:examples] if args.key?(:examples)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # Represents an Agent. "A2A" below refers to the Agent-to-Agent protocol.
       class Agent
         include Google::Apis::Core::Hashable
@@ -85,7 +128,7 @@ module Google
         # Output only. Skills the agent possesses, often obtained from the A2A Agent
         # Card.
         # Corresponds to the JSON property `skills`
-        # @return [Array<Google::Apis::AgentregistryV1alpha::Skill>]
+        # @return [Array<Google::Apis::AgentregistryV1alpha::A2ASkill>]
         attr_accessor :skills
       
         # Output only. A universally unique identifier for the Agent.
@@ -1231,49 +1274,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @registry_resource = args[:registry_resource] if args.key?(:registry_resource)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Represents the skills of an Agent.
-      class Skill
-        include Google::Apis::Core::Hashable
-      
-        # Output only. A more detailed description of the skill.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Output only. Example prompts or scenarios this skill can handle.
-        # Corresponds to the JSON property `examples`
-        # @return [Array<String>]
-        attr_accessor :examples
-      
-        # Output only. A unique identifier for the agent's skill.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Output only. A human-readable name for the agent's skill.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. Keywords describing the skill.
-        # Corresponds to the JSON property `tags`
-        # @return [Array<String>]
-        attr_accessor :tags
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @examples = args[:examples] if args.key?(:examples)
-          @id = args[:id] if args.key?(:id)
-          @name = args[:name] if args.key?(:name)
-          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
