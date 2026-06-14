@@ -74,6 +74,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
         attr_accessor :postgresql_excluded_objects
       
+        # Source catalog.
+        # Corresponds to the JSON property `saasExcludedObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :saas_excluded_objects
+      
         # Salesforce organization structure.
         # Corresponds to the JSON property `salesforceExcludedObjects`
         # @return [Google::Apis::DatastreamV1::SalesforceOrg]
@@ -99,6 +104,7 @@ module Google
           @mysql_excluded_objects = args[:mysql_excluded_objects] if args.key?(:mysql_excluded_objects)
           @oracle_excluded_objects = args[:oracle_excluded_objects] if args.key?(:oracle_excluded_objects)
           @postgresql_excluded_objects = args[:postgresql_excluded_objects] if args.key?(:postgresql_excluded_objects)
+          @saas_excluded_objects = args[:saas_excluded_objects] if args.key?(:saas_excluded_objects)
           @salesforce_excluded_objects = args[:salesforce_excluded_objects] if args.key?(:salesforce_excluded_objects)
           @spanner_excluded_objects = args[:spanner_excluded_objects] if args.key?(:spanner_excluded_objects)
           @sql_server_excluded_objects = args[:sql_server_excluded_objects] if args.key?(:sql_server_excluded_objects)
@@ -471,6 +477,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Profile for connecting to a Dataverse source.
+        # Corresponds to the JSON property `dataverseProfile`
+        # @return [Google::Apis::DatastreamV1::DataverseProfile]
+        attr_accessor :dataverse_profile
+      
         # Required. Display name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -521,6 +532,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PrivateConnectivity]
         attr_accessor :private_connectivity
       
+        # Profile for connecting to a Salesforce Marketing Cloud source.
+        # Corresponds to the JSON property `salesforceMarketingCloudProfile`
+        # @return [Google::Apis::DatastreamV1::SalesforceMarketingCloudProfile]
+        attr_accessor :salesforce_marketing_cloud_profile
+      
         # Profile for connecting to a Salesforce source.
         # Corresponds to the JSON property `salesforceProfile`
         # @return [Google::Apis::DatastreamV1::SalesforceProfile]
@@ -537,6 +553,11 @@ module Google
         # @return [Boolean]
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # Profile for connecting to a ServiceNow source.
+        # Corresponds to the JSON property `serviceNowProfile`
+        # @return [Google::Apis::DatastreamV1::ServiceNowProfile]
+        attr_accessor :service_now_profile
       
         # Profile for connecting to a Spanner source.
         # Corresponds to the JSON property `spannerProfile`
@@ -568,6 +589,7 @@ module Google
         def update!(**args)
           @bigquery_profile = args[:bigquery_profile] if args.key?(:bigquery_profile)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dataverse_profile = args[:dataverse_profile] if args.key?(:dataverse_profile)
           @display_name = args[:display_name] if args.key?(:display_name)
           @forward_ssh_connectivity = args[:forward_ssh_connectivity] if args.key?(:forward_ssh_connectivity)
           @gcs_profile = args[:gcs_profile] if args.key?(:gcs_profile)
@@ -578,9 +600,11 @@ module Google
           @oracle_profile = args[:oracle_profile] if args.key?(:oracle_profile)
           @postgresql_profile = args[:postgresql_profile] if args.key?(:postgresql_profile)
           @private_connectivity = args[:private_connectivity] if args.key?(:private_connectivity)
+          @salesforce_marketing_cloud_profile = args[:salesforce_marketing_cloud_profile] if args.key?(:salesforce_marketing_cloud_profile)
           @salesforce_profile = args[:salesforce_profile] if args.key?(:salesforce_profile)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @service_now_profile = args[:service_now_profile] if args.key?(:service_now_profile)
           @spanner_profile = args[:spanner_profile] if args.key?(:spanner_profile)
           @sql_server_profile = args[:sql_server_profile] if args.key?(:sql_server_profile)
           @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
@@ -648,6 +672,71 @@ module Google
           @dataset_id_prefix = args[:dataset_id_prefix] if args.key?(:dataset_id_prefix)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Profile for connecting to a Dataverse source.
+      class DataverseProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Environment URL of the Microsoft Dataverse instance. Example: `.crm.
+        # dynamics.com`
+        # Corresponds to the JSON property `environmentUrl`
+        # @return [String]
+        attr_accessor :environment_url
+      
+        # OAuth Client Credentials.
+        # Corresponds to the JSON property `oauthClientCredentials`
+        # @return [Google::Apis::DatastreamV1::OauthClientCredentials]
+        attr_accessor :oauth_client_credentials
+      
+        # Required. Tenant id of the Microsoft Dataverse instance.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_url = args[:environment_url] if args.key?(:environment_url)
+          @oauth_client_credentials = args[:oauth_client_credentials] if args.key?(:oauth_client_credentials)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+        end
+      end
+      
+      # Configuration for syncing data from a Dataverse source.
+      class DataverseSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Source catalog.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :exclude_objects
+      
+        # Source catalog.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :include_objects
+      
+        # Required. Incremental sync polling interval for all objects. If not set, a
+        # default value of `5 minutes` is used. The duration must be from `5 minutes` to
+        # `24 hours`, inclusive.
+        # Corresponds to the JSON property `pollingInterval`
+        # @return [String]
+        attr_accessor :polling_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @polling_interval = args[:polling_interval] if args.key?(:polling_interval)
         end
       end
       
@@ -761,6 +850,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::SalesforceOrg]
         attr_accessor :salesforce_org
       
+        # Source catalog.
+        # Corresponds to the JSON property `sourceCatalog`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :source_catalog
+      
         # Spanner database structure.
         # Corresponds to the JSON property `spannerDatabase`
         # @return [Google::Apis::DatastreamV1::SpannerDatabase]
@@ -786,6 +880,7 @@ module Google
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
           @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
           @salesforce_org = args[:salesforce_org] if args.key?(:salesforce_org)
+          @source_catalog = args[:source_catalog] if args.key?(:source_catalog)
           @spanner_database = args[:spanner_database] if args.key?(:spanner_database)
           @sql_server_rdbms = args[:sql_server_rdbms] if args.key?(:sql_server_rdbms)
         end
@@ -820,6 +915,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::SalesforceOrg]
         attr_accessor :salesforce_org
       
+        # Source catalog.
+        # Corresponds to the JSON property `sourceCatalog`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :source_catalog
+      
         # Spanner database structure.
         # Corresponds to the JSON property `spannerDatabase`
         # @return [Google::Apis::DatastreamV1::SpannerDatabase]
@@ -841,6 +941,7 @@ module Google
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
           @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
           @salesforce_org = args[:salesforce_org] if args.key?(:salesforce_org)
+          @source_catalog = args[:source_catalog] if args.key?(:source_catalog)
           @spanner_database = args[:spanner_database] if args.key?(:spanner_database)
           @sql_server_rdbms = args[:sql_server_rdbms] if args.key?(:sql_server_rdbms)
         end
@@ -2504,6 +2605,32 @@ module Google
         end
       end
       
+      # OAuth Client Credentials.
+      class OauthClientCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Required. Client ID for OAuth Client Credentials.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # A confidential piece of information where the actual value is either directly
+        # specified in the message as a raw string or stored in GCP secret manager.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [Google::Apis::DatastreamV1::Secret]
+        attr_accessor :client_secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+        end
+      end
+      
       # Object filter to apply the rules to.
       class ObjectFilter
         include Google::Apis::Core::Hashable
@@ -3912,6 +4039,76 @@ module Google
         end
       end
       
+      # Profile for connecting to a Salesforce Marketing Cloud source.
+      class SalesforceMarketingCloudProfile
+        include Google::Apis::Core::Hashable
+      
+        # OAuth Client Credentials.
+        # Corresponds to the JSON property `oauthClientCredentials`
+        # @return [Google::Apis::DatastreamV1::OauthClientCredentials]
+        attr_accessor :oauth_client_credentials
+      
+        # Required. Subdomain for the Salesforce Marketing Cloud connection. Example: if
+        # your specific endpoint is `https://`your-specific-subdomain`.rest.
+        # marketingcloudapis.com/`, the subdomain is ``your-specific-subdomain``. Must
+        # be 1-63 characters, start and end with an alphanumeric character, and contain
+        # only lowercase letters, numbers, and hyphens (-).
+        # Corresponds to the JSON property `subdomain`
+        # @return [String]
+        attr_accessor :subdomain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_client_credentials = args[:oauth_client_credentials] if args.key?(:oauth_client_credentials)
+          @subdomain = args[:subdomain] if args.key?(:subdomain)
+        end
+      end
+      
+      # Configuration for syncing data from a Salesforce Marketing Cloud source.
+      class SalesforceMarketingCloudSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Source catalog.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :exclude_objects
+      
+        # Required. Specifies the polling interval for a full refresh of objects that do
+        # not support incremental sync. If not set, a default value of 24 hours is used.
+        # The duration must be between 1 and 24 hours, inclusive.
+        # Corresponds to the JSON property `fullRefreshPollingInterval`
+        # @return [String]
+        attr_accessor :full_refresh_polling_interval
+      
+        # Source catalog.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :include_objects
+      
+        # Required. Incremental sync polling interval for all objects. If not set, a
+        # default value of `5 minutes` is used. The duration must be from `5 minutes` to
+        # `24 hours`, inclusive.
+        # Corresponds to the JSON property `pollingInterval`
+        # @return [String]
+        attr_accessor :polling_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @full_refresh_polling_interval = args[:full_refresh_polling_interval] if args.key?(:full_refresh_polling_interval)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @polling_interval = args[:polling_interval] if args.key?(:polling_interval)
+        end
+      end
+      
       # Salesforce object.
       class SalesforceObject
         include Google::Apis::Core::Hashable
@@ -4040,6 +4237,35 @@ module Google
         end
       end
       
+      # A confidential piece of information where the actual value is either directly
+      # specified in the message as a raw string or stored in GCP secret manager.
+      class Secret
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input only. The actual raw value of the secret as plain text.
+        # Corresponds to the JSON property `rawValue`
+        # @return [String]
+        attr_accessor :raw_value
+      
+        # Optional. A Secret Manager resource name storing the actual value of the
+        # secret. Supported formats: * projects/`project`/locations/`location`/secrets/`
+        # secret`/versions/`version` * projects/`project`/secrets/`secret`/versions/`
+        # version`
+        # Corresponds to the JSON property `secretVersion`
+        # @return [String]
+        attr_accessor :secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @raw_value = args[:raw_value] if args.key?(:raw_value)
+          @secret_version = args[:secret_version] if args.key?(:secret_version)
+        end
+      end
+      
       # Message represents the option where Datastream will enforce the encryption and
       # authenticate the server identity as well as the client identity.
       # ca_certificate, client_certificate and client_key must be set if user selects
@@ -4118,6 +4344,71 @@ module Google
         end
       end
       
+      # Profile for connecting to a ServiceNow source.
+      class ServiceNowProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. The instance of the ServiceNow account. This is the `` part of the
+        # URL `https://.service-now.com`.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # OAuth Client Credentials.
+        # Corresponds to the JSON property `oauthClientCredentials`
+        # @return [Google::Apis::DatastreamV1::OauthClientCredentials]
+        attr_accessor :oauth_client_credentials
+      
+        # User-password credentials.
+        # Corresponds to the JSON property `userPasswordCredentials`
+        # @return [Google::Apis::DatastreamV1::UserPasswordCredentials]
+        attr_accessor :user_password_credentials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @oauth_client_credentials = args[:oauth_client_credentials] if args.key?(:oauth_client_credentials)
+          @user_password_credentials = args[:user_password_credentials] if args.key?(:user_password_credentials)
+        end
+      end
+      
+      # Configuration for syncing data from a ServiceNow source.
+      class ServiceNowSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Source catalog.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :exclude_objects
+      
+        # Source catalog.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :include_objects
+      
+        # Required. Incremental sync polling interval for all objects. If not set, a
+        # default value of `5 minutes` is used. The duration must be from `5 minutes` to
+        # `24 hours`, inclusive.
+        # Corresponds to the JSON property `pollingInterval`
+        # @return [String]
+        attr_accessor :polling_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @polling_interval = args[:polling_interval] if args.key?(:polling_interval)
+        end
+      end
+      
       # A single target dataset to which all data will be streamed.
       class SingleTargetDataset
         include Google::Apis::Core::Hashable
@@ -4138,9 +4429,33 @@ module Google
         end
       end
       
+      # Source catalog.
+      class SourceCatalog
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Source objects in the catalog.
+        # Corresponds to the JSON property `objects`
+        # @return [Array<Google::Apis::DatastreamV1::SourceObject>]
+        attr_accessor :objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @objects = args[:objects] if args.key?(:objects)
+        end
+      end
+      
       # The configuration of the stream source.
       class SourceConfig
         include Google::Apis::Core::Hashable
+      
+        # Configuration for syncing data from a Dataverse source.
+        # Corresponds to the JSON property `dataverseSourceConfig`
+        # @return [Google::Apis::DatastreamV1::DataverseSourceConfig]
+        attr_accessor :dataverse_source_config
       
         # Configuration for syncing data from a MongoDB source.
         # Corresponds to the JSON property `mongodbSourceConfig`
@@ -4162,10 +4477,20 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlSourceConfig]
         attr_accessor :postgresql_source_config
       
+        # Configuration for syncing data from a Salesforce Marketing Cloud source.
+        # Corresponds to the JSON property `salesforceMarketingCloudSourceConfig`
+        # @return [Google::Apis::DatastreamV1::SalesforceMarketingCloudSourceConfig]
+        attr_accessor :salesforce_marketing_cloud_source_config
+      
         # Configuration for syncing data from a Salesforce source.
         # Corresponds to the JSON property `salesforceSourceConfig`
         # @return [Google::Apis::DatastreamV1::SalesforceSourceConfig]
         attr_accessor :salesforce_source_config
+      
+        # Configuration for syncing data from a ServiceNow source.
+        # Corresponds to the JSON property `serviceNowSourceConfig`
+        # @return [Google::Apis::DatastreamV1::ServiceNowSourceConfig]
+        attr_accessor :service_now_source_config
       
         # Required. Source connection profile resource. Format: `projects/`project`/
         # locations/`location`/connectionProfiles/`name``
@@ -4189,11 +4514,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dataverse_source_config = args[:dataverse_source_config] if args.key?(:dataverse_source_config)
           @mongodb_source_config = args[:mongodb_source_config] if args.key?(:mongodb_source_config)
           @mysql_source_config = args[:mysql_source_config] if args.key?(:mysql_source_config)
           @oracle_source_config = args[:oracle_source_config] if args.key?(:oracle_source_config)
           @postgresql_source_config = args[:postgresql_source_config] if args.key?(:postgresql_source_config)
+          @salesforce_marketing_cloud_source_config = args[:salesforce_marketing_cloud_source_config] if args.key?(:salesforce_marketing_cloud_source_config)
           @salesforce_source_config = args[:salesforce_source_config] if args.key?(:salesforce_source_config)
+          @service_now_source_config = args[:service_now_source_config] if args.key?(:service_now_source_config)
           @source_connection_profile = args[:source_connection_profile] if args.key?(:source_connection_profile)
           @spanner_source_config = args[:spanner_source_config] if args.key?(:spanner_source_config)
           @sql_server_source_config = args[:sql_server_source_config] if args.key?(:sql_server_source_config)
@@ -4224,6 +4552,33 @@ module Google
         def update!(**args)
           @dataset_template = args[:dataset_template] if args.key?(:dataset_template)
           @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Source object.
+      class SourceObject
+        include Google::Apis::Core::Hashable
+      
+        # Required. The object name.
+        # Corresponds to the JSON property `objectName`
+        # @return [String]
+        attr_accessor :object_name
+      
+        # Optional. Source properties. When unspecified as part of include objects,
+        # includes everything, when unspecified as part of exclude objects, excludes
+        # nothing.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DatastreamV1::SourceProperty>]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_name = args[:object_name] if args.key?(:object_name)
+          @properties = args[:properties] if args.key?(:properties)
         end
       end
       
@@ -4279,6 +4634,41 @@ module Google
           @salesforce_identifier = args[:salesforce_identifier] if args.key?(:salesforce_identifier)
           @spanner_identifier = args[:spanner_identifier] if args.key?(:spanner_identifier)
           @sql_server_identifier = args[:sql_server_identifier] if args.key?(:sql_server_identifier)
+        end
+      end
+      
+      # Source property.
+      class SourceProperty
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether or not the property is a primary key.
+        # Corresponds to the JSON property `primaryKey`
+        # @return [Boolean]
+        attr_accessor :primary_key
+        alias_method :primary_key?, :primary_key
+      
+        # Optional. Source properties. When specified, it means that the current
+        # property contains nested properties of its own. When unspecified as part of
+        # include objects, includes everything, when unspecified as part of exclude
+        # objects, excludes nothing.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DatastreamV1::SourceProperty>]
+        attr_accessor :properties
+      
+        # Required. The property name.
+        # Corresponds to the JSON property `propertyName`
+        # @return [String]
+        attr_accessor :property_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_key = args[:primary_key] if args.key?(:primary_key)
+          @properties = args[:properties] if args.key?(:properties)
+          @property_name = args[:property_name] if args.key?(:property_name)
         end
       end
       
@@ -5344,6 +5734,32 @@ module Google
           @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
           @secret_manager_stored_security_token = args[:secret_manager_stored_security_token] if args.key?(:secret_manager_stored_security_token)
           @security_token = args[:security_token] if args.key?(:security_token)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # User-password credentials.
+      class UserPasswordCredentials
+        include Google::Apis::Core::Hashable
+      
+        # A confidential piece of information where the actual value is either directly
+        # specified in the message as a raw string or stored in GCP secret manager.
+        # Corresponds to the JSON property `password`
+        # @return [Google::Apis::DatastreamV1::Secret]
+        attr_accessor :password
+      
+        # Required. Username for the connection.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password = args[:password] if args.key?(:password)
           @username = args[:username] if args.key?(:username)
         end
       end
