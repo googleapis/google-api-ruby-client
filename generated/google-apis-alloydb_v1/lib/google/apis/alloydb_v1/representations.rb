@@ -1956,6 +1956,7 @@ module Google
       
           property :maintenance_state, as: 'maintenanceState'
           property :maintenance_version, as: 'maintenanceVersion'
+          collection :next_available_maintenance_versions, as: 'nextAvailableMaintenanceVersions'
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance::Representation
       
         end
