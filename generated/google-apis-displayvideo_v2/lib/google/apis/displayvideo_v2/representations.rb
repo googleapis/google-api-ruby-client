@@ -1810,6 +1810,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class YoutubeChannelPackAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class YoutubeVideoAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2109,6 +2115,8 @@ module Google
           property :viewability_details, as: 'viewabilityDetails', class: Google::Apis::DisplayvideoV2::ViewabilityAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::ViewabilityAssignedTargetingOptionDetails::Representation
       
           property :youtube_channel_details, as: 'youtubeChannelDetails', class: Google::Apis::DisplayvideoV2::YoutubeChannelAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeChannelAssignedTargetingOptionDetails::Representation
+      
+          property :youtube_channel_pack_details, as: 'youtubeChannelPackDetails', class: Google::Apis::DisplayvideoV2::YoutubeChannelPackAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeChannelPackAssignedTargetingOptionDetails::Representation
       
           property :youtube_video_details, as: 'youtubeVideoDetails', class: Google::Apis::DisplayvideoV2::YoutubeVideoAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeVideoAssignedTargetingOptionDetails::Representation
       
@@ -4929,6 +4937,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
+          property :negative, as: 'negative'
+        end
+      end
+      
+      class YoutubeChannelPackAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_pack_id, :numeric_string => true, as: 'channelPackId'
           property :negative, as: 'negative'
         end
       end
