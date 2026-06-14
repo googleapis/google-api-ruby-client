@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceLogConfigLoggingHttpHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceNetworkPassThroughLbTrafficPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1091,6 +1097,12 @@ module Google
       end
       
       class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DateTime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1560,6 +1572,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ForwardingRuleAttachedExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2579,6 +2597,12 @@ module Google
       end
       
       class InstanceGroupManagerInstanceLifecyclePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicyOnRepair
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5170,6 +5194,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PeriodicPartialMaintenanceSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6209,6 +6239,12 @@ module Google
       end
       
       class ResourceStatusPhysicalHostTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceStatusPhysicalHostTopologyAdditionalAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8158,6 +8194,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeZone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Uint128
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8742,6 +8784,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ZoneResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -10008,9 +10056,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
+          collection :logging_http_request_headers, as: 'loggingHttpRequestHeaders', class: Google::Apis::ComputeV1::BackendServiceLogConfigLoggingHttpHeader, decorator: Google::Apis::ComputeV1::BackendServiceLogConfigLoggingHttpHeader::Representation
+      
+          collection :logging_http_response_headers, as: 'loggingHttpResponseHeaders', class: Google::Apis::ComputeV1::BackendServiceLogConfigLoggingHttpHeader, decorator: Google::Apis::ComputeV1::BackendServiceLogConfigLoggingHttpHeader::Representation
+      
           collection :optional_fields, as: 'optionalFields'
           property :optional_mode, as: 'optionalMode'
           property :sample_rate, as: 'sampleRate'
+        end
+      end
+      
+      class BackendServiceLogConfigLoggingHttpHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_name, as: 'headerName'
         end
       end
       
@@ -10777,6 +10836,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :day, as: 'day'
           property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
+      class DateTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :month, as: 'month'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+          property :time_zone, as: 'timeZone', class: Google::Apis::ComputeV1::TimeZone, decorator: Google::Apis::ComputeV1::TimeZone::Representation
+      
+          property :utc_offset, as: 'utcOffset'
           property :year, as: 'year'
         end
       end
@@ -11622,6 +11697,8 @@ module Google
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
           property :allow_psc_global_access, as: 'allowPscGlobalAccess'
+          collection :attached_extensions, as: 'attachedExtensions', class: Google::Apis::ComputeV1::ForwardingRuleAttachedExtension, decorator: Google::Apis::ComputeV1::ForwardingRuleAttachedExtension::Representation
+      
           property :backend_service, as: 'backendService'
           property :base_forwarding_rule, as: 'baseForwardingRule'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -11690,6 +11767,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ForwardingRuleAttachedExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference, as: 'reference'
         end
       end
       
@@ -13709,6 +13793,15 @@ module Google
           property :default_action_on_failure, as: 'defaultActionOnFailure'
           property :force_update_on_repair, as: 'forceUpdateOnRepair'
           property :on_failed_health_check, as: 'onFailedHealthCheck'
+          property :on_repair, as: 'onRepair', class: Google::Apis::ComputeV1::InstanceGroupManagerInstanceLifecyclePolicyOnRepair, decorator: Google::Apis::ComputeV1::InstanceGroupManagerInstanceLifecyclePolicyOnRepair::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicyOnRepair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_changing_zone, as: 'allowChangingZone'
         end
       end
       
@@ -15036,6 +15129,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_name, as: 'customerName'
           property :description, as: 'description'
+          property :effective_location, as: 'effectiveLocation'
           collection :expected_outages, as: 'expectedOutages', class: Google::Apis::ComputeV1::InterconnectOutageNotification, decorator: Google::Apis::ComputeV1::InterconnectOutageNotification::Representation
       
           property :google_ip_address, as: 'googleIpAddress'
@@ -17129,6 +17223,8 @@ module Google
       
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeV1::AliasIpRange, decorator: Google::Apis::ComputeV1::AliasIpRange::Representation
       
+          collection :alias_ipv6_ranges, as: 'aliasIpv6Ranges', class: Google::Apis::ComputeV1::AliasIpRange, decorator: Google::Apis::ComputeV1::AliasIpRange::Representation
+      
           property :enable_vpc_scoped_dns, as: 'enableVpcScopedDns'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :igmp_query, as: 'igmpQuery'
@@ -18476,6 +18572,19 @@ module Google
           property :preserved_state, as: 'preservedState', class: Google::Apis::ComputeV1::PreservedState, decorator: Google::Apis::ComputeV1::PreservedState::Representation
       
           property :status, as: 'status'
+        end
+      end
+      
+      class PeriodicPartialMaintenanceSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sub_type, as: 'subType'
+          property :target_resource, as: 'targetResource'
+          property :type, as: 'type'
+          property :window_end_time, as: 'windowEndTime', class: Google::Apis::ComputeV1::DateTime, decorator: Google::Apis::ComputeV1::DateTime::Representation
+      
+          property :window_start_time, as: 'windowStartTime', class: Google::Apis::ComputeV1::DateTime, decorator: Google::Apis::ComputeV1::DateTime::Representation
+      
         end
       end
       
@@ -20285,10 +20394,19 @@ module Google
       class ResourceStatusPhysicalHostTopology
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_attributes, as: 'additionalAttributes', class: Google::Apis::ComputeV1::ResourceStatusPhysicalHostTopologyAdditionalAttributes, decorator: Google::Apis::ComputeV1::ResourceStatusPhysicalHostTopologyAdditionalAttributes::Representation
+      
           property :block, as: 'block'
           property :cluster, as: 'cluster'
           property :host, as: 'host'
           property :subblock, as: 'subblock'
+        end
+      end
+      
+      class ResourceStatusPhysicalHostTopologyAdditionalAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :accelerator_topology_ids, as: 'acceleratorTopologyIds'
         end
       end
       
@@ -20318,6 +20436,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :pause_time, as: 'pauseTime'
+          property :resume_time, as: 'resumeTime'
           property :rollout_entity, as: 'rolloutEntity', class: Google::Apis::ComputeV1::RolloutRolloutEntity, decorator: Google::Apis::ComputeV1::RolloutRolloutEntity::Representation
       
           property :rollout_plan, as: 'rolloutPlan'
@@ -20676,6 +20796,7 @@ module Google
           property :name, as: 'name'
           collection :nats, as: 'nats', class: Google::Apis::ComputeV1::RouterNat, decorator: Google::Apis::ComputeV1::RouterNat::Representation
       
+          property :ncc_gateway, as: 'nccGateway'
           property :network, as: 'network'
           property :params, as: 'params', class: Google::Apis::ComputeV1::RouterParams, decorator: Google::Apis::ComputeV1::RouterParams::Representation
       
@@ -20938,6 +21059,7 @@ module Google
       
           collection :nat_status, as: 'natStatus', class: Google::Apis::ComputeV1::RouterStatusNatStatus, decorator: Google::Apis::ComputeV1::RouterStatusNatStatus::Representation
       
+          property :ncc_gateway, as: 'nccGateway'
           property :network, as: 'network'
         end
       end
@@ -23691,6 +23813,7 @@ module Google
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
           property :proxy_bind, as: 'proxyBind'
           property :proxy_header, as: 'proxyHeader'
@@ -23913,6 +24036,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TimeZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :version, as: 'version'
         end
       end
       
@@ -24946,6 +25077,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::ZoneResourceStatus, decorator: Google::Apis::ComputeV1::ZoneResourceStatus::Representation
+      
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :supports_pzs, as: 'supportsPzs'
@@ -24981,6 +25114,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ZoneResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :upcoming_maintenances, as: 'upcomingMaintenances', class: Google::Apis::ComputeV1::PeriodicPartialMaintenanceSchedule, decorator: Google::Apis::ComputeV1::PeriodicPartialMaintenanceSchedule::Representation
+      
         end
       end
       
