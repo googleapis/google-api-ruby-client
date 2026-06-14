@@ -2414,7 +2414,7 @@ module Google
         attr_accessor :project
       
         # Optional. Whether to use the project service account for the Compute Engine
-        # instance.
+        # instance restore.
         # Corresponds to the JSON property `useProjectServiceAccount`
         # @return [Boolean]
         attr_accessor :use_project_service_account
@@ -3193,7 +3193,7 @@ module Google
         # @return [String]
         attr_accessor :project
       
-        # Optional. Whether to use the project service account for the disk.
+        # Optional. Whether to use the project service account for the disk restore.
         # Corresponds to the JSON property `useProjectServiceAccount`
         # @return [Boolean]
         attr_accessor :use_project_service_account
@@ -5211,7 +5211,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :replica_zones
       
-        # Optional. Whether to use the project service account for the disk.
+        # Optional. Whether to use the project service account for the disk restore.
         # Corresponds to the JSON property `useProjectServiceAccount`
         # @return [Boolean]
         attr_accessor :use_project_service_account
