@@ -1413,6 +1413,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Settings for WildFire analysis.
+        # Corresponds to the JSON property `wildfireSettings`
+        # @return [Google::Apis::NetworksecurityV1beta1::FirewallEndpointWildfireSettings]
+        attr_accessor :wildfire_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1432,6 +1437,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @wildfire_settings = args[:wildfire_settings] if args.key?(:wildfire_settings)
         end
       end
       
@@ -1544,6 +1550,20 @@ module Google
       class FirewallEndpointEndpointSettings
         include Google::Apis::Core::Hashable
       
+        # Optional. The content cloud region of the endpoint.
+        # Corresponds to the JSON property `contentCloudRegion`
+        # @return [String]
+        attr_accessor :content_cloud_region
+      
+        # Optional. Whether to block HTTP partial responses for the endpoint. When this
+        # is true, resumption of blocked malicious HTTP file downloads will be blocked
+        # by the firewall. False provides maximum availability, true provides maximum
+        # security.
+        # Corresponds to the JSON property `httpPartialResponseBlocked`
+        # @return [Boolean]
+        attr_accessor :http_partial_response_blocked
+        alias_method :http_partial_response_blocked?, :http_partial_response_blocked
+      
         # Optional. Immutable. Indicates whether Jumbo Frames are enabled. Default value
         # is false.
         # Corresponds to the JSON property `jumboFramesEnabled`
@@ -1557,7 +1577,96 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @content_cloud_region = args[:content_cloud_region] if args.key?(:content_cloud_region)
+          @http_partial_response_blocked = args[:http_partial_response_blocked] if args.key?(:http_partial_response_blocked)
           @jumbo_frames_enabled = args[:jumbo_frames_enabled] if args.key?(:jumbo_frames_enabled)
+        end
+      end
+      
+      # Settings for WildFire analysis.
+      class FirewallEndpointWildfireSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether WildFire analysis is enabled. Default value is
+        # false.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Settings for WildFire inline cloud analysis.
+        # Corresponds to the JSON property `wildfireInlineCloudAnalysisSettings`
+        # @return [Google::Apis::NetworksecurityV1beta1::FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings]
+        attr_accessor :wildfire_inline_cloud_analysis_settings
+      
+        # Optional. Duration in milliseconds on a file being held while the WildFire
+        # real time signature cloud performs a signature lookup. Value between 1 to 5000
+        # is valid. Default value is 1000.
+        # Corresponds to the JSON property `wildfireRealtimeLookupDuration`
+        # @return [String]
+        attr_accessor :wildfire_realtime_lookup_duration
+      
+        # Optional. Action to take on WildFire real time signature lookup timeout.
+        # Default value is ALLOW.
+        # Corresponds to the JSON property `wildfireRealtimeLookupTimeoutAction`
+        # @return [String]
+        attr_accessor :wildfire_realtime_lookup_timeout_action
+      
+        # Optional. The region where WildFire analysis will be performed. PAN supports
+        # regions: https://docs.paloaltonetworks.com/advanced-wildfire/administration/
+        # advanced-wildfire-overview/advanced-wildfire-deployments/advanced-wildfire-
+        # global-cloud
+        # Corresponds to the JSON property `wildfireRegion`
+        # @return [String]
+        attr_accessor :wildfire_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @wildfire_inline_cloud_analysis_settings = args[:wildfire_inline_cloud_analysis_settings] if args.key?(:wildfire_inline_cloud_analysis_settings)
+          @wildfire_realtime_lookup_duration = args[:wildfire_realtime_lookup_duration] if args.key?(:wildfire_realtime_lookup_duration)
+          @wildfire_realtime_lookup_timeout_action = args[:wildfire_realtime_lookup_timeout_action] if args.key?(:wildfire_realtime_lookup_timeout_action)
+          @wildfire_region = args[:wildfire_region] if args.key?(:wildfire_region)
+        end
+      end
+      
+      # Settings for WildFire inline cloud analysis.
+      class FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Timeout in milliseconds on a file being held while WildFire inline
+        # cloud analysis is performed. Value between 1 to 240000 is valid. Default value
+        # is 30000.
+        # Corresponds to the JSON property `maxAnalysisDuration`
+        # @return [String]
+        attr_accessor :max_analysis_duration
+      
+        # Optional. Whether to disable WildFire submission log generation for files that
+        # timeout during WildFire inline cloud analysis.
+        # Corresponds to the JSON property `submissionTimeoutLoggingDisabled`
+        # @return [Boolean]
+        attr_accessor :submission_timeout_logging_disabled
+        alias_method :submission_timeout_logging_disabled?, :submission_timeout_logging_disabled
+      
+        # Optional. Action to take when WildFire inline cloud analysis times out.
+        # Default value is ALLOW.
+        # Corresponds to the JSON property `timeoutAction`
+        # @return [String]
+        attr_accessor :timeout_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_analysis_duration = args[:max_analysis_duration] if args.key?(:max_analysis_duration)
+          @submission_timeout_logging_disabled = args[:submission_timeout_logging_disabled] if args.key?(:submission_timeout_logging_disabled)
+          @timeout_action = args[:timeout_action] if args.key?(:timeout_action)
         end
       end
       
@@ -3210,7 +3319,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached.
+        # Unordered list. Locations that could not be reached. See https://google.aip.
+        # dev/217 for more details.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -3529,6 +3639,37 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
           @url_lists = args[:url_lists] if args.key?(:url_lists)
+        end
+      end
+      
+      # Message for response to listing WildfireVerdictChangeRequests.
+      class ListWildfireVerdictChangeRequestsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # The list of WildfireVerdictChangeRequests
+        # Corresponds to the JSON property `wildfireVerdictChangeRequests`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest>]
+        attr_accessor :wildfire_verdict_change_requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @wildfire_verdict_change_requests = args[:wildfire_verdict_change_requests] if args.key?(:wildfire_verdict_change_requests)
         end
       end
       
@@ -4635,6 +4776,11 @@ module Google
         # @return [Google::Apis::NetworksecurityV1beta1::UrlFilteringProfile]
         attr_accessor :url_filtering_profile
       
+        # WildfireAnalysisProfile defines Palo Alto Networks WildFire behavior.
+        # Corresponds to the JSON property `wildfireAnalysisProfile`
+        # @return [Google::Apis::NetworksecurityV1beta1::WildfireAnalysisProfile]
+        attr_accessor :wildfire_analysis_profile
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4652,6 +4798,7 @@ module Google
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
           @url_filtering_profile = args[:url_filtering_profile] if args.key?(:url_filtering_profile)
+          @wildfire_analysis_profile = args[:wildfire_analysis_profile] if args.key?(:wildfire_analysis_profile)
         end
       end
       
@@ -4724,6 +4871,11 @@ module Google
         # @return [String]
         attr_accessor :url_filtering_profile
       
+        # Optional. Reference to a SecurityProfile with the WildFire configuration.
+        # Corresponds to the JSON property `wildfireAnalysisProfile`
+        # @return [String]
+        attr_accessor :wildfire_analysis_profile
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4741,6 +4893,7 @@ module Google
           @threat_prevention_profile = args[:threat_prevention_profile] if args.key?(:threat_prevention_profile)
           @update_time = args[:update_time] if args.key?(:update_time)
           @url_filtering_profile = args[:url_filtering_profile] if args.key?(:url_filtering_profile)
+          @wildfire_analysis_profile = args[:wildfire_analysis_profile] if args.key?(:wildfire_analysis_profile)
         end
       end
       
@@ -5219,6 +5372,439 @@ module Google
         def update!(**args)
           @certificate_provider_instance = args[:certificate_provider_instance] if args.key?(:certificate_provider_instance)
           @grpc_endpoint = args[:grpc_endpoint] if args.key?(:grpc_endpoint)
+        end
+      end
+      
+      # WildfireAnalysisProfile defines Palo Alto Networks WildFire behavior.
+      class WildfireAnalysisProfile
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configuration for WildFire inline cloud analysis.
+        # Corresponds to the JSON property `wildfireInlineCloudAnalysisRules`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::WildfireInlineCloudAnalysisRule>]
+        attr_accessor :wildfire_inline_cloud_analysis_rules
+      
+        # Optional. Configuration for overriding inline ML WildFire actions per protocol.
+        # Corresponds to the JSON property `wildfireInlineMlOverrides`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::WildfireInlineMlOverride>]
+        attr_accessor :wildfire_inline_ml_overrides
+      
+        # Defines the settings for WildFire Inline ML analysis.
+        # Corresponds to the JSON property `wildfireInlineMlSetting`
+        # @return [Google::Apis::NetworksecurityV1beta1::WildfireInlineMlSettings]
+        attr_accessor :wildfire_inline_ml_setting
+      
+        # Optional. Settings for WildFire Inline ML analysis.
+        # Corresponds to the JSON property `wildfireInlineMlSettings`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::WildfireInlineMlSettings>]
+        attr_accessor :wildfire_inline_ml_settings
+      
+        # Optional. Configuration for overriding WildFire actions per protocol.
+        # Corresponds to the JSON property `wildfireOverrides`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::WildfireOverride>]
+        attr_accessor :wildfire_overrides
+      
+        # Optional. Whether to hold the transfer of a file while the WildFire real-time
+        # signature cloud performs a signature lookup. Default value is false.
+        # Corresponds to the JSON property `wildfireRealtimeLookup`
+        # @return [Boolean]
+        attr_accessor :wildfire_realtime_lookup
+        alias_method :wildfire_realtime_lookup?, :wildfire_realtime_lookup
+      
+        # Optional. Configurations for WildFire file submissions.
+        # Corresponds to the JSON property `wildfireSubmissionRules`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::WildfireSubmissionRule>]
+        attr_accessor :wildfire_submission_rules
+      
+        # Optional. Configuration for overriding WildFire threats action by threat_id
+        # match.
+        # Corresponds to the JSON property `wildfireThreatOverrides`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::WildfireThreatOverride>]
+        attr_accessor :wildfire_threat_overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wildfire_inline_cloud_analysis_rules = args[:wildfire_inline_cloud_analysis_rules] if args.key?(:wildfire_inline_cloud_analysis_rules)
+          @wildfire_inline_ml_overrides = args[:wildfire_inline_ml_overrides] if args.key?(:wildfire_inline_ml_overrides)
+          @wildfire_inline_ml_setting = args[:wildfire_inline_ml_setting] if args.key?(:wildfire_inline_ml_setting)
+          @wildfire_inline_ml_settings = args[:wildfire_inline_ml_settings] if args.key?(:wildfire_inline_ml_settings)
+          @wildfire_overrides = args[:wildfire_overrides] if args.key?(:wildfire_overrides)
+          @wildfire_realtime_lookup = args[:wildfire_realtime_lookup] if args.key?(:wildfire_realtime_lookup)
+          @wildfire_submission_rules = args[:wildfire_submission_rules] if args.key?(:wildfire_submission_rules)
+          @wildfire_threat_overrides = args[:wildfire_threat_overrides] if args.key?(:wildfire_threat_overrides)
+        end
+      end
+      
+      # The list of file type configurations to be scanned by WildFire Inline Cloud
+      # Analysis.
+      class WildfireInlineCloudAnalysisRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. Action to take when a threat is detected using WildFire Inline Cloud
+        # Analysis. The default Value is DENY.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # The options to submit a custom list of file types for scan.
+        # Corresponds to the JSON property `customFileTypes`
+        # @return [Google::Apis::NetworksecurityV1beta1::WildfireInlineCloudAnalysisRuleCustomFileTypes]
+        attr_accessor :custom_file_types
+      
+        # Required. Direction for the file to be analyzed by WildFire Inline Cloud
+        # Analysis.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
+        # Required. File selection mode for WildFire inline cloud analysis.
+        # Corresponds to the JSON property `fileSelectionMode`
+        # @return [String]
+        attr_accessor :file_selection_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @custom_file_types = args[:custom_file_types] if args.key?(:custom_file_types)
+          @direction = args[:direction] if args.key?(:direction)
+          @file_selection_mode = args[:file_selection_mode] if args.key?(:file_selection_mode)
+        end
+      end
+      
+      # The options to submit a custom list of file types for scan.
+      class WildfireInlineCloudAnalysisRuleCustomFileTypes
+        include Google::Apis::Core::Hashable
+      
+        # Required. File types to be submitted for WildFire inline cloud analysis.
+        # Corresponds to the JSON property `fileTypes`
+        # @return [Array<String>]
+        attr_accessor :file_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_types = args[:file_types] if args.key?(:file_types)
+        end
+      end
+      
+      # Defines the file to exclude from WildFire Inline ML analysis.
+      class WildfireInlineMlFileException
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the file to exclude from WildFire Inline ML analysis.
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        # Required. Machine learning partial hash of the file to exclude from WildFire
+        # Inline ML analysis.
+        # Corresponds to the JSON property `partialHash`
+        # @return [String]
+        attr_accessor :partial_hash
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filename = args[:filename] if args.key?(:filename)
+          @partial_hash = args[:partial_hash] if args.key?(:partial_hash)
+        end
+      end
+      
+      # Defines what action to take for WildFire Inline ML threats per protocol.
+      class WildfireInlineMlOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. The action to take for WildFire Inline ML override.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Protocol to match for WildFire Inline ML override.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @protocol = args[:protocol] if args.key?(:protocol)
+        end
+      end
+      
+      # Defines the settings for WildFire Inline ML analysis.
+      class WildfireInlineMlSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of files to exclude from WildFire Inline ML analysis.
+        # Corresponds to the JSON property `fileExceptions`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::WildfireInlineMlFileException>]
+        attr_accessor :file_exceptions
+      
+        # Optional. List of Inline ML configs to enable in WildFire Inline ML analysis.
+        # Corresponds to the JSON property `inlineMlConfigs`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::WildfireInlineMlSettingsInlineMlConfig>]
+        attr_accessor :inline_ml_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_exceptions = args[:file_exceptions] if args.key?(:file_exceptions)
+          @inline_ml_configs = args[:inline_ml_configs] if args.key?(:inline_ml_configs)
+        end
+      end
+      
+      # Configuration for WildFire Inline ML analysis per file type.
+      class WildfireInlineMlSettingsInlineMlConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Action to take when a threat is detected using Inline ML.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. File type to configure Inline ML for.
+        # Corresponds to the JSON property `fileType`
+        # @return [String]
+        attr_accessor :file_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @file_type = args[:file_type] if args.key?(:file_type)
+        end
+      end
+      
+      # Defines what action to take for WildFire threats per protocol.
+      class WildfireOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. Threat action override. For some threat types, only a subset of
+        # actions applies.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Protocol to match.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @protocol = args[:protocol] if args.key?(:protocol)
+        end
+      end
+      
+      # Defines the file types to be submitted for WildFire analysis and the direction
+      # of the traffic.
+      class WildfireSubmissionRule
+        include Google::Apis::Core::Hashable
+      
+        # The options to submit a custom list of file types for scan.
+        # Corresponds to the JSON property `customFileTypes`
+        # @return [Google::Apis::NetworksecurityV1beta1::WildfireSubmissionRuleCustomFileTypes]
+        attr_accessor :custom_file_types
+      
+        # Required. Direction for the files to be analyzed by WildFire.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
+        # Required. File selection mode for WildFire analysis.
+        # Corresponds to the JSON property `fileSelectionMode`
+        # @return [String]
+        attr_accessor :file_selection_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_file_types = args[:custom_file_types] if args.key?(:custom_file_types)
+          @direction = args[:direction] if args.key?(:direction)
+          @file_selection_mode = args[:file_selection_mode] if args.key?(:file_selection_mode)
+        end
+      end
+      
+      # The options to submit a custom list of file types for scan.
+      class WildfireSubmissionRuleCustomFileTypes
+        include Google::Apis::Core::Hashable
+      
+        # Required. File types to be submitted for WildFire analysis.
+        # Corresponds to the JSON property `fileTypes`
+        # @return [Array<String>]
+        attr_accessor :file_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_types = args[:file_types] if args.key?(:file_types)
+        end
+      end
+      
+      # Defines what action to take for a specific WildFire threat_id match.
+      class WildfireThreatOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. Threat action override.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Threat ID to match.
+        # Corresponds to the JSON property `threatId`
+        # @return [String]
+        attr_accessor :threat_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @threat_id = args[:threat_id] if args.key?(:threat_id)
+        end
+      end
+      
+      # Message for a WildfireVerdictChangeRequest.
+      class WildfireVerdictChangeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The justification for the verdict change request. Max length 2048
+        # characters.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Output only. The timestamp when the WildfireVerdictChangeRequest was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The file name of the Malware Sample.
+        # Corresponds to the JSON property `fileName`
+        # @return [String]
+        attr_accessor :file_name
+      
+        # Output only. The file type of the Malware Sample.
+        # Corresponds to the JSON property `fileType`
+        # @return [String]
+        attr_accessor :file_type
+      
+        # Output only. The final verdict of the Malware Sample.
+        # Corresponds to the JSON property `finalVerdict`
+        # @return [String]
+        attr_accessor :final_verdict
+      
+        # Output only. Identifier. The relative name of the WildfireVerdictChangeRequest.
+        # Output only. This is a unique identifier generated by the third party API.
+        # Format: organizations|projects/`project_or_organization`/locations/`location`/
+        # firewallEndpoints/`firewall_endpoint`/wildfireVerdictChangeRequests/`
+        # wildfire_verdict_change_request_id` Where `wildfire_verdict_change_request_id`
+        # is the ID in the format: ^[0-9a-fA-F]`8`-[0-9a-fA-F]`4`-[0-9a-fA-F]`4`-[0-9a-
+        # fA-F]`4`-[0-9a-fA-F]`12`$
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The suggested verdict to apply to the Malware Sample.
+        # Corresponds to the JSON property `newVerdict`
+        # @return [String]
+        attr_accessor :new_verdict
+      
+        # Output only. The original verdict of the Malware Sample.
+        # Corresponds to the JSON property `oldVerdict`
+        # @return [String]
+        attr_accessor :old_verdict
+      
+        # Output only. The timestamp when the WildfireVerdictChangeRequest was resolved.
+        # Corresponds to the JSON property `resolutionTime`
+        # @return [String]
+        attr_accessor :resolution_time
+      
+        # Required. The SHA256 hash of the Malware Sample to change the verdict of.
+        # Corresponds to the JSON property `sha256`
+        # @return [String]
+        attr_accessor :sha256
+      
+        # Output only. The region of the file associated with the Malware Sample.
+        # Corresponds to the JSON property `sourceRegion`
+        # @return [String]
+        attr_accessor :source_region
+      
+        # Output only. The review state of the WildfireVerdictChangeRequest.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The timestamp when the WildfireVerdictChangeRequest was last
+        # updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. The ID of the WildfireVerdictChangeRequest. This is a unique
+        # identifier generated by the third party API. Format: ^[0-9a-fA-F]`8`-[0-9a-fA-
+        # F]`4`-[0-9a-fA-F]`4`-[0-9a-fA-F]`4`-[0-9a-fA-F]`12`$
+        # Corresponds to the JSON property `wildfireVerdictChangeRequestId`
+        # @return [String]
+        attr_accessor :wildfire_verdict_change_request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @file_name = args[:file_name] if args.key?(:file_name)
+          @file_type = args[:file_type] if args.key?(:file_type)
+          @final_verdict = args[:final_verdict] if args.key?(:final_verdict)
+          @name = args[:name] if args.key?(:name)
+          @new_verdict = args[:new_verdict] if args.key?(:new_verdict)
+          @old_verdict = args[:old_verdict] if args.key?(:old_verdict)
+          @resolution_time = args[:resolution_time] if args.key?(:resolution_time)
+          @sha256 = args[:sha256] if args.key?(:sha256)
+          @source_region = args[:source_region] if args.key?(:source_region)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @wildfire_verdict_change_request_id = args[:wildfire_verdict_change_request_id] if args.key?(:wildfire_verdict_change_request_id)
         end
       end
     end

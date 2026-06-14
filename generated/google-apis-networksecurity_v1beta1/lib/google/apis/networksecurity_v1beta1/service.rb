@@ -756,6 +756,127 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create WildfireVerdictChangeRequest in a given Firewall Endpoint in an
+        # organization and location.
+        # @param [String] parent
+        #   Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The
+        #   parent is a firewall endpoint resource. Format: organizations|projects/`
+        #   project_or_organization`/locations/`location`/firewallEndpoints/`
+        #   firewall_endpoint`
+        # @param [Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest] wildfire_verdict_change_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_firewall_endpoint_wildfire_verdict_change_request(parent, wildfire_verdict_change_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/wildfireVerdictChangeRequests', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest::Representation
+          command.request_object = wildfire_verdict_change_request_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get WildfireVerdictChangeRequest in a given Firewall Endpoint in an
+        # organization and location.
+        # @param [String] name
+        #   Required. Name of the WildfireVerdictChangeRequest to retrieve. Format:
+        #   organizations|projects/`project_or_organization`/locations/`location`/
+        #   firewallEndpoints/`firewall_endpoint`/wildfireVerdictChangeRequests/`
+        #   wildfire_verdict_change_request_id` Where `wildfire_verdict_change_request_id`
+        #   is the ID in the format: ^[0-9a-fA-F]`8`-[0-9a-fA-F]`4`-[0-9a-fA-F]`4`-[0-9a-
+        #   fA-F]`4`-[0-9a-fA-F]`12`$
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_firewall_endpoint_wildfire_verdict_change_request(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in an
+        # organization and location.
+        # @param [String] parent
+        #   Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The
+        #   parent is a firewall endpoint resource. Format: organizations|projects/`
+        #   project_or_organization`/locations/`location`/firewallEndpoints/`
+        #   firewall_endpoint`
+        # @param [String] filter
+        #   Optional. Filter expression to filter the results. See AIP-160 for filtering
+        #   syntax. Supported fields are: - `sha256` (string, equality only, e.g. `sha256 =
+        #   "..."`) - `state` (enum, equality only, e.g. `state = "ACTIVE"`) - `
+        #   create_time` (timestamp, comparisons, e.g. `create_time > "2026-01-01T00:00:
+        #   00Z"`)
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::ListWildfireVerdictChangeRequestsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::ListWildfireVerdictChangeRequestsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_firewall_endpoint_wildfire_verdict_change_requests(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/wildfireVerdictChangeRequests', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::ListWildfireVerdictChangeRequestsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::ListWildfireVerdictChangeRequestsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -3596,6 +3717,127 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create WildfireVerdictChangeRequest in a given Firewall Endpoint in a project
+        # and location.
+        # @param [String] parent
+        #   Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The
+        #   parent is a firewall endpoint resource. Format: organizations|projects/`
+        #   project_or_organization`/locations/`location`/firewallEndpoints/`
+        #   firewall_endpoint`
+        # @param [Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest] wildfire_verdict_change_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_firewall_endpoint_wildfire_verdict_change_request(parent, wildfire_verdict_change_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/wildfireVerdictChangeRequests', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest::Representation
+          command.request_object = wildfire_verdict_change_request_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and
+        # location.
+        # @param [String] name
+        #   Required. Name of the WildfireVerdictChangeRequest to retrieve. Format:
+        #   organizations|projects/`project_or_organization`/locations/`location`/
+        #   firewallEndpoints/`firewall_endpoint`/wildfireVerdictChangeRequests/`
+        #   wildfire_verdict_change_request_id` Where `wildfire_verdict_change_request_id`
+        #   is the ID in the format: ^[0-9a-fA-F]`8`-[0-9a-fA-F]`4`-[0-9a-fA-F]`4`-[0-9a-
+        #   fA-F]`4`-[0-9a-fA-F]`12`$
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_firewall_endpoint_wildfire_verdict_change_request(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::WildfireVerdictChangeRequest
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in a project
+        # and location.
+        # @param [String] parent
+        #   Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The
+        #   parent is a firewall endpoint resource. Format: organizations|projects/`
+        #   project_or_organization`/locations/`location`/firewallEndpoints/`
+        #   firewall_endpoint`
+        # @param [String] filter
+        #   Optional. Filter expression to filter the results. See AIP-160 for filtering
+        #   syntax. Supported fields are: - `sha256` (string, equality only, e.g. `sha256 =
+        #   "..."`) - `state` (enum, equality only, e.g. `state = "ACTIVE"`) - `
+        #   create_time` (timestamp, comparisons, e.g. `create_time > "2026-01-01T00:00:
+        #   00Z"`)
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::ListWildfireVerdictChangeRequestsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::ListWildfireVerdictChangeRequestsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_firewall_endpoint_wildfire_verdict_change_requests(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/wildfireVerdictChangeRequests', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::ListWildfireVerdictChangeRequestsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::ListWildfireVerdictChangeRequestsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
