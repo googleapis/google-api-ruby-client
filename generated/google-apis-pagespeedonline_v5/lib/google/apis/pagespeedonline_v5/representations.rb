@@ -167,6 +167,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accessibility, as: 'accessibility', class: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5::Representation
       
+          property :agentic_browsing, as: 'agentic-browsing', class: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5::Representation
+      
           property :best_practices, as: 'best-practices', class: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5::Representation
       
           property :performance, as: 'performance', class: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5::Representation

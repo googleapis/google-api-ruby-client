@@ -108,6 +108,11 @@ module Google
         attr_accessor :accessibility
       
         # A Lighthouse category.
+        # Corresponds to the JSON property `agentic-browsing`
+        # @return [Google::Apis::PagespeedonlineV5::LighthouseCategoryV5]
+        attr_accessor :agentic_browsing
+      
+        # A Lighthouse category.
         # Corresponds to the JSON property `best-practices`
         # @return [Google::Apis::PagespeedonlineV5::LighthouseCategoryV5]
         attr_accessor :best_practices
@@ -134,6 +139,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accessibility = args[:accessibility] if args.key?(:accessibility)
+          @agentic_browsing = args[:agentic_browsing] if args.key?(:agentic_browsing)
           @best_practices = args[:best_practices] if args.key?(:best_practices)
           @performance = args[:performance] if args.key?(:performance)
           @pwa = args[:pwa] if args.key?(:pwa)
