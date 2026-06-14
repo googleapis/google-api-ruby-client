@@ -1275,6 +1275,7 @@ module Google
           property :authentication_token_secret_version, as: 'authenticationTokenSecretVersion'
           property :default_branch, as: 'defaultBranch'
           property :effective_default_branch, as: 'effectiveDefaultBranch'
+          property :git_repository_link, as: 'gitRepositoryLink'
           property :ssh_authentication_config, as: 'sshAuthenticationConfig', class: Google::Apis::DataformV1beta1::SshAuthenticationConfig, decorator: Google::Apis::DataformV1beta1::SshAuthenticationConfig::Representation
       
           property :token_status, as: 'tokenStatus'
