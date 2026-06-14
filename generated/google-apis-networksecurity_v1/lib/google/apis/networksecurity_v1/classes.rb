@@ -3210,7 +3210,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached.
+        # Unordered list. Locations that could not be reached. See https://google.aip.
+        # dev/217 for more details.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
