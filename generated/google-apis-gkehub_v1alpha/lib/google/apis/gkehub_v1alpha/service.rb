@@ -2055,6 +2055,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Cancels a paused Rollout. The rollout will not be started on new clusters,
+        # however the rollout running on the cluster will be allowed to finish. It's
+        # only valid to cancel a paused rollout, otherwise it will return a
+        # FAILED_PRECONDITION error.
+        # @param [String] name
+        #   Required. The name of the rollout to cancel. projects/`project`/locations/`
+        #   location`/rollouts/`rollout`
+        # @param [Google::Apis::GkehubV1alpha::CancelRolloutRequest] cancel_rollout_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_rollout(name, cancel_rollout_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:cancel', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::CancelRolloutRequest::Representation
+          command.request_object = cancel_rollout_request_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Force-completes a rollout stage. Only the active stage of an active rollout
         # can be force-completed.
         # @param [String] name
@@ -2161,6 +2198,76 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Pauses a running Rollout. The rollout will not be started on new clusters,
+        # however the rollout running on the cluster will be allowed to finish.
+        # @param [String] name
+        #   Required. The name of the rollout to pause. projects/`project`/locations/`
+        #   location`/rollouts/`rollout`
+        # @param [Google::Apis::GkehubV1alpha::PauseRolloutRequest] pause_rollout_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def pause_rollout(name, pause_rollout_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:pause', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::PauseRolloutRequest::Representation
+          command.request_object = pause_rollout_request_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resume a paused Rollout. The rollout will be resumed and allowed to be started
+        # on clusters.
+        # @param [String] name
+        #   Required. The name of the rollout to resume. projects/`project`/locations/`
+        #   location`/rollouts/`rollout`
+        # @param [Google::Apis::GkehubV1alpha::ResumeRolloutRequest] resume_rollout_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_rollout(name, resume_rollout_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:resume', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::ResumeRolloutRequest::Representation
+          command.request_object = resume_rollout_request_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
