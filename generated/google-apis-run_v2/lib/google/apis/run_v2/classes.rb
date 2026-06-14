@@ -457,6 +457,13 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements]
         attr_accessor :resources
       
+        # Optional. Indicates that this container can act as a sandbox supervisor and
+        # launch sandboxes.
+        # Corresponds to the JSON property `sandboxLauncher`
+        # @return [Boolean]
+        attr_accessor :sandbox_launcher
+        alias_method :sandbox_launcher?, :sandbox_launcher
+      
         # Source type for the container.
         # Corresponds to the JSON property `sourceCode`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2SourceCode]
@@ -497,6 +504,7 @@ module Google
           @ports = args[:ports] if args.key?(:ports)
           @readiness_probe = args[:readiness_probe] if args.key?(:readiness_probe)
           @resources = args[:resources] if args.key?(:resources)
+          @sandbox_launcher = args[:sandbox_launcher] if args.key?(:sandbox_launcher)
           @source_code = args[:source_code] if args.key?(:source_code)
           @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
@@ -1499,6 +1507,11 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Optional. Restart policy for the Instance.
+        # Corresponds to the JSON property `restartPolicy`
+        # @return [String]
+        attr_accessor :restart_policy
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -1578,6 +1591,7 @@ module Google
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @restart_policy = args[:restart_policy] if args.key?(:restart_policy)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
@@ -2493,6 +2507,11 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -2591,6 +2610,7 @@ module Google
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scaling = args[:scaling] if args.key?(:scaling)
           @scaling_status = args[:scaling_status] if args.key?(:scaling_status)
@@ -2768,6 +2788,11 @@ module Google
         # @return [String]
         attr_accessor :revision
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Settings for revision-level scaling settings.
         # Corresponds to the JSON property `scaling`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling]
@@ -2829,6 +2854,7 @@ module Google
           @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @revision = args[:revision] if args.key?(:revision)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @scaling = args[:scaling] if args.key?(:scaling)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_mesh = args[:service_mesh] if args.key?(:service_mesh)
@@ -2870,6 +2896,25 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @overrides = args[:overrides] if args.key?(:overrides)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Configuration for sandboxes.
+      class GoogleCloudRunV2SandboxConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Required. Container templates that can be launched through the `sandbox` CLI.
+        # Corresponds to the JSON property `templates`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
+        attr_accessor :templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @templates = args[:templates] if args.key?(:templates)
         end
       end
       

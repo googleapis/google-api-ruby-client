@@ -334,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2SandboxConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2SecretKeySelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -972,6 +978,7 @@ module Google
       
           property :resources, as: 'resources', class: Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements, decorator: Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements::Representation
       
+          property :sandbox_launcher, as: 'sandboxLauncher'
           property :source_code, as: 'sourceCode', class: Google::Apis::RunV2::GoogleCloudRunV2SourceCode, decorator: Google::Apis::RunV2::GoogleCloudRunV2SourceCode::Representation
       
           property :startup_probe, as: 'startupProbe', class: Google::Apis::RunV2::GoogleCloudRunV2Probe, decorator: Google::Apis::RunV2::GoogleCloudRunV2Probe::Representation
@@ -1220,6 +1227,7 @@ module Google
       
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
+          property :restart_policy, as: 'restartPolicy'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
@@ -1458,6 +1466,8 @@ module Google
       
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration, decorator: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling::Representation
       
@@ -1514,6 +1524,8 @@ module Google
           property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
       
           property :revision, as: 'revision'
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration, decorator: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration::Representation
+      
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling::Representation
       
           property :service_account, as: 'serviceAccount'
@@ -1535,6 +1547,14 @@ module Google
           property :overrides, as: 'overrides', class: Google::Apis::RunV2::GoogleCloudRunV2Overrides, decorator: Google::Apis::RunV2::GoogleCloudRunV2Overrides::Representation
       
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleCloudRunV2SandboxConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :templates, as: 'templates', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
+      
         end
       end
       
