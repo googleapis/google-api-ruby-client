@@ -145,7 +145,7 @@ module Google
         #   project_id`/locations/`location_id``
         # @param [Google::Apis::WorkloadmanagerV1::Deployment] deployment_object
         # @param [String] deployment_id
-        #   Required. Id of the deployment
+        #   Required. ID of the deployment.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -190,10 +190,10 @@ module Google
         
         # Deletes a single Deployment.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource.
         # @param [Boolean] force
-        #   Optional. If set to true, any actuation will also be deleted. Followed the
-        #   best practice from https://aip.dev/135#cascading-delete
+        #   Optional. If set to true, any actuation will also be deleted. Follows the best
+        #   practice from https://aip.dev/135#cascading-delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -224,8 +224,8 @@ module Google
         
         # Gets details of a single Deployment.
         # @param [String] name
-        #   Required. Name of the resource. The format will be 'projects/`project_id`/
-        #   locations/`location_id`/deployments/`deployment_id`'
+        #   Required. Name of the resource. The format is 'projects/`project_id`/locations/
+        #   `location_id`/deployments/`deployment_id`'.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -258,7 +258,7 @@ module Google
         #   Required. The resource prefix of the Deployment using the form: `projects/`
         #   project_id`/locations/`location_id``
         # @param [String] filter
-        #   Optional. Filter resource follow https://google.aip.dev/160
+        #   Optional. Filter resource following https://google.aip.dev/160.
         # @param [String] order_by
         #   Optional. Field to sort by. See https://google.aip.dev/132#ordering for more
         #   details.
@@ -301,7 +301,7 @@ module Google
         # Creates a new actuation for an existing Deployment.
         # @param [String] parent
         #   Required. The resource name of the Actuation location using the form: '
-        #   projects/`project_id`/locations/`location`/deployments/`deployment`'
+        #   projects/`project_id`/locations/`location`/deployments/`deployment`'.
         # @param [Google::Apis::WorkloadmanagerV1::Actuation] actuation_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -344,10 +344,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single Actuation
+        # Deletes a single Actuation.
         # @param [String] name
-        #   Required. The name of the book to delete. project/`project_id`/locations/`
-        #   location_id`/deployments/`deployment_id`/actuations/`actuation_id`
+        #   Required. The name of the actuation to delete. projects/`project`/locations/`
+        #   location`/deployments/`deployment`/actuations/`actuation`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -377,7 +377,7 @@ module Google
         
         # Gets details of a single Actuation.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -408,9 +408,9 @@ module Google
         # Lists Actuations in a given project, location and deployment.
         # @param [String] parent
         #   Required. The resource prefix of the Actuation using the form: 'projects/`
-        #   project_id`/locations/`location`/deployments/`deployment`'
+        #   project_id`/locations/`location`/deployments/`deployment`'.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
         #   Optional. Field to sort by. See https://google.aip.dev/132#ordering for more
         #   details.

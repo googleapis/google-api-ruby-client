@@ -22,31 +22,31 @@ module Google
   module Apis
     module WorkloadmanagerV1
       
-      # Active directory details
+      # Active Directory details.
       class ActiveDirectory
         include Google::Apis::Core::Hashable
       
-        # Optional. DNS IP address
+        # Optional. DNS IP address.
         # Corresponds to the JSON property `dnsAddress`
         # @return [String]
         attr_accessor :dns_address
       
-        # Optional. human readable form of a domain such as “google.com”.
+        # Optional. Human readable form of a domain such as “google.com”.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
       
-        # Optional. domain username
+        # Optional. Domain username.
         # Corresponds to the JSON property `domainUsername`
         # @return [String]
         attr_accessor :domain_username
       
-        # Required. secret_manager_secret
+        # Required. Secret Manager secret.
         # Corresponds to the JSON property `secretManagerSecret`
         # @return [String]
         attr_accessor :secret_manager_secret
       
-        # Required. active directory type
+        # Required. Active Directory type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -70,33 +70,33 @@ module Google
       class Actuation
         include Google::Apis::Core::Hashable
       
-        # Message for output of Actuation
+        # Message for output of actuation.
         # Corresponds to the JSON property `actuationOutput`
         # @return [Google::Apis::WorkloadmanagerV1::ActuationOutput]
         attr_accessor :actuation_output
       
-        # Output only. [Output only] Deployment output
+        # Output only. Deployment output.
         # Corresponds to the JSON property `deploymentOutput`
         # @return [Array<Google::Apis::WorkloadmanagerV1::DeploymentOutput>]
         attr_accessor :deployment_output
       
-        # Output only. [Output only] End time stamp
+        # Output only. End time stamp.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # The name of actuation resource. The format is projects/`project`/locations/`
-        # location`/deployments/`deployment`/actuations/`actuation`
+        # The name of the actuation resource. The format is projects/`project`/locations/
+        # `location`/deployments/`deployment`/actuations/`actuation`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. [Output only] Start time stamp
+        # Output only. Start time stamp.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Output only. [Output only] Actuation state
+        # Output only. Actuation state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -116,26 +116,26 @@ module Google
         end
       end
       
-      # Message for output of Actuation
+      # Message for output of actuation.
       class ActuationOutput
         include Google::Apis::Core::Hashable
       
-        # A link to gcs file that store build logs
+        # A link to the Cloud Storage file that stores build logs.
         # Corresponds to the JSON property `actuateLogs`
         # @return [String]
         attr_accessor :actuate_logs
       
-        # Output only. error message return from ansible.
+        # Output only. Error message returned from Ansible.
         # Corresponds to the JSON property `ansibleError`
         # @return [String]
         attr_accessor :ansible_error
       
-        # Output only. failed task name return from ansible.
+        # Output only. Failed task name returned from Ansible.
         # Corresponds to the JSON property `ansibleFailedTask`
         # @return [Array<String>]
         attr_accessor :ansible_failed_task
       
-        # reference to Blueprint Controller deployment and revision resource
+        # Reference to the Blueprint Controller deployment and revision resource.
         # Corresponds to the JSON property `blueprintId`
         # @return [String]
         attr_accessor :blueprint_id
@@ -152,24 +152,24 @@ module Google
         # @return [String]
         attr_accessor :error_code
       
-        # A link to actuation cloud build log.
+        # A link to the actuation Cloud Build log.
         # Corresponds to the JSON property `errorLogs`
         # @return [String]
         attr_accessor :error_logs
       
-        # Output only. whether the error message is user facing. If true, the error
+        # Output only. Whether the error message is user facing. If true, the error
         # message will be shown in the UI.
         # Corresponds to the JSON property `hasUserFacingErrorMsg`
         # @return [Boolean]
         attr_accessor :has_user_facing_error_msg
         alias_method :has_user_facing_error_msg?, :has_user_facing_error_msg
       
-        # Output only. error message return from terraform.
+        # Output only. Error message returned from Terraform.
         # Corresponds to the JSON property `terraformError`
         # @return [String]
         attr_accessor :terraform_error
       
-        # reference to terraform template used
+        # Reference to the Terraform template used.
         # Corresponds to the JSON property `terraformTemplate`
         # @return [String]
         attr_accessor :terraform_template
@@ -500,76 +500,77 @@ module Google
         end
       end
       
-      # Message for sap instant details
+      # Message for SAP instance details.
       class AppDetails
         include Google::Apis::Core::Hashable
       
-        # Optional. instance id for app
+        # Optional. Instance ID for app.
         # Corresponds to the JSON property `appInstanceId`
         # @return [String]
         attr_accessor :app_instance_id
       
-        # Application service account - let custoemrs bring their own SA for application
+        # Application service account. Let customers bring their own service account for
+        # the application.
         # Corresponds to the JSON property `appServiceAccount`
         # @return [String]
         attr_accessor :app_service_account
       
-        # Optional. Customized vm names
+        # Optional. Customized VM names.
         # Corresponds to the JSON property `appVmNames`
         # @return [Array<String>]
         attr_accessor :app_vm_names
       
-        # Required. image for ascs server
+        # Required. Image for the ASCS server.
         # Corresponds to the JSON property `ascsImage`
         # @return [String]
         attr_accessor :ascs_image
       
-        # Optional. instance id for ascs
+        # Optional. Instance ID for ASCS.
         # Corresponds to the JSON property `ascsInstanceId`
         # @return [String]
         attr_accessor :ascs_instance_id
       
-        # Required. ascs_machine_type
+        # Required. ASCS machine type.
         # Corresponds to the JSON property `ascsMachineType`
         # @return [String]
         attr_accessor :ascs_machine_type
       
-        # ASCS service account - let custoemrs bring their own SA for ASCS
+        # ASCS service account. Let customers bring their own service account for ASCS.
         # Corresponds to the JSON property `ascsServiceAccount`
         # @return [String]
         attr_accessor :ascs_service_account
       
-        # Optional. ASCS vm name
+        # Optional. ASCS VM name.
         # Corresponds to the JSON property `ascsVm`
         # @return [String]
         attr_accessor :ascs_vm
       
-        # Optional. instance id for ers
+        # Optional. Instance ID for ERS.
         # Corresponds to the JSON property `ersInstanceId`
         # @return [String]
         attr_accessor :ers_instance_id
       
-        # Optional. ERS vm name
+        # Optional. ERS VM name.
         # Corresponds to the JSON property `ersVm`
         # @return [String]
         attr_accessor :ers_vm
       
-        # Required. image for app server and ascs server
+        # Required. Image for the app server and ASCS server.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
       
-        # Required. machine type
+        # Required. Machine type.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
       
-        # Required. secret_manager_secret
+        # Required. Secret Manager secret.
         # Corresponds to the JSON property `secretManagerSecret`
         # @return [String]
         attr_accessor :secret_manager_secret
       
-        # Optional. Storage location
+        # Optional. Storage location.
         # Corresponds to the JSON property `sharedStorage`
         # @return [String]
         attr_accessor :shared_storage
@@ -580,7 +581,7 @@ module Google
         # @return [String]
         attr_accessor :sid
       
-        # Required. vms_multiplier
+        # Required. VMs multiplier.
         # Corresponds to the JSON property `vmsMultiplier`
         # @return [Fixnum]
         attr_accessor :vms_multiplier
@@ -775,65 +776,65 @@ module Google
         end
       end
       
-      # Database details
+      # Database details.
       class Database
         include Google::Apis::Core::Hashable
       
-        # Required. disk_type
+        # Required. Disk type.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
       
-        # Optional. only useful for Linux High Availability setup
+        # Optional. Only useful for Linux High Availability setup.
         # Corresponds to the JSON property `floatingIpAddress`
         # @return [String]
         attr_accessor :floating_ip_address
       
-        # Required. machine type
+        # Required. Machine type.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
       
-        # Optional. the name of a secondary-sole-tenant node/node group
+        # Optional. The name of a secondary-sole-tenant node/node group.
         # Corresponds to the JSON property `secondarySoleTenantNode`
         # @return [String]
         attr_accessor :secondary_sole_tenant_node
       
-        # Optional. the type of a secondary-sole-tenant node/node group e.g. compute.
-        # googleapis.com/node-name
+        # Optional. The type of a secondary-sole-tenant node/node group. E.g., compute.
+        # googleapis.com/node-name.
         # Corresponds to the JSON property `secondarySoleTenantNodeType`
         # @return [String]
         attr_accessor :secondary_sole_tenant_node_type
       
-        # Required. secret_manager_secret
+        # Required. Secret Manager secret.
         # Corresponds to the JSON property `secretManagerSecret`
         # @return [String]
         attr_accessor :secret_manager_secret
       
-        # Required. whether simultaneous multithreading is enabled or not
+        # Required. Whether simultaneous multithreading is enabled or not.
         # Corresponds to the JSON property `smt`
         # @return [Boolean]
         attr_accessor :smt
         alias_method :smt?, :smt
       
-        # Optional. the name of a primary sole-tenant node/node group
+        # Optional. The name of a primary sole-tenant node/node group.
         # Corresponds to the JSON property `soleTenantNode`
         # @return [String]
         attr_accessor :sole_tenant_node
       
-        # Optional. the type of a primary sole-tenant node/node group e.g. compute.
-        # googleapis.com/node-name
+        # Optional. The type of a primary sole-tenant node/node group. E.g., compute.
+        # googleapis.com/node-name.
         # Corresponds to the JSON property `soleTenantNodeType`
         # @return [String]
         attr_accessor :sole_tenant_node_type
       
-        # Required. whether to have TempDB on local SSD
+        # Required. Whether to have TempDB on local SSD.
         # Corresponds to the JSON property `tempdbOnSsd`
         # @return [Boolean]
         attr_accessor :tempdb_on_ssd
         alias_method :tempdb_on_ssd?, :tempdb_on_ssd
       
-        # Required. SHARED or SOLE_TENANT
+        # Required. SHARED or SOLE_TENANT.
         # Corresponds to the JSON property `tenancyModel`
         # @return [String]
         attr_accessor :tenancy_model
@@ -858,46 +859,46 @@ module Google
         end
       end
       
-      # Message for sap instant details
+      # Message for SAP instance details.
       class DatabaseDetails
         include Google::Apis::Core::Hashable
       
-        # Database service account - let custoemrs bring their own SA for database
+        # Database service account. Let customers bring their own SA for the database.
         # Corresponds to the JSON property `databaseServiceAccount`
         # @return [String]
         attr_accessor :database_service_account
       
-        # Required. disk_type
+        # Required. Disk type.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
       
-        # Required. image for database server
+        # Required. Image for the database server.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
       
-        # Optional. instance id
+        # Optional. Instance ID.
         # Corresponds to the JSON property `instanceId`
         # @return [String]
         attr_accessor :instance_id
       
-        # Required. machine type
+        # Required. Machine type.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
       
-        # Optional. primary db vm name
+        # Optional. Primary DB VM name.
         # Corresponds to the JSON property `primaryDbVm`
         # @return [String]
         attr_accessor :primary_db_vm
       
-        # Optional. secondary db vm name
+        # Optional. Secondary DB VM name.
         # Corresponds to the JSON property `secondaryDbVm`
         # @return [String]
         attr_accessor :secondary_db_vm
       
-        # Required. secret_manager_secret
+        # Required. Secret Manager secret.
         # Corresponds to the JSON property `secretManagerSecret`
         # @return [String]
         attr_accessor :secret_manager_secret
@@ -955,36 +956,36 @@ module Google
       class Deployment
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Create time stamp
+        # Output only. Create time stamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Description of the Deployment
+        # Description of the deployment.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The name of deployment resource. The format will be 'projects/`project_id`/
-        # locations/`location_id`/deployments/`deployment_id`'
+        # The name of the deployment resource. The format is 'projects/`project_id`/
+        # locations/`location_id`/deployments/`deployment_id`'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Message for sap system workload
+        # Message for SAP system workload.
         # Corresponds to the JSON property `sapSystemS4Config`
         # @return [Google::Apis::WorkloadmanagerV1::SapSystemS4Config]
         attr_accessor :sap_system_s4_config
       
-        # User-specified Service Account (SA) credentials to be used for cloud build
+        # User-specified Service Account (SA) credentials to be used for Cloud Build.
         # Format: `projects/`projectID`/serviceAccounts/`serviceAccount`` The default
         # Cloud Build SA will be used initially if this field is not set during
-        # deployment creation
+        # deployment creation.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
       
-        # Message for MS SQL workload
+        # Message for MS SQL workload.
         # Corresponds to the JSON property `sqlServerWorkload`
         # @return [Google::Apis::WorkloadmanagerV1::SqlServerWorkload]
         attr_accessor :sql_server_workload
@@ -1003,7 +1004,7 @@ module Google
         # @return [Hash<String,Google::Apis::WorkloadmanagerV1::TerraformVariable>]
         attr_accessor :terraform_variables
       
-        # Output only. [Output only] Update time stamp
+        # Output only. Update time stamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1016,7 +1017,7 @@ module Google
         # @return [String]
         attr_accessor :worker_pool
       
-        # Optional. Workload type of the deployment
+        # Optional. Workload type of the deployment.
         # Corresponds to the JSON property `workloadType`
         # @return [String]
         attr_accessor :workload_type
@@ -1041,16 +1042,16 @@ module Google
         end
       end
       
-      # Message for output of deployment resource
+      # Message for output of deployment resource.
       class DeploymentOutput
         include Google::Apis::Core::Hashable
       
-        # name of the resource
+        # Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # type of the resource
+        # Type of the resource.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1583,7 +1584,7 @@ module Google
       class ListActuationsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Actuation
+        # The list of actuations.
         # Corresponds to the JSON property `actuations`
         # @return [Array<Google::Apis::WorkloadmanagerV1::Actuation>]
         attr_accessor :actuations
@@ -1611,11 +1612,11 @@ module Google
         end
       end
       
-      # Message for response to listing Deployments
+      # Message for response to listing deployments.
       class ListDeploymentsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Deployment
+        # The list of deployments.
         # Corresponds to the JSON property `deployments`
         # @return [Array<Google::Apis::WorkloadmanagerV1::Deployment>]
         attr_accessor :deployments
@@ -1912,35 +1913,36 @@ module Google
         end
       end
       
-      # Message for sap instant details
+      # Message for SAP instance details.
       class LocationDetails
         include Google::Apis::Core::Hashable
       
-        # Optional. create firewall, if true, create firewall for the deployment. This
-        # field provides an option to not always create firewall for the deployment.
+        # Optional. Create firewall. If true, creates a firewall for the deployment.
+        # This field provides an option to not always create a firewall for the
+        # deployment.
         # Corresponds to the JSON property `createCommsFirewall`
         # @return [Boolean]
         attr_accessor :create_comms_firewall
         alias_method :create_comms_firewall?, :create_comms_firewall
       
-        # Optional. network tags
+        # Optional. Network tags.
         # Corresponds to the JSON property `customTags`
         # @return [Array<String>]
         attr_accessor :custom_tags
       
-        # Optional. when user skip DNS configuration from UI, deployment_dns_enabled=
-        # false otherwise deployment_dns_enabled=true
+        # Optional. When the user skips DNS configuration in the UI, `
+        # deployment_dns_enabled` is false; otherwise `deployment_dns_enabled` is true.
         # Corresponds to the JSON property `deploymentDnsEnabled`
         # @return [Boolean]
         attr_accessor :deployment_dns_enabled
         alias_method :deployment_dns_enabled?, :deployment_dns_enabled
       
-        # Optional. dns zone name
+        # Optional. DNS zone name.
         # Corresponds to the JSON property `dnsZone`
         # @return [String]
         attr_accessor :dns_zone
       
-        # Optional. dns_zone_name_suffix
+        # Optional. DNS zone name suffix.
         # Corresponds to the JSON property `dnsZoneNameSuffix`
         # @return [String]
         attr_accessor :dns_zone_name_suffix
@@ -1950,32 +1952,32 @@ module Google
         # @return [String]
         attr_accessor :internet_access
       
-        # Optional. network project
+        # Optional. Network project.
         # Corresponds to the JSON property `networkProject`
         # @return [String]
         attr_accessor :network_project
       
-        # Required. region_name
+        # Required. Region name.
         # Corresponds to the JSON property `regionName`
         # @return [String]
         attr_accessor :region_name
       
-        # Required. subnet_name
+        # Required. Subnet name.
         # Corresponds to the JSON property `subnetName`
         # @return [String]
         attr_accessor :subnet_name
       
-        # Required. vpc_name
+        # Required. VPC name.
         # Corresponds to the JSON property `vpcName`
         # @return [String]
         attr_accessor :vpc_name
       
-        # Required. zone1_name
+        # Required. Zone 1 name.
         # Corresponds to the JSON property `zone1Name`
         # @return [String]
         attr_accessor :zone1_name
       
-        # Optional. zone2_name
+        # Optional. Zone 2 name.
         # Corresponds to the JSON property `zone2Name`
         # @return [String]
         attr_accessor :zone2_name
@@ -2167,36 +2169,36 @@ module Google
         end
       end
       
-      # pacemaker configuration
+      # Pacemaker configuration.
       class Pacemaker
         include Google::Apis::Core::Hashable
       
-        # Required. bucket location for node certificates
+        # Required. Bucket location for node certificates.
         # Corresponds to the JSON property `bucketNameNodeCertificates`
         # @return [String]
         attr_accessor :bucket_name_node_certificates
       
-        # Required. pacemaker cluster name
+        # Required. Pacemaker cluster name.
         # Corresponds to the JSON property `pacemakerCluster`
         # @return [String]
         attr_accessor :pacemaker_cluster
       
-        # Required. pacemaker cluster secret name
+        # Required. Pacemaker cluster secret name.
         # Corresponds to the JSON property `pacemakerClusterSecret`
         # @return [String]
         attr_accessor :pacemaker_cluster_secret
       
-        # Required. pacemaker cluster username
+        # Required. Pacemaker cluster username.
         # Corresponds to the JSON property `pacemakerClusterUsername`
         # @return [String]
         attr_accessor :pacemaker_cluster_username
       
-        # Required. sql pacemaker secret name
+        # Required. SQL Pacemaker secret name.
         # Corresponds to the JSON property `sqlPacemakerSecret`
         # @return [String]
         attr_accessor :sql_pacemaker_secret
       
-        # Required. sql pacemaker username
+        # Required. SQL Pacemaker username.
         # Corresponds to the JSON property `sqlPacemakerUsername`
         # @return [String]
         attr_accessor :sql_pacemaker_username
@@ -3250,7 +3252,7 @@ module Google
         end
       end
       
-      # Message for sap system workload
+      # Message for SAP system workload.
       class SapSystemS4Config
         include Google::Apis::Core::Hashable
       
@@ -3260,64 +3262,64 @@ module Google
         attr_accessor :allow_stopping_for_update
         alias_method :allow_stopping_for_update?, :allow_stopping_for_update
       
-        # Ansible runner service account - let custoemrs bring their own SA for Ansible
-        # runner
+        # Ansible runner service account. Let customers bring their own service account
+        # for the Ansible runner.
         # Corresponds to the JSON property `ansibleRunnerServiceAccount`
         # @return [String]
         attr_accessor :ansible_runner_service_account
       
-        # Message for sap instant details
+        # Message for SAP instance details.
         # Corresponds to the JSON property `app`
         # @return [Google::Apis::WorkloadmanagerV1::AppDetails]
         attr_accessor :app
       
-        # Message for sap instant details
+        # Message for SAP instance details.
         # Corresponds to the JSON property `database`
         # @return [Google::Apis::WorkloadmanagerV1::DatabaseDetails]
         attr_accessor :database
       
-        # Required. two model non-HA and HA supported
+        # Required. Supports non-HA and HA models.
         # Corresponds to the JSON property `deploymentModel`
         # @return [String]
         attr_accessor :deployment_model
       
-        # Required. deployment environment
+        # Required. Deployment environment.
         # Corresponds to the JSON property `environmentType`
         # @return [String]
         attr_accessor :environment_type
       
-        # the project that infrastructure deployed, current only support the same
-        # project where the deployment resource exist.
+        # The project that infrastructure is deployed in. Currently only supports the
+        # same project where the deployment resource exists.
         # Corresponds to the JSON property `gcpProjectId`
         # @return [String]
         attr_accessor :gcp_project_id
       
-        # Message for sap instant details
+        # Message for SAP instance details.
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::WorkloadmanagerV1::LocationDetails]
         attr_accessor :location
       
-        # Required. media_bucket_name
+        # Required. Media bucket name.
         # Corresponds to the JSON property `mediaBucketName`
         # @return [String]
         attr_accessor :media_bucket_name
       
-        # Optional. sap_boot_disk_image
+        # Optional. SAP boot disk image.
         # Corresponds to the JSON property `sapBootDiskImage`
         # @return [String]
         attr_accessor :sap_boot_disk_image
       
-        # Required. support scale up and scale out
+        # Required. Supports scale up and scale out.
         # Corresponds to the JSON property `scalingMethod`
         # @return [String]
         attr_accessor :scaling_method
       
-        # Required. sap hana version
+        # Required. SAP HANA version.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
       
-        # vm_prefix
+        # VM prefix.
         # Corresponds to the JSON property `vmPrefix`
         # @return [String]
         attr_accessor :vm_prefix
@@ -3532,56 +3534,56 @@ module Google
         end
       end
       
-      # Location and networking details for configuring SQL server workload
+      # Location and networking details for configuring SQL server workload.
       class SqlLocationDetails
         include Google::Apis::Core::Hashable
       
-        # Optional. create a new DNS Zone when the field is empty, Only show for `Using
-        # an existing DNS` List of existing DNS Zones tf variable name:
-        # existing_dns_zone_name
+        # Optional. Create a new DNS zone when the field is empty. Only shown for `Using
+        # an existing DNS`. List of existing DNS zones. Terraform variable name:
+        # existing_dns_zone_name.
         # Corresponds to the JSON property `dnsZone`
         # @return [String]
         attr_accessor :dns_zone
       
-        # Required. the project that infrastructure deployed, currently only supports
-        # the same project where the deployment resource exists.
+        # Required. The project that infrastructure is deployed in. Currently only
+        # supports the same project where the deployment resource exists.
         # Corresponds to the JSON property `gcpProjectId`
         # @return [String]
         attr_accessor :gcp_project_id
       
-        # Required. Internet Access
+        # Required. Internet Access.
         # Corresponds to the JSON property `internetAccess`
         # @return [String]
         attr_accessor :internet_access
       
-        # Required. network name
+        # Required. Network name.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Required. primary zone
+        # Required. Primary zone.
         # Corresponds to the JSON property `primaryZone`
         # @return [String]
         attr_accessor :primary_zone
       
-        # Required. region name
+        # Required. Region name.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # Optional. secondary zone can't be same as primary_zone and is only for High
-        # Availability deployment mode
+        # Optional. Secondary zone cannot be the same as primary_zone and is only for
+        # High Availability deployment mode.
         # Corresponds to the JSON property `secondaryZone`
         # @return [String]
         attr_accessor :secondary_zone
       
-        # Required. subnetwork name
+        # Required. Subnetwork name.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
       
-        # Optional. teriary zone can't be same as primary_zone and secondary zone, and
-        # it is only for High Availability deployment mode
+        # Optional. Tertiary zone cannot be the same as primary_zone and secondary_zone,
+        # and it is only for High Availability deployment mode.
         # Corresponds to the JSON property `tertiaryZone`
         # @return [String]
         attr_accessor :tertiary_zone
@@ -3604,97 +3606,98 @@ module Google
         end
       end
       
-      # Message for MS SQL workload
+      # Message for MS SQL workload.
       class SqlServerWorkload
         include Google::Apis::Core::Hashable
       
-        # Active directory details
+        # Active Directory details.
         # Corresponds to the JSON property `activeDirectory`
         # @return [Google::Apis::WorkloadmanagerV1::ActiveDirectory]
         attr_accessor :active_directory
       
-        # Compute engine service account - let customers bring their own SA for Compute
-        # engine
+        # Compute Engine service account. Let customers bring their own service account
+        # for Compute Engine.
         # Corresponds to the JSON property `computeEngineServiceAccount`
         # @return [String]
         attr_accessor :compute_engine_service_account
       
-        # Database details
+        # Database details.
         # Corresponds to the JSON property `database`
         # @return [Google::Apis::WorkloadmanagerV1::Database]
         attr_accessor :database
       
-        # Required. HIGH_AVAILABILITY or SINGLE_INSTANCE
+        # Required. HIGH_AVAILABILITY or SINGLE_INSTANCE.
         # Corresponds to the JSON property `deploymentModel`
         # @return [String]
         attr_accessor :deployment_model
       
-        # Required. deployment environment
+        # Required. Deployment environment.
         # Corresponds to the JSON property `environmentType`
         # @return [String]
         attr_accessor :environment_type
       
-        # Optional. SHARED_DISK or S2D
+        # Optional. SHARED_DISK or S2D.
         # Corresponds to the JSON property `fciType`
         # @return [String]
         attr_accessor :fci_type
       
-        # Optional. AOAG or FCI, it is only needed for High Availability deployment mode
+        # Optional. AOAG or FCI. It is only needed for the High Availability deployment
+        # mode.
         # Corresponds to the JSON property `haType`
         # @return [String]
         attr_accessor :ha_type
       
-        # Required. SQL licensing type
+        # Required. SQL licensing type.
         # Corresponds to the JSON property `isSqlPayg`
         # @return [Boolean]
         attr_accessor :is_sql_payg
         alias_method :is_sql_payg?, :is_sql_payg
       
-        # Location and networking details for configuring SQL server workload
+        # Location and networking details for configuring SQL server workload.
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::WorkloadmanagerV1::SqlLocationDetails]
         attr_accessor :location
       
-        # Required. name of the media storing SQL server installation files
+        # Required. Name of the media storing SQL server installation files.
         # Corresponds to the JSON property `mediaBucket`
         # @return [String]
         attr_accessor :media_bucket
       
-        # Required. type of the operating system the SQL server is going to run on top
-        # of
+        # Required. The type of the operating system the SQL server is going to run on
+        # top of.
         # Corresponds to the JSON property `operatingSystemType`
         # @return [String]
         attr_accessor :operating_system_type
       
-        # Required. the image of the operating system
+        # Required. The image of the operating system.
         # Corresponds to the JSON property `osImage`
         # @return [String]
         attr_accessor :os_image
       
-        # Optional. OS image type, it's used to create boot disks for VM instances When
+        # Optional. OS image type. It's used to create boot disks for VM instances. When
         # either Windows licensing type or SQL licensing type is BYOL, this option is
-        # disabled and default to custom image
+        # disabled and defaults to a custom image.
         # Corresponds to the JSON property `osImageType`
         # @return [String]
         attr_accessor :os_image_type
       
-        # pacemaker configuration
+        # Pacemaker configuration.
         # Corresponds to the JSON property `pacemaker`
         # @return [Google::Apis::WorkloadmanagerV1::Pacemaker]
         attr_accessor :pacemaker
       
-        # Optional. SQL Server Edition type, only applicable when Operating System is
-        # Linux
+        # Optional. SQL Server Edition type, only applicable when the operating system
+        # is Linux.
         # Corresponds to the JSON property `sqlServerEdition`
         # @return [String]
         attr_accessor :sql_server_edition
       
-        # Optional. 2017 or 2019 or 2022
+        # Optional. 2017, 2019, or 2022.
         # Corresponds to the JSON property `sqlServerVersion`
         # @return [String]
         attr_accessor :sql_server_version
       
-        # Required. should be unique in the project
+        # Required. Should be unique in the project.
         # Corresponds to the JSON property `vmPrefix`
         # @return [String]
         attr_accessor :vm_prefix
@@ -3879,10 +3882,10 @@ module Google
         end
       end
       
-      # In order to align with Infra Manager dependency, we create the same
+      # In order to align with the Infra Manager dependency, we create the same
       # TerraformVariable message to represent a Terraform input variable, by
       # following Infra Manager's API documentation: https://cloud.google.com/
-      # infrastructure-manager/docs/reference/rest A Terraform input variable.
+      # infrastructure-manager/docs/reference/rest. A Terraform input variable.
       class TerraformVariable
         include Google::Apis::Core::Hashable
       
