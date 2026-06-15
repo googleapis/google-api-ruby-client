@@ -892,6 +892,17 @@ module Google
       class ImageRelease
         include Google::Apis::Core::Hashable
       
+        # Output only. The description of the image.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The image family of the image. (ex: workbench-instances or
+        # workbench-2603)
+        # Corresponds to the JSON property `imageFamily`
+        # @return [String]
+        attr_accessor :image_family
+      
         # Output only. The name of the image of the form workbench-instances-vYYYYmmdd--
         # Corresponds to the JSON property `imageName`
         # @return [String]
@@ -908,6 +919,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @image_family = args[:image_family] if args.key?(:image_family)
           @image_name = args[:image_name] if args.key?(:image_name)
           @release_name = args[:release_name] if args.key?(:release_name)
         end
