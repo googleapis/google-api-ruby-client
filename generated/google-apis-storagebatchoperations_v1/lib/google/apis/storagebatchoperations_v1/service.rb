@@ -139,8 +139,8 @@ module Google
         
         # Cancels a batch job.
         # @param [String] name
-        #   Required. The `name` of the job to cancel. Format: projects/`project_id`/
-        #   locations/global/jobs/`job_id`.
+        #   Required. The `name` of the job to cancel. Format: `projects/`project_id`/
+        #   locations/global/jobs/`job_id``.
         # @param [Google::Apis::StoragebatchoperationsV1::CancelJobRequest] cancel_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -173,17 +173,17 @@ module Google
         
         # Creates a batch job.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The value for parent.
         # @param [Google::Apis::StoragebatchoperationsV1::Job] job_object
         # @param [String] job_id
-        #   Required. The optional `job_id` for this Job . If not specified, an id is
-        #   generated. `job_id` should be no more than 128 characters and must include
-        #   only characters available in DNS names, as defined by RFC-1123.
+        #   Required. A unique identifier for the job. `job_id` must be up to 128
+        #   characters and must include only characters available in DNS names, as defined
+        #   by RFC-1123.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID in case you need to retry your request. Requests with same `
-        #   request_id` will be ignored for at least 60 minutes since the first request.
-        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   request_id` are ignored for at least 60 minutes since the first request. The
+        #   request ID must be a valid UUID with the exception that zero UUID isn't
         #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -218,18 +218,18 @@ module Google
         
         # Deletes a batch job.
         # @param [String] name
-        #   Required. The `name` of the job to delete. Format: projects/`project_id`/
-        #   locations/global/jobs/`job_id` .
+        #   Required. The `name` of the job to delete. Format: `projects/`project_id`/
+        #   locations/global/jobs/`job_id``.
         # @param [Boolean] force
-        #   Optional. If set to true, any child bucket operations of the job will also be
-        #   deleted. Highly recommended to be set to true by all clients. Users cannot
-        #   mutate bucket operations directly, so only the jobs.delete permission is
-        #   required to delete a job (and its child bucket operations).
+        #   Optional. If set to true, any child bucket operations of the job are deleted.
+        #   We recommend setting this to `true`. You can't mutate bucket operations
+        #   directly, so only the `jobs.delete` permission is required to delete a job (
+        #   and its child bucket operations).
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID in case you need to retry your request. Requests with same `
-        #   request_id` will be ignored for at least 60 minutes since the first request.
-        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   request_id` are ignored for at least 60 minutes since the first request. The
+        #   request ID must be a valid UUID with the exception that zero UUID isn't
         #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -262,8 +262,8 @@ module Google
         
         # Gets a batch job.
         # @param [String] name
-        #   Required. `name` of the job to retrieve. Format: projects/`project_id`/
-        #   locations/global/jobs/`job_id` .
+        #   Required. The `name` of the job to retrieve. Format: `projects/`project_id`/
+        #   locations/global/jobs/`job_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -297,9 +297,9 @@ module Google
         # @param [String] filter
         #   Optional. Filters results as defined by https://google.aip.dev/160.
         # @param [String] order_by
-        #   Optional. Field to sort by. Supported fields are name, create_time.
+        #   Optional. Field to sort by. Supported fields are `name` and `create_time`.
         # @param [Fixnum] page_size
-        #   Optional. The list page size. default page size is 100.
+        #   Optional. The list page size. The default page size is 100.
         # @param [String] page_token
         #   Optional. The list page token.
         # @param [String] fields
@@ -335,9 +335,9 @@ module Google
         
         # Gets a BucketOperation.
         # @param [String] name
-        #   Required. `name` of the bucket operation to retrieve. Format: projects/`
+        #   Required. The `name` of the bucket operation to retrieve. Format: `projects/`
         #   project_id`/locations/global/jobs/`job_id`/bucketOperations/`
-        #   bucket_operation_id`.
+        #   bucket_operation_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -367,11 +367,11 @@ module Google
         
         # Lists BucketOperations in a given project and job.
         # @param [String] parent
-        #   Required. Format: projects/`project_id`/locations/global/jobs/`job_id`.
+        #   Required. Format: `projects/`project_id`/locations/global/jobs/`job_id``.
         # @param [String] filter
         #   Optional. Filters results as defined by https://google.aip.dev/160.
         # @param [String] order_by
-        #   Optional. Field to sort by. Supported fields are name, create_time.
+        #   Optional. Field to sort by. Supported fields are `name` and `create_time`.
         # @param [Fixnum] page_size
         #   Optional. The list page size. Default page size is 100.
         # @param [String] page_token
