@@ -55,7 +55,8 @@ module Google
         # Returns the AutokeyConfig for a folder or project.
         # @param [String] name
         #   Required. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        #   autokeyConfig` or `projects/`PROJECT_NUMBER`/autokeyConfig`.
+        #   autokeyConfig`, `projects/`PROJECT_NUMBER`/autokeyConfig`, or `projects/`
+        #   PROJECT_ID`/autokeyConfig`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,7 +122,8 @@ module Google
         # determine where to create the resulting CryptoKey.
         # @param [String] name
         #   Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        #   autokeyConfig` or `projects/`PROJECT_NUMBER`/autokeyConfig`.
+        #   autokeyConfig`, `projects/`PROJECT_NUMBER`/autokeyConfig`, or `projects/`
+        #   PROJECT_ID`/autokeyConfig`.
         # @param [Google::Apis::CloudkmsV1::AutokeyConfig] autokey_config_object
         # @param [String] update_mask
         #   Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.
@@ -267,7 +269,8 @@ module Google
         # Returns the AutokeyConfig for a folder or project.
         # @param [String] name
         #   Required. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        #   autokeyConfig` or `projects/`PROJECT_NUMBER`/autokeyConfig`.
+        #   autokeyConfig`, `projects/`PROJECT_NUMBER`/autokeyConfig`, or `projects/`
+        #   PROJECT_ID`/autokeyConfig`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -429,7 +432,8 @@ module Google
         # determine where to create the resulting CryptoKey.
         # @param [String] name
         #   Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        #   autokeyConfig` or `projects/`PROJECT_NUMBER`/autokeyConfig`.
+        #   autokeyConfig`, `projects/`PROJECT_NUMBER`/autokeyConfig`, or `projects/`
+        #   PROJECT_ID`/autokeyConfig`.
         # @param [Google::Apis::CloudkmsV1::AutokeyConfig] autokey_config_object
         # @param [String] update_mask
         #   Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.
