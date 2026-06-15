@@ -731,6 +731,16 @@ module Google
         # @return [String]
         attr_accessor :time_bin_size
       
+        # The maximum value for the x-axis.
+        # Corresponds to the JSON property `xMax`
+        # @return [Float]
+        attr_accessor :x_max
+      
+        # The minimum value for the x-axis.
+        # Corresponds to the JSON property `xMin`
+        # @return [Float]
+        attr_accessor :x_min
+      
         def initialize(**args)
            update!(**args)
         end
@@ -745,6 +755,8 @@ module Google
           @sort_column = args[:sort_column] if args.key?(:sort_column)
           @sort_order = args[:sort_order] if args.key?(:sort_order)
           @time_bin_size = args[:time_bin_size] if args.key?(:time_bin_size)
+          @x_max = args[:x_max] if args.key?(:x_max)
+          @x_min = args[:x_min] if args.key?(:x_min)
         end
       end
       
@@ -2787,6 +2799,12 @@ module Google
         # @return [String]
         attr_accessor :time_series_query_language
       
+        # LINT.IfChange Preview: Query for traces. This is a preview feature and may be
+        # subject to change before final release.
+        # Corresponds to the JSON property `traceQuery`
+        # @return [Google::Apis::MonitoringV1::TraceQuery]
+        attr_accessor :trace_query
+      
         # The unit of data contained in fetched time series. If non-empty, this unit
         # will override any unit that accompanies fetched data. The format is the same
         # as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.
@@ -2807,6 +2825,7 @@ module Google
           @time_series_filter = args[:time_series_filter] if args.key?(:time_series_filter)
           @time_series_filter_ratio = args[:time_series_filter_ratio] if args.key?(:time_series_filter_ratio)
           @time_series_query_language = args[:time_series_query_language] if args.key?(:time_series_query_language)
+          @trace_query = args[:trace_query] if args.key?(:trace_query)
           @unit_override = args[:unit_override] if args.key?(:unit_override)
         end
       end
@@ -2839,6 +2858,20 @@ module Google
           @column_settings = args[:column_settings] if args.key?(:column_settings)
           @data_sets = args[:data_sets] if args.key?(:data_sets)
           @metric_visualization = args[:metric_visualization] if args.key?(:metric_visualization)
+        end
+      end
+      
+      # LINT.IfChange Preview: Query for traces. This is a preview feature and may be
+      # subject to change before final release.
+      class TraceQuery
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
