@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataplexConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EmailPreferences
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +131,12 @@ module Google
       end
       
       class ManualSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetadataDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -318,6 +330,13 @@ module Google
         end
       end
       
+      class DataplexConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entry_group, as: 'entryGroup'
+        end
+      end
+      
       class EmailPreferences
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -433,6 +452,14 @@ module Google
         end
       end
       
+      class MetadataDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataplex_configuration, as: 'dataplexConfiguration', class: Google::Apis::BigquerydatatransferV1::DataplexConfiguration, decorator: Google::Apis::BigquerydatatransferV1::DataplexConfiguration::Representation
+      
+        end
+      end
+      
       class PartitionDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -543,6 +570,8 @@ module Google
           property :error, as: 'error', class: Google::Apis::BigquerydatatransferV1::Status, decorator: Google::Apis::BigquerydatatransferV1::Status::Representation
       
           property :managed_table_type, as: 'managedTableType'
+          property :metadata_destination, as: 'metadataDestination', class: Google::Apis::BigquerydatatransferV1::MetadataDestination, decorator: Google::Apis::BigquerydatatransferV1::MetadataDestination::Representation
+      
           property :name, as: 'name'
           property :next_run_time, as: 'nextRunTime'
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
@@ -608,6 +637,8 @@ module Google
       
           property :end_time, as: 'endTime'
           property :error_status, as: 'errorStatus', class: Google::Apis::BigquerydatatransferV1::Status, decorator: Google::Apis::BigquerydatatransferV1::Status::Representation
+      
+          property :metadata_destination, as: 'metadataDestination', class: Google::Apis::BigquerydatatransferV1::MetadataDestination, decorator: Google::Apis::BigquerydatatransferV1::MetadataDestination::Representation
       
           property :name, as: 'name'
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'

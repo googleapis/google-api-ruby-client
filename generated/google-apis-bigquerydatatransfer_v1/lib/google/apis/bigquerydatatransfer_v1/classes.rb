@@ -315,6 +315,27 @@ module Google
         end
       end
       
+      # Configuration for Dataplex destination.
+      class DataplexConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Dataplex Universal Catalog entry group for importing the
+        # metadata. entry_group has the format of `projects/`project_id`/locations/`
+        # region`/entryGroups/`entry_group_id``.
+        # Corresponds to the JSON property `entryGroup`
+        # @return [String]
+        attr_accessor :entry_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entry_group = args[:entry_group] if args.key?(:entry_group)
+        end
+      end
+      
       # Represents preferences for sending email notifications for transfer run events.
       class EmailPreferences
         include Google::Apis::Core::Hashable
@@ -653,6 +674,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The metadata destination of the transfer config.
+      class MetadataDestination
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Dataplex destination.
+        # Corresponds to the JSON property `dataplexConfiguration`
+        # @return [Google::Apis::BigquerydatatransferV1::DataplexConfiguration]
+        attr_accessor :dataplex_configuration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataplex_configuration = args[:dataplex_configuration] if args.key?(:dataplex_configuration)
         end
       end
       
@@ -1050,6 +1090,11 @@ module Google
         # @return [String]
         attr_accessor :managed_table_type
       
+        # The metadata destination of the transfer config.
+        # Corresponds to the JSON property `metadataDestination`
+        # @return [Google::Apis::BigquerydatatransferV1::MetadataDestination]
+        attr_accessor :metadata_destination
+      
         # Identifier. The resource name of the transfer config. Transfer config names
         # have the form either `projects/`project_id`/locations/`region`/transferConfigs/
         # `config_id`` or `projects/`project_id`/transferConfigs/`config_id``, where `
@@ -1141,6 +1186,7 @@ module Google
           @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @error = args[:error] if args.key?(:error)
           @managed_table_type = args[:managed_table_type] if args.key?(:managed_table_type)
+          @metadata_destination = args[:metadata_destination] if args.key?(:metadata_destination)
           @name = args[:name] if args.key?(:name)
           @next_run_time = args[:next_run_time] if args.key?(:next_run_time)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
@@ -1324,6 +1370,11 @@ module Google
         # @return [Google::Apis::BigquerydatatransferV1::Status]
         attr_accessor :error_status
       
+        # The metadata destination of the transfer config.
+        # Corresponds to the JSON property `metadataDestination`
+        # @return [Google::Apis::BigquerydatatransferV1::MetadataDestination]
+        attr_accessor :metadata_destination
+      
         # Identifier. The resource name of the transfer run. Transfer run names have the
         # form `projects/`project_id`/locations/`location`/transferConfigs/`config_id`/
         # runs/`run_id``. The name is ignored when creating a transfer run.
@@ -1397,6 +1448,7 @@ module Google
           @email_preferences = args[:email_preferences] if args.key?(:email_preferences)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error_status = args[:error_status] if args.key?(:error_status)
+          @metadata_destination = args[:metadata_destination] if args.key?(:metadata_destination)
           @name = args[:name] if args.key?(:name)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
           @params = args[:params] if args.key?(:params)
