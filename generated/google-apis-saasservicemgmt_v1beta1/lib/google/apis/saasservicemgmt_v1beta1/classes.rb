@@ -246,6 +246,62 @@ module Google
         end
       end
       
+      # A representation of a decimal value, such as 2.5. Clients may convert values
+      # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+      # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+      # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
+      class Decimal
+        include Google::Apis::Core::Hashable
+      
+        # The decimal value, as a string. The string representation consists of an
+        # optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of
+        # zero or more decimal digits ("the integer"), optionally followed by a fraction,
+        # optionally followed by an exponent. An empty string **should** be interpreted
+        # as `0`. The fraction consists of a decimal point followed by zero or more
+        # decimal digits. The string must contain at least one digit in either the
+        # integer or the fraction. The number formed by the sign, the integer and the
+        # fraction is referred to as the significand. The exponent consists of the
+        # character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal
+        # digits. Services **should** normalize decimal values before storing them by: -
+        # Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-
+        # length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent
+        # character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing
+        # an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may**
+        # perform additional normalization based on its own needs and the internal
+        # decimal implementation selected, such as shifting the decimal point and
+        # exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services
+        # **may** preserve trailing zeroes in the fraction to indicate increased
+        # precision, but are not required to do so. Note that only the `.` character is
+        # supported to divide the integer and the fraction; `,` **should not** be
+        # supported regardless of locale. Additionally, thousand separators **should not*
+        # * be supported. If a service does support them, values **must** be normalized.
+        # The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign =
+        # '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | '
+        # E') [Sign] Digits; Digits = ` '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '
+        # 8' | '9' `; Services **should** clearly document the range of supported values,
+        # the maximum supported precision (total number of digits), and, if applicable,
+        # the scale (number of digits after the decimal point), as well as how it
+        # behaves when receiving out-of-bounds values. Services **may** choose to accept
+        # values passed as input even when the value has a higher precision or scale
+        # than the service supports, and **should** round the value to fit the supported
+        # scale. Alternatively, the service **may** error with `400 Bad Request` (`
+        # INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should**
+        # error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service
+        # receives a value outside of the supported range.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Dependency represent a single dependency with another unit kind by alias.
       class Dependency
         include Google::Apis::Core::Hashable
@@ -393,21 +449,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :attributes
       
-        # Optional. The ID of an allocation to use as the default.
-        # Corresponds to the JSON property `defaultAllocation`
-        # @return [String]
-        attr_accessor :default_allocation
-      
         # Optional. Deprecated: Use `base_target` instead. Default variant or allocation
         # of the flag.
         # Corresponds to the JSON property `defaultTarget`
         # @return [String]
         attr_accessor :default_target
-      
-        # Optional. The name of a variant to use as the default.
-        # Corresponds to the JSON property `defaultVariant`
-        # @return [String]
-        attr_accessor :default_variant
       
         # Optional. Evaluation rules define the logic for evaluating the flag against a
         # given context. The rules are evaluated sequentially in their specified order.
@@ -428,9 +474,7 @@ module Google
         def update!(**args)
           @allocations = args[:allocations] if args.key?(:allocations)
           @attributes = args[:attributes] if args.key?(:attributes)
-          @default_allocation = args[:default_allocation] if args.key?(:default_allocation)
           @default_target = args[:default_target] if args.key?(:default_target)
-          @default_variant = args[:default_variant] if args.key?(:default_variant)
           @rules = args[:rules] if args.key?(:rules)
           @variants = args[:variants] if args.key?(:variants)
         end
@@ -1314,6 +1358,38 @@ module Google
         end
       end
       
+      # The response structure for the ListSaasReleases method.
+      class ListSaasReleasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If present, the next page token can be provided to a subsequent
+        # ListSaasReleases call to list the next page. If empty, there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resulting saas releases.
+        # Corresponds to the JSON property `saasReleases`
+        # @return [Array<Google::Apis::SaasservicemgmtV1beta1::SaasRelease>]
+        attr_accessor :saas_releases
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @saas_releases = args[:saas_releases] if args.key?(:saas_releases)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response structure for the ListSaas method.
       class ListSaasResponse
         include Google::Apis::Core::Hashable
@@ -1374,6 +1450,71 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tenants = args[:tenants] if args.key?(:tenants)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response structure for the ListUnitGroupOperations method.
+      class ListUnitGroupOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If present, the next page token can be provided to a subsequent
+        # ListUnitGroupOperations call to list the next page. If empty, there are no
+        # more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resulting unit group operations.
+        # Corresponds to the JSON property `unitGroupOperations`
+        # @return [Array<Google::Apis::SaasservicemgmtV1beta1::UnitGroupOperation>]
+        attr_accessor :unit_group_operations
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unit_group_operations = args[:unit_group_operations] if args.key?(:unit_group_operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response structure for the ListUnitGroups method.
+      class ListUnitGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If present, the next page token can be provided to a subsequent ListUnitGroups
+        # call to list the next page. If empty, there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resulting unit groups.
+        # Corresponds to the JSON property `unitGroups`
+        # @return [Array<Google::Apis::SaasservicemgmtV1beta1::UnitGroup>]
+        attr_accessor :unit_groups
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unit_groups = args[:unit_groups] if args.key?(:unit_groups)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -1988,6 +2129,12 @@ module Google
         # @return [String]
         attr_accessor :unit_kind
       
+        # UnitUpdatePacing defines the policy for the maximum number of unit operations
+        # that can run for a rollout in parallel in a single region.
+        # Corresponds to the JSON property `unitUpdatePacing`
+        # @return [Google::Apis::SaasservicemgmtV1beta1::UnitUpdatePacing]
+        attr_accessor :unit_update_pacing
+      
         # Output only. The timestamp when the resource was last updated. Any change to
         # the resource made by users must refresh this value. Changes to a resource made
         # by the service should refresh this value.
@@ -2017,6 +2164,7 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @unit_filter = args[:unit_filter] if args.key?(:unit_filter)
           @unit_kind = args[:unit_kind] if args.key?(:unit_kind)
+          @unit_update_pacing = args[:unit_update_pacing] if args.key?(:unit_update_pacing)
           @update_time = args[:update_time] if args.key?(:update_time)
           @update_unit_kind_strategy = args[:update_unit_kind_strategy] if args.key?(:update_unit_kind_strategy)
         end
@@ -2145,7 +2293,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. State of the Saas. It is always in ACTIVE state if the
+        # Output only. State of the Saas. It is always in STATE_ACTIVE state if the
         # application_template is empty.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2229,6 +2377,77 @@ module Google
           @reason = args[:reason] if args.key?(:reason)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # SaasRelease is a collection of Releases that are assigned to a UnitGroup. It
+      # allows provisioning and updates of UnitGroup, which contains multiple Units of
+      # different UnitKinds.
+      class SaasRelease
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Annotations is an unstructured key-value map stored with a resource
+        # that may be set by external tools to store and retrieve arbitrary metadata.
+        # They are not queryable and should be preserved when modifying objects. More
+        # info: https://kubernetes.io/docs/user-guide/annotations
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. An opaque value that uniquely identifies a version or generation
+        # of a resource. It can be used to confirm that the client and server agree on
+        # the ordering of a resource being written.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. The labels on the resource, which can be used for categorization.
+        # similar to Kubernetes resource labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name (full URI of the resource) following the
+        # standard naming scheme: "projects/`project`/locations/`location`/saasReleases/`
+        # saasRelease`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The unique identifier of the resource. UID is unique in the time
+        # and space for this resource within the scope of the service. It is typically
+        # generated by the server on successful creation of a resource and must not be
+        # changed. UID is used to uniquely identify resources with resource name reuses.
+        # This should be a UUID4.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp when the resource was last updated. Any change to
+        # the resource made by users must refresh this value. Changes to a resource made
+        # by the service should refresh this value.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2604,6 +2823,11 @@ module Google
         # @return [String]
         attr_accessor :uid
       
+        # Optional. Output only. Reference to the UnitGroup this unit belongs to.
+        # Corresponds to the JSON property `unitGroup`
+        # @return [String]
+        attr_accessor :unit_group
+      
         # Optional. Reference to the UnitKind this Unit belongs to. Immutable once set.
         # Corresponds to the JSON property `unitKind`
         # @return [String]
@@ -2648,6 +2872,7 @@ module Google
           @system_managed_state = args[:system_managed_state] if args.key?(:system_managed_state)
           @tenant = args[:tenant] if args.key?(:tenant)
           @uid = args[:uid] if args.key?(:uid)
+          @unit_group = args[:unit_group] if args.key?(:unit_group)
           @unit_kind = args[:unit_kind] if args.key?(:unit_kind)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2722,6 +2947,146 @@ module Google
         end
       end
       
+      # UnitGroup represents a set of Units to be used by a Tenant. In pooling
+      # scenarios, the UnitGroup may be created and provisioned before the Tenant is
+      # created.
+      class UnitGroup
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Annotations is an unstructured key-value map stored with a resource
+        # that may be set by external tools to store and retrieve arbitrary metadata.
+        # They are not queryable and should be preserved when modifying objects. More
+        # info: https://kubernetes.io/docs/user-guide/annotations
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. An opaque value that uniquely identifies a version or generation
+        # of a resource. It can be used to confirm that the client and server agree on
+        # the ordering of a resource being written.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. The labels on the resource, which can be used for categorization.
+        # similar to Kubernetes resource labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name (full URI of the resource) following the
+        # standard naming scheme: "projects/`project`/locations/`location`/unitGroups/`
+        # unitGroup`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The unique identifier of the resource. UID is unique in the time
+        # and space for this resource within the scope of the service. It is typically
+        # generated by the server on successful creation of a resource and must not be
+        # changed. UID is used to uniquely identify resources with resource name reuses.
+        # This should be a UUID4.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp when the resource was last updated. Any change to
+        # the resource made by users must refresh this value. Changes to a resource made
+        # by the service should refresh this value.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # UnitGroupOperation represents an operation on a UnitGroup.
+      class UnitGroupOperation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Annotations is an unstructured key-value map stored with a resource
+        # that may be set by external tools to store and retrieve arbitrary metadata.
+        # They are not queryable and should be preserved when modifying objects. More
+        # info: https://kubernetes.io/docs/user-guide/annotations
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. An opaque value that uniquely identifies a version or generation
+        # of a resource. It can be used to confirm that the client and server agree on
+        # the ordering of a resource being written.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. The labels on the resource, which can be used for categorization.
+        # similar to Kubernetes resource labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name (full URI of the resource) following the
+        # standard naming scheme: "projects/`project`/locations/`location`/
+        # unitGroupOperations/`unitGroupOperation`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The unique identifier of the resource. UID is unique in the time
+        # and space for this resource within the scope of the service. It is typically
+        # generated by the server on successful creation of a resource and must not be
+        # changed. UID is used to uniquely identify resources with resource name reuses.
+        # This should be a UUID4.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp when the resource was last updated. Any change to
+        # the resource made by users must refresh this value. Changes to a resource made
+        # by the service should refresh this value.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Definition of a Unit. Units belonging to the same UnitKind are managed
       # together; for example they follow the same release model (blueprints, versions
       # etc.) and are typically rolled out together.
@@ -2745,6 +3110,12 @@ module Google
         # Corresponds to the JSON property `applicationTemplateComponent`
         # @return [Google::Apis::SaasservicemgmtV1beta1::ComponentRef]
         attr_accessor :application_template_component
+      
+        # Optional. Output only. BoundaryType describes the type of boundary the Unit
+        # Kind represents.
+        # Corresponds to the JSON property `boundaryType`
+        # @return [String]
+        attr_accessor :boundary_type
       
         # Output only. The timestamp when the resource was created.
         # Corresponds to the JSON property `createTime`
@@ -2835,6 +3206,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @app_params = args[:app_params] if args.key?(:app_params)
           @application_template_component = args[:application_template_component] if args.key?(:application_template_component)
+          @boundary_type = args[:boundary_type] if args.key?(:boundary_type)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_flag_revisions = args[:default_flag_revisions] if args.key?(:default_flag_revisions)
           @default_release = args[:default_release] if args.key?(:default_release)
@@ -3068,6 +3440,36 @@ module Google
           @reason = args[:reason] if args.key?(:reason)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # UnitUpdatePacing defines the policy for the maximum number of unit operations
+      # that can run for a rollout in parallel in a single region.
+      class UnitUpdatePacing
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An absolute cap on concurrent units operations. If both percent and
+        # count are provided, the system uses the MINIMUM (most restrictive).
+        # Corresponds to the JSON property `maxConcurrentOperationsCount`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_operations_count
+      
+        # A representation of a decimal value, such as 2.5. Clients may convert values
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
+        # Corresponds to the JSON property `maxConcurrentOperationsPercent`
+        # @return [Google::Apis::SaasservicemgmtV1beta1::Decimal]
+        attr_accessor :max_concurrent_operations_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_concurrent_operations_count = args[:max_concurrent_operations_count] if args.key?(:max_concurrent_operations_count)
+          @max_concurrent_operations_percent = args[:max_concurrent_operations_percent] if args.key?(:max_concurrent_operations_percent)
         end
       end
       
