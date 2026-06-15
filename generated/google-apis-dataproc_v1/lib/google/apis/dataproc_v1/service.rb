@@ -509,14 +509,14 @@ module Google
         #   Optional. A filter for the batches to return in the response.A filter is a
         #   logical expression constraining the values of various fields in each batch
         #   resource. Filters are case sensitive, and may contain multiple clauses
-        #   combined with logical operators (AND/OR). Supported fields are batch_id,
-        #   batch_uuid, state, create_time, and labels.e.g. state = RUNNING and
-        #   create_time < "2023-01-01T00:00:00Z" filters for batches in state RUNNING that
-        #   were created before 2023-01-01. state = RUNNING and labels.environment=
-        #   production filters for batches in state in a RUNNING state that have a
-        #   production environment label.See https://google.aip.dev/assets/misc/ebnf-
-        #   filtering.txt for a detailed description of the filter syntax and a list of
-        #   supported comparisons.
+        #   combined with logical operators (AND/OR). Supported fields: * batch_id *
+        #   batch_uuid * state * create_time * labels * runtime_info.cohort_info.cohort e.
+        #   g. state = RUNNING and create_time < "2023-01-01T00:00:00Z" filters for
+        #   batches in state RUNNING that were created before 2023-01-01. state = RUNNING
+        #   and labels.environment=production filters for batches in state in a RUNNING
+        #   state that have a production environment label.See https://google.aip.dev/
+        #   assets/misc/ebnf-filtering.txt for a detailed description of the filter syntax
+        #   and a list of supported comparisons.
         # @param [String] order_by
         #   Optional. Field(s) on which to sort the list of batches.Currently the only
         #   supported sort orders are unspecified (empty) and create_time desc to sort by
@@ -3588,7 +3588,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
         # @param [String] action_on_failed_primary_workers
         #   Optional. Failure action when primary worker creation fails.
@@ -3641,7 +3641,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [String] cluster_uuid
@@ -3707,7 +3707,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::DiagnoseClusterRequest] diagnose_cluster_request_object
@@ -3747,7 +3747,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [String] fields
@@ -3862,7 +3862,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] filter
         #   Optional. A filter constraining the clusters to list. Filters are case-
         #   sensitive and have the following syntax:field = value AND field = value ...
@@ -3920,7 +3920,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
@@ -3931,8 +3931,7 @@ module Google
         #   forcefully removing nodes (and potentially interrupting jobs). Default timeout
         #   is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (
         #   see JSON representation of Duration (https://developers.google.com/protocol-
-        #   buffers/docs/proto3#json)).Only supported on Dataproc image versions 1.2 and
-        #   higher.
+        #   buffers/docs/proto3#json)).Supported in image versions 1.2 and higher.
         # @param [String] request_id
         #   Optional. A unique ID used to identify the request. If the server receives two
         #   UpdateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
@@ -3995,7 +3994,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::RepairClusterRequest] repair_cluster_request_object
@@ -4071,7 +4070,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::StartClusterRequest] start_cluster_request_object
@@ -4110,7 +4109,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::StopClusterRequest] stop_cluster_request_object
