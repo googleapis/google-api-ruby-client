@@ -1,5 +1,10 @@
 # Release history for google-apis-cloudlocationfinder_v1alpha
 
+### v0.8.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260527
+* Regenerated using generator version 0.19.0
+
 ### v0.7.0 (2026-05-03)
 
 * Regenerated from discovery document revision 20260422
