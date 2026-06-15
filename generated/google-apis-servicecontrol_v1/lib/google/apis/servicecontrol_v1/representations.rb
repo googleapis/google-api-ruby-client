@@ -459,6 +459,7 @@ module Google
           collection :access_levels, as: 'accessLevels'
           collection :audiences, as: 'audiences'
           hash :claims, as: 'claims'
+          property :credential_id, as: 'credentialId'
           property :oauth, as: 'oauth', class: Google::Apis::ServicecontrolV1::Oauth, decorator: Google::Apis::ServicecontrolV1::Oauth::Representation
       
           property :presenter, as: 'presenter'
