@@ -2938,6 +2938,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2969,6 +2975,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3682,6 +3694,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3713,6 +3731,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8930,6 +8954,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :suggested_query, as: 'suggestedQuery', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8983,6 +9015,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query_text, as: 'queryText'
+          collection :search_contexts, as: 'searchContexts', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -9225,6 +9267,8 @@ module Google
       class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_suggested_query_results, as: 'additionalSuggestedQueryResults', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult::Representation
+      
           property :context_size, as: 'contextSize'
           property :knowledge_assist_answer, as: 'knowledgeAssistAnswer', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswer, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2KnowledgeAssistAnswer::Representation
       
@@ -10239,6 +10283,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :suggested_query, as: 'suggestedQuery', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10292,6 +10344,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query_text, as: 'queryText'
+          collection :search_contexts, as: 'searchContexts', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -10606,6 +10668,8 @@ module Google
       class GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_suggested_query_results, as: 'additionalSuggestedQueryResults', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult::Representation
+      
           property :context_size, as: 'contextSize'
           property :knowledge_assist_answer, as: 'knowledgeAssistAnswer', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer::Representation
       
