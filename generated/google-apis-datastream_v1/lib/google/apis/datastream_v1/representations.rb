@@ -136,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataverseProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataverseSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DebugInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -484,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OauthClientCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ObjectFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -700,6 +718,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SalesforceMarketingCloudProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SalesforceMarketingCloudSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SalesforceObject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -730,6 +760,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerAndClientVerification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -742,7 +778,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceNowProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceNowSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SingleTargetDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceCatalog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -760,7 +814,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SourceObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceProperty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -964,6 +1030,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserPasswordCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Validation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1010,6 +1082,8 @@ module Google
           property :oracle_excluded_objects, as: 'oracleExcludedObjects', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
       
           property :postgresql_excluded_objects, as: 'postgresqlExcludedObjects', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
+      
+          property :saas_excluded_objects, as: 'saasExcludedObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
       
           property :salesforce_excluded_objects, as: 'salesforceExcludedObjects', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
       
@@ -1148,6 +1222,8 @@ module Google
           property :bigquery_profile, as: 'bigqueryProfile', class: Google::Apis::DatastreamV1::BigQueryProfile, decorator: Google::Apis::DatastreamV1::BigQueryProfile::Representation
       
           property :create_time, as: 'createTime'
+          property :dataverse_profile, as: 'dataverseProfile', class: Google::Apis::DatastreamV1::DataverseProfile, decorator: Google::Apis::DatastreamV1::DataverseProfile::Representation
+      
           property :display_name, as: 'displayName'
           property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatastreamV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatastreamV1::ForwardSshTunnelConnectivity::Representation
       
@@ -1165,10 +1241,14 @@ module Google
       
           property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatastreamV1::PrivateConnectivity, decorator: Google::Apis::DatastreamV1::PrivateConnectivity::Representation
       
+          property :salesforce_marketing_cloud_profile, as: 'salesforceMarketingCloudProfile', class: Google::Apis::DatastreamV1::SalesforceMarketingCloudProfile, decorator: Google::Apis::DatastreamV1::SalesforceMarketingCloudProfile::Representation
+      
           property :salesforce_profile, as: 'salesforceProfile', class: Google::Apis::DatastreamV1::SalesforceProfile, decorator: Google::Apis::DatastreamV1::SalesforceProfile::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :service_now_profile, as: 'serviceNowProfile', class: Google::Apis::DatastreamV1::ServiceNowProfile, decorator: Google::Apis::DatastreamV1::ServiceNowProfile::Representation
+      
           property :spanner_profile, as: 'spannerProfile', class: Google::Apis::DatastreamV1::SpannerProfile, decorator: Google::Apis::DatastreamV1::SpannerProfile::Representation
       
           property :sql_server_profile, as: 'sqlServerProfile', class: Google::Apis::DatastreamV1::SqlServerProfile, decorator: Google::Apis::DatastreamV1::SqlServerProfile::Representation
@@ -1195,6 +1275,27 @@ module Google
           property :dataset_id_prefix, as: 'datasetIdPrefix'
           property :kms_key_name, as: 'kmsKeyName'
           property :location, as: 'location'
+        end
+      end
+      
+      class DataverseProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment_url, as: 'environmentUrl'
+          property :oauth_client_credentials, as: 'oauthClientCredentials', class: Google::Apis::DatastreamV1::OauthClientCredentials, decorator: Google::Apis::DatastreamV1::OauthClientCredentials::Representation
+      
+          property :tenant_id, as: 'tenantId'
+        end
+      end
+      
+      class DataverseSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :polling_interval, as: 'pollingInterval'
         end
       end
       
@@ -1235,6 +1336,8 @@ module Google
       
           property :salesforce_org, as: 'salesforceOrg', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
       
+          property :source_catalog, as: 'sourceCatalog', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
           property :spanner_database, as: 'spannerDatabase', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
       
           property :sql_server_rdbms, as: 'sqlServerRdbms', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
@@ -1254,6 +1357,8 @@ module Google
           property :postgresql_rdbms, as: 'postgresqlRdbms', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
       
           property :salesforce_org, as: 'salesforceOrg', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
+      
+          property :source_catalog, as: 'sourceCatalog', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
       
           property :spanner_database, as: 'spannerDatabase', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
       
@@ -1754,6 +1859,15 @@ module Google
         end
       end
       
+      class OauthClientCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret', class: Google::Apis::DatastreamV1::Secret, decorator: Google::Apis::DatastreamV1::Secret::Representation
+      
+        end
+      end
+      
       class ObjectFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2136,6 +2250,27 @@ module Google
         end
       end
       
+      class SalesforceMarketingCloudProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth_client_credentials, as: 'oauthClientCredentials', class: Google::Apis::DatastreamV1::OauthClientCredentials, decorator: Google::Apis::DatastreamV1::OauthClientCredentials::Representation
+      
+          property :subdomain, as: 'subdomain'
+        end
+      end
+      
+      class SalesforceMarketingCloudSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :full_refresh_polling_interval, as: 'fullRefreshPollingInterval'
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :polling_interval, as: 'pollingInterval'
+        end
+      end
+      
       class SalesforceObject
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2182,6 +2317,14 @@ module Google
         end
       end
       
+      class Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :raw_value, as: 'rawValue'
+          property :secret_version, as: 'secretVersion'
+        end
+      end
+      
       class ServerAndClientVerification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2200,6 +2343,28 @@ module Google
         end
       end
       
+      class ServiceNowProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :oauth_client_credentials, as: 'oauthClientCredentials', class: Google::Apis::DatastreamV1::OauthClientCredentials, decorator: Google::Apis::DatastreamV1::OauthClientCredentials::Representation
+      
+          property :user_password_credentials, as: 'userPasswordCredentials', class: Google::Apis::DatastreamV1::UserPasswordCredentials, decorator: Google::Apis::DatastreamV1::UserPasswordCredentials::Representation
+      
+        end
+      end
+      
+      class ServiceNowSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :polling_interval, as: 'pollingInterval'
+        end
+      end
+      
       class SingleTargetDataset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2207,9 +2372,19 @@ module Google
         end
       end
       
+      class SourceCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :objects, as: 'objects', class: Google::Apis::DatastreamV1::SourceObject, decorator: Google::Apis::DatastreamV1::SourceObject::Representation
+      
+        end
+      end
+      
       class SourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataverse_source_config, as: 'dataverseSourceConfig', class: Google::Apis::DatastreamV1::DataverseSourceConfig, decorator: Google::Apis::DatastreamV1::DataverseSourceConfig::Representation
+      
           property :mongodb_source_config, as: 'mongodbSourceConfig', class: Google::Apis::DatastreamV1::MongodbSourceConfig, decorator: Google::Apis::DatastreamV1::MongodbSourceConfig::Representation
       
           property :mysql_source_config, as: 'mysqlSourceConfig', class: Google::Apis::DatastreamV1::MysqlSourceConfig, decorator: Google::Apis::DatastreamV1::MysqlSourceConfig::Representation
@@ -2218,7 +2393,11 @@ module Google
       
           property :postgresql_source_config, as: 'postgresqlSourceConfig', class: Google::Apis::DatastreamV1::PostgresqlSourceConfig, decorator: Google::Apis::DatastreamV1::PostgresqlSourceConfig::Representation
       
+          property :salesforce_marketing_cloud_source_config, as: 'salesforceMarketingCloudSourceConfig', class: Google::Apis::DatastreamV1::SalesforceMarketingCloudSourceConfig, decorator: Google::Apis::DatastreamV1::SalesforceMarketingCloudSourceConfig::Representation
+      
           property :salesforce_source_config, as: 'salesforceSourceConfig', class: Google::Apis::DatastreamV1::SalesforceSourceConfig, decorator: Google::Apis::DatastreamV1::SalesforceSourceConfig::Representation
+      
+          property :service_now_source_config, as: 'serviceNowSourceConfig', class: Google::Apis::DatastreamV1::ServiceNowSourceConfig, decorator: Google::Apis::DatastreamV1::ServiceNowSourceConfig::Representation
       
           property :source_connection_profile, as: 'sourceConnectionProfile'
           property :spanner_source_config, as: 'spannerSourceConfig', class: Google::Apis::DatastreamV1::SpannerSourceConfig, decorator: Google::Apis::DatastreamV1::SpannerSourceConfig::Representation
@@ -2234,6 +2413,15 @@ module Google
           property :dataset_template, as: 'datasetTemplate', class: Google::Apis::DatastreamV1::DatasetTemplate, decorator: Google::Apis::DatastreamV1::DatasetTemplate::Representation
       
           property :project_id, as: 'projectId'
+        end
+      end
+      
+      class SourceObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_name, as: 'objectName'
+          collection :properties, as: 'properties', class: Google::Apis::DatastreamV1::SourceProperty, decorator: Google::Apis::DatastreamV1::SourceProperty::Representation
+      
         end
       end
       
@@ -2254,6 +2442,16 @@ module Google
       
           property :sql_server_identifier, as: 'sqlServerIdentifier', class: Google::Apis::DatastreamV1::SqlServerObjectIdentifier, decorator: Google::Apis::DatastreamV1::SqlServerObjectIdentifier::Representation
       
+        end
+      end
+      
+      class SourceProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_key, as: 'primaryKey'
+          collection :properties, as: 'properties', class: Google::Apis::DatastreamV1::SourceProperty, decorator: Google::Apis::DatastreamV1::SourceProperty::Representation
+      
+          property :property_name, as: 'propertyName'
         end
       end
       
@@ -2584,6 +2782,15 @@ module Google
           property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
           property :secret_manager_stored_security_token, as: 'secretManagerStoredSecurityToken'
           property :security_token, as: 'securityToken'
+          property :username, as: 'username'
+        end
+      end
+      
+      class UserPasswordCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password, as: 'password', class: Google::Apis::DatastreamV1::Secret, decorator: Google::Apis::DatastreamV1::Secret::Representation
+      
           property :username, as: 'username'
         end
       end
