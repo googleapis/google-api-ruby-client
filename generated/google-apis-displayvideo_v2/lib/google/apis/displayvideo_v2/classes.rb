@@ -1108,6 +1108,13 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::YoutubeChannelAssignedTargetingOptionDetails]
         attr_accessor :youtube_channel_details
       
+        # Details for YouTube channel pack assigned targeting option. This will be
+        # populated in the youtube_channel_pack_details field when targeting_type is `
+        # TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+        # Corresponds to the JSON property `youtubeChannelPackDetails`
+        # @return [Google::Apis::DisplayvideoV2::YoutubeChannelPackAssignedTargetingOptionDetails]
+        attr_accessor :youtube_channel_pack_details
+      
         # Details for YouTube video assigned targeting option. This will be populated in
         # the youtube_video_details field when targeting_type is `
         # TARGETING_TYPE_YOUTUBE_VIDEO`.
@@ -1173,6 +1180,7 @@ module Google
           @video_player_size_details = args[:video_player_size_details] if args.key?(:video_player_size_details)
           @viewability_details = args[:viewability_details] if args.key?(:viewability_details)
           @youtube_channel_details = args[:youtube_channel_details] if args.key?(:youtube_channel_details)
+          @youtube_channel_pack_details = args[:youtube_channel_pack_details] if args.key?(:youtube_channel_pack_details)
           @youtube_video_details = args[:youtube_video_details] if args.key?(:youtube_video_details)
         end
       end
@@ -3350,7 +3358,8 @@ module Google
         # model can be set by you for a floodlight config or group. More details [here](
         # https://support.google.com/displayvideo/answer/7409983). Only applicable to
         # Demand Gen line items. Retrieval and management of Demand Gen resources is
-        # currently in beta. This field is only available to allowlisted users.
+        # currently in beta. This field will begin rolling out to all partners on *June
+        # 10, 2026* and be available to all partners on *June 24, 2026*.
         # Corresponds to the JSON property `primaryAttributionModelId`
         # @return [Fixnum]
         attr_accessor :primary_attribution_model_id
@@ -10004,8 +10013,9 @@ module Google
       
         # Optional. Whether to exclude demographic expansion for Optimized Targeting.
         # This field can only be set for Demand Gen ad groups. Retrieval and management
-        # of Demand Gen resources is currently in beta. This field is only available to
-        # allowlisted users.
+        # of Demand Gen resources is currently in beta. This field will begin rolling
+        # out to all partners on *June 10, 2026* and be available to all partners on *
+        # June 24, 2026*.
         # Corresponds to the JSON property `excludeDemographicExpansion`
         # @return [Boolean]
         attr_accessor :exclude_demographic_expansion
@@ -11579,6 +11589,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @negative = args[:negative] if args.key?(:negative)
+        end
+      end
+      
+      # Details for YouTube channel pack assigned targeting option. This will be
+      # populated in the youtube_channel_pack_details field when targeting_type is `
+      # TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+      class YoutubeChannelPackAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the YouTube channel pack.
+        # Corresponds to the JSON property `channelPackId`
+        # @return [Fixnum]
+        attr_accessor :channel_pack_id
+      
+        # Optional. Indicates if this option is being negatively targeted.
+        # Corresponds to the JSON property `negative`
+        # @return [Boolean]
+        attr_accessor :negative
+        alias_method :negative?, :negative
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_pack_id = args[:channel_pack_id] if args.key?(:channel_pack_id)
           @negative = args[:negative] if args.key?(:negative)
         end
       end
