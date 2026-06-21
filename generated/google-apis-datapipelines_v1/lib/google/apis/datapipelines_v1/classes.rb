@@ -544,8 +544,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Immutable. The sources of the pipeline (for example, Dataplex). The keys and
-        # values are set by the corresponding sources during pipeline creation.
+        # Immutable. The sources of the pipeline (for example, Knowledge Catalog). The
+        # keys and values are set by the corresponding sources during pipeline creation.
         # Corresponds to the JSON property `pipelineSources`
         # @return [Hash<String,String>]
         attr_accessor :pipeline_sources
