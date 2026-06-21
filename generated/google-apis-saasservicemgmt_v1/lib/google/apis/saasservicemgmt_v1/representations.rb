@@ -106,12 +106,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListSaasReleasesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListSaasResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,18 +113,6 @@ module Google
       end
       
       class ListTenantsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListUnitGroupOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListUnitGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,12 +208,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SaasRelease
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,18 +245,6 @@ module Google
       end
       
       class UnitDependency
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UnitGroup
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UnitGroupOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -445,16 +409,6 @@ module Google
         end
       end
       
-      class ListSaasReleasesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :saas_releases, as: 'saasReleases', class: Google::Apis::SaasservicemgmtV1::SaasRelease, decorator: Google::Apis::SaasservicemgmtV1::SaasRelease::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListSaasResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -470,26 +424,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :tenants, as: 'tenants', class: Google::Apis::SaasservicemgmtV1::Tenant, decorator: Google::Apis::SaasservicemgmtV1::Tenant::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListUnitGroupOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :unit_group_operations, as: 'unitGroupOperations', class: Google::Apis::SaasservicemgmtV1::UnitGroupOperation, decorator: Google::Apis::SaasservicemgmtV1::UnitGroupOperation::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListUnitGroupsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :unit_groups, as: 'unitGroups', class: Google::Apis::SaasservicemgmtV1::UnitGroup, decorator: Google::Apis::SaasservicemgmtV1::UnitGroup::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -687,19 +621,6 @@ module Google
         end
       end
       
-      class SaasRelease
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :annotations, as: 'annotations'
-          property :create_time, as: 'createTime'
-          property :etag, as: 'etag'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :uid, as: 'uid'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
       class Schedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -773,7 +694,6 @@ module Google
           property :system_managed_state, as: 'systemManagedState'
           property :tenant, as: 'tenant'
           property :uid, as: 'uid'
-          property :unit_group, as: 'unitGroup'
           property :unit_kind, as: 'unitKind'
           property :update_time, as: 'updateTime'
         end
@@ -795,32 +715,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alias, as: 'alias'
           property :unit, as: 'unit'
-        end
-      end
-      
-      class UnitGroup
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :annotations, as: 'annotations'
-          property :create_time, as: 'createTime'
-          property :etag, as: 'etag'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :uid, as: 'uid'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class UnitGroupOperation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :annotations, as: 'annotations'
-          property :create_time, as: 'createTime'
-          property :etag, as: 'etag'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :uid, as: 'uid'
-          property :update_time, as: 'updateTime'
         end
       end
       
