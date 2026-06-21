@@ -13146,6 +13146,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # 
         # Corresponds to the JSON property `suggestedQuery`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery]
         attr_accessor :suggested_query
@@ -13156,6 +13161,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
           @suggested_query = args[:suggested_query] if args.key?(:suggested_query)
         end
       end
@@ -20731,6 +20737,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # 
         # Corresponds to the JSON property `suggestedQuery`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery]
         attr_accessor :suggested_query
@@ -20741,6 +20752,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
           @suggested_query = args[:suggested_query] if args.key?(:suggested_query)
         end
       end
