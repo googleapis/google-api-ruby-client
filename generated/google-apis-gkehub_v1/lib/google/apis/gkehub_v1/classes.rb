@@ -214,6 +214,33 @@ module Google
         end
       end
       
+      # Configuration for automatic upgrades.
+      class AutoUpgradeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Mandatory Safety Policies (Always active) which cannot be
+        # disabled. The key is the policy ID (e.g., "ENFORCED_CONTROL_PLANE_PATCH") and
+        # the value is a human-readable description.
+        # Corresponds to the JSON property `enforcedRollouts`
+        # @return [Hash<String,String>]
+        attr_accessor :enforced_rollouts
+      
+        # The scope for automatic rollout creation.
+        # Corresponds to the JSON property `rolloutCreationScope`
+        # @return [Google::Apis::GkehubV1::RolloutCreationScope]
+        attr_accessor :rollout_creation_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enforced_rollouts = args[:enforced_rollouts] if args.key?(:enforced_rollouts)
+          @rollout_creation_scope = args[:rollout_creation_scope] if args.key?(:rollout_creation_scope)
+        end
+      end
+      
       # BinaryAuthorizationConfig defines the fleet level configuration of binary
       # authorization feature.
       class BinaryAuthorizationConfig
@@ -351,6 +378,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for cancelling a rollout.
+      class CancelRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Selector for clusters.
+      class ClusterSelector
+        include Google::Apis::Core::Hashable
+      
+        # Required. A valid CEL (Common Expression Language) expression which evaluates `
+        # resource.labels`.
+        # Corresponds to the JSON property `labelSelector`
+        # @return [String]
+        attr_accessor :label_selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_selector = args[:label_selector] if args.key?(:label_selector)
         end
       end
       
@@ -2714,6 +2774,25 @@ module Google
         end
       end
       
+      # Request message for force-completing a rollout stage.
+      class ForceCompleteRolloutStageRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The stage number to force-complete.
+        # Corresponds to the JSON property `stageNumber`
+        # @return [Fixnum]
+        attr_accessor :stage_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage_number = args[:stage_number] if args.key?(:stage_number)
+        end
+      end
+      
       # GenerateConnectManifestResponse contains manifest information for installing/
       # upgrading a Connect agent.
       class GenerateConnectManifestResponse
@@ -3846,6 +3925,58 @@ module Google
         end
       end
       
+      # Response message for listing rollout sequences.
+      class ListRolloutSequencesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The rollout sequences from the specified parent resource.
+        # Corresponds to the JSON property `rolloutSequences`
+        # @return [Array<Google::Apis::GkehubV1::RolloutSequence>]
+        attr_accessor :rollout_sequences
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rollout_sequences = args[:rollout_sequences] if args.key?(:rollout_sequences)
+        end
+      end
+      
+      # Response message for listing rollouts.
+      class ListRolloutsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The rollouts from the specified parent resource.
+        # Corresponds to the JSON property `rollouts`
+        # @return [Array<Google::Apis::GkehubV1::Rollout>]
+        attr_accessor :rollouts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rollouts = args[:rollouts] if args.key?(:rollouts)
+        end
+      end
+      
       # List of fleet namespaces.
       class ListScopeNamespacesResponse
         include Google::Apis::Core::Hashable
@@ -4756,6 +4887,38 @@ module Google
         end
       end
       
+      # Operational state of the Rollout Sequence.
+      class OperationalState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Reasons for the Rollout Sequence state.
+        # Corresponds to the JSON property `reasons`
+        # @return [Array<String>]
+        attr_accessor :reasons
+      
+        # Output only. State of the Rollout Sequence.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The timestamp at which the operational state was last changed.
+        # Used to track how long it has been in the current state.
+        # Corresponds to the JSON property `stateChangeTime`
+        # @return [String]
+        attr_accessor :state_change_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reasons = args[:reasons] if args.key?(:reasons)
+          @state = args[:state] if args.key?(:state)
+          @state_change_time = args[:state_change_time] if args.key?(:state_change_time)
+        end
+      end
+      
       # Origin defines where this MembershipFeatureSpec originated from.
       class Origin
         include Google::Apis::Core::Hashable
@@ -4772,6 +4935,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Request message for pausing a rollout.
+      class PauseRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5523,6 +5699,32 @@ module Google
         end
       end
       
+      # Request message for resuming a rollout.
+      class ResumeRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The duration to offset the Rollout schedule by.
+        # Corresponds to the JSON property `scheduleOffset`
+        # @return [String]
+        attr_accessor :schedule_offset
+      
+        # Optional. If set, resume rollout will be executed in dry-run mode.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schedule_offset = args[:schedule_offset] if args.key?(:schedule_offset)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Role is the type for Kubernetes roles
       class Role
         include Google::Apis::Core::Hashable
@@ -5545,6 +5747,417 @@ module Google
         def update!(**args)
           @custom_role = args[:custom_role] if args.key?(:custom_role)
           @predefined_role = args[:predefined_role] if args.key?(:predefined_role)
+        end
+      end
+      
+      # Rollout contains the Rollout metadata and configuration. Next ID: 28
+      class Rollout
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp at which the Rollout was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Output only. The timestamp at which the Rollout was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The timestamp at the Rollout was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. Human readable display name of the Rollout.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. etag of the Rollout Ex. abc1234
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The intent of the rollout.
+        # Corresponds to the JSON property `intent`
+        # @return [String]
+        attr_accessor :intent
+      
+        # Optional. Labels for this Rollout.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. States of upgrading control plane or node pool targets of a
+        # single cluster (GKE Hub membership) that's part of this Rollout. The key is
+        # the membership name of the cluster. The value is the state of the cluster.
+        # Corresponds to the JSON property `membershipStates`
+        # @return [Hash<String,Google::Apis::GkehubV1::RolloutMembershipState>]
+        attr_accessor :membership_states
+      
+        # Identifier. The full, unique resource name of this Rollout in the format of `
+        # projects/`project`/locations/global/rollouts/`rollout``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Immutable. The full, unique resource name of the rollout sequence
+        # that initiatied this Rollout. In the format of `projects/`project`/locations/
+        # global/rolloutSequences/`rollout_sequence``.
+        # Corresponds to the JSON property `rolloutSequence`
+        # @return [String]
+        attr_accessor :rollout_sequence
+      
+        # Output only. The stages of the Rollout.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::GkehubV1::RolloutStage>]
+        attr_accessor :stages
+      
+        # Output only. State specifies various states of the Rollout.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A human-readable description explaining the reason for the
+        # current state.
+        # Corresponds to the JSON property `stateReason`
+        # @return [String]
+        attr_accessor :state_reason
+      
+        # Output only. StateReasonType specifies the reason type of the Rollout state.
+        # Corresponds to the JSON property `stateReasonType`
+        # @return [String]
+        attr_accessor :state_reason_type
+      
+        # Output only. The trigger of the rollout.
+        # Corresponds to the JSON property `trigger`
+        # @return [String]
+        attr_accessor :trigger
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all Rollout resources. If a Rollout resource is deleted and another resource
+        # with the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp at which the Rollout was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Config for version upgrade of clusters.
+        # Corresponds to the JSON property `versionUpgrade`
+        # @return [Google::Apis::GkehubV1::VersionUpgrade]
+        attr_accessor :version_upgrade
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @intent = args[:intent] if args.key?(:intent)
+          @labels = args[:labels] if args.key?(:labels)
+          @membership_states = args[:membership_states] if args.key?(:membership_states)
+          @name = args[:name] if args.key?(:name)
+          @rollout_sequence = args[:rollout_sequence] if args.key?(:rollout_sequence)
+          @stages = args[:stages] if args.key?(:stages)
+          @state = args[:state] if args.key?(:state)
+          @state_reason = args[:state_reason] if args.key?(:state_reason)
+          @state_reason_type = args[:state_reason_type] if args.key?(:state_reason_type)
+          @trigger = args[:trigger] if args.key?(:trigger)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version_upgrade = args[:version_upgrade] if args.key?(:version_upgrade)
+        end
+      end
+      
+      # The scope for automatic rollout creation.
+      class RolloutCreationScope
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of enabled upgrade types.
+        # Corresponds to the JSON property `upgradeTypes`
+        # @return [Array<String>]
+        attr_accessor :upgrade_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upgrade_types = args[:upgrade_types] if args.key?(:upgrade_types)
+        end
+      end
+      
+      # Metadata about single cluster (GKE Hub membership) that's part of this Rollout.
+      class RolloutMembershipState
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. The time this status and any related Rollout-specific
+        # details for the membership were updated.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # Output only. The stage assignment of this cluster in this rollout.
+        # Corresponds to the JSON property `stageAssignment`
+        # @return [Fixnum]
+        attr_accessor :stage_assignment
+      
+        # Output only. The targets of the rollout - clusters or node pools that are
+        # being upgraded. All targets belongs to the same cluster, identified by the
+        # membership name (key of membership_states map).
+        # Corresponds to the JSON property `targets`
+        # @return [Array<Google::Apis::GkehubV1::RolloutTarget>]
+        attr_accessor :targets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @stage_assignment = args[:stage_assignment] if args.key?(:stage_assignment)
+          @targets = args[:targets] if args.key?(:targets)
+        end
+      end
+      
+      # RolloutSequence defines the desired order of upgrades. Next ID: 20
+      class RolloutSequence
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for automatic upgrades.
+        # Corresponds to the JSON property `autoUpgradeConfig`
+        # @return [Google::Apis::GkehubV1::AutoUpgradeConfig]
+        attr_accessor :auto_upgrade_config
+      
+        # Output only. The computed release channel used for the Rollout Sequence.
+        # Corresponds to the JSON property `computedReleaseChannel`
+        # @return [String]
+        attr_accessor :computed_release_channel
+      
+        # Output only. The timestamp at which the Rollout Sequence was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The timestamp at the Rollout Sequence was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. Human readable display name of the Rollout Sequence.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Configuration for automatic upgrades.
+        # Corresponds to the JSON property `effectiveAutoUpgradeConfig`
+        # @return [Google::Apis::GkehubV1::AutoUpgradeConfig]
+        attr_accessor :effective_auto_upgrade_config
+      
+        # Output only. etag of the Rollout Sequence Ex. abc1234
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Selector for clusters.
+        # Corresponds to the JSON property `ignoredClustersSelector`
+        # @return [Google::Apis::GkehubV1::ClusterSelector]
+        attr_accessor :ignored_clusters_selector
+      
+        # Optional. Labels for this Rollout Sequence.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The last qualified control plane version.
+        # Corresponds to the JSON property `lastQualifiedControlPlaneVersion`
+        # @return [String]
+        attr_accessor :last_qualified_control_plane_version
+      
+        # Output only. The last qualified node version.
+        # Corresponds to the JSON property `lastQualifiedNodeVersion`
+        # @return [String]
+        attr_accessor :last_qualified_node_version
+      
+        # Identifier. Name of the rollout sequence in the format of: projects/`
+        # PROJECT_ID`/locations/global/rolloutSequences/`NAME`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Operational state of the Rollout Sequence.
+        # Corresponds to the JSON property `operationalState`
+        # @return [Google::Apis::GkehubV1::OperationalState]
+        attr_accessor :operational_state
+      
+        # Required. Ordered list of stages that constitutes this Rollout.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::GkehubV1::Stage>]
+        attr_accessor :stages
+      
+        # Output only. The target control plane version of the Rollout Sequence.
+        # Corresponds to the JSON property `targetControlPlaneVersion`
+        # @return [String]
+        attr_accessor :target_control_plane_version
+      
+        # Output only. The target node version of the Rollout Sequence.
+        # Corresponds to the JSON property `targetNodeVersion`
+        # @return [String]
+        attr_accessor :target_node_version
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all Rollout Sequence resources. If a Rollout Sequence resource is deleted and
+        # another resource with the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp at which the Rollout Sequence was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_upgrade_config = args[:auto_upgrade_config] if args.key?(:auto_upgrade_config)
+          @computed_release_channel = args[:computed_release_channel] if args.key?(:computed_release_channel)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @effective_auto_upgrade_config = args[:effective_auto_upgrade_config] if args.key?(:effective_auto_upgrade_config)
+          @etag = args[:etag] if args.key?(:etag)
+          @ignored_clusters_selector = args[:ignored_clusters_selector] if args.key?(:ignored_clusters_selector)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_qualified_control_plane_version = args[:last_qualified_control_plane_version] if args.key?(:last_qualified_control_plane_version)
+          @last_qualified_node_version = args[:last_qualified_node_version] if args.key?(:last_qualified_node_version)
+          @name = args[:name] if args.key?(:name)
+          @operational_state = args[:operational_state] if args.key?(:operational_state)
+          @stages = args[:stages] if args.key?(:stages)
+          @target_control_plane_version = args[:target_control_plane_version] if args.key?(:target_control_plane_version)
+          @target_node_version = args[:target_node_version] if args.key?(:target_node_version)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Stage represents a single stage in the Rollout.
+      class RolloutStage
+        include Google::Apis::Core::Hashable
+      
+        # Selector for clusters.
+        # Corresponds to the JSON property `clusterSelector`
+        # @return [Google::Apis::GkehubV1::ClusterSelector]
+        attr_accessor :cluster_selector
+      
+        # Optional. Output only. The time at which the stage ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The fleet projects from the sequence that was used to create this
+        # stage. Expected format: projects/`project_number`
+        # Corresponds to the JSON property `fleetProjects`
+        # @return [Array<String>]
+        attr_accessor :fleet_projects
+      
+        # Optional. Duration to soak after this stage before starting the next stage.
+        # Corresponds to the JSON property `soakDuration`
+        # @return [String]
+        attr_accessor :soak_duration
+      
+        # Output only. The stage number to which this status applies.
+        # Corresponds to the JSON property `stageNumber`
+        # @return [Fixnum]
+        attr_accessor :stage_number
+      
+        # Optional. Output only. The time at which the stage started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The state of the stage.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_selector = args[:cluster_selector] if args.key?(:cluster_selector)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @fleet_projects = args[:fleet_projects] if args.key?(:fleet_projects)
+          @soak_duration = args[:soak_duration] if args.key?(:soak_duration)
+          @stage_number = args[:stage_number] if args.key?(:stage_number)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Metadata about the status of targets (clusters or node pools) involved in the
+      # Rollout.
+      class RolloutTarget
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. The resource link of the Cluster resource upgraded in
+        # this Rollout. It is formatted as: `//`api_service`/projects/`project_number`/
+        # locations/`location`/clusters/`cluster_name``. .
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Optional. Output only. The resource link of the NodePool resource upgraded in
+        # this Rollout. It is formatted as: `//`api_service`/projects/`project_number`/
+        # locations/`location`/clusters/`cluster_name`/nodePools/`node_pool_name``.
+        # Corresponds to the JSON property `nodePool`
+        # @return [String]
+        attr_accessor :node_pool
+      
+        # Optional. Output only. The operation resource name performing the mutation.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # Optional. Output only. A human-readable description of the current status.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Output only. The high-level, machine-readable status of this Rollout for the
+        # target.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @node_pool = args[:node_pool] if args.key?(:node_pool)
+          @operation = args[:operation] if args.key?(:operation)
+          @reason = args[:reason] if args.key?(:reason)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -5932,6 +6545,38 @@ module Google
         end
       end
       
+      # Rollout stage.
+      class Stage
+        include Google::Apis::Core::Hashable
+      
+        # Selector for clusters.
+        # Corresponds to the JSON property `clusterSelector`
+        # @return [Google::Apis::GkehubV1::ClusterSelector]
+        attr_accessor :cluster_selector
+      
+        # Required. List of Fleet projects to select the clusters from. Expected format:
+        # projects/`project`
+        # Corresponds to the JSON property `fleetProjects`
+        # @return [Array<String>]
+        attr_accessor :fleet_projects
+      
+        # Optional. Soak time after upgrading all the clusters in the stage.
+        # Corresponds to the JSON property `soakDuration`
+        # @return [String]
+        attr_accessor :soak_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_selector = args[:cluster_selector] if args.key?(:cluster_selector)
+          @fleet_projects = args[:fleet_projects] if args.key?(:fleet_projects)
+          @soak_duration = args[:soak_duration] if args.key?(:soak_duration)
+        end
+      end
+      
       # Status specifies state for the subcomponent.
       class Status
         include Google::Apis::Core::Hashable
@@ -6020,6 +6665,74 @@ module Google
         def update!(**args)
           @api_version = args[:api_version] if args.key?(:api_version)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Request message for upgrading a rollout sequence.
+      class UpgradeRolloutSequenceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, any rollout already running on the first stage of
+        # the sequence will be cancelled to allow for the creation of the new rollout.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Required. The type of upgrade.
+        # Corresponds to the JSON property `upgradeType`
+        # @return [String]
+        attr_accessor :upgrade_type
+      
+        # Required. GKE version to upgrade to. A valid GKE version available on the
+        # release channel used by the sequence. Patch versions from less conservative
+        # channels are allowed if their minor version is already available in the
+        # sequence's channel. This is similar to single-cluster upgrade rules, see https:
+        # //cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster#supported-
+        # versions Example: With the following versions available on the RAPID and
+        # REGULAR channels: * REGULAR: 1.35.3-gke.123000 * RAPID: 1.36.4-gke.321000, 1.
+        # 35.6-gke.045000 Valid versions are 1.35.3-gke.123, 1.35.6-gke.045000 Aliases
+        # like `latest` are supported. For more information on valid upgrade versions
+        # and specifying cluster versions, see: https://cloud.google.com/kubernetes-
+        # engine/versioning#specifying_cluster_version
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+          @upgrade_type = args[:upgrade_type] if args.key?(:upgrade_type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Config for version upgrade of clusters.
+      class VersionUpgrade
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Desired version of the component.
+        # Corresponds to the JSON property `desiredVersion`
+        # @return [String]
+        attr_accessor :desired_version
+      
+        # Optional. Type of version upgrade specifies which component should be upgraded.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @desired_version = args[:desired_version] if args.key?(:desired_version)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
