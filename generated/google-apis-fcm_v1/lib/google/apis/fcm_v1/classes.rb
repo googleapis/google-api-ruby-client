@@ -703,6 +703,11 @@ module Google
         # @return [Google::Apis::FcmV1::FcmOptions]
         attr_accessor :fcm_options
       
+        # Optional. Firebase Installation ID to send a message to.
+        # Corresponds to the JSON property `fid`
+        # @return [String]
+        attr_accessor :fid
+      
         # Output Only. The identifier of the message sent, in the format of `projects/*/
         # messages/`message_id``.
         # Corresponds to the JSON property `name`
@@ -714,7 +719,9 @@ module Google
         # @return [Google::Apis::FcmV1::Notification]
         attr_accessor :notification
       
-        # Registration token to send a message to.
+        # Deprecated: Use `fid` instead. Registration token to send a message to. During
+        # the transition period, this field also accepts a Firebase Installation ID (FID)
+        # .
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -741,6 +748,7 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @data = args[:data] if args.key?(:data)
           @fcm_options = args[:fcm_options] if args.key?(:fcm_options)
+          @fid = args[:fid] if args.key?(:fid)
           @name = args[:name] if args.key?(:name)
           @notification = args[:notification] if args.key?(:notification)
           @token = args[:token] if args.key?(:token)
