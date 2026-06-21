@@ -9603,6 +9603,7 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
           property :suggested_query, as: 'suggestedQuery', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery::Representation
       
         end
@@ -10932,6 +10933,7 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
           property :suggested_query, as: 'suggestedQuery', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery::Representation
       
         end
