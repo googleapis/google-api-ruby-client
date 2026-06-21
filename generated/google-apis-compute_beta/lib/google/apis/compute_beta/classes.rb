@@ -22971,6 +22971,27 @@ module Google
         end
       end
       
+      # Represents a read-only view of a global Image resource.
+      class ImageView
+        include Google::Apis::Core::Hashable
+      
+        # Represents an Image resource.
+        # You can use images to create boot disks for your VM instances.
+        # For more information, read Images.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ComputeBeta::Image]
+        attr_accessor :image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image = args[:image] if args.key?(:image)
+        end
+      end
+      
       # Initial State for shielded instance,
       # these are public keys which are safe to store in public
       class InitialStateConfig
@@ -24823,13 +24844,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The action that a MIG performs on a failed VM. If the value of the
-        # onFailedHealthCheck field
-        # is `DEFAULT_ACTION`, then the same action also applies to the VMs on which
-        # your application
-        # fails a health check. Valid values are - REPAIR (default): MIG automatically
-        # repairs a failed
-        # VM by recreating it. For more information, seeAbout repairing
-        # VMs in a MIG. - DO_NOTHING: MIG does not repair a failed VM.
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check.
+        # Valid values are
+        # 
+        # - REPAIR (default): MIG automatically repairs a failed VM
+        # by recreating it. For more information, see About
+        # repairing VMs in a MIG.
+        # - DO_NOTHING: MIG does not repair a failed VM.
         # Corresponds to the JSON property `defaultActionOnFailure`
         # @return [String]
         attr_accessor :default_action_on_failure
@@ -52124,6 +52146,11 @@ module Google
       class ReservationBlock
         include Google::Apis::Core::Hashable
       
+        # Health information for the reservation block.
+        # Corresponds to the JSON property `blockHealthInfo`
+        # @return [Google::Apis::ComputeBeta::ReservationBlockHealthInfo]
+        attr_accessor :block_health_info
+      
         # Output only. [Output Only] The number of resources that are allocated in this
         # reservation block.
         # Corresponds to the JSON property `count`
@@ -52134,11 +52161,6 @@ module Google
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
-      
-        # Health information for the reservation block.
-        # Corresponds to the JSON property `healthInfo`
-        # @return [Google::Apis::ComputeBeta::ReservationBlockHealthInfo]
-        attr_accessor :health_info
       
         # Output only. [Output Only] The unique identifier for the resource. This
         # identifier is
@@ -52228,9 +52250,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @block_health_info = args[:block_health_info] if args.key?(:block_health_info)
           @count = args[:count] if args.key?(:count)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
-          @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
@@ -52996,11 +53018,6 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # Health information for the reservation subBlock.
-        # Corresponds to the JSON property `healthInfo`
-        # @return [Google::Apis::ComputeBeta::ReservationSubBlockHealthInfo]
-        attr_accessor :health_info
-      
         # Output only. [Output Only] The unique identifier for the resource. This
         # identifier is
         # defined by the server.
@@ -53063,6 +53080,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Health information for the reservation subBlock.
+        # Corresponds to the JSON property `subBlockHealthInfo`
+        # @return [Google::Apis::ComputeBeta::ReservationSubBlockHealthInfo]
+        attr_accessor :sub_block_health_info
+      
         # Output only. [Output Only] Zone in which the reservation subBlock resides.
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -53077,7 +53099,6 @@ module Google
           @accelerator_topologies_info = args[:accelerator_topologies_info] if args.key?(:accelerator_topologies_info)
           @count = args[:count] if args.key?(:count)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
-          @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
@@ -53088,6 +53109,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
+          @sub_block_health_info = args[:sub_block_health_info] if args.key?(:sub_block_health_info)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -57421,8 +57443,9 @@ module Google
       
         # Output only. Effective timeout (in seconds) for TCP connections that are in
         # TIME_WAIT
-        # state. This value is equal to tcp_time_wait_timeout_sec if it is set,
-        # otherwise it is equal to 120s. The field is output only.
+        # state. This value is equal to tcp_time_wait_timeout_sec.
+        # If tcp_time_wait_timeout_sec isn't set, the effective timeout is 30s or
+        # 120s. The field is output only.
         # Corresponds to the JSON property `effectiveTcpTimeWaitTimeoutSec`
         # @return [Fixnum]
         attr_accessor :effective_tcp_time_wait_timeout_sec
@@ -61598,6 +61621,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The number of NAT IP addresses to be allocated per connected endpoint.
+        # If not specified, the default value is 1.
+        # Corresponds to the JSON property `natIpsPerEndpoint`
+        # @return [Fixnum]
+        attr_accessor :nat_ips_per_endpoint
+      
         # An array of URLs where each entry is the URL of a subnet provided
         # by the service producer to use for NAT in this service attachment.
         # Corresponds to the JSON property `natSubnets`
@@ -61695,6 +61724,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+          @nat_ips_per_endpoint = args[:nat_ips_per_endpoint] if args.key?(:nat_ips_per_endpoint)
           @nat_subnets = args[:nat_subnets] if args.key?(:nat_subnets)
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
           @propagated_connection_limit = args[:propagated_connection_limit] if args.key?(:propagated_connection_limit)
