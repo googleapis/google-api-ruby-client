@@ -22,6 +22,51 @@ module Google
   module Apis
     module TravelimpactmodelV1
       
+      # Input definition for the ComputeDetailedFlightEmissions request.
+      class ComputeDetailedFlightEmissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Direct flights to return emission estimates for.
+        # Corresponds to the JSON property `flights`
+        # @return [Array<Google::Apis::TravelimpactmodelV1::Flight>]
+        attr_accessor :flights
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flights = args[:flights] if args.key?(:flights)
+        end
+      end
+      
+      # Output definition for the ComputeDetailedFlightEmissions response.
+      class ComputeDetailedFlightEmissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of flight legs with emission estimates.
+        # Corresponds to the JSON property `flightsWithDetailedEmissions`
+        # @return [Array<Google::Apis::TravelimpactmodelV1::FlightWithDetailedEmissions>]
+        attr_accessor :flights_with_detailed_emissions
+      
+        # Travel Impact Model version. For more information about the model versioning
+        # see [GitHub](https://github.com/google/travel-impact-model/#versioning).
+        # Corresponds to the JSON property `modelVersion`
+        # @return [Google::Apis::TravelimpactmodelV1::ModelVersion]
+        attr_accessor :model_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flights_with_detailed_emissions = args[:flights_with_detailed_emissions] if args.key?(:flights_with_detailed_emissions)
+          @model_version = args[:model_version] if args.key?(:model_version)
+        end
+      end
+      
       # Input definition for the ComputeFlightEmissions request.
       class ComputeFlightEmissionsRequest
         include Google::Apis::Core::Hashable
@@ -261,6 +306,33 @@ module Google
         end
       end
       
+      # Details about the various emissions portions of the total
+      # emissions_grams_per_pax value. The value of the summed breakdowns should
+      # always equal emissions_grams_per_pax.
+      class EmissionsBreakdown
+        include Google::Apis::Core::Hashable
+      
+        # Grouped emissions per seating class results.
+        # Corresponds to the JSON property `ttwEmissionsGramsPerPax`
+        # @return [Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax]
+        attr_accessor :ttw_emissions_grams_per_pax
+      
+        # Grouped emissions per seating class results.
+        # Corresponds to the JSON property `wttEmissionsGramsPerPax`
+        # @return [Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax]
+        attr_accessor :wtt_emissions_grams_per_pax
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ttw_emissions_grams_per_pax = args[:ttw_emissions_grams_per_pax] if args.key?(:ttw_emissions_grams_per_pax)
+          @wtt_emissions_grams_per_pax = args[:wtt_emissions_grams_per_pax] if args.key?(:wtt_emissions_grams_per_pax)
+        end
+      end
+      
       # Grouped emissions per seating class results.
       class EmissionsGramsPerPax
         include Google::Apis::Core::Hashable
@@ -303,6 +375,163 @@ module Google
           @economy = args[:economy] if args.key?(:economy)
           @first = args[:first] if args.key?(:first)
           @premium_economy = args[:premium_economy] if args.key?(:premium_economy)
+        end
+      end
+      
+      # All additional metadata.
+      class EmissionsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata about the EASA Flight Emissions Label.
+        # Corresponds to the JSON property `easaLabelMetadata`
+        # @return [Google::Apis::TravelimpactmodelV1::EasaLabelMetadata]
+        attr_accessor :easa_label_metadata
+      
+        # Information about the provenance of the data used to calculate emissions
+        # estimates, including contributing factors and their data sources.
+        # Corresponds to the JSON property `emissionsProvenance`
+        # @return [Google::Apis::TravelimpactmodelV1::EmissionsProvenance]
+        attr_accessor :emissions_provenance
+      
+        # Output only. Link to the `travelimpactmodel.org` Emissions Calculator website.
+        # Example: https://travelimpactmodel.org/lookup/flight?itinerary=ZRH-BOS-LX-52-
+        # 20261225.
+        # Corresponds to the JSON property `timWebsiteEmissionsCalculatorUrl`
+        # @return [String]
+        attr_accessor :tim_website_emissions_calculator_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @easa_label_metadata = args[:easa_label_metadata] if args.key?(:easa_label_metadata)
+          @emissions_provenance = args[:emissions_provenance] if args.key?(:emissions_provenance)
+          @tim_website_emissions_calculator_url = args[:tim_website_emissions_calculator_url] if args.key?(:tim_website_emissions_calculator_url)
+        end
+      end
+      
+      # Information about the provenance of the data used to calculate emissions
+      # estimates, including contributing factors and their data sources.
+      class EmissionsProvenance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. All contributing factors used to calculate emissions.
+        # Corresponds to the JSON property `provenanceEntries`
+        # @return [Array<Google::Apis::TravelimpactmodelV1::EmissionsProvenanceEntry>]
+        attr_accessor :provenance_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @provenance_entries = args[:provenance_entries] if args.key?(:provenance_entries)
+        end
+      end
+      
+      # Details about a single contributing factor in emissions calculations.
+      class EmissionsProvenanceEntry
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The cargo mass fraction value. If not set, the cargo mass
+        # fraction value is not available.
+        # Corresponds to the JSON property `cargoMassFractionData`
+        # @return [Float]
+        attr_accessor :cargo_mass_fraction_data
+      
+        # Output only. Strategy for T100 cargo mass fraction.
+        # Corresponds to the JSON property `cargoMassFractionT100Strategy`
+        # @return [String]
+        attr_accessor :cargo_mass_fraction_t100_strategy
+      
+        # Output only. Data category of the data source.
+        # Corresponds to the JSON property `dataCategory`
+        # @return [String]
+        attr_accessor :data_category
+      
+        # Output only. Strategy for distance adjustment.
+        # Corresponds to the JSON property `distanceAdjustmentStrategy`
+        # @return [String]
+        attr_accessor :distance_adjustment_strategy
+      
+        # Output only. The estimated distance flown in CCD flight phase in kilometers
+        # value calculated using the distance adjustment factor (DAF). If not set, the
+        # estimated flight distance value is not available.
+        # Corresponds to the JSON property `estimatedFlightDistanceKm`
+        # @return [Fixnum]
+        attr_accessor :estimated_flight_distance_km
+      
+        # Output only. Strategy for EEA fuel burn.
+        # Corresponds to the JSON property `fuelBurnEeaStrategy`
+        # @return [String]
+        attr_accessor :fuel_burn_eea_strategy
+      
+        # Output only. Strategy for CH Aviation load factors.
+        # Corresponds to the JSON property `loadFactorsChAviationStrategy`
+        # @return [String]
+        attr_accessor :load_factors_ch_aviation_strategy
+      
+        # Output only. The load factors data value. If not set, the load factors value
+        # is not available.
+        # Corresponds to the JSON property `loadFactorsData`
+        # @return [Float]
+        attr_accessor :load_factors_data
+      
+        # Output only. Strategy for T100 load factors.
+        # Corresponds to the JSON property `loadFactorsT100Strategy`
+        # @return [String]
+        attr_accessor :load_factors_t100_strategy
+      
+        # Output only. The type of the provenance entry.
+        # Corresponds to the JSON property `provenanceEntryType`
+        # @return [String]
+        attr_accessor :provenance_entry_type
+      
+        # Seat area ratio data values. Economy is always 1.0 and serves as the reference
+        # point; other class values are relative to economy. All 4 fields are always set
+        # whether the seating class exists on the aircraft or not.
+        # Corresponds to the JSON property `seatAreaRatioData`
+        # @return [Google::Apis::TravelimpactmodelV1::SeatAreaRatioData]
+        attr_accessor :seat_area_ratio_data
+      
+        # Output only. Strategy for IATA seat area ratios.
+        # Corresponds to the JSON property `seatAreaRatioIataStrategy`
+        # @return [String]
+        attr_accessor :seat_area_ratio_iata_strategy
+      
+        # Output only. The source of the data.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. The version of the source data. For example, "2025/04".
+        # Corresponds to the JSON property `sourceVersion`
+        # @return [String]
+        attr_accessor :source_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cargo_mass_fraction_data = args[:cargo_mass_fraction_data] if args.key?(:cargo_mass_fraction_data)
+          @cargo_mass_fraction_t100_strategy = args[:cargo_mass_fraction_t100_strategy] if args.key?(:cargo_mass_fraction_t100_strategy)
+          @data_category = args[:data_category] if args.key?(:data_category)
+          @distance_adjustment_strategy = args[:distance_adjustment_strategy] if args.key?(:distance_adjustment_strategy)
+          @estimated_flight_distance_km = args[:estimated_flight_distance_km] if args.key?(:estimated_flight_distance_km)
+          @fuel_burn_eea_strategy = args[:fuel_burn_eea_strategy] if args.key?(:fuel_burn_eea_strategy)
+          @load_factors_ch_aviation_strategy = args[:load_factors_ch_aviation_strategy] if args.key?(:load_factors_ch_aviation_strategy)
+          @load_factors_data = args[:load_factors_data] if args.key?(:load_factors_data)
+          @load_factors_t100_strategy = args[:load_factors_t100_strategy] if args.key?(:load_factors_t100_strategy)
+          @provenance_entry_type = args[:provenance_entry_type] if args.key?(:provenance_entry_type)
+          @seat_area_ratio_data = args[:seat_area_ratio_data] if args.key?(:seat_area_ratio_data)
+          @seat_area_ratio_iata_strategy = args[:seat_area_ratio_iata_strategy] if args.key?(:seat_area_ratio_iata_strategy)
+          @source = args[:source] if args.key?(:source)
+          @source_version = args[:source_version] if args.key?(:source_version)
         end
       end
       
@@ -354,6 +583,78 @@ module Google
           @flight_number = args[:flight_number] if args.key?(:flight_number)
           @operating_carrier_code = args[:operating_carrier_code] if args.key?(:operating_carrier_code)
           @origin = args[:origin] if args.key?(:origin)
+        end
+      end
+      
+      # Details about the specific flight's emissions.
+      class FlightEmissionsDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The significance of contrails warming impact compared to the
+        # total CO2e emissions impact.
+        # Corresponds to the JSON property `contrailsImpactBucket`
+        # @return [String]
+        attr_accessor :contrails_impact_bucket
+      
+        # Details about the various emissions portions of the total
+        # emissions_grams_per_pax value. The value of the summed breakdowns should
+        # always equal emissions_grams_per_pax.
+        # Corresponds to the JSON property `emissionsBreakdown`
+        # @return [Google::Apis::TravelimpactmodelV1::EmissionsBreakdown]
+        attr_accessor :emissions_breakdown
+      
+        # Grouped emissions per seating class results.
+        # Corresponds to the JSON property `emissionsGramsPerPax`
+        # @return [Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax]
+        attr_accessor :emissions_grams_per_pax
+      
+        # Output only. The source of the emissions data.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contrails_impact_bucket = args[:contrails_impact_bucket] if args.key?(:contrails_impact_bucket)
+          @emissions_breakdown = args[:emissions_breakdown] if args.key?(:emissions_breakdown)
+          @emissions_grams_per_pax = args[:emissions_grams_per_pax] if args.key?(:emissions_grams_per_pax)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Direct flight with emission estimates details.
+      class FlightWithDetailedEmissions
+        include Google::Apis::Core::Hashable
+      
+        # All additional metadata.
+        # Corresponds to the JSON property `emissionsMetadata`
+        # @return [Google::Apis::TravelimpactmodelV1::EmissionsMetadata]
+        attr_accessor :emissions_metadata
+      
+        # All details related to a single request item for a direct flight emission
+        # estimates.
+        # Corresponds to the JSON property `flight`
+        # @return [Google::Apis::TravelimpactmodelV1::Flight]
+        attr_accessor :flight
+      
+        # Details about the specific flight's emissions.
+        # Corresponds to the JSON property `flightEmissionsDetails`
+        # @return [Google::Apis::TravelimpactmodelV1::FlightEmissionsDetails]
+        attr_accessor :flight_emissions_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @emissions_metadata = args[:emissions_metadata] if args.key?(:emissions_metadata)
+          @flight = args[:flight] if args.key?(:flight)
+          @flight_emissions_details = args[:flight_emissions_details] if args.key?(:flight_emissions_details)
         end
       end
       
@@ -601,6 +902,45 @@ module Google
           @distance_km = args[:distance_km] if args.key?(:distance_km)
           @flight_number = args[:flight_number] if args.key?(:flight_number)
           @origin = args[:origin] if args.key?(:origin)
+        end
+      end
+      
+      # Seat area ratio data values. Economy is always 1.0 and serves as the reference
+      # point; other class values are relative to economy. All 4 fields are always set
+      # whether the seating class exists on the aircraft or not.
+      class SeatAreaRatioData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Business seating class data value.
+        # Corresponds to the JSON property `business`
+        # @return [Float]
+        attr_accessor :business
+      
+        # Output only. Economy seating class data value.
+        # Corresponds to the JSON property `economy`
+        # @return [Float]
+        attr_accessor :economy
+      
+        # Output only. First seating class data value.
+        # Corresponds to the JSON property `first`
+        # @return [Float]
+        attr_accessor :first
+      
+        # Output only. Premium economy seating class data value.
+        # Corresponds to the JSON property `premiumEconomy`
+        # @return [Float]
+        attr_accessor :premium_economy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business = args[:business] if args.key?(:business)
+          @economy = args[:economy] if args.key?(:economy)
+          @first = args[:first] if args.key?(:first)
+          @premium_economy = args[:premium_economy] if args.key?(:premium_economy)
         end
       end
       

@@ -22,6 +22,18 @@ module Google
   module Apis
     module TravelimpactmodelV1
       
+      class ComputeDetailedFlightEmissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeDetailedFlightEmissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ComputeFlightEmissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,13 +82,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EmissionsBreakdown
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EmissionsGramsPerPax
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EmissionsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EmissionsProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EmissionsProvenanceEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Flight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FlightEmissionsDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FlightWithDetailedEmissions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,10 +160,34 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SeatAreaRatioData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TypicalFlightEmissions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeDetailedFlightEmissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :flights, as: 'flights', class: Google::Apis::TravelimpactmodelV1::Flight, decorator: Google::Apis::TravelimpactmodelV1::Flight::Representation
+      
+        end
+      end
+      
+      class ComputeDetailedFlightEmissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :flights_with_detailed_emissions, as: 'flightsWithDetailedEmissions', class: Google::Apis::TravelimpactmodelV1::FlightWithDetailedEmissions, decorator: Google::Apis::TravelimpactmodelV1::FlightWithDetailedEmissions::Representation
+      
+          property :model_version, as: 'modelVersion', class: Google::Apis::TravelimpactmodelV1::ModelVersion, decorator: Google::Apis::TravelimpactmodelV1::ModelVersion::Representation
+      
+        end
       end
       
       class ComputeFlightEmissionsRequest
@@ -195,6 +267,16 @@ module Google
         end
       end
       
+      class EmissionsBreakdown
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ttw_emissions_grams_per_pax, as: 'ttwEmissionsGramsPerPax', class: Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax, decorator: Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax::Representation
+      
+          property :wtt_emissions_grams_per_pax, as: 'wttEmissionsGramsPerPax', class: Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax, decorator: Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax::Representation
+      
+        end
+      end
+      
       class EmissionsGramsPerPax
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -202,6 +284,46 @@ module Google
           property :economy, as: 'economy'
           property :first, as: 'first'
           property :premium_economy, as: 'premiumEconomy'
+        end
+      end
+      
+      class EmissionsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :easa_label_metadata, as: 'easaLabelMetadata', class: Google::Apis::TravelimpactmodelV1::EasaLabelMetadata, decorator: Google::Apis::TravelimpactmodelV1::EasaLabelMetadata::Representation
+      
+          property :emissions_provenance, as: 'emissionsProvenance', class: Google::Apis::TravelimpactmodelV1::EmissionsProvenance, decorator: Google::Apis::TravelimpactmodelV1::EmissionsProvenance::Representation
+      
+          property :tim_website_emissions_calculator_url, as: 'timWebsiteEmissionsCalculatorUrl'
+        end
+      end
+      
+      class EmissionsProvenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :provenance_entries, as: 'provenanceEntries', class: Google::Apis::TravelimpactmodelV1::EmissionsProvenanceEntry, decorator: Google::Apis::TravelimpactmodelV1::EmissionsProvenanceEntry::Representation
+      
+        end
+      end
+      
+      class EmissionsProvenanceEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cargo_mass_fraction_data, as: 'cargoMassFractionData'
+          property :cargo_mass_fraction_t100_strategy, as: 'cargoMassFractionT100Strategy'
+          property :data_category, as: 'dataCategory'
+          property :distance_adjustment_strategy, as: 'distanceAdjustmentStrategy'
+          property :estimated_flight_distance_km, as: 'estimatedFlightDistanceKm'
+          property :fuel_burn_eea_strategy, as: 'fuelBurnEeaStrategy'
+          property :load_factors_ch_aviation_strategy, as: 'loadFactorsChAviationStrategy'
+          property :load_factors_data, as: 'loadFactorsData'
+          property :load_factors_t100_strategy, as: 'loadFactorsT100Strategy'
+          property :provenance_entry_type, as: 'provenanceEntryType'
+          property :seat_area_ratio_data, as: 'seatAreaRatioData', class: Google::Apis::TravelimpactmodelV1::SeatAreaRatioData, decorator: Google::Apis::TravelimpactmodelV1::SeatAreaRatioData::Representation
+      
+          property :seat_area_ratio_iata_strategy, as: 'seatAreaRatioIataStrategy'
+          property :source, as: 'source'
+          property :source_version, as: 'sourceVersion'
         end
       end
       
@@ -214,6 +336,30 @@ module Google
           property :flight_number, as: 'flightNumber'
           property :operating_carrier_code, as: 'operatingCarrierCode'
           property :origin, as: 'origin'
+        end
+      end
+      
+      class FlightEmissionsDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contrails_impact_bucket, as: 'contrailsImpactBucket'
+          property :emissions_breakdown, as: 'emissionsBreakdown', class: Google::Apis::TravelimpactmodelV1::EmissionsBreakdown, decorator: Google::Apis::TravelimpactmodelV1::EmissionsBreakdown::Representation
+      
+          property :emissions_grams_per_pax, as: 'emissionsGramsPerPax', class: Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax, decorator: Google::Apis::TravelimpactmodelV1::EmissionsGramsPerPax::Representation
+      
+          property :source, as: 'source'
+        end
+      end
+      
+      class FlightWithDetailedEmissions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :emissions_metadata, as: 'emissionsMetadata', class: Google::Apis::TravelimpactmodelV1::EmissionsMetadata, decorator: Google::Apis::TravelimpactmodelV1::EmissionsMetadata::Representation
+      
+          property :flight, as: 'flight', class: Google::Apis::TravelimpactmodelV1::Flight, decorator: Google::Apis::TravelimpactmodelV1::Flight::Representation
+      
+          property :flight_emissions_details, as: 'flightEmissionsDetails', class: Google::Apis::TravelimpactmodelV1::FlightEmissionsDetails, decorator: Google::Apis::TravelimpactmodelV1::FlightEmissionsDetails::Representation
+      
         end
       end
       
@@ -272,6 +418,16 @@ module Google
           property :distance_km, :numeric_string => true, as: 'distanceKm'
           property :flight_number, as: 'flightNumber'
           property :origin, as: 'origin'
+        end
+      end
+      
+      class SeatAreaRatioData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :business, as: 'business'
+          property :economy, as: 'economy'
+          property :first, as: 'first'
+          property :premium_economy, as: 'premiumEconomy'
         end
       end
       
