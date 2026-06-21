@@ -5091,8 +5091,8 @@ module Google
         # model can be set by you for a floodlight config or group. More details [here](
         # https://support.google.com/displayvideo/answer/7409983). Only applicable to
         # Demand Gen line items. Retrieval and management of Demand Gen resources is
-        # currently in beta. This field will begin rolling out to all partners on *June
-        # 10, 2026* and be available to all partners on *June 24, 2026*.
+        # currently rolling out. This field will be available to all partners by *June
+        # 24, 2026*.
         # Corresponds to the JSON property `primaryAttributionModelId`
         # @return [Fixnum]
         attr_accessor :primary_attribution_model_id
@@ -12736,9 +12736,8 @@ module Google
       
         # Optional. Whether to exclude demographic expansion for Optimized Targeting.
         # This field can only be set for Demand Gen ad groups. Retrieval and management
-        # of Demand Gen resources is currently in beta. This field will begin rolling
-        # out to all partners on *June 10, 2026* and be available to all partners on *
-        # June 24, 2026*.
+        # of Demand Gen resources is currently rolling out. This field will be available
+        # to all partners by *June 24, 2026*.
         # Corresponds to the JSON property `excludeDemographicExpansion`
         # @return [Boolean]
         attr_accessor :exclude_demographic_expansion
