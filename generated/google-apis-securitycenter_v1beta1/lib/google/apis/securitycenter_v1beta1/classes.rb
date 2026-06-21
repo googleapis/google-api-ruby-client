@@ -2241,6 +2241,11 @@ module Google
         attr_accessor :network_ingress_firewall_policy
       
         # 
+        # Corresponds to the JSON property `networkPathInsightsGenerationTime`
+        # @return [String]
+        attr_accessor :network_path_insights_generation_time
+      
+        # 
         # Corresponds to the JSON property `privateIpAddress`
         # @return [String]
         attr_accessor :private_ip_address
@@ -2294,6 +2299,7 @@ module Google
           @load_balancer_firewall_policy = args[:load_balancer_firewall_policy] if args.key?(:load_balancer_firewall_policy)
           @network_endpoint_group = args[:network_endpoint_group] if args.key?(:network_endpoint_group)
           @network_ingress_firewall_policy = args[:network_ingress_firewall_policy] if args.key?(:network_ingress_firewall_policy)
+          @network_path_insights_generation_time = args[:network_path_insights_generation_time] if args.key?(:network_path_insights_generation_time)
           @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
           @private_port = args[:private_port] if args.key?(:private_port)
           @psc_network_attachment = args[:psc_network_attachment] if args.key?(:psc_network_attachment)
@@ -6307,6 +6313,11 @@ module Google
         attr_accessor :network_ingress_firewall_policy
       
         # 
+        # Corresponds to the JSON property `networkPathInsightsGenerationTime`
+        # @return [String]
+        attr_accessor :network_path_insights_generation_time
+      
+        # 
         # Corresponds to the JSON property `privateIpAddress`
         # @return [String]
         attr_accessor :private_ip_address
@@ -6360,6 +6371,7 @@ module Google
           @load_balancer_firewall_policy = args[:load_balancer_firewall_policy] if args.key?(:load_balancer_firewall_policy)
           @network_endpoint_group = args[:network_endpoint_group] if args.key?(:network_endpoint_group)
           @network_ingress_firewall_policy = args[:network_ingress_firewall_policy] if args.key?(:network_ingress_firewall_policy)
+          @network_path_insights_generation_time = args[:network_path_insights_generation_time] if args.key?(:network_path_insights_generation_time)
           @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
           @private_port = args[:private_port] if args.key?(:private_port)
           @psc_network_attachment = args[:psc_network_attachment] if args.key?(:psc_network_attachment)
