@@ -27,15 +27,14 @@ module Google
       class BootDisk
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. The size of the disk in gigabytes (GB), which must be at
-        # least 40 GB.
+        # Optional. The size of the disk in gigabytes (GB), which must be at least 40 GB.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
       
-        # Required. Immutable. [Persistent disk type](https://cloud.google.com/compute/
-        # docs/disks#disk-types), in the format `projects/`project`/zones/`zone`/
-        # diskTypes/`disk_type``.
+        # Optional. [Persistent disk type](https://cloud.google.com/compute/docs/disks#
+        # disk-types), in the format `projects/`project`/zones/`zone`/diskTypes/`
+        # disk_type``.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
