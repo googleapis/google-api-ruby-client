@@ -724,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableUpdateTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Target
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -760,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TriggerEvaluationRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UncommittedFileChange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -779,6 +791,18 @@ module Google
       end
       
       class WorkflowInvocationAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkflowTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkflowTriggerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1918,6 +1942,15 @@ module Google
         end
       end
       
+      class TableUpdateTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table, as: 'table', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
+      
+          property :trigger_update_time, as: 'triggerUpdateTime'
+        end
+      end
+      
       class Target
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1971,6 +2004,15 @@ module Google
         end
       end
       
+      class TriggerEvaluationRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_time, as: 'evaluationTime'
+          property :status, as: 'status', class: Google::Apis::DataformV1beta1::Status, decorator: Google::Apis::DataformV1beta1::Status::Representation
+      
+        end
+      end
+      
       class UncommittedFileChange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1994,6 +2036,8 @@ module Google
           property :release_config, as: 'releaseConfig'
           property :time_zone, as: 'timeZone'
           property :update_time, as: 'updateTime'
+          property :workflow_trigger_config, as: 'workflowTriggerConfig', class: Google::Apis::DataformV1beta1::WorkflowTriggerConfig, decorator: Google::Apis::DataformV1beta1::WorkflowTriggerConfig::Representation
+      
         end
       end
       
@@ -2034,6 +2078,28 @@ module Google
       
           property :state, as: 'state'
           property :target, as: 'target', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
+      
+        end
+      end
+      
+      class WorkflowTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table_update_trigger, as: 'tableUpdateTrigger', class: Google::Apis::DataformV1beta1::TableUpdateTrigger, decorator: Google::Apis::DataformV1beta1::TableUpdateTrigger::Representation
+      
+        end
+      end
+      
+      class WorkflowTriggerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition'
+          property :last_successful_evaluation_time, as: 'lastSuccessfulEvaluationTime'
+          property :max_wait_duration, as: 'maxWaitDuration'
+          property :min_execution_duration, as: 'minExecutionDuration'
+          collection :recent_trigger_evaluation_records, as: 'recentTriggerEvaluationRecords', class: Google::Apis::DataformV1beta1::TriggerEvaluationRecord, decorator: Google::Apis::DataformV1beta1::TriggerEvaluationRecord::Representation
+      
+          collection :workflow_triggers, as: 'workflowTriggers', class: Google::Apis::DataformV1beta1::WorkflowTrigger, decorator: Google::Apis::DataformV1beta1::WorkflowTrigger::Representation
       
         end
       end

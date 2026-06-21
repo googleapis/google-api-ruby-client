@@ -3857,6 +3857,34 @@ module Google
         end
       end
       
+      # Represents a table update trigger configuration.
+      class TableUpdateTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Represents an action identifier. If the action writes output, the output will
+        # be written to the referenced database object.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::DataformV1beta1::Target]
+        attr_accessor :table
+      
+        # Output only. The modification time of this table that resulted in an
+        # invocation of the workflow. This would be updated by the triggering service
+        # after a successful workflow invocation.
+        # Corresponds to the JSON property `triggerUpdateTime`
+        # @return [String]
+        attr_accessor :trigger_update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table = args[:table] if args.key?(:table)
+          @trigger_update_time = args[:trigger_update_time] if args.key?(:trigger_update_time)
+        end
+      end
+      
       # Represents an action identifier. If the action writes output, the output will
       # be written to the referenced database object.
       class Target
@@ -4029,6 +4057,36 @@ module Google
         end
       end
       
+      # A record of an attempt to evaluate trigger conditions.
+      class TriggerEvaluationRecord
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp of this trigger evaluation attempt.
+        # Corresponds to the JSON property `evaluationTime`
+        # @return [String]
+        attr_accessor :evaluation_time
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DataformV1beta1::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_time = args[:evaluation_time] if args.key?(:evaluation_time)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # Represents the Git state of a file with uncommitted changes.
       class UncommittedFileChange
         include Google::Apis::Core::Hashable
@@ -4119,6 +4177,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Represents a trigger configuration for a workflow.
+        # Corresponds to the JSON property `workflowTriggerConfig`
+        # @return [Google::Apis::DataformV1beta1::WorkflowTriggerConfig]
+        attr_accessor :workflow_trigger_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4135,6 +4198,7 @@ module Google
           @release_config = args[:release_config] if args.key?(:release_config)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @workflow_trigger_config = args[:workflow_trigger_config] if args.key?(:workflow_trigger_config)
         end
       end
       
@@ -4292,6 +4356,80 @@ module Google
           @notebook_action = args[:notebook_action] if args.key?(:notebook_action)
           @state = args[:state] if args.key?(:state)
           @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # The trigger definition to invoke a workflow.
+      class WorkflowTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Represents a table update trigger configuration.
+        # Corresponds to the JSON property `tableUpdateTrigger`
+        # @return [Google::Apis::DataformV1beta1::TableUpdateTrigger]
+        attr_accessor :table_update_trigger
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table_update_trigger = args[:table_update_trigger] if args.key?(:table_update_trigger)
+        end
+      end
+      
+      # Represents a trigger configuration for a workflow.
+      class WorkflowTriggerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The condition to use when triggering the workflow.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # Output only. The timestamp of the last successful trigger evaluation.
+        # Corresponds to the JSON property `lastSuccessfulEvaluationTime`
+        # @return [String]
+        attr_accessor :last_successful_evaluation_time
+      
+        # Optional. The effective maximum wait time duration for the trigger condition
+        # to be met. If not specified, the workflow won't be triggered until conditions
+        # are met.
+        # Corresponds to the JSON property `maxWaitDuration`
+        # @return [String]
+        attr_accessor :max_wait_duration
+      
+        # Optional. Minimum duration between two consecutive executions. If not
+        # specified, the workflow will be executed every time trigger conditions are met
+        # and no ongoing workflow execution.
+        # Corresponds to the JSON property `minExecutionDuration`
+        # @return [String]
+        attr_accessor :min_execution_duration
+      
+        # Output only. Records of the 10 most recent trigger evaluations, ordered in
+        # descending order of `evaluation_time`. Updated whenever the service evaluates
+        # the trigger conditions (via polling or upon receiving a push event).
+        # Corresponds to the JSON property `recentTriggerEvaluationRecords`
+        # @return [Array<Google::Apis::DataformV1beta1::TriggerEvaluationRecord>]
+        attr_accessor :recent_trigger_evaluation_records
+      
+        # Required. The trigger definitions to invoke a workflow.
+        # Corresponds to the JSON property `workflowTriggers`
+        # @return [Array<Google::Apis::DataformV1beta1::WorkflowTrigger>]
+        attr_accessor :workflow_triggers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @last_successful_evaluation_time = args[:last_successful_evaluation_time] if args.key?(:last_successful_evaluation_time)
+          @max_wait_duration = args[:max_wait_duration] if args.key?(:max_wait_duration)
+          @min_execution_duration = args[:min_execution_duration] if args.key?(:min_execution_duration)
+          @recent_trigger_evaluation_records = args[:recent_trigger_evaluation_records] if args.key?(:recent_trigger_evaluation_records)
+          @workflow_triggers = args[:workflow_triggers] if args.key?(:workflow_triggers)
         end
       end
       
