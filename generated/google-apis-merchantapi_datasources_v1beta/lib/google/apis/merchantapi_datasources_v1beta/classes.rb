@@ -166,7 +166,11 @@ module Google
         # order of this list will result in changing the priority of data sources in the
         # default rule. For example, providing the following list: [`1001`, `self`] will
         # take attribute values from supplemental data source `1001`, and fallback to `
-        # self` if the attribute is not set in `1001`.
+        # self` if the attribute is not set in `1001`. Warning: The update (patch) and
+        # create call replaces the entire default rule setup. It doesn't work as an
+        # addition or append. If `self` is missing from the list of `
+        # take_from_data_sources`, the API will ignore attributes from the primary data
+        # source itself.
         # Corresponds to the JSON property `takeFromDataSources`
         # @return [Array<Google::Apis::MerchantapiDatasourcesV1beta::DataSourceReference>]
         attr_accessor :take_from_data_sources
