@@ -3077,11 +3077,6 @@ module Google
         # @return [String]
         attr_accessor :image
       
-        # The name of the image family to use for this node.
-        # Corresponds to the JSON property `imageFamily`
-        # @return [String]
-        attr_accessor :image_family
-      
         # The project containing the image to use for this node.
         # Corresponds to the JSON property `imageProject`
         # @return [String]
@@ -3094,8 +3089,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @image = args[:image] if args.key?(:image)
-          @image_family = args[:image_family] if args.key?(:image_family)
           @image_project = args[:image_project] if args.key?(:image_project)
+        end
+      end
+      
+      # Contains the custom image info for a node pool.
+      class CustomImageInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The human-readable upgrade message for the custom image.
+        # Corresponds to the JSON property `upgradeMessage`
+        # @return [String]
+        attr_accessor :upgrade_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upgrade_message = args[:upgrade_message] if args.key?(:upgrade_message)
         end
       end
       
@@ -7361,6 +7374,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :auto_upgrade_status
       
+        # Contains the custom image info for a node pool.
+        # Corresponds to the JSON property `customImageInfo`
+        # @return [Google::Apis::ContainerV1::CustomImageInfo]
+        attr_accessor :custom_image_info
+      
         # The node pool's current minor version's end of extended support timestamp.
         # Corresponds to the JSON property `endOfExtendedSupportTimestamp`
         # @return [String]
@@ -7398,6 +7416,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_upgrade_status = args[:auto_upgrade_status] if args.key?(:auto_upgrade_status)
+          @custom_image_info = args[:custom_image_info] if args.key?(:custom_image_info)
           @end_of_extended_support_timestamp = args[:end_of_extended_support_timestamp] if args.key?(:end_of_extended_support_timestamp)
           @end_of_standard_support_timestamp = args[:end_of_standard_support_timestamp] if args.key?(:end_of_standard_support_timestamp)
           @minor_target_version = args[:minor_target_version] if args.key?(:minor_target_version)
@@ -10385,6 +10404,11 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Defines the maintenance policy for the node pool.
+        # Corresponds to the JSON property `maintenancePolicy`
+        # @return [Google::Apis::ContainerV1::NodePoolMaintenancePolicy]
+        attr_accessor :maintenance_policy
+      
         # The maximum duration for the nodes to exist. If unspecified, the nodes can
         # exist indefinitely.
         # Corresponds to the JSON property `maxRunDuration`
@@ -10558,6 +10582,7 @@ module Google
           @locations = args[:locations] if args.key?(:locations)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
           @name = args[:name] if args.key?(:name)
           @node_drain_config = args[:node_drain_config] if args.key?(:node_drain_config)
