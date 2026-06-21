@@ -2662,6 +2662,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InitialStateConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -14604,6 +14610,14 @@ module Google
         end
       end
       
+      class ImageView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image', class: Google::Apis::ComputeBeta::Image, decorator: Google::Apis::ComputeBeta::Image::Representation
+      
+        end
+      end
+      
       class InitialStateConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -21644,10 +21658,10 @@ module Google
       class ReservationBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_health_info, as: 'blockHealthInfo', class: Google::Apis::ComputeBeta::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeBeta::ReservationBlockHealthInfo::Representation
+      
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
-          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeBeta::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeBeta::ReservationBlockHealthInfo::Representation
-      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
@@ -21876,8 +21890,6 @@ module Google
       
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
-          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeBeta::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeBeta::ReservationSubBlockHealthInfo::Representation
-      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
@@ -21890,6 +21902,8 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
+          property :sub_block_health_info, as: 'subBlockHealthInfo', class: Google::Apis::ComputeBeta::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeBeta::ReservationSubBlockHealthInfo::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -23891,6 +23905,7 @@ module Google
           property :kind, as: 'kind'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+          property :nat_ips_per_endpoint, as: 'natIpsPerEndpoint'
           collection :nat_subnets, as: 'natSubnets'
           property :producer_forwarding_rule, as: 'producerForwardingRule'
           property :propagated_connection_limit, as: 'propagatedConnectionLimit'
