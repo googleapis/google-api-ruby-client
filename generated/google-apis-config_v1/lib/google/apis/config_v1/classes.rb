@@ -305,8 +305,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Optional. User-defined location of Cloud Build logs and artifacts in Google
-        # Cloud Storage. Format: `gs://`bucket`/`folder`` A default bucket will be
+        # User-defined location of Cloud Build logs and artifacts in Google Cloud
+        # Storage. Format: `gs://`bucket`/`folder`` A default bucket will be
         # bootstrapped if the field is not set or empty. Default bucket format: `gs://--
         # blueprint-config` Constraints: - The bucket needs to be in the same project as
         # the deployment - The path cannot be within the path of `gcs_source` - The
@@ -428,7 +428,7 @@ module Google
         # @return [String]
         attr_accessor :tf_version
       
-        # Optional. The user-specified Terraform version constraint. Example: "=1.3.10".
+        # The user-specified Terraform version constraint. Example: "=1.3.10".
         # Corresponds to the JSON property `tfVersionConstraint`
         # @return [String]
         attr_accessor :tf_version_constraint
@@ -438,10 +438,10 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Optional. The user-specified Cloud Build worker pool resource in which the
-        # Cloud Build job will execute. Format: `projects/`project`/locations/`location`/
-        # workerPools/`workerPoolId``. If this field is unspecified, the default Cloud
-        # Build worker pool will be used.
+        # The user-specified Cloud Build worker pool resource in which the Cloud Build
+        # job will execute. Format: `projects/`project`/locations/`location`/workerPools/
+        # `workerPoolId``. If this field is unspecified, the default Cloud Build worker
+        # pool will be used.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
         attr_accessor :worker_pool
@@ -1039,17 +1039,17 @@ module Google
       class GitSource
         include Google::Apis::Core::Hashable
       
-        # Optional. Subdirectory inside the repository. Example: 'staging/my-package'
+        # Subdirectory inside the repository. Example: 'staging/my-package'
         # Corresponds to the JSON property `directory`
         # @return [String]
         attr_accessor :directory
       
-        # Optional. Git reference (e.g. branch or tag).
+        # Git reference (e.g. branch or tag).
         # Corresponds to the JSON property `ref`
         # @return [String]
         attr_accessor :ref
       
-        # Optional. Repository URL. Example: 'https://github.com/kubernetes/examples.git'
+        # Repository URL. Example: 'https://github.com/kubernetes/examples.git'
         # Corresponds to the JSON property `repo`
         # @return [String]
         attr_accessor :repo
@@ -1791,8 +1791,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Optional. User-defined location of Cloud Build logs, artifacts, and in Google
-        # Cloud Storage. Format: `gs://`bucket`/`folder`` A default bucket will be
+        # User-defined location of Cloud Build logs, artifacts, and in Google Cloud
+        # Storage. Format: `gs://`bucket`/`folder`` A default bucket will be
         # bootstrapped if the field is not set or empty Default Bucket Format: `gs://--
         # blueprint-config` Constraints: - The bucket needs to be in the same project as
         # the deployment - The path cannot be within the path of `gcs_source` If omitted
@@ -1904,13 +1904,13 @@ module Google
         # @return [String]
         attr_accessor :tf_version
       
-        # Optional. The user-specified Terraform version constraint. Example: "=1.3.10".
+        # The user-specified Terraform version constraint. Example: "=1.3.10".
         # Corresponds to the JSON property `tfVersionConstraint`
         # @return [String]
         attr_accessor :tf_version_constraint
       
-        # Optional. The user-specified Worker Pool resource in which the Cloud Build job
-        # will execute. Format projects/`project`/locations/`location`/workerPools/`
+        # The user-specified Worker Pool resource in which the Cloud Build job will
+        # execute. Format projects/`project`/locations/`location`/workerPools/`
         # workerPoolId` If this field is unspecified, the default Cloud Build worker
         # pool will be used. If omitted and deployment resource ref provided has
         # worker_pool defined, that worker pool is used.
