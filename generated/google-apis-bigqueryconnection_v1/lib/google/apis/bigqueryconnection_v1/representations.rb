@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectorConfigurationParameterValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectorConfigurationPrivateServiceConnect
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -350,6 +356,8 @@ module Google
       
           property :network, as: 'network', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationNetwork, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationNetwork::Representation
       
+          hash :parameters, as: 'parameters', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationParameterValue, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationParameterValue::Representation
+      
         end
       end
       
@@ -364,6 +372,8 @@ module Google
       class ConnectorConfigurationAuthentication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :parameters, as: 'parameters', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationParameterValue, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationParameterValue::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :username_password, as: 'usernamePassword', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationUsernamePassword, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationUsernamePassword::Representation
       
@@ -382,6 +392,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :private_service_connect, as: 'privateServiceConnect', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationPrivateServiceConnect, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationPrivateServiceConnect::Representation
       
+        end
+      end
+      
+      class ConnectorConfigurationParameterValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :double_value, as: 'doubleValue'
+          property :int32_value, as: 'int32Value'
+          property :secret_value, as: 'secretValue', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationSecret, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationSecret::Representation
+      
+          property :string_value, as: 'stringValue'
         end
       end
       
