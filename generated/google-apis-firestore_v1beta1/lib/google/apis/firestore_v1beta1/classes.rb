@@ -830,6 +830,14 @@ module Google
       class ExecutePipelineRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Automatically commits the transaction after the pipeline has been
+        # executed. Only permitted in combination with `transaction` or `new_transaction`
+        # .
+        # Corresponds to the JSON property `autoCommitTransaction`
+        # @return [Boolean]
+        attr_accessor :auto_commit_transaction
+        alias_method :auto_commit_transaction?, :auto_commit_transaction
+      
         # Options for creating a new transaction.
         # Corresponds to the JSON property `newTransaction`
         # @return [Google::Apis::FirestoreV1beta1::TransactionOptions]
@@ -864,6 +872,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_commit_transaction = args[:auto_commit_transaction] if args.key?(:auto_commit_transaction)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
           @structured_pipeline = args[:structured_pipeline] if args.key?(:structured_pipeline)
