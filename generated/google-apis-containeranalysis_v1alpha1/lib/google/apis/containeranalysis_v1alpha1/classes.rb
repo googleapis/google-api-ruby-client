@@ -4584,6 +4584,11 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Optional. Description of the finding category.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
         # Location details with file path and line number.
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::ContaineranalysisV1alpha1::FindingLocation]
@@ -4607,6 +4612,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @category = args[:category] if args.key?(:category)
+          @details = args[:details] if args.key?(:details)
           @location = args[:location] if args.key?(:location)
           @scanner = args[:scanner] if args.key?(:scanner)
           @severity = args[:severity] if args.key?(:severity)
@@ -8557,6 +8563,17 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
         attr_accessor :cvss_v3
       
+        # Common Vulnerability Scoring System. This message is compatible with CVSS v2
+        # and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3
+        # details, see https://www.first.org/cvss/specification-document CVSS v3
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator For CVSS v4
+        # details, see https://www.first.org/cvss/v4.0/user-guide CVSS v4 calculator:
+        # https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator
+        # Corresponds to the JSON property `cvssV4`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
+        attr_accessor :cvss_v4
+      
         # Output only. CVSS version used to populate cvss_score and severity.
         # Corresponds to the JSON property `cvssVersion`
         # @return [String]
@@ -8619,6 +8636,7 @@ module Google
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
           @cvss_v2 = args[:cvss_v2] if args.key?(:cvss_v2)
           @cvss_v3 = args[:cvss_v3] if args.key?(:cvss_v3)
+          @cvss_v4 = args[:cvss_v4] if args.key?(:cvss_v4)
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @extra_details = args[:extra_details] if args.key?(:extra_details)
@@ -8697,6 +8715,17 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
         attr_accessor :cvss_v2
       
+        # Common Vulnerability Scoring System. This message is compatible with CVSS v2
+        # and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3
+        # details, see https://www.first.org/cvss/specification-document CVSS v3
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator For CVSS v4
+        # details, see https://www.first.org/cvss/v4.0/user-guide CVSS v4 calculator:
+        # https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator
+        # Corresponds to the JSON property `cvssV4`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
+        attr_accessor :cvss_v4
+      
         # CVSS version used to populate cvss_score and severity.
         # Corresponds to the JSON property `cvssVersion`
         # @return [String]
@@ -8729,6 +8758,7 @@ module Google
           @advisory_publish_time = args[:advisory_publish_time] if args.key?(:advisory_publish_time)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
           @cvss_v2 = args[:cvss_v2] if args.key?(:cvss_v2)
+          @cvss_v4 = args[:cvss_v4] if args.key?(:cvss_v4)
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @cwe = args[:cwe] if args.key?(:cwe)
           @details = args[:details] if args.key?(:details)
