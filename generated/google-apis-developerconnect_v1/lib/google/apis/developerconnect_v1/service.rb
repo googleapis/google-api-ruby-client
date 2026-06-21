@@ -1719,6 +1719,13 @@ module Google
         # @param [String] filter
         #   Optional. Filter expression that matches a subset of the DeploymentEvents.
         #   https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. Field to use to order the list of DeploymentEvents. Expects AIP-132
+        #   format "field_name asc" or "field_name desc", e.g. "deploy_time desc"
+        #   Supported fields for ordering are: deploy_time, update_time. Currently, only
+        #   sorting by a single field is supported. If this field is not provided, the
+        #   list will be sorted by "deploy_time desc". For more details on the ordering
+        #   syntax, see https://google.aip.dev/132#ordering.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of deployment events to return. The service may
         #   return fewer than this value. If unspecified, at most 50 deployment events
@@ -1746,12 +1753,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_insights_config_deployment_events(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_insights_config_deployment_events(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/deploymentEvents', options)
           command.response_representation = Google::Apis::DeveloperconnectV1::ListDeploymentEventsResponse::Representation
           command.response_class = Google::Apis::DeveloperconnectV1::ListDeploymentEventsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
