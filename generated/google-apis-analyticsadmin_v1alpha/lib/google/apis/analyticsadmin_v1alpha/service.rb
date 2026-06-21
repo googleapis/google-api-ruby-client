@@ -1362,6 +1362,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the reporting identity settings for this property.
+        # @param [String] name
+        #   Output only. Identifier. Resource name for this reporting identity settings
+        #   singleton resource. Format: properties/`property_id`/reportingIdentitySettings
+        #   Example: "properties/1234/reportingIdentitySettings"
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings] google_analytics_admin_v1alpha_reporting_identity_settings_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to be updated. Field names must be in snake case (
+        #   for example, "field_to_update"). Omitted fields will not be updated. To
+        #   replace the entire entity, use one path with the string "*" to match all
+        #   fields. If omitted, the service will treat it as an implied field mask
+        #   equivalent to all fields that are populated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_property_reporting_identity_settings(name, google_analytics_admin_v1alpha_reporting_identity_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings::Representation
+          command.request_object = google_analytics_admin_v1alpha_reporting_identity_settings_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates information about multiple access bindings to an account or property.
         # This method is transactional. If any AccessBinding cannot be created, none of
         # the AccessBindings will be created.
