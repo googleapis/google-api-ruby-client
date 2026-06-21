@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HeldGeminiQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HeldGroupsQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -566,6 +572,8 @@ module Google
       
           property :drive_query, as: 'driveQuery', class: Google::Apis::VaultV1::HeldDriveQuery, decorator: Google::Apis::VaultV1::HeldDriveQuery::Representation
       
+          property :gemini_query, as: 'geminiQuery', class: Google::Apis::VaultV1::HeldGeminiQuery, decorator: Google::Apis::VaultV1::HeldGeminiQuery::Representation
+      
           property :groups_query, as: 'groupsQuery', class: Google::Apis::VaultV1::HeldGroupsQuery, decorator: Google::Apis::VaultV1::HeldGroupsQuery::Representation
       
           property :hangouts_chat_query, as: 'hangoutsChatQuery', class: Google::Apis::VaultV1::HeldHangoutsChatQuery, decorator: Google::Apis::VaultV1::HeldHangoutsChatQuery::Representation
@@ -775,6 +783,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :include_shared_drive_files, as: 'includeSharedDriveFiles'
           property :include_team_drive_files, as: 'includeTeamDriveFiles'
+        end
+      end
+      
+      class HeldGeminiQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
