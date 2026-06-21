@@ -8248,6 +8248,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchedulingVsockMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Screenshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -14224,6 +14230,7 @@ module Google
           property :auto_created_reservations_duration, as: 'autoCreatedReservationsDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
       
           property :auto_delete_auto_created_reservations, as: 'autoDeleteAutoCreatedReservations'
+          property :colocation_resource, as: 'colocationResource'
           property :commitment_info, as: 'commitmentInfo', class: Google::Apis::ComputeAlpha::FutureReservationCommitmentInfo, decorator: Google::Apis::ComputeAlpha::FutureReservationCommitmentInfo::Representation
       
           property :confidential_compute_type, as: 'confidentialComputeType'
@@ -19168,6 +19175,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fail_open, as: 'failOpen'
+          property :interconnect_key_group, as: 'interconnectKeyGroup'
           collection :pre_shared_keys, as: 'preSharedKeys', class: Google::Apis::ComputeAlpha::InterconnectMacsecPreSharedKey, decorator: Google::Apis::ComputeAlpha::InterconnectMacsecPreSharedKey::Representation
       
         end
@@ -24248,10 +24256,10 @@ module Google
       class ReservationBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_health_info, as: 'blockHealthInfo', class: Google::Apis::ComputeAlpha::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeAlpha::ReservationBlockHealthInfo::Representation
+      
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
-          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeAlpha::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeAlpha::ReservationBlockHealthInfo::Representation
-      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
@@ -24481,8 +24489,6 @@ module Google
       
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
-          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo::Representation
-      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
@@ -24492,9 +24498,12 @@ module Google
       
           property :reservation_sub_block_maintenance, as: 'reservationSubBlockMaintenance', class: Google::Apis::ComputeAlpha::GroupMaintenanceInfo, decorator: Google::Apis::ComputeAlpha::GroupMaintenanceInfo::Representation
       
+          property :retention_priority, as: 'retentionPriority'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
+          property :sub_block_health_info, as: 'subBlockHealthInfo', class: Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -25723,6 +25732,7 @@ module Google
           property :description, as: 'description'
           property :match, as: 'match'
           property :rule_number, as: 'ruleNumber'
+          collection :source_workload_identities, as: 'sourceWorkloadIdentities'
         end
       end
       
@@ -26085,6 +26095,8 @@ module Google
       
           property :skip_guest_os_shutdown, as: 'skipGuestOsShutdown'
           property :termination_time, as: 'terminationTime'
+          property :vsock_mode, as: 'vsockMode', class: Google::Apis::ComputeAlpha::SchedulingVsockMode, decorator: Google::Apis::ComputeAlpha::SchedulingVsockMode::Representation
+      
           property :windows_license_optimization_mode, as: 'windowsLicenseOptimizationMode'
         end
       end
@@ -26111,6 +26123,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :discard_local_ssd, as: 'discardLocalSsd'
+        end
+      end
+      
+      class SchedulingVsockMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       

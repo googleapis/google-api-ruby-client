@@ -16722,6 +16722,13 @@ module Google
         attr_accessor :auto_delete_auto_created_reservations
         alias_method :auto_delete_auto_created_reservations?, :auto_delete_auto_created_reservations
       
+        # Full or partial URL of an existing future reservation to indicate
+        # intent for reserving capacity in the same cluster as the colocation
+        # resource.
+        # Corresponds to the JSON property `colocationResource`
+        # @return [String]
+        attr_accessor :colocation_resource
+      
         # If not present, then FR will not deliver a new commitment or update an
         # existing commitment.
         # Corresponds to the JSON property `commitmentInfo`
@@ -16883,6 +16890,7 @@ module Google
           @auto_created_reservations_delete_time = args[:auto_created_reservations_delete_time] if args.key?(:auto_created_reservations_delete_time)
           @auto_created_reservations_duration = args[:auto_created_reservations_duration] if args.key?(:auto_created_reservations_duration)
           @auto_delete_auto_created_reservations = args[:auto_delete_auto_created_reservations] if args.key?(:auto_delete_auto_created_reservations)
+          @colocation_resource = args[:colocation_resource] if args.key?(:colocation_resource)
           @commitment_info = args[:commitment_info] if args.key?(:commitment_info)
           @confidential_compute_type = args[:confidential_compute_type] if args.key?(:confidential_compute_type)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -27649,14 +27657,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The action that a MIG performs on a failed VM. If the value of the
-        # onFailedHealthCheck field
-        # is `DEFAULT_ACTION`, then the same action also applies to the VMs on which
-        # your application
-        # fails a health check. Valid values are - REPAIR (default): MIG automatically
-        # repairs a failed
-        # VM by recreating it. For more information, see about repairing VMs in a MIG. -
-        # DO_NOTHING: MIG
-        # does not repair a failed VM.
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check.
+        # Valid values are
+        # 
+        # - REPAIR (default): MIG automatically repairs a failed VM
+        # by recreating it. For more information, see About
+        # repairing VMs in a MIG.
+        # - DO_NOTHING: MIG does not repair a failed VM.
         # Corresponds to the JSON property `defaultActionOnFailure`
         # @return [String]
         attr_accessor :default_action_on_failure
@@ -37667,6 +37675,14 @@ module Google
         attr_accessor :fail_open
         alias_method :fail_open?, :fail_open
       
+        # Optional. URL of the InterconnectKeyGroup resource to use for MACsec, in the
+        # format:
+        # projects/`project`/locations/`region`/interconnectKeyGroups/`
+        # interconnectKeyGroup`.
+        # Corresponds to the JSON property `interconnectKeyGroup`
+        # @return [String]
+        attr_accessor :interconnect_key_group
+      
         # Required. A keychain placeholder describing a set of named key objects
         # along with their start times. A MACsec CKN/CAK is generated for each
         # key in the key chain. Google router automatically picks the key with
@@ -37683,6 +37699,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fail_open = args[:fail_open] if args.key?(:fail_open)
+          @interconnect_key_group = args[:interconnect_key_group] if args.key?(:interconnect_key_group)
           @pre_shared_keys = args[:pre_shared_keys] if args.key?(:pre_shared_keys)
         end
       end
@@ -58915,6 +58932,11 @@ module Google
       class ReservationBlock
         include Google::Apis::Core::Hashable
       
+        # Health information for the reservation block.
+        # Corresponds to the JSON property `blockHealthInfo`
+        # @return [Google::Apis::ComputeAlpha::ReservationBlockHealthInfo]
+        attr_accessor :block_health_info
+      
         # Output only. [Output Only] The number of resources that are allocated in this
         # reservation block.
         # Corresponds to the JSON property `count`
@@ -58925,11 +58947,6 @@ module Google
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
-      
-        # Health information for the reservation block.
-        # Corresponds to the JSON property `healthInfo`
-        # @return [Google::Apis::ComputeAlpha::ReservationBlockHealthInfo]
-        attr_accessor :health_info
       
         # Output only. [Output Only] The unique identifier for the resource. This
         # identifier is
@@ -59028,9 +59045,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @block_health_info = args[:block_health_info] if args.key?(:block_health_info)
           @count = args[:count] if args.key?(:count)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
-          @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
@@ -59797,11 +59814,6 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # Health information for the reservation subBlock.
-        # Corresponds to the JSON property `healthInfo`
-        # @return [Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo]
-        attr_accessor :health_info
-      
         # Output only. [Output Only] The unique identifier for the resource. This
         # identifier is
         # defined by the server.
@@ -59847,6 +59859,13 @@ module Google
         # @return [Google::Apis::ComputeAlpha::GroupMaintenanceInfo]
         attr_accessor :reservation_sub_block_maintenance
       
+        # Customer specified retention priority for power shedding events.
+        # Used to determine priority of the subBlock relative to others during
+        # a power shedding event. Higher priorities are retained over lower ones.
+        # Corresponds to the JSON property `retentionPriority`
+        # @return [Fixnum]
+        attr_accessor :retention_priority
+      
         # Output only. [Output Only] Server-defined fully-qualified URL for this
         # resource.
         # Corresponds to the JSON property `selfLink`
@@ -59864,6 +59883,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Health information for the reservation subBlock.
+        # Corresponds to the JSON property `subBlockHealthInfo`
+        # @return [Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo]
+        attr_accessor :sub_block_health_info
+      
         # Output only. [Output Only] Zone in which the reservation subBlock resides.
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -59878,7 +59902,6 @@ module Google
           @accelerator_topologies_info = args[:accelerator_topologies_info] if args.key?(:accelerator_topologies_info)
           @count = args[:count] if args.key?(:count)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
-          @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
@@ -59886,9 +59909,11 @@ module Google
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
           @reservation_sub_block_maintenance = args[:reservation_sub_block_maintenance] if args.key?(:reservation_sub_block_maintenance)
+          @retention_priority = args[:retention_priority] if args.key?(:retention_priority)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
+          @sub_block_health_info = args[:sub_block_health_info] if args.key?(:sub_block_health_info)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -64724,8 +64749,9 @@ module Google
       
         # Output only. Effective timeout (in seconds) for TCP connections that are in
         # TIME_WAIT
-        # state. This value is equal to tcp_time_wait_timeout_sec if it is set,
-        # otherwise it is equal to 120s. The field is output only.
+        # state. This value is equal to tcp_time_wait_timeout_sec.
+        # If tcp_time_wait_timeout_sec isn't set, the effective timeout is 30s or
+        # 120s. The field is output only.
         # Corresponds to the JSON property `effectiveTcpTimeWaitTimeoutSec`
         # @return [Fixnum]
         attr_accessor :effective_tcp_time_wait_timeout_sec
@@ -64997,6 +65023,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :rule_number
       
+        # A list of source workload identities.
+        # Corresponds to the JSON property `sourceWorkloadIdentities`
+        # @return [Array<String>]
+        attr_accessor :source_workload_identities
+      
         def initialize(**args)
            update!(**args)
         end
@@ -65007,6 +65038,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @match = args[:match] if args.key?(:match)
           @rule_number = args[:rule_number] if args.key?(:rule_number)
+          @source_workload_identities = args[:source_workload_identities] if args.key?(:source_workload_identities)
         end
       end
       
@@ -66562,6 +66594,11 @@ module Google
         # @return [String]
         attr_accessor :termination_time
       
+        # Message to control the enablement of the vsock device.
+        # Corresponds to the JSON property `vsockMode`
+        # @return [Google::Apis::ComputeAlpha::SchedulingVsockMode]
+        attr_accessor :vsock_mode
+      
         # Represents the Windows Server License Optimization Mode of the VM. If
         # unspecified, the default mode is `OFF`.
         # Corresponds to the JSON property `windowsLicenseOptimizationMode`
@@ -66597,6 +66634,7 @@ module Google
           @shutdown_timeout = args[:shutdown_timeout] if args.key?(:shutdown_timeout)
           @skip_guest_os_shutdown = args[:skip_guest_os_shutdown] if args.key?(:skip_guest_os_shutdown)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
+          @vsock_mode = args[:vsock_mode] if args.key?(:vsock_mode)
           @windows_license_optimization_mode = args[:windows_license_optimization_mode] if args.key?(:windows_license_optimization_mode)
         end
       end
@@ -66682,6 +66720,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @discard_local_ssd = args[:discard_local_ssd] if args.key?(:discard_local_ssd)
+        end
+      end
+      
+      # Message to control the enablement of the vsock device.
+      class SchedulingVsockMode
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
