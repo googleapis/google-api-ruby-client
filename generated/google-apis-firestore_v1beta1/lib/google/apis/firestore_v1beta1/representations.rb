@@ -832,6 +832,7 @@ module Google
       class ExecutePipelineRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_commit_transaction, as: 'autoCommitTransaction'
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1beta1::TransactionOptions, decorator: Google::Apis::FirestoreV1beta1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
