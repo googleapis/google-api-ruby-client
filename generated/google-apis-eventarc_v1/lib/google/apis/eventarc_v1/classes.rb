@@ -194,10 +194,9 @@ module Google
         end
       end
       
-      # A representation of the Channel resource. A Channel is a resource on which
-      # event providers publish their events. The published events are delivered
-      # through the transport associated with the channel. Note that a channel is
-      # associated with exactly one event provider.
+      # Represents a subscriber's intent to receive events from an event provider.
+      # Published events are delivered using the transport associated with the Channel
+      # resource. A channel is associated with exactly one event provider.
       class Channel
         include Google::Apis::Core::Hashable
       
@@ -772,7 +771,9 @@ module Google
         end
       end
       
-      # A GoogleApiSource represents a subscription of 1P events from a MessageBus.
+      # Represents a subscription to first-party events for a MessageBus resource. A
+      # GoogleApiSource resource lets you configure the delivery of events from Google
+      # API sources to a designated bus.
       class GoogleApiSource
         include Google::Apis::Core::Hashable
       
@@ -873,10 +874,10 @@ module Google
         end
       end
       
-      # A GoogleChannelConfig is a resource that stores the custom settings respected
-      # by Eventarc first-party triggers in the matching region. Once configured,
-      # first-party event data will be protected using the specified custom managed
-      # encryption key instead of Google-managed encryption keys.
+      # Can be used to customize security settings for Eventarc first-party triggers
+      # in a specific region. Once the GoogleChannelConfig resource is configured,
+      # first-party event data is protected using the specified customer-managed
+      # encryption key instead of a Google-managed encryption key.
       class GoogleChannelConfig
         include Google::Apis::Core::Hashable
       
