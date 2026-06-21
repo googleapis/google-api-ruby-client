@@ -218,6 +218,13 @@ module Google
       class AutoUpgradeConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. Mandatory Safety Policies (Always active) which cannot be
+        # disabled. The key is the policy ID (e.g., "ENFORCED_CONTROL_PLANE_PATCH") and
+        # the value is a human-readable description.
+        # Corresponds to the JSON property `enforcedRollouts`
+        # @return [Hash<String,String>]
+        attr_accessor :enforced_rollouts
+      
         # The scope for automatic rollout creation.
         # Corresponds to the JSON property `rolloutCreationScope`
         # @return [Google::Apis::GkehubV1beta::RolloutCreationScope]
@@ -229,6 +236,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enforced_rollouts = args[:enforced_rollouts] if args.key?(:enforced_rollouts)
           @rollout_creation_scope = args[:rollout_creation_scope] if args.key?(:rollout_creation_scope)
         end
       end
@@ -5918,6 +5926,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Output only. The intent of the rollout.
+        # Corresponds to the JSON property `intent`
+        # @return [String]
+        attr_accessor :intent
+      
         # Optional. Labels for this Rollout.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -5964,6 +5977,11 @@ module Google
         # @return [String]
         attr_accessor :state_reason_type
       
+        # Output only. The trigger of the rollout.
+        # Corresponds to the JSON property `trigger`
+        # @return [String]
+        attr_accessor :trigger
+      
         # Output only. Google-generated UUID for this resource. This is unique across
         # all Rollout resources. If a Rollout resource is deleted and another resource
         # with the same name is created, it gets a different uid.
@@ -5992,6 +6010,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @intent = args[:intent] if args.key?(:intent)
           @labels = args[:labels] if args.key?(:labels)
           @membership_states = args[:membership_states] if args.key?(:membership_states)
           @name = args[:name] if args.key?(:name)
@@ -6000,6 +6019,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
           @state_reason_type = args[:state_reason_type] if args.key?(:state_reason_type)
+          @trigger = args[:trigger] if args.key?(:trigger)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version_upgrade = args[:version_upgrade] if args.key?(:version_upgrade)
@@ -6068,6 +6088,11 @@ module Google
         # @return [Google::Apis::GkehubV1beta::AutoUpgradeConfig]
         attr_accessor :auto_upgrade_config
       
+        # Output only. The computed release channel used for the Rollout Sequence.
+        # Corresponds to the JSON property `computedReleaseChannel`
+        # @return [String]
+        attr_accessor :computed_release_channel
+      
         # Output only. The timestamp at which the Rollout Sequence was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -6103,6 +6128,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Output only. The last qualified control plane version.
+        # Corresponds to the JSON property `lastQualifiedControlPlaneVersion`
+        # @return [String]
+        attr_accessor :last_qualified_control_plane_version
+      
+        # Output only. The last qualified node version.
+        # Corresponds to the JSON property `lastQualifiedNodeVersion`
+        # @return [String]
+        attr_accessor :last_qualified_node_version
+      
         # Identifier. Name of the rollout sequence in the format of: projects/`
         # PROJECT_ID`/locations/global/rolloutSequences/`NAME`
         # Corresponds to the JSON property `name`
@@ -6118,6 +6153,16 @@ module Google
         # Corresponds to the JSON property `stages`
         # @return [Array<Google::Apis::GkehubV1beta::Stage>]
         attr_accessor :stages
+      
+        # Output only. The target control plane version of the Rollout Sequence.
+        # Corresponds to the JSON property `targetControlPlaneVersion`
+        # @return [String]
+        attr_accessor :target_control_plane_version
+      
+        # Output only. The target node version of the Rollout Sequence.
+        # Corresponds to the JSON property `targetNodeVersion`
+        # @return [String]
+        attr_accessor :target_node_version
       
         # Output only. Google-generated UUID for this resource. This is unique across
         # all Rollout Sequence resources. If a Rollout Sequence resource is deleted and
@@ -6138,6 +6183,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_upgrade_config = args[:auto_upgrade_config] if args.key?(:auto_upgrade_config)
+          @computed_release_channel = args[:computed_release_channel] if args.key?(:computed_release_channel)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -6145,9 +6191,13 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @ignored_clusters_selector = args[:ignored_clusters_selector] if args.key?(:ignored_clusters_selector)
           @labels = args[:labels] if args.key?(:labels)
+          @last_qualified_control_plane_version = args[:last_qualified_control_plane_version] if args.key?(:last_qualified_control_plane_version)
+          @last_qualified_node_version = args[:last_qualified_node_version] if args.key?(:last_qualified_node_version)
           @name = args[:name] if args.key?(:name)
           @operational_state = args[:operational_state] if args.key?(:operational_state)
           @stages = args[:stages] if args.key?(:stages)
+          @target_control_plane_version = args[:target_control_plane_version] if args.key?(:target_control_plane_version)
+          @target_node_version = args[:target_node_version] if args.key?(:target_node_version)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -6157,10 +6207,21 @@ module Google
       class RolloutStage
         include Google::Apis::Core::Hashable
       
+        # Selector for clusters.
+        # Corresponds to the JSON property `clusterSelector`
+        # @return [Google::Apis::GkehubV1beta::ClusterSelector]
+        attr_accessor :cluster_selector
+      
         # Optional. Output only. The time at which the stage ended.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # Output only. The fleet projects from the sequence that was used to create this
+        # stage. Expected format: projects/`project_number`
+        # Corresponds to the JSON property `fleetProjects`
+        # @return [Array<String>]
+        attr_accessor :fleet_projects
       
         # Optional. Duration to soak after this stage before starting the next stage.
         # Corresponds to the JSON property `soakDuration`
@@ -6188,7 +6249,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_selector = args[:cluster_selector] if args.key?(:cluster_selector)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @fleet_projects = args[:fleet_projects] if args.key?(:fleet_projects)
           @soak_duration = args[:soak_duration] if args.key?(:soak_duration)
           @stage_number = args[:stage_number] if args.key?(:stage_number)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -6749,6 +6812,49 @@ module Google
         def update!(**args)
           @api_version = args[:api_version] if args.key?(:api_version)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Request message for upgrading a rollout sequence.
+      class UpgradeRolloutSequenceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, any rollout already running on the first stage of
+        # the sequence will be cancelled to allow for the creation of the new rollout.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Required. The type of upgrade.
+        # Corresponds to the JSON property `upgradeType`
+        # @return [String]
+        attr_accessor :upgrade_type
+      
+        # Required. GKE version to upgrade to. A valid GKE version available on the
+        # release channel used by the sequence. Patch versions from less conservative
+        # channels are allowed if their minor version is already available in the
+        # sequence's channel. This is similar to single-cluster upgrade rules, see https:
+        # //cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster#supported-
+        # versions Example: With the following versions available on the RAPID and
+        # REGULAR channels: * REGULAR: 1.35.3-gke.123000 * RAPID: 1.36.4-gke.321000, 1.
+        # 35.6-gke.045000 Valid versions are 1.35.3-gke.123, 1.35.6-gke.045000 Aliases
+        # like `latest` are supported. For more information on valid upgrade versions
+        # and specifying cluster versions, see: https://cloud.google.com/kubernetes-
+        # engine/versioning#specifying_cluster_version
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+          @upgrade_type = args[:upgrade_type] if args.key?(:upgrade_type)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
