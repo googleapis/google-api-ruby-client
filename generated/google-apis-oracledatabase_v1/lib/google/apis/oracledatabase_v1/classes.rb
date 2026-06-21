@@ -1387,6 +1387,11 @@ module Google
         # @return [String]
         attr_accessor :db_server_version
       
+        # Details of the Exascale configuration for the Exadata Infrastructure.
+        # Corresponds to the JSON property `exascaleConfig`
+        # @return [Google::Apis::OracledatabaseV1::ExascaleConfig]
+        attr_accessor :exascale_config
+      
         # Maintenance window as defined by Oracle. https://docs.oracle.com/en-us/iaas/
         # api/#/en/database/20160918/datatypes/MaintenanceWindow
         # Corresponds to the JSON property `maintenanceWindow`
@@ -1507,6 +1512,7 @@ module Google
           @database_server_type = args[:database_server_type] if args.key?(:database_server_type)
           @db_node_storage_size_gb = args[:db_node_storage_size_gb] if args.key?(:db_node_storage_size_gb)
           @db_server_version = args[:db_server_version] if args.key?(:db_server_version)
+          @exascale_config = args[:exascale_config] if args.key?(:exascale_config)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @max_cpu_count = args[:max_cpu_count] if args.key?(:max_cpu_count)
           @max_data_storage_tb = args[:max_data_storage_tb] if args.key?(:max_data_storage_tb)
@@ -1567,6 +1573,13 @@ module Google
         # Corresponds to the JSON property `exadataInfrastructure`
         # @return [String]
         attr_accessor :exadata_infrastructure
+      
+        # Optional. The name of ExascaleDbStorageVault associated with the VM Cluster.
+        # Format: projects/`project`/locations/`location`/exascaleDbStorageVaults/`
+        # exascale_db_storage_vault`
+        # Corresponds to the JSON property `exascaleDbStorageVault`
+        # @return [String]
+        attr_accessor :exascale_db_storage_vault
       
         # Output only. The GCP Oracle zone where Oracle CloudVmCluster is hosted. This
         # will be the same as the gcp_oracle_zone of the CloudExadataInfrastructure.
@@ -1630,6 +1643,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @exadata_infrastructure = args[:exadata_infrastructure] if args.key?(:exadata_infrastructure)
+          @exascale_db_storage_vault = args[:exascale_db_storage_vault] if args.key?(:exascale_db_storage_vault)
           @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
           @identity_connector = args[:identity_connector] if args.key?(:identity_connector)
           @labels = args[:labels] if args.key?(:labels)
@@ -1800,6 +1814,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The storage management type of the VM Cluster.
+        # Corresponds to the JSON property `storageManagementType`
+        # @return [String]
+        attr_accessor :storage_management_type
+      
         # Output only. The storage allocation for the disk group, in gigabytes (GB).
         # Corresponds to the JSON property `storageSizeGb`
         # @return [Fixnum]
@@ -1852,9 +1871,35 @@ module Google
           @sparse_diskgroup_enabled = args[:sparse_diskgroup_enabled] if args.key?(:sparse_diskgroup_enabled)
           @ssh_public_keys = args[:ssh_public_keys] if args.key?(:ssh_public_keys)
           @state = args[:state] if args.key?(:state)
+          @storage_management_type = args[:storage_management_type] if args.key?(:storage_management_type)
           @storage_size_gb = args[:storage_size_gb] if args.key?(:storage_size_gb)
           @system_version = args[:system_version] if args.key?(:system_version)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # The request for `CloudExadataInfrastructure.ConfigureExascale`.
+      class ConfigureExascaleCloudExadataInfrastructureRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional ID to identify the request.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. The total storage to be allocated to Exascale in GBs.
+        # Corresponds to the JSON property `totalStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :total_storage_size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @total_storage_size_gb = args[:total_storage_size_gb] if args.key?(:total_storage_size_gb)
         end
       end
       
@@ -3483,6 +3528,31 @@ module Google
         end
       end
       
+      # Details of the Exascale configuration for the Exadata Infrastructure.
+      class ExascaleConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Available storage size for Exascale in GBs.
+        # Corresponds to the JSON property `availableStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :available_storage_size_gb
+      
+        # Output only. Total storage size needed for Exascale in GBs.
+        # Corresponds to the JSON property `totalStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :total_storage_size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_storage_size_gb = args[:available_storage_size_gb] if args.key?(:available_storage_size_gb)
+          @total_storage_size_gb = args[:total_storage_size_gb] if args.key?(:total_storage_size_gb)
+        end
+      end
+      
       # The storage details of the ExascaleDbStorageVault.
       class ExascaleDbStorageDetails
         include Google::Apis::Core::Hashable
@@ -3534,6 +3604,13 @@ module Google
         # @return [String]
         attr_accessor :entitlement_id
       
+        # Optional. The Exadata Infrastructure resource on which ExascaleDbStorageVault
+        # resource is created, in the following format: projects/`project`/locations/`
+        # region`/cloudExadataInfrastuctures/`cloud_extradata_infrastructure`
+        # Corresponds to the JSON property `exadataInfrastructure`
+        # @return [String]
+        attr_accessor :exadata_infrastructure
+      
         # Optional. The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
         # Example: us-east4-b-r2. If not specified, the system will pick a zone based on
         # availability.
@@ -3567,6 +3644,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
+          @exadata_infrastructure = args[:exadata_infrastructure] if args.key?(:exadata_infrastructure)
           @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
