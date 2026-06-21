@@ -436,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAuthenticationOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAuthenticationSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -887,6 +893,12 @@ module Google
       end
       
       class SigninDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SigninDetailGoogleAuthenticationOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1745,6 +1757,8 @@ module Google
           property :allow_personal_usage, as: 'allowPersonalUsage'
           property :duration, as: 'duration'
           property :expiration_timestamp, as: 'expirationTimestamp'
+          property :google_authentication_options, as: 'googleAuthenticationOptions', class: Google::Apis::AndroidmanagementV1::GoogleAuthenticationOptions, decorator: Google::Apis::AndroidmanagementV1::GoogleAuthenticationOptions::Representation
+      
           property :name, as: 'name'
           property :one_time_only, as: 'oneTimeOnly'
           property :policy_name, as: 'policyName'
@@ -1865,6 +1879,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :url, as: 'url'
+        end
+      end
+      
+      class GoogleAuthenticationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_requirement, as: 'authenticationRequirement'
+          property :required_account_email, as: 'requiredAccountEmail'
         end
       end
       
@@ -2695,10 +2717,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_personal_usage, as: 'allowPersonalUsage'
           property :default_status, as: 'defaultStatus'
+          property :google_authentication_options, as: 'googleAuthenticationOptions', class: Google::Apis::AndroidmanagementV1::SigninDetailGoogleAuthenticationOptions, decorator: Google::Apis::AndroidmanagementV1::SigninDetailGoogleAuthenticationOptions::Representation
+      
           property :qr_code, as: 'qrCode'
           property :signin_enrollment_token, as: 'signinEnrollmentToken'
           property :signin_url, as: 'signinUrl'
           property :token_tag, as: 'tokenTag'
+        end
+      end
+      
+      class SigninDetailGoogleAuthenticationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_requirement, as: 'authenticationRequirement'
         end
       end
       
