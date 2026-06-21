@@ -400,10 +400,10 @@ module Google
       end
       
       # Configuration for a Bigtable subscription. The Pub/Sub message will be written
-      # to a Bigtable row as follows: - row key: subscription name and message ID
-      # delimited by #. - columns: message bytes written to a single column family "
-      # data" with an empty-string column qualifier. - cell timestamp: the message
-      # publish timestamp.
+      # to a Bigtable row as follows: - row key: subscription name, message ID hash,
+      # and message ID delimited by `#`. - columns: message bytes written to a single
+      # column family `data` with an empty-string column qualifier. - cell timestamp:
+      # the message publish timestamp.
       class BigtableConfig
         include Google::Apis::Core::Hashable
       
@@ -2206,10 +2206,10 @@ module Google
         attr_accessor :bigquery_config
       
         # Configuration for a Bigtable subscription. The Pub/Sub message will be written
-        # to a Bigtable row as follows: - row key: subscription name and message ID
-        # delimited by #. - columns: message bytes written to a single column family "
-        # data" with an empty-string column qualifier. - cell timestamp: the message
-        # publish timestamp.
+        # to a Bigtable row as follows: - row key: subscription name, message ID hash,
+        # and message ID delimited by `#`. - columns: message bytes written to a single
+        # column family `data` with an empty-string column qualifier. - cell timestamp:
+        # the message publish timestamp.
         # Corresponds to the JSON property `bigtableConfig`
         # @return [Google::Apis::PubsubV1::BigtableConfig]
         attr_accessor :bigtable_config
