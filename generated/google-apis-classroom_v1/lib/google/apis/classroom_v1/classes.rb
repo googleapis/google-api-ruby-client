@@ -152,8 +152,10 @@ module Google
         attr_accessor :post_submission_state
       
         # Identifier for the student that owns this submission. Requires the user to be
-        # a teacher in the course and have permission to read student submissions. Read-
-        # only.
+        # a teacher in the course and have permission to read student submissions. See [`
+        # courseWork.studentSubmissions.get`](/workspace/classroom/reference/rest/v1/
+        # courses.courseWork.studentSubmissions/get#authorization-scopes) for the list
+        # of acceptable OAuth scopes for this field. Read-only.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
