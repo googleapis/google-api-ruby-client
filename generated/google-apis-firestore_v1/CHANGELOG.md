@@ -1,5 +1,9 @@
 # Release history for google-apis-firestore_v1
 
+### v0.96.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260608
+
 ### v0.95.0 (2026-06-14)
 
 * Regenerated from discovery document revision 20260529
