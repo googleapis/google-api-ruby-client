@@ -454,6 +454,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :archive_timeout, as: 'archiveTimeout'
+          property :max_size_gb, as: 'maxSizeGb'
           property :reclaim_policy, as: 'reclaimPolicy'
           property :size_gb, as: 'sizeGb'
           property :source_snapshot, as: 'sourceSnapshot'
@@ -514,6 +515,7 @@ module Google
           property :archive_timeout, as: 'archiveTimeout'
           property :disk_type, as: 'diskType'
           property :fs_type, as: 'fsType'
+          property :max_size_gb, as: 'maxSizeGb'
           property :reclaim_policy, as: 'reclaimPolicy'
           property :size_gb, as: 'sizeGb'
           property :source_snapshot, as: 'sourceSnapshot'
