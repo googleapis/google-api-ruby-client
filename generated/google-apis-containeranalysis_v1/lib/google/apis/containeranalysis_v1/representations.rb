@@ -2315,6 +2315,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
+          property :details, as: 'details'
           property :location, as: 'location', class: Google::Apis::ContaineranalysisV1::FindingLocation, decorator: Google::Apis::ContaineranalysisV1::FindingLocation::Representation
       
           property :scanner, as: 'scanner'
@@ -3271,6 +3272,8 @@ module Google
       
           property :cvss_v3, as: 'cvssV3', class: Google::Apis::ContaineranalysisV1::CvsSv3, decorator: Google::Apis::ContaineranalysisV1::CvsSv3::Representation
       
+          property :cvss_v4, as: 'cvssV4', class: Google::Apis::ContaineranalysisV1::Cvss, decorator: Google::Apis::ContaineranalysisV1::Cvss::Representation
+      
           property :cvss_version, as: 'cvssVersion'
           collection :details, as: 'details', class: Google::Apis::ContaineranalysisV1::Detail, decorator: Google::Apis::ContaineranalysisV1::Detail::Representation
       
@@ -3286,6 +3289,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
           property :cvss_v2, as: 'cvssV2', class: Google::Apis::ContaineranalysisV1::Cvss, decorator: Google::Apis::ContaineranalysisV1::Cvss::Representation
+      
+          property :cvss_v4, as: 'cvssV4', class: Google::Apis::ContaineranalysisV1::Cvss, decorator: Google::Apis::ContaineranalysisV1::Cvss::Representation
       
           property :cvss_version, as: 'cvssVersion'
           property :cvssv3, as: 'cvssv3', class: Google::Apis::ContaineranalysisV1::Cvss, decorator: Google::Apis::ContaineranalysisV1::Cvss::Representation
