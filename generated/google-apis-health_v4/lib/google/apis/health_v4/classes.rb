@@ -5027,7 +5027,10 @@ module Google
         attr_accessor :nap
         alias_method :nap?, :nap
       
-        # Output only. Sleep and sleep stages algorithms finished processing.
+        # Output only. Sleep and sleep stages algorithms finished processing. A `true`
+        # value indicates whether all data processing for the session is complete. A `
+        # false` value means sleep period is detected but sleep stages is still
+        # processing.
         # Corresponds to the JSON property `processed`
         # @return [Boolean]
         attr_accessor :processed
