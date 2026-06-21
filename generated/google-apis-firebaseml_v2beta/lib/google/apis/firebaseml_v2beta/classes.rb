@@ -109,6 +109,44 @@ module Google
         end
       end
       
+      # Configuration for audio-specific output formatting.
+      class GoogleCloudAiplatformV1beta1AudioResponseFormat
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Bit rate in bits per second (bps). Only applicable for compressed
+        # formats (MP3, Opus).
+        # Corresponds to the JSON property `bitRate`
+        # @return [Fixnum]
+        attr_accessor :bit_rate
+      
+        # Optional. Delivery mode for the generated content.
+        # Corresponds to the JSON property `delivery`
+        # @return [String]
+        attr_accessor :delivery
+      
+        # Optional. The MIME type of the audio output.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Optional. Sample rate for the generated audio in Hertz.
+        # Corresponds to the JSON property `sampleRate`
+        # @return [Fixnum]
+        attr_accessor :sample_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bit_rate = args[:bit_rate] if args.key?(:bit_rate)
+          @delivery = args[:delivery] if args.key?(:delivery)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
+        end
+      end
+      
       # Auth configuration to run the extension.
       class GoogleCloudAiplatformV1beta1AuthConfig
         include Google::Apis::Core::Hashable
@@ -1543,8 +1581,15 @@ module Google
         # @return [Float]
         attr_accessor :presence_penalty
       
+        # Optional. New response format field for the model to configure output
+        # formatting and delivery.
+        # Corresponds to the JSON property `responseFormat`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ResponseFormat>]
+        attr_accessor :response_format
+      
         # Optional. When this field is set, response_schema must be omitted and
-        # response_mime_type must be set to `application/json`.
+        # response_mime_type must be set to `application/json`. Deprecated: Use `
+        # response_format` instead.
         # Corresponds to the JSON property `responseJsonSchema`
         # @return [Object]
         attr_accessor :response_json_schema
@@ -1562,7 +1607,8 @@ module Google
         # Optional. The IANA standard MIME type of the response. The model will generate
         # output that conforms to this MIME type. Supported values include 'text/plain' (
         # default) and 'application/json'. The model needs to be prompted to output the
-        # appropriate response type, otherwise the behavior is undefined.
+        # appropriate response type, otherwise the behavior is undefined. Deprecated:
+        # Use `response_format` instead.
         # Corresponds to the JSON property `responseMimeType`
         # @return [String]
         attr_accessor :response_mime_type
@@ -1662,6 +1708,7 @@ module Google
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @model_config = args[:model_config] if args.key?(:model_config)
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
+          @response_format = args[:response_format] if args.key?(:response_format)
           @response_json_schema = args[:response_json_schema] if args.key?(:response_json_schema)
           @response_logprobs = args[:response_logprobs] if args.key?(:response_logprobs)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
@@ -2399,6 +2446,43 @@ module Google
         end
       end
       
+      # Configuration for image-specific output formatting.
+      class GoogleCloudAiplatformV1beta1ImageResponseFormat
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The aspect ratio for the image output.
+        # Corresponds to the JSON property `aspectRatio`
+        # @return [String]
+        attr_accessor :aspect_ratio
+      
+        # Optional. Delivery mode for the generated content.
+        # Corresponds to the JSON property `delivery`
+        # @return [String]
+        attr_accessor :delivery
+      
+        # Optional. The size of the image output.
+        # Corresponds to the JSON property `imageSize`
+        # @return [String]
+        attr_accessor :image_size
+      
+        # Optional. The MIME type of the image output.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
+          @delivery = args[:delivery] if args.key?(:delivery)
+          @image_size = args[:image_size] if args.key?(:image_size)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
       # The log probabilities of the tokens generated by the model. This is useful for
       # understanding the model's confidence in its predictions and for debugging. For
       # example, you can use log probabilities to identify when the model is making a
@@ -3020,6 +3104,43 @@ module Google
         end
       end
       
+      # Configuration for the model to configure output formatting and delivery.
+      class GoogleCloudAiplatformV1beta1ResponseFormat
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for audio-specific output formatting.
+        # Corresponds to the JSON property `audio`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioResponseFormat]
+        attr_accessor :audio
+      
+        # Configuration for image-specific output formatting.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageResponseFormat]
+        attr_accessor :image
+      
+        # Configuration for text-specific output formatting.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1TextResponseFormat]
+        attr_accessor :text
+      
+        # Configuration for video-specific output formatting.
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoResponseFormat]
+        attr_accessor :video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio = args[:audio] if args.key?(:audio)
+          @image = args[:image] if args.key?(:image)
+          @text = args[:text] if args.key?(:text)
+          @video = args[:video] if args.key?(:video)
+        end
+      end
+      
       # Defines a retrieval tool that model can call to access external knowledge.
       class GoogleCloudAiplatformV1beta1Retrieval
         include Google::Apis::Core::Hashable
@@ -3540,6 +3661,32 @@ module Google
         end
       end
       
+      # Configuration for text-specific output formatting.
+      class GoogleCloudAiplatformV1beta1TextResponseFormat
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The IANA standard MIME type of the response.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Optional. The JSON schema that the output should conform to. Only applicable
+        # when mime_type is APPLICATION_JSON.
+        # Corresponds to the JSON property `schema`
+        # @return [Object]
+        attr_accessor :schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
       # Tool details that the model may use to generate response. A `Tool` is a piece
       # of code that enables the system to interact with external systems to perform
       # an action, or set of actions, outside of knowledge and scope of the model. A
@@ -3652,6 +3799,12 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolComputerUse
         include Google::Apis::Core::Hashable
       
+        # Optional. Enables the prompt injection detection check on computer-use request.
+        # Corresponds to the JSON property `enablePromptInjectionDetection`
+        # @return [Boolean]
+        attr_accessor :enable_prompt_injection_detection
+        alias_method :enable_prompt_injection_detection?, :enable_prompt_injection_detection
+      
         # Required. The environment being operated.
         # Corresponds to the JSON property `environment`
         # @return [String]
@@ -3673,6 +3826,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_prompt_injection_detection = args[:enable_prompt_injection_detection] if args.key?(:enable_prompt_injection_detection)
           @environment = args[:environment] if args.key?(:environment)
           @excluded_predefined_functions = args[:excluded_predefined_functions] if args.key?(:excluded_predefined_functions)
         end
@@ -4107,6 +4261,44 @@ module Google
           @end_offset = args[:end_offset] if args.key?(:end_offset)
           @fps = args[:fps] if args.key?(:fps)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
+        end
+      end
+      
+      # Configuration for video-specific output formatting.
+      class GoogleCloudAiplatformV1beta1VideoResponseFormat
+        include Google::Apis::Core::Hashable
+      
+        # The aspect ratio for the video output.
+        # Corresponds to the JSON property `aspectRatio`
+        # @return [String]
+        attr_accessor :aspect_ratio
+      
+        # Optional. Delivery mode for the generated content.
+        # Corresponds to the JSON property `delivery`
+        # @return [String]
+        attr_accessor :delivery
+      
+        # Optional. The duration for the video output.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Optional. The Google Cloud Storage URI to store the video output. Required for
+        # Vertex if delivery is URI.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
+          @delivery = args[:delivery] if args.key?(:delivery)
+          @duration = args[:duration] if args.key?(:duration)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
         end
       end
       

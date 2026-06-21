@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1AudioResponseFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1AuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ImageResponseFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1LogprobsResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ResponseFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Retrieval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -527,6 +545,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1SpeechConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1TextResponseFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -640,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1VideoResponseFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1VoiceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -680,6 +710,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_key_secret_version, as: 'apiKeySecretVersion'
           property :api_key_string, as: 'apiKeyString'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AudioResponseFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bit_rate, as: 'bitRate'
+          property :delivery, as: 'delivery'
+          property :mime_type, as: 'mimeType'
+          property :sample_rate, as: 'sampleRate'
         end
       end
       
@@ -1058,6 +1098,8 @@ module Google
           property :model_config, as: 'modelConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigModelConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigModelConfig::Representation
       
           property :presence_penalty, as: 'presencePenalty'
+          collection :response_format, as: 'responseFormat', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ResponseFormat, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ResponseFormat::Representation
+      
           property :response_json_schema, as: 'responseJsonSchema'
           property :response_logprobs, as: 'responseLogprobs'
           property :response_mime_type, as: 'responseMimeType'
@@ -1277,6 +1319,16 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1ImageResponseFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aspect_ratio, as: 'aspectRatio'
+          property :delivery, as: 'delivery'
+          property :image_size, as: 'imageSize'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1LogprobsResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1459,6 +1511,20 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1ResponseFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio, as: 'audio', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioResponseFormat, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioResponseFormat::Representation
+      
+          property :image, as: 'image', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageResponseFormat, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageResponseFormat::Representation
+      
+          property :text, as: 'text', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1TextResponseFormat, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1TextResponseFormat::Representation
+      
+          property :video, as: 'video', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoResponseFormat, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoResponseFormat::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1Retrieval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1583,6 +1649,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1TextResponseFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mime_type, as: 'mimeType'
+          property :schema, as: 'schema'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1Tool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1620,6 +1694,7 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolComputerUse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_prompt_injection_detection, as: 'enablePromptInjectionDetection'
           property :environment, as: 'environment'
           collection :excluded_predefined_functions, as: 'excludedPredefinedFunctions'
         end
@@ -1753,6 +1828,16 @@ module Google
           property :end_offset, as: 'endOffset'
           property :fps, as: 'fps'
           property :start_offset, as: 'startOffset'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1VideoResponseFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aspect_ratio, as: 'aspectRatio'
+          property :delivery, as: 'delivery'
+          property :duration, as: 'duration'
+          property :gcs_uri, as: 'gcsUri'
         end
       end
       
