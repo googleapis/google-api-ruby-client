@@ -302,10 +302,10 @@ module Google
       end
       
       # Configuration for a Bigtable subscription. The Pub/Sub message will be written
-      # to a Bigtable row as follows: - row key: subscription name and message ID
-      # delimited by #. - columns: message bytes written to a single column family "
-      # data" with an empty-string column qualifier. - cell timestamp: the message
-      # publish timestamp.
+      # to a Bigtable row as follows: - row key: subscription name, message ID hash,
+      # and message ID delimited by `#`. - columns: message bytes written to a single
+      # column family `data` with an empty-string column qualifier. - cell timestamp:
+      # the message publish timestamp.
       class BigtableConfig
         include Google::Apis::Core::Hashable
       
@@ -549,6 +549,32 @@ module Google
           @max_messages = args[:max_messages] if args.key?(:max_messages)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @text_config = args[:text_config] if args.key?(:text_config)
+        end
+      end
+      
+      # Configuration for compressing/decompressing message data using a user-
+      # specified compression algorithm.
+      class Compression
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the compression algorithm to use.
+        # Corresponds to the JSON property `compressionAlgorithm`
+        # @return [String]
+        attr_accessor :compression_algorithm
+      
+        # Required. Specifies whether to compress or decompress the message.
+        # Corresponds to the JSON property `compressionMode`
+        # @return [String]
+        attr_accessor :compression_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compression_algorithm = args[:compression_algorithm] if args.key?(:compression_algorithm)
+          @compression_mode = args[:compression_mode] if args.key?(:compression_mode)
         end
       end
       
@@ -1124,10 +1150,10 @@ module Google
         attr_accessor :bigquery_config
       
         # Configuration for a Bigtable subscription. The Pub/Sub message will be written
-        # to a Bigtable row as follows: - row key: subscription name and message ID
-        # delimited by #. - columns: message bytes written to a single column family "
-        # data" with an empty-string column qualifier. - cell timestamp: the message
-        # publish timestamp.
+        # to a Bigtable row as follows: - row key: subscription name, message ID hash,
+        # and message ID delimited by `#`. - columns: message bytes written to a single
+        # column family `data` with an empty-string column qualifier. - cell timestamp:
+        # the message publish timestamp.
         # Corresponds to the JSON property `bigtableConfig`
         # @return [Google::Apis::AnalyticshubV1::BigtableConfig]
         attr_accessor :bigtable_config
@@ -1670,6 +1696,12 @@ module Google
         # @return [Google::Apis::AnalyticshubV1::AiInference]
         attr_accessor :ai_inference
       
+        # Configuration for compressing/decompressing message data using a user-
+        # specified compression algorithm.
+        # Corresponds to the JSON property `compression`
+        # @return [Google::Apis::AnalyticshubV1::Compression]
+        attr_accessor :compression
+      
         # Optional. If true, the transform is disabled and will not be applied to
         # messages. Defaults to `false`.
         # Corresponds to the JSON property `disabled`
@@ -1697,6 +1729,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ai_inference = args[:ai_inference] if args.key?(:ai_inference)
+          @compression = args[:compression] if args.key?(:compression)
           @disabled = args[:disabled] if args.key?(:disabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @javascript_udf = args[:javascript_udf] if args.key?(:javascript_udf)

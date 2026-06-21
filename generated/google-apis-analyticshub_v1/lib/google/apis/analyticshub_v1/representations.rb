@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Compression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataExchange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -559,6 +565,14 @@ module Google
         end
       end
       
+      class Compression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compression_algorithm, as: 'compressionAlgorithm'
+          property :compression_mode, as: 'compressionMode'
+        end
+      end
+      
       class DataExchange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -844,6 +858,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ai_inference, as: 'aiInference', class: Google::Apis::AnalyticshubV1::AiInference, decorator: Google::Apis::AnalyticshubV1::AiInference::Representation
+      
+          property :compression, as: 'compression', class: Google::Apis::AnalyticshubV1::Compression, decorator: Google::Apis::AnalyticshubV1::Compression::Representation
       
           property :disabled, as: 'disabled'
           property :enabled, as: 'enabled'
