@@ -352,7 +352,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpanAttributeFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpanContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpanFilters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1037,10 +1049,36 @@ module Google
         end
       end
       
+      class SpanAttributeFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          collection :value, as: 'value'
+        end
+      end
+      
       class SpanContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :span_name, as: 'spanName'
+        end
+      end
+      
+      class SpanFilters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apphub_services, as: 'apphubServices'
+          collection :apphub_workloads, as: 'apphubWorkloads'
+          collection :application_ids, as: 'applicationIds'
+          collection :attributes, as: 'attributes', class: Google::Apis::MonitoringV1::SpanAttributeFilter, decorator: Google::Apis::MonitoringV1::SpanAttributeFilter::Representation
+      
+          collection :display_names, as: 'displayNames'
+          property :is_root_span, as: 'isRootSpan'
+          collection :kinds, as: 'kinds'
+          property :max_duration, as: 'maxDuration'
+          property :min_duration, as: 'minDuration'
+          collection :services, as: 'services'
+          collection :status, as: 'status'
         end
       end
       
@@ -1213,6 +1251,10 @@ module Google
       class TraceQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_container, as: 'resourceContainer'
+          property :span_data_value, as: 'spanDataValue'
+          property :span_filters, as: 'spanFilters', class: Google::Apis::MonitoringV1::SpanFilters, decorator: Google::Apis::MonitoringV1::SpanFilters::Representation
+      
         end
       end
       

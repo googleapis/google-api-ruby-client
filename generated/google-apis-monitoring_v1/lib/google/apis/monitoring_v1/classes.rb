@@ -2160,6 +2160,31 @@ module Google
         end
       end
       
+      # Span attribute key and list of values to be used for filtering.
+      class SpanAttributeFilter
+        include Google::Apis::Core::Hashable
+      
+        # Key of the attribute
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # List of attribute values for given key. Multiple values will be OR'd together.
+        # Corresponds to the JSON property `value`
+        # @return [Array<String>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # The context of a span. This is attached to an Exemplar in Distribution values
       # during aggregation.It contains the name of a span with format: projects/[
       # PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
@@ -2182,6 +2207,97 @@ module Google
         # Update properties of this object
         def update!(**args)
           @span_name = args[:span_name] if args.key?(:span_name)
+        end
+      end
+      
+      # First version of span filtering that is supported by the Trace component.
+      class SpanFilters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Filtering for spans containing one of the Apphub service IDs in the
+        # list. Multiple values will be OR'd together. Example: "service-id1", "service-
+        # id2"
+        # Corresponds to the JSON property `apphubServices`
+        # @return [Array<String>]
+        attr_accessor :apphub_services
+      
+        # Optional. Filtering for spans containing one of the Apphub workload IDs in the
+        # list. Multiple values will be OR'd together. Example: "workload-id1", "
+        # workload-id2"
+        # Corresponds to the JSON property `apphubWorkloads`
+        # @return [Array<String>]
+        attr_accessor :apphub_workloads
+      
+        # Optional. Filtering for spans containing one of the Apphub Application IDs in
+        # the list. Multiple values will be OR'd together.
+        # Corresponds to the JSON property `applicationIds`
+        # @return [Array<String>]
+        attr_accessor :application_ids
+      
+        # Optional. List of span attribute filters. Each SpanAttributeFilter key must be
+        # unique. Multiple attribute filters will be AND'd together.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::MonitoringV1::SpanAttributeFilter>]
+        attr_accessor :attributes
+      
+        # Optional. Filtering for spans containing one of the span display names in the
+        # list. Multiple values will be OR'd together.
+        # Corresponds to the JSON property `displayNames`
+        # @return [Array<String>]
+        attr_accessor :display_names
+      
+        # Optional. Filters for root spans only if set to true. A root span is a span
+        # without a defined parent span ID.
+        # Corresponds to the JSON property `isRootSpan`
+        # @return [Boolean]
+        attr_accessor :is_root_span
+        alias_method :is_root_span?, :is_root_span
+      
+        # Optional. Filtering for spans containing one of the kinds in the list.
+        # Multiple values will be OR'd together.
+        # Corresponds to the JSON property `kinds`
+        # @return [Array<String>]
+        attr_accessor :kinds
+      
+        # Optional. Filtering for spans with a maximum duration.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [String]
+        attr_accessor :max_duration
+      
+        # Optional. Filtering for spans with a minimum duration.
+        # Corresponds to the JSON property `minDuration`
+        # @return [String]
+        attr_accessor :min_duration
+      
+        # Optional. Filtering for spans containing one of the services in the list.
+        # Multiple values will be OR'd together.
+        # Corresponds to the JSON property `services`
+        # @return [Array<String>]
+        attr_accessor :services
+      
+        # Optional. Filtering for spans containing one of the statuses in the list.
+        # Multiple values will be OR'd together.
+        # Corresponds to the JSON property `status`
+        # @return [Array<String>]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apphub_services = args[:apphub_services] if args.key?(:apphub_services)
+          @apphub_workloads = args[:apphub_workloads] if args.key?(:apphub_workloads)
+          @application_ids = args[:application_ids] if args.key?(:application_ids)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @display_names = args[:display_names] if args.key?(:display_names)
+          @is_root_span = args[:is_root_span] if args.key?(:is_root_span)
+          @kinds = args[:kinds] if args.key?(:kinds)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @min_duration = args[:min_duration] if args.key?(:min_duration)
+          @services = args[:services] if args.key?(:services)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -2866,12 +2982,32 @@ module Google
       class TraceQuery
         include Google::Apis::Core::Hashable
       
+        # Optional. The resource name of the project or Trace scope to fetch data from.
+        # If empty, the widget will default to the project's default Trace scope. If
+        # scope cannot be determined, then we fallback to the current project. Optional.
+        # Corresponds to the JSON property `resourceContainer`
+        # @return [String]
+        attr_accessor :resource_container
+      
+        # The type of span data value to be displayed on the chart. Required.
+        # Corresponds to the JSON property `spanDataValue`
+        # @return [String]
+        attr_accessor :span_data_value
+      
+        # First version of span filtering that is supported by the Trace component.
+        # Corresponds to the JSON property `spanFilters`
+        # @return [Google::Apis::MonitoringV1::SpanFilters]
+        attr_accessor :span_filters
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @span_data_value = args[:span_data_value] if args.key?(:span_data_value)
+          @span_filters = args[:span_filters] if args.key?(:span_filters)
         end
       end
       
