@@ -7065,7 +7065,7 @@ module Google
         end
       end
       
-      # The search API request. NEXT ID: 25
+      # The search API request. NEXT ID: 26
       class SearchRequest
         include Google::Apis::Core::Hashable
       
@@ -7137,7 +7137,7 @@ module Google
         end
       end
       
-      # The search API response. NEXT ID: 19
+      # The search API response. NEXT ID: 20
       class SearchResponse
         include Google::Apis::Core::Hashable
       
@@ -7219,7 +7219,7 @@ module Google
         end
       end
       
-      # Results containing indexed information for a document. Next ID: 16
+      # Results containing indexed information for a document. Next ID: 17
       class SearchResult
         include Google::Apis::Core::Hashable
       
