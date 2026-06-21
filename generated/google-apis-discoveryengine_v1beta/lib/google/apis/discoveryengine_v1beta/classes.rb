@@ -3939,13 +3939,13 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `personalization-suggested-highlights` * `disable-
-        # mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
-        # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
-        # canvas` * `disable-canvas-workspace` * `disable-skills` * `enable-end-user-
-        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence`
+        # personalization-memory` * `personalization-suggested-highlights` * `mobile-app-
+        # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
+        # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
+        # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
+        # canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` *
+        # `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
+        # intelligence`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -5172,6 +5172,11 @@ module Google
       class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus
         include Google::Apis::Core::Hashable
       
+        # Output only. Per-model Agent Search TPM subscription status.
+        # Corresponds to the JSON property `agentSearchTokenSubscriptionStatuses`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus>]
+        attr_accessor :agent_search_token_subscription_statuses
+      
         # Optional. The currently effective Indexing Core threshold. This is the
         # threshold against which Indexing Core usage is compared for overage
         # calculations.
@@ -5225,12 +5230,101 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_search_token_subscription_statuses = args[:agent_search_token_subscription_statuses] if args.key?(:agent_search_token_subscription_statuses)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
           @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
           @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
+          @update_type = args[:update_type] if args.key?(:update_type)
+        end
+      end
+      
+      # Per-model Agent Search TPM subscription status. One entry per active `
+      # core_subscription.agent_search_token_subscriptions[*]` entry in the customer-
+      # provided config; populated by UpdateProject and GetProject. The lifecycle
+      # scalars on this message (`start_time`, `terminate_time`, `update_type`, `
+      # tpm_threshold_next_update_time`) are per (project, model_version) — siblings
+      # of the whole-relationship `start_time` / `terminate_time` / `update_type` on
+      # the enclosing ConfigurableBillingStatus, but scoped to this specific Agent
+      # Search TPM subscription instead of to the overall customer-configurable-
+      # pricing relationship. This per-instance granularity is intentional: the
+      # underlying SubV3 storage is per-(project, model_version), so each model has
+      # its own activation, termination, and deferred-update clock; surfacing that on
+      # the response gives customers the granularity they need to manage per-model
+      # commitments independently. QPM / IndexingCore differ — their storage is one
+      # row per (project, location), so their lifecycle is represented only by the
+      # whole- relationship scalars on ConfigurableBillingStatus.
+      class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The currently effective TPM threshold. Reflects scale-up
+        # immediately and scale-down at the next billing cycle, matching `
+        # effective_search_qpm_threshold` semantics.
+        # Corresponds to the JSON property `effectiveTpmThreshold`
+        # @return [Fixnum]
+        attr_accessor :effective_tpm_threshold
+      
+        # Output only. The Gemini model version this status corresponds to. Matches
+        # CoreSubscription.AgentSearchTokenSubscription.model_version (a stable Gemini
+        # model version from the Gemini Enterprise Agent Platform model-versions
+        # registry; see https://docs.cloud.google.com/gemini-enterprise-agent-platform/
+        # models/model-versions#gemini-models).
+        # Corresponds to the JSON property `modelVersion`
+        # @return [String]
+        attr_accessor :model_version
+      
+        # Output only. When this (project, model_version) Agent Search TPM subscription
+        # was first activated. Set once on first activation of this model version and
+        # never moved by subsequent threshold updates; on termination + re-activation a
+        # new value is recorded. Does NOT move the whole-relationship `start_time` on
+        # the enclosing ConfigurableBillingStatus, which continues to represent the
+        # first activation of the overall customer-configurable-pricing relationship.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. If set, the scheduled effective time at which this (project,
+        # model_version) Agent Search TPM subscription will terminate. Populated when
+        # the customer removes this entry from `core_subscription.
+        # agent_search_token_subscriptions[*]`. Does NOT move the whole-relationship `
+        # terminate_time` on the enclosing ConfigurableBillingStatus, which is populated
+        # only when the entire customer-configurable-pricing relationship is being torn
+        # down.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
+      
+        # Output only. The earliest next update time for the TPM subscription threshold
+        # for this (project, model_version). Populated only after a successful update.
+        # Corresponds to the JSON property `tpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :tpm_threshold_next_update_time
+      
+        # Output only. The type of the most recent update to this (project,
+        # model_version) subscription, as performed by the most recent UpdateProject
+        # call. `UPDATE_TYPE_UNSPECIFIED` indicates this model_version was not touched
+        # by the most recent UpdateProject (its `effective_tpm_threshold` reflects an
+        # earlier update). The whole-relationship `update_type` on the enclosing
+        # ConfigurableBillingStatus continues to summarize the direction of the most
+        # recent update across all surfaces in the project (QPM, IndexingCore, and Agent
+        # Search TPM together).
+        # Corresponds to the JSON property `updateType`
+        # @return [String]
+        attr_accessor :update_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_tpm_threshold = args[:effective_tpm_threshold] if args.key?(:effective_tpm_threshold)
+          @model_version = args[:model_version] if args.key?(:model_version)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
+          @tpm_threshold_next_update_time = args[:tpm_threshold_next_update_time] if args.key?(:tpm_threshold_next_update_time)
           @update_type = args[:update_type] if args.key?(:update_type)
         end
       end
@@ -11690,13 +11784,13 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `personalization-suggested-highlights` * `disable-
-        # mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
-        # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
-        # canvas` * `disable-canvas-workspace` * `disable-skills` * `enable-end-user-
-        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence`
+        # personalization-memory` * `personalization-suggested-highlights` * `mobile-app-
+        # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
+        # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
+        # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
+        # canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` *
+        # `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
+        # intelligence`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -13770,6 +13864,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus
         include Google::Apis::Core::Hashable
       
+        # Output only. Per-model Agent Search TPM subscription status.
+        # Corresponds to the JSON property `agentSearchTokenSubscriptionStatuses`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus>]
+        attr_accessor :agent_search_token_subscription_statuses
+      
         # Optional. The currently effective Indexing Core threshold. This is the
         # threshold against which Indexing Core usage is compared for overage
         # calculations.
@@ -13823,12 +13922,101 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_search_token_subscription_statuses = args[:agent_search_token_subscription_statuses] if args.key?(:agent_search_token_subscription_statuses)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
           @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
           @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
+          @update_type = args[:update_type] if args.key?(:update_type)
+        end
+      end
+      
+      # Per-model Agent Search TPM subscription status. One entry per active `
+      # core_subscription.agent_search_token_subscriptions[*]` entry in the customer-
+      # provided config; populated by UpdateProject and GetProject. The lifecycle
+      # scalars on this message (`start_time`, `terminate_time`, `update_type`, `
+      # tpm_threshold_next_update_time`) are per (project, model_version) — siblings
+      # of the whole-relationship `start_time` / `terminate_time` / `update_type` on
+      # the enclosing ConfigurableBillingStatus, but scoped to this specific Agent
+      # Search TPM subscription instead of to the overall customer-configurable-
+      # pricing relationship. This per-instance granularity is intentional: the
+      # underlying SubV3 storage is per-(project, model_version), so each model has
+      # its own activation, termination, and deferred-update clock; surfacing that on
+      # the response gives customers the granularity they need to manage per-model
+      # commitments independently. QPM / IndexingCore differ — their storage is one
+      # row per (project, location), so their lifecycle is represented only by the
+      # whole- relationship scalars on ConfigurableBillingStatus.
+      class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The currently effective TPM threshold. Reflects scale-up
+        # immediately and scale-down at the next billing cycle, matching `
+        # effective_search_qpm_threshold` semantics.
+        # Corresponds to the JSON property `effectiveTpmThreshold`
+        # @return [Fixnum]
+        attr_accessor :effective_tpm_threshold
+      
+        # Output only. The Gemini model version this status corresponds to. Matches
+        # CoreSubscription.AgentSearchTokenSubscription.model_version (a stable Gemini
+        # model version from the Gemini Enterprise Agent Platform model-versions
+        # registry; see https://docs.cloud.google.com/gemini-enterprise-agent-platform/
+        # models/model-versions#gemini-models).
+        # Corresponds to the JSON property `modelVersion`
+        # @return [String]
+        attr_accessor :model_version
+      
+        # Output only. When this (project, model_version) Agent Search TPM subscription
+        # was first activated. Set once on first activation of this model version and
+        # never moved by subsequent threshold updates; on termination + re-activation a
+        # new value is recorded. Does NOT move the whole-relationship `start_time` on
+        # the enclosing ConfigurableBillingStatus, which continues to represent the
+        # first activation of the overall customer-configurable-pricing relationship.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. If set, the scheduled effective time at which this (project,
+        # model_version) Agent Search TPM subscription will terminate. Populated when
+        # the customer removes this entry from `core_subscription.
+        # agent_search_token_subscriptions[*]`. Does NOT move the whole-relationship `
+        # terminate_time` on the enclosing ConfigurableBillingStatus, which is populated
+        # only when the entire customer-configurable-pricing relationship is being torn
+        # down.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
+      
+        # Output only. The earliest next update time for the TPM subscription threshold
+        # for this (project, model_version). Populated only after a successful update.
+        # Corresponds to the JSON property `tpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :tpm_threshold_next_update_time
+      
+        # Output only. The type of the most recent update to this (project,
+        # model_version) subscription, as performed by the most recent UpdateProject
+        # call. `UPDATE_TYPE_UNSPECIFIED` indicates this model_version was not touched
+        # by the most recent UpdateProject (its `effective_tpm_threshold` reflects an
+        # earlier update). The whole-relationship `update_type` on the enclosing
+        # ConfigurableBillingStatus continues to summarize the direction of the most
+        # recent update across all surfaces in the project (QPM, IndexingCore, and Agent
+        # Search TPM together).
+        # Corresponds to the JSON property `updateType`
+        # @return [String]
+        attr_accessor :update_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_tpm_threshold = args[:effective_tpm_threshold] if args.key?(:effective_tpm_threshold)
+          @model_version = args[:model_version] if args.key?(:model_version)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
+          @tpm_threshold_next_update_time = args[:tpm_threshold_next_update_time] if args.key?(:tpm_threshold_next_update_time)
           @update_type = args[:update_type] if args.key?(:update_type)
         end
       end
@@ -24480,13 +24668,13 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `personalization-suggested-highlights` * `disable-
-        # mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
-        # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
-        # canvas` * `disable-canvas-workspace` * `disable-skills` * `enable-end-user-
-        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence`
+        # personalization-memory` * `personalization-suggested-highlights` * `mobile-app-
+        # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
+        # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
+        # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
+        # canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` *
+        # `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
+        # intelligence`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -27675,6 +27863,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus
         include Google::Apis::Core::Hashable
       
+        # Output only. Per-model Agent Search TPM subscription status.
+        # Corresponds to the JSON property `agentSearchTokenSubscriptionStatuses`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus>]
+        attr_accessor :agent_search_token_subscription_statuses
+      
         # Optional. The currently effective Indexing Core threshold. This is the
         # threshold against which Indexing Core usage is compared for overage
         # calculations.
@@ -27728,12 +27921,101 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_search_token_subscription_statuses = args[:agent_search_token_subscription_statuses] if args.key?(:agent_search_token_subscription_statuses)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
           @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
           @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
+          @update_type = args[:update_type] if args.key?(:update_type)
+        end
+      end
+      
+      # Per-model Agent Search TPM subscription status. One entry per active `
+      # core_subscription.agent_search_token_subscriptions[*]` entry in the customer-
+      # provided config; populated by UpdateProject and GetProject. The lifecycle
+      # scalars on this message (`start_time`, `terminate_time`, `update_type`, `
+      # tpm_threshold_next_update_time`) are per (project, model_version) — siblings
+      # of the whole-relationship `start_time` / `terminate_time` / `update_type` on
+      # the enclosing ConfigurableBillingStatus, but scoped to this specific Agent
+      # Search TPM subscription instead of to the overall customer-configurable-
+      # pricing relationship. This per-instance granularity is intentional: the
+      # underlying SubV3 storage is per-(project, model_version), so each model has
+      # its own activation, termination, and deferred-update clock; surfacing that on
+      # the response gives customers the granularity they need to manage per-model
+      # commitments independently. QPM / IndexingCore differ — their storage is one
+      # row per (project, location), so their lifecycle is represented only by the
+      # whole- relationship scalars on ConfigurableBillingStatus.
+      class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The currently effective TPM threshold. Reflects scale-up
+        # immediately and scale-down at the next billing cycle, matching `
+        # effective_search_qpm_threshold` semantics.
+        # Corresponds to the JSON property `effectiveTpmThreshold`
+        # @return [Fixnum]
+        attr_accessor :effective_tpm_threshold
+      
+        # Output only. The Gemini model version this status corresponds to. Matches
+        # CoreSubscription.AgentSearchTokenSubscription.model_version (a stable Gemini
+        # model version from the Gemini Enterprise Agent Platform model-versions
+        # registry; see https://docs.cloud.google.com/gemini-enterprise-agent-platform/
+        # models/model-versions#gemini-models).
+        # Corresponds to the JSON property `modelVersion`
+        # @return [String]
+        attr_accessor :model_version
+      
+        # Output only. When this (project, model_version) Agent Search TPM subscription
+        # was first activated. Set once on first activation of this model version and
+        # never moved by subsequent threshold updates; on termination + re-activation a
+        # new value is recorded. Does NOT move the whole-relationship `start_time` on
+        # the enclosing ConfigurableBillingStatus, which continues to represent the
+        # first activation of the overall customer-configurable-pricing relationship.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. If set, the scheduled effective time at which this (project,
+        # model_version) Agent Search TPM subscription will terminate. Populated when
+        # the customer removes this entry from `core_subscription.
+        # agent_search_token_subscriptions[*]`. Does NOT move the whole-relationship `
+        # terminate_time` on the enclosing ConfigurableBillingStatus, which is populated
+        # only when the entire customer-configurable-pricing relationship is being torn
+        # down.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
+      
+        # Output only. The earliest next update time for the TPM subscription threshold
+        # for this (project, model_version). Populated only after a successful update.
+        # Corresponds to the JSON property `tpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :tpm_threshold_next_update_time
+      
+        # Output only. The type of the most recent update to this (project,
+        # model_version) subscription, as performed by the most recent UpdateProject
+        # call. `UPDATE_TYPE_UNSPECIFIED` indicates this model_version was not touched
+        # by the most recent UpdateProject (its `effective_tpm_threshold` reflects an
+        # earlier update). The whole-relationship `update_type` on the enclosing
+        # ConfigurableBillingStatus continues to summarize the direction of the most
+        # recent update across all surfaces in the project (QPM, IndexingCore, and Agent
+        # Search TPM together).
+        # Corresponds to the JSON property `updateType`
+        # @return [String]
+        attr_accessor :update_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_tpm_threshold = args[:effective_tpm_threshold] if args.key?(:effective_tpm_threshold)
+          @model_version = args[:model_version] if args.key?(:model_version)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
+          @tpm_threshold_next_update_time = args[:tpm_threshold_next_update_time] if args.key?(:tpm_threshold_next_update_time)
           @update_type = args[:update_type] if args.key?(:update_type)
         end
       end
