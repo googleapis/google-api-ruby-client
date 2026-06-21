@@ -1556,7 +1556,7 @@ module Google
       class ResourceTypes
         include Google::Apis::Core::Hashable
       
-        # Optional. The resource types we currently support.
+        # Optional. The resource types we support.
         # Corresponds to the JSON property `included`
         # @return [Array<String>]
         attr_accessor :included
