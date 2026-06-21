@@ -2130,6 +2130,7 @@ module Google
       class ConfidentialInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidential_instance_type, as: 'confidentialInstanceType'
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
         end
       end
@@ -2464,6 +2465,7 @@ module Google
           property :machine_type, as: 'machineType'
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :preemptible, as: 'preemptible'
+          property :service_account, as: 'serviceAccount'
           property :spot, as: 'spot'
         end
       end

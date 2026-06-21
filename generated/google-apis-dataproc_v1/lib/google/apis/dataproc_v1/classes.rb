@@ -1853,9 +1853,14 @@ module Google
       end
       
       # Confidential Instance Config for clusters using Confidential VMs (https://
-      # cloud.google.com/compute/confidential-vm/docs)
+      # cloud.google.com/confidential-computing/confidential-vm/docs)
       class ConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
+      
+        # Optional. Defines the type of Confidential Compute technology to use.
+        # Corresponds to the JSON property `confidentialInstanceType`
+        # @return [String]
+        attr_accessor :confidential_instance_type
       
         # Optional. Deprecated: Use 'confidential_instance_type' instead. Defines
         # whether the instance should have confidential compute enabled.
@@ -1870,6 +1875,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidential_instance_type = args[:confidential_instance_type] if args.key?(:confidential_instance_type)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
         end
       end
@@ -3076,7 +3082,7 @@ module Google
         attr_accessor :auto_zone_exclude_zone_uris
       
         # Confidential Instance Config for clusters using Confidential VMs (https://
-        # cloud.google.com/compute/confidential-vm/docs)
+        # cloud.google.com/confidential-computing/confidential-vm/docs)
         # Corresponds to the JSON property `confidentialInstanceConfig`
         # @return [Google::Apis::DataprocV1::ConfidentialInstanceConfig]
         attr_accessor :confidential_instance_config
@@ -3350,6 +3356,15 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
+        # Optional. Specifies the service account (https://cloud.google.com/dataproc/
+        # docs/guides/dpgke/dataproc-gke-iam) to be used by the node pools. Specify the
+        # email address of the service account or its full resource name.Format:
+        # projects/`project`/serviceAccounts/`service_account_email` or `
+        # service_account_email`.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Optional. Whether the nodes are created as Spot VM instances (https://cloud.
         # google.com/compute/docs/instances/spot). Spot VMs are the latest update to
         # legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and
@@ -3373,6 +3388,7 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @spot = args[:spot] if args.key?(:spot)
         end
       end
