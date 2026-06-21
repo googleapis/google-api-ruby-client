@@ -409,6 +409,11 @@ module Google
         # @return [Google::Apis::VaultV1::HeldDriveQuery]
         attr_accessor :drive_query
       
+        # Options for Gemini holds.
+        # Corresponds to the JSON property `geminiQuery`
+        # @return [Google::Apis::VaultV1::HeldGeminiQuery]
+        attr_accessor :gemini_query
+      
         # Query options for group holds.
         # Corresponds to the JSON property `groupsQuery`
         # @return [Google::Apis::VaultV1::HeldGroupsQuery]
@@ -437,6 +442,7 @@ module Google
         def update!(**args)
           @calendar_query = args[:calendar_query] if args.key?(:calendar_query)
           @drive_query = args[:drive_query] if args.key?(:drive_query)
+          @gemini_query = args[:gemini_query] if args.key?(:gemini_query)
           @groups_query = args[:groups_query] if args.key?(:groups_query)
           @hangouts_chat_query = args[:hangouts_chat_query] if args.key?(:hangouts_chat_query)
           @mail_query = args[:mail_query] if args.key?(:mail_query)
@@ -1083,6 +1089,19 @@ module Google
         def update!(**args)
           @include_shared_drive_files = args[:include_shared_drive_files] if args.key?(:include_shared_drive_files)
           @include_team_drive_files = args[:include_team_drive_files] if args.key?(:include_team_drive_files)
+        end
+      end
+      
+      # Options for Gemini holds.
+      class HeldGeminiQuery
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
