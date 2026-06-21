@@ -1216,6 +1216,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeRolloutSequenceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ValidateCreateMembershipRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1335,6 +1341,7 @@ module Google
       class AutoUpgradeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :enforced_rollouts, as: 'enforcedRollouts'
           property :rollout_creation_scope, as: 'rolloutCreationScope', class: Google::Apis::GkehubV1alpha::RolloutCreationScope, decorator: Google::Apis::GkehubV1alpha::RolloutCreationScope::Representation
       
         end
@@ -3051,6 +3058,7 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
+          property :intent, as: 'intent'
           hash :labels, as: 'labels'
           hash :membership_states, as: 'membershipStates', class: Google::Apis::GkehubV1alpha::RolloutMembershipState, decorator: Google::Apis::GkehubV1alpha::RolloutMembershipState::Representation
       
@@ -3061,6 +3069,7 @@ module Google
           property :state, as: 'state'
           property :state_reason, as: 'stateReason'
           property :state_reason_type, as: 'stateReasonType'
+          property :trigger, as: 'trigger'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :version_upgrade, as: 'versionUpgrade', class: Google::Apis::GkehubV1alpha::VersionUpgrade, decorator: Google::Apis::GkehubV1alpha::VersionUpgrade::Representation
@@ -3090,6 +3099,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_upgrade_config, as: 'autoUpgradeConfig', class: Google::Apis::GkehubV1alpha::AutoUpgradeConfig, decorator: Google::Apis::GkehubV1alpha::AutoUpgradeConfig::Representation
       
+          property :computed_release_channel, as: 'computedReleaseChannel'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
@@ -3099,11 +3109,15 @@ module Google
           property :ignored_clusters_selector, as: 'ignoredClustersSelector', class: Google::Apis::GkehubV1alpha::ClusterSelector, decorator: Google::Apis::GkehubV1alpha::ClusterSelector::Representation
       
           hash :labels, as: 'labels'
+          property :last_qualified_control_plane_version, as: 'lastQualifiedControlPlaneVersion'
+          property :last_qualified_node_version, as: 'lastQualifiedNodeVersion'
           property :name, as: 'name'
           property :operational_state, as: 'operationalState', class: Google::Apis::GkehubV1alpha::OperationalState, decorator: Google::Apis::GkehubV1alpha::OperationalState::Representation
       
           collection :stages, as: 'stages', class: Google::Apis::GkehubV1alpha::Stage, decorator: Google::Apis::GkehubV1alpha::Stage::Representation
       
+          property :target_control_plane_version, as: 'targetControlPlaneVersion'
+          property :target_node_version, as: 'targetNodeVersion'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -3112,7 +3126,10 @@ module Google
       class RolloutStage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_selector, as: 'clusterSelector', class: Google::Apis::GkehubV1alpha::ClusterSelector, decorator: Google::Apis::GkehubV1alpha::ClusterSelector::Representation
+      
           property :end_time, as: 'endTime'
+          collection :fleet_projects, as: 'fleetProjects'
           property :soak_duration, as: 'soakDuration'
           property :stage_number, as: 'stageNumber'
           property :start_time, as: 'startTime'
@@ -3336,6 +3353,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class UpgradeRolloutSequenceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
+          property :upgrade_type, as: 'upgradeType'
+          property :version, as: 'version'
         end
       end
       
