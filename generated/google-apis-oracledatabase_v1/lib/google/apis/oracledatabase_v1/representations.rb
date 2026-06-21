@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigureExascaleCloudExadataInfrastructureRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerContact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +335,12 @@ module Google
       end
       
       class ExadbVmClusterStorageDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExascaleConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1374,6 +1386,8 @@ module Google
           property :database_server_type, as: 'databaseServerType'
           property :db_node_storage_size_gb, as: 'dbNodeStorageSizeGb'
           property :db_server_version, as: 'dbServerVersion'
+          property :exascale_config, as: 'exascaleConfig', class: Google::Apis::OracledatabaseV1::ExascaleConfig, decorator: Google::Apis::OracledatabaseV1::ExascaleConfig::Representation
+      
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::OracledatabaseV1::MaintenanceWindow, decorator: Google::Apis::OracledatabaseV1::MaintenanceWindow::Representation
       
           property :max_cpu_count, as: 'maxCpuCount'
@@ -1406,6 +1420,7 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :exadata_infrastructure, as: 'exadataInfrastructure'
+          property :exascale_db_storage_vault, as: 'exascaleDbStorageVault'
           property :gcp_oracle_zone, as: 'gcpOracleZone'
           property :identity_connector, as: 'identityConnector', class: Google::Apis::OracledatabaseV1::IdentityConnector, decorator: Google::Apis::OracledatabaseV1::IdentityConnector::Representation
       
@@ -1453,10 +1468,19 @@ module Google
           property :sparse_diskgroup_enabled, as: 'sparseDiskgroupEnabled'
           collection :ssh_public_keys, as: 'sshPublicKeys'
           property :state, as: 'state'
+          property :storage_management_type, as: 'storageManagementType'
           property :storage_size_gb, as: 'storageSizeGb'
           property :system_version, as: 'systemVersion'
           property :time_zone, as: 'timeZone', class: Google::Apis::OracledatabaseV1::TimeZone, decorator: Google::Apis::OracledatabaseV1::TimeZone::Representation
       
+        end
+      end
+      
+      class ConfigureExascaleCloudExadataInfrastructureRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :total_storage_size_gb, as: 'totalStorageSizeGb'
         end
       end
       
@@ -1856,6 +1880,14 @@ module Google
         end
       end
       
+      class ExascaleConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_storage_size_gb, as: 'availableStorageSizeGb'
+          property :total_storage_size_gb, as: 'totalStorageSizeGb'
+        end
+      end
+      
       class ExascaleDbStorageDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1870,6 +1902,7 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :entitlement_id, as: 'entitlementId'
+          property :exadata_infrastructure, as: 'exadataInfrastructure'
           property :gcp_oracle_zone, as: 'gcpOracleZone'
           hash :labels, as: 'labels'
           property :name, as: 'name'
