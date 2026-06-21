@@ -112,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecuteHttpRequestRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteHttpRequestResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExecuteSqlQueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +179,12 @@ module Google
       end
       
       class GetResourceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpHeader
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -544,6 +562,28 @@ module Google
         end
       end
       
+      class ExecuteHttpRequestRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :headers, as: 'headers', class: Google::Apis::ConnectorsV2::HttpHeader, decorator: Google::Apis::ConnectorsV2::HttpHeader::Representation
+      
+          property :http_method, as: 'httpMethod'
+          property :raw_body, :base64 => true, as: 'rawBody'
+          property :url, as: 'url'
+        end
+      end
+      
+      class ExecuteHttpRequestResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, :base64 => true, as: 'body'
+          collection :headers, as: 'headers', class: Google::Apis::ConnectorsV2::HttpHeader, decorator: Google::Apis::ConnectorsV2::HttpHeader::Representation
+      
+          property :reason, as: 'reason'
+          property :status_code, as: 'statusCode'
+        end
+      end
+      
       class ExecuteSqlQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -635,6 +675,14 @@ module Google
           property :data, :base64 => true, as: 'data'
           hash :metadata, as: 'metadata'
           property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class HttpHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       

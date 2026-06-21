@@ -153,6 +153,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Executes a generic HTTP request. This supports all payload formats including
+        # REST/JSON, GraphQL, XML, SOAP, and Multipart by passing the rendered payload
+        # as raw bytes.
+        # @param [String] name
+        #   Required. Resource name of the Connection. Format: projects/`project`/
+        #   locations/`location`/connections/`connection`
+        # @param [Google::Apis::ConnectorsV2::ExecuteHttpRequestRequest] execute_http_request_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV2::ExecuteHttpRequestResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV2::ExecuteHttpRequestResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_connection_http_request(name, execute_http_request_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:executeHttpRequest', options)
+          command.request_representation = Google::Apis::ConnectorsV2::ExecuteHttpRequestRequest::Representation
+          command.request_object = execute_http_request_request_object
+          command.response_representation = Google::Apis::ConnectorsV2::ExecuteHttpRequestResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV2::ExecuteHttpRequestResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Executes a SQL statement specified in the body of the request. An example of
         # this SQL statement in the case of Salesforce connector would be 'select * from
         # Account a, Order o where a.Id = o.AccountId'.

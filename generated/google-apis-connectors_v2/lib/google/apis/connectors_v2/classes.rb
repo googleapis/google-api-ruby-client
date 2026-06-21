@@ -535,6 +535,87 @@ module Google
         end
       end
       
+      # 
+      class ExecuteHttpRequestRequest
+        include Google::Apis::Core::Hashable
+      
+        # HTTP headers to send with the request (e.g., Content-Type: application/json).
+        # Order is preserved and duplicate keys are allowed.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::ConnectorsV2::HttpHeader>]
+        attr_accessor :headers
+      
+        # Required. The HTTP method to use for the request.
+        # Corresponds to the JSON property `httpMethod`
+        # @return [String]
+        attr_accessor :http_method
+      
+        # Raw byte payload. Used for all pre-serialized formats including JSON, XML,
+        # GraphQL, and Multipart.
+        # Corresponds to the JSON property `rawBody`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw_body
+      
+        # Required. The fully resolved absolute target URL. Callers must pre-encode any
+        # query parameters.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+          @http_method = args[:http_method] if args.key?(:http_method)
+          @raw_body = args[:raw_body] if args.key?(:raw_body)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # 
+      class ExecuteHttpRequestResponse
+        include Google::Apis::Core::Hashable
+      
+        # The raw response body.
+        # Corresponds to the JSON property `body`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :body
+      
+        # HTTP headers received in the response. Order is preserved and duplicate keys
+        # are allowed (e.g., multiple Set-Cookie headers).
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::ConnectorsV2::HttpHeader>]
+        attr_accessor :headers
+      
+        # The HTTP status reason phrase received from the backend (e.g., "Not Found").
+        # May be empty if the backend did not provide one.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The HTTP status code received from the backend.
+        # Corresponds to the JSON property `statusCode`
+        # @return [Fixnum]
+        attr_accessor :status_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+          @headers = args[:headers] if args.key?(:headers)
+          @reason = args[:reason] if args.key?(:reason)
+          @status_code = args[:status_code] if args.key?(:status_code)
+        end
+      end
+      
       # An execute sql query request containing the query and the connection to
       # execute it on.
       class ExecuteSqlQueryRequest
@@ -835,6 +916,32 @@ module Google
           @data = args[:data] if args.key?(:data)
           @metadata = args[:metadata] if args.key?(:metadata)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # A single HTTP header. Keys are case-insensitive. Multiple headers with the
+      # same key may be present.
+      class HttpHeader
+        include Google::Apis::Core::Hashable
+      
+        # The header name.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The header value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
