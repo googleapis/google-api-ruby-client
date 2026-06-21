@@ -601,6 +601,16 @@ module Google
         # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationNetwork]
         attr_accessor :network
       
+        # Optional. A map of name-value pairs for connector-specific parameters. Extra
+        # configuration parameters, that are not standardized in configuration sections.
+        # To update a single parameter value call ConnectionService.UpdateConnection
+        # with `update_mask` set to `configuration.parameters.parameter_id`. If
+        # parameter id does not fit `[a-zA-Z0-9_]+` pattern, it should be escaped with
+        # backticks - for example ``configuration.parameters.`parameter id` ``.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Google::Apis::BigqueryconnectionV1::ConnectorConfigurationParameterValue>]
+        attr_accessor :parameters
+      
         def initialize(**args)
            update!(**args)
         end
@@ -612,6 +622,7 @@ module Google
           @connector_id = args[:connector_id] if args.key?(:connector_id)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @network = args[:network] if args.key?(:network)
+          @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
       
@@ -647,6 +658,17 @@ module Google
       class ConnectorConfigurationAuthentication
         include Google::Apis::Core::Hashable
       
+        # Optional. A map of name-value pairs for authentication-specific parameters.
+        # Extra configuration parameters, that are not standardized in authentication.
+        # To update a single parameter value call ConnectionService.UpdateConnection
+        # with `update_mask` set to `configuration.authentication.parameters.
+        # parameter_id`. If parameter id does not fit `[a-zA-Z0-9_]+` pattern, it should
+        # be escaped with backticks - for example ``configuration.authentication.
+        # parameters.`parameter id` ``.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Google::Apis::BigqueryconnectionV1::ConnectorConfigurationParameterValue>]
+        attr_accessor :parameters
+      
         # Output only. Google-managed service account associated with this connection, e.
         # g., `service-`project_number`@gcp-sa-bigqueryconnection.iam.gserviceaccount.
         # com`. BigQuery jobs using this connection will act as `service_account`
@@ -666,6 +688,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
           @service_account = args[:service_account] if args.key?(:service_account)
           @username_password = args[:username_password] if args.key?(:username_password)
         end
@@ -708,6 +731,50 @@ module Google
         # Update properties of this object
         def update!(**args)
           @private_service_connect = args[:private_service_connect] if args.key?(:private_service_connect)
+        end
+      end
+      
+      # Represents a value for a connector parameter.
+      class ConnectorConfigurationParameterValue
+        include Google::Apis::Core::Hashable
+      
+        # A boolean parameter value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # A double parameter value.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # An int32 parameter value.
+        # Corresponds to the JSON property `int32Value`
+        # @return [Fixnum]
+        attr_accessor :int32_value
+      
+        # Secret value parameter.
+        # Corresponds to the JSON property `secretValue`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationSecret]
+        attr_accessor :secret_value
+      
+        # A string parameter value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int32_value = args[:int32_value] if args.key?(:int32_value)
+          @secret_value = args[:secret_value] if args.key?(:secret_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
       
