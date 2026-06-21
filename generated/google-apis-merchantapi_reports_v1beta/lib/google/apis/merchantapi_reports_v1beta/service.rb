@@ -55,8 +55,8 @@ module Google
         # rows than specified by `page_size`. Rely on `next_page_token` to determine if
         # there are more rows to be requested.
         # @param [String] parent
-        #   Required. Id of the account making the call. Must be a standalone account or
-        #   an MCA subaccount. Format: accounts/`account`
+        #   Required. Id of the account making the call. Must be a standalone account or a
+        #   subaccount of an advanced account. Format: accounts/`account`
         # @param [Google::Apis::MerchantapiReportsV1beta::SearchRequest] search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
