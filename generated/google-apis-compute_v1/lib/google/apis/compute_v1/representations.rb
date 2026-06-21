@@ -19698,10 +19698,10 @@ module Google
       class ReservationBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_health_info, as: 'blockHealthInfo', class: Google::Apis::ComputeV1::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationBlockHealthInfo::Representation
+      
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
-          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeV1::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationBlockHealthInfo::Representation
-      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
@@ -19930,8 +19930,6 @@ module Google
       
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
-          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo::Representation
-      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
@@ -19944,6 +19942,8 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
+          property :sub_block_health_info, as: 'subBlockHealthInfo', class: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -20969,6 +20969,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_network_tier, as: 'autoNetworkTier'
           collection :drain_nat_ips, as: 'drainNatIps'
+          property :effective_tcp_time_wait_timeout_sec, as: 'effectiveTcpTimeWaitTimeoutSec'
           property :enable_dynamic_port_allocation, as: 'enableDynamicPortAllocation'
           property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
           collection :endpoint_types, as: 'endpointTypes'
@@ -21534,6 +21535,8 @@ module Google
       class SecurityPolicyDdosProtectionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ddos_adaptive_protection, as: 'ddosAdaptiveProtection'
+          property :ddos_impacted_baseline_threshold, as: 'ddosImpactedBaselineThreshold'
           property :ddos_protection, as: 'ddosProtection'
         end
       end
@@ -21821,6 +21824,7 @@ module Google
           property :kind, as: 'kind'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+          property :nat_ips_per_endpoint, as: 'natIpsPerEndpoint'
           collection :nat_subnets, as: 'natSubnets'
           property :producer_forwarding_rule, as: 'producerForwardingRule'
           property :propagated_connection_limit, as: 'propagatedConnectionLimit'
