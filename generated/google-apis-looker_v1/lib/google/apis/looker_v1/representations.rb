@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,6 +370,7 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerated_security_patch_enabled, as: 'acceleratedSecurityPatchEnabled'
           property :admin_settings, as: 'adminSettings', class: Google::Apis::LookerV1::AdminSettings, decorator: Google::Apis::LookerV1::AdminSettings::Representation
       
           property :catalog_integration_opt_out, as: 'catalogIntegrationOptOut'
@@ -406,10 +413,13 @@ module Google
       
           property :psc_enabled, as: 'pscEnabled'
           property :public_ip_enabled, as: 'publicIpEnabled'
+          property :release_channel, as: 'releaseChannel'
           property :reserved_range, as: 'reservedRange'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :soft_delete_reason, as: 'softDeleteReason'
           property :state, as: 'state'
+          property :suspended_time, as: 'suspendedTime'
           property :update_time, as: 'updateTime'
           property :user_metadata, as: 'userMetadata', class: Google::Apis::LookerV1::UserMetadata, decorator: Google::Apis::LookerV1::UserMetadata::Representation
       
@@ -589,6 +599,12 @@ module Google
           property :minutes, as: 'minutes'
           property :nanos, as: 'nanos'
           property :seconds, as: 'seconds'
+        end
+      end
+      
+      class UndeleteInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

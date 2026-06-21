@@ -464,6 +464,12 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Optional. Accelerated security patch enabled for the instance.
+        # Corresponds to the JSON property `acceleratedSecurityPatchEnabled`
+        # @return [Boolean]
+        attr_accessor :accelerated_security_patch_enabled
+        alias_method :accelerated_security_patch_enabled?, :accelerated_security_patch_enabled
+      
         # Looker instance Admin settings fields.
         # Corresponds to the JSON property `adminSettings`
         # @return [Google::Apis::LookerV1::AdminSettings]
@@ -629,6 +635,11 @@ module Google
         attr_accessor :public_ip_enabled
         alias_method :public_ip_enabled?, :public_ip_enabled
       
+        # Optional. The selected release channel for the instance.
+        # Corresponds to the JSON property `releaseChannel`
+        # @return [String]
+        attr_accessor :release_channel
+      
         # Name of a reserved IP address range within the Instance.consumer_network, to
         # be used for private services access connection. May or may not be specified in
         # a create request.
@@ -648,10 +659,20 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # Output only. The reason for the instance being in a soft-deleted state.
+        # Corresponds to the JSON property `softDeleteReason`
+        # @return [String]
+        attr_accessor :soft_delete_reason
+      
         # Output only. The state of the instance.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
+      
+        # Output only. The time when the Looker instance was suspended (soft deleted).
+        # Corresponds to the JSON property `suspendedTime`
+        # @return [String]
+        attr_accessor :suspended_time
       
         # Output only. The time when the Looker instance was last updated.
         # Corresponds to the JSON property `updateTime`
@@ -669,6 +690,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerated_security_patch_enabled = args[:accelerated_security_patch_enabled] if args.key?(:accelerated_security_patch_enabled)
           @admin_settings = args[:admin_settings] if args.key?(:admin_settings)
           @catalog_integration_opt_out = args[:catalog_integration_opt_out] if args.key?(:catalog_integration_opt_out)
           @class_type = args[:class_type] if args.key?(:class_type)
@@ -699,10 +721,13 @@ module Google
           @psc_config = args[:psc_config] if args.key?(:psc_config)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
           @public_ip_enabled = args[:public_ip_enabled] if args.key?(:public_ip_enabled)
+          @release_channel = args[:release_channel] if args.key?(:release_channel)
           @reserved_range = args[:reserved_range] if args.key?(:reserved_range)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @soft_delete_reason = args[:soft_delete_reason] if args.key?(:soft_delete_reason)
           @state = args[:state] if args.key?(:state)
+          @suspended_time = args[:suspended_time] if args.key?(:suspended_time)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_metadata = args[:user_metadata] if args.key?(:user_metadata)
         end
@@ -1361,6 +1386,19 @@ module Google
           @minutes = args[:minutes] if args.key?(:minutes)
           @nanos = args[:nanos] if args.key?(:nanos)
           @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # Request options for undeleting an instance.
+      class UndeleteInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
