@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkstationPersistentDirectory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Accelerator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -428,6 +434,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :archive_timeout, as: 'archiveTimeout'
+          property :max_size_gb, as: 'maxSizeGb'
           property :reclaim_policy, as: 'reclaimPolicy'
           property :size_gb, as: 'sizeGb'
           property :source_snapshot, as: 'sourceSnapshot'
@@ -486,6 +493,7 @@ module Google
           property :archive_timeout, as: 'archiveTimeout'
           property :disk_type, as: 'diskType'
           property :fs_type, as: 'fsType'
+          property :max_size_gb, as: 'maxSizeGb'
           property :reclaim_policy, as: 'reclaimPolicy'
           property :size_gb, as: 'sizeGb'
           property :source_snapshot, as: 'sourceSnapshot'
@@ -756,6 +764,8 @@ module Google
           property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :persistent_directories, as: 'persistentDirectories', class: Google::Apis::WorkstationsV1::WorkstationPersistentDirectory, decorator: Google::Apis::WorkstationsV1::WorkstationPersistentDirectory::Representation
+      
           property :reconciling, as: 'reconciling'
           property :runtime_host, as: 'runtimeHost', class: Google::Apis::WorkstationsV1::RuntimeHost, decorator: Google::Apis::WorkstationsV1::RuntimeHost::Representation
       
@@ -835,6 +845,14 @@ module Google
           property :running_timeout, as: 'runningTimeout'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class WorkstationPersistentDirectory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mount_path, as: 'mountPath'
+          property :size_gb, as: 'sizeGb'
         end
       end
     end

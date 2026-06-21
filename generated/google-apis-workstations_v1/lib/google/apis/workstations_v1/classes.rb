@@ -563,6 +563,12 @@ module Google
         # @return [String]
         attr_accessor :archive_timeout
       
+        # Optional. Maximum size in GB to which this persistent directory can be resized.
+        # Defaults to unlimited if not set.
+        # Corresponds to the JSON property `maxSizeGb`
+        # @return [Fixnum]
+        attr_accessor :max_size_gb
+      
         # Optional. Whether the persistent disk should be deleted when the workstation
         # is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
         # Corresponds to the JSON property `reclaimPolicy`
@@ -590,6 +596,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @archive_timeout = args[:archive_timeout] if args.key?(:archive_timeout)
+          @max_size_gb = args[:max_size_gb] if args.key?(:max_size_gb)
           @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
@@ -890,6 +897,12 @@ module Google
         # @return [String]
         attr_accessor :fs_type
       
+        # Optional. Maximum size in GB to which this persistent directory can be resized.
+        # Defaults to unlimited if not set.
+        # Corresponds to the JSON property `maxSizeGb`
+        # @return [Fixnum]
+        attr_accessor :max_size_gb
+      
         # Optional. Whether the persistent disk should be deleted when the workstation
         # is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
         # Corresponds to the JSON property `reclaimPolicy`
@@ -920,6 +933,7 @@ module Google
           @archive_timeout = args[:archive_timeout] if args.key?(:archive_timeout)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @fs_type = args[:fs_type] if args.key?(:fs_type)
+          @max_size_gb = args[:max_size_gb] if args.key?(:max_size_gb)
           @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
@@ -1962,6 +1976,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Directories to persist across workstation sessions.
+        # Corresponds to the JSON property `persistentDirectories`
+        # @return [Array<Google::Apis::WorkstationsV1::WorkstationPersistentDirectory>]
+        attr_accessor :persistent_directories
+      
         # Output only. Indicates whether this workstation is currently being updated to
         # match its intended state.
         # Corresponds to the JSON property `reconciling`
@@ -2017,6 +2036,7 @@ module Google
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @persistent_directories = args[:persistent_directories] if args.key?(:persistent_directories)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @runtime_host = args[:runtime_host] if args.key?(:runtime_host)
           @source_workstation = args[:source_workstation] if args.key?(:source_workstation)
@@ -2437,6 +2457,33 @@ module Google
           @running_timeout = args[:running_timeout] if args.key?(:running_timeout)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A directory to persist across workstation sessions. Updates to this field will
+      # only take effect on this workstation after it is restarted.
+      class WorkstationPersistentDirectory
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The mount path of the persistent directory.
+        # Corresponds to the JSON property `mountPath`
+        # @return [String]
+        attr_accessor :mount_path
+      
+        # Optional. Size of the persistent directory in GB. If specified in an update
+        # request, this is the desired size of the directory.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mount_path = args[:mount_path] if args.key?(:mount_path)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
         end
       end
     end
