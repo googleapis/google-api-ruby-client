@@ -808,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2135,6 +2141,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4397,6 +4409,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6785,12 +6803,26 @@ module Google
       class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_search_token_subscription_statuses, as: 'agentSearchTokenSubscriptionStatuses', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus::Representation
+      
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
           property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
           property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
           property :terminate_time, as: 'terminateTime'
+          property :update_type, as: 'updateType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_tpm_threshold, :numeric_string => true, as: 'effectiveTpmThreshold'
+          property :model_version, as: 'modelVersion'
+          property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
+          property :tpm_threshold_next_update_time, as: 'tpmThresholdNextUpdateTime'
           property :update_type, as: 'updateType'
         end
       end
@@ -9081,12 +9113,26 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_search_token_subscription_statuses, as: 'agentSearchTokenSubscriptionStatuses', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus::Representation
+      
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
           property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
           property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
           property :terminate_time, as: 'terminateTime'
+          property :update_type, as: 'updateType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_tpm_threshold, :numeric_string => true, as: 'effectiveTpmThreshold'
+          property :model_version, as: 'modelVersion'
+          property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
+          property :tpm_threshold_next_update_time, as: 'tpmThresholdNextUpdateTime'
           property :update_type, as: 'updateType'
         end
       end
@@ -12913,12 +12959,26 @@ module Google
       class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_search_token_subscription_statuses, as: 'agentSearchTokenSubscriptionStatuses', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus::Representation
+      
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
           property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
           property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
           property :terminate_time, as: 'terminateTime'
+          property :update_type, as: 'updateType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_tpm_threshold, :numeric_string => true, as: 'effectiveTpmThreshold'
+          property :model_version, as: 'modelVersion'
+          property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
+          property :tpm_threshold_next_update_time, as: 'tpmThresholdNextUpdateTime'
           property :update_type, as: 'updateType'
         end
       end
