@@ -2052,7 +2052,7 @@ module Google
       end
       
       # An object that describes various settings of Rollout execution. Includes built-
-      # in policies across GCP and GDC, and customizable policies.
+      # in and customizable policies.
       class RolloutKind
         include Google::Apis::Core::Hashable
       
@@ -3149,8 +3149,8 @@ module Google
         attr_accessor :etag
       
         # Optional. List of inputVariables for this release that will either be
-        # retrieved from a dependency’s outputVariables, or will be passed on to a
-        # dependency’s inputVariables. Maximum 100.
+        # retrieved from a dependency's outputVariables, or will be passed on to a
+        # dependency's inputVariables. Maximum 100.
         # Corresponds to the JSON property `inputVariableMappings`
         # @return [Array<Google::Apis::SaasservicemgmtV1beta1::VariableMapping>]
         attr_accessor :input_variable_mappings
