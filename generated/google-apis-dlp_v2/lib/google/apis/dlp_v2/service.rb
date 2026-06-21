@@ -4144,6 +4144,177 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a ContentPolicy.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization): + Projects scope: `
+        #   projects/`project_id`/locations/`location_id`` + Organizations scope: `
+        #   organizations/`org_id`/locations/`location_id``
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateContentPolicyRequest] google_privacy_dlp_v2_create_content_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_content_policy(parent, google_privacy_dlp_v2_create_content_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/contentPolicies', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateContentPolicyRequest::Representation
+          command.request_object = google_privacy_dlp_v2_create_content_policy_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a ContentPolicy.
+        # @param [String] name
+        #   Required. Resource name of the ContentPolicy to be deleted, in the format: `
+        #   projects/`project`/locations/`location`/contentPolicies/`content_policy``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_content_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a ContentPolicy.
+        # @param [String] name
+        #   Required. Resource name in the format: `projects/`project`/locations/`location`
+        #   /contentPolicies/`content_policy``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_content_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ContentPolicies in a parent.
+        # @param [String] parent
+        #   Required. Resource name of the organization or project, for example, `
+        #   organizations/433245324/locations/europe` or `projects/project-id/locations/
+        #   asia`.
+        # @param [Fixnum] page_size
+        #   Optional. Number of results per page, max 1000.
+        # @param [String] page_token
+        #   Optional. Page token from a previous page to return the next set of results.
+        #   If set, all other request fields must match the original request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListContentPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListContentPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_content_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/contentPolicies', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListContentPoliciesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListContentPoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a ContentPolicy.
+        # @param [String] name
+        #   Required. Resource name in the format: `projects/`project`/locations/`location`
+        #   /contentPolicies/`content_policy``.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateContentPolicyRequest] google_privacy_dlp_v2_update_content_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_content_policy(name, google_privacy_dlp_v2_update_content_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateContentPolicyRequest::Representation
+          command.request_object = google_privacy_dlp_v2_update_content_policy_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a DeidentifyTemplate for reusing frequently used configuration for de-
         # identifying content, images, and storage. See https://cloud.google.com/
         # sensitive-data-protection/docs/creating-templates-deid to learn more.

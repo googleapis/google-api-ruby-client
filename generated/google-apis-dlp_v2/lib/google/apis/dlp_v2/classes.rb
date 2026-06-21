@@ -2134,6 +2134,104 @@ module Google
         end
       end
       
+      # A policy to apply to content based on its inspection findings.
+      class GooglePrivacyDlpV2ContentPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation timestamp of a contentPolicy; output-only field.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A possible action to take when applying a content policy.
+        # Corresponds to the JSON property `defaultAction`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PolicyAction]
+        attr_accessor :default_action
+      
+        # Optional. Display name (max 63 chars)
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. A stream of errors encountered when the policy was applied.
+        # Output only field. Will return the last 100 errors. Whenever the policy is
+        # modified this list will be cleared.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
+        attr_accessor :errors
+      
+        # A possible action to take when applying a content policy.
+        # Corresponds to the JSON property `failedToScanSupportedFileType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PolicyAction]
+        attr_accessor :failed_to_scan_supported_file_type
+      
+        # A possible action to take when applying a content policy.
+        # Corresponds to the JSON property `inputTooLarge`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PolicyAction]
+        attr_accessor :input_too_large
+      
+        # Configuration description of the scanning process. When used with
+        # redactContent only info_types and min_likelihood are currently used.
+        # Corresponds to the JSON property `inspectConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
+        attr_accessor :inspect_config
+      
+        # The inspectTemplate contains a configuration (set of types of sensitive data
+        # to be detected) to be used anywhere you otherwise would normally specify
+        # InspectConfig. See https://cloud.google.com/sensitive-data-protection/docs/
+        # concepts-templates to learn more.
+        # Corresponds to the JSON property `inspectTemplate`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
+        attr_accessor :inspect_template
+      
+        # Optional. Log the actions taken by the content policy to external systems.
+        # Corresponds to the JSON property `loggingConfigs`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2LoggingConfig>]
+        attr_accessor :logging_configs
+      
+        # Output only. Resource name of the policy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Policies to apply, based on the findings returned by inspection. The
+        # first rule to match applies.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2PolicyRule>]
+        attr_accessor :rules
+      
+        # A possible action to take when applying a content policy.
+        # Corresponds to the JSON property `unsupportedFileType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PolicyAction]
+        attr_accessor :unsupported_file_type
+      
+        # Output only. The last update timestamp of a contentPolicy; output-only field.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @default_action = args[:default_action] if args.key?(:default_action)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @errors = args[:errors] if args.key?(:errors)
+          @failed_to_scan_supported_file_type = args[:failed_to_scan_supported_file_type] if args.key?(:failed_to_scan_supported_file_type)
+          @input_too_large = args[:input_too_large] if args.key?(:input_too_large)
+          @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
+          @inspect_template = args[:inspect_template] if args.key?(:inspect_template)
+          @logging_configs = args[:logging_configs] if args.key?(:logging_configs)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @unsupported_file_type = args[:unsupported_file_type] if args.key?(:unsupported_file_type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Complete conversation or slice of a conversation. It is assumed that all
       # included messages are contiguous and ordered in chronological order.
       class GooglePrivacyDlpV2Conversation
@@ -2232,6 +2330,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection = args[:connection] if args.key?(:connection)
+        end
+      end
+      
+      # Request message for CreateContentPolicy.
+      class GooglePrivacyDlpV2CreateContentPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # A policy to apply to content based on its inspection findings.
+        # Corresponds to the JSON property `contentPolicy`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy]
+        attr_accessor :content_policy
+      
+        # Optional. The content policy ID can contain uppercase and lowercase letters,
+        # numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\
+        # d-_]+`. The maximum length is 100 characters. If empty, the system will
+        # generate a random id.
+        # Corresponds to the JSON property `contentPolicyId`
+        # @return [String]
+        attr_accessor :content_policy_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_policy = args[:content_policy] if args.key?(:content_policy)
+          @content_policy_id = args[:content_policy_id] if args.key?(:content_policy_id)
         end
       end
       
@@ -6418,6 +6544,34 @@ module Google
         end
       end
       
+      # A info type based condition.
+      class GooglePrivacyDlpV2InfoTypeCondition
+        include Google::Apis::Core::Hashable
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `anyInfoType`
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        attr_accessor :any_info_type
+      
+        # Info types to match.
+        # Corresponds to the JSON property `infoTypes`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypes]
+        attr_accessor :info_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @any_info_type = args[:any_info_type] if args.key?(:any_info_type)
+          @info_types = args[:info_types] if args.key?(:info_types)
+        end
+      end
+      
       # InfoType description.
       class GooglePrivacyDlpV2InfoTypeDescription
         include Google::Apis::Core::Hashable
@@ -6654,6 +6808,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @transformations = args[:transformations] if args.key?(:transformations)
+        end
+      end
+      
+      # Info types to match.
+      class GooglePrivacyDlpV2InfoTypes
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of info types to match.
+        # Corresponds to the JSON property `infoTypeNames`
+        # @return [Array<String>]
+        attr_accessor :info_type_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_type_names = args[:info_type_names] if args.key?(:info_type_names)
         end
       end
       
@@ -7809,6 +7982,32 @@ module Google
         end
       end
       
+      # Response message for ListContentPolicies.
+      class GooglePrivacyDlpV2ListContentPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of content policies.
+        # Corresponds to the JSON property `contentPolicies`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy>]
+        attr_accessor :content_policies
+      
+        # Token to retrieve the next page of results. An empty value means there are no
+        # more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_policies = args[:content_policies] if args.key?(:content_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListDeidentifyTemplates.
       class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
         include Google::Apis::Core::Hashable
@@ -8121,6 +8320,56 @@ module Google
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
           @regionalization_scope = args[:regionalization_scope] if args.key?(:regionalization_scope)
+        end
+      end
+      
+      # Configuration for logging content policy actions to BigQuery.
+      class GooglePrivacyDlpV2LogToBigQuery
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the dataset containing the BigQuery table to write to.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # Required. The ID of the project containing the BigQuery table to write to.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The ID of the BigQuery table to write to.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
+      # A single logging configuration.
+      class GooglePrivacyDlpV2LoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for logging content policy actions to BigQuery.
+        # Corresponds to the JSON property `logToBigQuery`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LogToBigQuery]
+        attr_accessor :log_to_big_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_to_big_query = args[:log_to_big_query] if args.key?(:log_to_big_query)
         end
       end
       
@@ -8621,6 +8870,78 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A possible action to take when applying a content policy.
+      class GooglePrivacyDlpV2PolicyAction
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set, the verdict will be returned to the user.
+        # Corresponds to the JSON property `returnVerdict`
+        # @return [String]
+        attr_accessor :return_verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @return_verdict = args[:return_verdict] if args.key?(:return_verdict)
+        end
+      end
+      
+      # A condition that must match for this rule to apply.
+      class GooglePrivacyDlpV2PolicyCondition
+        include Google::Apis::Core::Hashable
+      
+        # A info type based condition.
+        # Corresponds to the JSON property `infoTypeCondition`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeCondition]
+        attr_accessor :info_type_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_type_condition = args[:info_type_condition] if args.key?(:info_type_condition)
+        end
+      end
+      
+      # A single policy rule. The first rule to match from the list above controls the
+      # result.
+      class GooglePrivacyDlpV2PolicyRule
+        include Google::Apis::Core::Hashable
+      
+        # A possible action to take when applying a content policy.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PolicyAction]
+        attr_accessor :action
+      
+        # Optional. Conditions that must match for this rule to apply. All conditions
+        # must match (`AND`). For `OR` conditions, use multiple rules.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2PolicyCondition>]
+        attr_accessor :conditions
+      
+        # If set, the verdict will be returned to the user. Deprecated: Use `action`
+        # instead.
+        # Corresponds to the JSON property `returnVerdict`
+        # @return [String]
+        attr_accessor :return_verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @return_verdict = args[:return_verdict] if args.key?(:return_verdict)
         end
       end
       
@@ -11667,6 +11988,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection = args[:connection] if args.key?(:connection)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request message for UpdateContentPolicy.
+      class GooglePrivacyDlpV2UpdateContentPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # A policy to apply to content based on its inspection findings.
+        # Corresponds to the JSON property `contentPolicy`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentPolicy]
+        attr_accessor :content_policy
+      
+        # Optional. Mask to control which fields get updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_policy = args[:content_policy] if args.key?(:content_policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
