@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomImageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomNodeInit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2609,8 +2615,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image, as: 'image'
-          property :image_family, as: 'imageFamily'
           property :image_project, as: 'imageProject'
+        end
+      end
+      
+      class CustomImageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :upgrade_message, as: 'upgradeMessage'
         end
       end
       
@@ -3783,6 +3795,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auto_upgrade_status, as: 'autoUpgradeStatus'
+          property :custom_image_info, as: 'customImageInfo', class: Google::Apis::ContainerV1beta1::CustomImageInfo, decorator: Google::Apis::ContainerV1beta1::CustomImageInfo::Representation
+      
           property :end_of_extended_support_timestamp, as: 'endOfExtendedSupportTimestamp'
           property :end_of_standard_support_timestamp, as: 'endOfStandardSupportTimestamp'
           property :minor_target_version, as: 'minorTargetVersion'
@@ -4642,6 +4656,8 @@ module Google
           property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig::Representation
       
           property :machine_type, as: 'machineType'
+          property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1beta1::NodePoolMaintenancePolicy, decorator: Google::Apis::ContainerV1beta1::NodePoolMaintenancePolicy::Representation
+      
           property :max_run_duration, as: 'maxRunDuration'
           property :name, as: 'name'
           property :node_drain_config, as: 'nodeDrainConfig', class: Google::Apis::ContainerV1beta1::NodeDrainConfig, decorator: Google::Apis::ContainerV1beta1::NodeDrainConfig::Representation
