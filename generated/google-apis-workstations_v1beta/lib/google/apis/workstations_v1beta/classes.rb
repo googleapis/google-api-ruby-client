@@ -570,6 +570,12 @@ module Google
         # @return [String]
         attr_accessor :archive_timeout
       
+        # Optional. Maximum size in GB to which this persistent directory can be resized.
+        # Defaults to unlimited if not set.
+        # Corresponds to the JSON property `maxSizeGb`
+        # @return [Fixnum]
+        attr_accessor :max_size_gb
+      
         # Optional. Whether the persistent disk should be deleted when the workstation
         # is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
         # Corresponds to the JSON property `reclaimPolicy`
@@ -597,6 +603,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @archive_timeout = args[:archive_timeout] if args.key?(:archive_timeout)
+          @max_size_gb = args[:max_size_gb] if args.key?(:max_size_gb)
           @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
@@ -904,6 +911,12 @@ module Google
         # @return [String]
         attr_accessor :fs_type
       
+        # Optional. Maximum size in GB to which this persistent directory can be resized.
+        # Defaults to unlimited if not set.
+        # Corresponds to the JSON property `maxSizeGb`
+        # @return [Fixnum]
+        attr_accessor :max_size_gb
+      
         # Optional. Whether the persistent disk should be deleted when the workstation
         # is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
         # Corresponds to the JSON property `reclaimPolicy`
@@ -934,6 +947,7 @@ module Google
           @archive_timeout = args[:archive_timeout] if args.key?(:archive_timeout)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @fs_type = args[:fs_type] if args.key?(:fs_type)
+          @max_size_gb = args[:max_size_gb] if args.key?(:max_size_gb)
           @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
