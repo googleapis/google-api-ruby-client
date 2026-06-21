@@ -389,6 +389,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The total number of violations.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         # List of Violations under a Workload.
         # Corresponds to the JSON property `violations`
         # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Violation>]
@@ -401,6 +406,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
           @violations = args[:violations] if args.key?(:violations)
         end
       end

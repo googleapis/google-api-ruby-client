@@ -780,6 +780,8 @@ module Google
         #   The end of the time window.
         # @param [String] interval_start_time
         #   The start of the time window.
+        # @param [String] order_by
+        #   Optional. Actionable sorting delegation.
         # @param [Fixnum] page_size
         #   Optional. Page size.
         # @param [String] page_token
@@ -801,7 +803,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_workload_violations(parent, filter: nil, interval_end_time: nil, interval_start_time: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_workload_violations(parent, filter: nil, interval_end_time: nil, interval_start_time: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/violations', options)
           command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListViolationsResponse::Representation
           command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListViolationsResponse
@@ -809,6 +811,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
           command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
