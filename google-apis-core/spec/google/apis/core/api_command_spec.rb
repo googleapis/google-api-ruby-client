@@ -330,6 +330,36 @@ EOF
     end
   end
 
+  context('with a mapped error reason (sharingRateLimitExceeded)') do
+    let(:command) do
+      Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    before(:example) do
+      json = <<~JSON
+        {
+         "error": {
+          "errors": [
+           {
+            "domain": "global",
+            "reason": "sharingRateLimitExceeded",
+            "message": "Sharing rate limit exceeded"
+           }
+          ],
+          "code": 403,
+          "message": "Sharing rate limit exceeded"
+         }
+        }
+      JSON
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [403, 'Forbidden'], headers: { 'Content-Type' => 'application/json' }, body: json)
+    end
+
+    it 'should raise a RateLimitError' do
+      expect { command.execute(client) }.to raise_error(Google::Apis::RateLimitError)
+    end
+  end
+
   context('with an empty error body') do
     let(:command) do
       Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')

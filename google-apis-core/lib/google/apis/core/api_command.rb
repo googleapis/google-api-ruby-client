@@ -30,6 +30,7 @@ module Google
         ERROR_REASON_MAPPING = {
           'rateLimitExceeded' => Google::Apis::RateLimitError,
           'userRateLimitExceeded' => Google::Apis::RateLimitError,
+          'sharingRateLimitExceeded' => Google::Apis::RateLimitError,
           'projectNotLinked' => Google::Apis::ProjectNotLinkedError
         }
 
