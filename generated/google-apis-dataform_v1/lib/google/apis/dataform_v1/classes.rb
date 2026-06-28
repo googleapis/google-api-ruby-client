@@ -1543,7 +1543,8 @@ module Google
         # @return [String]
         attr_accessor :authentication_token_secret_version
       
-        # Optional. The Git remote's default branch name. If not set `main` will be used.
+        # Optional. The Git remote's default branch name. If not set, `main` will be
+        # used.
         # Corresponds to the JSON property `defaultBranch`
         # @return [String]
         attr_accessor :default_branch
@@ -1554,8 +1555,8 @@ module Google
         # @return [String]
         attr_accessor :effective_default_branch
       
-        # Optional. Resource name for the GitRepositoryLink used for machine credentials.
-        # Must be in the format `projects/*/locations/*/connections/*/
+        # Optional. Resource name for the `GitRepositoryLink` used for machine
+        # credentials. Must be in the format `projects/*/locations/*/connections/*/
         # gitRepositoryLinks/*`
         # Corresponds to the JSON property `gitRepositoryLink`
         # @return [String]
@@ -1832,8 +1833,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations which could not be reached. LINT.ThenChange(//depot/google3/google/
-        # cloud/dataform/v2main/data_pipelines.proto:ListCompilationResultsResponse)
+        # Locations which could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1924,8 +1924,7 @@ module Google
         # @return [Array<Google::Apis::DataformV1::ReleaseConfig>]
         attr_accessor :release_configs
       
-        # Locations which could not be reached. LINT.ThenChange(//depot/google3/google/
-        # cloud/dataform/v2main/data_pipelines.proto:ListReleaseConfigsResponse)
+        # Locations which could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -3212,8 +3211,7 @@ module Google
       
         # Output only. All the metadata information that is used internally to serve the
         # resource. For example: timestamps, flags, status fields, etc. The format of
-        # this field is a JSON string. LINT.ThenChange(//depot/google3/google/cloud/
-        # dataform/v2main/data_pipelines.proto:ReleaseConfig)
+        # this field is a JSON string.
         # Corresponds to the JSON property `internalMetadata`
         # @return [String]
         attr_accessor :internal_metadata
