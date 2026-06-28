@@ -214,7 +214,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1Agent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1AgentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1AgentTool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1420,6 +1432,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1DeprovisionSemanticGovernancePolicyEngineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1DestinationFeatureSetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2614,6 +2632,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1GatewayConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3130,6 +3154,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1IngestEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1IngestionDirectContentsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1InputDataConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3197,6 +3239,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1LineageSubgraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ListAgentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3527,6 +3575,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1ListSchedulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ListSemanticGovernancePoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7138,6 +7192,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SemanticGovernancePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SemanticGovernancePolicyEngine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1ServiceAccountSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8895,6 +8967,24 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1Agent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_agent, as: 'base_agent'
+          property :base_environment, as: 'base_environment'
+          property :created, as: 'created'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          property :object, as: 'object'
+          property :system_instruction, as: 'system_instruction'
+          collection :tools, as: 'tools', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AgentTool, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AgentTool::Representation
+      
+          property :updated, as: 'updated'
+        end
+      end
+      
       class GoogleCloudAiplatformV1AgentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8905,6 +8995,16 @@ module Google
           collection :sub_agents, as: 'subAgents'
           collection :tools, as: 'tools', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tool, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tool::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1AgentTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :headers, as: 'headers'
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :url, as: 'url'
         end
       end
       
@@ -10907,6 +11007,12 @@ module Google
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1DeprovisionSemanticGovernancePolicyEngineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -13137,6 +13243,19 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1GatewayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_record, as: 'dnsRecord'
+          property :dns_zone_name, as: 'dnsZoneName'
+          property :ip_address, as: 'ipAddress'
+          property :network, as: 'network'
+          property :psc_endpoint, as: 'pscEndpoint'
+          property :state, as: 'state'
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
       class GoogleCloudAiplatformV1GcsDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14098,6 +14217,37 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1IngestEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :direct_contents_source, as: 'directContentsSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IngestionDirectContentsSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IngestionDirectContentsSource::Representation
+      
+          property :force_flush, as: 'forceFlush'
+          property :generation_trigger_config, as: 'generationTriggerConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryGenerationTriggerConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryGenerationTriggerConfig::Representation
+      
+          hash :scope, as: 'scope'
+          property :stream_id, as: 'streamId'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1IngestionDirectContentsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :events, as: 'events', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
+      
+          property :event_id, as: 'eventId'
+          property :event_time, as: 'eventTime'
+        end
+      end
+      
       class GoogleCloudAiplatformV1InputDataConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14230,6 +14380,15 @@ module Google
       
           collection :executions, as: 'executions', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Execution, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Execution::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ListAgentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agents, as: 'agents', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Agent, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Agent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -14720,6 +14879,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :schedules, as: 'schedules', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schedule, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schedule::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ListSemanticGovernancePoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :semantic_governance_policies, as: 'semanticGovernancePolicies', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SemanticGovernancePolicy, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SemanticGovernancePolicy::Representation
       
         end
       end
@@ -20873,6 +21041,46 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SemanticGovernancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent, as: 'agent'
+          property :agent_identity, as: 'agentIdentity'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          collection :mcp_tools, as: 'mcpTools', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool::Representation
+      
+          property :name, as: 'name'
+          property :natural_language_constraint, as: 'naturalLanguageConstraint'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SemanticGovernancePolicyEngine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :gateway_configs, as: 'gatewayConfigs', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GatewayConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GatewayConfig::Representation
+      
+          property :ip_address, as: 'ipAddress'
+          property :name, as: 'name'
+          property :psc_forwarding_rule, as: 'pscForwardingRule'
+          property :psc_service_attachment, as: 'pscServiceAttachment'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mcp_server, as: 'mcpServer'
+          collection :tools, as: 'tools'
+        end
+      end
+      
       class GoogleCloudAiplatformV1ServiceAccountSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -21973,6 +22181,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_key, as: 'apiKey'
           hash :custom_configs, as: 'customConfigs'
+          property :enable_data_retention, as: 'enableDataRetention'
         end
       end
       
