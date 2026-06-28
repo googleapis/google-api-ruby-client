@@ -3257,6 +3257,7 @@ module Google
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ai_generated_state, as: 'aiGeneratedState'
           property :id, as: 'id'
           property :sha1, as: 'sha1'
           property :sha256, as: 'sha256'
