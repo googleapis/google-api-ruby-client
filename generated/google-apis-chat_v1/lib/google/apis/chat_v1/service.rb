@@ -837,6 +837,7 @@ module Google
         # chat/search-manage-admin). When `use_admin_access` is set to `false`, the
         # results are limited to spaces where the calling user is a joined member. To
         # search with administrator privileges, set `use_admin_access` to `true`.
+        # Setting `use_admin_access` to `false` is available under Developer Preview.
         # Supports the following types of [authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize): - [User authentication](https://
         # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
@@ -879,49 +880,53 @@ module Google
         #   `display_name` - `external_user_allowed` `create_time` and `last_active_time`
         #   accept a timestamp in [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339)
         #   format and the supported comparison operators are: `=`, `<`, `>`, `<=`, `>=`. `
-        #   customer` is required and is used to indicate which customer to fetch spaces
-        #   from. `customers/my_customer` is the only supported value. `display_name` only
-        #   accepts the `HAS` (`:`) operator. The text to match is first tokenized into
-        #   tokens and each token is prefix-matched case-insensitively and independently
-        #   as a substring anywhere in the space's `display_name`. For example, `Fun Eve`
-        #   matches `Fun event` or `The evening was fun`, but not `notFun event` or `even`.
-        #   When `useAdminAccess` is set to `false`, `display_name` is required to
-        #   retrieve meaningful results. Otherwise, the default behavior is to return an
-        #   empty response. `external_user_allowed` accepts either `true` or `false`. `
-        #   space_history_state` only accepts values from the [`historyState`] (https://
-        #   developers.google.com/workspace/chat/api/reference/rest/v1/spaces#Space.
-        #   HistoryState) field of a `space` resource. `space_type` is required and the
-        #   only valid value is `SPACE`. Across different fields, only `AND` operators are
-        #   supported. A valid example is `space_type = "SPACE" AND display_name:"Hello"`
-        #   and an invalid example is `space_type = "SPACE" OR display_name:"Hello"`.
-        #   Among the same field, `space_type` doesn't support `AND` or `OR` operators. `
-        #   display_name`, 'space_history_state', and 'external_user_allowed' only support
-        #   `OR` operators. `last_active_time` and `create_time` support both `AND` and `
-        #   OR` operators. `AND` can only be used to represent an interval, such as `
-        #   last_active_time < "2022-01-01T00:00:00+00:00" AND last_active_time > "2023-01-
-        #   01T00:00:00+00:00"`. The following example queries are valid when `
-        #   useAdminAccess` is set to `true`: ``` customer = "customers/my_customer" AND
-        #   space_type = "SPACE" customer = "customers/my_customer" AND space_type = "
-        #   SPACE" AND display_name:"Hello World" customer = "customers/my_customer" AND
-        #   space_type = "SPACE" AND (last_active_time < "2020-01-01T00:00:00+00:00" OR
-        #   last_active_time > "2022-01-01T00:00:00+00:00") customer = "customers/
-        #   my_customer" AND space_type = "SPACE" AND (display_name:"Hello World" OR
-        #   display_name:"Fun event") AND (last_active_time > "2020-01-01T00:00:00+00:00"
-        #   AND last_active_time < "2022-01-01T00:00:00+00:00") customer = "customers/
-        #   my_customer" AND space_type = "SPACE" AND (create_time > "2019-01-01T00:00:00+
-        #   00:00" AND create_time < "2020-01-01T00:00:00+00:00") AND (
-        #   external_user_allowed = "true") AND (space_history_state = "HISTORY_ON" OR
+        #   customer` is required when `useAdminAccess` is set to `true`, and is used to
+        #   indicate which customer to fetch spaces from. `customers/my_customer` is the
+        #   only supported value. `display_name` only accepts the `HAS` (`:`) operator.
+        #   The text to match is first tokenized into tokens and each token is prefix-
+        #   matched case-insensitively and independently as a substring anywhere in the
+        #   space's `display_name`. For example, `Fun Eve` matches `Fun event` or `The
+        #   evening was fun`, but not `notFun event` or `even`. When `useAdminAccess` is
+        #   set to `false`, `display_name` is required to retrieve meaningful results.
+        #   Otherwise, the default behavior is to return an empty response. `
+        #   external_user_allowed` accepts either `true` or `false`. `space_history_state`
+        #   only accepts values from the [`historyState`] (https://developers.google.com/
+        #   workspace/chat/api/reference/rest/v1/spaces#Space.HistoryState) field of a `
+        #   space` resource. `space_type` is required when `useAdminAccess` is set to `
+        #   true`, and the only valid value is `SPACE`. Across different fields, only `AND`
+        #   operators are supported. A valid example is `space_type = "SPACE" AND
+        #   display_name:"Hello"` and an invalid example is `space_type = "SPACE" OR
+        #   display_name:"Hello"`. Among the same field, `space_type` doesn't support `AND`
+        #   or `OR` operators. `display_name`, 'space_history_state', and '
+        #   external_user_allowed' only support `OR` operators. `last_active_time` and `
+        #   create_time` support both `AND` and `OR` operators. `AND` can only be used to
+        #   represent an interval, such as `last_active_time < "2022-01-01T00:00:00+00:00"
+        #   AND last_active_time > "2023-01-01T00:00:00+00:00"`. The following example
+        #   queries are valid when `useAdminAccess` is set to `true`: ``` customer = "
+        #   customers/my_customer" AND space_type = "SPACE" customer = "customers/
+        #   my_customer" AND space_type = "SPACE" AND display_name:"Hello World" customer =
+        #   "customers/my_customer" AND space_type = "SPACE" AND (last_active_time < "
+        #   2020-01-01T00:00:00+00:00" OR last_active_time > "2022-01-01T00:00:00+00:00")
+        #   customer = "customers/my_customer" AND space_type = "SPACE" AND (display_name:"
+        #   Hello World" OR display_name:"Fun event") AND (last_active_time > "2020-01-
+        #   01T00:00:00+00:00" AND last_active_time < "2022-01-01T00:00:00+00:00")
+        #   customer = "customers/my_customer" AND space_type = "SPACE" AND (create_time >
+        #   "2019-01-01T00:00:00+00:00" AND create_time < "2020-01-01T00:00:00+00:00") AND
+        #   (external_user_allowed = "true") AND (space_history_state = "HISTORY_ON" OR
         #   space_history_state = "HISTORY_OFF") ``` The following example queries are
         #   valid when `useAdminAccess` is set to `false`: ``` display_name:"Hello World" (
-        #   display_name:"Hello" OR display_name:"Fun") (external_user_allowed = "true") (
-        #   external_user_allowed = "true" AND display_name:"Hello") ```
+        #   display_name:"Hello" OR display_name:"Fun") (external_user_allowed = "true") //
+        #   Returns an empty response. (external_user_allowed = "true" AND display_name:"
+        #   Hello") ```
         # @param [Boolean] use_admin_access
         #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires either the `chat.admin.spaces.readonly` or `chat.
         #   admin.spaces` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/
-        #   authenticate-authorize#chat-api-scopes).
+        #   authenticate-authorize#chat-api-scopes). Setting `use_admin_access` to `false`
+        #   is available under Developer Preview. [Developer Preview](https://developers.
+        #   google.com/workspace/preview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2151,6 +2156,226 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns availability information for a human user in Google Chat. For example,
+        # this can be used to check if a user is online or away, or to retrieve their
+        # custom status message. This method only retrieves the authenticated user's
+        # availability. Requires [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user) with one of the following [
+        # authorization scopes](https://developers.google.com/workspace/chat/
+        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
+        # chat.users.availability.readonly` - `https://www.googleapis.com/auth/chat.
+        # users.availability`
+        # @param [String] name
+        #   Required. The resource name of the availability to retrieve. Format: users/`
+        #   user`/availability ``user`` is the id for the Person in the People API or
+        #   Admin SDK directory API. For example, `users/123456789`. The user's email
+        #   address or `me` can also be used as an alias to refer to the caller. For
+        #   example, `users/user@example.com` or `users/me`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Availability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Availability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_availability_availability(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChatV1::Availability::Representation
+          command.response_class = Google::Apis::ChatV1::Availability
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Marks user as `ACTIVE` in Google Chat. Sets the user's availability state to `
+        # ACTIVE`. The `ACTIVE` state lasts until the specified expiration, at which
+        # point the user's state becomes `AWAY`. Note that if the user is actively using
+        # Chat, the `ACTIVE` state duration may extend beyond the provided expiration.
+        # This method only updates the authenticated user's availability. Requires [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user) with [authorization scope](https://developers.google.com/
+        # workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.
+        # googleapis.com/auth/chat.users.availability`
+        # @param [String] name
+        #   Required. The resource name of the availability to mark as active. Format:
+        #   users/`user`/availability ``user`` is the id for the Person in the People API
+        #   or Admin SDK directory API. For example, `users/123456789`. The user's email
+        #   address or `me` can also be used as an alias to refer to the caller. For
+        #   example, `users/user@example.com` or `users/me`.
+        # @param [Google::Apis::ChatV1::MarkAsActiveRequest] mark_as_active_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Availability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Availability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mark_availability_as_active(name, mark_as_active_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:markAsActive', options)
+          command.request_representation = Google::Apis::ChatV1::MarkAsActiveRequest::Representation
+          command.request_object = mark_as_active_request_object
+          command.response_representation = Google::Apis::ChatV1::Availability::Representation
+          command.response_class = Google::Apis::ChatV1::Availability
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Marks user as `AWAY` in Google Chat. Sets the user's state to away and is not
+        # affected by the user's activity. This method only updates the authenticated
+        # user's availability. Requires [user authentication](https://developers.google.
+        # com/workspace/chat/authenticate-authorize-chat-user) with [authorization scope]
+        # (https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
+        # scopes): - `https://www.googleapis.com/auth/chat.users.availability`
+        # @param [String] name
+        #   Required. The resource name of the availability to mark as away. Format: users/
+        #   `user`/availability ``user`` is the id for the Person in the People API or
+        #   Admin SDK directory API. For example, `users/123456789`. The user's email
+        #   address or `me` can also be used as an alias to refer to the caller. For
+        #   example, `users/user@example.com` or `users/me`.
+        # @param [Google::Apis::ChatV1::MarkAsAwayRequest] mark_as_away_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Availability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Availability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mark_availability_as_away(name, mark_as_away_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:markAsAway', options)
+          command.request_representation = Google::Apis::ChatV1::MarkAsAwayRequest::Representation
+          command.request_object = mark_as_away_request_object
+          command.response_representation = Google::Apis::ChatV1::Availability::Representation
+          command.response_class = Google::Apis::ChatV1::Availability
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Marks user as`DO_NOT_DISTURB` in Google Chat. Sets a user's availability state
+        # to `DO_NOT_DISTURB` until a specified expiration time. When in `DO_NOT_DISTURB`
+        # , users typically won't receive notifications. This method only updates the
+        # authenticated user's availability. Requires [user authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with [
+        # authorization scope](https://developers.google.com/workspace/chat/authenticate-
+        # authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.
+        # availability`
+        # @param [String] name
+        #   Required. The resource name of the availability to mark as Do Not Disturb.
+        #   Format: users/`user`/availability ``user`` is the id for the Person in the
+        #   People API or Admin SDK directory API. For example, `users/123456789`. The
+        #   user's email address or `me` can also be used as an alias to refer to the
+        #   caller. For example, `users/user@example.com` or `users/me`.
+        # @param [Google::Apis::ChatV1::MarkAsDoNotDisturbRequest] mark_as_do_not_disturb_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Availability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Availability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mark_availability_as_do_not_disturb(name, mark_as_do_not_disturb_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:markAsDoNotDisturb', options)
+          command.request_representation = Google::Apis::ChatV1::MarkAsDoNotDisturbRequest::Representation
+          command.request_object = mark_as_do_not_disturb_request_object
+          command.response_representation = Google::Apis::ChatV1::Availability::Representation
+          command.response_class = Google::Apis::ChatV1::Availability
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates availability information for a human user. Only the `custom_status`
+        # field can be updated through this method. This method only updates the
+        # authenticated user's availability. Requires [user authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+        # one of the following [authorization scopes](https://developers.google.com/
+        # workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.
+        # googleapis.com/auth/chat.users.availability`
+        # @param [String] name
+        #   Identifier. Resource name of the user's availability. Format: `users/`user`/
+        #   availability` ``user`` is the id for the Person in the People API or Admin SDK
+        #   directory API. For example, `users/123456789`. The user's email address or `me`
+        #   can also be used as an alias to refer to the caller. For example, `users/user@
+        #   example.com` or `users/me`.
+        # @param [Google::Apis::ChatV1::Availability] availability_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update. The only field that can be updated is `
+        #   custom_status`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Availability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Availability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_user_availability_availability(name, availability_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ChatV1::Availability::Representation
+          command.request_object = availability_object
+          command.response_representation = Google::Apis::ChatV1::Availability::Representation
+          command.response_class = Google::Apis::ChatV1::Availability
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

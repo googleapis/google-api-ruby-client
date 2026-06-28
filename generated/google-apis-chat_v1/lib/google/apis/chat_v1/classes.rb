@@ -389,6 +389,51 @@ module Google
         end
       end
       
+      # Represents a user's current availability information in Google Chat, including
+      # their state (for example, Active, Away, Do Not Disturb) and any custom status.
+      class Availability
+        include Google::Apis::Core::Hashable
+      
+        # Represents a user's custom status in Google Chat. This includes a short text
+        # message with an optional emoji that a user sets to give more context about
+        # their availability.
+        # Corresponds to the JSON property `customStatus`
+        # @return [Google::Apis::ChatV1::CustomStatus]
+        attr_accessor :custom_status
+      
+        # Metadata associated with the `DO_NOT_DISTURB` availability state, specifying
+        # when the state is set to expire.
+        # Corresponds to the JSON property `doNotDisturbMetadata`
+        # @return [Google::Apis::ChatV1::DoNotDisturbMetadata]
+        attr_accessor :do_not_disturb_metadata
+      
+        # Identifier. Resource name of the user's availability. Format: `users/`user`/
+        # availability` ``user`` is the id for the Person in the People API or Admin SDK
+        # directory API. For example, `users/123456789`. The user's email address or `me`
+        # can also be used as an alias to refer to the caller. For example, `users/user@
+        # example.com` or `users/me`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The user's current availability state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_status = args[:custom_status] if args.key?(:custom_status)
+          @do_not_disturb_metadata = args[:do_not_disturb_metadata] if args.key?(:do_not_disturb_metadata)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # A button. Can be a text button or an image button.
       class Button
         include Google::Apis::Core::Hashable
@@ -1050,6 +1095,46 @@ module Google
         end
       end
       
+      # Represents a user's custom status in Google Chat. This includes a short text
+      # message with an optional emoji that a user sets to give more context about
+      # their availability.
+      class CustomStatus
+        include Google::Apis::Core::Hashable
+      
+        # An emoji that is used as a reaction to a message.
+        # Corresponds to the JSON property `emoji`
+        # @return [Google::Apis::ChatV1::Emoji]
+        attr_accessor :emoji
+      
+        # The timestamp when the custom status expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Required. The text of the custom status. This will be a string with maximum
+        # length of 64.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Input only. The time-to-live duration after which the custom status expires.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @emoji = args[:emoji] if args.key?(:emoji)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @text = args[:text] if args.key?(:text)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
       # Date input values.
       class DateInput
         include Google::Apis::Core::Hashable
@@ -1342,6 +1427,27 @@ module Google
         def update!(**args)
           @action_status = args[:action_status] if args.key?(:action_status)
           @dialog = args[:dialog] if args.key?(:dialog)
+        end
+      end
+      
+      # Metadata associated with the `DO_NOT_DISTURB` availability state, specifying
+      # when the state is set to expire.
+      class DoNotDisturbMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp until which the user should be marked as DO_NOT_DISTURB.
+        # This can be maximum of 1 year in the future.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
         end
       end
       
@@ -4874,6 +4980,71 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @spaces = args[:spaces] if args.key?(:spaces)
+        end
+      end
+      
+      # Request message for the `MarkAsActive` method.
+      class MarkAsActiveRequest
+        include Google::Apis::Core::Hashable
+      
+        # The absolute timestamp when the ACTIVE state expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The duration from the current time until the ACTIVE state expires. Using a
+        # short TTL can effectively reset the user's state to be based on activity after
+        # this brief duration.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # Request message for the `MarkAsAway` method.
+      class MarkAsAwayRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for the `MarkAsDoNotDisturb` method.
+      class MarkAsDoNotDisturbRequest
+        include Google::Apis::Core::Hashable
+      
+        # The absolute timestamp when the DND state expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The duration from the current time until the DND state expires.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
