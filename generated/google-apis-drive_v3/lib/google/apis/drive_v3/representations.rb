@@ -990,6 +990,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :can_accept_ownership, as: 'canAcceptOwnership'
+            property :can_access_via_gen_ai, as: 'canAccessViaGenAi'
             property :can_add_children, as: 'canAddChildren'
             property :can_add_folder_from_another_drive, as: 'canAddFolderFromAnotherDrive'
             property :can_add_my_drive_parent, as: 'canAddMyDriveParent'

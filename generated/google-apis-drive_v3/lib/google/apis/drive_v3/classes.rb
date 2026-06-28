@@ -2301,6 +2301,12 @@ module Google
           attr_accessor :can_accept_ownership
           alias_method :can_accept_ownership?, :can_accept_ownership
         
+          # Whether the current user can access this file via Gen AI features.
+          # Corresponds to the JSON property `canAccessViaGenAi`
+          # @return [Boolean]
+          attr_accessor :can_access_via_gen_ai
+          alias_method :can_access_via_gen_ai?, :can_access_via_gen_ai
+        
           # Output only. Whether the current user can add children to this folder. This is
           # always `false` when the item isn't a folder.
           # Corresponds to the JSON property `canAddChildren`
@@ -2611,6 +2617,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @can_accept_ownership = args[:can_accept_ownership] if args.key?(:can_accept_ownership)
+            @can_access_via_gen_ai = args[:can_access_via_gen_ai] if args.key?(:can_access_via_gen_ai)
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
             @can_add_folder_from_another_drive = args[:can_add_folder_from_another_drive] if args.key?(:can_add_folder_from_another_drive)
             @can_add_my_drive_parent = args[:can_add_my_drive_parent] if args.key?(:can_add_my_drive_parent)
