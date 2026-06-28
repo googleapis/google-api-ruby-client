@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityAccesscontextmanagerV1AddRequestHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1ApiOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,7 +244,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityAccesscontextmanagerV1Modifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1OsConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1ServicePattern
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -521,6 +545,14 @@ module Google
         end
       end
       
+      class GoogleIdentityAccesscontextmanagerV1AddRequestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1ApiOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -601,6 +633,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_level, as: 'accessLevel'
+          property :psc_endpoint, as: 'pscEndpoint', class: Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint, decorator: Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint::Representation
+      
           property :resource, as: 'resource'
         end
       end
@@ -641,6 +675,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_level, as: 'accessLevel'
+          property :psc_endpoint, as: 'pscEndpoint', class: Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint, decorator: Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint::Representation
+      
           property :resource, as: 'resource'
         end
       end
@@ -663,12 +699,37 @@ module Google
         end
       end
       
+      class GoogleIdentityAccesscontextmanagerV1Modifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_request_header, as: 'addRequestHeader', class: Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1AddRequestHeader, decorator: Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1AddRequestHeader::Representation
+      
+        end
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1OsConstraint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :minimum_version, as: 'minimumVersion'
           property :os_type, as: 'osType'
           property :require_verified_chrome_os, as: 'requireVerifiedChromeOs'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rule, as: 'forwardingRule'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1ServicePattern
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :modifiers, as: 'modifiers', class: Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1Modifier, decorator: Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1Modifier::Representation
+      
+          property :pattern, as: 'pattern'
+          property :service, as: 'service'
         end
       end
       
@@ -706,8 +767,11 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_service_patterns, as: 'allowedServicePatterns', class: Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1ServicePattern, decorator: Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1ServicePattern::Representation
+      
           collection :allowed_services, as: 'allowedServices'
           property :enable_restriction, as: 'enableRestriction'
+          collection :service_patterns_enforcement_scopes, as: 'servicePatternsEnforcementScopes'
         end
       end
       
