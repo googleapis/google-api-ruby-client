@@ -642,9 +642,9 @@ module Google
         # @return [Google::Apis::FcmV1::Color]
         attr_accessor :color
       
-        # Required. Along with `light_on_duration `, define the blink rate of LED
-        # flashes. Resolution defined by [proto.Duration](https://developers.google.com/
-        # protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+        # Required. Along with `light_on_duration`, define the blink rate of LED flashes.
+        # Resolution defined by [proto.Duration](https://developers.google.com/protocol-
+        # buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         # Corresponds to the JSON property `lightOffDuration`
         # @return [String]
         attr_accessor :light_off_duration
@@ -703,7 +703,7 @@ module Google
         # @return [Google::Apis::FcmV1::FcmOptions]
         attr_accessor :fcm_options
       
-        # Optional. Firebase Installation ID to send a message to.
+        # Firebase Installation ID to send a message to.
         # Corresponds to the JSON property `fid`
         # @return [String]
         attr_accessor :fid
