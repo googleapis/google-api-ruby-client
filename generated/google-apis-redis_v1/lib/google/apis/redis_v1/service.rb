@@ -171,7 +171,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an ACL Policy. The creation is executed synchronously and the policy
+        # Creates an ACL policy. The creation is executed synchronously and the policy
         # is available for use immediately after the RPC returns.
         # @param [String] parent
         #   Required. The resource name of the cluster location using the form: `projects/`
@@ -179,7 +179,7 @@ module Google
         #   Cloud region.
         # @param [Google::Apis::RedisV1::AclPolicy] acl_policy_object
         # @param [String] acl_policy_id
-        #   Required. The logical name of the ACL Policy in the customer project with the
+        #   Required. The logical name of the ACL policy in the customer project with the
         #   following restrictions: * Must contain only lowercase letters, numbers, and
         #   hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must
         #   end with a number or a letter. * Must be unique within the customer project /
@@ -217,11 +217,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a specific Acl Policy. This action will delete the Acl Policy and all
+        # Deletes a specific ACL policy. This action will delete the ACL policy and all
         # the rules associated with it. An ACL policy cannot be deleted if it is
         # attached to a cluster.
         # @param [String] name
-        #   Required. Redis ACL Policy resource name using the form: `projects/`project_id`
+        #   Required. Redis ACL policy resource name using the form: `projects/`project_id`
         #   /locations/`location_id`/aclPolicies/`acl_policy_id`` where `location_id`
         #   refers to a GCP region.
         # @param [String] etag
@@ -258,9 +258,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the details of a specific Redis Cluster ACL Policy.
+        # Gets the details of a specific Redis Cluster ACL policy.
         # @param [String] name
-        #   Required. Redis ACL Policy resource name using the form: `projects/`project_id`
+        #   Required. Redis ACL policy resource name using the form: `projects/`project_id`
         #   /locations/`location_id`/aclPolicies/`acl_policy_id`` where `location_id`
         #   refers to a GCP region.
         # @param [String] fields
@@ -290,15 +290,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all ACL Policies owned by a project in either the specified location (
+        # Lists all ACL policies owned by a project in either the specified location (
         # region) or all locations. The location should have the following format: * `
         # projects/`project_id`/locations/`location_id`` If `location_id` is specified
         # as `-` (wildcard), then all regions available to the project are queried, and
         # the results are aggregated.
         # @param [String] parent
-        #   Required. The resource name of the cluster location using the form: `projects/`
-        #   project_id`/locations/`location_id`` where `location_id` refers to a Google
-        #   Cloud region.
+        #   Required. The resource name of the ACL policy location using the form: `
+        #   projects/`project_id`/locations/`location_id`` where `location_id` refers to a
+        #   Google Cloud region.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If not specified, a default
         #   value of 1000 will be used by the service. Regardless of the page_size value,
@@ -343,7 +343,7 @@ module Google
         # the operation returns a SUCCESS status. If Memorystore can't apply the policy
         # to all clusters, then to ensure eventual consistency, Memorystore uses
         # reconciliation to apply the policy to the failed clusters. Completed
-        # longrunning.Operation will contain the new ACL Policy object in the response
+        # longrunning.Operation will contain the new ACL policy object in the response
         # field.
         # @param [String] name
         #   Identifier. Full resource path of the ACL policy.
