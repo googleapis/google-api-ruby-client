@@ -5212,6 +5212,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6467,6 +6473,7 @@ module Google
           property :agent_gateway_setting, as: 'agentGatewaySetting', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AgentGatewaySetting, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AgentGatewaySetting::Representation
       
           property :app_type, as: 'appType'
+          property :associated_agent_registry, as: 'associatedAgentRegistry'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineConfig::Representation
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata::Representation
@@ -8562,6 +8569,7 @@ module Google
           property :agent_gateway_setting, as: 'agentGatewaySetting', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting::Representation
       
           property :app_type, as: 'appType'
+          property :associated_agent_registry, as: 'associatedAgentRegistry'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig::Representation
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata::Representation
@@ -12015,6 +12023,7 @@ module Google
           property :agent_gateway_setting, as: 'agentGatewaySetting', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAgentGatewaySetting, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAgentGatewaySetting::Representation
       
           property :app_type, as: 'appType'
+          property :associated_agent_registry, as: 'associatedAgentRegistry'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig::Representation
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata::Representation
@@ -14331,11 +14340,21 @@ module Google
           property :answer, as: 'answer', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistAnswer, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistAnswer::Representation
       
           property :assist_token, as: 'assistToken'
+          collection :connector_auth_errors, as: 'connectorAuthErrors', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError::Representation
+      
           collection :invocation_tools, as: 'invocationTools'
           collection :invoked_skills, as: 'invokedSkills', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill::Representation
       
           property :session_info, as: 'sessionInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_connector, as: 'dataConnector'
+          property :error_message, as: 'errorMessage'
         end
       end
       

@@ -3874,6 +3874,13 @@ module Google
         # @return [String]
         attr_accessor :app_type
       
+        # Optional. The Agent registry containing the agents, MCP servers and tools
+        # associated with this engine. Field is required if the engine has an Agent
+        # Gateway setting.
+        # Corresponds to the JSON property `associatedAgentRegistry`
+        # @return [String]
+        attr_accessor :associated_agent_registry
+      
         # Configurations for a Chat Engine.
         # Corresponds to the JSON property `chatEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineConfig]
@@ -3945,7 +3952,7 @@ module Google
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
         # canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` *
         # `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
-        # intelligence`
+        # intelligence` * `deep-research`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -4025,6 +4032,7 @@ module Google
         def update!(**args)
           @agent_gateway_setting = args[:agent_gateway_setting] if args.key?(:agent_gateway_setting)
           @app_type = args[:app_type] if args.key?(:app_type)
+          @associated_agent_registry = args[:associated_agent_registry] if args.key?(:associated_agent_registry)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
@@ -11719,6 +11727,13 @@ module Google
         # @return [String]
         attr_accessor :app_type
       
+        # Optional. The Agent registry containing the agents, MCP servers and tools
+        # associated with this engine. Field is required if the engine has an Agent
+        # Gateway setting.
+        # Corresponds to the JSON property `associatedAgentRegistry`
+        # @return [String]
+        attr_accessor :associated_agent_registry
+      
         # Configurations for a Chat Engine.
         # Corresponds to the JSON property `chatEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig]
@@ -11790,7 +11805,7 @@ module Google
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
         # canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` *
         # `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
-        # intelligence`
+        # intelligence` * `deep-research`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -11880,6 +11895,7 @@ module Google
         def update!(**args)
           @agent_gateway_setting = args[:agent_gateway_setting] if args.key?(:agent_gateway_setting)
           @app_type = args[:app_type] if args.key?(:app_type)
+          @associated_agent_registry = args[:associated_agent_registry] if args.key?(:associated_agent_registry)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
@@ -24603,6 +24619,13 @@ module Google
         # @return [String]
         attr_accessor :app_type
       
+        # Optional. The Agent registry containing the agents, MCP servers and tools
+        # associated with this engine. Field is required if the engine has an Agent
+        # Gateway setting.
+        # Corresponds to the JSON property `associatedAgentRegistry`
+        # @return [String]
+        attr_accessor :associated_agent_registry
+      
         # Configurations for a Chat Engine.
         # Corresponds to the JSON property `chatEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig]
@@ -24674,7 +24697,7 @@ module Google
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
         # canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` *
         # `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
-        # intelligence`
+        # intelligence` * `deep-research`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -24754,6 +24777,7 @@ module Google
         def update!(**args)
           @agent_gateway_setting = args[:agent_gateway_setting] if args.key?(:agent_gateway_setting)
           @app_type = args[:app_type] if args.key?(:app_type)
+          @associated_agent_registry = args[:associated_agent_registry] if args.key?(:associated_agent_registry)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
@@ -33172,6 +33196,13 @@ module Google
         # @return [String]
         attr_accessor :assist_token
       
+        # Per-connector authentication errors encountered during the request. Present
+        # when one or more connectors failed authentication but the request proceeded
+        # with the remaining connectors.
+        # Corresponds to the JSON property `connectorAuthErrors`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError>]
+        attr_accessor :connector_auth_errors
+      
         # The tool names of the tools that were invoked.
         # Corresponds to the JSON property `invocationTools`
         # @return [Array<String>]
@@ -33195,9 +33226,35 @@ module Google
         def update!(**args)
           @answer = args[:answer] if args.key?(:answer)
           @assist_token = args[:assist_token] if args.key?(:assist_token)
+          @connector_auth_errors = args[:connector_auth_errors] if args.key?(:connector_auth_errors)
           @invocation_tools = args[:invocation_tools] if args.key?(:invocation_tools)
           @invoked_skills = args[:invoked_skills] if args.key?(:invoked_skills)
           @session_info = args[:session_info] if args.key?(:session_info)
+        end
+      end
+      
+      # Describes an authentication error for a specific data connector.
+      class GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the data connector that failed authentication.
+        # Corresponds to the JSON property `dataConnector`
+        # @return [String]
+        attr_accessor :data_connector
+      
+        # Human-readable error message describing the auth failure.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_connector = args[:data_connector] if args.key?(:data_connector)
+          @error_message = args[:error_message] if args.key?(:error_message)
         end
       end
       
