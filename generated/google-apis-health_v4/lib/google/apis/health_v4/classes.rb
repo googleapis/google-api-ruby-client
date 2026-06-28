@@ -4434,7 +4434,7 @@ module Google
         attr_accessor :range
       
         # Required. The size of the time window to group data points into before
-        # applying the aggregation functions.
+        # applying the aggregation functions. Must be at least 1 second.
         # Corresponds to the JSON property `windowSize`
         # @return [String]
         attr_accessor :window_size
