@@ -2537,6 +2537,11 @@ module Google
         attr_accessor :iam_bindings
       
         # 
+        # Corresponds to the JSON property `iamDetails`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1IamDetails]
+        attr_accessor :iam_details
+      
+        # 
         # Corresponds to the JSON property `indicator`
         # @return [Google::Apis::SecuritycenterV1beta2::Indicator]
         attr_accessor :indicator
@@ -2738,6 +2743,7 @@ module Google
           @finding_class = args[:finding_class] if args.key?(:finding_class)
           @group_memberships = args[:group_memberships] if args.key?(:group_memberships)
           @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
+          @iam_details = args[:iam_details] if args.key?(:iam_details)
           @indicator = args[:indicator] if args.key?(:indicator)
           @ip_rules = args[:ip_rules] if args.key?(:ip_rules)
           @job = args[:job] if args.key?(:job)
@@ -3207,6 +3213,50 @@ module Google
           @name = args[:name] if args.key?(:name)
           @status = args[:status] if args.key?(:status)
           @ticket_info = args[:ticket_info] if args.key?(:ticket_info)
+        end
+      end
+      
+      # 
+      class GoogleCloudSecuritycenterV1IamDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `iamRolePermissions`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1IamRolePermission>]
+        attr_accessor :iam_role_permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_role_permissions = args[:iam_role_permissions] if args.key?(:iam_role_permissions)
+        end
+      end
+      
+      # 
+      class GoogleCloudSecuritycenterV1IamRolePermission
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @role = args[:role] if args.key?(:role)
         end
       end
       
@@ -6557,6 +6607,11 @@ module Google
         attr_accessor :iam_bindings
       
         # 
+        # Corresponds to the JSON property `iamDetails`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IamDetails]
+        attr_accessor :iam_details
+      
+        # 
         # Corresponds to the JSON property `indicator`
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Indicator]
         attr_accessor :indicator
@@ -6759,6 +6814,7 @@ module Google
           @finding_class = args[:finding_class] if args.key?(:finding_class)
           @group_memberships = args[:group_memberships] if args.key?(:group_memberships)
           @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
+          @iam_details = args[:iam_details] if args.key?(:iam_details)
           @indicator = args[:indicator] if args.key?(:indicator)
           @ip_rules = args[:ip_rules] if args.key?(:ip_rules)
           @job = args[:job] if args.key?(:job)
@@ -6958,6 +7014,50 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @member = args[:member] if args.key?(:member)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # 
+      class GoogleCloudSecuritycenterV2IamDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `iamRolePermissions`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IamRolePermission>]
+        attr_accessor :iam_role_permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_role_permissions = args[:iam_role_permissions] if args.key?(:iam_role_permissions)
+        end
+      end
+      
+      # 
+      class GoogleCloudSecuritycenterV2IamRolePermission
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
           @role = args[:role] if args.key?(:role)
         end
       end
