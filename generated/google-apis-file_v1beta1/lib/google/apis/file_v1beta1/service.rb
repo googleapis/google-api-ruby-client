@@ -1223,6 +1223,74 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Acquires a share synchronously from the pre-provisioned share pool.
+        # @param [String] parent
+        #   Required. The parent share pool path, in the format `projects/`project`/
+        #   locations/`location`/sharePools/`share_pool``.
+        # @param [Google::Apis::FileV1beta1::AcquireShareRequest] acquire_share_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::AcquireShareResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::AcquireShareResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def acquire_share_pool_share(parent, acquire_share_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:acquireShare', options)
+          command.request_representation = Google::Apis::FileV1beta1::AcquireShareRequest::Representation
+          command.request_object = acquire_share_request_object
+          command.response_representation = Google::Apis::FileV1beta1::AcquireShareResponse::Representation
+          command.response_class = Google::Apis::FileV1beta1::AcquireShareResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Releases a share synchronously, marking it for background scrubbing.
+        # @param [String] parent
+        #   Required. The parent share pool path, in the format `projects/`project`/
+        #   locations/`location`/sharePools/`share_pool``.
+        # @param [Google::Apis::FileV1beta1::ReleaseShareRequest] release_share_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::ReleaseShareResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::ReleaseShareResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def release_share_pool_share(parent, release_share_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:releaseShare', options)
+          command.request_representation = Google::Apis::FileV1beta1::ReleaseShareRequest::Representation
+          command.request_object = release_share_request_object
+          command.response_representation = Google::Apis::FileV1beta1::ReleaseShareResponse::Representation
+          command.response_class = Google::Apis::FileV1beta1::ReleaseShareResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

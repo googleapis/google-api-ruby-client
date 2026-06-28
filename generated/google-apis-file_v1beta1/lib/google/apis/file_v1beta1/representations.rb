@@ -22,6 +22,18 @@ module Google
   module Apis
     module FileV1beta1
       
+      class AcquireShareRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcquireShareResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +274,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReleaseShareRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReleaseShareResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -332,6 +356,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcquireShareRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_gb, as: 'capacityGb'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class AcquireShareResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :share_id, as: 'shareId'
+        end
       end
       
       class Backup
@@ -779,6 +819,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint_project, as: 'endpointProject'
+        end
+      end
+      
+      class ReleaseShareRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :share_id, as: 'shareId'
+        end
+      end
+      
+      class ReleaseShareResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
