@@ -933,7 +933,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single Repository asynchronously.
+        # Deletes a single repository asynchronously.
         # @param [String] name
         #   Required. The repository's name.
         # @param [Google::Apis::DataformV1beta1::DeleteRepositoryLongRunningRequest] delete_repository_long_running_request_object
@@ -1438,8 +1438,7 @@ module Google
         
         # Fetches a single CompilationResult.
         # @param [String] name
-        #   Required. The compilation result's name. LINT.ThenChange(//depot/google3/
-        #   google/cloud/dataform/v2main/data_pipelines.proto:GetCompilationResultRequest)
+        #   Required. The compilation result's name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1472,8 +1471,7 @@ module Google
         #   Required. The repository in which to list compilation results. Must be in the
         #   format `projects/*/locations/*/repositories/*`.
         # @param [String] filter
-        #   Optional. Filter for the returned list. LINT.ThenChange(//depot/google3/google/
-        #   cloud/dataform/v2main/data_pipelines.proto:ListCompilationResultsRequest)
+        #   Optional. Filter for the returned list.
         # @param [String] order_by
         #   Optional. This field only supports ordering by `name` and `create_time`. If
         #   unspecified, the server will choose the ordering. If specified, the default
@@ -1570,9 +1568,7 @@ module Google
         # @param [Google::Apis::DataformV1beta1::ReleaseConfig] release_config_object
         # @param [String] release_config_id
         #   Required. The ID to use for the release config, which will become the final
-        #   component of the release config's resource name. LINT.ThenChange(//depot/
-        #   google3/google/cloud/dataform/v2main/data_pipelines.proto:
-        #   CreateReleaseConfigRequest)
+        #   component of the release config's resource name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1605,8 +1601,7 @@ module Google
         
         # Deletes a single ReleaseConfig.
         # @param [String] name
-        #   Required. The release config's name. LINT.ThenChange(//depot/google3/google/
-        #   cloud/dataform/v2main/data_pipelines.proto:DeleteReleaseConfigRequest)
+        #   Required. The release config's name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1636,8 +1631,7 @@ module Google
         
         # Fetches a single ReleaseConfig.
         # @param [String] name
-        #   Required. The release config's name. LINT.ThenChange(//depot/google3/google/
-        #   cloud/dataform/v2main/data_pipelines.proto:GetReleaseConfigRequest)
+        #   Required. The release config's name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1677,9 +1671,7 @@ module Google
         #   Optional. Page token received from a previous `ListReleaseConfigs` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
         #   parameters provided to `ListReleaseConfigs`, with the exception of `page_size`,
-        #   must match the call that provided the page token. LINT.ThenChange(//depot/
-        #   google3/google/cloud/dataform/v2main/data_pipelines.proto:
-        #   ListReleaseConfigsRequest)
+        #   must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3295,9 +3287,9 @@ module Google
         #   display_name` (default), `create_time`, `last_modified_time`. Examples: * `
         #   orderBy="display_name"` * `orderBy="display_name desc"`
         # @param [Fixnum] page_size
-        #   Optional. Maximum number of TeamFolders to return. The server may return fewer
-        #   items than requested. If unspecified, the server will pick a default of
-        #   page_size = 50.
+        #   Optional. Maximum number of `TeamFolders` to return. The server may return
+        #   fewer items than requested. If unspecified, the server will pick a default of `
+        #   page_size` = 50.
         # @param [String] page_token
         #   Optional. Page token received from a previous `SearchTeamFolders` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
