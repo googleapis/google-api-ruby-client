@@ -1108,6 +1108,94 @@ module Google
         end
       end
       
+      # A Vertex agent contains instructions and configurations for the LLM to execute
+      # a certain task.
+      class GoogleCloudAiplatformV1Agent
+        include Google::Apis::Core::Hashable
+      
+        # Required. The base agent for the agent. Supported values: * `antigravity-
+        # preview-05-2026`
+        # Corresponds to the JSON property `base_agent`
+        # @return [String]
+        attr_accessor :base_agent
+      
+        # Optional. The base environment configuration for the agent. Valid types: * A
+        # string value for the environment ID, or `remote` for the default. * A struct
+        # value for the `environment_config`.
+        # Corresponds to the JSON property `base_environment`
+        # @return [Object]
+        attr_accessor :base_environment
+      
+        # Output only. The time the agent was created.
+        # Corresponds to the JSON property `created`
+        # @return [String]
+        attr_accessor :created
+      
+        # Optional. The description of the agent.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Immutable. The user-specified ID for the agent. This ID becomes the final
+        # component of the agent resource name. If not provided, Vertex AI will generate
+        # a value for this ID. The ID can be up to 63 characters and must match the
+        # regular expression `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. The metadata for the agent.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Identifier. The resource name of the agent. Format: `projects/`project`/
+        # locations/`location`/agents/`agent``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The object type of the resource. For agents, the value is `agent`.
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        # Optional. The instructions for the agent to follow. These instructions are
+        # passed to the LLM as a system instruction.
+        # Corresponds to the JSON property `system_instruction`
+        # @return [String]
+        attr_accessor :system_instruction
+      
+        # Optional. The tools available to the agent.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AgentTool>]
+        attr_accessor :tools
+      
+        # Output only. The time the agent was last updated.
+        # Corresponds to the JSON property `updated`
+        # @return [String]
+        attr_accessor :updated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_agent = args[:base_agent] if args.key?(:base_agent)
+          @base_environment = args[:base_environment] if args.key?(:base_environment)
+          @created = args[:created] if args.key?(:created)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @object = args[:object] if args.key?(:object)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
+          @tools = args[:tools] if args.key?(:tools)
+          @updated = args[:updated] if args.key?(:updated)
+        end
+      end
+      
       # Represents configuration for an Agent.
       class GoogleCloudAiplatformV1AgentConfig
         include Google::Apis::Core::Hashable
@@ -1163,6 +1251,48 @@ module Google
           @instruction = args[:instruction] if args.key?(:instruction)
           @sub_agents = args[:sub_agents] if args.key?(:sub_agents)
           @tools = args[:tools] if args.key?(:tools)
+        end
+      end
+      
+      # A tool provides a list of actions available to the Agent during the process of
+      # executing a task.
+      class GoogleCloudAiplatformV1AgentTool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The headers for the MCP server, such as for authentication. Only
+        # applicable when `type` is `mcp_server`.
+        # Corresponds to the JSON property `headers`
+        # @return [Hash<String,String>]
+        attr_accessor :headers
+      
+        # Optional. The name of the MCP server. Only applicable when `type` is `
+        # mcp_server`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The type of the tool. Supported types: * `code_execution` * `
+        # filesystem` * `google_search` * `mcp_server` * `url_context`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Optional. The URL for the MCP server endpoint. Only applicable when `type` is `
+        # mcp_server`.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -8240,6 +8370,20 @@ module Google
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Request message for SemanticGovernancePolicyEngineService.
+      # DeprovisionSemanticGovernancePolicyEngine.
+      class GoogleCloudAiplatformV1DeprovisionSemanticGovernancePolicyEngineRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -16150,6 +16294,68 @@ module Google
         end
       end
       
+      # Configuration for a single gateway.
+      class GoogleCloudAiplatformV1GatewayConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The fully qualified record name of the created A-record in Cloud
+        # DNS.
+        # Corresponds to the JSON property `dnsRecord`
+        # @return [String]
+        attr_accessor :dns_record
+      
+        # Optional. FQDN of the private DNS zone to create DNS record set for PSC
+        # endpoint.
+        # Corresponds to the JSON property `dnsZoneName`
+        # @return [String]
+        attr_accessor :dns_zone_name
+      
+        # Output only. The private IP address of the PSC endpoint.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Optional. The URI of the network resource where PSC-E will be provisioned. if
+        # not provided `default` network will be used. Format: projects/`project`/global/
+        # networks/`network`
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. The self-link or name of the Private Service Connect endpoint
+        # forwarding rule.
+        # Corresponds to the JSON property `pscEndpoint`
+        # @return [String]
+        attr_accessor :psc_endpoint
+      
+        # Output only. The state of the Gateway configuration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The URI of the subnetwork resource where PSC-E will be provisioned.
+        # if not provided `default` subnet will be used from the same `location` Format:
+        # projects/`project`/regions/`region`/subnetworks/`subnetwork`
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_record = args[:dns_record] if args.key?(:dns_record)
+          @dns_zone_name = args[:dns_zone_name] if args.key?(:dns_zone_name)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @network = args[:network] if args.key?(:network)
+          @psc_endpoint = args[:psc_endpoint] if args.key?(:psc_endpoint)
+          @state = args[:state] if args.key?(:state)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
       # The Google Cloud Storage location where the output is to be written to.
       class GoogleCloudAiplatformV1GcsDestination
         include Google::Apis::Core::Hashable
@@ -19649,6 +19855,110 @@ module Google
         end
       end
       
+      # Request message for MemoryBankService.IngestEvents.
+      class GoogleCloudAiplatformV1IngestEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Ingest events directly from the request.
+        # Corresponds to the JSON property `directContentsSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IngestionDirectContentsSource]
+        attr_accessor :direct_contents_source
+      
+        # Optional. Forces a flush of all pending events in the stream and triggers
+        # memory generation immediately bypassing any conditions configured in the `
+        # generation_trigger_config`.
+        # Corresponds to the JSON property `forceFlush`
+        # @return [Boolean]
+        attr_accessor :force_flush
+        alias_method :force_flush?, :force_flush
+      
+        # Represents configuration for triggering generation.
+        # Corresponds to the JSON property `generationTriggerConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryGenerationTriggerConfig]
+        attr_accessor :generation_trigger_config
+      
+        # Required. The scope of the memories that should be generated from the stream.
+        # Memories will be consolidated across memories with the same scope. Scope
+        # values cannot contain the wildcard character '*'.
+        # Corresponds to the JSON property `scope`
+        # @return [Hash<String,String>]
+        attr_accessor :scope
+      
+        # Optional. The ID of the stream to ingest events into. If not provided, a new
+        # one will be created.
+        # Corresponds to the JSON property `streamId`
+        # @return [String]
+        attr_accessor :stream_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @direct_contents_source = args[:direct_contents_source] if args.key?(:direct_contents_source)
+          @force_flush = args[:force_flush] if args.key?(:force_flush)
+          @generation_trigger_config = args[:generation_trigger_config] if args.key?(:generation_trigger_config)
+          @scope = args[:scope] if args.key?(:scope)
+          @stream_id = args[:stream_id] if args.key?(:stream_id)
+        end
+      end
+      
+      # Ingest events directly from the request.
+      class GoogleCloudAiplatformV1IngestionDirectContentsSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The events to ingest.
+        # Corresponds to the JSON property `events`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent>]
+        attr_accessor :events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @events = args[:events] if args.key?(:events)
+        end
+      end
+      
+      # A single event to ingest.
+      class GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent
+        include Google::Apis::Core::Hashable
+      
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
+        attr_accessor :content
+      
+        # Optional. A unique identifier for the event. If an event with the same
+        # event_id is ingested multiple times, it will be de-duplicated.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Optional. The time at which the event occurred. If provided, this timestamp
+        # will be used for ordering events within a stream. If not provided, the server-
+        # side ingestion time will be used.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+        end
+      end
+      
       # Specifies Vertex AI owned input data to be used for training, and possibly
       # evaluating, the Model.
       class GoogleCloudAiplatformV1InputDataConfig
@@ -20154,6 +20464,32 @@ module Google
           @artifacts = args[:artifacts] if args.key?(:artifacts)
           @events = args[:events] if args.key?(:events)
           @executions = args[:executions] if args.key?(:executions)
+        end
+      end
+      
+      # Response message for AgentService.ListAgents.
+      class GoogleCloudAiplatformV1ListAgentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The agents matching the request.
+        # Corresponds to the JSON property `agents`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Agent>]
+        attr_accessor :agents
+      
+        # A token to retrieve the next page of results. Pass this value as
+        # ListAgentsRequest.page_token in a subsequent call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agents = args[:agents] if args.key?(:agents)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -21567,6 +21903,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @schedules = args[:schedules] if args.key?(:schedules)
+        end
+      end
+      
+      # Response message for SemanticGovernancePolicyService.
+      # ListSemanticGovernancePolicies.
+      class GoogleCloudAiplatformV1ListSemanticGovernancePoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass to
+        # ListSemanticGovernancePoliciesRequest.page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SemanticGovernancePolicies.
+        # Corresponds to the JSON property `semanticGovernancePolicies`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SemanticGovernancePolicy>]
+        attr_accessor :semantic_governance_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @semantic_governance_policies = args[:semantic_governance_policies] if args.key?(:semantic_governance_policies)
         end
       end
       
@@ -43645,6 +44008,184 @@ module Google
         end
       end
       
+      # Represents a governance policy applied to a specific Agent and optionally a
+      # specific Tool within that Agent.
+      class GoogleCloudAiplatformV1SemanticGovernancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the agent in Agent Registry that is affected by this
+        # policy.
+        # Corresponds to the JSON property `agent`
+        # @return [String]
+        attr_accessor :agent
+      
+        # Output only. Represents the principal of the agent, used by the Policy
+        # Decision Point (PDP) for governance checks. For more information, see https://
+        # docs.cloud.google.com/agent-builder/agent-engine/agent-identity Format: `
+        # principal://TRUST_DOMAIN/NAMESPACE/AGENT_NAME` Example: `principal://agents.
+        # global.org-ORGANIZATION_ID.system.id.goog/resources/aiplatform/projects/
+        # PROJECT_NUMBER/locations/LOCATION/reasoningEngines/AGENT_ENGINE_ID`
+        # Corresponds to the JSON property `agentIdentity`
+        # @return [String]
+        attr_accessor :agent_identity
+      
+        # Output only. Timestamp when this SemanticGovernancePolicy was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The description of the SemanticGovernancePolicy.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The user-defined name of the SemanticGovernancePolicy.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Used to perform consistent read-modify-write transactions. If
+        # provided, the request will only succeed if the etag matches the current value.
+        # Otherwise, an ABORTED error will be returned.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. The McpTools that are affected by this policy.
+        # Corresponds to the JSON property `mcpTools`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool>]
+        attr_accessor :mcp_tools
+      
+        # Identifier. Resource name of the SemanticGovernancePolicy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The natural language constraint of the SemanticGovernancePolicy.
+        # Corresponds to the JSON property `naturalLanguageConstraint`
+        # @return [String]
+        attr_accessor :natural_language_constraint
+      
+        # Output only. Timestamp when this SemanticGovernancePolicy was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent = args[:agent] if args.key?(:agent)
+          @agent_identity = args[:agent_identity] if args.key?(:agent_identity)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @mcp_tools = args[:mcp_tools] if args.key?(:mcp_tools)
+          @name = args[:name] if args.key?(:name)
+          @natural_language_constraint = args[:natural_language_constraint] if args.key?(:natural_language_constraint)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Define a singleton SemanticGovernancePolicyEngine resource under a project and
+      # location.
+      class GoogleCloudAiplatformV1SemanticGovernancePolicyEngine
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this SemanticGovernancePolicyEngine was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Configurations for gateways. The keys are user-defined names for
+        # each gateway. At most 5 gateway configurations are allowed.
+        # Corresponds to the JSON property `gatewayConfigs`
+        # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GatewayConfig>]
+        attr_accessor :gateway_configs
+      
+        # Output only. The private IPv4 address of the PSC endpoint.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Identifier. The resource name of the SemanticGovernancePolicyEngine. Format:
+        # projects/`project`/locations/`location`/semanticGovernancePolicyEngine
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The URI of the PSC endpoint resource created in customer project.
+        # Format: projects/`project`/regions/`region`/forwardingRules/`forwarding_rule`
+        # Corresponds to the JSON property `pscForwardingRule`
+        # @return [String]
+        attr_accessor :psc_forwarding_rule
+      
+        # Output only. URI of the PSC attachment resource provided by SGP. Format:
+        # projects/`project`/regions/`region`/serviceAttachments/`service_attachment`
+        # Corresponds to the JSON property `pscServiceAttachment`
+        # @return [String]
+        attr_accessor :psc_service_attachment
+      
+        # Output only. The state of the SemanticGovernancePolicyEngine.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when this SemanticGovernancePolicyEngine was last
+        # updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gateway_configs = args[:gateway_configs] if args.key?(:gateway_configs)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @name = args[:name] if args.key?(:name)
+          @psc_forwarding_rule = args[:psc_forwarding_rule] if args.key?(:psc_forwarding_rule)
+          @psc_service_attachment = args[:psc_service_attachment] if args.key?(:psc_service_attachment)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a governance policy applied to MCP tools used by an Agent.
+      class GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the McpServer in Agent Registry that is
+        # affected by this policy. Format: `projects/`project`/locations/`location`/
+        # mcpServers/`mcp_server``
+        # Corresponds to the JSON property `mcpServer`
+        # @return [String]
+        attr_accessor :mcp_server
+      
+        # Optional. The resource names of the McpTools used by the Agent that is
+        # affected by this policy. If not specified, the policy applies to all McpTools
+        # in the McpServer.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<String>]
+        attr_accessor :tools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mcp_server = args[:mcp_server] if args.key?(:mcp_server)
+          @tools = args[:tools] if args.key?(:tools)
+        end
+      end
+      
       # Configuration for the use of custom service account to run the workloads.
       class GoogleCloudAiplatformV1ServiceAccountSpec
         include Google::Apis::Core::Hashable
@@ -47497,6 +48038,15 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :custom_configs
       
+        # Optional. Instructs Vertex Grounding to use Parallel's Zero Data Retention
+        # Marketplace product. If this value is "false" or omitted, the Parallel Web
+        # Search for Grounding standard subscription will be used. If this value is "
+        # true", the Parallel Web Search for Grounding - ZDR subscription will be used.
+        # Corresponds to the JSON property `enableDataRetention`
+        # @return [Boolean]
+        attr_accessor :enable_data_retention
+        alias_method :enable_data_retention?, :enable_data_retention
+      
         def initialize(**args)
            update!(**args)
         end
@@ -47505,6 +48055,7 @@ module Google
         def update!(**args)
           @api_key = args[:api_key] if args.key?(:api_key)
           @custom_configs = args[:custom_configs] if args.key?(:custom_configs)
+          @enable_data_retention = args[:enable_data_retention] if args.key?(:enable_data_retention)
         end
       end
       
