@@ -1,5 +1,9 @@
 # Release history for google-apis-drive_v3
 
+### v0.83.0 (2026-06-28)
+
+* Regenerated from discovery document revision 20260624
+
 ### v0.82.0 (2026-06-14)
 
 * Regenerated using generator version 0.19.0
