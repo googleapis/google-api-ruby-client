@@ -892,6 +892,12 @@ module Google
       class TraitData
         include Google::Apis::Core::Hashable
       
+        # Other metadata for the trait. The time the client update was committed in the
+        # server.
+        # Corresponds to the JSON property `commitTime`
+        # @return [String]
+        attr_accessor :commit_time
+      
         # The Provider Home API trait payload.
         # Corresponds to the JSON property `trait`
         # @return [Hash<String,Object>]
@@ -903,6 +909,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @commit_time = args[:commit_time] if args.key?(:commit_time)
           @trait = args[:trait] if args.key?(:trait)
         end
       end

@@ -459,6 +459,7 @@ module Google
       class TraitData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_time, as: 'commitTime'
           hash :trait, as: 'trait'
         end
       end
