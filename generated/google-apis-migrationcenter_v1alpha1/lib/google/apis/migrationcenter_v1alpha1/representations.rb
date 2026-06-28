@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsElastiCacheClusterDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsElasticIpAddressDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1834,6 +1840,8 @@ module Google
       
           property :aws_elastic_network_interface_details, as: 'awsElasticNetworkInterfaceDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElasticNetworkInterfaceDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElasticNetworkInterfaceDetails::Representation
       
+          property :aws_elasticache_cluster_details, as: 'awsElasticacheClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElastiCacheClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElastiCacheClusterDetails::Representation
+      
           property :aws_elb_load_balancer_details, as: 'awsElbLoadBalancerDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails::Representation
       
           property :aws_emr_cluster_details, as: 'awsEmrClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEmrClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEmrClusterDetails::Representation
@@ -1920,6 +1928,8 @@ module Google
           property :aws_elastic_ip_address_details, as: 'awsElasticIpAddressDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElasticIpAddressDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElasticIpAddressDetails::Representation
       
           property :aws_elastic_network_interface_details, as: 'awsElasticNetworkInterfaceDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElasticNetworkInterfaceDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElasticNetworkInterfaceDetails::Representation
+      
+          property :aws_elasticache_cluster_details, as: 'awsElasticacheClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElastiCacheClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElastiCacheClusterDetails::Representation
       
           property :aws_elb_load_balancer_details, as: 'awsElbLoadBalancerDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails::Representation
       
@@ -2138,6 +2148,12 @@ module Google
       end
       
       class AwsEksClusterDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsElastiCacheClusterDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

@@ -472,6 +472,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsElasticNetworkInterfaceDetails]
         attr_accessor :aws_elastic_network_interface_details
       
+        # Details of an AWS ElastiCache Cluster.
+        # Corresponds to the JSON property `awsElasticacheClusterDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsElastiCacheClusterDetails]
+        attr_accessor :aws_elasticache_cluster_details
+      
         # Asset information specific for AWS Load Balancers.
         # Corresponds to the JSON property `awsElbLoadBalancerDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails]
@@ -646,6 +651,7 @@ module Google
           @aws_eks_cluster_details = args[:aws_eks_cluster_details] if args.key?(:aws_eks_cluster_details)
           @aws_elastic_ip_address_details = args[:aws_elastic_ip_address_details] if args.key?(:aws_elastic_ip_address_details)
           @aws_elastic_network_interface_details = args[:aws_elastic_network_interface_details] if args.key?(:aws_elastic_network_interface_details)
+          @aws_elasticache_cluster_details = args[:aws_elasticache_cluster_details] if args.key?(:aws_elasticache_cluster_details)
           @aws_elb_load_balancer_details = args[:aws_elb_load_balancer_details] if args.key?(:aws_elb_load_balancer_details)
           @aws_emr_cluster_details = args[:aws_emr_cluster_details] if args.key?(:aws_emr_cluster_details)
           @aws_firehose_details = args[:aws_firehose_details] if args.key?(:aws_firehose_details)
@@ -762,6 +768,11 @@ module Google
         # Corresponds to the JSON property `awsElasticNetworkInterfaceDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsElasticNetworkInterfaceDetails]
         attr_accessor :aws_elastic_network_interface_details
+      
+        # Details of an AWS ElastiCache Cluster.
+        # Corresponds to the JSON property `awsElasticacheClusterDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsElastiCacheClusterDetails]
+        attr_accessor :aws_elasticache_cluster_details
       
         # Asset information specific for AWS Load Balancers.
         # Corresponds to the JSON property `awsElbLoadBalancerDetails`
@@ -908,6 +919,7 @@ module Google
           @aws_eks_cluster_details = args[:aws_eks_cluster_details] if args.key?(:aws_eks_cluster_details)
           @aws_elastic_ip_address_details = args[:aws_elastic_ip_address_details] if args.key?(:aws_elastic_ip_address_details)
           @aws_elastic_network_interface_details = args[:aws_elastic_network_interface_details] if args.key?(:aws_elastic_network_interface_details)
+          @aws_elasticache_cluster_details = args[:aws_elasticache_cluster_details] if args.key?(:aws_elasticache_cluster_details)
           @aws_elb_load_balancer_details = args[:aws_elb_load_balancer_details] if args.key?(:aws_elb_load_balancer_details)
           @aws_emr_cluster_details = args[:aws_emr_cluster_details] if args.key?(:aws_emr_cluster_details)
           @aws_firehose_details = args[:aws_firehose_details] if args.key?(:aws_firehose_details)
@@ -1405,6 +1417,19 @@ module Google
       
       # Asset information specific for AWS EKS clusters.
       class AwsEksClusterDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details of an AWS ElastiCache Cluster.
+      class AwsElastiCacheClusterDetails
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
