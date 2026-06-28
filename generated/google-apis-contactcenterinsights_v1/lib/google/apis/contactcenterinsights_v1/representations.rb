@@ -4412,6 +4412,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1ChartAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_filter, as: 'conversationFilter'
           property :redirect_action, as: 'redirectAction', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedirectAction, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedirectAction::Representation
       
         end

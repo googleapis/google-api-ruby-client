@@ -2224,6 +2224,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1ChartAction
         include Google::Apis::Core::Hashable
       
+        # The conversation filter string.
+        # Corresponds to the JSON property `conversationFilter`
+        # @return [String]
+        attr_accessor :conversation_filter
+      
         # The redirect action to be taken when the chart is clicked.
         # Corresponds to the JSON property `redirectAction`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedirectAction]
@@ -2235,6 +2240,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @conversation_filter = args[:conversation_filter] if args.key?(:conversation_filter)
           @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
         end
       end
