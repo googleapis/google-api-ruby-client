@@ -39,6 +39,9 @@ module Google
 
       # Get email traffic metrics for the domains you have registered with Postmaster Tools
       AUTH_POSTMASTER_TRAFFIC_READONLY = 'https://www.googleapis.com/auth/postmaster.traffic.readonly'
+
+      # View and manage users for the domains you have registered with Postmaster Tools
+      AUTH_POSTMASTER_USER = 'https://www.googleapis.com/auth/postmaster.user'
     end
   end
 end

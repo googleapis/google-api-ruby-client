@@ -156,6 +156,53 @@ module Google
         end
       end
       
+      # [Developer Preview](https://developers.google.com/workspace/preview): Request
+      # message for CreateDomain.
+      class CreateDomainRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The domain to add. e.g., "example.com"
+        # Corresponds to the JSON property `domainId`
+        # @return [String]
+        attr_accessor :domain_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_id = args[:domain_id] if args.key?(:domain_id)
+        end
+      end
+      
+      # [Developer Preview](https://developers.google.com/workspace/preview): Request
+      # message for CreateUser.
+      class CreateUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the permission level to give the user for the specified
+        # domain. If not specified, the default value for this field is READER.
+        # Corresponds to the JSON property `permission`
+        # @return [String]
+        attr_accessor :permission
+      
+        # Required. The user to create.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permission = args[:permission] if args.key?(:permission)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -274,6 +321,32 @@ module Google
         end
       end
       
+      # [Developer Preview](https://developers.google.com/workspace/preview): Verdict
+      # of domain deliverability status.
+      class DeliverabilityStatusVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The specific reason for the compliance verdict.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The status of a sender compliance requirement.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GmailpostmastertoolsV2::ComplianceStatus]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Information about a domain registered by the user.
       class Domain
         include Google::Apis::Core::Hashable
@@ -325,6 +398,12 @@ module Google
       class DomainComplianceData
         include Google::Apis::Core::Hashable
       
+        # [Developer Preview](https://developers.google.com/workspace/preview): Verdict
+        # of domain deliverability status.
+        # Corresponds to the JSON property `deliverabilityStatusVerdict`
+        # @return [Google::Apis::GmailpostmastertoolsV2::DeliverabilityStatusVerdict]
+        attr_accessor :deliverability_status_verdict
+      
         # Domain that this data is for.
         # Corresponds to the JSON property `domainId`
         # @return [String]
@@ -354,6 +433,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deliverability_status_verdict = args[:deliverability_status_verdict] if args.key?(:deliverability_status_verdict)
           @domain_id = args[:domain_id] if args.key?(:domain_id)
           @honor_unsubscribe_verdict = args[:honor_unsubscribe_verdict] if args.key?(:honor_unsubscribe_verdict)
           @one_click_unsubscribe_verdict = args[:one_click_unsubscribe_verdict] if args.key?(:one_click_unsubscribe_verdict)
@@ -441,6 +521,55 @@ module Google
         end
       end
       
+      # [Developer Preview](https://developers.google.com/workspace/preview): The DNS
+      # token a user can use to verify ownership of a domain.
+      class DomainVerificationToken
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the domain verification token. Format:
+        # domains/`domain`/verificationToken
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The verification token.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # The verification method used.
+        # Corresponds to the JSON property `verificationMethod`
+        # @return [String]
+        attr_accessor :verification_method
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @token = args[:token] if args.key?(:token)
+          @verification_method = args[:verification_method] if args.key?(:verification_method)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Compliance verdict for whether a sender meets the unsubscribe honoring
       # compliance requirement.
       class HonorUnsubscribeVerdict
@@ -491,6 +620,33 @@ module Google
         def update!(**args)
           @domains = args[:domains] if args.key?(:domains)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # [Developer Preview](https://developers.google.com/workspace/preview): Response
+      # message for ListUsers.
+      class ListUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The users that have access to the domain.
+        # Corresponds to the JSON property `users`
+        # @return [Array<Google::Apis::GmailpostmastertoolsV2::User>]
+        attr_accessor :users
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @users = args[:users] if args.key?(:users)
         end
       end
       
@@ -762,6 +918,85 @@ module Google
         def update!(**args)
           @date_list = args[:date_list] if args.key?(:date_list)
           @date_ranges = args[:date_ranges] if args.key?(:date_ranges)
+        end
+      end
+      
+      # [Developer Preview](https://developers.google.com/workspace/preview):
+      # Information about a user's access to a domain.
+      class User
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The user that added the current user.
+        # Corresponds to the JSON property `accessGranter`
+        # @return [String]
+        attr_accessor :access_granter
+      
+        # Output only. The time the user was granted access.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The resource name of the user. Format: users/`user` Note: `user`
+        # is the user's email address.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The permission level that the user has for the specified domain.
+        # Corresponds to the JSON property `permission`
+        # @return [String]
+        attr_accessor :permission
+      
+        # The user's email address.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_granter = args[:access_granter] if args.key?(:access_granter)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @permission = args[:permission] if args.key?(:permission)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # [Developer Preview](https://developers.google.com/workspace/preview): Request
+      # message for VerifyDomain.
+      class VerifyDomainRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The verification method used. Must be specified, i.e. TXT or CNAME.
+        # Corresponds to the JSON property `verificationMethod`
+        # @return [String]
+        attr_accessor :verification_method
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @verification_method = args[:verification_method] if args.key?(:verification_method)
+        end
+      end
+      
+      # [Developer Preview](https://developers.google.com/workspace/preview): Response
+      # message for VerifyDomain.
+      class VerifyDomainResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end

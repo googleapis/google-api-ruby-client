@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateDomainRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateUserRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +89,12 @@ module Google
       end
       
       class DateRanges
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeliverabilityStatusVerdict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DomainVerificationToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HonorUnsubscribeVerdict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +143,12 @@ module Google
       end
       
       class ListDomainsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,6 +197,24 @@ module Google
       end
       
       class TimeQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VerifyDomainRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VerifyDomainResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +269,21 @@ module Google
         end
       end
       
+      class CreateDomainRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain_id, as: 'domainId'
+        end
+      end
+      
+      class CreateUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :permission, as: 'permission'
+          property :user_id, as: 'userId'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -250,6 +319,15 @@ module Google
         end
       end
       
+      class DeliverabilityStatusVerdict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+          property :state, as: 'state', class: Google::Apis::GmailpostmastertoolsV2::ComplianceStatus, decorator: Google::Apis::GmailpostmastertoolsV2::ComplianceStatus::Representation
+      
+        end
+      end
+      
       class Domain
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -264,6 +342,8 @@ module Google
       class DomainComplianceData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :deliverability_status_verdict, as: 'deliverabilityStatusVerdict', class: Google::Apis::GmailpostmastertoolsV2::DeliverabilityStatusVerdict, decorator: Google::Apis::GmailpostmastertoolsV2::DeliverabilityStatusVerdict::Representation
+      
           property :domain_id, as: 'domainId'
           property :honor_unsubscribe_verdict, as: 'honorUnsubscribeVerdict', class: Google::Apis::GmailpostmastertoolsV2::HonorUnsubscribeVerdict, decorator: Google::Apis::GmailpostmastertoolsV2::HonorUnsubscribeVerdict::Representation
       
@@ -297,6 +377,21 @@ module Google
         end
       end
       
+      class DomainVerificationToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :token, as: 'token'
+          property :verification_method, as: 'verificationMethod'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class HonorUnsubscribeVerdict
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -312,6 +407,15 @@ module Google
           collection :domains, as: 'domains', class: Google::Apis::GmailpostmastertoolsV2::Domain, decorator: Google::Apis::GmailpostmastertoolsV2::Domain::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :users, as: 'users', class: Google::Apis::GmailpostmastertoolsV2::User, decorator: Google::Apis::GmailpostmastertoolsV2::User::Representation
+      
         end
       end
       
@@ -392,6 +496,30 @@ module Google
       
           property :date_ranges, as: 'dateRanges', class: Google::Apis::GmailpostmastertoolsV2::DateRanges, decorator: Google::Apis::GmailpostmastertoolsV2::DateRanges::Representation
       
+        end
+      end
+      
+      class User
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_granter, as: 'accessGranter'
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :permission, as: 'permission'
+          property :user, as: 'user'
+        end
+      end
+      
+      class VerifyDomainRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :verification_method, as: 'verificationMethod'
+        end
+      end
+      
+      class VerifyDomainResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end
