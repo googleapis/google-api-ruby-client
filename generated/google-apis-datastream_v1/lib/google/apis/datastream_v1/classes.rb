@@ -4187,7 +4187,8 @@ module Google
         # @return [Google::Apis::DatastreamV1::Oauth2ClientCredentials]
         attr_accessor :oauth2_client_credentials
       
-        # Username-password credentials.
+        # Deprecated: Salesforce is retiring Username-Password authentication. Use `
+        # Oauth2ClientCredentials` instead.
         # Corresponds to the JSON property `userCredentials`
         # @return [Google::Apis::DatastreamV1::UserCredentials]
         attr_accessor :user_credentials
@@ -5690,7 +5691,8 @@ module Google
         end
       end
       
-      # Username-password credentials.
+      # Deprecated: Salesforce is retiring Username-Password authentication. Use `
+      # Oauth2ClientCredentials` instead.
       class UserCredentials
         include Google::Apis::Core::Hashable
       
