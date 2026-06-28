@@ -412,6 +412,134 @@ module Google
         end
       end
       
+      # A JSON web key set (JWK) See also https://datatracker.ietf.org/doc/html/
+      # rfc7517 and https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-
+      # representation-in-the-spiffe-bundle
+      class GoogleIdentityStsV1Jwk
+        include Google::Apis::Core::Hashable
+      
+        # Exponent value for kty="RSA".
+        # Corresponds to the JSON property `e`
+        # @return [String]
+        attr_accessor :e
+      
+        # Key ID.
+        # Corresponds to the JSON property `kid`
+        # @return [String]
+        attr_accessor :kid
+      
+        # Key type. Currently "RSA".
+        # Corresponds to the JSON property `kty`
+        # @return [String]
+        attr_accessor :kty
+      
+        # Modulus value for kty="RSA".
+        # Corresponds to the JSON property `n`
+        # @return [String]
+        attr_accessor :n
+      
+        # Public key use. Currently "jwt-svid".
+        # Corresponds to the JSON property `use`
+        # @return [String]
+        attr_accessor :use
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @e = args[:e] if args.key?(:e)
+          @kid = args[:kid] if args.key?(:kid)
+          @kty = args[:kty] if args.key?(:kty)
+          @n = args[:n] if args.key?(:n)
+          @use = args[:use] if args.key?(:use)
+        end
+      end
+      
+      # Response message for GetJwks.
+      class GoogleIdentityStsV1Jwks
+        include Google::Apis::Core::Hashable
+      
+        # The JWKS for this OP.
+        # Corresponds to the JSON property `keys`
+        # @return [Array<Google::Apis::StsV1::GoogleIdentityStsV1Jwk>]
+        attr_accessor :keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keys = args[:keys] if args.key?(:keys)
+        end
+      end
+      
+      # Response message for GetOpenIdProviderConfig. Message fields are defined in
+      # https://openid.net/specs/openid-connect-discovery-1_0.html#
+      # ProviderConfigurationResponse
+      class GoogleIdentityStsV1OpenIdProviderConfig
+        include Google::Apis::Core::Hashable
+      
+        # URL pointing to an authorization endpoint under this issuer. Note: Currently
+        # this endpoint returns a 404.
+        # Corresponds to the JSON property `authorization_endpoint`
+        # @return [String]
+        attr_accessor :authorization_endpoint
+      
+        # JSON array containing a list of the JWS signing algorithms (alg values)
+        # supported by the OP for the ID token to encode the claims in a JWT [JWT]. Note:
+        # Currently always "["RS256"]".
+        # Corresponds to the JSON property `id_token_signing_alg_values_supported`
+        # @return [Array<String>]
+        attr_accessor :id_token_signing_alg_values_supported
+      
+        # URL using the https scheme with no query or fragment components that the OP
+        # asserts as its issuer identifier.
+        # Corresponds to the JSON property `issuer`
+        # @return [String]
+        attr_accessor :issuer
+      
+        # URL of the OP's JWK Set [JWK] document, which MUST use the https scheme.
+        # Corresponds to the JSON property `jwks_uri`
+        # @return [String]
+        attr_accessor :jwks_uri
+      
+        # JSON array containing a list of the OAuth 2.0 response_type values that this
+        # OP supports. Note: Currently always "["id_token"]".
+        # Corresponds to the JSON property `response_types_supported`
+        # @return [Array<String>]
+        attr_accessor :response_types_supported
+      
+        # JSON array containing a list of the subject identifier types that this OP
+        # supports. Note: Currently always "["public"]".
+        # Corresponds to the JSON property `subject_types_supported`
+        # @return [Array<String>]
+        attr_accessor :subject_types_supported
+      
+        # URL pointing to a token endpoint under this issuer. Note: Currently this
+        # endpoint returns a 404.
+        # Corresponds to the JSON property `token_endpoint`
+        # @return [String]
+        attr_accessor :token_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_endpoint = args[:authorization_endpoint] if args.key?(:authorization_endpoint)
+          @id_token_signing_alg_values_supported = args[:id_token_signing_alg_values_supported] if args.key?(:id_token_signing_alg_values_supported)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @jwks_uri = args[:jwks_uri] if args.key?(:jwks_uri)
+          @response_types_supported = args[:response_types_supported] if args.key?(:response_types_supported)
+          @subject_types_supported = args[:subject_types_supported] if args.key?(:subject_types_supported)
+          @token_endpoint = args[:token_endpoint] if args.key?(:token_endpoint)
+        end
+      end
+      
       # An `Options` object configures features that the Security Token Service
       # supports, but that are not supported by standard OAuth 2.0 token exchange
       # endpoints, as defined in https://tools.ietf.org/html/rfc8693.
