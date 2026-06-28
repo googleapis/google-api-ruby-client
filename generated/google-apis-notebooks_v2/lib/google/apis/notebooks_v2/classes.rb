@@ -427,7 +427,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # Optional. Input only. Indicates the type of the disk.
+        # Optional. Indicates the type of the disk.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
