@@ -1198,6 +1198,89 @@ module Google
         end
       end
       
+      # Product-specific targeting overrides.
+      class AdvancedProductTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The age range to target.
+        # Corresponds to the JSON property `ageRange`
+        # @return [String]
+        attr_accessor :age_range
+      
+        # A date range.
+        # Corresponds to the JSON property `dateRange`
+        # @return [Google::Apis::DisplayvideoV4::DateRange]
+        attr_accessor :date_range
+      
+        # Optional. The devices to target.
+        # Corresponds to the JSON property `devices`
+        # @return [Array<String>]
+        attr_accessor :devices
+      
+        # Settings that control the number of times a user may be shown with the same ad
+        # during a given time period.
+        # Corresponds to the JSON property `frequencyCap`
+        # @return [Google::Apis::DisplayvideoV4::FrequencyCap]
+        attr_accessor :frequency_cap
+      
+        # Optional. The gender options to target.
+        # Corresponds to the JSON property `genders`
+        # @return [Array<String>]
+        attr_accessor :genders
+      
+        # Optional. Plannable location IDs to target.
+        # Corresponds to the JSON property `plannableLocationIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :plannable_location_ids
+      
+        # Surface targeting selection.
+        # Corresponds to the JSON property `surfaceTargetingSettings`
+        # @return [Google::Apis::DisplayvideoV4::SurfaceTargetingSettings]
+        attr_accessor :surface_targeting_settings
+      
+        # Setting that controls the average number of times the ads will show to the
+        # same person over a certain period of time.
+        # Corresponds to the JSON property `targetFrequency`
+        # @return [Google::Apis::DisplayvideoV4::TargetFrequency]
+        attr_accessor :target_frequency
+      
+        # Optional. The user interest IDs to target. Plannable user interests can be
+        # retrieved using the `RetrievePlannableUserInterests` method.
+        # Corresponds to the JSON property `userInterestIds`
+        # @return [Array<String>]
+        attr_accessor :user_interest_ids
+      
+        # Optional. The user list IDs to target. Plannable user lists can be retrieved
+        # using the `RetrievePlannableUserInterests` method.
+        # Corresponds to the JSON property `userListIds`
+        # @return [Array<String>]
+        attr_accessor :user_list_ids
+      
+        # Settings for YouTube Select Lineups.
+        # Corresponds to the JSON property `youtubeSelectSettings`
+        # @return [Google::Apis::DisplayvideoV4::YouTubeSelectSettings]
+        attr_accessor :youtube_select_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @age_range = args[:age_range] if args.key?(:age_range)
+          @date_range = args[:date_range] if args.key?(:date_range)
+          @devices = args[:devices] if args.key?(:devices)
+          @frequency_cap = args[:frequency_cap] if args.key?(:frequency_cap)
+          @genders = args[:genders] if args.key?(:genders)
+          @plannable_location_ids = args[:plannable_location_ids] if args.key?(:plannable_location_ids)
+          @surface_targeting_settings = args[:surface_targeting_settings] if args.key?(:surface_targeting_settings)
+          @target_frequency = args[:target_frequency] if args.key?(:target_frequency)
+          @user_interest_ids = args[:user_interest_ids] if args.key?(:user_interest_ids)
+          @user_list_ids = args[:user_list_ids] if args.key?(:user_list_ids)
+          @youtube_select_settings = args[:youtube_select_settings] if args.key?(:youtube_select_settings)
+        end
+      end
+      
       # A single advertiser in Display & Video 360 (DV360).
       class Advertiser
         include Google::Apis::Core::Hashable
@@ -4163,6 +4246,31 @@ module Google
           @external_budget_source = args[:external_budget_source] if args.key?(:external_budget_source)
           @invoice_grouping_id = args[:invoice_grouping_id] if args.key?(:invoice_grouping_id)
           @prisma_config = args[:prisma_config] if args.key?(:prisma_config)
+        end
+      end
+      
+      # The duration of the reach plan.
+      class CampaignDuration
+        include Google::Apis::Core::Hashable
+      
+        # A date range.
+        # Corresponds to the JSON property `dateRange`
+        # @return [Google::Apis::DisplayvideoV4::DateRange]
+        attr_accessor :date_range
+      
+        # Required. The number of days the plan covers.
+        # Corresponds to the JSON property `durationDays`
+        # @return [Fixnum]
+        attr_accessor :duration_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_range = args[:date_range] if args.key?(:date_range)
+          @duration_days = args[:duration_days] if args.key?(:duration_days)
         end
       end
       
@@ -7531,6 +7639,57 @@ module Google
         end
       end
       
+      # A breakdown of the number of unique people reached at a given effective
+      # frequency.
+      class EffectiveFrequencyBreakdown
+        include Google::Apis::Core::Hashable
+      
+        # The number of unique individuals, including co-viewers, exactly matching the
+        # targeting that were served the ad at least the number of times dictated by the
+        # effective_frequency.
+        # Corresponds to the JSON property `effectiveCoviewReach`
+        # @return [Fixnum]
+        attr_accessor :effective_coview_reach
+      
+        # The set effective frequency.
+        # Corresponds to the JSON property `effectiveFrequency`
+        # @return [Fixnum]
+        attr_accessor :effective_frequency
+      
+        # The total number of unique individuals, including co-viewers that were served
+        # the ad at least the number of times dictated by the effective_frequency. This
+        # includes individuals that may fall outside of targeting.
+        # Corresponds to the JSON property `onTargetEffectiveCoviewReach`
+        # @return [Fixnum]
+        attr_accessor :on_target_effective_coview_reach
+      
+        # The number of unique individuals exactly matching the targeting that were
+        # served the ad at least the number of times dictated by the effective_frequency.
+        # Corresponds to the JSON property `onTargetReach`
+        # @return [Fixnum]
+        attr_accessor :on_target_reach
+      
+        # The total number of unique individuals that were served the ad at least the
+        # number of times dictated by the effective_frequency. This includes individuals
+        # that may fall outside of targeting.
+        # Corresponds to the JSON property `totalReach`
+        # @return [Fixnum]
+        attr_accessor :total_reach
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_coview_reach = args[:effective_coview_reach] if args.key?(:effective_coview_reach)
+          @effective_frequency = args[:effective_frequency] if args.key?(:effective_frequency)
+          @on_target_effective_coview_reach = args[:on_target_effective_coview_reach] if args.key?(:on_target_effective_coview_reach)
+          @on_target_reach = args[:on_target_reach] if args.key?(:on_target_reach)
+          @total_reach = args[:total_reach] if args.key?(:total_reach)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -8215,6 +8374,89 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gender = args[:gender] if args.key?(:gender)
+        end
+      end
+      
+      # Request message for ReachForecastService.GenerateReachForecast.
+      class GenerateReachForecastRequest
+        include Google::Apis::Core::Hashable
+      
+        # The duration of the reach plan.
+        # Corresponds to the JSON property `campaignDuration`
+        # @return [Google::Apis::DisplayvideoV4::CampaignDuration]
+        attr_accessor :campaign_duration
+      
+        # Required. The currency code for the plan in ISO 4217 format.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Optional. The highest minimum effective frequency to include in
+        # PlannedProductForecast.effective_frequency_breakdowns. Must be between 1 and
+        # 10, inclusive. If not specified, PlannedProductForecast.
+        # effective_frequency_breakdowns will not be populated. If set, this value will
+        # also be used as the minimum effective frequency for reach metrics reporting.
+        # This field cannot be combined with the min_effective_frequency field.
+        # Corresponds to the JSON property `effectiveFrequencyBreakdownLimit`
+        # @return [Fixnum]
+        attr_accessor :effective_frequency_breakdown_limit
+      
+        # Optional. The minimum effective frequency for the reported reach metrics. This
+        # is the smallest number of times a customer must be exposed to the ad for it to
+        # be considered effective. This setting only impacts reporting. Must be between
+        # 1 and 10, inclusive. If not specified, a default of 1 is applied. This field
+        # cannot be combined with effective_frequency_breakdown_limit.
+        # Corresponds to the JSON property `minEffectiveFrequency`
+        # @return [Fixnum]
+        attr_accessor :min_effective_frequency
+      
+        # Required. The list of line items to include in the forecast.
+        # Corresponds to the JSON property `plannedProducts`
+        # @return [Array<Google::Apis::DisplayvideoV4::PlannedProduct>]
+        attr_accessor :planned_products
+      
+        # Targeting settings for a planned campaign.
+        # Corresponds to the JSON property `targeting`
+        # @return [Google::Apis::DisplayvideoV4::Targeting]
+        attr_accessor :targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @campaign_duration = args[:campaign_duration] if args.key?(:campaign_duration)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @effective_frequency_breakdown_limit = args[:effective_frequency_breakdown_limit] if args.key?(:effective_frequency_breakdown_limit)
+          @min_effective_frequency = args[:min_effective_frequency] if args.key?(:min_effective_frequency)
+          @planned_products = args[:planned_products] if args.key?(:planned_products)
+          @targeting = args[:targeting] if args.key?(:targeting)
+        end
+      end
+      
+      # Response message for ReachForecastService.GenerateReachForecast.
+      class GenerateReachForecastResponse
+        include Google::Apis::Core::Hashable
+      
+        # Estimated audience sizes for a targeted geography.
+        # Corresponds to the JSON property `onTargetAudienceMetrics`
+        # @return [Google::Apis::DisplayvideoV4::OnTargetAudienceMetrics]
+        attr_accessor :on_target_audience_metrics
+      
+        # The generated reach curve.
+        # Corresponds to the JSON property `reachCurve`
+        # @return [Google::Apis::DisplayvideoV4::ReachCurve]
+        attr_accessor :reach_curve
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @on_target_audience_metrics = args[:on_target_audience_metrics] if args.key?(:on_target_audience_metrics)
+          @reach_curve = args[:reach_curve] if args.key?(:reach_curve)
         end
       end
       
@@ -11750,6 +11992,31 @@ module Google
         end
       end
       
+      # Estimated audience sizes for a targeted geography.
+      class OnTargetAudienceMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Size of the audience based on the census data of the targeted geography.
+        # Corresponds to the JSON property `censusAudienceSize`
+        # @return [Fixnum]
+        attr_accessor :census_audience_size
+      
+        # Estimated size of the YouTube audience.
+        # Corresponds to the JSON property `youtubeAudienceSize`
+        # @return [Fixnum]
+        attr_accessor :youtube_audience_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @census_audience_size = args[:census_audience_size] if args.key?(:census_audience_size)
+          @youtube_audience_size = args[:youtube_audience_size] if args.key?(:youtube_audience_size)
+        end
+      end
+      
       # Assigned operating system targeting option details. This will be populated in
       # the operating_system_details field when targeting_type is `
       # TARGETING_TYPE_OPERATING_SYSTEM`.
@@ -12362,6 +12629,292 @@ module Google
         end
       end
       
+      # A plannable location used for forecasting.
+      class PlannableLocation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The display name of the location, for example "Algeria".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The type of location.
+        # Corresponds to the JSON property `geoRegionType`
+        # @return [String]
+        attr_accessor :geo_region_type
+      
+        # Output only. The resource name of the plannable location.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The plannable location ID.
+        # Corresponds to the JSON property `plannableLocationId`
+        # @return [Fixnum]
+        attr_accessor :plannable_location_id
+      
+        # Output only. The region code of the location, for example "DZ" for Algeria.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @geo_region_type = args[:geo_region_type] if args.key?(:geo_region_type)
+          @name = args[:name] if args.key?(:name)
+          @plannable_location_id = args[:plannable_location_id] if args.key?(:plannable_location_id)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Targeting capabilities for a given product.
+      class PlannableTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Allowed plannable age ranges for the product. Actual targeting is
+        # computed by mapping this age range onto standard Google age targeting.
+        # Corresponds to the JSON property `ageRanges`
+        # @return [Array<String>]
+        attr_accessor :age_ranges
+      
+        # Output only. Targetable devices for the ad product.
+        # Corresponds to the JSON property `devices`
+        # @return [Array<String>]
+        attr_accessor :devices
+      
+        # Output only. Targetable genders for the ad product.
+        # Corresponds to the JSON property `genders`
+        # @return [Array<String>]
+        attr_accessor :genders
+      
+        # Output only. Targetable networks for the ad product.
+        # Corresponds to the JSON property `networks`
+        # @return [Array<String>]
+        attr_accessor :networks
+      
+        # Surface targeting rules.
+        # Corresponds to the JSON property `surfaceTargetingCombinations`
+        # @return [Google::Apis::DisplayvideoV4::SurfaceTargetingCombinations]
+        attr_accessor :surface_targeting_combinations
+      
+        # Output only. Targetable YouTube Select Lineups for the ad product.
+        # Corresponds to the JSON property `youtubeSelectLineups`
+        # @return [Array<Google::Apis::DisplayvideoV4::YouTubeSelectLineUp>]
+        attr_accessor :youtube_select_lineups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @age_ranges = args[:age_ranges] if args.key?(:age_ranges)
+          @devices = args[:devices] if args.key?(:devices)
+          @genders = args[:genders] if args.key?(:genders)
+          @networks = args[:networks] if args.key?(:networks)
+          @surface_targeting_combinations = args[:surface_targeting_combinations] if args.key?(:surface_targeting_combinations)
+          @youtube_select_lineups = args[:youtube_select_lineups] if args.key?(:youtube_select_lineups)
+        end
+      end
+      
+      # A plannable user interest used for targeting.
+      class PlannableUserInterest
+        include Google::Apis::Core::Hashable
+      
+        # The identifier for a user interest.
+        # Corresponds to the JSON property `userInterest`
+        # @return [Google::Apis::DisplayvideoV4::UserInterest]
+        attr_accessor :user_interest
+      
+        # Output only. The display name of the interest, for example "Outdoor
+        # Enthusiasts".
+        # Corresponds to the JSON property `userInterestDisplayName`
+        # @return [String]
+        attr_accessor :user_interest_display_name
+      
+        # Output only. The category path of the interest.
+        # Corresponds to the JSON property `userInterestPath`
+        # @return [String]
+        attr_accessor :user_interest_path
+      
+        # Output only. The type of audience, e.g., "AFFINITY", "IN_MARKET".
+        # Corresponds to the JSON property `userInterestType`
+        # @return [String]
+        attr_accessor :user_interest_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_interest = args[:user_interest] if args.key?(:user_interest)
+          @user_interest_display_name = args[:user_interest_display_name] if args.key?(:user_interest_display_name)
+          @user_interest_path = args[:user_interest_path] if args.key?(:user_interest_path)
+          @user_interest_type = args[:user_interest_type] if args.key?(:user_interest_type)
+        end
+      end
+      
+      # A plannable user list used for reach forecasting.
+      class PlannableUserList
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The display name of the user list.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The resource name identifying the user list. Format: `advertisers/
+        # `advertiser_id`/userLists/`user_list_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The plannability status of the user list.
+        # Corresponds to the JSON property `plannableStatus`
+        # @return [String]
+        attr_accessor :plannable_status
+      
+        # Output only. The type of the user list.
+        # Corresponds to the JSON property `userListType`
+        # @return [String]
+        attr_accessor :user_list_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @plannable_status = args[:plannable_status] if args.key?(:plannable_status)
+          @user_list_type = args[:user_list_type] if args.key?(:user_list_type)
+        end
+      end
+      
+      # Configuration for a specific product in the plan.
+      class PlannedProduct
+        include Google::Apis::Core::Hashable
+      
+        # Product-specific targeting overrides.
+        # Corresponds to the JSON property `advancedProductTargeting`
+        # @return [Google::Apis::DisplayvideoV4::AdvancedProductTargeting]
+        attr_accessor :advanced_product_targeting
+      
+        # Required. The budget for this product in micros.
+        # Corresponds to the JSON property `budgetMicros`
+        # @return [Fixnum]
+        attr_accessor :budget_micros
+      
+        # Required. The code for the product, e.g. "VIDEO_REACH_CAMPAIGN".
+        # Corresponds to the JSON property `plannableProductCode`
+        # @return [String]
+        attr_accessor :plannable_product_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advanced_product_targeting = args[:advanced_product_targeting] if args.key?(:advanced_product_targeting)
+          @budget_micros = args[:budget_micros] if args.key?(:budget_micros)
+          @plannable_product_code = args[:plannable_product_code] if args.key?(:plannable_product_code)
+        end
+      end
+      
+      # Performance metrics for a forecast point.
+      class PlannedProductForecast
+        include Google::Apis::Core::Hashable
+      
+        # A list of effective frequency breakdowns.
+        # Corresponds to the JSON property `effectiveFrequencyBreakdowns`
+        # @return [Array<Google::Apis::DisplayvideoV4::EffectiveFrequencyBreakdown>]
+        attr_accessor :effective_frequency_breakdowns
+      
+        # Number of on-target impressions.
+        # Corresponds to the JSON property `onTargetImpressions`
+        # @return [Fixnum]
+        attr_accessor :on_target_impressions
+      
+        # Number of unique people reached that match the on-target definition.
+        # Corresponds to the JSON property `onTargetReach`
+        # @return [Fixnum]
+        attr_accessor :on_target_reach
+      
+        # Total number of impressions.
+        # Corresponds to the JSON property `totalImpressions`
+        # @return [Fixnum]
+        attr_accessor :total_impressions
+      
+        # Total number of unique people reached.
+        # Corresponds to the JSON property `totalReach`
+        # @return [Fixnum]
+        attr_accessor :total_reach
+      
+        # Number of TrueView views.
+        # Corresponds to the JSON property `trueviewViews`
+        # @return [Fixnum]
+        attr_accessor :trueview_views
+      
+        # Number of viewable impressions.
+        # Corresponds to the JSON property `viewableImpressions`
+        # @return [Fixnum]
+        attr_accessor :viewable_impressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_frequency_breakdowns = args[:effective_frequency_breakdowns] if args.key?(:effective_frequency_breakdowns)
+          @on_target_impressions = args[:on_target_impressions] if args.key?(:on_target_impressions)
+          @on_target_reach = args[:on_target_reach] if args.key?(:on_target_reach)
+          @total_impressions = args[:total_impressions] if args.key?(:total_impressions)
+          @total_reach = args[:total_reach] if args.key?(:total_reach)
+          @trueview_views = args[:trueview_views] if args.key?(:trueview_views)
+          @viewable_impressions = args[:viewable_impressions] if args.key?(:viewable_impressions)
+        end
+      end
+      
+      # Performance forecast for a specific product.
+      class PlannedProductReachForecast
+        include Google::Apis::Core::Hashable
+      
+        # The cost in micros for this product.
+        # Corresponds to the JSON property `costMicros`
+        # @return [Fixnum]
+        attr_accessor :cost_micros
+      
+        # The code for the product.
+        # Corresponds to the JSON property `plannableProductCode`
+        # @return [String]
+        attr_accessor :plannable_product_code
+      
+        # Performance metrics for a forecast point.
+        # Corresponds to the JSON property `plannedProductForecast`
+        # @return [Google::Apis::DisplayvideoV4::PlannedProductForecast]
+        attr_accessor :planned_product_forecast
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cost_micros = args[:cost_micros] if args.key?(:cost_micros)
+          @plannable_product_code = args[:plannable_product_code] if args.key?(:plannable_product_code)
+          @planned_product_forecast = args[:planned_product_forecast] if args.key?(:planned_product_forecast)
+        end
+      end
+      
       # Details for assigned POI targeting option. This will be populated in the
       # details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_POI`.
@@ -12602,6 +13155,44 @@ module Google
         end
       end
       
+      # Metadata for a plannable product.
+      class ProductMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name associated with the ad product. For example: "Video View
+        # Campaign".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The plannable product code (e.g. "YOUTUBE_REACH_MIX").
+        # Corresponds to the JSON property `plannableProductCode`
+        # @return [String]
+        attr_accessor :plannable_product_code
+      
+        # Output only. The plain-text description of the ad product.
+        # Corresponds to the JSON property `plannableProductDescription`
+        # @return [String]
+        attr_accessor :plannable_product_description
+      
+        # Targeting capabilities for a given product.
+        # Corresponds to the JSON property `plannableTargeting`
+        # @return [Google::Apis::DisplayvideoV4::PlannableTargeting]
+        attr_accessor :plannable_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @plannable_product_code = args[:plannable_product_code] if args.key?(:plannable_product_code)
+          @plannable_product_description = args[:plannable_product_description] if args.key?(:plannable_product_description)
+          @plannable_targeting = args[:plannable_targeting] if args.key?(:plannable_targeting)
+        end
+      end
+      
       # Targeting details for proximity location list. This will be populated in the
       # details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
@@ -12675,6 +13266,56 @@ module Google
           @minimum_spend = args[:minimum_spend] if args.key?(:minimum_spend)
           @rate = args[:rate] if args.key?(:rate)
           @units_purchased = args[:units_purchased] if args.key?(:units_purchased)
+        end
+      end
+      
+      # The generated reach curve.
+      class ReachCurve
+        include Google::Apis::Core::Hashable
+      
+        # Points along the curve, ordered by cost.
+        # Corresponds to the JSON property `reachForecasts`
+        # @return [Array<Google::Apis::DisplayvideoV4::ReachForecast>]
+        attr_accessor :reach_forecasts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reach_forecasts = args[:reach_forecasts] if args.key?(:reach_forecasts)
+        end
+      end
+      
+      # A single point in the reach curve.
+      class ReachForecast
+        include Google::Apis::Core::Hashable
+      
+        # Total cost for this point in micros.
+        # Corresponds to the JSON property `costMicros`
+        # @return [Fixnum]
+        attr_accessor :cost_micros
+      
+        # Performance metrics for a forecast point.
+        # Corresponds to the JSON property `forecast`
+        # @return [Google::Apis::DisplayvideoV4::PlannedProductForecast]
+        attr_accessor :forecast
+      
+        # Breakdown for individual products at this cost point.
+        # Corresponds to the JSON property `plannedProductReachForecasts`
+        # @return [Array<Google::Apis::DisplayvideoV4::PlannedProductReachForecast>]
+        attr_accessor :planned_product_reach_forecasts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cost_micros = args[:cost_micros] if args.key?(:cost_micros)
+          @forecast = args[:forecast] if args.key?(:forecast)
+          @planned_product_reach_forecasts = args[:planned_product_reach_forecasts] if args.key?(:planned_product_reach_forecasts)
         end
       end
       
@@ -12823,6 +13464,88 @@ module Google
         # Update properties of this object
         def update!(**args)
           @sites = args[:sites] if args.key?(:sites)
+        end
+      end
+      
+      # Response for RetrievePlannableLocations
+      class RetrievePlannableLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of plannable locations.
+        # Corresponds to the JSON property `plannableLocations`
+        # @return [Array<Google::Apis::DisplayvideoV4::PlannableLocation>]
+        attr_accessor :plannable_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plannable_locations = args[:plannable_locations] if args.key?(:plannable_locations)
+        end
+      end
+      
+      # Response for RetrievePlannableProducts
+      class RetrievePlannableProductsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of product metadata showing targeting possibilities.
+        # Corresponds to the JSON property `productMetadata`
+        # @return [Array<Google::Apis::DisplayvideoV4::ProductMetadata>]
+        attr_accessor :product_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_metadata = args[:product_metadata] if args.key?(:product_metadata)
+        end
+      end
+      
+      # Response for RetrievePlannableUserInterests.
+      class RetrievePlannableUserInterestsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of plannable user interests (Google Audiences).
+        # Corresponds to the JSON property `plannableUserInterests`
+        # @return [Array<Google::Apis::DisplayvideoV4::PlannableUserInterest>]
+        attr_accessor :plannable_user_interests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plannable_user_interests = args[:plannable_user_interests] if args.key?(:plannable_user_interests)
+        end
+      end
+      
+      # Response for RetrievePlannableUserLists.
+      class RetrievePlannableUserListsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. The list of plannable user lists.
+        # Corresponds to the JSON property `plannableUserLists`
+        # @return [Array<Google::Apis::DisplayvideoV4::PlannableUserList>]
+        attr_accessor :plannable_user_lists
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @plannable_user_lists = args[:plannable_user_lists] if args.key?(:plannable_user_lists)
         end
       end
       
@@ -13291,6 +14014,69 @@ module Google
         end
       end
       
+      # A valid combination of surfaces.
+      class SurfaceTargetingCombination
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The combination of surfaces.
+        # Corresponds to the JSON property `choices`
+        # @return [Array<String>]
+        attr_accessor :choices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @choices = args[:choices] if args.key?(:choices)
+        end
+      end
+      
+      # Surface targeting rules.
+      class SurfaceTargetingCombinations
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The surface types available.
+        # Corresponds to the JSON property `availableSurfaceTypes`
+        # @return [Array<String>]
+        attr_accessor :available_surface_types
+      
+        # Output only. Valid combinations of surfaces that can be selected together.
+        # Corresponds to the JSON property `validSurfaceCombinations`
+        # @return [Array<Google::Apis::DisplayvideoV4::SurfaceTargetingCombination>]
+        attr_accessor :valid_surface_combinations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_surface_types = args[:available_surface_types] if args.key?(:available_surface_types)
+          @valid_surface_combinations = args[:valid_surface_combinations] if args.key?(:valid_surface_combinations)
+        end
+      end
+      
+      # Surface targeting selection.
+      class SurfaceTargetingSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The surfaces to target.
+        # Corresponds to the JSON property `surfaces`
+        # @return [Array<String>]
+        attr_accessor :surfaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @surfaces = args[:surfaces] if args.key?(:surfaces)
+        end
+      end
+      
       # Setting that controls the average number of times the ads will show to the
       # same person over a certain period of time.
       class TargetFrequency
@@ -13324,6 +14110,44 @@ module Google
           @target_count = args[:target_count] if args.key?(:target_count)
           @time_unit = args[:time_unit] if args.key?(:time_unit)
           @time_unit_count = args[:time_unit_count] if args.key?(:time_unit_count)
+        end
+      end
+      
+      # Targeting settings for a planned campaign.
+      class Targeting
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The age range to target.
+        # Corresponds to the JSON property `ageRange`
+        # @return [String]
+        attr_accessor :age_range
+      
+        # Optional. The devices to target.
+        # Corresponds to the JSON property `devices`
+        # @return [Array<String>]
+        attr_accessor :devices
+      
+        # Optional. The gender options to target.
+        # Corresponds to the JSON property `genders`
+        # @return [Array<String>]
+        attr_accessor :genders
+      
+        # Required. IDs of plannable locations to target. Plannable locations can be
+        # retrieved using the `RetrievePlannableLocations` method.
+        # Corresponds to the JSON property `plannableLocationIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :plannable_location_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @age_range = args[:age_range] if args.key?(:age_range)
+          @devices = args[:devices] if args.key?(:devices)
+          @genders = args[:genders] if args.key?(:genders)
+          @plannable_location_ids = args[:plannable_location_ids] if args.key?(:plannable_location_ids)
         end
       end
       
@@ -14156,6 +14980,35 @@ module Google
         end
       end
       
+      # The identifier for a user interest.
+      class UserInterest
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the interest category. Populated when `
+        # product_category` is "Youtube". Format: customers/`customer_id`/userInterests/`
+        # user_interest_id`
+        # Corresponds to the JSON property `userInterestCategory`
+        # @return [String]
+        attr_accessor :user_interest_category
+      
+        # Output only. The resource name of the user list. Populated when `
+        # product_category` is "Open Auction". Format: customers/`customer_id`/userLists/
+        # `user_list_id`
+        # Corresponds to the JSON property `userInterestUserList`
+        # @return [String]
+        attr_accessor :user_interest_user_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_interest_category = args[:user_interest_category] if args.key?(:user_interest_category)
+          @user_interest_user_list = args[:user_interest_user_list] if args.key?(:user_interest_user_list)
+        end
+      end
+      
       # User rewarded content targeting option details. This will be populated in the
       # user_rewarded_content_details field when targeting_type is `
       # TARGETING_TYPE_USER_REWARDED_CONTENT`.
@@ -14520,6 +15373,50 @@ module Google
         # Update properties of this object
         def update!(**args)
           @viewability = args[:viewability] if args.key?(:viewability)
+        end
+      end
+      
+      # A Plannable YouTube Select Lineup for product targeting.
+      class YouTubeSelectLineUp
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The display name of the YouTube Select Lineup.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The ID of the YouTube Select Lineup.
+        # Corresponds to the JSON property `lineupId`
+        # @return [Fixnum]
+        attr_accessor :lineup_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @lineup_id = args[:lineup_id] if args.key?(:lineup_id)
+        end
+      end
+      
+      # Settings for YouTube Select Lineups.
+      class YouTubeSelectSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The ID of the YouTube Select Lineup.
+        # Corresponds to the JSON property `lineupId`
+        # @return [Fixnum]
+        attr_accessor :lineup_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lineup_id = args[:lineup_id] if args.key?(:lineup_id)
         end
       end
       

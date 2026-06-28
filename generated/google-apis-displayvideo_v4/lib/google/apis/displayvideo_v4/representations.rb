@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvancedProductTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Advertiser
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -623,6 +629,12 @@ module Google
       end
       
       class CampaignBudget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CampaignDuration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1132,6 +1144,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EffectiveFrequencyBreakdown
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1235,6 +1253,18 @@ module Google
       end
       
       class GenderTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateReachForecastRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateReachForecastResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1804,6 +1834,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OnTargetAudienceMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperatingSystemAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1900,6 +1936,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlannableLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlannableTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlannableUserInterest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlannableUserList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlannedProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlannedProductForecast
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlannedProductReachForecast
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PoiAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1942,6 +2020,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProximityLocationListAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1949,6 +2033,18 @@ module Google
       end
       
       class RateDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReachCurve
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReachForecast
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1985,6 +2081,30 @@ module Google
       end
       
       class ReplaceSitesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetrievePlannableLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetrievePlannableProductsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetrievePlannableUserInterestsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetrievePlannableUserListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2080,7 +2200,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SurfaceTargetingCombination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SurfaceTargetingCombinations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SurfaceTargetingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetFrequency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Targeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2182,6 +2326,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserInterest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserRewardedContentAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2243,6 +2393,18 @@ module Google
       end
       
       class ViewabilityTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YouTubeSelectLineUp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YouTubeSelectSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2692,6 +2854,28 @@ module Google
           property :spam_harmful_content, as: 'spamHarmfulContent'
           property :terrorism_content, as: 'terrorismContent'
           property :video_iab_viewability, as: 'videoIabViewability'
+        end
+      end
+      
+      class AdvancedProductTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :age_range, as: 'ageRange'
+          property :date_range, as: 'dateRange', class: Google::Apis::DisplayvideoV4::DateRange, decorator: Google::Apis::DisplayvideoV4::DateRange::Representation
+      
+          collection :devices, as: 'devices'
+          property :frequency_cap, as: 'frequencyCap', class: Google::Apis::DisplayvideoV4::FrequencyCap, decorator: Google::Apis::DisplayvideoV4::FrequencyCap::Representation
+      
+          collection :genders, as: 'genders'
+          collection :plannable_location_ids, as: 'plannableLocationIds'
+          property :surface_targeting_settings, as: 'surfaceTargetingSettings', class: Google::Apis::DisplayvideoV4::SurfaceTargetingSettings, decorator: Google::Apis::DisplayvideoV4::SurfaceTargetingSettings::Representation
+      
+          property :target_frequency, as: 'targetFrequency', class: Google::Apis::DisplayvideoV4::TargetFrequency, decorator: Google::Apis::DisplayvideoV4::TargetFrequency::Representation
+      
+          collection :user_interest_ids, as: 'userInterestIds'
+          collection :user_list_ids, as: 'userListIds'
+          property :youtube_select_settings, as: 'youtubeSelectSettings', class: Google::Apis::DisplayvideoV4::YouTubeSelectSettings, decorator: Google::Apis::DisplayvideoV4::YouTubeSelectSettings::Representation
+      
         end
       end
       
@@ -3505,6 +3689,15 @@ module Google
           property :invoice_grouping_id, as: 'invoiceGroupingId'
           property :prisma_config, as: 'prismaConfig', class: Google::Apis::DisplayvideoV4::PrismaConfig, decorator: Google::Apis::DisplayvideoV4::PrismaConfig::Representation
       
+        end
+      end
+      
+      class CampaignDuration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_range, as: 'dateRange', class: Google::Apis::DisplayvideoV4::DateRange, decorator: Google::Apis::DisplayvideoV4::DateRange::Representation
+      
+          property :duration_days, as: 'durationDays'
         end
       end
       
@@ -4387,6 +4580,17 @@ module Google
         end
       end
       
+      class EffectiveFrequencyBreakdown
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_coview_reach, :numeric_string => true, as: 'effectiveCoviewReach'
+          property :effective_frequency, as: 'effectiveFrequency'
+          property :on_target_effective_coview_reach, :numeric_string => true, as: 'onTargetEffectiveCoviewReach'
+          property :on_target_reach, :numeric_string => true, as: 'onTargetReach'
+          property :total_reach, :numeric_string => true, as: 'totalReach'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4558,6 +4762,31 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gender, as: 'gender'
+        end
+      end
+      
+      class GenerateReachForecastRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :campaign_duration, as: 'campaignDuration', class: Google::Apis::DisplayvideoV4::CampaignDuration, decorator: Google::Apis::DisplayvideoV4::CampaignDuration::Representation
+      
+          property :currency_code, as: 'currencyCode'
+          property :effective_frequency_breakdown_limit, as: 'effectiveFrequencyBreakdownLimit'
+          property :min_effective_frequency, as: 'minEffectiveFrequency'
+          collection :planned_products, as: 'plannedProducts', class: Google::Apis::DisplayvideoV4::PlannedProduct, decorator: Google::Apis::DisplayvideoV4::PlannedProduct::Representation
+      
+          property :targeting, as: 'targeting', class: Google::Apis::DisplayvideoV4::Targeting, decorator: Google::Apis::DisplayvideoV4::Targeting::Representation
+      
+        end
+      end
+      
+      class GenerateReachForecastResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :on_target_audience_metrics, as: 'onTargetAudienceMetrics', class: Google::Apis::DisplayvideoV4::OnTargetAudienceMetrics, decorator: Google::Apis::DisplayvideoV4::OnTargetAudienceMetrics::Representation
+      
+          property :reach_curve, as: 'reachCurve', class: Google::Apis::DisplayvideoV4::ReachCurve, decorator: Google::Apis::DisplayvideoV4::ReachCurve::Representation
+      
         end
       end
       
@@ -5526,6 +5755,14 @@ module Google
         end
       end
       
+      class OnTargetAudienceMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :census_audience_size, :numeric_string => true, as: 'censusAudienceSize'
+          property :youtube_audience_size, :numeric_string => true, as: 'youtubeAudienceSize'
+        end
+      end
+      
       class OperatingSystemAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5678,6 +5915,86 @@ module Google
         end
       end
       
+      class PlannableLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :geo_region_type, as: 'geoRegionType'
+          property :name, as: 'name'
+          property :plannable_location_id, :numeric_string => true, as: 'plannableLocationId'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class PlannableTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :age_ranges, as: 'ageRanges'
+          collection :devices, as: 'devices'
+          collection :genders, as: 'genders'
+          collection :networks, as: 'networks'
+          property :surface_targeting_combinations, as: 'surfaceTargetingCombinations', class: Google::Apis::DisplayvideoV4::SurfaceTargetingCombinations, decorator: Google::Apis::DisplayvideoV4::SurfaceTargetingCombinations::Representation
+      
+          collection :youtube_select_lineups, as: 'youtubeSelectLineups', class: Google::Apis::DisplayvideoV4::YouTubeSelectLineUp, decorator: Google::Apis::DisplayvideoV4::YouTubeSelectLineUp::Representation
+      
+        end
+      end
+      
+      class PlannableUserInterest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_interest, as: 'userInterest', class: Google::Apis::DisplayvideoV4::UserInterest, decorator: Google::Apis::DisplayvideoV4::UserInterest::Representation
+      
+          property :user_interest_display_name, as: 'userInterestDisplayName'
+          property :user_interest_path, as: 'userInterestPath'
+          property :user_interest_type, as: 'userInterestType'
+        end
+      end
+      
+      class PlannableUserList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :plannable_status, as: 'plannableStatus'
+          property :user_list_type, as: 'userListType'
+        end
+      end
+      
+      class PlannedProduct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_product_targeting, as: 'advancedProductTargeting', class: Google::Apis::DisplayvideoV4::AdvancedProductTargeting, decorator: Google::Apis::DisplayvideoV4::AdvancedProductTargeting::Representation
+      
+          property :budget_micros, :numeric_string => true, as: 'budgetMicros'
+          property :plannable_product_code, as: 'plannableProductCode'
+        end
+      end
+      
+      class PlannedProductForecast
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :effective_frequency_breakdowns, as: 'effectiveFrequencyBreakdowns', class: Google::Apis::DisplayvideoV4::EffectiveFrequencyBreakdown, decorator: Google::Apis::DisplayvideoV4::EffectiveFrequencyBreakdown::Representation
+      
+          property :on_target_impressions, :numeric_string => true, as: 'onTargetImpressions'
+          property :on_target_reach, :numeric_string => true, as: 'onTargetReach'
+          property :total_impressions, :numeric_string => true, as: 'totalImpressions'
+          property :total_reach, :numeric_string => true, as: 'totalReach'
+          property :trueview_views, :numeric_string => true, as: 'trueviewViews'
+          property :viewable_impressions, :numeric_string => true, as: 'viewableImpressions'
+        end
+      end
+      
+      class PlannedProductReachForecast
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cost_micros, :numeric_string => true, as: 'costMicros'
+          property :plannable_product_code, as: 'plannableProductCode'
+          property :planned_product_forecast, as: 'plannedProductForecast', class: Google::Apis::DisplayvideoV4::PlannedProductForecast, decorator: Google::Apis::DisplayvideoV4::PlannedProductForecast::Representation
+      
+        end
+      end
+      
       class PoiAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5744,6 +6061,17 @@ module Google
         end
       end
       
+      class ProductMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :plannable_product_code, as: 'plannableProductCode'
+          property :plannable_product_description, as: 'plannableProductDescription'
+          property :plannable_targeting, as: 'plannableTargeting', class: Google::Apis::DisplayvideoV4::PlannableTargeting, decorator: Google::Apis::DisplayvideoV4::PlannableTargeting::Representation
+      
+        end
+      end
+      
       class ProximityLocationListAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5762,6 +6090,25 @@ module Google
           property :rate, as: 'rate', class: Google::Apis::DisplayvideoV4::Money, decorator: Google::Apis::DisplayvideoV4::Money::Representation
       
           property :units_purchased, :numeric_string => true, as: 'unitsPurchased'
+        end
+      end
+      
+      class ReachCurve
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reach_forecasts, as: 'reachForecasts', class: Google::Apis::DisplayvideoV4::ReachForecast, decorator: Google::Apis::DisplayvideoV4::ReachForecast::Representation
+      
+        end
+      end
+      
+      class ReachForecast
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cost_micros, :numeric_string => true, as: 'costMicros'
+          property :forecast, as: 'forecast', class: Google::Apis::DisplayvideoV4::PlannedProductForecast, decorator: Google::Apis::DisplayvideoV4::PlannedProductForecast::Representation
+      
+          collection :planned_product_reach_forecasts, as: 'plannedProductReachForecasts', class: Google::Apis::DisplayvideoV4::PlannedProductReachForecast, decorator: Google::Apis::DisplayvideoV4::PlannedProductReachForecast::Representation
+      
         end
       end
       
@@ -5811,6 +6158,39 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :sites, as: 'sites', class: Google::Apis::DisplayvideoV4::Site, decorator: Google::Apis::DisplayvideoV4::Site::Representation
+      
+        end
+      end
+      
+      class RetrievePlannableLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :plannable_locations, as: 'plannableLocations', class: Google::Apis::DisplayvideoV4::PlannableLocation, decorator: Google::Apis::DisplayvideoV4::PlannableLocation::Representation
+      
+        end
+      end
+      
+      class RetrievePlannableProductsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :product_metadata, as: 'productMetadata', class: Google::Apis::DisplayvideoV4::ProductMetadata, decorator: Google::Apis::DisplayvideoV4::ProductMetadata::Representation
+      
+        end
+      end
+      
+      class RetrievePlannableUserInterestsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :plannable_user_interests, as: 'plannableUserInterests', class: Google::Apis::DisplayvideoV4::PlannableUserInterest, decorator: Google::Apis::DisplayvideoV4::PlannableUserInterest::Representation
+      
+        end
+      end
+      
+      class RetrievePlannableUserListsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :plannable_user_lists, as: 'plannableUserLists', class: Google::Apis::DisplayvideoV4::PlannableUserList, decorator: Google::Apis::DisplayvideoV4::PlannableUserList::Representation
       
         end
       end
@@ -5948,12 +6328,45 @@ module Google
         end
       end
       
+      class SurfaceTargetingCombination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :choices, as: 'choices'
+        end
+      end
+      
+      class SurfaceTargetingCombinations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_surface_types, as: 'availableSurfaceTypes'
+          collection :valid_surface_combinations, as: 'validSurfaceCombinations', class: Google::Apis::DisplayvideoV4::SurfaceTargetingCombination, decorator: Google::Apis::DisplayvideoV4::SurfaceTargetingCombination::Representation
+      
+        end
+      end
+      
+      class SurfaceTargetingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :surfaces, as: 'surfaces'
+        end
+      end
+      
       class TargetFrequency
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target_count, :numeric_string => true, as: 'targetCount'
           property :time_unit, as: 'timeUnit'
           property :time_unit_count, as: 'timeUnitCount'
+        end
+      end
+      
+      class Targeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :age_range, as: 'ageRange'
+          collection :devices, as: 'devices'
+          collection :genders, as: 'genders'
+          collection :plannable_location_ids, as: 'plannableLocationIds'
         end
       end
       
@@ -6179,6 +6592,14 @@ module Google
         end
       end
       
+      class UserInterest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_interest_category, as: 'userInterestCategory'
+          property :user_interest_user_list, as: 'userInterestUserList'
+        end
+      end
+      
       class UserRewardedContentAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6280,6 +6701,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :viewability, as: 'viewability'
+        end
+      end
+      
+      class YouTubeSelectLineUp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :lineup_id, :numeric_string => true, as: 'lineupId'
+        end
+      end
+      
+      class YouTubeSelectSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lineup_id, :numeric_string => true, as: 'lineupId'
         end
       end
       

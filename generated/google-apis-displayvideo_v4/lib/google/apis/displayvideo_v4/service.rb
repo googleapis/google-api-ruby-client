@@ -4256,6 +4256,187 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates a reach forecast for a given advertiser and targeting configuration.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser that will run the planned campaign.
+        # @param [Google::Apis::DisplayvideoV4::GenerateReachForecastRequest] generate_reach_forecast_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::GenerateReachForecastResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::GenerateReachForecastResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_reach_forecast(advertiser_id, generate_reach_forecast_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v4/advertisers/{+advertiserId}/reachForecast:generateReachForecast', options)
+          command.request_representation = Google::Apis::DisplayvideoV4::GenerateReachForecastRequest::Representation
+          command.request_object = generate_reach_forecast_request_object
+          command.response_representation = Google::Apis::DisplayvideoV4::GenerateReachForecastResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::GenerateReachForecastResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of countries where reach forecasting is supported.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser to list plannable locations for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::RetrievePlannableLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::RetrievePlannableLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_advertiser_reach_forecast_plannable_locations(advertiser_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/advertisers/{+advertiserId}/reachForecast:retrievePlannableLocations', options)
+          command.response_representation = Google::Apis::DisplayvideoV4::RetrievePlannableLocationsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::RetrievePlannableLocationsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of products that can be planned for a location.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser to list plannable products for.
+        # @param [String] plannable_location_id
+        #   Required. The ID of the plannable location.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::RetrievePlannableProductsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::RetrievePlannableProductsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_advertiser_reach_forecast_plannable_products(advertiser_id, plannable_location_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/advertisers/{+advertiserId}/reachForecast:retrievePlannableProducts', options)
+          command.response_representation = Google::Apis::DisplayvideoV4::RetrievePlannableProductsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::RetrievePlannableProductsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['plannableLocationId'] = plannable_location_id unless plannable_location_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves Google Audiences (User Interests) available for forecasting.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser to list plannable user interests for.
+        # @param [String] product_category
+        #   Required. The product category to retrieve plannable user interests for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::RetrievePlannableUserInterestsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::RetrievePlannableUserInterestsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_advertiser_reach_forecast_plannable_user_interests(advertiser_id, product_category: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/advertisers/{+advertiserId}/reachForecast:retrievePlannableUserInterests', options)
+          command.response_representation = Google::Apis::DisplayvideoV4::RetrievePlannableUserInterestsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::RetrievePlannableUserInterestsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['productCategory'] = product_category unless product_category.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves first and third party user lists available for forecasting.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser to retrieve plannable user lists for.
+        # @param [String] filter
+        #   Optional. Allows filtering by plannable user list properties. Supported syntax:
+        #   * Filter expressions are made up of one or more restrictions. * Restrictions
+        #   can be combined by `AND` or `OR` logical operators. * A restriction has the
+        #   form of ``field` `operator` `value``. * The `updateTime` field must use the `
+        #   GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. *
+        #   All other fields must use the `EQUALS (=)` operator. Supported fields: * `
+        #   plannableStatus` Examples: * All plannable user lists: `plannableStatus="
+        #   PLANNABLE"` The length of this field should be no more than 500 characters.
+        #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
+        #   filters) guide for more information.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Must be between `1` and `5000`. If unspecified
+        #   will default to `5000`.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        #   Typically, this is the value of next_page_token returned from the previous
+        #   call to `RetrievePlannableUserLists` method. If not specified, the first page
+        #   of results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::RetrievePlannableUserListsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::RetrievePlannableUserListsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_advertiser_reach_forecast_plannable_user_lists(advertiser_id, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/advertisers/{+advertiserId}/reachForecast:retrievePlannableUserLists', options)
+          command.response_representation = Google::Apis::DisplayvideoV4::RetrievePlannableUserListsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::RetrievePlannableUserListsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Assigns a targeting option to an advertiser. Returns the assigned targeting
         # option if successful.
         # @param [Fixnum] advertiser_id
