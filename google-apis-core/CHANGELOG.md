@@ -1,5 +1,11 @@
 # Release History
 
+### 1.2.4 (2026-06-28)
+
+#### Bug Fixes
+
+* map sharingRateLimitExceeded to RateLimitError ([#27178](https://github.com/googleapis/google-api-ruby-client/issues/27178)) ([80c0656](https://github.com/googleapis/google-api-ruby-client/commit/80c0656d3933418993f5857b39c6d5bd968a8118)), closes [#26531](https://github.com/googleapis/google-api-ruby-client/issues/26531)
+
 ### 1.2.3 (2026-06-10)
 
 #### Bug Fixes
