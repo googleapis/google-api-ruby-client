@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Availability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Button
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DateInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +221,12 @@ module Google
       end
       
       class DialogAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DoNotDisturbMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -653,6 +671,24 @@ module Google
       end
       
       class ListSpacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MarkAsActiveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MarkAsAwayRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MarkAsDoNotDisturbRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1142,6 +1178,18 @@ module Google
         end
       end
       
+      class Availability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_status, as: 'customStatus', class: Google::Apis::ChatV1::CustomStatus, decorator: Google::Apis::ChatV1::CustomStatus::Representation
+      
+          property :do_not_disturb_metadata, as: 'doNotDisturbMetadata', class: Google::Apis::ChatV1::DoNotDisturbMetadata, decorator: Google::Apis::ChatV1::DoNotDisturbMetadata::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class Button
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1295,6 +1343,17 @@ module Google
         end
       end
       
+      class CustomStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :emoji, as: 'emoji', class: Google::Apis::ChatV1::Emoji, decorator: Google::Apis::ChatV1::Emoji::Representation
+      
+          property :expire_time, as: 'expireTime'
+          property :text, as: 'text'
+          property :ttl, as: 'ttl'
+        end
+      end
+      
       class DateInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1360,6 +1419,13 @@ module Google
       
           property :dialog, as: 'dialog', class: Google::Apis::ChatV1::Dialog, decorator: Google::Apis::ChatV1::Dialog::Representation
       
+        end
+      end
+      
+      class DoNotDisturbMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_time, as: 'expirationTime'
         end
       end
       
@@ -2190,6 +2256,28 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :spaces, as: 'spaces', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
       
+        end
+      end
+      
+      class MarkAsActiveRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :ttl, as: 'ttl'
+        end
+      end
+      
+      class MarkAsAwayRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class MarkAsDoNotDisturbRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :ttl, as: 'ttl'
         end
       end
       
