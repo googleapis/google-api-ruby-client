@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSupportEventSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Media
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,18 @@ module Google
       end
       
       class SearchCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SupportEventSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteSupportEventSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -397,6 +415,15 @@ module Google
         end
       end
       
+      class ListSupportEventSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :support_event_subscriptions, as: 'supportEventSubscriptions', class: Google::Apis::CloudsupportV2::SupportEventSubscription, decorator: Google::Apis::CloudsupportV2::SupportEventSubscription::Representation
+      
+        end
+      end
+      
       class Media
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -468,6 +495,26 @@ module Google
           collection :cases, as: 'cases', class: Google::Apis::CloudsupportV2::Case, decorator: Google::Apis::CloudsupportV2::Case::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SupportEventSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :failure_reason, as: 'failureReason'
+          property :name, as: 'name'
+          property :pub_sub_topic, as: 'pubSubTopic'
+          property :purge_time, as: 'purgeTime'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class UndeleteSupportEventSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end
