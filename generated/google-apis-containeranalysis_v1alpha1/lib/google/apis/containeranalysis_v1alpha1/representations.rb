@@ -1455,6 +1455,7 @@ module Google
           property :availability_impact, as: 'availabilityImpact'
           property :base_score, as: 'baseScore'
           property :confidentiality_impact, as: 'confidentialityImpact'
+          property :exploit_maturity, as: 'exploitMaturity'
           property :exploitability_score, as: 'exploitabilityScore'
           property :impact_score, as: 'impactScore'
           property :integrity_impact, as: 'integrityImpact'
