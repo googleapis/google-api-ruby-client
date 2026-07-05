@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1DbFindingSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,12 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -411,6 +423,7 @@ module Google
       class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledged_violations_count, as: 'acknowledgedViolationsCount'
         end
       end
       
@@ -424,6 +437,19 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1DbFindingSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finding_category, as: 'findingCategory'
+          property :finding_class, as: 'findingClass'
+          property :finding_count, :numeric_string => true, as: 'findingCount'
+          property :name, as: 'name'
+          collection :related_frameworks, as: 'relatedFrameworks'
+          property :severity, as: 'severity'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -433,6 +459,15 @@ module Google
       class GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :db_finding_summaries, as: 'dbFindingSummaries', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbFindingSummary, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbFindingSummary::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
