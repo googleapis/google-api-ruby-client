@@ -1058,6 +1058,14 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup]
         attr_accessor :operation_group
       
+        # List of payload operation configuration details associated with Apigee API
+        # proxies. Payload operations enable governance of protocols where operations
+        # are embedded in the request body (such as JSON-RPC) rather than defined by the
+        # URL path.
+        # Corresponds to the JSON property `payloadOperationGroup`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationGroup]
+        attr_accessor :payload_operation_group
+      
         # Comma-separated list of API proxy names to which this API product is bound. By
         # specifying API proxies, you can associate resources in the API product with
         # specific API proxies, preventing developers from accessing those resources
@@ -1136,6 +1144,7 @@ module Google
           @llm_quota_time_unit = args[:llm_quota_time_unit] if args.key?(:llm_quota_time_unit)
           @name = args[:name] if args.key?(:name)
           @operation_group = args[:operation_group] if args.key?(:operation_group)
+          @payload_operation_group = args[:payload_operation_group] if args.key?(:payload_operation_group)
           @proxies = args[:proxies] if args.key?(:proxies)
           @quota = args[:quota] if args.key?(:quota)
           @quota_counter_scope = args[:quota_counter_scope] if args.key?(:quota_counter_scope)
@@ -8583,6 +8592,93 @@ module Google
         end
       end
       
+      # Represents a single operation identifier extracted from the request payload.
+      class GoogleCloudApigeeV1PayloadOperation
+        include Google::Apis::Core::Hashable
+      
+        # Required. The operation name extracted from the request payload at runtime by
+        # the ParsePayload policy. For example, for MCP protocol requests, this could be
+        # `"tools/list"` or `"tools/call/get_weather"`. Wildcards are not supported.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # Binds the payload operations in an API proxy with the associated quota
+      # enforcement.
+      class GoogleCloudApigeeV1PayloadOperationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the API proxy with which the payload operations and quota
+        # are associated.
+        # Corresponds to the JSON property `apiSource`
+        # @return [String]
+        attr_accessor :api_source
+      
+        # Optional. Custom attributes associated with the operation.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
+        attr_accessor :attributes
+      
+        # Required. List of payload operations for the API proxy to which quota will be
+        # applied.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperation>]
+        attr_accessor :operations
+      
+        # Quota contains the essential parameters needed that can be applied on the
+        # resources, methods, API source combination associated with this API product.
+        # While Quota is optional, setting it prevents requests from exceeding the
+        # provisioned parameters.
+        # Corresponds to the JSON property `quota`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota]
+        attr_accessor :quota
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_source = args[:api_source] if args.key?(:api_source)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @operations = args[:operations] if args.key?(:operations)
+          @quota = args[:quota] if args.key?(:quota)
+        end
+      end
+      
+      # List of payload operation configuration details associated with Apigee API
+      # proxies. Payload operations enable governance of protocols where operations
+      # are embedded in the request body (such as JSON-RPC) rather than defined by the
+      # URL path.
+      class GoogleCloudApigeeV1PayloadOperationGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of payload operation configurations for Apigee API proxies that
+        # are associated with this API product.
+        # Corresponds to the JSON property `operationConfigs`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationConfig>]
+        attr_accessor :operation_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_configs = args[:operation_configs] if args.key?(:operation_configs)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1PodStatus
         include Google::Apis::Core::Hashable
@@ -12991,6 +13087,15 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig]
         attr_accessor :sampling_config
       
+        # Optional. The trace protocol to use. Configuration Requirements (if
+        # trace_protocol is OTLP): - Allowed Exporters: CLOUD_TRACE or
+        # OPEN_TELEMETRY_COLLECTOR. - If Exporter is OPEN_TELEMETRY_COLLECTOR: -
+        # endpoint refers to a valid OTLP collector URL. - If Exporter is CLOUD_TRACE: -
+        # endpoint refers to a valid project ID.
+        # Corresponds to the JSON property `traceProtocol`
+        # @return [String]
+        attr_accessor :trace_protocol
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13000,6 +13105,7 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @exporter = args[:exporter] if args.key?(:exporter)
           @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+          @trace_protocol = args[:trace_protocol] if args.key?(:trace_protocol)
         end
       end
       
