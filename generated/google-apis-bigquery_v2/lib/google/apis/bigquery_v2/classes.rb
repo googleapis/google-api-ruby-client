@@ -3569,8 +3569,11 @@ module Google
         # @return [String]
         attr_accessor :container_memory
       
-        # Optional. Maximum number of requests that a Python UDF container instance can
-        # handle concurrently. If absent or if `0`, a default concurrency is used.
+        # Optional. Maximum number of requests that a Python UDF instance can handle
+        # concurrently. If absent or if `0`, the default concurrency value is used. For
+        # more information, see [Configure container limits for Python UDFs](https://
+        # cloud.google.com/bigquery/docs/user-defined-functions-python#configure-
+        # container-limits).
         # Corresponds to the JSON property `containerRequestConcurrency`
         # @return [Fixnum]
         attr_accessor :container_request_concurrency
