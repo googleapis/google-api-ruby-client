@@ -429,6 +429,7 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledged_violations_count, as: 'acknowledgedViolationsCount'
         end
       end
       
