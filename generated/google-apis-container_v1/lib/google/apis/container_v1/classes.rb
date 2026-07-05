@@ -7011,7 +7011,7 @@ module Google
         # @return [Google::Apis::ContainerV1::BestEffortProvisioning]
         attr_accessor :best_effort_provisioning
       
-        # Which conditions caused the current node pool state.
+        # Output only. Which conditions caused the current node pool state.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
         attr_accessor :conditions
@@ -7023,9 +7023,9 @@ module Google
         # @return [Google::Apis::ContainerV1::NodeConfig]
         attr_accessor :config
       
-        # This checksum is computed by the server based on the value of node pool fields,
-        # and may be sent on update requests to ensure the client has an up-to-date
-        # value before proceeding.
+        # Output only. This checksum is computed by the server based on the value of
+        # node pool fields, and may be sent on update requests to ensure the client has
+        # an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
