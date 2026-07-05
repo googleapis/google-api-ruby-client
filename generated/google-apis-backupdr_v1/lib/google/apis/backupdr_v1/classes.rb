@@ -3409,7 +3409,7 @@ module Google
         # @return [String]
         attr_accessor :read_location
       
-        # The downscoped token that was created.
+        # Input only. The downscoped token that was created.
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
