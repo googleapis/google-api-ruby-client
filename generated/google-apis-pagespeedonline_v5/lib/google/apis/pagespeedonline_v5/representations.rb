@@ -254,6 +254,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :audit_refs, as: 'auditRefs', class: Google::Apis::PagespeedonlineV5::AuditRefs, decorator: Google::Apis::PagespeedonlineV5::AuditRefs::Representation
       
+          property :category_score_display_mode, as: 'categoryScoreDisplayMode'
           property :description, as: 'description'
           property :id, as: 'id'
           property :manual_description, as: 'manualDescription'

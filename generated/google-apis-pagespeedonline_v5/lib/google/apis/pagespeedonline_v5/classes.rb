@@ -427,6 +427,11 @@ module Google
         # @return [Array<Google::Apis::PagespeedonlineV5::AuditRefs>]
         attr_accessor :audit_refs
       
+        # Optional. How the category score should be displayed (e.g. as a fraction).
+        # Corresponds to the JSON property `categoryScoreDisplayMode`
+        # @return [String]
+        attr_accessor :category_score_display_mode
+      
         # A more detailed description of the category and its importance.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -460,6 +465,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audit_refs = args[:audit_refs] if args.key?(:audit_refs)
+          @category_score_display_mode = args[:category_score_display_mode] if args.key?(:category_score_display_mode)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @manual_description = args[:manual_description] if args.key?(:manual_description)
