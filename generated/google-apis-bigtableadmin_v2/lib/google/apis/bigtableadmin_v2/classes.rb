@@ -2881,6 +2881,12 @@ module Google
         # @return [String]
         attr_accessor :edition
       
+        # Output only. The region where Knowledge Catalog data is synced to and stored,
+        # including user-created aspects.
+        # Corresponds to the JSON property `knowledgeCatalogRegion`
+        # @return [String]
+        attr_accessor :knowledge_catalog_region
+      
         # Labels are a flexible and lightweight mechanism for organizing cloud resources
         # into groups that reflect a customer's organizational needs and deployment
         # strategies. They can be used to filter resources and aggregate metrics. *
@@ -2940,6 +2946,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @edition = args[:edition] if args.key?(:edition)
+          @knowledge_catalog_region = args[:knowledge_catalog_region] if args.key?(:knowledge_catalog_region)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
