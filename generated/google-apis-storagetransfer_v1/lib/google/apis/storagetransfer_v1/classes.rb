@@ -986,6 +986,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :include_prefixes
       
+        # Optional. If specified, objects in the source matching any of the storage
+        # classes in this field will be transferred. Objects in storage classes not
+        # included in this field will be skipped. If empty, the default behavior
+        # regarding the storage classes is applied. This includes all storage classes
+        # except "GLACIER" as per default behavior. Currently, this field only supports
+        # S3 data source. For the list of valid Amazon S3 storage classnames, please
+        # refer to the AWS documentation: https://docs.aws.amazon.com/AmazonS3/latest/
+        # userguide/sc-howtoset.html
+        # Corresponds to the JSON property `includeStorageClasses`
+        # @return [Array<String>]
+        attr_accessor :include_storage_classes
+      
         # If specified, only objects with a "last modification time" before this
         # timestamp and objects that don't have a "last modification time" are
         # transferred.
@@ -1039,6 +1051,7 @@ module Google
         def update!(**args)
           @exclude_prefixes = args[:exclude_prefixes] if args.key?(:exclude_prefixes)
           @include_prefixes = args[:include_prefixes] if args.key?(:include_prefixes)
+          @include_storage_classes = args[:include_storage_classes] if args.key?(:include_storage_classes)
           @last_modified_before = args[:last_modified_before] if args.key?(:last_modified_before)
           @last_modified_since = args[:last_modified_since] if args.key?(:last_modified_since)
           @match_glob = args[:match_glob] if args.key?(:match_glob)
@@ -1848,8 +1861,9 @@ module Google
         attr_accessor :delete_objects_from_source_after_transfer
         alias_method :delete_objects_from_source_after_transfer?, :delete_objects_from_source_after_transfer
       
-        # Whether objects that exist only in the sink should be deleted. **Note:** This
-        # option and delete_objects_from_source_after_transfer are mutually exclusive.
+        # Whether objects that exist only in the sink should be deleted from the sink. **
+        # Note:** This option and delete_objects_from_source_after_transfer are mutually
+        # exclusive.
         # Corresponds to the JSON property `deleteObjectsUniqueInSink`
         # @return [Boolean]
         attr_accessor :delete_objects_unique_in_sink
