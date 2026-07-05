@@ -4065,6 +4065,12 @@ module Google
       class InstanceSelection
         include Google::Apis::Core::Hashable
       
+        # Specifies the config of boot disk and attached disk options for a group of VM
+        # instances.
+        # Corresponds to the JSON property `diskConfig`
+        # @return [Google::Apis::DataprocV1::DiskConfig]
+        attr_accessor :disk_config
+      
         # Optional. Full machine-type names, e.g. "n1-standard-16".
         # Corresponds to the JSON property `machineTypes`
         # @return [Array<String>]
@@ -4085,6 +4091,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disk_config = args[:disk_config] if args.key?(:disk_config)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
           @rank = args[:rank] if args.key?(:rank)
         end
