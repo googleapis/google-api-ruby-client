@@ -869,11 +869,6 @@ module Google
         # @return [String]
         attr_accessor :agent
       
-        # Configuration for the CodeMender agent.
-        # Corresponds to the JSON property `code_mender_config`
-        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfig]
-        attr_accessor :code_mender_config
-      
         # Configuration for the Deep Research agent.
         # Corresponds to the JSON property `deepResearchConfig`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1DeepResearchAgentConfig]
@@ -891,7 +886,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent = args[:agent] if args.key?(:agent)
-          @code_mender_config = args[:code_mender_config] if args.key?(:code_mender_config)
           @deep_research_config = args[:deep_research_config] if args.key?(:deep_research_config)
           @dynamic_config = args[:dynamic_config] if args.key?(:dynamic_config)
         end
@@ -1271,185 +1265,15 @@ module Google
         end
       end
       
-      # Configuration for the CodeMender agent.
-      class GenaiVertexV1beta1CodeMenderAgentConfig
-        include Google::Apis::Core::Hashable
-      
-        # Request parameters specific to FIND sessions, used for discovering
-        # vulnerabilities in a codebase.
-        # Corresponds to the JSON property `find_request`
-        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFindRequest]
-        attr_accessor :find_request
-      
-        # Request parameters specific to FIX sessions, used for generating and
-        # validating security patches.
-        # Corresponds to the JSON property `fix_request`
-        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFixRequest]
-        attr_accessor :fix_request
-      
-        # The name of the model to use for the CodeMender agent. One CodeMender session
-        # will only use one model.
-        # Corresponds to the JSON property `model`
-        # @return [String]
-        attr_accessor :model
-      
-        # The configuration of CodeMender sessions.
-        # Corresponds to the JSON property `session_config`
-        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigSessionConfig]
-        attr_accessor :session_config
-      
-        # Parameter for grouping multiple interactions that belong to the same
-        # CodeMender session.
-        # Corresponds to the JSON property `session_id`
-        # @return [String]
-        attr_accessor :session_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @find_request = args[:find_request] if args.key?(:find_request)
-          @fix_request = args[:fix_request] if args.key?(:fix_request)
-          @model = args[:model] if args.key?(:model)
-          @session_config = args[:session_config] if args.key?(:session_config)
-          @session_id = args[:session_id] if args.key?(:session_id)
-        end
-      end
-      
-      # Content of a single file in the codebase.
-      class GenaiVertexV1beta1CodeMenderAgentConfigFileContent
-        include Google::Apis::Core::Hashable
-      
-        # The UTF-8 encoded text content of the file.
-        # Corresponds to the JSON property `content`
-        # @return [String]
-        attr_accessor :content
-      
-        # The relative path of the file from the project root.
-        # Corresponds to the JSON property `path`
-        # @return [String]
-        attr_accessor :path
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @content = args[:content] if args.key?(:content)
-          @path = args[:path] if args.key?(:path)
-        end
-      end
-      
-      # Request parameters specific to FIND sessions, used for discovering
-      # vulnerabilities in a codebase.
-      class GenaiVertexV1beta1CodeMenderAgentConfigFindRequest
-        include Google::Apis::Core::Hashable
-      
-        # Additional context or custom instructions provided by the user to guide the
-        # vulnerability analysis.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The identifier of a specific finding to verify. This is primarily used in
-        # VERIFY mode to focus the agent's execution-based validation on a single
-        # vulnerability.
-        # Corresponds to the JSON property `finding_id`
-        # @return [String]
-        attr_accessor :finding_id
-      
-        # A list of source files to provide as context for the scan.
-        # Corresponds to the JSON property `source_files`
-        # @return [Array<Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFileContent>]
-        attr_accessor :source_files
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @finding_id = args[:finding_id] if args.key?(:finding_id)
-          @source_files = args[:source_files] if args.key?(:source_files)
-        end
-      end
-      
-      # Request parameters specific to FIX sessions, used for generating and
-      # validating security patches.
-      class GenaiVertexV1beta1CodeMenderAgentConfigFixRequest
-        include Google::Apis::Core::Hashable
-      
-        # Additional context or custom instructions provided by the user to guide the
-        # patch generation process.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The identifier of the specific security finding to be remediated. This ID maps
-        # to a previously discovered vulnerability.
-        # Corresponds to the JSON property `finding_id`
-        # @return [String]
-        attr_accessor :finding_id
-      
-        # A list of source files providing context for the remediation. These files are
-        # typically the ones containing the identified vulnerability.
-        # Corresponds to the JSON property `source_files`
-        # @return [Array<Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFileContent>]
-        attr_accessor :source_files
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @finding_id = args[:finding_id] if args.key?(:finding_id)
-          @source_files = args[:source_files] if args.key?(:source_files)
-        end
-      end
-      
-      # The configuration of CodeMender sessions.
-      class GenaiVertexV1beta1CodeMenderAgentConfigSessionConfig
-        include Google::Apis::Core::Hashable
-      
-        # The maximum number of interaction rounds the agent is allowed to perform
-        # before reaching a timeout.
-        # Corresponds to the JSON property `max_rounds`
-        # @return [Fixnum]
-        attr_accessor :max_rounds
-      
-        # The pipeline mode of a CodeMender session. It can only be used for a find
-        # session.
-        # Corresponds to the JSON property `pipeline_mode`
-        # @return [String]
-        attr_accessor :pipeline_mode
-      
-        # The cognitive architecture or "thinking" topology used by the agent (e.g. "
-        # default", "deep").
-        # Corresponds to the JSON property `topology`
-        # @return [String]
-        attr_accessor :topology
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @max_rounds = args[:max_rounds] if args.key?(:max_rounds)
-          @pipeline_mode = args[:pipeline_mode] if args.key?(:pipeline_mode)
-          @topology = args[:topology] if args.key?(:topology)
-        end
-      end
-      
       # A tool that can be used by the model to interact with the computer.
       class GenaiVertexV1beta1ComputerUse
         include Google::Apis::Core::Hashable
+      
+        # Whether enable the prompt injection detection check on computer-use request.
+        # Corresponds to the JSON property `enablePromptInjectionDetection`
+        # @return [Boolean]
+        attr_accessor :enable_prompt_injection_detection
+        alias_method :enable_prompt_injection_detection?, :enable_prompt_injection_detection
       
         # The environment being operated.
         # Corresponds to the JSON property `environment`
@@ -1467,6 +1291,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_prompt_injection_detection = args[:enable_prompt_injection_detection] if args.key?(:enable_prompt_injection_detection)
           @environment = args[:environment] if args.key?(:environment)
           @excluded_predefined_functions = args[:excluded_predefined_functions] if args.key?(:excluded_predefined_functions)
         end
@@ -6665,15 +6490,6 @@ module Google
       class GoogleCloudAiplatformV1beta1AgentAnomalyDetectionScope
         include Google::Apis::Core::Hashable
       
-        # Optional. When true, agents created in Agent Engine that share log and
-        # observability buckets with this scope are automatically enrolled as
-        # MonitoredAgents. When false, agents must be enrolled explicitly via
-        # MonitoredAgent operations.
-        # Corresponds to the JSON property `autoEnroll`
-        # @return [Boolean]
-        attr_accessor :auto_enroll
-        alias_method :auto_enroll?, :auto_enroll
-      
         # Optional. User provided display name of the AgentAnomalyDetectionScope.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -6699,17 +6515,23 @@ module Google
         # @return [Array<String>]
         attr_accessor :observability_buckets
       
+        # Output only. The lifecycle state of the scope. See `State` for the semantics
+        # of each value.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @auto_enroll = args[:auto_enroll] if args.key?(:auto_enroll)
           @display_name = args[:display_name] if args.key?(:display_name)
           @log_buckets = args[:log_buckets] if args.key?(:log_buckets)
           @name = args[:name] if args.key?(:name)
           @observability_buckets = args[:observability_buckets] if args.key?(:observability_buckets)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -58191,15 +58013,6 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Optional. The project where network, subnetwork and dns resources are located.
-        # If not provided, it is assumed to be the same project of
-        # SemanticGovernancePolicyEngine. This field is for Shared VPC scenarios, where
-        # network resources may be in a target project and SGP engine in a service
-        # project.
-        # Corresponds to the JSON property `targetProject`
-        # @return [String]
-        attr_accessor :target_project
-      
         # Output only. Timestamp when this SemanticGovernancePolicyEngine was last
         # updated.
         # Corresponds to the JSON property `updateTime`
@@ -58219,7 +58032,6 @@ module Google
           @psc_forwarding_rule = args[:psc_forwarding_rule] if args.key?(:psc_forwarding_rule)
           @psc_service_attachment = args[:psc_service_attachment] if args.key?(:psc_service_attachment)
           @state = args[:state] if args.key?(:state)
-          @target_project = args[:target_project] if args.key?(:target_project)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -63125,6 +62937,15 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :custom_configs
       
+        # Optional. Instructs Vertex Grounding to use Parallel's Zero Data Retention
+        # Marketplace product. If this value is "false" or omitted, the Parallel Web
+        # Search for Grounding standard subscription will be used. If this value is "
+        # true", the Parallel Web Search for Grounding - ZDR subscription will be used.
+        # Corresponds to the JSON property `enableDataRetention`
+        # @return [Boolean]
+        attr_accessor :enable_data_retention
+        alias_method :enable_data_retention?, :enable_data_retention
+      
         def initialize(**args)
            update!(**args)
         end
@@ -63133,6 +62954,7 @@ module Google
         def update!(**args)
           @api_key = args[:api_key] if args.key?(:api_key)
           @custom_configs = args[:custom_configs] if args.key?(:custom_configs)
+          @enable_data_retention = args[:enable_data_retention] if args.key?(:enable_data_retention)
         end
       end
       
