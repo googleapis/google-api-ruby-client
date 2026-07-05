@@ -2656,12 +2656,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8692,14 +8686,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :baseline_model_version, as: 'baselineModelVersion'
-          property :model, as: 'model'
-        end
-      end
-      
       class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8733,8 +8719,6 @@ module Google
       class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :conversation_model_config, as: 'conversationModelConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig::Representation
-      
           property :conversation_process_config, as: 'conversationProcessConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig::Representation
       
           property :disable_agent_query_logging, as: 'disableAgentQueryLogging'

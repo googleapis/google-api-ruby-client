@@ -14627,31 +14627,6 @@ module Google
       end
       
       # 
-      class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `baselineModelVersion`
-        # @return [String]
-        attr_accessor :baseline_model_version
-      
-        # 
-        # Corresponds to the JSON property `model`
-        # @return [String]
-        attr_accessor :model
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @baseline_model_version = args[:baseline_model_version] if args.key?(:baseline_model_version)
-          @model = args[:model] if args.key?(:model)
-        end
-      end
-      
-      # 
       class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig
         include Google::Apis::Core::Hashable
       
@@ -14769,11 +14744,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
-        # Corresponds to the JSON property `conversationModelConfig`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig]
-        attr_accessor :conversation_model_config
-      
-        # 
         # Corresponds to the JSON property `conversationProcessConfig`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig]
         attr_accessor :conversation_process_config
@@ -14851,7 +14821,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @conversation_model_config = args[:conversation_model_config] if args.key?(:conversation_model_config)
           @conversation_process_config = args[:conversation_process_config] if args.key?(:conversation_process_config)
           @disable_agent_query_logging = args[:disable_agent_query_logging] if args.key?(:disable_agent_query_logging)
           @disable_query_search_context = args[:disable_query_search_context] if args.key?(:disable_query_search_context)
