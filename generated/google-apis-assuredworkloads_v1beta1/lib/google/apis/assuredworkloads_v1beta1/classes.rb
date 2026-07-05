@@ -307,12 +307,18 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse
         include Google::Apis::Core::Hashable
       
+        # Count of acknowledged violations.
+        # Corresponds to the JSON property `acknowledgedViolationsCount`
+        # @return [Fixnum]
+        attr_accessor :acknowledged_violations_count
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @acknowledged_violations_count = args[:acknowledged_violations_count] if args.key?(:acknowledged_violations_count)
         end
       end
       
