@@ -2119,6 +2119,11 @@ module Google
       class GooglePrivacyDlpV2ContentMetadata
         include Google::Apis::Core::Hashable
       
+        # Optional. The file labels associated with the content.
+        # Corresponds to the JSON property `fileLabels`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileLabel>]
+        attr_accessor :file_labels
+      
         # User provided key-value pairs of content metadata.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2KeyValueMetadataProperty>]
@@ -2130,6 +2135,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @file_labels = args[:file_labels] if args.key?(:file_labels)
           @properties = args[:properties] if args.key?(:properties)
         end
       end
@@ -2794,6 +2800,11 @@ module Google
         # @return [String]
         attr_accessor :exclusion_type
       
+        # Configuration for a custom infoType that detects file labels.
+        # Corresponds to the JSON property `fileLabelInfoType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileLabelInfoType]
+        attr_accessor :file_label_info_type
+      
         # Type of information detected by the API.
         # Corresponds to the JSON property `infoType`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
@@ -2849,6 +2860,7 @@ module Google
           @detection_rules = args[:detection_rules] if args.key?(:detection_rules)
           @dictionary = args[:dictionary] if args.key?(:dictionary)
           @exclusion_type = args[:exclusion_type] if args.key?(:exclusion_type)
+          @file_label_info_type = args[:file_label_info_type] if args.key?(:file_label_info_type)
           @info_type = args[:info_type] if args.key?(:info_type)
           @likelihood = args[:likelihood] if args.key?(:likelihood)
           @metadata_key_value_expression = args[:metadata_key_value_expression] if args.key?(:metadata_key_value_expression)
@@ -5486,6 +5498,56 @@ module Google
         end
       end
       
+      # Represents a file label.
+      class GooglePrivacyDlpV2FileLabel
+        include Google::Apis::Core::Hashable
+      
+        # Google Drive labels published by Google.
+        # Corresponds to the JSON property `googleDriveLabel`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2GoogleDriveLabelMetadata]
+        attr_accessor :google_drive_label
+      
+        # Sensitivity labels published by Microsoft.
+        # Corresponds to the JSON property `sensitivityLabel`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityLabelMetadata]
+        attr_accessor :sensitivity_label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_drive_label = args[:google_drive_label] if args.key?(:google_drive_label)
+          @sensitivity_label = args[:sensitivity_label] if args.key?(:sensitivity_label)
+        end
+      end
+      
+      # Configuration for a custom infoType that detects file labels.
+      class GooglePrivacyDlpV2FileLabelInfoType
+        include Google::Apis::Core::Hashable
+      
+        # Google Drive labels published by Google.
+        # Corresponds to the JSON property `googleDriveLabel`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2GoogleDriveLabel]
+        attr_accessor :google_drive_label
+      
+        # Sensitivity labels published by Microsoft.
+        # Corresponds to the JSON property `sensitivityLabel`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityLabel]
+        attr_accessor :sensitivity_label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_drive_label = args[:google_drive_label] if args.key?(:google_drive_label)
+          @sensitivity_label = args[:sensitivity_label] if args.key?(:sensitivity_label)
+        end
+      end
+      
       # Set of files to scan.
       class GooglePrivacyDlpV2FileSet
         include Google::Apis::Core::Hashable
@@ -6056,6 +6118,58 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Google Drive labels published by Google.
+      class GooglePrivacyDlpV2GoogleDriveLabel
+        include Google::Apis::Core::Hashable
+      
+        # The field values of the Google Drive label to match.
+        # Corresponds to the JSON property `labelFieldsToMatch`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2LabelField>]
+        attr_accessor :label_fields_to_match
+      
+        # The [label ID](https://developers.google.com/workspace/drive/labels/guides/
+        # overview) of the Google Drive label.
+        # Corresponds to the JSON property `labelId`
+        # @return [String]
+        attr_accessor :label_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_fields_to_match = args[:label_fields_to_match] if args.key?(:label_fields_to_match)
+          @label_id = args[:label_id] if args.key?(:label_id)
+        end
+      end
+      
+      # Google Drive labels published by Google.
+      class GooglePrivacyDlpV2GoogleDriveLabelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The field values of the Google Drive label
+        # Corresponds to the JSON property `labelFields`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2LabelFieldMetadata>]
+        attr_accessor :label_fields
+      
+        # The [label ID](https://developers.google.com/workspace/drive/labels/guides/
+        # overview) of the Google Drive label.
+        # Corresponds to the JSON property `labelId`
+        # @return [String]
+        attr_accessor :label_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_fields = args[:label_fields] if args.key?(:label_fields)
+          @label_id = args[:label_id] if args.key?(:label_id)
         end
       end
       
@@ -7826,6 +7940,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @sensitive_value_frequency_histogram_buckets = args[:sensitive_value_frequency_histogram_buckets] if args.key?(:sensitive_value_frequency_histogram_buckets)
+        end
+      end
+      
+      # The field values of the Google Drive label to match.
+      class GooglePrivacyDlpV2LabelField
+        include Google::Apis::Core::Hashable
+      
+        # The identifier of the Label Field.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The value of the Label Field to match.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The field values of the Google Drive label
+      class GooglePrivacyDlpV2LabelFieldMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The identifier of the Label Field.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -10509,6 +10677,44 @@ module Google
         end
       end
       
+      # Sensitivity labels published by Microsoft.
+      class GooglePrivacyDlpV2SensitivityLabel
+        include Google::Apis::Core::Hashable
+      
+        # The GUID of the sensitivity label.
+        # Corresponds to the JSON property `guid`
+        # @return [String]
+        attr_accessor :guid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guid = args[:guid] if args.key?(:guid)
+        end
+      end
+      
+      # Sensitivity labels published by Microsoft.
+      class GooglePrivacyDlpV2SensitivityLabelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Required. The GUID of the sensitivity label.
+        # Corresponds to the JSON property `guid`
+        # @return [String]
+        attr_accessor :guid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guid = args[:guid] if args.key?(:guid)
+        end
+      end
+      
       # Score is calculated from of all elements in the data profile. A higher level
       # means the data is more sensitive.
       class GooglePrivacyDlpV2SensitivityScore
@@ -10642,7 +10848,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeVersion]
         attr_accessor :current_version
       
-        # Resource name.
+        # Output only. Resource name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -10762,19 +10968,19 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
       
-        # Create timestamp of the version. Read-only, determined by the system when the
-        # version is created.
+        # Output only. Create timestamp of the version. Read-only, determined by the
+        # system when the version is created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Errors that occurred when creating this storedInfoType version, or anomalies
-        # detected in the storedInfoType data that render it unusable. Only the five
-        # most recent errors will be displayed, with the most recent error appearing
-        # first. For example, some of the data for stored custom dictionaries is put in
-        # the user's Cloud Storage bucket, and if this data is modified or deleted by
-        # the user or another system, the dictionary becomes invalid. If any errors
-        # occur, fix the problem indicated by the error message and use the
+        # Output only. Errors that occurred when creating this storedInfoType version,
+        # or anomalies detected in the storedInfoType data that render it unusable. Only
+        # the five most recent errors will be displayed, with the most recent error
+        # appearing first. For example, some of the data for stored custom dictionaries
+        # is put in the user's Cloud Storage bucket, and if this data is modified or
+        # deleted by the user or another system, the dictionary becomes invalid. If any
+        # errors occur, fix the problem indicated by the error message and use the
         # UpdateStoredInfoType API method to create another version of the
         # storedInfoType to continue using it, reusing the same `config` if it was not
         # the source of the error.
@@ -10782,8 +10988,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
         attr_accessor :errors
       
-        # Stored info type version state. Read-only, updated by the system during
-        # dictionary creation.
+        # Output only. Stored info type version state. Read-only, updated by the system
+        # during dictionary creation.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
