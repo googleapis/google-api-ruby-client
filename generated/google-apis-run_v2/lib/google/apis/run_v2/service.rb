@@ -227,6 +227,7 @@ module Google
         
         # Creates an Instance.
         # @param [String] parent
+        #   Required. The location and project in which this Instance should be created.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Instance] google_cloud_run_v2_instance_object
         # @param [String] instance_id
         #   Optional. The unique identifier for the Instance. It must begin with letter,
@@ -267,8 +268,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Instance
+        # Deletes an Instance
         # @param [String] name
+        #   Required. The name of the Instance to delete.
         # @param [String] etag
         #   Optional. A system-generated fingerprint for this version of the resource. May
         #   be used to detect modification conflict during updates.
@@ -304,8 +306,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a Instance
+        # Gets an Instance
         # @param [String] name
+        #   Required. The name of the Instance to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -380,8 +383,7 @@ module Google
         
         # Lists Instances. Results are sorted by creation time, descending.
         # @param [String] parent
-        #   Required. The location and project to list resources on. Format: projects/`
-        #   project`/locations/`location`, where `project` can be project id or number.
+        #   Required. The location and project to list resources on.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of Instances to return in this call.
         # @param [String] page_token
@@ -422,15 +424,14 @@ module Google
         
         # Updates an Instance.
         # @param [String] name
-        #   The fully qualified name of this Instance. In CreateInstanceRequest, this
-        #   field is ignored, and instead composed from CreateInstanceRequest.parent and
-        #   CreateInstanceRequest.instance_id. Format: projects/`project`/locations/`
-        #   location`/instances/`instance_id`
+        #   The fully qualified name of this Instance. In `CreateInstanceRequest`, this
+        #   field is ignored, and instead composed from `CreateInstanceRequest.parent` and
+        #   `CreateInstanceRequest.instance_id`.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Instance] google_cloud_run_v2_instance_object
         # @param [Boolean] allow_missing
-        #   Optional. If set to true, and if the Instance does not exist, it will create a
-        #   new one. The caller must have 'run.instances.create' permissions if this is
-        #   set to true and the Instance does not exist.
+        #   Optional. If set to `true`, and if the Instance does not exist, it will create
+        #   a new one. The caller must have `run.instances.create` permissions if this is
+        #   set to `true` and the Instance does not exist.
         # @param [String] update_mask
         #   Optional. The list of fields to be updated.
         # @param [Boolean] validate_only
@@ -506,9 +507,7 @@ module Google
         
         # Starts an Instance.
         # @param [String] name
-        #   Required. The name of the Instance to stop. Format: `projects/`project`/
-        #   locations/`location`/instances/`instance``, where ``project`` can be project
-        #   id or number.
+        #   Required. The name of the Instance to start.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2StartInstanceRequest] google_cloud_run_v2_start_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -541,9 +540,7 @@ module Google
         
         # Stops an Instance.
         # @param [String] name
-        #   Required. The name of the Instance to stop. Format: `projects/`project`/
-        #   locations/`location`/instances/`instance``, where ``project`` can be project
-        #   id or number.
+        #   Required. The name of the Instance to stop.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2StopInstanceRequest] google_cloud_run_v2_stop_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

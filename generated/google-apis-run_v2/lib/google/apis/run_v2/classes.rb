@@ -1391,8 +1391,8 @@ module Google
         # @return [String]
         attr_accessor :encryption_key_revocation_action
       
-        # If encryption_key_revocation_action is SHUTDOWN, the duration before shutting
-        # down all instances. The minimum increment is 1 hour.
+        # If `encryption_key_revocation_action` is `SHUTDOWN`, the duration before
+        # shutting down all instances. The minimum increment is 1 hour.
         # Corresponds to the JSON property `encryptionKeyShutdownDuration`
         # @return [String]
         attr_accessor :encryption_key_shutdown_duration
@@ -1410,9 +1410,9 @@ module Google
         attr_accessor :expire_time
       
         # Output only. A number that monotonically increases every time the user
-        # modifies the desired state. Please note that unlike v1, this is an int64 value.
-        # As with most Google APIs, its JSON representation will be a `string` instead
-        # of an `integer`.
+        # modifies the desired state. Please note that unlike v1, this is an `int64`
+        # value. As with most Google APIs, its JSON representation will be a `string`
+        # instead of an `integer`.
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
         attr_accessor :generation
@@ -1430,13 +1430,13 @@ module Google
         alias_method :iap_enabled?, :iap_enabled
       
         # Optional. Provides the ingress settings for this Instance. On output, returns
-        # the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no
-        # revision is active.
+        # the currently observed ingress settings, or `INGRESS_TRAFFIC_UNSPECIFIED` if
+        # no revision is active.
         # Corresponds to the JSON property `ingress`
         # @return [String]
         attr_accessor :ingress
       
-        # Optional. Disables IAM permission check for run.routes.invoke for callers of
+        # Optional. Disables IAM permission check for `run.routes.invoke` for callers of
         # this Instance. For more information, visit https://cloud.google.com/run/docs/
         # securing/managing-access#invoker_check.
         # Corresponds to the JSON property `invokerIamDisabled`
@@ -1456,11 +1456,11 @@ module Google
       
         # The launch stage as defined by [Google Cloud Platform Launch Stages](https://
         # cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and
-        # `GA`. If no value is specified, GA is assumed. Set the launch stage to a
+        # `GA`. If no value is specified, `GA` is assumed. Set the launch stage to a
         # preview stage on input to allow use of preview features in that stage. On read
         # (or output), describes whether the resource uses preview features. For example,
-        # if ALPHA is provided as input, but only BETA and GA-level features are used,
-        # this field will be BETA on output.
+        # if `ALPHA` is provided as input, but only `BETA` and `GA`-level features are
+        # used, this field will be `BETA` on output.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
         attr_accessor :launch_stage
@@ -1470,10 +1470,9 @@ module Google
         # @return [String]
         attr_accessor :log_uri
       
-        # The fully qualified name of this Instance. In CreateInstanceRequest, this
-        # field is ignored, and instead composed from CreateInstanceRequest.parent and
-        # CreateInstanceRequest.instance_id. Format: projects/`project`/locations/`
-        # location`/instances/`instance_id`
+        # The fully qualified name of this Instance. In `CreateInstanceRequest`, this
+        # field is ignored, and instead composed from `CreateInstanceRequest.parent` and
+        # `CreateInstanceRequest.instance_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1485,20 +1484,20 @@ module Google
       
         # Output only. The generation of this Instance currently serving traffic. See
         # comments in `reconciling` for additional information on reconciliation process
-        # in Cloud Run. Please note that unlike v1, this is an int64 value. As with most
-        # Google APIs, its JSON representation will be a `string` instead of an `integer`
-        # .
+        # in Cloud Run. Please note that unlike v1, this is an `int64` value. As with
+        # most Google APIs, its JSON representation will be a `string` instead of an `
+        # integer`.
         # Corresponds to the JSON property `observedGeneration`
         # @return [Fixnum]
         attr_accessor :observed_generation
       
-        # Output only. Returns true if the Instance is currently being acted upon by the
-        # system to bring it into the desired state. When a new Instance is created, or
-        # an existing one is updated, Cloud Run will asynchronously perform all
+        # Output only. Returns `true` if the Instance is currently being acted upon by
+        # the system to bring it into the desired state. When a new Instance is created,
+        # or an existing one is updated, Cloud Run will asynchronously perform all
         # necessary steps to bring the Instance to the desired serving state. This
         # process is called reconciliation. While reconciliation is in process, `
         # observed_generation` will have a transient value that might mismatch the
-        # intended state. Once reconciliation is over (and this field is false), there
+        # intended state. Once reconciliation is over (and this field is `false`), there
         # are two possible outcomes: reconciliation succeeded and the serving state
         # matches the Instance, or there was an error, and reconciliation failed. This
         # state can be found in `terminal_condition.state`.
@@ -2507,11 +2506,6 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Configuration for sandboxes.
-        # Corresponds to the JSON property `sandboxes`
-        # @return [Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration]
-        attr_accessor :sandboxes
-      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -2610,7 +2604,6 @@ module Google
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
-          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scaling = args[:scaling] if args.key?(:scaling)
           @scaling_status = args[:scaling_status] if args.key?(:scaling_status)
@@ -2788,11 +2781,6 @@ module Google
         # @return [String]
         attr_accessor :revision
       
-        # Configuration for sandboxes.
-        # Corresponds to the JSON property `sandboxes`
-        # @return [Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration]
-        attr_accessor :sandboxes
-      
         # Settings for revision-level scaling settings.
         # Corresponds to the JSON property `scaling`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling]
@@ -2854,7 +2842,6 @@ module Google
           @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @revision = args[:revision] if args.key?(:revision)
-          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @scaling = args[:scaling] if args.key?(:scaling)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_mesh = args[:service_mesh] if args.key?(:service_mesh)
@@ -2896,25 +2883,6 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @overrides = args[:overrides] if args.key?(:overrides)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
-        end
-      end
-      
-      # Configuration for sandboxes.
-      class GoogleCloudRunV2SandboxConfiguration
-        include Google::Apis::Core::Hashable
-      
-        # Required. Container templates that can be launched through the `sandbox` CLI.
-        # Corresponds to the JSON property `templates`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
-        attr_accessor :templates
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @templates = args[:templates] if args.key?(:templates)
         end
       end
       
