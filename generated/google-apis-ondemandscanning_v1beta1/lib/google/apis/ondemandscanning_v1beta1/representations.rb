@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IngestionSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Justification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -855,6 +861,7 @@ module Google
           property :availability_impact, as: 'availabilityImpact'
           property :base_score, as: 'baseScore'
           property :confidentiality_impact, as: 'confidentialityImpact'
+          property :exploit_maturity, as: 'exploitMaturity'
           property :exploitability_score, as: 'exploitabilityScore'
           property :impact_score, as: 'impactScore'
           property :integrity_impact, as: 'integrityImpact'
@@ -1237,6 +1244,15 @@ module Google
         end
       end
       
+      class IngestionSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_uri, as: 'attachmentUri'
+          property :resource_url, as: 'resourceUrl'
+          property :source, as: 'source'
+        end
+      end
+      
       class Justification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1424,6 +1440,8 @@ module Google
           collection :file_location, as: 'fileLocation', class: Google::Apis::OndemandscanningV1beta1::FileLocation, decorator: Google::Apis::OndemandscanningV1beta1::FileLocation::Representation
       
           property :hash_digest, as: 'hashDigest'
+          collection :ingestion_sources, as: 'ingestionSources', class: Google::Apis::OndemandscanningV1beta1::IngestionSource, decorator: Google::Apis::OndemandscanningV1beta1::IngestionSource::Representation
+      
           property :layer_details, as: 'layerDetails', class: Google::Apis::OndemandscanningV1beta1::LayerDetails, decorator: Google::Apis::OndemandscanningV1beta1::LayerDetails::Representation
       
           collection :licenses, as: 'licenses'

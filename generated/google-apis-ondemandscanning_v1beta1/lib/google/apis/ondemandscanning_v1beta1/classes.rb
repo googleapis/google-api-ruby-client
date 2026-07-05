@@ -668,6 +668,11 @@ module Google
         # @return [String]
         attr_accessor :confidentiality_impact
       
+        # Exploit Maturity (E). Defined in CVSS v4.
+        # Corresponds to the JSON property `exploitMaturity`
+        # @return [String]
+        attr_accessor :exploit_maturity
+      
         # 
         # Corresponds to the JSON property `exploitabilityScore`
         # @return [Float]
@@ -741,6 +746,7 @@ module Google
           @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
           @base_score = args[:base_score] if args.key?(:base_score)
           @confidentiality_impact = args[:confidentiality_impact] if args.key?(:confidentiality_impact)
+          @exploit_maturity = args[:exploit_maturity] if args.key?(:exploit_maturity)
           @exploitability_score = args[:exploitability_score] if args.key?(:exploitability_score)
           @impact_score = args[:impact_score] if args.key?(:impact_score)
           @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
@@ -2019,6 +2025,37 @@ module Google
         end
       end
       
+      # Indicates where an extracted package originates from.
+      class IngestionSource
+        include Google::Apis::Core::Hashable
+      
+        # The attachment URI that this package was extracted from.
+        # Corresponds to the JSON property `attachmentUri`
+        # @return [String]
+        attr_accessor :attachment_uri
+      
+        # The resource URL of the resource that was scanned to find this package.
+        # Corresponds to the JSON property `resourceUrl`
+        # @return [String]
+        attr_accessor :resource_url
+      
+        # 
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_uri = args[:attachment_uri] if args.key?(:attachment_uri)
+          @resource_url = args[:resource_url] if args.key?(:resource_url)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
       # Justification provides the justification when the state of the assessment if
       # NOT_AFFECTED.
       class Justification
@@ -2701,6 +2738,12 @@ module Google
         # @return [String]
         attr_accessor :hash_digest
       
+        # The list of sources that were scanned to find this package. This can be a
+        # Docker image, an SBOM attachment, or both, for example.
+        # Corresponds to the JSON property `ingestionSources`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::IngestionSource>]
+        attr_accessor :ingestion_sources
+      
         # Details about the layer a package was found in.
         # Corresponds to the JSON property `layerDetails`
         # @return [Google::Apis::OndemandscanningV1beta1::LayerDetails]
@@ -2774,6 +2817,7 @@ module Google
           @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
           @file_location = args[:file_location] if args.key?(:file_location)
           @hash_digest = args[:hash_digest] if args.key?(:hash_digest)
+          @ingestion_sources = args[:ingestion_sources] if args.key?(:ingestion_sources)
           @layer_details = args[:layer_details] if args.key?(:layer_details)
           @licenses = args[:licenses] if args.key?(:licenses)
           @maintainer = args[:maintainer] if args.key?(:maintainer)
