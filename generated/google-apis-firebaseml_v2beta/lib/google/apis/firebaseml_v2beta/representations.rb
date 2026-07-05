@@ -1755,6 +1755,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_key, as: 'apiKey'
           hash :custom_configs, as: 'customConfigs'
+          property :enable_data_retention, as: 'enableDataRetention'
+          property :enable_zero_data_retention, as: 'enableZeroDataRetention'
         end
       end
       
