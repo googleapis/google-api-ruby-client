@@ -307,12 +307,18 @@ module Google
       class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
         include Google::Apis::Core::Hashable
       
+        # Count of acknowledged violations.
+        # Corresponds to the JSON property `acknowledgedViolationsCount`
+        # @return [Fixnum]
+        attr_accessor :acknowledged_violations_count
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @acknowledged_violations_count = args[:acknowledged_violations_count] if args.key?(:acknowledged_violations_count)
         end
       end
       
@@ -354,6 +360,61 @@ module Google
         end
       end
       
+      # The details for a finding.
+      class GoogleCloudAssuredworkloadsV1DbFindingSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The category of the finding.
+        # Corresponds to the JSON property `findingCategory`
+        # @return [String]
+        attr_accessor :finding_category
+      
+        # Output only. The class of the finding.
+        # Corresponds to the JSON property `findingClass`
+        # @return [String]
+        attr_accessor :finding_class
+      
+        # Output only. The count of the finding.
+        # Corresponds to the JSON property `findingCount`
+        # @return [Fixnum]
+        attr_accessor :finding_count
+      
+        # Identifier. The name of the finding summary.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The list of compliance frameworks that the finding belongs to.
+        # Corresponds to the JSON property `relatedFrameworks`
+        # @return [Array<String>]
+        attr_accessor :related_frameworks
+      
+        # Output only. The severity of the finding.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Output only. The last updated time of the finding.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finding_category = args[:finding_category] if args.key?(:finding_category)
+          @finding_class = args[:finding_class] if args.key?(:finding_class)
+          @finding_count = args[:finding_count] if args.key?(:finding_count)
+          @name = args[:name] if args.key?(:name)
+          @related_frameworks = args[:related_frameworks] if args.key?(:related_frameworks)
+          @severity = args[:severity] if args.key?(:severity)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Response for EnableComplianceUpdates endpoint.
       class GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse
         include Google::Apis::Core::Hashable
@@ -377,6 +438,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The response message for ListDbFindingSummaries.
+      class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of finding summary by category.
+        # Corresponds to the JSON property `dbFindingSummaries`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbFindingSummary>]
+        attr_accessor :db_finding_summaries
+      
+        # Output only. The token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @db_finding_summaries = args[:db_finding_summaries] if args.key?(:db_finding_summaries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
