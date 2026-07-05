@@ -871,6 +871,32 @@ module Google
         end
       end
       
+      # Response message for ListSupportEventSubscriptions.
+      class ListSupportEventSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The support event subscriptions.
+        # Corresponds to the JSON property `supportEventSubscriptions`
+        # @return [Array<Google::Apis::CloudsupportV2::SupportEventSubscription>]
+        attr_accessor :support_event_subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @support_event_subscriptions = args[:support_event_subscriptions] if args.key?(:support_event_subscriptions)
+        end
+      end
+      
       # # gdata.* are outside protos with mising documentation
       class Media
         include Google::Apis::Core::Hashable
@@ -1164,6 +1190,82 @@ module Google
         def update!(**args)
           @cases = args[:cases] if args.key?(:cases)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A support event subscription.
+      class SupportEventSubscription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the subscription was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time at which the subscription was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. Reason why subscription is failing. State of subscription must be
+        # FAILING in order for this to have a value.
+        # Corresponds to the JSON property `failureReason`
+        # @return [String]
+        attr_accessor :failure_reason
+      
+        # Identifier. The resource name of the support event subscription.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The name of the Pub/Sub topic to publish notifications to. Format:
+        # projects/`project`/topics/`topic`
+        # Corresponds to the JSON property `pubSubTopic`
+        # @return [String]
+        attr_accessor :pub_sub_topic
+      
+        # Output only. The time at which the subscription will be purged.
+        # Corresponds to the JSON property `purgeTime`
+        # @return [String]
+        attr_accessor :purge_time
+      
+        # Output only. The state of the subscription.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time at which the subscription was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @name = args[:name] if args.key?(:name)
+          @pub_sub_topic = args[:pub_sub_topic] if args.key?(:pub_sub_topic)
+          @purge_time = args[:purge_time] if args.key?(:purge_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for UndeleteSupportEventSubscription.
+      class UndeleteSupportEventSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end
