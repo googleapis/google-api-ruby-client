@@ -1739,6 +1739,7 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :edition, as: 'edition'
+          property :knowledge_catalog_region, as: 'knowledgeCatalogRegion'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :satisfies_pzi, as: 'satisfiesPzi'
