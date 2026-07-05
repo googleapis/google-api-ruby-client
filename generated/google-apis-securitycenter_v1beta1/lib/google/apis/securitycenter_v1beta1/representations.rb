@@ -520,6 +520,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1IamDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1IamRolePermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1MuteConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1067,6 +1079,18 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2IamBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IamDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IamRolePermission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2776,6 +2800,8 @@ module Google
       
           collection :iam_bindings, as: 'iamBindings', class: Google::Apis::SecuritycenterV1beta1::IamBinding, decorator: Google::Apis::SecuritycenterV1beta1::IamBinding::Representation
       
+          property :iam_details, as: 'iamDetails', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1IamDetails, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1IamDetails::Representation
+      
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta1::Indicator, decorator: Google::Apis::SecuritycenterV1beta1::Indicator::Representation
       
           property :ip_rules, as: 'ipRules', class: Google::Apis::SecuritycenterV1beta1::IpRules, decorator: Google::Apis::SecuritycenterV1beta1::IpRules::Representation
@@ -2968,6 +2994,22 @@ module Google
           property :status, as: 'status'
           property :ticket_info, as: 'ticketInfo', class: Google::Apis::SecuritycenterV1beta1::TicketInfo, decorator: Google::Apis::SecuritycenterV1beta1::TicketInfo::Representation
       
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1IamDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :iam_role_permissions, as: 'iamRolePermissions', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1IamRolePermission, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1IamRolePermission::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1IamRolePermission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :role, as: 'role'
         end
       end
       
@@ -3964,6 +4006,8 @@ module Google
       
           collection :iam_bindings, as: 'iamBindings', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2IamBinding, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2IamBinding::Representation
       
+          property :iam_details, as: 'iamDetails', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2IamDetails, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2IamDetails::Representation
+      
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Indicator, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Indicator::Representation
       
           property :ip_rules, as: 'ipRules', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2IpRules, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2IpRules::Representation
@@ -4067,6 +4111,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :member, as: 'member'
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IamDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :iam_role_permissions, as: 'iamRolePermissions', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2IamRolePermission, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2IamRolePermission::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IamRolePermission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
           property :role, as: 'role'
         end
       end
