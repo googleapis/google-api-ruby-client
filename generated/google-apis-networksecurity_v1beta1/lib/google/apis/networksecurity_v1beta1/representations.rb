@@ -1894,6 +1894,7 @@ module Google
           property :mirroring_endpoint_group, as: 'mirroringEndpointGroup'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_cookie, as: 'networkCookie'
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'

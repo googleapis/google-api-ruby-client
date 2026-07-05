@@ -4138,6 +4138,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Output only. Identifier used by the data-path. See the NSI GENEVE format for
+        # more details: https://docs.cloud.google.com/network-security-integration/docs/
+        # understand-geneve#network_id
+        # Corresponds to the JSON property `networkCookie`
+        # @return [Fixnum]
+        attr_accessor :network_cookie
+      
         # Output only. The current state of the resource does not match the user's
         # intended state, and the system is working to reconcile them. This part of the
         # normal operation (e.g. adding a new location to the target deployment group).
@@ -4171,6 +4178,7 @@ module Google
           @mirroring_endpoint_group = args[:mirroring_endpoint_group] if args.key?(:mirroring_endpoint_group)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_cookie = args[:network_cookie] if args.key?(:network_cookie)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
