@@ -789,6 +789,11 @@ module Google
         # @return [Google::Apis::GkehubV1::FleetObservabilityFeatureSpec]
         attr_accessor :fleetobservability
       
+        # **Service Mesh**: Spec for the fleet for the servicemesh feature
+        # Corresponds to the JSON property `mesh`
+        # @return [Google::Apis::GkehubV1::ServiceMeshFeatureSpec]
+        attr_accessor :mesh
+      
         # **Multi-cluster Ingress**: The configuration for the MultiClusterIngress
         # feature.
         # Corresponds to the JSON property `multiclusteringress`
@@ -816,6 +821,7 @@ module Google
           @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @dataplanev2 = args[:dataplanev2] if args.key?(:dataplanev2)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
+          @mesh = args[:mesh] if args.key?(:mesh)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
           @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
           @workloadidentity = args[:workloadidentity] if args.key?(:workloadidentity)
@@ -6399,6 +6405,25 @@ module Google
         def update!(**args)
           @details = args[:details] if args.key?(:details)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # **Service Mesh**: Spec for the fleet for the servicemesh feature
+      class ServiceMeshFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies modernization compatibility for the fleet.
+        # Corresponds to the JSON property `modernizationCompatibility`
+        # @return [String]
+        attr_accessor :modernization_compatibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @modernization_compatibility = args[:modernization_compatibility] if args.key?(:modernization_compatibility)
         end
       end
       

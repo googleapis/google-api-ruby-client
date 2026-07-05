@@ -1036,6 +1036,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceMeshFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceMeshMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1360,6 +1366,8 @@ module Google
           property :dataplanev2, as: 'dataplanev2', class: Google::Apis::GkehubV1::DataplaneV2FeatureSpec, decorator: Google::Apis::GkehubV1::DataplaneV2FeatureSpec::Representation
       
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1::FleetObservabilityFeatureSpec, decorator: Google::Apis::GkehubV1::FleetObservabilityFeatureSpec::Representation
+      
+          property :mesh, as: 'mesh', class: Google::Apis::GkehubV1::ServiceMeshFeatureSpec, decorator: Google::Apis::GkehubV1::ServiceMeshFeatureSpec::Representation
       
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1::MultiClusterIngressFeatureSpec::Representation
       
@@ -2914,6 +2922,13 @@ module Google
           collection :details, as: 'details', class: Google::Apis::GkehubV1::ServiceMeshStatusDetails, decorator: Google::Apis::GkehubV1::ServiceMeshStatusDetails::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class ServiceMeshFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :modernization_compatibility, as: 'modernizationCompatibility'
         end
       end
       
