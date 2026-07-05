@@ -238,36 +238,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenaiVertexV1beta1CodeMenderAgentConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GenaiVertexV1beta1CodeMenderAgentConfigFileContent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GenaiVertexV1beta1CodeMenderAgentConfigFindRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GenaiVertexV1beta1CodeMenderAgentConfigFixRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GenaiVertexV1beta1CodeMenderAgentConfigSessionConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GenaiVertexV1beta1ComputerUse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11701,8 +11671,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent, as: 'agent'
-          property :code_mender_config, as: 'code_mender_config', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfig, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfig::Representation
-      
           property :deep_research_config, as: 'deepResearchConfig', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1DeepResearchAgentConfig, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1DeepResearchAgentConfig::Representation
       
           property :dynamic_config, as: 'dynamicConfig', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1DynamicAgentConfig, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1DynamicAgentConfig::Representation
@@ -11828,60 +11796,10 @@ module Google
         end
       end
       
-      class GenaiVertexV1beta1CodeMenderAgentConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :find_request, as: 'find_request', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFindRequest, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFindRequest::Representation
-      
-          property :fix_request, as: 'fix_request', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFixRequest, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFixRequest::Representation
-      
-          property :model, as: 'model'
-          property :session_config, as: 'session_config', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigSessionConfig, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigSessionConfig::Representation
-      
-          property :session_id, as: 'session_id'
-        end
-      end
-      
-      class GenaiVertexV1beta1CodeMenderAgentConfigFileContent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :content, as: 'content'
-          property :path, as: 'path'
-        end
-      end
-      
-      class GenaiVertexV1beta1CodeMenderAgentConfigFindRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :finding_id, as: 'finding_id'
-          collection :source_files, as: 'source_files', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFileContent, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFileContent::Representation
-      
-        end
-      end
-      
-      class GenaiVertexV1beta1CodeMenderAgentConfigFixRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :finding_id, as: 'finding_id'
-          collection :source_files, as: 'source_files', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFileContent, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1CodeMenderAgentConfigFileContent::Representation
-      
-        end
-      end
-      
-      class GenaiVertexV1beta1CodeMenderAgentConfigSessionConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_rounds, as: 'max_rounds'
-          property :pipeline_mode, as: 'pipeline_mode'
-          property :topology, as: 'topology'
-        end
-      end
-      
       class GenaiVertexV1beta1ComputerUse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_prompt_injection_detection, as: 'enablePromptInjectionDetection'
           property :environment, as: 'environment'
           collection :excluded_predefined_functions, as: 'excludedPredefinedFunctions'
         end
@@ -13596,11 +13514,11 @@ module Google
       class GoogleCloudAiplatformV1beta1AgentAnomalyDetectionScope
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :auto_enroll, as: 'autoEnroll'
           property :display_name, as: 'displayName'
           collection :log_buckets, as: 'logBuckets'
           property :name, as: 'name'
           collection :observability_buckets, as: 'observabilityBuckets'
+          property :state, as: 'state'
         end
       end
       
@@ -28250,7 +28168,6 @@ module Google
           property :psc_forwarding_rule, as: 'pscForwardingRule'
           property :psc_service_attachment, as: 'pscServiceAttachment'
           property :state, as: 'state'
-          property :target_project, as: 'targetProject'
           property :update_time, as: 'updateTime'
         end
       end
@@ -29652,6 +29569,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_key, as: 'apiKey'
           hash :custom_configs, as: 'customConfigs'
+          property :enable_data_retention, as: 'enableDataRetention'
         end
       end
       

@@ -10622,45 +10622,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing AgentAnomalyDetectionScope.
-        # @param [String] name
-        #   Identifier. The resource name of the AgentAnomalyDetectionScope. Format: `
-        #   projects/`project`/locations/`location`/agentAnomalyDetectionScopes/`
-        #   agent_anomaly_detection_scope``
-        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AgentAnomalyDetectionScope] google_cloud_aiplatform_v1beta1_agent_anomaly_detection_scope_object
-        # @param [String] update_mask
-        #   Optional. The list of fields to update. Supported paths: `display_name`, `
-        #   auto_enroll`, `log_buckets`, `observability_buckets`.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_agent_anomaly_detection_scope(name, google_cloud_aiplatform_v1beta1_agent_anomaly_detection_scope_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
-          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AgentAnomalyDetectionScope::Representation
-          command.request_object = google_cloud_aiplatform_v1beta1_agent_anomaly_detection_scope_object
-          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates an agent.
         # @param [String] parent
         #   Required. The resource name of the location to create the agent in. Format: `
@@ -29598,75 +29559,6 @@ module Google
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new MonitoredAgent in a specific Location.
-        # @param [String] parent
-        #   Required. The resource name of the Location to create the MonitoredAgent in.
-        #   Format: `projects/`project`/locations/`location``
-        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MonitoredAgent] google_cloud_aiplatform_v1beta1_monitored_agent_object
-        # @param [String] monitored_agent_id
-        #   Required. The ID to use for the MonitoredAgent, which will become the final
-        #   component of the MonitoredAgent's resource name.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MonitoredAgent] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MonitoredAgent]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_monitored_agent(parent, google_cloud_aiplatform_v1beta1_monitored_agent_object = nil, monitored_agent_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+parent}/monitoredAgents', options)
-          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MonitoredAgent::Representation
-          command.request_object = google_cloud_aiplatform_v1beta1_monitored_agent_object
-          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MonitoredAgent::Representation
-          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MonitoredAgent
-          command.params['parent'] = parent unless parent.nil?
-          command.query['monitoredAgentId'] = monitored_agent_id unless monitored_agent_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a specific MonitoredAgent.
-        # @param [String] name
-        #   Required. The name of the MonitoredAgent resource to be deleted. Format: `
-        #   projects/`project`/locations/`location`/monitoredAgents/`monitored_agent``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_monitored_agent(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
-          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty::Representation
-          command.response_class = Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
