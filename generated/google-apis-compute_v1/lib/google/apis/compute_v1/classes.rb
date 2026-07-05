@@ -47625,11 +47625,6 @@ module Google
       class ReservationBlock
         include Google::Apis::Core::Hashable
       
-        # Health information for the reservation block.
-        # Corresponds to the JSON property `blockHealthInfo`
-        # @return [Google::Apis::ComputeV1::ReservationBlockHealthInfo]
-        attr_accessor :block_health_info
-      
         # Output only. [Output Only] The number of resources that are allocated in this
         # reservation block.
         # Corresponds to the JSON property `count`
@@ -47640,6 +47635,11 @@ module Google
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
+      
+        # Health information for the reservation block.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeV1::ReservationBlockHealthInfo]
+        attr_accessor :health_info
       
         # Output only. [Output Only] The unique identifier for the resource. This
         # identifier is
@@ -47729,9 +47729,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @block_health_info = args[:block_health_info] if args.key?(:block_health_info)
           @count = args[:count] if args.key?(:count)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
@@ -48497,6 +48497,11 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Health information for the reservation subBlock.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeV1::ReservationSubBlockHealthInfo]
+        attr_accessor :health_info
+      
         # Output only. [Output Only] The unique identifier for the resource. This
         # identifier is
         # defined by the server.
@@ -48559,11 +48564,6 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Health information for the reservation subBlock.
-        # Corresponds to the JSON property `subBlockHealthInfo`
-        # @return [Google::Apis::ComputeV1::ReservationSubBlockHealthInfo]
-        attr_accessor :sub_block_health_info
-      
         # Output only. [Output Only] Zone in which the reservation subBlock resides.
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -48578,6 +48578,7 @@ module Google
           @accelerator_topologies_info = args[:accelerator_topologies_info] if args.key?(:accelerator_topologies_info)
           @count = args[:count] if args.key?(:count)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
@@ -48588,7 +48589,6 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
-          @sub_block_health_info = args[:sub_block_health_info] if args.key?(:sub_block_health_info)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
