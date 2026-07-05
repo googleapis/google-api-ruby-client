@@ -1015,6 +1015,11 @@ module Google
         # @return [String]
         attr_accessor :confidentiality_impact
       
+        # Exploit Maturity (E). Defined in CVSS v4.
+        # Corresponds to the JSON property `exploitMaturity`
+        # @return [String]
+        attr_accessor :exploit_maturity
+      
         # 
         # Corresponds to the JSON property `exploitabilityScore`
         # @return [Float]
@@ -1088,6 +1093,7 @@ module Google
           @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
           @base_score = args[:base_score] if args.key?(:base_score)
           @confidentiality_impact = args[:confidentiality_impact] if args.key?(:confidentiality_impact)
+          @exploit_maturity = args[:exploit_maturity] if args.key?(:exploit_maturity)
           @exploitability_score = args[:exploitability_score] if args.key?(:exploitability_score)
           @impact_score = args[:impact_score] if args.key?(:impact_score)
           @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
