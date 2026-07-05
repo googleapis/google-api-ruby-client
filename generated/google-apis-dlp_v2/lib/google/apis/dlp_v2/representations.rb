@@ -928,6 +928,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2FileLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2FileLabelInfoType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2FileSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -995,6 +1007,18 @@ module Google
       end
       
       class GooglePrivacyDlpV2GlobalProcessing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2GoogleDriveLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2GoogleDriveLabelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1313,6 +1337,18 @@ module Google
       end
       
       class GooglePrivacyDlpV2LDiversityResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2LabelField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2LabelFieldMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1883,6 +1919,18 @@ module Google
       end
       
       class GooglePrivacyDlpV2SelectedInfoTypes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2SensitivityLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2SensitivityLabelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2870,6 +2918,8 @@ module Google
       class GooglePrivacyDlpV2ContentMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_labels, as: 'fileLabels', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileLabel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileLabel::Representation
+      
           collection :properties, as: 'properties', class: Google::Apis::DlpV2::GooglePrivacyDlpV2KeyValueMetadataProperty, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2KeyValueMetadataProperty::Representation
       
         end
@@ -3062,6 +3112,8 @@ module Google
           property :dictionary, as: 'dictionary', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary::Representation
       
           property :exclusion_type, as: 'exclusionType'
+          property :file_label_info_type, as: 'fileLabelInfoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileLabelInfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileLabelInfoType::Representation
+      
           property :info_type, as: 'infoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
       
           property :likelihood, as: 'likelihood'
@@ -3871,6 +3923,26 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2FileLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_drive_label, as: 'googleDriveLabel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2GoogleDriveLabelMetadata, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2GoogleDriveLabelMetadata::Representation
+      
+          property :sensitivity_label, as: 'sensitivityLabel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityLabelMetadata, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityLabelMetadata::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2FileLabelInfoType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_drive_label, as: 'googleDriveLabel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2GoogleDriveLabel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2GoogleDriveLabel::Representation
+      
+          property :sensitivity_label, as: 'sensitivityLabel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityLabel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityLabel::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2FileSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4017,6 +4089,24 @@ module Google
       class GooglePrivacyDlpV2GlobalProcessing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2GoogleDriveLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :label_fields_to_match, as: 'labelFieldsToMatch', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LabelField, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LabelField::Representation
+      
+          property :label_id, as: 'labelId'
+        end
+      end
+      
+      class GooglePrivacyDlpV2GoogleDriveLabelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :label_fields, as: 'labelFields', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LabelFieldMetadata, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LabelFieldMetadata::Representation
+      
+          property :label_id, as: 'labelId'
         end
       end
       
@@ -4561,6 +4651,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :sensitive_value_frequency_histogram_buckets, as: 'sensitiveValueFrequencyHistogramBuckets', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LDiversityHistogramBucket, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LDiversityHistogramBucket::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2LabelField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GooglePrivacyDlpV2LabelFieldMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :value, as: 'value', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Value, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Value::Representation
       
         end
       end
@@ -5439,6 +5546,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :info_types, as: 'infoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2SensitivityLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :guid, as: 'guid'
+        end
+      end
+      
+      class GooglePrivacyDlpV2SensitivityLabelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :guid, as: 'guid'
         end
       end
       
