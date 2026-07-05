@@ -2637,6 +2637,8 @@ module Google
       class InstanceSelection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_config, as: 'diskConfig', class: Google::Apis::DataprocV1::DiskConfig, decorator: Google::Apis::DataprocV1::DiskConfig::Representation
+      
           collection :machine_types, as: 'machineTypes'
           property :rank, as: 'rank'
         end
