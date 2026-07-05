@@ -1938,6 +1938,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mode, as: 'mode'
           property :zone, as: 'zone'
+          collection :zones, as: 'zones'
         end
       end
     end

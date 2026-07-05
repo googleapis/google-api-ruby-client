@@ -65,7 +65,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. The version of the ACL policy. Used in drift resolution.
+        # Output only. Deprecated: Used in drift resolution.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -709,9 +709,8 @@ module Google
         # @return [String]
         attr_accessor :acl_policy
       
-        # Optional. Output only. Indicates whether the ACL rules applied to the cluster
-        # are in sync with the latest ACL policy rules. This field is only applicable if
-        # the ACL policy is set for the cluster.
+        # Optional. Output only. Deprecated: Indicates whether the ACL rules applied to
+        # the cluster are in sync.
         # Corresponds to the JSON property `aclPolicyInSync`
         # @return [Boolean]
         attr_accessor :acl_policy_in_sync
@@ -1360,7 +1359,7 @@ module Google
         # @return [String]
         attr_accessor :feed_type
       
-        # 
+        # Observability metric data.
         # Corresponds to the JSON property `observabilityMetricData`
         # @return [Google::Apis::RedisV1beta1::ObservabilityMetricData]
         attr_accessor :observability_metric_data
@@ -1503,7 +1502,7 @@ module Google
         # @return [String]
         attr_accessor :signal_type
       
-        # 
+        # Required. The state of the signal, such as if it's ACTIVE or RESOLVED.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -2818,7 +2817,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached.
+        # Unordered list. Locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -4257,7 +4256,7 @@ module Google
         # @return [String]
         attr_accessor :duration_based_retention
       
-        # 
+        # Quantity based retention period i.e. 7 backups
         # Corresponds to the JSON property `quantityBasedRetention`
         # @return [Fixnum]
         attr_accessor :quantity_based_retention
@@ -4267,7 +4266,7 @@ module Google
         # @return [String]
         attr_accessor :retention_unit
       
-        # 
+        # Duration based retention period i.e. 172800 seconds (2 days)
         # Corresponds to the JSON property `timeBasedRetention`
         # @return [String]
         attr_accessor :time_based_retention
@@ -4730,6 +4729,12 @@ module Google
         # @return [String]
         attr_accessor :zone
       
+        # Optional. Specify the zones of a multi-zone cluster where Redis Cluster
+        # allocates resources. This flag isn't applicable for single-zone clusters.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<String>]
+        attr_accessor :zones
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4738,6 +4743,7 @@ module Google
         def update!(**args)
           @mode = args[:mode] if args.key?(:mode)
           @zone = args[:zone] if args.key?(:zone)
+          @zones = args[:zones] if args.key?(:zones)
         end
       end
     end
