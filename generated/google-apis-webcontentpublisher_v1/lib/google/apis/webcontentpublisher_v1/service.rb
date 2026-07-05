@@ -51,6 +51,263 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a publication.
+        # @param [String] parent
+        #   Required. The parent resource where this publication will be created. Format: `
+        #   organizations/`organization``.
+        # @param [Google::Apis::WebcontentpublisherV1::Publication] publication_object
+        # @param [String] publication_id
+        #   Optional. The unique identifier of the publication to create. If not specified,
+        #   the server will generate a random publication ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebcontentpublisherV1::Publication] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebcontentpublisherV1::Publication]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_publication(parent, publication_object = nil, publication_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/publications', options)
+          command.request_representation = Google::Apis::WebcontentpublisherV1::Publication::Representation
+          command.request_object = publication_object
+          command.response_representation = Google::Apis::WebcontentpublisherV1::Publication::Representation
+          command.response_class = Google::Apis::WebcontentpublisherV1::Publication
+          command.params['parent'] = parent unless parent.nil?
+          command.query['publicationId'] = publication_id unless publication_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a publication.
+        # @param [String] name
+        #   Required. The resource name of the publication to retrieve. Format: `
+        #   organizations/`organization`/publications/`publication``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebcontentpublisherV1::Publication] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebcontentpublisherV1::Publication]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_publication(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::WebcontentpublisherV1::Publication::Representation
+          command.response_class = Google::Apis::WebcontentpublisherV1::Publication
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists publications.
+        # @param [String] parent
+        #   Required. The parent organization whose publications to list. Format: `
+        #   organizations/`organization``.
+        # @param [String] filter
+        #   Optional. A filter expression to filter the publications returned.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of publications to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 publications will be
+        #   returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListPublications` call, to
+        #   retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebcontentpublisherV1::ListPublicationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebcontentpublisherV1::ListPublicationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_publications(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/publications', options)
+          command.response_representation = Google::Apis::WebcontentpublisherV1::ListPublicationsResponse::Representation
+          command.response_class = Google::Apis::WebcontentpublisherV1::ListPublicationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a publication.
+        # @param [String] name
+        #   Identifier. The resource name of the publication. Format: organizations/`
+        #   organization`/publications/`publication`
+        # @param [Google::Apis::WebcontentpublisherV1::Publication] publication_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebcontentpublisherV1::Publication] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebcontentpublisherV1::Publication]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_publication(name, publication_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::WebcontentpublisherV1::Publication::Representation
+          command.request_object = publication_object
+          command.response_representation = Google::Apis::WebcontentpublisherV1::Publication::Representation
+          command.response_class = Google::Apis::WebcontentpublisherV1::Publication
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a CTA.
+        # @param [String] parent
+        #   Required. The parent publication resource where this CTA will be created.
+        #   Format: `organizations/`organization`/publications/`publication``.
+        # @param [Google::Apis::WebcontentpublisherV1::Cta] cta_object
+        # @param [String] cta_id
+        #   Optional. The unique identifier of the CTA to create. If not specified, the
+        #   server will generate a random CTA ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebcontentpublisherV1::Cta] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebcontentpublisherV1::Cta]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_publication_cta(parent, cta_object = nil, cta_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/ctas', options)
+          command.request_representation = Google::Apis::WebcontentpublisherV1::Cta::Representation
+          command.request_object = cta_object
+          command.response_representation = Google::Apis::WebcontentpublisherV1::Cta::Representation
+          command.response_class = Google::Apis::WebcontentpublisherV1::Cta
+          command.params['parent'] = parent unless parent.nil?
+          command.query['ctaId'] = cta_id unless cta_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a CTA.
+        # @param [String] name
+        #   Required. The resource name of the CTA to retrieve. Format: `organizations/`
+        #   organization`/publications/`publication`/ctas/`cta``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebcontentpublisherV1::Cta] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebcontentpublisherV1::Cta]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_publication_cta(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::WebcontentpublisherV1::Cta::Representation
+          command.response_class = Google::Apis::WebcontentpublisherV1::Cta
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists CTAs.
+        # @param [String] parent
+        #   Required. The parent publication resource whose CTAs to list. Format: `
+        #   organizations/`organization`/publications/`publication``.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of CTAs to return. The service may return fewer
+        #   than this value. If unspecified, at most 50 CTAs will be returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListCtas` call, to retrieve
+        #   the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebcontentpublisherV1::ListCtasResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebcontentpublisherV1::ListCtasResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_publication_ctas(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/ctas', options)
+          command.response_representation = Google::Apis::WebcontentpublisherV1::ListCtasResponse::Representation
+          command.response_class = Google::Apis::WebcontentpublisherV1::ListCtasResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Checks if a user is eligible for free article access.
         # @param [String] name
         #   Required. The resource name of the publication. Format: publications/`
