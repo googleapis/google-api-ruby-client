@@ -160,12 +160,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SeatAreaRatioData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TypicalFlightEmissions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -319,8 +313,6 @@ module Google
           property :load_factors_data, as: 'loadFactorsData'
           property :load_factors_t100_strategy, as: 'loadFactorsT100Strategy'
           property :provenance_entry_type, as: 'provenanceEntryType'
-          property :seat_area_ratio_data, as: 'seatAreaRatioData', class: Google::Apis::TravelimpactmodelV1::SeatAreaRatioData, decorator: Google::Apis::TravelimpactmodelV1::SeatAreaRatioData::Representation
-      
           property :seat_area_ratio_iata_strategy, as: 'seatAreaRatioIataStrategy'
           property :source, as: 'source'
           property :source_version, as: 'sourceVersion'
@@ -418,16 +410,6 @@ module Google
           property :distance_km, :numeric_string => true, as: 'distanceKm'
           property :flight_number, as: 'flightNumber'
           property :origin, as: 'origin'
-        end
-      end
-      
-      class SeatAreaRatioData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :business, as: 'business'
-          property :economy, as: 'economy'
-          property :first, as: 'first'
-          property :premium_economy, as: 'premiumEconomy'
         end
       end
       
