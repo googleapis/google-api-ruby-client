@@ -490,13 +490,6 @@ module Google
         # @return [String]
         attr_accessor :provenance_entry_type
       
-        # Seat area ratio data values. Economy is always 1.0 and serves as the reference
-        # point; other class values are relative to economy. All 4 fields are always set
-        # whether the seating class exists on the aircraft or not.
-        # Corresponds to the JSON property `seatAreaRatioData`
-        # @return [Google::Apis::TravelimpactmodelV1::SeatAreaRatioData]
-        attr_accessor :seat_area_ratio_data
-      
         # Output only. Strategy for IATA seat area ratios.
         # Corresponds to the JSON property `seatAreaRatioIataStrategy`
         # @return [String]
@@ -528,7 +521,6 @@ module Google
           @load_factors_data = args[:load_factors_data] if args.key?(:load_factors_data)
           @load_factors_t100_strategy = args[:load_factors_t100_strategy] if args.key?(:load_factors_t100_strategy)
           @provenance_entry_type = args[:provenance_entry_type] if args.key?(:provenance_entry_type)
-          @seat_area_ratio_data = args[:seat_area_ratio_data] if args.key?(:seat_area_ratio_data)
           @seat_area_ratio_iata_strategy = args[:seat_area_ratio_iata_strategy] if args.key?(:seat_area_ratio_iata_strategy)
           @source = args[:source] if args.key?(:source)
           @source_version = args[:source_version] if args.key?(:source_version)
@@ -902,45 +894,6 @@ module Google
           @distance_km = args[:distance_km] if args.key?(:distance_km)
           @flight_number = args[:flight_number] if args.key?(:flight_number)
           @origin = args[:origin] if args.key?(:origin)
-        end
-      end
-      
-      # Seat area ratio data values. Economy is always 1.0 and serves as the reference
-      # point; other class values are relative to economy. All 4 fields are always set
-      # whether the seating class exists on the aircraft or not.
-      class SeatAreaRatioData
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Business seating class data value.
-        # Corresponds to the JSON property `business`
-        # @return [Float]
-        attr_accessor :business
-      
-        # Output only. Economy seating class data value.
-        # Corresponds to the JSON property `economy`
-        # @return [Float]
-        attr_accessor :economy
-      
-        # Output only. First seating class data value.
-        # Corresponds to the JSON property `first`
-        # @return [Float]
-        attr_accessor :first
-      
-        # Output only. Premium economy seating class data value.
-        # Corresponds to the JSON property `premiumEconomy`
-        # @return [Float]
-        attr_accessor :premium_economy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @business = args[:business] if args.key?(:business)
-          @economy = args[:economy] if args.key?(:economy)
-          @first = args[:first] if args.key?(:first)
-          @premium_economy = args[:premium_economy] if args.key?(:premium_economy)
         end
       end
       
