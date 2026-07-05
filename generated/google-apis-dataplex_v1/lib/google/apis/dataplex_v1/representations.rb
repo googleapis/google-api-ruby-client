@@ -232,6 +232,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1ContactIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1Contacts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1CreateEntryLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,6 +413,18 @@ module Google
       end
       
       class GoogleCloudDataplexV1DataDocumentationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDomain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDomainBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1187,6 +1211,18 @@ module Google
       end
       
       class GoogleCloudDataplexV1ListDataAttributesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ListDataDomainBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ListDataDomainsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2179,6 +2215,23 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1ContactIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_id, as: 'contactId'
+          property :contact_name, as: 'contactName'
+          property :contact_role, as: 'contactRole'
+        end
+      end
+      
+      class GoogleCloudDataplexV1Contacts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identities, as: 'identities', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ContactIdentity, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ContactIdentity::Representation
+      
+        end
+      end
+      
       class GoogleCloudDataplexV1CreateEntryLinkRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2394,6 +2447,7 @@ module Google
       class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :global_endpoint_enabled, as: 'globalEndpointEnabled'
           property :semantic_inference_enabled, as: 'semanticInferenceEnabled'
         end
       end
@@ -2482,6 +2536,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :catalog_publishing_enabled, as: 'catalogPublishingEnabled'
           collection :generation_scopes, as: 'generationScopes'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDomain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contacts, as: 'contacts', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Contacts, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Contacts::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :parent_data_domain, as: 'parentDataDomain'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDomainBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :resource, as: 'resource'
+          property :uid, as: 'uid'
         end
       end
       
@@ -3935,6 +4015,24 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable_locations, as: 'unreachableLocations'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ListDataDomainBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_domain_bindings, as: 'dataDomainBindings', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDomainBinding, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDomainBinding::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ListDataDomainsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_domains, as: 'dataDomains', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDomain, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDomain::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

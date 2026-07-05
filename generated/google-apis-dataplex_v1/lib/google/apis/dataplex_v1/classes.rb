@@ -1468,6 +1468,59 @@ module Google
         end
       end
       
+      # Identity of a business contact.
+      class GoogleCloudDataplexV1ContactIdentity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Email ID or freeform ID of the Contact person.
+        # Corresponds to the JSON property `contactId`
+        # @return [String]
+        attr_accessor :contact_id
+      
+        # Required. Name of the contact person for the Data Domain; unvalidated freeform
+        # text.
+        # Corresponds to the JSON property `contactName`
+        # @return [String]
+        attr_accessor :contact_name
+      
+        # Required. Designation of the person i.e. Data Steward or Data Analyst. Example
+        # values: owner, steward, producer, admin.
+        # Corresponds to the JSON property `contactRole`
+        # @return [String]
+        attr_accessor :contact_role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contact_id = args[:contact_id] if args.key?(:contact_id)
+          @contact_name = args[:contact_name] if args.key?(:contact_name)
+          @contact_role = args[:contact_role] if args.key?(:contact_role)
+        end
+      end
+      
+      # Business contacts part of business context of a Data Domain. Corresponds to
+      # the Contacts Aspect in Dataplex Universal Catalog.
+      class GoogleCloudDataplexV1Contacts
+        include Google::Apis::Core::Hashable
+      
+        # Required. Identities of the business contacts.
+        # Corresponds to the JSON property `identities`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1ContactIdentity>]
+        attr_accessor :identities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identities = args[:identities] if args.key?(:identities)
+        end
+      end
+      
       # Request message for CreateEntryLink.
       class GoogleCloudDataplexV1CreateEntryLinkRequest
         include Google::Apis::Core::Hashable
@@ -2341,6 +2394,12 @@ module Google
       class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether to use the global model endpoint.
+        # Corresponds to the JSON property `globalEndpointEnabled`
+        # @return [Boolean]
+        attr_accessor :global_endpoint_enabled
+        alias_method :global_endpoint_enabled?, :global_endpoint_enabled
+      
         # Optional. Specifies whether deeper semantic inference over the objects'
         # contents using GenAI is enabled.
         # Corresponds to the JSON property `semanticInferenceEnabled`
@@ -2354,6 +2413,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @global_endpoint_enabled = args[:global_endpoint_enabled] if args.key?(:global_endpoint_enabled)
           @semantic_inference_enabled = args[:semantic_inference_enabled] if args.key?(:semantic_inference_enabled)
         end
       end
@@ -2622,6 +2682,134 @@ module Google
         def update!(**args)
           @catalog_publishing_enabled = args[:catalog_publishing_enabled] if args.key?(:catalog_publishing_enabled)
           @generation_scopes = args[:generation_scopes] if args.key?(:generation_scopes)
+        end
+      end
+      
+      # A DataDomain is a logical grouping of data resources for governance, discovery,
+      # and management at scale.
+      class GoogleCloudDataplexV1DataDomain
+        include Google::Apis::Core::Hashable
+      
+        # Business contacts part of business context of a Data Domain. Corresponds to
+        # the Contacts Aspect in Dataplex Universal Catalog.
+        # Corresponds to the JSON property `contacts`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Contacts]
+        attr_accessor :contacts
+      
+        # Output only. The time at which the DataDomain was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User-provided description of the DataDomain.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. User-friendly display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. User-defined labels for the DataDomain.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The relative resource name of the DataDomain, of the form:
+        # projects/`project_id_or_number`/locations/`location_id`/dataDomains/`
+        # data_domain_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Immutable. The resource name of the parent DataDomain. Empty if this
+        # is a top-level DataDomain. Format: projects/`project_id_or_number`/locations/`
+        # location`/dataDomains/`parent_data_domain_id` This field is immutable after
+        # creation.
+        # Corresponds to the JSON property `parentDataDomain`
+        # @return [String]
+        attr_accessor :parent_data_domain
+      
+        # Output only. System-generated globally unique ID for the DataDomain.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time at which the DataDomain was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contacts = args[:contacts] if args.key?(:contacts)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @parent_data_domain = args[:parent_data_domain] if args.key?(:parent_data_domain)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # DataDomainBinding represents a rule that includes a Google Cloud resource and
+      # its contents into a DataDomain.
+      class GoogleCloudDataplexV1DataDomainBinding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the DataDomainBinding was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The relative resource name of the DataDomainBinding. Format:
+        # projects/`project_id_or_number`/locations/`location`/dataDomains/`
+        # data_domain_id`/bindings/`binding_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. The full resource name of the Google Cloud resource to be
+        # bound (i.e. included together with its contents) to the DataDomain.Format: IAM
+        # Full resource name (https://docs.cloud.google.com/iam/docs/full-resource-names)
+        # Examples: - GCP Project: //cloudresourcemanager.googleapis.com/projects/`
+        # project-id` - BigQuery Dataset: //bigquery.googleapis.com/projects/`project-id`
+        # /datasets/`dataset-id` - BigQuery Table: //bigquery.googleapis.com/projects/`
+        # project-id`/datasets/`dataset-id`/tables/`table-id` - Dataplex Data Product: //
+        # dataplex.googleapis.com/projects/`project-number`/locations/`location`/
+        # dataProducts/`data-product-id`Authorization: the resource to be bound must
+        # first grant an IAM role with the resource-specific setIamPolicy permission to
+        # the DataDomain. Example: - resource: //bigquery.googleapis.com/projects/`
+        # project-id`/datasets/`dataset-id` - IAM role: with bigquery.datasets.
+        # setIamPolicy permission (e.g. roles/owner) - IAM member: principal://dataplex.
+        # googleapis.com/projects/`project-number`/name/locations/`location`/dataDomains/
+        # `data-domain-id`
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Output only. System-generated unique ID.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @resource = args[:resource] if args.key?(:resource)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -8039,6 +8227,56 @@ module Google
           @data_attributes = args[:data_attributes] if args.key?(:data_attributes)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
+        end
+      end
+      
+      # List DataDomainBindings response.
+      class GoogleCloudDataplexV1ListDataDomainBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # DataDomainBindings under the given parent.
+        # Corresponds to the JSON property `dataDomainBindings`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDomainBinding>]
+        attr_accessor :data_domain_bindings
+      
+        # Token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_domain_bindings = args[:data_domain_bindings] if args.key?(:data_domain_bindings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # List DataDomains response.
+      class GoogleCloudDataplexV1ListDataDomainsResponse
+        include Google::Apis::Core::Hashable
+      
+        # DataDomains under the given parent.
+        # Corresponds to the JSON property `dataDomains`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDomain>]
+        attr_accessor :data_domains
+      
+        # Token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_domains = args[:data_domains] if args.key?(:data_domains)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
