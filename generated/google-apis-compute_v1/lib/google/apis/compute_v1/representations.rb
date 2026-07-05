@@ -19698,10 +19698,10 @@ module Google
       class ReservationBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :block_health_info, as: 'blockHealthInfo', class: Google::Apis::ComputeV1::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationBlockHealthInfo::Representation
-      
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeV1::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationBlockHealthInfo::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
@@ -19930,6 +19930,8 @@ module Google
       
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
@@ -19942,8 +19944,6 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
-          property :sub_block_health_info, as: 'subBlockHealthInfo', class: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo::Representation
-      
           property :zone, as: 'zone'
         end
       end
