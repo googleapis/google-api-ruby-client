@@ -841,6 +841,223 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Creates a support event subscription for an organization.
+        # @param [String] parent
+        #   Required. The parent resource name where the support event subscription will
+        #   be created. Format: organizations/`organization_id`
+        # @param [Google::Apis::CloudsupportV2beta::SupportEventSubscription] support_event_subscription_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::SupportEventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::SupportEventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_support_event_subscription(parent, support_event_subscription_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+parent}/supportEventSubscriptions', options)
+          command.request_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.request_object = support_event_subscription_object
+          command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Soft deletes a support event subscription.
+        # @param [String] name
+        #   Required. The name of the support event subscription to delete. Format:
+        #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::SupportEventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::SupportEventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a support event subscription.
+        # @param [String] name
+        #   Required. The name of the support event subscription to retrieve. Format:
+        #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::SupportEventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::SupportEventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists support event subscriptions.
+        # @param [String] parent
+        #   Required. The fully qualified name of the Cloud resource to list support event
+        #   subscriptions under. Format: organizations/`organization_id`
+        # @param [String] filter
+        #   Optional. Filter expression based on AIP-160. Supported fields: -
+        #   pub_sub_topic - state Examples: - `pub_sub_topic="projects/example-project/
+        #   topics/example-topic"` - `state=WORKING` - `pub_sub_topic="projects/example-
+        #   project/topics/example-topic" AND state=WORKING`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of support event subscriptions to return.
+        # @param [String] page_token
+        #   Optional. A token identifying the page of results to return. If unspecified,
+        #   the first page is retrieved. When paginating, all other parameters provided to
+        #   `ListSupportEventSubscriptions` must match the call that provided the page
+        #   token.
+        # @param [Boolean] show_deleted
+        #   Optional. Whether to show deleted subscriptions. By default, deleted
+        #   subscriptions are not returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::ListSupportEventSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::ListSupportEventSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_support_event_subscriptions(parent, filter: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta/{+parent}/supportEventSubscriptions', options)
+          command.response_representation = Google::Apis::CloudsupportV2beta::ListSupportEventSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::ListSupportEventSubscriptionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a support event subscription.
+        # @param [String] name
+        #   Identifier. The resource name of the support event subscription.
+        # @param [Google::Apis::CloudsupportV2beta::SupportEventSubscription] support_event_subscription_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. The only supported value is
+        #   pub_sub_topic.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::SupportEventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::SupportEventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_support_event_subscription(name, support_event_subscription_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta/{+name}', options)
+          command.request_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.request_object = support_event_subscription_object
+          command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a support event subscription.
+        # @param [String] name
+        #   Required. The name of the support event subscription to undelete. Format:
+        #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
+        # @param [Google::Apis::CloudsupportV2beta::UndeleteSupportEventSubscriptionRequest] undelete_support_event_subscription_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::SupportEventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::SupportEventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_support_event_subscription(name, undelete_support_event_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:undelete', options)
+          command.request_representation = Google::Apis::CloudsupportV2beta::UndeleteSupportEventSubscriptionRequest::Representation
+          command.request_object = undelete_support_event_subscription_request_object
+          command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
