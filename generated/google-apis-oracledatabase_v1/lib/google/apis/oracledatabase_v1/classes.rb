@@ -930,6 +930,14 @@ module Google
         # @return [String]
         attr_accessor :private_endpoint_label
       
+        # Optional. Indicates if the Autonomous Database is a refreshable clone. This
+        # field is used in update flow to connect / disconnect a refreshable clone from
+        # its source database.
+        # Corresponds to the JSON property `refreshableClone`
+        # @return [Boolean]
+        attr_accessor :refreshable_clone
+        alias_method :refreshable_clone?, :refreshable_clone
+      
         # Output only. The refresh mode of the cloned Autonomous Database.
         # Corresponds to the JSON property `refreshableMode`
         # @return [String]
@@ -1053,6 +1061,7 @@ module Google
           @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
           @private_endpoint_ip = args[:private_endpoint_ip] if args.key?(:private_endpoint_ip)
           @private_endpoint_label = args[:private_endpoint_label] if args.key?(:private_endpoint_label)
+          @refreshable_clone = args[:refreshable_clone] if args.key?(:refreshable_clone)
           @refreshable_mode = args[:refreshable_mode] if args.key?(:refreshable_mode)
           @refreshable_state = args[:refreshable_state] if args.key?(:refreshable_state)
           @role = args[:role] if args.key?(:role)
@@ -1065,6 +1074,50 @@ module Google
           @total_auto_backup_storage_size_gbs = args[:total_auto_backup_storage_size_gbs] if args.key?(:total_auto_backup_storage_size_gbs)
           @used_data_storage_size_tbs = args[:used_data_storage_size_tbs] if args.key?(:used_data_storage_size_tbs)
           @vault_id = args[:vault_id] if args.key?(:vault_id)
+        end
+      end
+      
+      # An Autonomous Database refreshable clone
+      class AutonomousDatabaseRefreshableClone
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The GCP resource name of the Autonomous Database.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The Google Cloud region where the refreshable clone exists.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # Response message for getting the Autonomous Database refreshable clones.
+      class AutonomousDatabaseRefreshableClones
+        include Google::Apis::Core::Hashable
+      
+        # The list of Autonomous Database refreshable clones.
+        # Corresponds to the JSON property `autonomousDatabaseRefreshableClones`
+        # @return [Array<Google::Apis::OracledatabaseV1::AutonomousDatabaseRefreshableClone>]
+        attr_accessor :autonomous_database_refreshable_clones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autonomous_database_refreshable_clones = args[:autonomous_database_refreshable_clones] if args.key?(:autonomous_database_refreshable_clones)
         end
       end
       
@@ -9048,6 +9101,27 @@ module Google
         end
       end
       
+      # Request message for RefreshAutonomousDatabase method.
+      class RefreshAutonomousDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The timestamp to which the Autonomous Database refreshable clone
+        # will be refreshed. Changes made in the primary database after this timestamp
+        # are not part of the data refresh.
+        # Corresponds to the JSON property `refreshCutoffTime`
+        # @return [String]
+        attr_accessor :refresh_cutoff_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @refresh_cutoff_time = args[:refresh_cutoff_time] if args.key?(:refresh_cutoff_time)
+        end
+      end
+      
       # The request for `ExadbVmCluster.RemoveVirtualMachine`.
       class RemoveVirtualMachineExadbVmClusterRequest
         include Google::Apis::Core::Hashable
@@ -9177,6 +9251,25 @@ module Google
       class SourceConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The frequency in seconds a refreshable clone is refreshed after auto-
+        # refresh is enabled.
+        # Corresponds to the JSON property `autoRefreshFrequencySeconds`
+        # @return [Fixnum]
+        attr_accessor :auto_refresh_frequency_seconds
+      
+        # Optional. The time, in seconds, the data of the automatic refreshable clone
+        # lags the primary database at the point of refresh.
+        # Corresponds to the JSON property `autoRefreshPointLagSeconds`
+        # @return [Fixnum]
+        attr_accessor :auto_refresh_point_lag_seconds
+      
+        # Optional. The date and time that auto-refreshing will begin for an Autonomous
+        # Database refreshable clone. This value controls only the start time for the
+        # first refresh operation.
+        # Corresponds to the JSON property `autoRefreshStartTime`
+        # @return [String]
+        attr_accessor :auto_refresh_start_time
+      
         # Optional. This field specifies if the replication of automatic backups is
         # enabled when creating a Data Guard.
         # Corresponds to the JSON property `automaticBackupsReplicationEnabled`
@@ -9190,14 +9283,61 @@ module Google
         # @return [String]
         attr_accessor :autonomous_database
       
+        # Optional. The name of the Autonomous Database Backup resource with the format:
+        # projects/`project`/locations/`region`/autonomousDatabaseBackups/`
+        # autonomous_database_backup` Required when source_type is BACKUP_FROM_ID.
+        # Corresponds to the JSON property `autonomousDatabaseBackup`
+        # @return [String]
+        attr_accessor :autonomous_database_backup
+      
+        # Optional. The timestamp specified for the point-in-time clone of the source
+        # Autonomous Database. This field is only applicable in case of
+        # BACKUP_FROM_TIMESTAMP source type and when use_latest_available_backup is
+        # false.
+        # Corresponds to the JSON property `backupTime`
+        # @return [String]
+        attr_accessor :backup_time
+      
+        # Optional. The clone type of the Autonomous Database. This field is only
+        # applicable in case of cloning
+        # Corresponds to the JSON property `cloneType`
+        # @return [String]
+        attr_accessor :clone_type
+      
+        # Optional. The refresh mode of the clone.
+        # Corresponds to the JSON property `refreshableMode`
+        # @return [String]
+        attr_accessor :refreshable_mode
+      
+        # Optional. The source type of the Autonomous Database.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        # Optional. Clone from latest available backup timestamp. This field is only
+        # applicable in case of BACKUP_FROM_TIMESTAMP source type.
+        # Corresponds to the JSON property `useLatestAvailableBackup`
+        # @return [Boolean]
+        attr_accessor :use_latest_available_backup
+        alias_method :use_latest_available_backup?, :use_latest_available_backup
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @auto_refresh_frequency_seconds = args[:auto_refresh_frequency_seconds] if args.key?(:auto_refresh_frequency_seconds)
+          @auto_refresh_point_lag_seconds = args[:auto_refresh_point_lag_seconds] if args.key?(:auto_refresh_point_lag_seconds)
+          @auto_refresh_start_time = args[:auto_refresh_start_time] if args.key?(:auto_refresh_start_time)
           @automatic_backups_replication_enabled = args[:automatic_backups_replication_enabled] if args.key?(:automatic_backups_replication_enabled)
           @autonomous_database = args[:autonomous_database] if args.key?(:autonomous_database)
+          @autonomous_database_backup = args[:autonomous_database_backup] if args.key?(:autonomous_database_backup)
+          @backup_time = args[:backup_time] if args.key?(:backup_time)
+          @clone_type = args[:clone_type] if args.key?(:clone_type)
+          @refreshable_mode = args[:refreshable_mode] if args.key?(:refreshable_mode)
+          @source_type = args[:source_type] if args.key?(:source_type)
+          @use_latest_available_backup = args[:use_latest_available_backup] if args.key?(:use_latest_available_backup)
         end
       end
       

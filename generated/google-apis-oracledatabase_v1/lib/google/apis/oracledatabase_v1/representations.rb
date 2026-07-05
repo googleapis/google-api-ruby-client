@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutonomousDatabaseRefreshableClone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutonomousDatabaseRefreshableClones
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutonomousDatabaseStandbySummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -988,6 +1000,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RefreshAutonomousDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoveVirtualMachineExadbVmClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1287,6 +1305,7 @@ module Google
           property :private_endpoint, as: 'privateEndpoint'
           property :private_endpoint_ip, as: 'privateEndpointIp'
           property :private_endpoint_label, as: 'privateEndpointLabel'
+          property :refreshable_clone, as: 'refreshableClone'
           property :refreshable_mode, as: 'refreshableMode'
           property :refreshable_state, as: 'refreshableState'
           property :role, as: 'role'
@@ -1300,6 +1319,22 @@ module Google
           property :total_auto_backup_storage_size_gbs, as: 'totalAutoBackupStorageSizeGbs'
           property :used_data_storage_size_tbs, as: 'usedDataStorageSizeTbs'
           property :vault_id, as: 'vaultId'
+        end
+      end
+      
+      class AutonomousDatabaseRefreshableClone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :region, as: 'region'
+        end
+      end
+      
+      class AutonomousDatabaseRefreshableClones
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :autonomous_database_refreshable_clones, as: 'autonomousDatabaseRefreshableClones', class: Google::Apis::OracledatabaseV1::AutonomousDatabaseRefreshableClone, decorator: Google::Apis::OracledatabaseV1::AutonomousDatabaseRefreshableClone::Representation
+      
         end
       end
       
@@ -3251,6 +3286,13 @@ module Google
         end
       end
       
+      class RefreshAutonomousDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :refresh_cutoff_time, as: 'refreshCutoffTime'
+        end
+      end
+      
       class RemoveVirtualMachineExadbVmClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3294,8 +3336,17 @@ module Google
       class SourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_refresh_frequency_seconds, as: 'autoRefreshFrequencySeconds'
+          property :auto_refresh_point_lag_seconds, as: 'autoRefreshPointLagSeconds'
+          property :auto_refresh_start_time, as: 'autoRefreshStartTime'
           property :automatic_backups_replication_enabled, as: 'automaticBackupsReplicationEnabled'
           property :autonomous_database, as: 'autonomousDatabase'
+          property :autonomous_database_backup, as: 'autonomousDatabaseBackup'
+          property :backup_time, as: 'backupTime'
+          property :clone_type, as: 'cloneType'
+          property :refreshable_mode, as: 'refreshableMode'
+          property :source_type, as: 'sourceType'
+          property :use_latest_available_backup, as: 'useLatestAvailableBackup'
         end
       end
       
