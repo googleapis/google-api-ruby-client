@@ -1318,6 +1318,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1PayloadOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1PayloadOperationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1PayloadOperationGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1PodStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2342,6 +2360,8 @@ module Google
           property :llm_quota_time_unit, as: 'llmQuotaTimeUnit'
           property :name, as: 'name'
           property :operation_group, as: 'operationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup::Representation
+      
+          property :payload_operation_group, as: 'payloadOperationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationGroup::Representation
       
           collection :proxies, as: 'proxies'
           property :quota, as: 'quota'
@@ -4377,6 +4397,34 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1PayloadOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation'
+        end
+      end
+      
+      class GoogleCloudApigeeV1PayloadOperationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_source, as: 'apiSource'
+          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+          collection :operations, as: 'operations', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperation::Representation
+      
+          property :quota, as: 'quota', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1PayloadOperationGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operation_configs, as: 'operationConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1PodStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5527,6 +5575,7 @@ module Google
           property :exporter, as: 'exporter'
           property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig::Representation
       
+          property :trace_protocol, as: 'traceProtocol'
         end
       end
       
