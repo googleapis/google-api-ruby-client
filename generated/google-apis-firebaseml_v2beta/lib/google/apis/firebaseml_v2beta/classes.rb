@@ -3995,6 +3995,25 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :custom_configs
       
+        # Optional. Deprecated: Use `enable_zero_data_retention` instead. Instructs
+        # Vertex Grounding to use Parallel's Zero Data Retention Marketplace product. If
+        # this value is "false" or omitted, the Parallel Web Search for Grounding
+        # standard subscription will be used. If this value is "true", the Parallel Web
+        # Search for Grounding - ZDR subscription will be used.
+        # Corresponds to the JSON property `enableDataRetention`
+        # @return [Boolean]
+        attr_accessor :enable_data_retention
+        alias_method :enable_data_retention?, :enable_data_retention
+      
+        # Optional. Instructs Vertex Grounding to use Parallel's Zero Data Retention
+        # Marketplace product. If this value is "false" or omitted, the Parallel Web
+        # Search for Grounding standard subscription will be used. If this value is "
+        # true", the Parallel Web Search for Grounding - ZDR subscription will be used.
+        # Corresponds to the JSON property `enableZeroDataRetention`
+        # @return [Boolean]
+        attr_accessor :enable_zero_data_retention
+        alias_method :enable_zero_data_retention?, :enable_zero_data_retention
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4003,6 +4022,8 @@ module Google
         def update!(**args)
           @api_key = args[:api_key] if args.key?(:api_key)
           @custom_configs = args[:custom_configs] if args.key?(:custom_configs)
+          @enable_data_retention = args[:enable_data_retention] if args.key?(:enable_data_retention)
+          @enable_zero_data_retention = args[:enable_zero_data_retention] if args.key?(:enable_zero_data_retention)
         end
       end
       
