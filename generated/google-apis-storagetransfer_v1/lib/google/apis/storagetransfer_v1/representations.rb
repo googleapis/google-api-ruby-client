@@ -502,6 +502,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exclude_prefixes, as: 'excludePrefixes'
           collection :include_prefixes, as: 'includePrefixes'
+          collection :include_storage_classes, as: 'includeStorageClasses'
           property :last_modified_before, as: 'lastModifiedBefore'
           property :last_modified_since, as: 'lastModifiedSince'
           property :match_glob, as: 'matchGlob'
