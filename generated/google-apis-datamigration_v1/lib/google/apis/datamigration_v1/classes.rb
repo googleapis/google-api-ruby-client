@@ -3421,6 +3421,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Configuration for MySQL to MySQL migrations.
+        # Corresponds to the JSON property `mysqlHomogeneousConfig`
+        # @return [Google::Apis::DatamigrationV1::MySqlHomogeneousConfig]
+        attr_accessor :mysql_homogeneous_config
+      
         # The name (URI) of this migration job resource, in the form of: projects/`
         # project`/locations/`location`/migrationJobs/`migrationJob`.
         # Corresponds to the JSON property `name`
@@ -3566,6 +3571,7 @@ module Google
           @error = args[:error] if args.key?(:error)
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
+          @mysql_homogeneous_config = args[:mysql_homogeneous_config] if args.key?(:mysql_homogeneous_config)
           @name = args[:name] if args.key?(:name)
           @objects_config = args[:objects_config] if args.key?(:objects_config)
           @oracle_to_postgres_config = args[:oracle_to_postgres_config] if args.key?(:oracle_to_postgres_config)
@@ -3878,6 +3884,26 @@ module Google
           @port = args[:port] if args.key?(:port)
           @ssl = args[:ssl] if args.key?(:ssl)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Configuration for MySQL to MySQL migrations.
+      class MySqlHomogeneousConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the destination for the migration job is a primary instance.
+        # Corresponds to the JSON property `isPrimaryDestination`
+        # @return [Boolean]
+        attr_accessor :is_primary_destination
+        alias_method :is_primary_destination?, :is_primary_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_primary_destination = args[:is_primary_destination] if args.key?(:is_primary_destination)
         end
       end
       

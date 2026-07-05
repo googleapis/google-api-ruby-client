@@ -544,6 +544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MySqlHomogeneousConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1941,6 +1947,8 @@ module Google
       
           property :filter, as: 'filter'
           hash :labels, as: 'labels'
+          property :mysql_homogeneous_config, as: 'mysqlHomogeneousConfig', class: Google::Apis::DatamigrationV1::MySqlHomogeneousConfig, decorator: Google::Apis::DatamigrationV1::MySqlHomogeneousConfig::Representation
+      
           property :name, as: 'name'
           property :objects_config, as: 'objectsConfig', class: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig, decorator: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig::Representation
       
@@ -2046,6 +2054,13 @@ module Google
           property :ssl, as: 'ssl', class: Google::Apis::DatamigrationV1::SslConfig, decorator: Google::Apis::DatamigrationV1::SslConfig::Representation
       
           property :username, as: 'username'
+        end
+      end
+      
+      class MySqlHomogeneousConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_primary_destination, as: 'isPrimaryDestination'
         end
       end
       
