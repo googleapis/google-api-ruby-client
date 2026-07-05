@@ -29,6 +29,12 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # See your Google Cloud API hub data and the email address of your Google Account
+      AUTH_APIHUB_READONLY = 'https://www.googleapis.com/auth/apihub.readonly'
+
+      # See, edit, configure, and delete your Google Cloud API hub data and see the email address for your Google Account
+      AUTH_APIHUB_READWRITE = 'https://www.googleapis.com/auth/apihub.readwrite'
+
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
