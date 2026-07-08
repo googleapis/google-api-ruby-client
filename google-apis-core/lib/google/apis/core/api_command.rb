@@ -62,7 +62,6 @@ module Google
         def initialize(method, url, body: nil, client_version: nil)
           super(method, url, body: body)
           self.client_version = client_version || Core::VERSION
-          @idempotency_token = SecureRandom.uuid
         end
 
         # Serialize the request body
@@ -71,7 +70,7 @@ module Google
         def prepare!
           set_api_client_header
           set_user_project_header
-          set_idempotency_token_header if options.add_idempotency_token_header
+          set_idempotency_token_header if options&.add_idempotency_token_header
           if options&.api_format_version
             header['X-Goog-Api-Format-Version'] = options.api_format_version.to_s
           end
@@ -145,7 +144,6 @@ module Google
         end
 
         private
-        INVOCATION_ID = SecureRandom.uuid
 
         def set_api_client_header
           old_xgac = header
@@ -178,14 +176,16 @@ module Google
         end
 
         def set_idempotency_token_header
-          return if options&.header&.keys&.any? { |k| k.to_s.downcase == 'x-goog-gcs-idempotency-token' }
-          return if header.keys.any? { |k| k.to_s.downcase == 'x-goog-gcs-idempotency-token' }
+          return if options&.header&.any? { |k, _| k.to_s.downcase == 'x-goog-gcs-idempotency-token' }
+          return if header.any? { |k, _| k.to_s.downcase == 'x-goog-gcs-idempotency-token' }
 
+          @idempotency_token ||= SecureRandom.uuid
           header['X-Goog-Gcs-Idempotency-Token'] = @idempotency_token
         end
 
         def invocation_id_header
-          "gccl-invocation-id/#{INVOCATION_ID}"
+          @invocation_id ||= SecureRandom.uuid
+          "gccl-invocation-id/#{@invocation_id}"
         end
 
         # Attempt to parse a JSON error message
