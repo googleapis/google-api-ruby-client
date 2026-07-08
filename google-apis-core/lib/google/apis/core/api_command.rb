@@ -18,6 +18,7 @@ require 'google/apis/core/http_command'
 require 'google/apis/errors'
 require 'json'
 require 'retriable'
+require 'securerandom'
 
 module Google
   module Apis
@@ -61,6 +62,7 @@ module Google
         def initialize(method, url, body: nil, client_version: nil)
           super(method, url, body: body)
           self.client_version = client_version || Core::VERSION
+          @idempotency_token = SecureRandom.uuid
         end
 
         # Serialize the request body
@@ -69,7 +71,7 @@ module Google
         def prepare!
           set_api_client_header
           set_user_project_header
-          set_idempotency_token_header 
+          set_idempotency_token_header if options.add_idempotency_token_header
           if options&.api_format_version
             header['X-Goog-Api-Format-Version'] = options.api_format_version.to_s
           end
@@ -176,7 +178,10 @@ module Google
         end
 
         def set_idempotency_token_header
-          header['X-Goog-Gcs-Idempotency-Token'] = INVOCATION_ID
+          return if options&.header&.keys&.any? { |k| k.to_s.downcase == 'x-goog-gcs-idempotency-token' }
+          return if header.keys.any? { |k| k.to_s.downcase == 'x-goog-gcs-idempotency-token' }
+
+          header['X-Goog-Gcs-Idempotency-Token'] = @idempotency_token
         end
 
         def invocation_id_header

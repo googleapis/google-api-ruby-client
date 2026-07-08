@@ -38,11 +38,6 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     let(:command) do
       Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals', client_version: client_version)
     end
-    let(:invocation_id) { 'test123' }
-
-    before(:example) do
-      Google::Apis::Core::ApiCommand.const_set(:INVOCATION_ID, invocation_id)
-    end
 
     it 'should set X-Goog-Api-Client header if none is set' do
       command.prepare!
@@ -92,15 +87,36 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     it "should set the gccl-invocation-id to a random UUID" do
       command.options.add_invocation_id_header = true
       command.prepare!
-      expect(command.header["X-Goog-Api-Client"]).to include("gccl-invocation-id")
-      expect(command.header["X-Goog-Api-Client"]).to include(invocation_id)
-
+      expect(command.header["X-Goog-Api-Client"]).to match(/gccl-invocation-id\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/)
     end
 
     it "should set the X-Goog-Gcs-Idempotency-Token header" do
       command.prepare!
       expect(command.header['X-Goog-Gcs-Idempotency-Token']).not_to be_nil
-      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to eql invocation_id
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/)
+    end
+
+    it "should not set the X-Goog-Gcs-Idempotency-Token header when option is false" do
+      command.options.add_idempotency_token_header = false
+      command.prepare!
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to be_nil
+    end
+
+    it 'should generate different tokens for different command instances' do
+      cmd1 = Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      cmd2 = Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+
+      cmd1.prepare!
+      cmd2.prepare!
+
+      expect(cmd1.header['X-Goog-Gcs-Idempotency-Token']).not_to eq(cmd2.header['X-Goog-Gcs-Idempotency-Token'])
+    end
+
+    it "should respect custom X-Goog-Gcs-Idempotency-Token in options.header regardless of casing" do
+      command.options.header = { 'x-goog-gcs-idempotency-token' => 'my-custom-token' }
+      command.prepare!
+      expect(command.header['x-goog-gcs-idempotency-token']).to eql 'my-custom-token'
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to be_nil
     end
   end
 
